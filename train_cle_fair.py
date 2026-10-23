@@ -54,7 +54,20 @@ MODEL_ALLOWED_MISSING_SEGMENTS = {
     "resnet34_se": {"se"},
     "resnet50_se": {"se"},
     "resnet34_degconv_cpca_v3": {"cpca"},
-    "resnet34_s2d": {"stem_adapter"},
+}
+
+# 各模型加载 ImageNet 预训练权重前需做的"权重变换"(如 s2d 变体的 conv1 通道膨胀)。
+# 变换后仍需通过严格审计: 仅允许 fc 与白名单段缺失、零 unexpected。
+def _inflate_conv1_for_s2d(state):
+    """conv1 输入通道 3->12: 预训练核沿输入通道维复制 4 份并除以 4(保持输出量级)。"""
+    w = state.get("conv1.weight")
+    if w is not None and w.dim() == 4 and w.shape[1] == 3:
+        state["conv1.weight"] = w.repeat(1, 4, 1, 1) / 4.0
+    return state
+
+
+MODEL_CHECKPOINT_TRANSFORMS = {
+    "resnet34_s2d": _inflate_conv1_for_s2d,
 }
 SWIN_VANILLA_IGNORED_CHECKPOINT_BUFFERS = {
     "layers.0.blocks.1.attn_mask",
@@ -120,6 +133,10 @@ def load_pretrained_weights_strict(model, weights_path, model_name):
     for key in removed_classifier_keys:
         del state[key]
 
+    ckpt_transform = MODEL_CHECKPOINT_TRANSFORMS.get(model_name)
+    if ckpt_transform is not None:
+        state = ckpt_transform(state)
+
     ignored_buffer_keys = []
     if model_name == "swin_tiny_vanilla_patch4_window7_224":
         present_masks = {key for key in state if key.endswith(".attn_mask")}
@@ -160,6 +177,7 @@ def load_pretrained_weights_strict(model, weights_path, model_name):
         "missing_keys": actual_missing,
         "unexpected_keys": unexpected,
         "allowed_missing_segments": sorted(allowed_segments),
+        "checkpoint_transform": getattr(ckpt_transform, "__name__", None),
         "all_trainable_backbone_parameters_loaded": True,
     }
     print(
