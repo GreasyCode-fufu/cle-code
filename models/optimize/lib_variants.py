@@ -136,15 +136,12 @@ class _Base(nn.Module):
         return x
 
 
-class _Hybrid(nn.Module):
+class _Hybrid(_Base):
     """layer3 出口用 DilGate(dil234), layer4 出口用 GatedWrap(msctx)。"""
 
     def __init__(self, blocks_num, num_classes, include_top):
-        super().__init__()
         from models.optimize.resnet34_dilgate import DilGate
-        base = _Base(blocks_num, num_classes, include_top, msctx_block)
-        # 借用 _Base 的骨架但替换两个门控
-        self.__dict__.update(base.__dict__)
+        super().__init__(blocks_num, num_classes, include_top, msctx_block)
         self.lib = nn.ModuleDict({
             "3": DilGate(256, rates=(2, 3, 4)),
             "4": GatedWrap(512, msctx_block),
