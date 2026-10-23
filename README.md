@@ -28,6 +28,7 @@ conda 环境：`sunfuxiang`（python: `/home/login/miniconda3/envs/sunfuxiang/bi
 | `attention/` | 注意力模块（部分模型引用） |
 
 ## 运行示例
+> 提示：项目根目录的 `run.sh` 已固定使用 sunfuxiang 环境解释器（本机 shell 的 ~/bin/python 软链指向 dinov2 环境，直接敲 python 会缺依赖）：> `./run.sh train ...` / `./run.sh eval ...` / `./run.sh python xxx.py`
 
 数据集已就位（见下方"说明"），ImageNet 预训练权重仍引用原位置：
 
