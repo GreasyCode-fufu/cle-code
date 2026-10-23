@@ -70,6 +70,8 @@ MODEL_REGISTRY = {
     # ── SE 注意力变体 (models/optimize/resnet34_se.py, 2026-10-23) ──
     "resnet34_se": ("models.optimize.resnet34_se", "resnet34_se"),
     "resnet50_se": ("models.optimize.resnet34_se", "resnet50_se"),
+    # ── space_to_depth 下采样变体 (models/optimize/resnet34_s2d.py, 2026-10-23) ──
+    "resnet34_s2d": ("models.optimize.resnet34_s2d", "resnet34_s2d"),
 }
 
 SUPPORTED_EXTS = (".jpg", ".jpeg", ".png", ".bmp", ".tif", ".tiff")

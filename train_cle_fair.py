@@ -54,6 +54,7 @@ MODEL_ALLOWED_MISSING_SEGMENTS = {
     "resnet34_se": {"se"},
     "resnet50_se": {"se"},
     "resnet34_degconv_cpca_v3": {"cpca"},
+    "resnet34_s2d": {"stem_adapter"},
 }
 SWIN_VANILLA_IGNORED_CHECKPOINT_BUFFERS = {
     "layers.0.blocks.1.attn_mask",
@@ -136,8 +137,11 @@ def load_pretrained_weights_strict(model, weights_path, model_name):
     allowed_segments = MODEL_ALLOWED_MISSING_SEGMENTS.get(model_name, set())
     expected_missing = sorted(
         key for key in model.state_dict()
-        if key.split(".", 1)[0] in CLASSIFIER_ROOTS
-        or any(seg in allowed_segments for seg in key.split("."))
+        if (key.split(".", 1)[0] in CLASSIFIER_ROOTS
+            or any(seg in allowed_segments for seg in key.split(".")))
+        # BN 的 num_batches_tracked 缓冲键: load_state_dict 不将其计入 missing_keys,
+        # expected 侧同样排除, 保持两侧口径一致
+        and not key.endswith("num_batches_tracked")
     )
     actual_missing = sorted(incompat.missing_keys)
     unexpected = sorted(incompat.unexpected_keys)
