@@ -10,7 +10,7 @@ import csv, glob, json, os, subprocess, sys, time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime
 
-REPO = "/home/login/data/cle/sunfuxiang/Classification"
+REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # 自动探测所在仓库
 PY = "/home/login/miniconda3/envs/sunfuxiang/bin/python"
 PTH = "/home/login/data/cle/sunfuxiang/classifyML/pth"
 RESULTS = os.path.join(REPO, "experiments", "results.csv")
