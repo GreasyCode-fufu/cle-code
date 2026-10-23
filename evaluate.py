@@ -76,6 +76,8 @@ MODEL_REGISTRY = {
     "resnet34_degconv_cpca_v1": ("models.optimize.resnet34_CPCA_v1", "resnet34_degconv_cpca"),
     "resnet34_degconv_cpca_v2": ("models.optimize.resnet34_CPCA_v2", "resnet34_degconv_cpca"),
     "resnet34_degconv_cpca_v3": ("models.optimize.test", "resnet34_cpca"),
+    "resnet34_se": ("models.optimize.resnet34_se", "resnet34_se"),
+    "resnet50_se": ("models.optimize.resnet34_se", "resnet50_se"),
 }
 # ===============================================================
 

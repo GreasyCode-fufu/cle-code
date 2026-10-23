@@ -47,6 +47,14 @@ from sklearn.metrics import f1_score, accuracy_score
 
 
 CLASSIFIER_ROOTS = {"head", "fc", "classifier"}
+
+# 各模型"新增模块"允许缺失的参数段名：ImageNet 预训练权重中不存在这些结构，
+# 随机初始化属于设计预期，不视为加载失败。段名与参数路径节点精确匹配。
+MODEL_ALLOWED_MISSING_SEGMENTS = {
+    "resnet34_se": {"se"},
+    "resnet50_se": {"se"},
+    "resnet34_degconv_cpca_v3": {"cpca"},
+}
 SWIN_VANILLA_IGNORED_CHECKPOINT_BUFFERS = {
     "layers.0.blocks.1.attn_mask",
     "layers.1.blocks.1.attn_mask",
@@ -125,8 +133,11 @@ def load_pretrained_weights_strict(model, weights_path, model_name):
             del state[key]
 
     incompat = model.load_state_dict(state, strict=False)
+    allowed_segments = MODEL_ALLOWED_MISSING_SEGMENTS.get(model_name, set())
     expected_missing = sorted(
-        key for key in model.state_dict() if key.split(".", 1)[0] in CLASSIFIER_ROOTS
+        key for key in model.state_dict()
+        if key.split(".", 1)[0] in CLASSIFIER_ROOTS
+        or any(seg in allowed_segments for seg in key.split("."))
     )
     actual_missing = sorted(incompat.missing_keys)
     unexpected = sorted(incompat.unexpected_keys)
@@ -144,6 +155,7 @@ def load_pretrained_weights_strict(model, weights_path, model_name):
         "ignored_nonparameter_buffer_keys": ignored_buffer_keys,
         "missing_keys": actual_missing,
         "unexpected_keys": unexpected,
+        "allowed_missing_segments": sorted(allowed_segments),
         "all_trainable_backbone_parameters_loaded": True,
     }
     print(

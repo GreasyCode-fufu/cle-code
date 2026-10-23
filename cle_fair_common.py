@@ -67,6 +67,9 @@ MODEL_REGISTRY = {
     "repvit_m1":   ("models.RepViT", "repvit_m1"),
     "repvit_m2":   ("models.RepViT", "repvit_m2"),
     "repvit_m3":   ("models.RepViT", "repvit_m3"),
+    # ── SE 注意力变体 (models/optimize/resnet34_se.py, 2026-10-23) ──
+    "resnet34_se": ("models.optimize.resnet34_se", "resnet34_se"),
+    "resnet50_se": ("models.optimize.resnet34_se", "resnet50_se"),
 }
 
 SUPPORTED_EXTS = (".jpg", ".jpeg", ".png", ".bmp", ".tif", ".tiff")
