@@ -1,0 +1,106 @@
+{
+  "signature": "0481341734a4f99d500060dd2d9b4901d108fd3c8300dd9868bbc77668991fac",
+  "job_id": "r3_grade_weighted_cle_no_dilation_s44",
+  "recipe": "grade_weighted",
+  "variant": "cle_no_dilation",
+  "seed": 44,
+  "n": 538,
+  "checkpoint_sha256": "6455511817982cb1ce7bc250d1e7b0de3ede8c2d08aed75fb4123c7215265c70",
+  "completed_at": "2026-10-24T06:24:46.786565+08:00",
+  "parameters": 21392771,
+  "modifier_parameters": 106560,
+  "diagnostics": {
+    "high_shape": [
+      14,
+      14
+    ],
+    "note": "Off uses the same fitted shared convolutions; not a retrained ablation. No off score for single-path dilation.",
+    "high_share": {
+      "mean": 0.5193047583324758,
+      "quantiles": [
+        0.5092923641204834,
+        0.5121327936649323,
+        0.51545849442482,
+        0.5234460085630417,
+        0.5577397346496582
+      ]
+    },
+    "high_share_channel_sd": {
+      "mean": 0.03092920654159053,
+      "quantiles": [
+        0.01578819751739502,
+        0.01985925668850541,
+        0.024847875349223614,
+        0.03734012693166733,
+        0.09117066860198975
+      ]
+    },
+    "descriptor_shift": {
+      "mean": 0.10587957220283582,
+      "quantiles": [
+        0.06587674468755722,
+        0.09471727162599564,
+        0.10435109585523605,
+        0.11581457406282425,
+        0.1592877358198166
+      ]
+    },
+    "low_shape": [
+      7,
+      7
+    ],
+    "off_same_checkpoint_metrics": {
+      "macro_f1": 0.8877759276498575,
+      "accuracy": 0.8866171003717472,
+      "class_f1": [
+        0.8758465011286681,
+        0.8063492063492064,
+        0.9811320754716981
+      ],
+      "confusion_matrix": [
+        [
+          194,
+          31,
+          0
+        ],
+        [
+          24,
+          127,
+          5
+        ],
+        [
+          0,
+          1,
+          156
+        ]
+      ],
+      "auroc": 0.9661831481477835
+    },
+    "off_prediction_disagreement": 0.0055762081784386614
+  },
+  "macro_f1": 0.8831895152857009,
+  "accuracy": 0.8828996282527881,
+  "class_f1": [
+    0.8758465011286681,
+    0.7987220447284346,
+    0.975
+  ],
+  "confusion_matrix": [
+    [
+      194,
+      31,
+      0
+    ],
+    [
+      24,
+      125,
+      7
+    ],
+    [
+      0,
+      1,
+      156
+    ]
+  ],
+  "auroc": 0.9662141386700265
+}
