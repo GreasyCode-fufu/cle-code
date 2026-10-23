@@ -49,6 +49,7 @@ python evaluate.py --model resnet34 \
 注意：注册名沿用历史名，v3 实现已移除 DEGConv、仅保留 CPCA（名实差异沿袭原项目）。
 
 ## 说明
+- 本仓库 `datasets/cle/` 已含评估用数据（2026-10-23 从 `../datasets/3class` 复制）：val 538 张 / test 671 张（Benign 225/156、Malignant 156/210、Normal 157/205，逐类核对一致）；**train 未复制**，训练仍指向外部数据集路径。
 
 - 首次训练会在仓库根目录生成 `norm_cache/`（Mean/Std 缓存，已被 .gitignore 排除）。
 - 原 `train.py` 内的旧路径默认值指向已迁移的 `/home/login/cle/...`；作为库导入不受影响，如需直接运行请用参数覆盖。
