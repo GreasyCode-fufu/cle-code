@@ -1,0 +1,60 @@
+{
+  "passed": true,
+  "timestamp": "2026-10-24T06:55:24.752418+08:00",
+  "budget": [
+    {
+      "variant": "global224",
+      "parameters": 21286211,
+      "extra_parameters": 0,
+      "conv_matmul_flops": 7326501888,
+      "peak_allocated_gib": 0.7408699989318848
+    },
+    {
+      "variant": "single448",
+      "parameters": 21286211,
+      "extra_parameters": 0,
+      "conv_matmul_flops": 29305998336,
+      "peak_allocated_gib": 2.4132866859436035
+    },
+    {
+      "variant": "tile_fixed",
+      "parameters": 21303235,
+      "extra_parameters": 17024,
+      "conv_matmul_flops": 36632497152,
+      "peak_allocated_gib": 2.9937047958374023
+    },
+    {
+      "variant": "tile_attention",
+      "parameters": 21434947,
+      "extra_parameters": 148736,
+      "conv_matmul_flops": 36633153024,
+      "peak_allocated_gib": 2.994119167327881
+    },
+    {
+      "variant": "tile_context",
+      "parameters": 21434883,
+      "extra_parameters": 148672,
+      "conv_matmul_flops": 36632956416,
+      "peak_allocated_gib": 2.999831199645996
+    },
+    {
+      "variant": "tile_no_context",
+      "parameters": 21434883,
+      "extra_parameters": 148672,
+      "conv_matmul_flops": 36632956416,
+      "peak_allocated_gib": 2.9997081756591797
+    }
+  ],
+  "checks": [
+    "complete non-test cache SHA256",
+    "four tiles reassemble exact full view",
+    "paired canonical backbone and head",
+    "local-disabled equals global backbone on same downsampled view",
+    "finite real-training-image AMP backward with gradients to global and all local descriptors",
+    "independent global/local BN statistics and gradients",
+    "query/key/attention gradients and positive normalized weights",
+    "full/attention extra parameters and counted FLOPs within 1%",
+    "two-job memory headroom"
+  ],
+  "budget_limit": "Counted FLOPs omit some pooling, normalization and elementwise costs; no zero-inference-cost claim."
+}
