@@ -175,6 +175,16 @@ def resnet34_dil2346(num_classes=1000, include_top=True):
     return ResNetDilPFESA([3, 4, 6, 3], num_classes, include_top, positions=(3, 4), rates=(2, 3, 4, 6))
 
 
+def resnet34_dil123(num_classes=1000, include_top=True):
+    # 膨胀率 1/2/3(含原生尺度)
+    return ResNetDilPFESA([3, 4, 6, 3], num_classes, include_top, positions=(3, 4), rates=(1, 2, 3))
+
+
+def resnet34_dil_r8(num_classes=1000, include_top=True):
+    # 更窄 reduce (ch/8)
+    return ResNetDilPFESA([3, 4, 6, 3], num_classes, include_top, positions=(3, 4), rates=(2, 3, 4), r_div=8)
+
+
 def resnet34_msec_dil_p234(num_classes=1000, include_top=True):
     return ResNetDilPFESA([3, 4, 6, 3], num_classes, include_top, positions=(2, 3, 4))
 
