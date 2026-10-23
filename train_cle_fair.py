@@ -60,6 +60,7 @@ MODEL_ALLOWED_MISSING_SEGMENTS = {
     "resnet34_msec_edge": {"msec"},
     "resnet34_msec_dil": {"msec"},
     "resnet34_msec_v1_p234": {"msec"},
+    "swin_tiny_patch4_window7_224": {"conv_efg", "revert"},
 }
 
 # 各模型加载 ImageNet 预训练权重前需做的"权重变换"(如 s2d 变体的 conv1 通道膨胀)。
@@ -144,7 +145,8 @@ def load_pretrained_weights_strict(model, weights_path, model_name):
         state = ckpt_transform(state)
 
     ignored_buffer_keys = []
-    if model_name == "swin_tiny_vanilla_patch4_window7_224":
+    if model_name in ("swin_tiny_vanilla_patch4_window7_224",
+                      "swin_tiny_patch4_window7_224"):
         present_masks = {key for key in state if key.endswith(".attn_mask")}
         if present_masks != SWIN_VANILLA_IGNORED_CHECKPOINT_BUFFERS:
             raise RuntimeError(

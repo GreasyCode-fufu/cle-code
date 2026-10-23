@@ -45,7 +45,7 @@ def read_metric(model, which):
     return {
         "f1": round(r.get("macro_f1", float("nan")), 4),
         "acc": round(r.get("accuracy", float("nan")), 4),
-        "auroc": round(r.get("macro_auroc", float("nan")), 4),
+        "auroc": round(r.get("auc_roc_macro", r.get("macro_auroc", float("nan"))), 4),
         "sb": sens("Benign_lesions"), "sm": sens("Malignant_lesions"),
         "sn": sens("body_of_stomach_normal"), "dir": os.path.basename(d),
     }
