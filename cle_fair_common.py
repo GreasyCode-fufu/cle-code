@@ -99,6 +99,7 @@ MODEL_REGISTRY = {
     "resnet34_dil234_id": ("models.optimize.resnet34_dilgate", "resnet34_dil234_id"),
     "resnet34_dil234_x2": ("models.optimize.resnet34_dilgate", "resnet34_dil234_x2"),
     "resnet34_atrous4": ("models.optimize.resnet34_atrous", "resnet34_atrous4"),
+    "resnet34_atrous4_dil234": ("models.optimize.resnet34_atrous", "resnet34_atrous4_dil234"),
     "resnet34_atrous34": ("models.optimize.resnet34_atrous", "resnet34_atrous34"),
 }
 

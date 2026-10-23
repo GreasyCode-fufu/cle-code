@@ -12,6 +12,8 @@ missing 仅 fc —— 无需白名单。
 import torch
 import torch.nn as nn
 
+from models.optimize.resnet34_dilgate import DilGate
+
 
 class BasicBlockDil(nn.Module):
     expansion = 1
@@ -38,7 +40,7 @@ class BasicBlockDil(nn.Module):
 
 class ResNetAtrous(nn.Module):
     def __init__(self, blocks_num, num_classes=1000, include_top=True,
-                 s3=2, d3=1, s4=2, d4=1):
+                 s3=2, d3=1, s4=2, d4=1, use_gates=False):
         super().__init__()
         self.include_top = include_top
         self.in_channel = 64
@@ -50,6 +52,9 @@ class ResNetAtrous(nn.Module):
         self.layer2 = self._make_layer(128, blocks_num[1], stride=2)
         self.layer3 = self._make_layer(256, blocks_num[2], stride=s3, dilation=d3)
         self.layer4 = self._make_layer(512, blocks_num[3], stride=s4, dilation=d4)
+        self.use_gates = use_gates
+        self.gates = nn.ModuleDict({"3": DilGate(256, rates=(2, 3, 4)),
+                                    "4": DilGate(512, rates=(2, 3, 4))}) if use_gates else None
         if include_top:
             self.avgpool = nn.AdaptiveAvgPool2d((1, 1))
             self.fc = nn.Linear(512, num_classes)
@@ -75,10 +80,18 @@ class ResNetAtrous(nn.Module):
         x = self.layer1(x)
         x = self.layer2(x)
         x = self.layer3(x)
+        if self.use_gates:
+            x = self.gates["3"](x)
         x = self.layer4(x)
+        if self.use_gates:
+            x = self.gates["4"](x)
         if self.include_top:
             x = self.fc(torch.flatten(self.avgpool(x), 1))
         return x
+
+
+def resnet34_atrous4_dil234(num_classes=1000, include_top=True):
+    return ResNetAtrous([3, 4, 6, 3], num_classes, include_top, s4=1, d4=2, use_gates=True)
 
 
 def resnet34_atrous4(num_classes=1000, include_top=True):
