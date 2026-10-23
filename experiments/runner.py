@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""Classification 自动化实验调度器
-用法: nohup python experiments/runner.py experiments/jobs_batchX.json 3 >> experiments/batchX.nohup.log 2>&1 &
-  - jobs 文件: [{"name": ..., "model": ..., "weights": ..., "seed": ...}, ...]
-  - 第2参数: 并发数(默认3)
-  - 每个任务: 训练(300ep,早停30) -> val评估 -> test评估 -> 追加 experiments/results.csv
-  - 单任务失败不影响其他任务(status=error 记录)
+"""Classification 自动化实验调度器 v2
+用法: nohup python experiments/runner.py experiments/jobs_batchX.json 4 >> experiments/batchX.nohup.log 2>&1 &
+  - 每任务: 训练 -> val评估 -> test评估 -> 追加 experiments/results.csv
+  - 权重与评估按 weights/<model>_seed<seed>/<model>/ 分目录(多种子不互相覆盖)
+  - val/test 用 results.json 的 test_dir 字段判别(不依赖时间顺序)
+  - 单任务失败隔离
 """
 import csv, glob, json, os, subprocess, sys, time
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -23,45 +23,29 @@ FIELDS = ["ts", "batch", "model", "seed", "status", "val_f1", "test_f1", "test_a
 def sh(cmd, log_path):
     with open(log_path, "a") as lf:
         lf.write(f"\n===== [{datetime.now()}] {cmd}\n")
-        p = subprocess.run(cmd, shell=True, cwd=REPO, stdout=lf, stderr=subprocess.STDOUT)
-    return p.returncode
+        return subprocess.run(cmd, shell=True, cwd=REPO, stdout=lf, stderr=subprocess.STDOUT).returncode
 
 
-def latest_eval_dir(model, seed=None):
-    base = os.path.join(REPO, "weights", model + "_seed" + str(seed), model) if seed is not None 
-n        else os.path.join(REPO, "weights", model)
-    dirs = sorted(glob.glob(os.path.join(base, "eval_*")))
-    return dirs[-1] if dirs else None
+def run_dir(model, seed):
+    return os.path.join(REPO, "weights", f"{model}_seed{seed}", model)
 
 
-def read_metric(model, which, seed=None):
-    """which: 'val'|'test' — 按时间序找到对应数据集的 eval 目录(test_dir 字段判定)"""
-    import glob as _g
-    base = os.path.join(REPO, "weights", model + "_seed" + str(seed), model) if seed is not None 
-n        else os.path.join(REPO, "weights", model)
-    cands = sorted(_g.glob(os.path.join(base, "eval_*", "results.json")))
-    d = None
-    for f in cands:
-        rj = json.load(open(f))
-        is_val = "val" in rj.get("test_dir", "")
-        if (which == "val") == is_val:
-            d = os.path.dirname(f)
-    if d is None:
-        return None
-    if not d:
-        return None
-    r = json.load(open(os.path.join(d, "results.json")))
-    per = r.get("per_class", {})
-    def sens(key):
-        m = per.get(key, {})
-        return round(m.get("sensitivity", m.get("recall", float("nan"))), 4)
-    return {
-        "f1": round(r.get("macro_f1", float("nan")), 4),
-        "acc": round(r.get("accuracy", float("nan")), 4),
-        "auroc": round(r.get("auc_roc_macro", r.get("macro_auroc", float("nan"))), 4),
-        "sb": sens("Benign_lesions"), "sm": sens("Malignant_lesions"),
-        "sn": sens("body_of_stomach_normal"), "dir": os.path.basename(d),
-    }
+def read_metric(model, seed, which):
+    """按 test_dir 字段找对应数据集的 eval results.json。"""
+    for f in sorted(glob.glob(os.path.join(run_dir(model, seed), "eval_*", "results.json"))):
+        r = json.load(open(f))
+        if ("val" in r.get("test_dir", "")) == (which == "val"):
+            per = r.get("per_class", {})
+            def sen(k):
+                return round(per.get(k, {}).get("sensitivity", float("nan")), 4)
+            return {
+                "f1": round(r["macro_f1"], 4),
+                "acc": round(r["accuracy"], 4),
+                "auroc": round(r.get("auc_roc_macro", float("nan")), 4),
+                "sb": sen("Benign_lesions"), "sm": sen("Malignant_lesions"),
+                "sn": sen("body_of_stomach_normal"),
+            }
+    return None
 
 
 def append_row(row):
@@ -73,7 +57,7 @@ def append_row(row):
         w.writerow(row)
 
 
-def run_job(batch, job, worker_id):
+def run_job(batch, job):
     model, seed = job["model"], job.get("seed", 42)
     weights = job.get("weights") or os.path.join(PTH, job.get("pth", ""))
     name = job.get("name", model)
@@ -87,37 +71,39 @@ def run_job(batch, job, worker_id):
                 f"--data-path-val ./datasets/cle/val --weights {weights} "
                 f"--save-dir ./weights/{model}_seed{seed} --epochs 300", log)
         if rc != 0:
-            row["note"] = "train_failed"; raise RuntimeError("train rc=" + str(rc))
-        best = os.path.join(REPO, "weights", model + "_seed" + str(seed), model, "model_best.pth")
-        # val 评估(选模参考)
+            row["note"] = "train_failed"
+            raise RuntimeError(f"train rc={rc}")
+        best = os.path.join(run_dir(model, seed), "model_best.pth")
+        if not os.path.exists(best):
+            row["note"] = "ckpt_missing"
+            raise RuntimeError("model_best.pth not found at " + best)
         sh(f"{PY} evaluate.py --model {model} --weights {best} --data-path ./datasets/cle/val", log)
-        v = read_metric(model, "val", seed)
-        # test 评估(最终判定)
         sh(f"{PY} evaluate.py --model {model} --weights {best} --data-path ./datasets/cle/test", log)
-        t = read_metric(model, "test", seed)
+        v, t = read_metric(model, seed, "val"), read_metric(model, seed, "test")
         if not v or not t:
-            row["note"] = "eval_missing"; raise RuntimeError("eval parse failed")
+            row["note"] = "eval_missing"
+            raise RuntimeError("eval parse failed")
         row.update({"status": "ok", "val_f1": v["f1"], "test_f1": t["f1"], "test_acc": t["acc"],
                     "test_auroc": t["auroc"], "sens_benign": t["sb"], "sens_malignant": t["sm"],
-                    "sens_normal": t["sn"],
-                    "elapsed_min": round((time.time() - t0) / 60, 1),
-                    "note": t["dir"]})
+                    "sens_normal": t["sn"], "elapsed_min": round((time.time() - t0) / 60, 1),
+                    "note": ""})
     except Exception as e:
         row["elapsed_min"] = round((time.time() - t0) / 60, 1)
         row["note"] = f"{row['note']} {e}"[:120]
     append_row(row)
-    print(f"[done] {name} seed{seed}: {row['status']} val={row.get('val_f1')} test={row.get('test_f1')} ({row['elapsed_min']}min)", flush=True)
+    print(f"[done] {name} seed{seed}: {row['status']} val={row.get('val_f1')} "
+          f"test={row.get('test_f1')} ({row['elapsed_min']}min)", flush=True)
 
 
 def main():
     jobs_file = sys.argv[1]
-    conc = int(sys.argv[2]) if len(sys.argv) > 2 else 3
+    conc = int(sys.argv[2]) if len(sys.argv) > 2 else 4
     batch = os.path.basename(jobs_file).replace("jobs_", "").replace(".json", "")
     jobs = json.load(open(jobs_file))
     os.makedirs(LOGDIR, exist_ok=True)
     print(f"[runner] batch={batch} jobs={len(jobs)} conc={conc} start={datetime.now()}", flush=True)
     with ThreadPoolExecutor(max_workers=conc) as ex:
-        futs = [ex.submit(run_job, batch, j, i) for i, j in enumerate(jobs)]
+        futs = [ex.submit(run_job, batch, j) for j in jobs]
         for f in as_completed(futs):
             f.result()
     print(f"[runner] batch={batch} ALL DONE {datetime.now()}", flush=True)
