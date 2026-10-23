@@ -166,3 +166,111 @@ train epoch 76 loss: 0.016, acc: 0.993:  10…   ,
 Epoch 76: train_loss=0.016, train_acc=0.993, val_loss=0.824, val_acc=0.851, val_macroF1=0.8409, lr=0.000085, best_macroF1=0.8703 (epoch 50)
 train epoch 77 loss: 0.023, acc: 0.992:  10…   , 
 Epoch 77: train_loss=0.023, train_acc=0.992, val_loss=0.860, val_acc=0.823, val_macroF1=0.8131, lr=0.000084, best_macroF1=0.8703 (epoch 50)
+train epoch 78 loss: 0.023, acc: 0.992:  10…   , 
+Epoch 78: train_loss=0.023, train_acc=0.992, val_loss=0.644, val_acc=0.872, val_macroF1=0.8702, lr=0.000084, best_macroF1=0.8703 (epoch 50)
+train epoch 79 loss: 0.033, acc: 0.992:  10…   , 
+Epoch 79: train_loss=0.033, train_acc=0.992, val_loss=0.719, val_acc=0.842, val_macroF1=0.8328, lr=0.000083, best_macroF1=0.8703 (epoch 50)
+train epoch 80 loss: 0.020, acc: 0.993:  10…   , 
+Epoch 80: train_loss=0.020, train_acc=0.993, val_loss=0.593, val_acc=0.868, val_macroF1=0.8648, lr=0.000083, best_macroF1=0.8703 (epoch 50)
+
+[early stop] epoch 80: val_macro_f1 not improved for 30 epochs
+
+===========================================================
+             Training Summary (fair baseline)              
+===========================================================
+  Model:              resnet34_atrous4_dil234
+  Best val macro-F1:  0.8703  (epoch 50)
+  Selection:          val macro-F1
+  Loss:               unweighted CrossEntropy
+  Training Time:      0:10:44
+  Weights:            ./weights/resnet34_atrous4_dil234_seed42/resnet34_atrous4_dil234/model_best.pth
+  Run meta:           ./weights/resnet34_atrous4_dil234_seed42/resnet34_atrous4_dil234/run_meta.json
+===========================================================
+
+===== [2026-10-24 00:26:08.553633] /home/login/miniconda3/envs/sunfuxiang/bin/python train_cle_fair.py --model resnet34_atrous4_dil234 --num_classes 3 --img_size 224 --seed 42 --data-path-train ./datasets/cle/train --data-path-val ./datasets/cle/val --weights /home/login/data/cle/sunfuxiang/classifyML/pth/resnet34-333f7ec4.pth --save-dir ./weights/resnet34_atrous4_dil234_seed42 --epochs 300
+[norm] source=run_meta.json(imagenet)  mean=[0.485, 0.456, 0.406] std=[0.229, 0.224, 0.225]  img_size=224
+[model] resnet34_atrous4_dil234  weights=/data/cle/sunfuxiang/Classification/weights/resnet34_atrous4_dil234_seed42/resnet34_atrous4_dil234/model_best.pth
+[complexity] MACs=5.67G FLOPs=11.35G Params=21.62M
+[data] test=538 张  Benign_lesions=225  Malignant_lesions=156  body_of_stomach_normal=157
+
+================================================================
+  评估结果 — resnet34_atrous4_dil234  (test=538 张)
+================================================================
+  【主指标】
+  Macro-F1         : 0.8636   ← 主指标(类别不平衡首选)
+  Accuracy         : 0.8680
+  Macro-AUROC(OvR) : 0.9675
+----------------------------------------------------------------
+  【补充总体指标】
+  Weighted-F1      : 0.8643
+  Balanced Acc     : 0.8614
+  Macro-Sensitivity: 0.8614   (= 各类 Recall 均值)
+  Macro-Specificity: 0.9298
+  Macro-Precision  : 0.8728
+  AUC-PR (Macro)   : 0.9390
+  Cohen's Kappa    : 0.7971
+  MCC              : 0.8001
+----------------------------------------------------------------
+  【每类指标】 Sensitivity / Specificity / Precision / F1 / AUROC
+  Benign_lesions        : 0.911 / 0.863 / 0.827 / 0.867 / 0.961  (n=225)
+  Malignant_lesions     : 0.679 / 0.945 / 0.835 / 0.749 / 0.942  (n=156)
+  body_of_stomach_normal: 0.994 / 0.982 / 0.957 / 0.975 / 1.000  (n=157)
+----------------------------------------------------------------
+  【模型复杂度】(仅与架构+输入尺寸有关，与数据集无关)
+  MACs : 5.67G    FLOPs : 11.35G    Params : 21.62M
+  【推理效率】(受 GPU 负载影响，为参考量级)
+  Pure FPS : 655.5  (1.53 ms/张)    End-to-End FPS : 1.5
+----------------------------------------------------------------
+  【混淆矩阵】(行=真实, 列=预测)
+                  Benign_l  Malignan  body_of_
+  Benign_lesio         205        20         0
+  Malignant_le          43       106         7
+  body_of_stom           0         1       156
+================================================================
+
+[saved] /data/cle/sunfuxiang/Classification/weights/resnet34_atrous4_dil234_seed42/resnet34_atrous4_dil234/eval_20261024_004302/  (results.json / predictions.csv / evaluation_report.md)
+
+===== [2026-10-24 00:36:57.986137] /home/login/miniconda3/envs/sunfuxiang/bin/python evaluate.py --model resnet34_atrous4_dil234 --weights /data/cle/sunfuxiang/Classification/weights/resnet34_atrous4_dil234_seed42/resnet34_atrous4_dil234/model_best.pth --data-path ./datasets/cle/val
+[norm] source=run_meta.json(imagenet)  mean=[0.485, 0.456, 0.406] std=[0.229, 0.224, 0.225]  img_size=224
+[model] resnet34_atrous4_dil234  weights=/data/cle/sunfuxiang/Classification/weights/resnet34_atrous4_dil234_seed42/resnet34_atrous4_dil234/model_best.pth
+[complexity] MACs=5.67G FLOPs=11.35G Params=21.62M
+[data] test=671 张  Benign_lesions=256  Malignant_lesions=210  body_of_stomach_normal=205
+
+================================================================
+  评估结果 — resnet34_atrous4_dil234  (test=671 张)
+================================================================
+  【主指标】
+  Macro-F1         : 0.8819   ← 主指标(类别不平衡首选)
+  Accuracy         : 0.8793
+  Macro-AUROC(OvR) : 0.9663
+----------------------------------------------------------------
+  【补充总体指标】
+  Weighted-F1      : 0.8800
+  Balanced Acc     : 0.8809
+  Macro-Sensitivity: 0.8809   (= 各类 Recall 均值)
+  Macro-Specificity: 0.9386
+  Macro-Precision  : 0.8832
+  AUC-PR (Macro)   : 0.9394
+  Cohen's Kappa    : 0.8179
+  MCC              : 0.8181
+----------------------------------------------------------------
+  【每类指标】 Sensitivity / Specificity / Precision / F1 / AUROC
+  Benign_lesions        : 0.863 / 0.913 / 0.860 / 0.862 / 0.954  (n=256)
+  Malignant_lesions     : 0.848 / 0.915 / 0.820 / 0.834 / 0.952  (n=210)
+  body_of_stomach_normal: 0.932 / 0.987 / 0.970 / 0.950 / 0.993  (n=205)
+----------------------------------------------------------------
+  【模型复杂度】(仅与架构+输入尺寸有关，与数据集无关)
+  MACs : 5.67G    FLOPs : 11.35G    Params : 21.62M
+  【推理效率】(受 GPU 负载影响，为参考量级)
+  Pure FPS : 1770.8  (0.56 ms/张)    End-to-End FPS : 2.9
+----------------------------------------------------------------
+  【混淆矩阵】(行=真实, 列=预测)
+                  Benign_l  Malignan  body_of_
+  Benign_lesio         221        33         2
+  Malignant_le          28       178         4
+  body_of_stom           8         6       191
+================================================================
+
+[saved] /data/cle/sunfuxiang/Classification/weights/resnet34_atrous4_dil234_seed42/resnet34_atrous4_dil234/eval_20261024_004701/  (results.json / predictions.csv / evaluation_report.md)
+
+===== [2026-10-24 00:43:04.039738] /home/login/miniconda3/envs/sunfuxiang/bin/python evaluate.py --model resnet34_atrous4_dil234 --weights /data/cle/sunfuxiang/Classification/weights/resnet34_atrous4_dil234_seed42/resnet34_atrous4_dil234/model_best.pth --data-path ./datasets/cle/test

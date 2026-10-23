@@ -187,3 +187,46 @@ Epoch 58: train_loss=0.027, train_acc=0.989, val_loss=0.766, val_acc=0.848, val_
 [saved] /data/cle/sunfuxiang/Classification/weights/resnet34_atrous4_dil234_seed43/resnet34_atrous4_dil234/eval_20261024_003542/  (results.json / predictions.csv / evaluation_report.md)
 
 ===== [2026-10-24 00:32:37.965051] /home/login/miniconda3/envs/sunfuxiang/bin/python evaluate.py --model resnet34_atrous4_dil234 --weights /data/cle/sunfuxiang/Classification/weights/resnet34_atrous4_dil234_seed43/resnet34_atrous4_dil234/model_best.pth --data-path ./datasets/cle/val
+[norm] source=run_meta.json(imagenet)  mean=[0.485, 0.456, 0.406] std=[0.229, 0.224, 0.225]  img_size=224
+[model] resnet34_atrous4_dil234  weights=/data/cle/sunfuxiang/Classification/weights/resnet34_atrous4_dil234_seed43/resnet34_atrous4_dil234/model_best.pth
+[complexity] MACs=5.67G FLOPs=11.35G Params=21.62M
+[data] test=671 张  Benign_lesions=256  Malignant_lesions=210  body_of_stomach_normal=205
+
+================================================================
+  评估结果 — resnet34_atrous4_dil234  (test=671 张)
+================================================================
+  【主指标】
+  Macro-F1         : 0.8807   ← 主指标(类别不平衡首选)
+  Accuracy         : 0.8808
+  Macro-AUROC(OvR) : 0.9691
+----------------------------------------------------------------
+  【补充总体指标】
+  Weighted-F1      : 0.8796
+  Balanced Acc     : 0.8802
+  Macro-Sensitivity: 0.8802   (= 各类 Recall 均值)
+  Macro-Specificity: 0.9390
+  Macro-Precision  : 0.8832
+  AUC-PR (Macro)   : 0.9406
+  Cohen's Kappa    : 0.8198
+  MCC              : 0.8207
+----------------------------------------------------------------
+  【每类指标】 Sensitivity / Specificity / Precision / F1 / AUROC
+  Benign_lesions        : 0.898 / 0.901 / 0.849 / 0.873 / 0.964  (n=256)
+  Malignant_lesions     : 0.776 / 0.941 / 0.858 / 0.815 / 0.949  (n=210)
+  body_of_stomach_normal: 0.966 / 0.974 / 0.943 / 0.954 / 0.995  (n=205)
+----------------------------------------------------------------
+  【模型复杂度】(仅与架构+输入尺寸有关，与数据集无关)
+  MACs : 5.67G    FLOPs : 11.35G    Params : 21.62M
+  【推理效率】(受 GPU 负载影响，为参考量级)
+  Pure FPS : 1060.9  (0.94 ms/张)    End-to-End FPS : 1.6
+----------------------------------------------------------------
+  【混淆矩阵】(行=真实, 列=预测)
+                  Benign_l  Malignan  body_of_
+  Benign_lesio         230        23         3
+  Malignant_le          38       163         9
+  body_of_stom           3         4       198
+================================================================
+
+[saved] /data/cle/sunfuxiang/Classification/weights/resnet34_atrous4_dil234_seed43/resnet34_atrous4_dil234/eval_20261024_004239/  (results.json / predictions.csv / evaluation_report.md)
+
+===== [2026-10-24 00:35:44.272812] /home/login/miniconda3/envs/sunfuxiang/bin/python evaluate.py --model resnet34_atrous4_dil234 --weights /data/cle/sunfuxiang/Classification/weights/resnet34_atrous4_dil234_seed43/resnet34_atrous4_dil234/model_best.pth --data-path ./datasets/cle/test

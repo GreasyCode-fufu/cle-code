@@ -96,3 +96,89 @@ Epoch 34: train_loss=0.060, train_acc=0.977, val_loss=0.623, val_acc=0.844, val_
 ===========================================================
 
 ===== [2026-10-24 00:32:51.275388] /home/login/miniconda3/envs/sunfuxiang/bin/python train_cle_fair.py --model resnet34_lib_lcattn --num_classes 3 --img_size 224 --seed 42 --data-path-train ./datasets/cle/train --data-path-val ./datasets/cle/val --weights /home/login/data/cle/sunfuxiang/classifyML/pth/resnet34-333f7ec4.pth --save-dir ./weights/resnet34_lib_lcattn_seed42 --epochs 300
+[norm] source=run_meta.json(imagenet)  mean=[0.485, 0.456, 0.406] std=[0.229, 0.224, 0.225]  img_size=224
+[model] resnet34_lib_lcattn  weights=/data/cle/sunfuxiang/Classification/weights/resnet34_lib_lcattn_seed42/resnet34_lib_lcattn/model_best.pth
+[complexity] MACs=3.70G FLOPs=7.39G Params=21.52M
+[data] test=538 张  Benign_lesions=225  Malignant_lesions=156  body_of_stomach_normal=157
+
+================================================================
+  评估结果 — resnet34_lib_lcattn  (test=538 张)
+================================================================
+  【主指标】
+  Macro-F1         : 0.8778   ← 主指标(类别不平衡首选)
+  Accuracy         : 0.8810
+  Macro-AUROC(OvR) : 0.9752
+----------------------------------------------------------------
+  【补充总体指标】
+  Weighted-F1      : 0.8781
+  Balanced Acc     : 0.8751
+  Macro-Sensitivity: 0.8751   (= 各类 Recall 均值)
+  Macro-Specificity: 0.9366
+  Macro-Precision  : 0.8861
+  AUC-PR (Macro)   : 0.9530
+  Cohen's Kappa    : 0.8172
+  MCC              : 0.8198
+----------------------------------------------------------------
+  【每类指标】 Sensitivity / Specificity / Precision / F1 / AUROC
+  Benign_lesions        : 0.920 / 0.875 / 0.841 / 0.879 / 0.970  (n=225)
+  Malignant_lesions     : 0.712 / 0.950 / 0.854 / 0.776 / 0.956  (n=156)
+  body_of_stomach_normal: 0.994 / 0.984 / 0.963 / 0.978 / 1.000  (n=157)
+----------------------------------------------------------------
+  【模型复杂度】(仅与架构+输入尺寸有关，与数据集无关)
+  MACs : 3.70G    FLOPs : 7.39G    Params : 21.52M
+  【推理效率】(受 GPU 负载影响，为参考量级)
+  Pure FPS : 1289.5  (0.78 ms/张)    End-to-End FPS : 3.7
+----------------------------------------------------------------
+  【混淆矩阵】(行=真实, 列=预测)
+                  Benign_l  Malignan  body_of_
+  Benign_lesio         207        18         0
+  Malignant_le          39       111         6
+  body_of_stom           0         1       156
+================================================================
+
+[saved] /data/cle/sunfuxiang/Classification/weights/resnet34_lib_lcattn_seed42/resnet34_lib_lcattn/eval_20261024_003819/  (results.json / predictions.csv / evaluation_report.md)
+
+===== [2026-10-24 00:35:49.837365] /home/login/miniconda3/envs/sunfuxiang/bin/python evaluate.py --model resnet34_lib_lcattn --weights /data/cle/sunfuxiang/Classification/weights/resnet34_lib_lcattn_seed42/resnet34_lib_lcattn/model_best.pth --data-path ./datasets/cle/val
+[norm] source=run_meta.json(imagenet)  mean=[0.485, 0.456, 0.406] std=[0.229, 0.224, 0.225]  img_size=224
+[model] resnet34_lib_lcattn  weights=/data/cle/sunfuxiang/Classification/weights/resnet34_lib_lcattn_seed42/resnet34_lib_lcattn/model_best.pth
+[complexity] MACs=3.70G FLOPs=7.39G Params=21.52M
+[data] test=671 张  Benign_lesions=256  Malignant_lesions=210  body_of_stomach_normal=205
+
+================================================================
+  评估结果 — resnet34_lib_lcattn  (test=671 张)
+================================================================
+  【主指标】
+  Macro-F1         : 0.8789   ← 主指标(类别不平衡首选)
+  Accuracy         : 0.8763
+  Macro-AUROC(OvR) : 0.9704
+----------------------------------------------------------------
+  【补充总体指标】
+  Weighted-F1      : 0.8766
+  Balanced Acc     : 0.8799
+  Macro-Sensitivity: 0.8799   (= 各类 Recall 均值)
+  Macro-Specificity: 0.9376
+  Macro-Precision  : 0.8784
+  AUC-PR (Macro)   : 0.9492
+  Cohen's Kappa    : 0.8138
+  MCC              : 0.8141
+----------------------------------------------------------------
+  【每类指标】 Sensitivity / Specificity / Precision / F1 / AUROC
+  Benign_lesions        : 0.836 / 0.925 / 0.873 / 0.854 / 0.960  (n=256)
+  Malignant_lesions     : 0.843 / 0.905 / 0.801 / 0.821 / 0.954  (n=210)
+  body_of_stomach_normal: 0.961 / 0.983 / 0.961 / 0.961 / 0.997  (n=205)
+----------------------------------------------------------------
+  【模型复杂度】(仅与架构+输入尺寸有关，与数据集无关)
+  MACs : 3.70G    FLOPs : 7.39G    Params : 21.52M
+  【推理效率】(受 GPU 负载影响，为参考量级)
+  Pure FPS : 1633.8  (0.61 ms/张)    End-to-End FPS : 3.2
+----------------------------------------------------------------
+  【混淆矩阵】(行=真实, 列=预测)
+                  Benign_l  Malignan  body_of_
+  Benign_lesio         214        37         5
+  Malignant_le          30       177         3
+  body_of_stom           1         7       197
+================================================================
+
+[saved] /data/cle/sunfuxiang/Classification/weights/resnet34_lib_lcattn_seed42/resnet34_lib_lcattn/eval_20261024_004155/  (results.json / predictions.csv / evaluation_report.md)
+
+===== [2026-10-24 00:38:22.471189] /home/login/miniconda3/envs/sunfuxiang/bin/python evaluate.py --model resnet34_lib_lcattn --weights /data/cle/sunfuxiang/Classification/weights/resnet34_lib_lcattn_seed42/resnet34_lib_lcattn/model_best.pth --data-path ./datasets/cle/test
