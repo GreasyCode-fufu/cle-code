@@ -1,0 +1,16 @@
+ts,batch,model,seed,status,val_f1,test_f1,test_acc,test_auroc,sens_benign,sens_malignant,sens_normal,elapsed_min,note
+10-23 22:53,doubao_ab,dil234_288_s42,42,ok,0.8629,0.8776,0.8748,0.9724,0.8086,0.9,0.9317,4.8,seed42筛选;分辨率288;同种子@224对照0.9045;单种子不下结论
+10-23 22:58,doubao_ab,dil234_ls05_s42,42,ok,0.875,0.883,0.8793,0.9635,0.7969,0.9333,0.9268,7.8,seed42筛选;label_smoothing0.05;单种子不下结论
+10-23 22:53,doubao_ab,dil234_384_s42,42,ok,0.8819,0.8925,0.8897,0.969,0.8633,0.8667,0.9463,14.2,seed42筛选;分辨率384;三者中最高;单种子不下结论
+10-23 23:06,doubao_ab,dil234_ls10_s42,42,ok,0.8702,0.8912,0.8882,0.9652,0.8438,0.8762,0.9561,8.3,seed42筛选;label_smoothing0.10;单种子不下结论
+10-24 00:40,doubao_bc,dil234_224rep_s42,42,ok,0.8778,0.869,0.8659,0.9709,0.8164,0.8571,0.9366,10.4,"@224本车道复现对照;seed42;低于ab的384/ls10疑低离群,待vanilla锚点;单种子不下结论"
+10-24 00:40,doubao_bc,dil234_p50_s42,42,ok,0.8778,0.869,0.8659,0.9709,0.8164,0.8571,0.9366,12.9,"patience50(early-stop50)未刷新best,与rep同权重同值,无增益;单种子不下结论"
+10-24 00:13,doubao_bd,vanilla_s42,42,ok,0.8705,0.8867,0.8838,0.9666,0.8516,0.881,0.9268,8.8,本环境锚点
+10-24 00:13,doubao_bd,dil234_224_s43,43,ok,0.8802,0.8866,0.8838,0.9745,0.8125,0.9143,0.9415,10.8,补s43本环境对照
+10-24 02:39,doubao_rescue,db_simplus,42,ok,0.8847,,,,,,,,0.0,be批救回; val-only; 旧协议epoch预算不等
+10-24 02:39,doubao_rescue,db_gcplus,42,ok,0.8847,,,,,,,,0.0,be批救回; val-only; 旧协议epoch预算不等
+10-24 02:39,doubao_rescue,db_dense_gcplus,42,ok,0.8806,,,,,,,,0.0,bf批救回; val-only; 旧协议epoch预算不等
+10-24 02:39,doubao_rescue,db_sim,42,ok,0.88,,,,,,,,0.0,be批救回; val-only; 旧协议epoch预算不等
+10-24 02:39,doubao_rescue,db_gc,42,ok,0.8726,,,,,,,,0.0,be批救回; val-only; 旧协议epoch预算不等
+10-24 02:39,doubao_rescue,db_softmix,42,ok,0.8721,,,,,,,,0.0,bf批救回; val-only; 旧协议epoch预算不等
+10-24 02:39,doubao_rescue,db_densegate,42,ok,0.8704,,,,,,,,0.0,be批救回; val-only; 旧协议epoch预算不等
