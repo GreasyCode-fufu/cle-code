@@ -72,10 +72,10 @@ def run_job(batch, job, worker_id):
         rc = sh(f"{PY} train_cle_fair.py --model {model} --num_classes 3 --img_size 224 "
                 f"--seed {seed} --data-path-train ./datasets/cle/train "
                 f"--data-path-val ./datasets/cle/val --weights {weights} "
-                f"--save-dir ./weights --epochs 300", log)
+                f"--save-dir ./weights/{model}_seed{seed} --epochs 300", log)
         if rc != 0:
             row["note"] = "train_failed"; raise RuntimeError("train rc=" + str(rc))
-        best = os.path.join(REPO, "weights", model, "model_best.pth")
+        best = os.path.join(REPO, "weights", model + "_seed" + str(seed), model, "model_best.pth")
         # val 评估(选模参考)
         sh(f"{PY} evaluate.py --model {model} --weights {best} --data-path ./datasets/cle/val", log)
         v = read_metric(model, "val")
