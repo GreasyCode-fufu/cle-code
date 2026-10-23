@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "timestamp": "2026-10-24T05:08:30.454317+08:00",
+  "variants": [
+    "gem_control",
+    "attention_control",
+    "cle_evidence",
+    "cle_no_frequency",
+    "cle_fixed_blend",
+    "cle_no_context"
+  ],
+  "checks": [
+    "orthonormal Haar energy preservation and gradients including odd shape",
+    "finite AMP pooling updates",
+    "normalized attention and at least half GAP share",
+    "nonzero frequency coefficient gradient",
+    "identical pretrained backbone/head per seed",
+    "disabled pooling equals original backbone",
+    "full-image CUDA backward"
+  ]
+}
