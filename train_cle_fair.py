@@ -82,6 +82,7 @@ MODEL_ALLOWED_MISSING_SEGMENTS = {
     "resnet34_lib_haar": {"lib"},
     "resnet34_lib_msctx": {"lib"},
     "resnet34_lib_lcattn": {"lib"},
+    "resnet34_dshortcut": {"downsample_avg"},
 }
 
 # 各模型加载 ImageNet 预训练权重前需做的"权重变换"(如 s2d 变体的 conv1 通道膨胀)。
@@ -94,8 +95,21 @@ def _inflate_conv1_for_s2d(state):
     return state
 
 
+def _remap_dshortcut(state):
+    """ResNet-D 短接: checkpoint 的 downsample.0/.1 重映射为 conv/bn。"""
+    out = {}
+    for k, v in state.items():
+        if ".downsample.0." in k:
+            k = k.replace(".downsample.0.", ".downsample.conv.")
+        elif ".downsample.1." in k:
+            k = k.replace(".downsample.1.", ".downsample.bn.")
+        out[k] = v
+    return out
+
+
 MODEL_CHECKPOINT_TRANSFORMS = {
     "resnet34_s2d_v2": _inflate_conv1_for_s2d,
+    "resnet34_dshortcut": _remap_dshortcut,
 }
 SWIN_VANILLA_IGNORED_CHECKPOINT_BUFFERS = {
     "layers.0.blocks.1.attn_mask",

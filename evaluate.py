@@ -108,6 +108,8 @@ MODEL_REGISTRY = {
     "resnet34_lib_haar": ("models.optimize.lib_variants", "resnet34_lib_haar"),
     "resnet34_lib_msctx": ("models.optimize.lib_variants", "resnet34_lib_msctx"),
     "resnet34_lib_lcattn": ("models.optimize.lib_variants", "resnet34_lib_lcattn"),
+    "resnet34_gmp": ("models.optimize.resnet34_redesign", "resnet34_gmp"),
+    "resnet34_dshortcut": ("models.optimize.resnet34_redesign", "resnet34_dshortcut"),
     "resnet34_atrous34": ("models.optimize.resnet34_atrous", "resnet34_atrous34"),
 }
 # ===============================================================
