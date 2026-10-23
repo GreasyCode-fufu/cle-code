@@ -1,22 +1,23 @@
-"""ResNet34 + space_to_depth 前置变体(方案B-v2, Focus/SPD-Conv 式) —— 2026-10-23 重设计
+"""ResNet34 + space_to_depth 变体(v1 / v2 双版本) —— 2026-10-23
 
-v1(已废弃)把 s2d 放在 conv1 之后, 但 conv1(7x7,s2)本身已丢弃一半像素,
-s2d 无从挽回; 且随机初始化的 256->64 压缩卷积形成未训练瓶颈。
-v2 将 s2d 前置到 conv1 之前 —— 网络第一层特征提取即看到全部像素:
+同一方法的两个设计版本, 注册名带版本号, 训练权重目录自动分离:
+  ./weights/resnet34_s2d_v1/   ./weights/resnet34_s2d_v2/
 
-  原版:  conv1(7x7,s2, 3->64)  -> bn1 -> relu -> maxpool -> layer1
-  v2 :   space_to_depth(3->12ch@112x112)
-         -> conv1(7x7, s1, 12->64) -> bn1 -> relu -> maxpool -> layer1
+v1 (后置版, 已有训练权重):
+    conv1(7x7,s2, 3->64) -> bn1 -> relu
+    -> space_to_depth(64->256ch@56x56) -> stem_adapter(1x1 256->64 + BN + ReLU) -> layer1
+    问题: conv1 的 s2 已经丢弃一半像素, s2d 无从挽回; 随机初始化的压缩卷积是瓶颈。
+    预训练加载: 白名单放行 stem_adapter (train_cle_fair.MODEL_ALLOWED_MISSING_SEGMENTS)。
 
-  - 224x224 的每个像素都参与 conv1 特征提取(原版 s2 卷积隔行采样);
-  - 4 个相位子图成为 4 组输入通道, 由卷积学习融合(YOLOv5 Focus / SPD-Conv 标准做法);
-  - conv1 步距 2->1, 输出尺寸 112x112 与原版一致; maxpool 后 layer1 仍为 64ch@56x56;
-  - layer1~layer4/fc 参数名与形状不变;
-  - conv1 输入通道 3->12: ImageNet 预训练核在 train_cle_fair.py 的
-    MODEL_CHECKPOINT_TRANSFORMS 中膨胀(复制4份/除4)后载入;
-  - 无新增可学习模块, 白名单不再需要(missing 仅 fc)。
+v2 (前置版, Focus/SPD-Conv 式, 当前推荐):
+    space_to_depth(3->12ch@112x112) -> conv1(7x7, s1, 12->64) -> bn1 -> relu
+    -> maxpool -> layer1
+    全部像素参与第一层特征提取, 4 相位成为通道由卷积学习融合。
+    预训练加载: MODEL_CHECKPOINT_TRANSFORMS 将 conv1 预训练核复制4份/除4膨胀为12通道。
 
-注册名: resnet34_s2d (cle_fair_common.MODEL_REGISTRY 与 evaluate.py)
+两版 layer1~layer4/fc 完全一致, 空间尺寸流一致(layer1 输入 64ch@56x56)。
+
+注册名: resnet34_s2d_v1 / resnet34_s2d_v2 (cle_fair_common.MODEL_REGISTRY 与 evaluate.py)
 """
 import torch
 import torch.nn as nn
@@ -65,25 +66,15 @@ class BasicBlock(nn.Module):
         return out
 
 
-class ResNet(nn.Module):
-    """与 models/Resnet.py 的 ResNet 唯一区别: stem 前置 space_to_depth, conv1 步距 2->1。"""
+class _StemBase(nn.Module):
+    """layer1~layer4/fc 与 models/Resnet.py 完全一致, 子类只定义 stem。"""
 
-    def __init__(self,
-                 block,
-                 blocks_num,
-                 num_classes=1000,
-                 include_top=True):
-        super(ResNet, self).__init__()
+    def __init__(self, block, blocks_num, num_classes=1000, include_top=True):
+        super().__init__()
         self.include_top = include_top
         self.in_channel = 64
 
-        # ↓ 无损下采样前置: (B,3,224,224) -> (B,12,112,112)
-        self.space_to_depth = space_to_depth()
-        self.conv1 = nn.Conv2d(12, self.in_channel, kernel_size=7, stride=1,
-                               padding=3, bias=False)
-        self.bn1 = nn.BatchNorm2d(self.in_channel)
-        self.relu = nn.ReLU(inplace=True)
-        self.maxpool = nn.MaxPool2d(kernel_size=3, stride=2, padding=1)
+        self._build_stem()
         self.layer1 = self._make_layer(block, 64, blocks_num[0])
         self.layer2 = self._make_layer(block, 128, blocks_num[1], stride=2)
         self.layer3 = self._make_layer(block, 256, blocks_num[2], stride=2)
@@ -95,6 +86,9 @@ class ResNet(nn.Module):
         for m in self.modules():
             if isinstance(m, nn.Conv2d):
                 nn.init.kaiming_normal_(m.weight, mode='fan_out', nonlinearity='relu')
+
+    def _build_stem(self):
+        raise NotImplementedError
 
     def _make_layer(self, block, channel, block_num, stride=1):
         downsample = None
@@ -115,12 +109,11 @@ class ResNet(nn.Module):
 
         return nn.Sequential(*layers)
 
+    def _forward_stem(self, x):
+        raise NotImplementedError
+
     def forward(self, x):
-        x = self.space_to_depth(x)  # (B,3,H,W) -> (B,12,H/2,W/2) 全像素保留
-        x = self.conv1(x)           # s1: 12->64, 输出 H/2 x W/2
-        x = self.bn1(x)
-        x = self.relu(x)
-        x = self.maxpool(x)
+        x = self._forward_stem(x)
 
         x = self.layer1(x)
         x = self.layer2(x)
@@ -135,7 +128,56 @@ class ResNet(nn.Module):
         return x
 
 
-def resnet34_s2d(num_classes=1000, include_top=True):
+class ResNetS2Dv1(_StemBase):
+    """v1 后置版: s2d + 压缩卷积替代 maxpool(位于 conv1 之后)。"""
+
+    def _build_stem(self):
+        self.conv1 = nn.Conv2d(3, self.in_channel, kernel_size=7, stride=2,
+                               padding=3, bias=False)
+        self.bn1 = nn.BatchNorm2d(self.in_channel)
+        self.relu = nn.ReLU(inplace=True)
+        self.space_to_depth = space_to_depth()
+        self.stem_adapter = nn.Sequential(
+            nn.Conv2d(self.in_channel * 4, self.in_channel, kernel_size=1, bias=False),
+            nn.BatchNorm2d(self.in_channel),
+            nn.ReLU(inplace=True),
+        )
+
+    def _forward_stem(self, x):
+        x = self.conv1(x)
+        x = self.bn1(x)
+        x = self.relu(x)
+        x = self.space_to_depth(x)  # (B,64,H,W) -> (B,256,H/2,W/2) 无损
+        x = self.stem_adapter(x)    # (B,256,H/2,W/2) -> (B,64,H/2,W/2)
+        return x
+
+
+class ResNetS2Dv2(_StemBase):
+    """v2 前置版(Focus/SPD-Conv 式): s2d 在 conv1 之前, conv1 步距 2->1。"""
+
+    def _build_stem(self):
+        self.space_to_depth = space_to_depth()  # (B,3,H,W) -> (B,12,H/2,W/2)
+        self.conv1 = nn.Conv2d(12, self.in_channel, kernel_size=7, stride=1,
+                               padding=3, bias=False)
+        self.bn1 = nn.BatchNorm2d(self.in_channel)
+        self.relu = nn.ReLU(inplace=True)
+        self.maxpool = nn.MaxPool2d(kernel_size=3, stride=2, padding=1)
+
+    def _forward_stem(self, x):
+        x = self.space_to_depth(x)  # 全像素保留
+        x = self.conv1(x)           # s1: 12->64, 输出 H/2 x W/2
+        x = self.bn1(x)
+        x = self.relu(x)
+        x = self.maxpool(x)
+        return x
+
+
+def resnet34_s2d_v1(num_classes=1000, include_top=True):
+    # ImageNet 权重: https://download.pytorch.org/models/resnet34-333f7ec4.pth
+    return ResNetS2Dv1(BasicBlock, [3, 4, 6, 3], num_classes=num_classes, include_top=include_top)
+
+
+def resnet34_s2d_v2(num_classes=1000, include_top=True):
     # ImageNet 权重: https://download.pytorch.org/models/resnet34-333f7ec4.pth
     # (conv1 由加载器膨胀: 3ch 核复制4份/除4 -> 12ch)
-    return ResNet(BasicBlock, [3, 4, 6, 3], num_classes=num_classes, include_top=include_top)
+    return ResNetS2Dv2(BasicBlock, [3, 4, 6, 3], num_classes=num_classes, include_top=include_top)

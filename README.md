@@ -47,6 +47,7 @@ python evaluate.py --model resnet34 \
 ```
 
 自研模型（Ours）：`--model resnet34_degconv_cpca_v3 --img_size 512`。
+变体模型注册名带版本号（如 `resnet34_s2d_v1` / `resnet34_s2d_v2`、`resnet34_se`），训练权重自动存到 `weights/<模型名>/`，同方法不同版本不会互相覆盖。
 注意：注册名沿用历史名，v3 实现已移除 DEGConv、仅保留 CPCA（名实差异沿袭原项目）。
 
 ## 说明

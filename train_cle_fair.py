@@ -54,6 +54,7 @@ MODEL_ALLOWED_MISSING_SEGMENTS = {
     "resnet34_se": {"se"},
     "resnet50_se": {"se"},
     "resnet34_degconv_cpca_v3": {"cpca"},
+    "resnet34_s2d_v1": {"stem_adapter"},
 }
 
 # 各模型加载 ImageNet 预训练权重前需做的"权重变换"(如 s2d 变体的 conv1 通道膨胀)。
@@ -67,7 +68,7 @@ def _inflate_conv1_for_s2d(state):
 
 
 MODEL_CHECKPOINT_TRANSFORMS = {
-    "resnet34_s2d": _inflate_conv1_for_s2d,
+    "resnet34_s2d_v2": _inflate_conv1_for_s2d,
 }
 SWIN_VANILLA_IGNORED_CHECKPOINT_BUFFERS = {
     "layers.0.blocks.1.attn_mask",
