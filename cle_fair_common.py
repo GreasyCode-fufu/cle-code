@@ -73,6 +73,12 @@ MODEL_REGISTRY = {
     # ── space_to_depth 变体: v1后置/v2前置, 版本化注册名, 权重目录自动分离 ──
     "resnet34_s2d_v1": ("models.optimize.resnet34_s2d", "resnet34_s2d_v1"),
     "resnet34_s2d_v2": ("models.optimize.resnet34_s2d", "resnet34_s2d_v2"),
+    # ── MSEC 多尺度边缘-上下文门控残差 (models/optimize/resnet34_msec.py, 2026-10-23) ──
+    "resnet34_msec_v1":      ("models.optimize.resnet34_msec", "resnet34_msec_v1"),
+    "resnet34_msec_strips":  ("models.optimize.resnet34_msec", "resnet34_msec_strips"),
+    "resnet34_msec_edge":    ("models.optimize.resnet34_msec", "resnet34_msec_edge"),
+    "resnet34_msec_dil":     ("models.optimize.resnet34_msec", "resnet34_msec_dil"),
+    "resnet34_msec_v1_p234": ("models.optimize.resnet34_msec", "resnet34_msec_v1_p234"),
 }
 
 SUPPORTED_EXTS = (".jpg", ".jpeg", ".png", ".bmp", ".tif", ".tiff")

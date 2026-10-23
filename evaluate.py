@@ -80,6 +80,11 @@ MODEL_REGISTRY = {
     "resnet50_se": ("models.optimize.resnet34_se", "resnet50_se"),
     "resnet34_s2d_v1": ("models.optimize.resnet34_s2d", "resnet34_s2d_v1"),
     "resnet34_s2d_v2": ("models.optimize.resnet34_s2d", "resnet34_s2d_v2"),
+    "resnet34_msec_v1":      ("models.optimize.resnet34_msec", "resnet34_msec_v1"),
+    "resnet34_msec_strips":  ("models.optimize.resnet34_msec", "resnet34_msec_strips"),
+    "resnet34_msec_edge":    ("models.optimize.resnet34_msec", "resnet34_msec_edge"),
+    "resnet34_msec_dil":     ("models.optimize.resnet34_msec", "resnet34_msec_dil"),
+    "resnet34_msec_v1_p234": ("models.optimize.resnet34_msec", "resnet34_msec_v1_p234"),
 }
 # ===============================================================
 

@@ -55,6 +55,11 @@ MODEL_ALLOWED_MISSING_SEGMENTS = {
     "resnet50_se": {"se"},
     "resnet34_degconv_cpca_v3": {"cpca"},
     "resnet34_s2d_v1": {"stem_adapter"},
+    "resnet34_msec_v1": {"msec"},
+    "resnet34_msec_strips": {"msec"},
+    "resnet34_msec_edge": {"msec"},
+    "resnet34_msec_dil": {"msec"},
+    "resnet34_msec_v1_p234": {"msec"},
 }
 
 # 各模型加载 ImageNet 预训练权重前需做的"权重变换"(如 s2d 变体的 conv1 通道膨胀)。
