@@ -1,0 +1,10 @@
+/home/login/miniconda3/envs/sunfuxiang/lib/python3.12/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+Traceback (most recent call last):
+  File "/data/cle/sunfuxiang/Classification/train_cle_fair.py", line 43, in <module>
+    from cle_fair_common import build_model, build_val_transform, MODEL_REGISTRY
+  File "/data/cle/sunfuxiang/Classification/cle_fair_common.py", line 88
+    "resnet34_dil234w": ("models.optimize.resnet34_dilgate", "resnet34_dil234w"),
+IndentationError: unexpected indent
+
+===== [2026-10-23 22:46:37.351659] /home/login/miniconda3/envs/sunfuxiang/bin/python train_cle_fair.py --model resnet34_dil2346 --num_classes 3 --img_size 224 --seed 42 --data-path-train ./datasets/cle/train --data-path-val ./datasets/cle/val --weights /home/login/data/cle/sunfuxiang/classifyML/pth/resnet34-333f7ec4.pth --save-dir ./weights/resnet34_dil2346_seed42 --epochs 300
