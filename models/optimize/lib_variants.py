@@ -94,7 +94,7 @@ def lcattn_block(r):
 class _Base(nn.Module):
     """vanilla ResNet + ModuleDict('lib') 于 layer3/4 出口。"""
 
-    def __init__(self, blocks_num, num_classes, include_top, block_fn):
+    def __init__(self, blocks_num, num_classes, include_top, block_fn, positions=(3, 4)):
         super().__init__()
         self.include_top = include_top
         self.in_channel = 64
@@ -106,7 +106,9 @@ class _Base(nn.Module):
         self.layer2 = self._mk(128, blocks_num[1], 2)
         self.layer3 = self._mk(256, blocks_num[2], 2)
         self.layer4 = self._mk(512, blocks_num[3], 2)
-        self.lib = nn.ModuleDict({"3": GatedWrap(256, block_fn), "4": GatedWrap(512, block_fn)})
+        ch_map = {3: 256, 4: 512}
+        self.positions = positions
+        self.lib = nn.ModuleDict({str(p): GatedWrap(ch_map[p], block_fn) for p in positions})
         if include_top:
             self.avgpool = nn.AdaptiveAvgPool2d((1, 1))
             self.fc = nn.Linear(512, num_classes)
@@ -129,8 +131,12 @@ class _Base(nn.Module):
         x = self.maxpool(self.relu(self.bn1(self.conv1(x))))
         x = self.layer1(x)
         x = self.layer2(x)
-        x = self.lib["3"](self.layer3(x))
-        x = self.lib["4"](self.layer4(x))
+        x = self.layer3(x)
+        if 3 in self.positions:
+            x = self.lib["3"](x)
+        x = self.layer4(x)
+        if 4 in self.positions:
+            x = self.lib["4"](x)
         if self.include_top:
             x = self.fc(torch.flatten(self.avgpool(x), 1))
         return x
@@ -156,6 +162,14 @@ def resnet34_lib_msctx_haar(num_classes=1000, include_top=True):
 
 def resnet34_hybrid_dil_msctx(num_classes=1000, include_top=True):
     return _Hybrid([3, 4, 6, 3], num_classes, include_top)
+
+
+def resnet34_lib_msctx_l4(num_classes=1000, include_top=True):
+    return _Base([3, 4, 6, 3], num_classes, include_top, msctx_block, positions=(4,))
+
+
+def resnet34_lib_msctx_l3(num_classes=1000, include_top=True):
+    return _Base([3, 4, 6, 3], num_classes, include_top, msctx_block, positions=(3,))
 
 
 def resnet34_lib_haar(num_classes=1000, include_top=True):

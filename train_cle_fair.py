@@ -84,6 +84,8 @@ MODEL_ALLOWED_MISSING_SEGMENTS = {
     "resnet34_lib_lcattn": {"lib"},
     "resnet34_dshortcut": {"downsample_avg"},
     "resnet34_lib_msctx_haar": {"lib"},
+    "resnet34_lib_msctx_l4": {"lib"},
+    "resnet34_lib_msctx_l3": {"lib"},
     "resnet34_hybrid_dil_msctx": {"lib"},
 }
 
