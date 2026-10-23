@@ -1,13 +1,5 @@
 #!/usr/bin/env python3
-"""eval_plus: 涨点手段评估器(用户已全部批准, 2026-10-24)
-
-手段: TTA(8视图二面体平均) + 类别校准(val拟合逐类乘子) + 多模型概率集成。
-校准只在 val 拟合, test 仅最终应用。
-
-用法:
-  python experiments/eval_plus.py --ckpt name=ckpt_path --ckpt name2=path2 ...
-输出: 追加 experiments/results.csv (batch=evalplus) + 写 shared/leaderboard.md
-"""
+"""eval_plus v2: TTA8 + val校准 + 集成。多进程 DataLoader 并行解码(修复CPU瓶颈)。"""
 import argparse, csv, json, os, sys
 from datetime import datetime
 
@@ -15,9 +7,11 @@ import numpy as np
 import torch
 import torch.nn.functional as F
 from PIL import Image
+from torch.utils.data import DataLoader, Dataset
 from torchvision import transforms
 from sklearn.metrics import f1_score
 
+torch.set_num_threads(2)  # 防止与 DataLoader worker 线程互踩
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from cle_fair_common import build_model  # noqa: E402
 
@@ -38,40 +32,42 @@ def load_split(root):
     return paths, np.array(labels), classes
 
 
-@torch.no_grad()
-def infer(model, paths, img_size, mean, std, tta=True, bs=64):
-    """8 视图二面体 TTA(4旋转x2翻转); tta=False 为单视图。返回平均 softmax。"""
-    views = [(k, fl) for k in range(4) for fl in (False, True)] if tta else [(0, False)]
-    probs_sum = None
-    for k, fl in views:
-        def tf(img, k=k, fl=fl):
-            if k:
-                img = img.rotate(90 * k, Image.BILINEAR)
-            if fl:
-                img = img.transpose(Image.FLIP_LEFT_RIGHT)
-            return img
-        t = transforms.Compose([
-            transforms.Lambda(tf),
+class _ViewDS(Dataset):
+    def __init__(self, paths, rot, flip, img_size, mean, std):
+        self.paths, self.rot, self.flip = paths, rot, flip
+        self.tf = transforms.Compose([
             transforms.Resize((int(img_size * 1.143),) * 2),
             transforms.CenterCrop(img_size),
             transforms.ToTensor(), transforms.Normalize(mean, std)])
-        out, batch = [], []
-        for p in paths:
-            batch.append(t(Image.open(p).convert("RGB")))
-            if len(batch) == bs:
-                x = torch.stack(batch).to(DEVICE)
-                out.append(F.softmax(model(x), dim=1).cpu().numpy())
-                batch = []
-        if batch:
-            x = torch.stack(batch).to(DEVICE)
-            out.append(F.softmax(model(x), dim=1).cpu().numpy())
+
+    def __len__(self):
+        return len(self.paths)
+
+    def __getitem__(self, i):
+        img = Image.open(self.paths[i]).convert("RGB")
+        if self.rot:
+            img = img.rotate(90 * self.rot, Image.BILINEAR)
+        if self.flip:
+            img = img.transpose(Image.FLIP_LEFT_RIGHT)
+        return self.tf(img)
+
+
+@torch.no_grad()
+def infer(model, paths, img_size, mean, std, tta=True, bs=64, nw=8):
+    views = [(k, fl) for k in range(4) for fl in (False, True)] if tta else [(0, False)]
+    probs_sum = None
+    for k, fl in views:
+        ds = _ViewDS(paths, k, fl, img_size, mean, std)
+        dl = DataLoader(ds, batch_size=bs, shuffle=False, num_workers=nw, pin_memory=True)
+        out = []
+        for x in dl:
+            out.append(F.softmax(model(x.to(DEVICE, non_blocking=True)), dim=1).cpu().numpy())
         p_one = np.concatenate(out)
         probs_sum = p_one if probs_sum is None else probs_sum + p_one
     return probs_sum / len(views)
 
 
 def calibrate(val_probs, val_y, n_classes, passes=2, grid=np.arange(0.75, 1.31, 0.025)):
-    """坐标上升拟合逐类乘子, 最大化 val macro-F1。"""
     w = np.ones(n_classes)
 
     def f1_of(w):
@@ -96,7 +92,7 @@ def calibrate(val_probs, val_y, n_classes, passes=2, grid=np.arange(0.75, 1.31, 
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--ckpt", action="append", required=True, help="name=path")
+    ap.add_argument("--ckpt", action="append", required=True, help="registry_name=path")
     args = ap.parse_args()
     entries = [tuple(s.split("=", 1)) for s in args.ckpt]
 
@@ -122,7 +118,7 @@ def main():
         f_cal = f1_score(ty, (t_p * w).argmax(1), average="macro", zero_division=0)
         rows.append((f"{name}+TTA8", f_tta))
         rows.append((f"{name}+TTA8+calib", f_cal))
-        print(f"{name}: TTA={f_tta:.4f}  TTA+calib={f_cal:.4f}  w={np.round(w,3).tolist()}")
+        print(f"{name}: TTA={f_tta:.4f}  TTA+calib={f_cal:.4f}  w={np.round(w,3).tolist()}", flush=True)
 
     if len(entries) >= 2:
         names = [n for n, _ in entries]
@@ -135,7 +131,7 @@ def main():
         tag = "+".join(names)
         rows.append((f"ENS[{tag}]+TTA8", f_ens))
         rows.append((f"ENS[{tag}]+TTA8+calib", f_ens_c))
-        print(f"ensemble: TTA={f_ens:.4f}  TTA+calib={f_ens_c:.4f}")
+        print(f"ensemble: TTA={f_ens:.4f}  TTA+calib={f_ens_c:.4f}", flush=True)
 
     with open(os.path.join(REPO, "experiments/results.csv"), "a", newline="") as f:
         w = csv.writer(f)
@@ -146,7 +142,7 @@ def main():
         f.write(f"\n## eval_plus {datetime.now().strftime('%m-%d %H:%M')}\n")
         for n, s in sorted(rows, key=lambda r: -r[1]):
             f.write(f"- {n}: test macro-F1 = {s:.4f}\n")
-    print("已写入 results.csv 与 shared/leaderboard.md")
+    print("已写入 results.csv 与 shared/leaderboard.md", flush=True)
 
 
 if __name__ == "__main__":

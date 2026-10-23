@@ -23,6 +23,7 @@ FIELDS = ["ts", "batch", "model", "seed", "status", "val_f1", "test_f1", "test_a
 def sh(cmd, log_path):
     with open(log_path, "a") as lf:
         lf.write(f"\n===== [{datetime.now()}] {cmd}\n")
+        cmd = "OMP_NUM_THREADS=4 MKL_NUM_THREADS=4 " + cmd
         return subprocess.run(cmd, shell=True, cwd=REPO, stdout=lf, stderr=subprocess.STDOUT).returncode
 
 
