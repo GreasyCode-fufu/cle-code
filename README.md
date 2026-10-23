@@ -29,27 +29,29 @@ conda 环境：`sunfuxiang`（python: `/home/login/miniconda3/envs/sunfuxiang/bi
 
 ## 运行示例
 
-数据集与 ImageNet 预训练权重**不随仓库复制**，直接引用原位置：
+数据集已就位（见下方"说明"），ImageNet 预训练权重仍引用原位置：
 
 ```bash
 # 训练（在仓库根目录）
 python train_cle_fair.py --model resnet34 --num_classes 3 --img_size 224 --seed 42 \
-  --data-path-train /home/login/data/cle/sunfuxiang/datasets/3class/train \
-  --data-path-val   /home/login/data/cle/sunfuxiang/datasets/3class/val \
+  --data-path-train ./datasets/cle/train \
+  --data-path-val   ./datasets/cle/val \
   --weights /home/login/data/cle/sunfuxiang/classifyML/pth/resnet34-333f7ec4.pth \
   --save-dir ./weights --epochs 300
 
 # 评估
 python evaluate.py --model resnet34 \
   --weights weights/resnet34_3class_seed42_best.pth \
-  --data-path /home/login/data/cle/sunfuxiang/datasets/3class/test
+  --data-path ./datasets/cle/test
 ```
 
 自研模型（Ours）：`--model resnet34_degconv_cpca_v3 --img_size 512`。
 注意：注册名沿用历史名，v3 实现已移除 DEGConv、仅保留 CPCA（名实差异沿袭原项目）。
 
 ## 说明
-- 本仓库 `datasets/cle/` 已含评估用数据（2026-10-23 从 `../datasets/3class` 复制）：val 538 张 / test 671 张（Benign 225/156、Malignant 156/210、Normal 157/205，逐类核对一致）；**train 未复制**，训练仍指向外部数据集路径。
+- 本仓库 `datasets/cle/` 数据构成（2026-10-23 整理）：
+  - **val**（538 张）与 **test**（671 张）：从 `../datasets/3class` 复制，逐类核对一致；
+  - **train**（2386 张）：由 demo 五类归并移动而来——萎缩(779)+肠化(150)→Benign_lesions(929)，异型增生(327)+癌变(237)→Malignant_lesions(564)，正常(893)→body_of_stomach_normal(893)。其中 2318 张经文件名核对为原 `3class/train`(4977) 子集且类别归属逐张一致，另 68 张（萎缩44+正常24）为原数据集未有的新增图片；类别归并关系与原项目三分类定义一致。
 
 - 首次训练会在仓库根目录生成 `norm_cache/`（Mean/Std 缓存，已被 .gitignore 排除）。
 - 原 `train.py` 内的旧路径默认值指向已迁移的 `/home/login/cle/...`；作为库导入不受影响，如需直接运行请用参数覆盖。
