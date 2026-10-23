@@ -88,6 +88,12 @@ MODEL_REGISTRY = {
     "resnet34_dil2346": ("models.optimize.resnet34_dilgate", "resnet34_dil2346"),
     "resnet34_dil123": ("models.optimize.resnet34_dilgate", "resnet34_dil123"),
     "resnet34_dil_r8": ("models.optimize.resnet34_dilgate", "resnet34_dil_r8"),
+    "resnet34_dil234_l4": ("models.optimize.resnet34_dilgate", "resnet34_dil234_l4"),
+    "resnet34_dil234_l3": ("models.optimize.resnet34_dilgate", "resnet34_dil234_l3"),
+    "resnet34_dil234_k5": ("models.optimize.resnet34_dilgate", "resnet34_dil234_k5"),
+    "resnet34_dil234_sg": ("models.optimize.resnet34_dilgate", "resnet34_dil234_sg"),
+    "resnet34_dil23_r": ("models.optimize.resnet34_dilgate", "resnet34_dil23_r"),
+    "resnet34_dil34_r": ("models.optimize.resnet34_dilgate", "resnet34_dil34_r"),
 }
 
 SUPPORTED_EXTS = (".jpg", ".jpeg", ".png", ".bmp", ".tif", ".tiff")

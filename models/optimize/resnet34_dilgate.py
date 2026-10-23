@@ -29,20 +29,22 @@ def _dw(ch, k, dilation=1):
 class DilGate(nn.Module):
     """纯多尺度膨胀 + 零初始化门控残差。"""
 
-    def __init__(self, ch, rates=(2, 4), r_div=4):
+    def __init__(self, ch, rates=(2, 4), r_div=4, k=3, scalar_gamma=False):
         super().__init__()
         r = max(ch // r_div, 16)
+        self.scalar_gamma = scalar_gamma
         self.reduce = nn.Sequential(
             nn.Conv2d(ch, r, 1, bias=False), nn.BatchNorm2d(r), nn.ReLU(inplace=True))
-        self.dils = nn.ModuleList([_dw(r, 3, d) for d in rates])
+        self.dils = nn.ModuleList([_dw(r, k, d) for d in rates])
         self.dil_fuse = nn.Conv2d(r * len(rates), ch, 1, bias=False)
         self.bn = nn.BatchNorm2d(ch)
-        self.gamma = nn.Parameter(torch.zeros(ch))
+        self.gamma = nn.Parameter(torch.zeros(1 if scalar_gamma else ch))
 
     def forward(self, x):
         r0 = self.reduce(x)
         f = torch.cat([d(r0) for d in self.dils], dim=1)
-        return x + self.gamma.view(1, -1, 1, 1) * self.bn(self.dil_fuse(f))
+        g = self.gamma.view(1, -1, 1, 1) if not self.scalar_gamma else self.gamma.view(1, 1, 1, 1)
+        return x + g * self.bn(self.dil_fuse(f))
 
 
 class PFESA(nn.Module):
@@ -104,7 +106,7 @@ class ResNetDilPFESA(nn.Module):
 
     def __init__(self, blocks_num, num_classes=1000, include_top=True,
                  positions=(3, 4), rates=(2, 4), use_pfesa=False, use_dil=True,
-                 r_div=4):
+                 r_div=4, k=3, scalar_gamma=False):
         super().__init__()
         self.include_top = include_top
         self.positions = positions
@@ -121,7 +123,7 @@ class ResNetDilPFESA(nn.Module):
         ch_map = {2: 128, 3: 256, 4: 512}
         self.pfesa = nn.ModuleDict({str(p): PFESA() for p in positions}) if use_pfesa else None
         self.gates = nn.ModuleDict({
-            str(p): DilGate(ch_map[p], rates=rates, r_div=r_div) for p in positions
+            str(p): DilGate(ch_map[p], rates=rates, r_div=r_div, k=k, scalar_gamma=scalar_gamma) for p in positions
         }) if use_dil else None
         if include_top:
             self.avgpool = nn.AdaptiveAvgPool2d((1, 1))
@@ -183,6 +185,30 @@ def resnet34_dil123(num_classes=1000, include_top=True):
 def resnet34_dil_r8(num_classes=1000, include_top=True):
     # 更窄 reduce (ch/8)
     return ResNetDilPFESA([3, 4, 6, 3], num_classes, include_top, positions=(3, 4), rates=(2, 3, 4), r_div=8)
+
+
+def resnet34_dil234_l4(num_classes=1000, include_top=True):
+    return ResNetDilPFESA([3, 4, 6, 3], num_classes, include_top, positions=(4,), rates=(2, 3, 4))
+
+
+def resnet34_dil234_l3(num_classes=1000, include_top=True):
+    return ResNetDilPFESA([3, 4, 6, 3], num_classes, include_top, positions=(3,), rates=(2, 3, 4))
+
+
+def resnet34_dil234_k5(num_classes=1000, include_top=True):
+    return ResNetDilPFESA([3, 4, 6, 3], num_classes, include_top, positions=(3, 4), rates=(2, 3, 4), k=5)
+
+
+def resnet34_dil234_sg(num_classes=1000, include_top=True):
+    return ResNetDilPFESA([3, 4, 6, 3], num_classes, include_top, positions=(3, 4), rates=(2, 3, 4), scalar_gamma=True)
+
+
+def resnet34_dil23_r(num_classes=1000, include_top=True):
+    return ResNetDilPFESA([3, 4, 6, 3], num_classes, include_top, positions=(3, 4), rates=(2, 3))
+
+
+def resnet34_dil34_r(num_classes=1000, include_top=True):
+    return ResNetDilPFESA([3, 4, 6, 3], num_classes, include_top, positions=(3, 4), rates=(3, 4))
 
 
 def resnet34_msec_dil_p234(num_classes=1000, include_top=True):
