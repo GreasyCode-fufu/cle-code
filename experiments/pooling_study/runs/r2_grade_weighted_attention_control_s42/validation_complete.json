@@ -1,0 +1,78 @@
+{
+  "signature": "95984a6e001afb434d8295bbdf25602891a2afa420e4e19e806025fbd25748c9",
+  "job_id": "r2_grade_weighted_attention_control_s42",
+  "recipe": "grade_weighted",
+  "variant": "attention_control",
+  "seed": 42,
+  "n": 538,
+  "checkpoint_sha256": "445d1b81ec54ac6acc2c1eade07709e3c522a1c13973f02bab0e340e21da2526",
+  "completed_at": "2026-10-24T05:17:10.801828+08:00",
+  "parameters": 21467347,
+  "modifier_parameters": 181136,
+  "diagnostics": {
+    "off_same_checkpoint_metrics": {
+      "macro_f1": 0.8708573072497123,
+      "accuracy": 0.8698884758364313,
+      "class_f1": [
+        0.8590909090909091,
+        0.7784810126582279,
+        0.975
+      ],
+      "confusion_matrix": [
+        [
+          189,
+          36,
+          0
+        ],
+        [
+          26,
+          123,
+          7
+        ],
+        [
+          0,
+          1,
+          156
+        ]
+      ],
+      "auroc": 0.9658342845451945
+    },
+    "off_prediction_disagreement": 0.01858736059479554,
+    "note": "Same fitted checkpoint diagnostic, not a substitute for retrained ablation.",
+    "global_pool_share_mean": 0.7488920338534955,
+    "pooled_shift_proxy_mean": 0.0769865995646908,
+    "pooled_shift_proxy_quantiles": [
+      0.02336326614022255,
+      0.0543327946215868,
+      0.0684916228055954,
+      0.09532420709729195,
+      0.22682318091392517
+    ],
+    "interpretation": "Broadcast descriptor shift preserves pooling equivalence. Not physical image noise or a diagnosis-quality score."
+  },
+  "macro_f1": 0.8727790921867062,
+  "accuracy": 0.8736059479553904,
+  "class_f1": [
+    0.8685968819599109,
+    0.7777777777777778,
+    0.9719626168224299
+  ],
+  "confusion_matrix": [
+    [
+      195,
+      30,
+      0
+    ],
+    [
+      29,
+      119,
+      8
+    ],
+    [
+      0,
+      1,
+      156
+    ]
+  ],
+  "auroc": 0.9672640701327149
+}
