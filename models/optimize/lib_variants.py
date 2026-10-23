@@ -43,7 +43,9 @@ def haar_block(r):
             self.fuse = nn.Conv2d(r * 2, r, 1, bias=False)
 
         def forward(self, x):
-            low = F.interpolate(F.avg_pool2d(x, 2), scale_factor=2, mode="nearest")
+            h, w = x.shape[-2:]
+            pad = F.pad(x, (0, w % 2, 0, h % 2), mode="replicate")  # 奇数尺寸补偶
+            low = F.interpolate(F.avg_pool2d(pad, 2), size=(h, w), mode="nearest")
             return self.fuse(torch.cat([low, x - low], dim=1))
     return B()
 
