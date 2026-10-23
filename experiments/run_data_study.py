@@ -260,7 +260,10 @@ def new_model(seed):
     from cle_fair_common import build_model
     set_seed(seed)
     model = build_model('resnet34', 3)
-    state = torch.load(PRETRAINED, map_location='cpu', weights_only=True)
+    # The official 2017 ResNet weights use PyTorch's legacy tar format. Only
+    # this exact published artifact may use the legacy deserializer.
+    assert digest(PRETRAINED) == '333f7ec4c6338da2cbed37f1fc0445f9624f1355633fa1d7eab79a91084c6cef'
+    state = torch.load(PRETRAINED, map_location='cpu', weights_only=False)
     for key in ['fc.weight', 'fc.bias']:
         state.pop(key)
     inc = model.load_state_dict(state, strict=False)
