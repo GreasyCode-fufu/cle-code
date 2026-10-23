@@ -94,6 +94,10 @@ MODEL_REGISTRY = {
     "resnet34_dil234_sg": ("models.optimize.resnet34_dilgate", "resnet34_dil234_sg"),
     "resnet34_dil23_r": ("models.optimize.resnet34_dilgate", "resnet34_dil23_r"),
     "resnet34_dil34_r": ("models.optimize.resnet34_dilgate", "resnet34_dil34_r"),
+    "resnet34_dil234_prog": ("models.optimize.resnet34_dilgate", "resnet34_dil234_prog"),
+    "resnet34_dil234_mix": ("models.optimize.resnet34_dilgate", "resnet34_dil234_mix"),
+    "resnet34_dil234_id": ("models.optimize.resnet34_dilgate", "resnet34_dil234_id"),
+    "resnet34_dil234_x2": ("models.optimize.resnet34_dilgate", "resnet34_dil234_x2"),
 }
 
 SUPPORTED_EXTS = (".jpg", ".jpeg", ".png", ".bmp", ".tif", ".tiff")
