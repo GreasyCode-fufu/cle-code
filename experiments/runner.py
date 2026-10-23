@@ -27,14 +27,27 @@ def sh(cmd, log_path):
     return p.returncode
 
 
-def latest_eval_dir(model):
-    dirs = sorted(glob.glob(os.path.join(REPO, "weights", model, "eval_*")))
+def latest_eval_dir(model, seed=None):
+    base = os.path.join(REPO, "weights", model + "_seed" + str(seed), model) if seed is not None 
+n        else os.path.join(REPO, "weights", model)
+    dirs = sorted(glob.glob(os.path.join(base, "eval_*")))
     return dirs[-1] if dirs else None
 
 
-def read_metric(model, which):
-    """which: 'val'|'test' — evaluate 后从最近的 eval 目录读 results.json"""
-    d = latest_eval_dir(model)
+def read_metric(model, which, seed=None):
+    """which: 'val'|'test' — 按时间序找到对应数据集的 eval 目录(test_dir 字段判定)"""
+    import glob as _g
+    base = os.path.join(REPO, "weights", model + "_seed" + str(seed), model) if seed is not None 
+n        else os.path.join(REPO, "weights", model)
+    cands = sorted(_g.glob(os.path.join(base, "eval_*", "results.json")))
+    d = None
+    for f in cands:
+        rj = json.load(open(f))
+        is_val = "val" in rj.get("test_dir", "")
+        if (which == "val") == is_val:
+            d = os.path.dirname(f)
+    if d is None:
+        return None
     if not d:
         return None
     r = json.load(open(os.path.join(d, "results.json")))
@@ -78,10 +91,10 @@ def run_job(batch, job, worker_id):
         best = os.path.join(REPO, "weights", model + "_seed" + str(seed), model, "model_best.pth")
         # val 评估(选模参考)
         sh(f"{PY} evaluate.py --model {model} --weights {best} --data-path ./datasets/cle/val", log)
-        v = read_metric(model, "val")
+        v = read_metric(model, "val", seed)
         # test 评估(最终判定)
         sh(f"{PY} evaluate.py --model {model} --weights {best} --data-path ./datasets/cle/test", log)
-        t = read_metric(model, "test")
+        t = read_metric(model, "test", seed)
         if not v or not t:
             row["note"] = "eval_missing"; raise RuntimeError("eval parse failed")
         row.update({"status": "ok", "val_f1": v["f1"], "test_f1": t["f1"], "test_acc": t["acc"],
