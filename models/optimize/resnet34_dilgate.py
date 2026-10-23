@@ -103,7 +103,8 @@ class ResNetDilPFESA(nn.Module):
     """vanilla ResNet + 可选 PFESA / 可选 DilGate 于指定 stage 出口。"""
 
     def __init__(self, blocks_num, num_classes=1000, include_top=True,
-                 positions=(3, 4), rates=(2, 4), use_pfesa=False, use_dil=True):
+                 positions=(3, 4), rates=(2, 4), use_pfesa=False, use_dil=True,
+                 r_div=4):
         super().__init__()
         self.include_top = include_top
         self.positions = positions
@@ -120,7 +121,7 @@ class ResNetDilPFESA(nn.Module):
         ch_map = {2: 128, 3: 256, 4: 512}
         self.pfesa = nn.ModuleDict({str(p): PFESA() for p in positions}) if use_pfesa else None
         self.gates = nn.ModuleDict({
-            str(p): DilGate(ch_map[p], rates=rates) for p in positions
+            str(p): DilGate(ch_map[p], rates=rates, r_div=r_div) for p in positions
         }) if use_dil else None
         if include_top:
             self.avgpool = nn.AdaptiveAvgPool2d((1, 1))
@@ -162,6 +163,16 @@ class ResNetDilPFESA(nn.Module):
         if self.include_top:
             x = self.fc(torch.flatten(self.avgpool(x), 1))
         return x
+
+
+def resnet34_dil234w(num_classes=1000, include_top=True):
+    # dil234 加宽版: reduce 通道 ch/2
+    return ResNetDilPFESA([3, 4, 6, 3], num_classes, include_top, positions=(3, 4), rates=(2, 3, 4), r_div=2)
+
+
+def resnet34_dil2346(num_classes=1000, include_top=True):
+    # 四膨胀率 2/3/4/6
+    return ResNetDilPFESA([3, 4, 6, 3], num_classes, include_top, positions=(3, 4), rates=(2, 3, 4, 6))
 
 
 def resnet34_msec_dil_p234(num_classes=1000, include_top=True):

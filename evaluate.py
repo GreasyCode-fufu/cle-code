@@ -89,6 +89,8 @@ MODEL_REGISTRY = {
     "resnet34_msec_dil234":   ("models.optimize.resnet34_dilgate", "resnet34_msec_dil234"),
     "resnet34_pfesa":         ("models.optimize.resnet34_dilgate", "resnet34_pfesa"),
     "resnet34_pfesa_dil":     ("models.optimize.resnet34_dilgate", "resnet34_pfesa_dil"),
+    "resnet34_dil234w": ("models.optimize.resnet34_dilgate", "resnet34_dil234w"),
+    "resnet34_dil2346": ("models.optimize.resnet34_dilgate", "resnet34_dil2346"),
 }
 # ===============================================================
 
