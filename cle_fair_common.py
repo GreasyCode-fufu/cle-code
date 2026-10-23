@@ -79,6 +79,11 @@ MODEL_REGISTRY = {
     "resnet34_msec_edge":    ("models.optimize.resnet34_msec", "resnet34_msec_edge"),
     "resnet34_msec_dil":     ("models.optimize.resnet34_msec", "resnet34_msec_dil"),
     "resnet34_msec_v1_p234": ("models.optimize.resnet34_msec", "resnet34_msec_v1_p234"),
+    # ── Batch C: DilGate深挖 + PFESA (models/optimize/resnet34_dilgate.py) ──
+    "resnet34_msec_dil_p234": ("models.optimize.resnet34_dilgate", "resnet34_msec_dil_p234"),
+    "resnet34_msec_dil234":   ("models.optimize.resnet34_dilgate", "resnet34_msec_dil234"),
+    "resnet34_pfesa":         ("models.optimize.resnet34_dilgate", "resnet34_pfesa"),
+    "resnet34_pfesa_dil":     ("models.optimize.resnet34_dilgate", "resnet34_pfesa_dil"),
 }
 
 SUPPORTED_EXTS = (".jpg", ".jpeg", ".png", ".bmp", ".tif", ".tiff")

@@ -61,6 +61,9 @@ MODEL_ALLOWED_MISSING_SEGMENTS = {
     "resnet34_msec_dil": {"msec"},
     "resnet34_msec_v1_p234": {"msec"},
     "swin_tiny_patch4_window7_224": {"conv_efg", "revert"},
+    "resnet34_msec_dil_p234": {"gates"},
+    "resnet34_msec_dil234": {"gates"},
+    "resnet34_pfesa_dil": {"gates"},
 }
 
 # 各模型加载 ImageNet 预训练权重前需做的"权重变换"(如 s2d 变体的 conv1 通道膨胀)。
