@@ -134,3 +134,7 @@
 先完成本轮全部配对种子和消融，以完整开发集和患者配对区间分析。出现正信号后进行患者级独立确认、数据 × 结构交叉、原始模块与参数/计算匹配对照。严格外层 CV 中，等级必须在外层训练折内重算或由真正独立的分级器提供；不得直接复用会接触外层留出标签的等级。
 
 若本轮仍无可靠收益，先做错误分布与消融分析，再预注册不同机制的下一轮，保留阴性结果。候选最终冻结后才运行一次完整 test 审计，并明确已有 test 被历史实验使用的限制。最终可交付可复现网络与诚实实验结论，不预先承诺论文创新性或录用。
+
+
+## Round9 completed and audited
+Frozen pretrained ResNet .840943; DINO CLS .866158, mean .871247, concat primary .873057. Prior finetuned GAP ridge .862553/.871950. Concat exceeds frozen ResNet by 3.21pt (family CI [1.23,5.49]pt) but not reliably prior finetuned references; full primary gate false. No neural training; 60 fit-only ridge fits, 18 full OOF sets. Independent audit passed original patient splits, all source/cache/head hashes, ridge optima, predictions and family intervals. Results fe007f2. Next exploratory step is controlled CLE domain adaptation, not an assertion R9 passed.
