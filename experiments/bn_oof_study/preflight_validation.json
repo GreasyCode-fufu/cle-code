@@ -1,0 +1,108 @@
+{
+  "passed": true,
+  "timestamp": "2026-10-24T09:45:29.903201+08:00",
+  "baselines": [
+    {
+      "id": "oof_s42_f0",
+      "outer_n": 475,
+      "outer_macro_f1": 0.8697511053586968,
+      "checkpoint_sha256": "6f8ab4e3ef84e76f49a92358baf7564f5547e76cffd6fa5a855336d022e068ac"
+    },
+    {
+      "id": "oof_s42_f1",
+      "outer_n": 477,
+      "outer_macro_f1": 0.8928209554091907,
+      "checkpoint_sha256": "df682fe2197df144751f65ea42a97193b01bc188d1996c254e7a468468386143"
+    },
+    {
+      "id": "oof_s42_f2",
+      "outer_n": 474,
+      "outer_macro_f1": 0.8482373386239138,
+      "checkpoint_sha256": "c743b028b0f005f3f8618c0d82c128e220b197fb7b5ff7b34e7544fd0e81c12c"
+    },
+    {
+      "id": "oof_s42_f3",
+      "outer_n": 476,
+      "outer_macro_f1": 0.8219737086584913,
+      "checkpoint_sha256": "389d90a6a3fc4bba3df6ca96a479c289f0582456f2c327032320dc1b3072247a"
+    },
+    {
+      "id": "oof_s42_f4",
+      "outer_n": 484,
+      "outer_macro_f1": 0.8411579092021925,
+      "checkpoint_sha256": "f7742452f7d5ba015abe3e9e6717180a2080027be322387a55f658b59c035a9f"
+    },
+    {
+      "id": "oof_s43_f0",
+      "outer_n": 475,
+      "outer_macro_f1": 0.870670129561729,
+      "checkpoint_sha256": "e02b893d3eb7c56017f042cc42d31156ed6bb2a299ccc382433993daaa7d1de9"
+    },
+    {
+      "id": "oof_s43_f1",
+      "outer_n": 475,
+      "outer_macro_f1": 0.8759610122087335,
+      "checkpoint_sha256": "6da98202567ef453ddab3b51f366bc94e403de90619212e417a290e58eb79cf0"
+    },
+    {
+      "id": "oof_s43_f2",
+      "outer_n": 477,
+      "outer_macro_f1": 0.8909071977035614,
+      "checkpoint_sha256": "bfe6b236ca358715036e0526b5a82033a9c0e1b5fbaa6f5d1586188968732188"
+    },
+    {
+      "id": "oof_s43_f3",
+      "outer_n": 475,
+      "outer_macro_f1": 0.828490156286363,
+      "checkpoint_sha256": "d4046d4ad7fb576a849a58fa2a1872c2759679fbbd387e8460cbcfb135167c4e"
+    },
+    {
+      "id": "oof_s43_f4",
+      "outer_n": 484,
+      "outer_macro_f1": 0.8540533619480293,
+      "checkpoint_sha256": "d47070bb4c72934bcbecfc1c7008af994587bc564aed2098f2fae97b2f2a214b"
+    },
+    {
+      "id": "oof_s44_f0",
+      "outer_n": 478,
+      "outer_macro_f1": 0.8341126475077615,
+      "checkpoint_sha256": "6a8d6f3a77556cdcb0cde5d91a6364232bd6d588797334b86acebbc39df20002"
+    },
+    {
+      "id": "oof_s44_f1",
+      "outer_n": 474,
+      "outer_macro_f1": 0.9008944007408145,
+      "checkpoint_sha256": "30c01b637d40c3493772a812254cddde91572dc0c5c6911d4bf7335672ae2c5e"
+    },
+    {
+      "id": "oof_s44_f2",
+      "outer_n": 475,
+      "outer_macro_f1": 0.849969084741231,
+      "checkpoint_sha256": "77ce8ef7936e622e5942a2210df189967051d9341568bce877b5a9c3e39cd123"
+    },
+    {
+      "id": "oof_s44_f3",
+      "outer_n": 484,
+      "outer_macro_f1": 0.8401953754306078,
+      "checkpoint_sha256": "117f547ba464531b1bc09d0d13ea2bf96cd723fa8d38506a6bcf86f59c03fd6d"
+    },
+    {
+      "id": "oof_s44_f4",
+      "outer_n": 475,
+      "outer_macro_f1": 0.8642981880068404,
+      "checkpoint_sha256": "8a52a8d99951ca9f6406bf0264f797018c7e3f8d27243a53f8d0b36c207e69cd"
+    }
+  ],
+  "checks": [
+    "15 original signed checkpoint hashes, 60 epochs and outer predictions",
+    "paired original outer/inner splits unchanged",
+    "patient isolation, all classes and only original-train indices",
+    "full cache SHA256, index-restricted access",
+    "exact OOF coverage 2386 per seed",
+    "paired eval logits and state keys identical",
+    "all parameters trainable",
+    "frozen BN buffers remain unchanged during finite AMP update, affine gradient nonzero",
+    "eval disables all submodules",
+    "exact immutable core.run_worker reused; no grades or weights"
+  ]
+}
