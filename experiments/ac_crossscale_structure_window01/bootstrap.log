@@ -43,3 +43,31 @@ Consider using tensor.detach() first. (Triggered internally at /pytorch/torch/cs
 [main df8e174] test: validate cross-scale CUDA AMP gradients, nondegenerate train-val scales and six full frozen reference probability reconstructions
  2 files changed, 246 insertions(+)
  create mode 100644 experiments/ac_crossscale_structure_window01/preflight.json
+[main 62be72a] perf: measure single and concurrent throughput for distinct library and orientation kernels
+ 26 files changed, 187 insertions(+)
+ create mode 100644 experiments/ac_crossscale_structure_window01/direct_control_finisher.log
+ create mode 100644 experiments/ac_crossscale_structure_window01/direct_control_finisher_identity.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/profile/mom_bilinear/bench_1_0.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/profile/mom_bilinear/bench_2_0.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/profile/mom_bilinear/bench_2_0.log
+ create mode 100644 experiments/ac_crossscale_structure_window01/profile/mom_bilinear/bench_2_1.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/profile/mom_bilinear/bench_2_1.log
+ create mode 100644 experiments/ac_crossscale_structure_window01/profile/mom_bilinear/bench_4_0.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/profile/mom_bilinear/bench_4_0.log
+ create mode 100644 experiments/ac_crossscale_structure_window01/profile/mom_bilinear/bench_4_1.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/profile/mom_bilinear/bench_4_1.log
+ create mode 100644 experiments/ac_crossscale_structure_window01/profile/mom_bilinear/bench_4_2.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/profile/mom_bilinear/bench_4_2.log
+ create mode 100644 experiments/ac_crossscale_structure_window01/profile/mom_bilinear/bench_4_3.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/profile/mom_bilinear/bench_4_3.log
+ create mode 100644 experiments/ac_crossscale_structure_window01/profile/mom_bilinear/gate_2.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/profile/mom_bilinear/gate_4.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/profile/mom_bilinear/measurements.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/profile/mom_bilinear/ready_2_0.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/profile/mom_bilinear/ready_2_1.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/profile/mom_bilinear/ready_4_0.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/profile/mom_bilinear/ready_4_1.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/profile/mom_bilinear/ready_4_2.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/profile/mom_bilinear/ready_4_3.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/profile/selected.json
+launch crossscale_mom_corr_s45 929166
