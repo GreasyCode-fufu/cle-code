@@ -22,5 +22,11 @@
 |mom_shuffle_c4_vs_M_c4_moments|-0.8324|[-2.1746, 0.0091]|
 |mom_shuffle_c4_vs_M_c4_aug|-0.7025|[-1.7266, 0.5953]|
 |mom_shuffle_c4_vs_M_eca|-0.2398|[-0.6664, 0.3839]|
+|mom_bilinear_single_vs_M_c4_moments|-0.8112|[-1.9721, -0.1410]|
+|mom_bilinear_single_vs_M_c4_aug|-0.6214|[-1.6393, 0.3313]|
+|mom_bilinear_single_vs_M_eca|-0.3874|[-1.1125, 0.4245]|
+|mom_bilinear_c4_vs_M_c4_moments|-0.6531|[-2.0578, -0.0159]|
+|mom_bilinear_c4_vs_M_c4_aug|-0.5232|[-1.6526, 0.6261]|
+|mom_bilinear_c4_vs_M_eca|-0.0606|[-0.7451, 0.6535]|
 
 mom_corr与M_c4_moments检验跨尺度增量；corr_only检验去方向矩；mom_shuffle等参数打乱对应，mom_bilinear保留成熟非居中二阶算子。全部seed/阴性保留，不能据点估计称创新或独立确认。
