@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-24T20:36:40.388007+08:00",
+  "updated_at": "2026-10-24T20:37:02.631200+08:00",
   "test_count": 576,
   "test_groups": 41,
   "summary": {
@@ -1580,19 +1580,43 @@
     }
   },
   "comparisons": {
-    "round1_relational": {
-      "reference": "dino_baseline",
-      "primary_baseline_frozen": false,
+    "dino_baseline": {
+      "reference": "qualification_convnext_tiny_A",
+      "primary_baseline_frozen": true,
       "paired_seed_deltas": [
-        0.014626364777930778,
-        -0.04811863447632814,
-        -0.015745277058499596
+        -0.013943200217106932,
+        0.026368787162167062,
+        -0.006549056928174757
       ],
-      "mean_delta": -0.01641251558563232,
+      "mean_delta": 0.001958843338961791,
       "conditional_patient_bootstrap": {
         "ci95": [
-          -0.03813897936654782,
-          -0.0007653590475124377
+          -0.01905456035156682,
+          0.026930641684402585
+        ],
+        "draws": 20000,
+        "patients": 41,
+        "paired_seeds": 3,
+        "patient_draws_shared_across_seeds": true,
+        "scope": "conditional descriptive interval after adaptive test feedback; not selection-adjusted"
+      },
+      "numerical_gate": false,
+      "independent_generalization_confirmed": false,
+      "selection_bias_corrected": false
+    },
+    "round1_relational": {
+      "reference": "qualification_convnext_tiny_A",
+      "primary_baseline_frozen": true,
+      "paired_seed_deltas": [
+        0.0006831645608238457,
+        -0.021749847314161075,
+        -0.022294333986674353
+      ],
+      "mean_delta": -0.014453672246670527,
+      "conditional_patient_bootstrap": {
+        "ci95": [
+          -0.03989087838017589,
+          0.012488440916677451
         ],
         "draws": 20000,
         "patients": 41,
@@ -1605,18 +1629,18 @@
       "selection_bias_corrected": false
     },
     "round1_no_neighbor": {
-      "reference": "dino_baseline",
-      "primary_baseline_frozen": false,
+      "reference": "qualification_convnext_tiny_A",
+      "primary_baseline_frozen": true,
       "paired_seed_deltas": [
-        -0.0032662216010101996,
-        -0.01586721117411205,
-        0.004837781183295808
+        -0.017209421818117132,
+        0.010501575988055012,
+        -0.0017112757448789484
       ],
-      "mean_delta": -0.00476521719727548,
+      "mean_delta": -0.0028063738583136897,
       "conditional_patient_bootstrap": {
         "ci95": [
-          -0.018780844349812843,
-          0.013204627065296744
+          -0.01797458751759801,
+          0.020883215506248134
         ],
         "draws": 20000,
         "patients": 41,
@@ -1629,18 +1653,18 @@
       "selection_bias_corrected": false
     },
     "round1_no_depth": {
-      "reference": "dino_baseline",
-      "primary_baseline_frozen": false,
+      "reference": "qualification_convnext_tiny_A",
+      "primary_baseline_frozen": true,
       "paired_seed_deltas": [
-        0.03023009508803165,
-        -0.017801520511386393,
-        0.0041694277740247365
+        0.016286894870924717,
+        0.00856726665078067,
+        -0.0023796291541500203
       ],
-      "mean_delta": 0.0055326674502233315,
+      "mean_delta": 0.0074915107891851225,
       "conditional_patient_bootstrap": {
         "ci95": [
-          -0.007277980307247134,
-          0.024011459947299082
+          -0.003719879880369153,
+          0.027866167533586617
         ],
         "draws": 20000,
         "patients": 41,
@@ -1653,18 +1677,18 @@
       "selection_bias_corrected": false
     },
     "round1_final_only": {
-      "reference": "dino_baseline",
-      "primary_baseline_frozen": false,
+      "reference": "qualification_convnext_tiny_A",
+      "primary_baseline_frozen": true,
       "paired_seed_deltas": [
-        0.01656128713679561,
-        -0.013977433358816183,
-        0.008342223867534027
+        0.002618086919688678,
+        0.01239135380335088,
+        0.0017931669393592697
       ],
-      "mean_delta": 0.003642025881837818,
+      "mean_delta": 0.005600869220799609,
       "conditional_patient_bootstrap": {
         "ci95": [
-          -0.008249466518046316,
-          0.015512057464871677
+          -0.01411417202570694,
+          0.03115609618869956
         ],
         "draws": 20000,
         "patients": 41,
@@ -1677,18 +1701,18 @@
       "selection_bias_corrected": false
     },
     "round1_official4": {
-      "reference": "dino_baseline",
-      "primary_baseline_frozen": false,
+      "reference": "qualification_convnext_tiny_A",
+      "primary_baseline_frozen": true,
       "paired_seed_deltas": [
-        0.03013729737243198,
-        -0.01922841229877481,
-        -0.015184613156574933
+        0.01619409715532505,
+        0.0071403748633922515,
+        -0.02173367008474969
       ],
-      "mean_delta": -0.0014252426943059209,
+      "mean_delta": 0.0005336006446558702,
       "conditional_patient_bootstrap": {
         "ci95": [
-          -0.012816333475956218,
-          0.011486959192428144
+          -0.016995558876725863,
+          0.024054614460426848
         ],
         "draws": 20000,
         "patients": 41,
@@ -1701,42 +1725,18 @@
       "selection_bias_corrected": false
     },
     "round1_convnext": {
-      "reference": "dino_baseline",
-      "primary_baseline_frozen": false,
+      "reference": "qualification_convnext_tiny_A",
+      "primary_baseline_frozen": true,
       "paired_seed_deltas": [
-        0.01643317256489807,
-        -0.015956566870572786,
-        0.003491283288845848
+        0.002489972347791136,
+        0.010412220291594276,
+        -0.003057773639328909
       ],
-      "mean_delta": 0.0013226296610570436,
+      "mean_delta": 0.0032814730000188344,
       "conditional_patient_bootstrap": {
         "ci95": [
-          -0.02012023145783712,
-          0.017576555483143113
-        ],
-        "draws": 20000,
-        "patients": 41,
-        "paired_seeds": 3,
-        "patient_draws_shared_across_seeds": true,
-        "scope": "conditional descriptive interval after adaptive test feedback; not selection-adjusted"
-      },
-      "numerical_gate": false,
-      "independent_generalization_confirmed": false,
-      "selection_bias_corrected": false
-    },
-    "qualification_convnext_tiny_A": {
-      "reference": "dino_baseline",
-      "primary_baseline_frozen": false,
-      "paired_seed_deltas": [
-        0.013943200217106932,
-        -0.026368787162167062,
-        0.006549056928174757
-      ],
-      "mean_delta": -0.001958843338961791,
-      "conditional_patient_bootstrap": {
-        "ci95": [
-          -0.026930641684402613,
-          0.019054560351566757
+          -0.01053907833053512,
+          0.01779780571987522
         ],
         "draws": 20000,
         "patients": 41,
@@ -1749,18 +1749,18 @@
       "selection_bias_corrected": false
     },
     "qualification_convnext_tiny_B": {
-      "reference": "dino_baseline",
-      "primary_baseline_frozen": false,
+      "reference": "qualification_convnext_tiny_A",
+      "primary_baseline_frozen": true,
       "paired_seed_deltas": [
-        0.02791550984501001,
-        -0.013793063462666955,
-        -0.007870172344013993
+        0.013972309627903079,
+        0.012575723699500108,
+        -0.01441922927218875
       ],
-      "mean_delta": 0.002084091346109688,
+      "mean_delta": 0.004042934685071479,
       "conditional_patient_bootstrap": {
         "ci95": [
-          -0.01594631885796714,
-          0.021559595744095838
+          -0.0058752443817741305,
+          0.01983296701405522
         ],
         "draws": 20000,
         "patients": 41,
@@ -1773,18 +1773,18 @@
       "selection_bias_corrected": false
     },
     "qualification_efficientnet_v2_s_A": {
-      "reference": "dino_baseline",
-      "primary_baseline_frozen": false,
+      "reference": "qualification_convnext_tiny_A",
+      "primary_baseline_frozen": true,
       "paired_seed_deltas": [
-        0.010715448322922372,
-        -0.022954048321253917,
-        -0.006390780815101138
+        -0.0032277518941845607,
+        0.003414738840913145,
+        -0.012939837743275895
       ],
-      "mean_delta": -0.006209793604477561,
+      "mean_delta": -0.00425095026551577,
       "conditional_patient_bootstrap": {
         "ci95": [
-          -0.027057002381371313,
-          0.01622030279547189
+          -0.019457897816625633,
+          0.017003026766835468
         ],
         "draws": 20000,
         "patients": 41,
@@ -1797,18 +1797,18 @@
       "selection_bias_corrected": false
     },
     "qualification_efficientnet_v2_s_B": {
-      "reference": "dino_baseline",
-      "primary_baseline_frozen": false,
+      "reference": "qualification_convnext_tiny_A",
+      "primary_baseline_frozen": true,
       "paired_seed_deltas": [
-        0.001683117581375404,
-        -0.022756525095863456,
-        0.004674208230002419
+        -0.012260082635731528,
+        0.0036122620663036065,
+        -0.0018748486981723378
       ],
-      "mean_delta": -0.005466399761495211,
+      "mean_delta": -0.00350755642253342,
       "conditional_patient_bootstrap": {
         "ci95": [
-          -0.02948234005361229,
-          0.02265834714534232
+          -0.018535861444180013,
+          0.02065049583504029
         ],
         "draws": 20000,
         "patients": 41,
@@ -1821,18 +1821,18 @@
       "selection_bias_corrected": false
     },
     "qualification_swin_t_A": {
-      "reference": "dino_baseline",
-      "primary_baseline_frozen": false,
+      "reference": "qualification_convnext_tiny_A",
+      "primary_baseline_frozen": true,
       "paired_seed_deltas": [
-        0.007065835597789505,
-        -0.021294770679890607,
-        -0.002749649163422241
+        -0.006877364619317428,
+        0.0050740164822764555,
+        -0.009298706091596998
       ],
-      "mean_delta": -0.005659528081841114,
+      "mean_delta": -0.0037006847428793233,
       "conditional_patient_bootstrap": {
         "ci95": [
-          -0.03145573594069358,
-          0.012158672082644395
+          -0.021548256198082733,
+          0.012005512132348658
         ],
         "draws": 20000,
         "patients": 41,
@@ -1845,18 +1845,18 @@
       "selection_bias_corrected": false
     },
     "qualification_swin_t_B": {
-      "reference": "dino_baseline",
-      "primary_baseline_frozen": false,
+      "reference": "qualification_convnext_tiny_A",
+      "primary_baseline_frozen": true,
       "paired_seed_deltas": [
-        0.021319342668146835,
-        -0.011969633382810874,
-        0.013637754995336926
+        0.007376142451039902,
+        0.014399153779356189,
+        0.007088698067162169
       ],
-      "mean_delta": 0.007662488093557629,
+      "mean_delta": 0.00962133143251942,
       "conditional_patient_bootstrap": {
         "ci95": [
-          -0.012395741953394088,
-          0.02678191605154179
+          -0.007851295181280084,
+          0.03242931342071081
         ],
         "draws": 20000,
         "patients": 41,
@@ -1869,18 +1869,18 @@
       "selection_bias_corrected": false
     },
     "qualification_convnext_base_A": {
-      "reference": "dino_baseline",
-      "primary_baseline_frozen": false,
+      "reference": "qualification_convnext_tiny_A",
+      "primary_baseline_frozen": true,
       "paired_seed_deltas": [
-        0.01643317256489807,
-        -0.015956566870572786,
-        0.003491283288845848
+        0.002489972347791136,
+        0.010412220291594276,
+        -0.003057773639328909
       ],
-      "mean_delta": 0.0013226296610570436,
+      "mean_delta": 0.0032814730000188344,
       "conditional_patient_bootstrap": {
         "ci95": [
-          -0.02012023145783712,
-          0.017576555483143113
+          -0.01053907833053512,
+          0.01779780571987522
         ],
         "draws": 20000,
         "patients": 41,
@@ -1893,18 +1893,18 @@
       "selection_bias_corrected": false
     },
     "qualification_convnext_base_B": {
-      "reference": "dino_baseline",
-      "primary_baseline_frozen": false,
+      "reference": "qualification_convnext_tiny_A",
+      "primary_baseline_frozen": true,
       "paired_seed_deltas": [
-        0.016331132035749762,
-        -0.00889525378107725,
-        0.011968656511240239
+        0.00238793181864283,
+        0.017473533381089812,
+        0.005419599583065482
       ],
-      "mean_delta": 0.006468178255304251,
+      "mean_delta": 0.00842702159426604,
       "conditional_patient_bootstrap": {
         "ci95": [
-          -0.009184251151758058,
-          0.03175222972567217
+          -0.003973613603023771,
+          0.030169609359913037
         ],
         "draws": 20000,
         "patients": 41,
@@ -1917,8 +1917,8 @@
       "selection_bias_corrected": false
     }
   },
-  "primary_baseline": null,
-  "temporary_reference": "dino_baseline",
+  "primary_baseline": "qualification_convnext_tiny_A",
+  "temporary_reference": null,
   "unique_audited_checkpoints": 42,
   "complete_method_groups": 15,
   "units": {

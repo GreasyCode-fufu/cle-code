@@ -3,7 +3,7 @@
 用户授权流程：train训练 → val最早最佳权重 → test测试 → 根据test反馈设计下一方法。test参与开发和选择，以下不是独立泛化确认。历史研究已查看test，A–C构建使用过test标签；等级仅为模型一致性代理。
 
 完整方法组：15；独立复算权重：42；固定test：576图/41患者。
-固定主要baseline：资格审计尚未结束；DINO仅为临时报告参照。
+固定主要baseline：qualification_convnext_tiny_A。
 
 |方法|seed45 F1|seed46 F1|seed47 F1|平均F1|accuracy|恶性召回|患者等权accuracy|
 |---|---:|---:|---:|---:|---:|---:|---:|
@@ -29,17 +29,17 @@
 
 |方法|平均差（百分点）|患者条件95%区间（百分点）|
 |---|---:|---|
-|round1_relational|-1.6413|[-3.8139, -0.0765]|
-|round1_no_neighbor|-0.4765|[-1.8781, 1.3205]|
-|round1_no_depth|0.5533|[-0.7278, 2.4011]|
-|round1_final_only|0.3642|[-0.8249, 1.5512]|
-|round1_official4|-0.1425|[-1.2816, 1.1487]|
-|round1_convnext|0.1323|[-2.0120, 1.7577]|
-|qualification_convnext_tiny_A|-0.1959|[-2.6931, 1.9055]|
-|qualification_convnext_tiny_B|0.2084|[-1.5946, 2.1560]|
-|qualification_efficientnet_v2_s_A|-0.6210|[-2.7057, 1.6220]|
-|qualification_efficientnet_v2_s_B|-0.5466|[-2.9482, 2.2658]|
-|qualification_swin_t_A|-0.5660|[-3.1456, 1.2159]|
-|qualification_swin_t_B|0.7662|[-1.2396, 2.6782]|
-|qualification_convnext_base_A|0.1323|[-2.0120, 1.7577]|
-|qualification_convnext_base_B|0.6468|[-0.9184, 3.1752]|
+|dino_baseline|0.1959|[-1.9055, 2.6931]|
+|round1_relational|-1.4454|[-3.9891, 1.2488]|
+|round1_no_neighbor|-0.2806|[-1.7975, 2.0883]|
+|round1_no_depth|0.7492|[-0.3720, 2.7866]|
+|round1_final_only|0.5601|[-1.4114, 3.1156]|
+|round1_official4|0.0534|[-1.6996, 2.4055]|
+|round1_convnext|0.3281|[-1.0539, 1.7798]|
+|qualification_convnext_tiny_B|0.4043|[-0.5875, 1.9833]|
+|qualification_efficientnet_v2_s_A|-0.4251|[-1.9458, 1.7003]|
+|qualification_efficientnet_v2_s_B|-0.3508|[-1.8536, 2.0650]|
+|qualification_swin_t_A|-0.3701|[-2.1548, 1.2006]|
+|qualification_swin_t_B|0.9621|[-0.7851, 3.2429]|
+|qualification_convnext_base_A|0.3281|[-1.0539, 1.7798]|
+|qualification_convnext_base_B|0.8427|[-0.3974, 3.0170]|
