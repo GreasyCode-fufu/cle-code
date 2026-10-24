@@ -1,0 +1,52 @@
+from pathlib import Path
+import ast,difflib,hashlib,json,os
+R=Path('/home/login/data/cle/auto/GPT').resolve();G=R/'experiments/ac_affine_geometry_structure_window01';P=R/'experiments/ac_patient_alignment_prototype_window01';S=R/'experiments/ac_patient_alignment_structure_window01';M=R/'models/optimize/ac_patient_alignment_window01'
+assert os.getuid()==1000 and S.is_dir() and not M.exists() and not (S/'config.json').exists()
+def read(p):return json.loads(p.read_text())
+def save(p,x):p.write_text(json.dumps(x,ensure_ascii=False,indent=2)+'\n')
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+assert read(G/'independent_audit.json')['passed'] and read(G/'direct_control_finisher_complete.json')['passed'] and read(P/'complete.json')['passed']
+assert all(not Path('/proc',str(read(G/n)['pid']),'cmdline').exists() for n in ['bootstrap_identity.json','manager_entry_identity_v2.json','runtime_sampler_identity_v2.json','direct_control_finisher_identity.json'])
+M.mkdir();(M/'__init__.py').write_text('');(M/'library_cle.py').write_bytes((S/'library_cle.py').read_bytes());(M/'patient_alignment.py').write_bytes((P/'patient_alignment.py').read_bytes());(M/'c4_moment_stem.py').write_bytes((R/'models/optimize/ac_module_window01/c4_moment_stem.py').read_bytes())
+U=S/'upstream';U.mkdir()
+for p in (P/'upstream').iterdir():
+ if p.is_file():(U/p.name).write_bytes(p.read_bytes())
+(U/'prototype_protocol.md').write_bytes((P/'PROTO_PROTOCOL_ZH.md').read_bytes())
+working=read(G/'working_reference.json');working.update(predecessor_config_sha256=sha(G/'config.json'),predecessor_audit_sha256=sha(G/'independent_audit.json'),predecessor_direct_controls_sha256=sha(G/'direct_control_comparisons.json'),selection='original M moment retained; affine geometry not confirmed; frozen B0 unchanged; adaptive test dependency disclosed');save(S/'working_reference.json',working)
+save(S/'shared_snapshot_manifest.json',dict(prototype_config_sha256=sha(P/'config.json'),prototype_numeric_sha256=sha(P/'numeric_preflight_cpu.json'),prototype_source_sha256=sha(P/'patient_alignment.py'),official_SupCon_provenance=read(P/'upstream/provenance.json')))
+(S/'postprocessing_revision_v2.json').write_bytes((G/'postprocessing_revision_v2.json').read_bytes())
+original=(R/'experiments/ac_structure_20261024_window01/run_window01.py').read_text();engine=original
+def change(a,b):
+ global engine
+ assert engine.count(a)==1,(a,engine.count(a));engine=engine.replace(a,b)
+change('def worker(job_id):',"def compute_training_loss(model,logits,labels,indices):\n    raise RuntimeError('isolated objective callback must be bound before training')\n\n\ndef worker(job_id):")
+change('            loss_total = correct = n = skipped = 0','            loss_total = correct = n = skipped = 0\n            objective_sums = dict(ce_loss=0.,contrastive_loss=0.,valid_anchor_fraction=0.,mean_positive_pairs=0.)')
+change('                    loss = F.cross_entropy(logits, y)','                    loss = compute_training_loss(model, logits, y, idx)')
+change('                loss_total += float(loss.detach()) * len(y)','                loss_total += float(loss.detach()) * len(y)\n                for key in objective_sums:objective_sums[key] += model.objective_stats[key]*len(y)')
+change('            history.append(row)','            row.update({key:value/n for key,value in objective_sums.items()})\n            history.append(row)')
+ast.parse(engine);(S/'objective_engine.py').write_text(engine);(U/'isolated_engine_changes.diff').write_text(''.join(difflib.unified_diff(original.splitlines(True),engine.splitlines(True),fromfile='frozen_original',tofile='isolated_patient_objective')))
+src=(G/'run_module_structure.py').read_text()
+for a,b in [('ac_affine_geometry_window01','ac_patient_alignment_window01'),('weights/ac_affine_geometry_structure_window01','weights/ac_patient_alignment_structure_window01'),('run_geometry_manager.py','run_patient_manager.py'),('compare_geometry_controls.py','compare_patient_controls.py'),("f'geometry_{arm}_s{seed}'","f'patient_{arm}_s{seed}'"),('import run_window01 as engine','import objective_engine as engine')]:src=src.replace(a,b)
+src=src.replace("paths += [S/'run_patient_manager.py'", "paths += [S/'objective_engine.py',S/'objective_impl.py',S/'run_patient_manager.py'")
+src=src.replace("R/'experiments/ac_crossscale_structure_window01/independent_audit.json',R/'experiments/ac_crossscale_structure_window01/direct_control_comparisons.json',R/'experiments/ac_deform_geometry_prototype_window01/config.json',R/'experiments/ac_deform_geometry_prototype_window01/numeric_preflight_cpu.json'", "R/'experiments/ac_affine_geometry_structure_window01/independent_audit.json',R/'experiments/ac_affine_geometry_structure_window01/direct_control_comparisons.json',R/'experiments/ac_patient_alignment_prototype_window01/config.json',R/'experiments/ac_patient_alignment_prototype_window01/numeric_preflight_cpu.json'")
+src=src.replace("        weight_initialization=", "        auxiliary_objective=dict(CE_weight=1.,contrastive_weight=.05,temperature=.1,projection=[768,128,64],projection_parameters=106496,singleview=True,sameclass_excluded_pairs_not_negatives=True,empty_positive_anchor_zero=True,patient_ids_train_loss_only=True),\n        weight_initialization=")
+src=src.replace("comparisons=['mom_affine vs original M moments','mom_affine vs affine_only','mom_affine vs mom_permuted','mom_affine vs mom_dcn','mom_affine vs fixedB0']", "comparisons=['mom_cross vs original M moments','mom_cross vs cross_only','mom_cross vs mom_supcon','mom_cross vs mom_within','mom_cross vs fixedB0']")
+src=src.replace('freeze retained-moment local affine sampling drop-one matched-offset and matureDCN controls','freeze retained-moment cross-patient alignment drop-one matureSupCon and within-patient controls')
+src=src.replace("def bind():",(S/'objective_impl.py').read_text()+"\ndef bind():")
+src=src.replace('    engine.STUDY=S;', '    engine.compute_training_loss=compute_training_loss\n    engine.STUDY=S;')
+tree=ast.parse(src);node=next(n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name=='preflight');lines=src.splitlines(True);src=''.join(lines[:node.lineno-1])+(S/'preflight_impl.py').read_text()+'\n'+''.join(lines[node.end_lineno:])
+src=src.replace('try:x,y,_,_=next(it)','try:x,y,_,idx=next(it)').replace('except StopIteration:it=iter(dl);x,y,_,_=next(it)','except StopIteration:it=iter(dl);x,y,_,idx=next(it)').replace('loss=functional.cross_entropy(model(x),y)','loss=compute_training_loss(model,model(x),y,idx)')
+src=src.replace("novelty='library references and C4 prototype unproven; no promised SCI novelty/acceptance'","novelty='SupCon/patient-aware contrastive prior art; no promised efficacy SCI novelty or acceptance'")
+ast.parse(src);(S/'run_module_structure.py').write_text(src)
+audit=(G/'audit_module_structure.py').read_text().replace('weights/ac_affine_geometry_structure_window01','weights/ac_patient_alignment_structure_window01').replace('局部几何采样','患者条件表征').replace('mom_affine与原M方向矩检验新增几何贡献，affine_only去一，mom_permuted同参数打乱，mom_dcn保留自由DCN成熟算子。','mom_cross与原M检验辅助目标增量，cross_only去方向矩，mom_supcon是成熟标准目标，mom_within检验相反患者内机制。')
+(S/'audit_module_structure.py').write_text(audit)
+comp=(G/'compare_geometry_controls.py').read_text()
+for a,b in [('mom_affine','mom_cross'),('affine_only','cross_only'),('mom_permuted','mom_supcon'),('mom_dcn','mom_within'),('geometry','patient'),('局部几何采样','患者条件表征')]:comp=comp.replace(a,b)
+(S/'compare_patient_controls.py').write_text(comp)
+for n in ['finish_direct_controls.py','continuous_runtime_sampler.py','bootstrap_module_structure.py']:
+ text=(G/n).read_text().replace('run_geometry_manager.py','run_patient_manager.py').replace('compare_geometry_controls.py','compare_patient_controls.py').replace('experiments/ac_crossscale_structure_window01/independent_audit.json','experiments/ac_affine_geometry_structure_window01/independent_audit.json').replace('completed crossscale direct-control','completed patient-alignment direct-control');(S/n).write_text(text)
+(S/'run_patient_manager.py').write_text((G/'run_geometry_manager.py').read_text())
+(S/'predict_module_model.py').write_bytes((G/'predict_module_model.py').read_bytes())
+(S/'.gitignore').write_text('exports/\n__pycache__/\n*.pyc\n*.lock\n')
+save(S/'construction_receipt.json',dict(own_isolated_engine=True,original_engine_sha256=sha(R/'experiments/ac_structure_20261024_window01/run_window01.py'),prototype_byte_identical=True,predecessor_complete=True,overall_research_complete=False))
+print(json.dumps(dict(study=str(S),models=str(M),formal_models=12,prototype_proof_verified=True)))
