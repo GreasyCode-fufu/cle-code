@@ -11,6 +11,8 @@
 |Swin_C4|97.0389%|96.3527%|96.3394%|96.5770%|96.5856%|95.4545%|94.0282%|
 |mean_only_single|95.4265%|94.3697%|95.3054%|95.0339%|95.0810%|92.0455%|92.2975%|
 |mean_only_c4|96.4844%|94.9284%|96.1842%|95.8657%|95.8912%|93.5606%|92.7582%|
+|random_moments_single|95.6488%|95.6389%|95.4710%|95.5863%|95.6019%|94.3182%|92.4603%|
+|random_moments_c4|95.9906%|95.8094%|96.0057%|95.9352%|95.9491%|93.9394%|94.1314%|
 
 |比较|平均差（百分点）|患者条件95%区间（百分点）|
 |---|---:|---|
@@ -24,5 +26,15 @@
 |mean_only_c4_vs_dino_baseline|0.6884|[-1.5109, 2.5673]|
 |mean_only_c4_vs_DINO_C4|-0.2894|[-2.7368, 1.2482]|
 |mean_only_c4_vs_Swin_C4|-0.7113|[-2.4646, 0.3838]|
+|random_moments_single_vs_qualification_convnext_tiny_A|0.6048|[-0.3288, 1.8657]|
+|random_moments_single_vs_B0_C4|-0.3402|[-1.3631, 0.8657]|
+|random_moments_single_vs_dino_baseline|0.4089|[-1.6875, 2.2501]|
+|random_moments_single_vs_DINO_C4|-0.5688|[-2.8371, 0.8209]|
+|random_moments_single_vs_Swin_C4|-0.9908|[-2.5897, 0.2893]|
+|random_moments_c4_vs_qualification_convnext_tiny_A|0.9538|[0.0117, 2.6409]|
+|random_moments_c4_vs_B0_C4|0.0088|[-0.9618, 1.5665]|
+|random_moments_c4_vs_dino_baseline|0.7579|[-1.2416, 3.0143]|
+|random_moments_c4_vs_DINO_C4|-0.2198|[-2.3386, 1.4770]|
+|random_moments_c4_vs_Swin_C4|-0.6418|[-2.1104, 0.8938]|
 
 逐图预测、每seed混淆矩阵、训练预算、SHA见round_results.json及evaluations。库模块为成熟参照；组合不自动构成SCI创新。历史test已被查看，A–C构建用过test标签，等级为模型一致性代理。条件bootstrap不校正适应性筛选偏差。原18项几何结构研究另有完整账本，不混为本轮结果。
