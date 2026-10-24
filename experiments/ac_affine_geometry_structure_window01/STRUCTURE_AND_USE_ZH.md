@@ -70,3 +70,5 @@ cd /home/login/data/cle/auto/GPT
 共享LDConv/官方输出和输入梯度对齐，同时实测其bias非零、0.1hook不改变参数梯度及右下角权重和4的共同边界语义；本轮采用独立验证的官方DCNv1零填充，不称LDConv/FADC完整复现。FADC需要当前缺失的MMCV，未改旧Torch环境；DCN、LDConv、FADC、AffineFormer等已有形变/局部仿射相关先验，不把成熟概念或组合自动称SCI创新。详见MODULE_DIFFERENCES_ZH.md及原型upstream来源。
 
 旧test已查看，A–C构造用过其标签，用户明确test参与后续设计。所有结果为自适应内部开发，患者20k配对bootstrap仅条件区间，不校正筛选偏差，不称独立泛化或全新外部验证。原M方向矩+C4对B0仅+1.476485pp，严格低于1.5。当前12模型需完成全部seed/指标/混淆矩阵/预算/源码与权重SHA/逐图预测独立审计；门槛严格平均Δ>0.015、跨seed正、区间下界正及Fraction3/200复算不变。一般阴性继续研究，不保证提点、新颖或录用。
+
+数值元数据补充：preflight中mom_permuted的local_determinant_range指打乱前生成offset的A；打乱后的采样格不再是该局部仿射映射，不能据该数值宣称保持方向。CPU独立最小二乘拟合和offset边际精确核验见preflight_geometry_scope_audit.json；原预检/源码/config/训练均保持原样。
