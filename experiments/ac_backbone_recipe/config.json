@@ -1,0 +1,73 @@
+{
+  "sources": {
+    "files": {
+      "driver": "1e868b49dd15ac799ac05cd2330eac08d19707c48c9d1a185d540dbbf74f78ca",
+      "scheduler": "7132d6cf384109678379983dbaa459d04e1893ba7e5925c3bb03bbfbf49c8961",
+      "protocol": "db0ed413f5fccb09f96cba7ae1a8892f8476bec7a2f313c2ea7dd11655dcc445",
+      "transfer": "e87b2cbe23cec50c970e08f97e79535757285908bab28946d525038d05a45e70",
+      "token_model": "5e9135bc4db3dc9c851ef7e22789f01a19ed5b2398a36f737ab8eae2a3895825",
+      "dino_loader": "8bd185f60b5613ac471aa0e2a2c251de61fb1fc35b35071d60b7810ccc011bb3",
+      "core": "6fc181a109c9715ae2ac6fbc1e1cd815af8a0c29c2756f841c56b10b823c4bd6",
+      "resnet": "2df576cf8b7c8cb79eb08ce3630f06b7888b1114489021bd3d5eefcb91a8bc8d",
+      "common": "5ee932c6be971a1555bba3240f3b16503f750bb82c56bdba1a118675666e5e75",
+      "prior": "a233c96df8a855ed502242007ebfd469d3d8c261ddb22b72396116b54e716c4c",
+      "cohort": "8745383e789f1154f693eaec719507527e058c8e40dcb5160bc30026947ff0b3",
+      "resource": "398b31b594a1128ce8205a8423981024db7222ef36fe04c6d91283466a728cbd",
+      "license": "bd9df84b6904dfb10da00376fbb057f9927074ed967522ee8f8ec9a8f53c5020"
+    },
+    "runtime": {
+      "timm": "1.0.27",
+      "torch": "2.12.0+cu130",
+      "timm_vit_sha256": "f0f453b75952698059a1e82fa283a7a9cf2cf2217c33fc2c9cb1efc06947f552",
+      "position_resampling_sha256": "8e5beda55289ff7a4a91fadee6ea4134939b860642723f8fb5dc82039fcc4d37"
+    }
+  },
+  "cohort_sha256": "7ed4a82396abd4f4f7761cfb132f3ae97e5d61979136b702fa8cb76b56e3b509",
+  "manifest_sha256": "286f635945379cdde1b12449942048e6b246e51ba892022b1f06605be11b55f0",
+  "jobs_sha256": "64ea48e70d1c5630d4b1f4725c72ee8ffa23c0d6a6abfa4075f0265740f05ab1",
+  "prior_config_sha256": "83e85b0d26b5c7f71db31755573be0a5a866415a7c3d996410916116e8738e97",
+  "prior_audit_sha256": "43e42879764390758fe153bfb5b9d5970cf6aa1c82874ec4f40bc6edbc15fdfe",
+  "reference_hashes": {
+    "references/s45/complete.json": "ebd555e70e9eea3f735b8e040279eee3d9a39f865ae1f257dec580bdb0cb175b",
+    "references/s45/run_meta.json": "d555c2b7ca2dac93ec419016447739ed4df5c5a00effde742d0b29b1935ab471",
+    "references/s45/train_log.csv": "7cb98927aede5a700fb240b7257b665f1b3c273a94cba0591c0301713148b649",
+    "references/s45/validation_predictions.csv": "4c8e2b7457e2e752df6569c8527312ba6a76e628109669b732c3bc6360f0297e",
+    "references/s45/validation_complete.json": "5a305027236ef29482106c660e3c03ff21ab56977f6018d187e643405460d503",
+    "references/s46/complete.json": "a785101f50bfe2b5cb969bc259f2320f8895136fc81d96d7110ff70982aa643b",
+    "references/s46/run_meta.json": "c04796ba7920b97bc06b86918f0137a7ff79327426bcf3b8e387e5fdd708743d",
+    "references/s46/train_log.csv": "a302e30f3c0897974f23de1addab63f07de248b4d20ce1e626cc420802c18cf4",
+    "references/s46/validation_predictions.csv": "5100797ccd39532b393eb6d13d2ff8f751e32693d5f3db6afc659ba5089af9d2",
+    "references/s46/validation_complete.json": "b1fa28d78424b77c9e50bfbd93fb26de50d5eaade1e5a571f7f9df73ea42d05e",
+    "references/s47/complete.json": "53fe3e06ede46c516fb45a6a24130fac4092f77990c759327e2078447ce346c2",
+    "references/s47/run_meta.json": "de68112cd4aa8f300cfce250c323501228e0e61d59ea79551a42cad924774ed7",
+    "references/s47/train_log.csv": "ec92345fde972d6db22a4d3dec47eab732f410ae2c3ba57f2ab78dcad695385d",
+    "references/s47/validation_predictions.csv": "ee19dd57adb57152487870d911df9b9d23ca20444cac6c83a8f74fc320cc371e",
+    "references/s47/validation_complete.json": "a30ff831617603e6b40d67e7dac588e15ce82a951b175764e836524a8d4e04a0",
+    "reference_index.json": "9a3feba4005687b374949719b308f418472b77c9f121158d45dc0359fcfe9c1e"
+  },
+  "resnet_pretrained_sha256": "333f7ec4c6338da2cbed37f1fc0445f9624f1355633fa1d7eab79a91084c6cef",
+  "dino_pretrained_sha256": "b938bf1bc15cd2ec0feacfe3a1bb553fe8ea9ca46a7e1d8d00217f29aef60cd9",
+  "arms": [
+    "cnn_low_lr",
+    "dino_frozen",
+    "dino_full"
+  ],
+  "seeds": [
+    45,
+    46,
+    47
+  ],
+  "new_trainings": 9,
+  "reused_references": 3,
+  "initial_parallel": 6,
+  "max_parallel": 8,
+  "reserve_gpu_mib": 6144,
+  "new_job_gpu_mib": 3072,
+  "minimum_delta": 0.005,
+  "family_percentiles": [
+    0.625,
+    99.375
+  ],
+  "bootstrap_replicates": 20000,
+  "bootstrap_rng": 20261024
+}
