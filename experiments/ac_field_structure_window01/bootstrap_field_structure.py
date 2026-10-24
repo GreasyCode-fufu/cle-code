@@ -8,7 +8,7 @@ def save(v):
     v.update(pid=os.getpid(),updated_at=datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=8))).isoformat())
     p=S/'bootstrap_status.json';part=p.with_suffix('.tmp');part.write_text(json.dumps(v,indent=2));os.replace(part,p)
 def live(pid,needle):
-    try:return needle in (Path('/proc')/str(pid)/'cmdline').read_bytes().decode(errors='replace')
+    try:return needle in (Path('/proc')/str(pid)/'cmdline').read_bytes().replace(b'\0',b' ').decode(errors='replace')
     except (FileNotFoundError,PermissionError,ProcessLookupError):return False
 def call(stage):
     save(dict(phase=stage));code=subprocess.call([PY,'-u',str(S/'run_field_structure.py'),stage],cwd=R,
