@@ -1,0 +1,80 @@
+{
+  "passed": true,
+  "seed": 45,
+  "kind": "fov_residual",
+  "checkpoint_sha256": "52d92a8135b665f17c7c8bd2d27a86cb8cbd0f182fc5f59de68ea39ad8f6866a",
+  "prediction_sha256": "162c27915ca9c98a8596ac4733795e7e450a7c07eb875641543fa17dc0f217a7",
+  "test_images": 576,
+  "test_patients": 41,
+  "val_images": 427,
+  "val_max_probability_error": 0.0,
+  "test_max_probability_error": 0.0,
+  "state_unchanged": true,
+  "state_sha256": "035df09b96dbea0665545aeda29e2e55c49d80051b4c0af2326e47363a349d01",
+  "metrics": {
+    "macro_f1": 0.9542793684180934,
+    "accuracy": 0.9548611111111112,
+    "malignant_recall": 0.9204545454545454,
+    "patient_equal_accuracy": 0.9325507948552959,
+    "confusion_matrix": [
+      [
+        197,
+        9,
+        2
+      ],
+      [
+        10,
+        162,
+        4
+      ],
+      [
+        1,
+        0,
+        191
+      ]
+    ]
+  },
+  "val_metrics": {
+    "macro_f1": 0.973614521642833,
+    "accuracy": 0.9789227166276346,
+    "malignant_recall": 0.9620253164556962,
+    "patient_equal_accuracy": 0.9529736467236467,
+    "confusion_matrix": [
+      [
+        189,
+        6,
+        0
+      ],
+      [
+        3,
+        76,
+        0
+      ],
+      [
+        0,
+        0,
+        153
+      ]
+    ]
+  },
+  "gate_values": {
+    "backbone.encoder.0.0.0.alpha": -0.0001424538786523044,
+    "backbone.encoder.0.1.0.attn.alpha": -0.004912325646728277,
+    "backbone.encoder.0.1.1.attn.alpha": 0.004963910672813654,
+    "backbone.encoder.0.3.0.attn.alpha": 0.004614268895238638,
+    "backbone.encoder.0.3.1.attn.alpha": 0.0034572964068502188,
+    "backbone.encoder.0.5.0.attn.alpha": 0.001266868319362402,
+    "backbone.encoder.0.5.1.attn.alpha": 0.0015723513206467032,
+    "backbone.encoder.0.5.2.attn.alpha": 0.0017591607756912708,
+    "backbone.encoder.0.5.3.attn.alpha": 0.0031424500048160553,
+    "backbone.encoder.0.5.4.attn.alpha": 0.0006715526105836034,
+    "backbone.encoder.0.5.5.attn.alpha": 0.0002097594551742077,
+    "backbone.encoder.0.7.0.attn.alpha": 0.004602481611073017,
+    "backbone.encoder.0.7.1.attn.alpha": 0.023100947961211205,
+    "backbone.encoder.3.alpha": 0.038252778351306915
+  },
+  "parameters": 27521675,
+  "seconds": 6.9491878950211685,
+  "independent_generalization_confirmed": false,
+  "scope": "Independent computational reconstruction only; test adaptive selection remains."
+}
