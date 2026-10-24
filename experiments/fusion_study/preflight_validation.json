@@ -1,0 +1,32 @@
+{
+  "passed": true,
+  "timestamp": "2026-10-24T12:24:03.605562+08:00",
+  "new_neural_trainings": 0,
+  "temperature_fits": 45,
+  "cases": [
+    {
+      "arm": "resnet_bn_train",
+      "source_state_sha256": "c19b3ff8d5788ae5d6696b8923de520272e69f397dc3c2f428d74715bb189208",
+      "raw_probability_max_absolute_diff": 1.1920928955078125e-07
+    },
+    {
+      "arm": "resnet_bn_frozen",
+      "source_state_sha256": "98bb85c4c630bee11bcae39252d3aca050738e7d07e393f1c479b109cc855d06",
+      "raw_probability_max_absolute_diff": 1.1920928955078125e-07
+    },
+    {
+      "arm": "dino_full",
+      "source_state_sha256": "9df863774a521f738176e3309a23304b6953f1a6e0b6ae165cf2b61ab36bd129",
+      "raw_probability_max_absolute_diff": 1.1920928955078125e-07
+    }
+  ],
+  "checks": [
+    "45 signed checkpoints,exact original15folds and patient isolation",
+    "only original train indices,source coverage2386 per arm/seed",
+    "full cache SHA and source/runtime hashes",
+    "independent calibration finite-difference gradient and convex-grid objective",
+    "positive-temperature decisions invariant and arithmetic mean reference",
+    "three source levels eval/frozen/state unchanged/raw probabilities reproduced",
+    "only inner logits and labels passed to fitting; outer labels only used for scoring"
+  ]
+}
