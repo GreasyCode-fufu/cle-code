@@ -1,0 +1,46 @@
+{
+  "passed": true,
+  "device": "CPU",
+  "baseline": "frozen B0 convnext_tiny_A",
+  "budget": [
+    {
+      "kind": "plain",
+      "parameters": 27822435,
+      "counted_flops": 8909531136,
+      "pretrained_zero_init_logits_exact": true
+    },
+    {
+      "kind": "moments",
+      "parameters": 27840963,
+      "counted_flops": 9111840768,
+      "pretrained_zero_init_logits_exact": true
+    },
+    {
+      "kind": "mean_only",
+      "parameters": 27840963,
+      "counted_flops": 9111840768,
+      "pretrained_zero_init_logits_exact": true
+    },
+    {
+      "kind": "random_moments",
+      "parameters": 27840963,
+      "counted_flops": 9111840768,
+      "pretrained_zero_init_logits_exact": true
+    },
+    {
+      "kind": "group_mean",
+      "parameters": 27822435,
+      "counted_flops": 8996235264,
+      "pretrained_zero_init_logits_exact": false
+    }
+  ],
+  "new_parameters": 18528,
+  "cle_images": 0,
+  "network_training": 0,
+  "GPU_preflight": false,
+  "scope": "Synthetic224 integration in the already-frozen primary backbone; not selection of a weaker baseline or efficacy evidence.",
+  "source_sha256": {
+    "c4_moment_stem.py": "8cd90f0659a7a852fa16c7a848bca0c416f24913c3548ee6e6141792cf429fdd",
+    "check_c4_moment_tiny224.py": "462399d214d513390c57d1e6fe8df5a3307ea50f90e88dd576850d9abaa29167"
+  }
+}
