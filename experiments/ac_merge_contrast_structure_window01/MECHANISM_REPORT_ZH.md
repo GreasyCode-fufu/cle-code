@@ -8,5 +8,7 @@
 |mom_only_c4_vs_M_c4_moments|0.3533|[-1.0373, 1.7735]|
 |mom_local_single_vs_M_c4_moments|-0.1210|[-1.2804, 1.2762]|
 |mom_local_c4_vs_M_c4_moments|0.0897|[-1.0925, 1.6361]|
+|local_only_single_vs_M_c4_moments|-0.0414|[-1.8156, 1.6019]|
+|local_only_c4_vs_M_c4_moments|0.0632|[-1.3206, 1.6102]|
 
 mom_only检验向Swin迁移；mom_local对mom_only检验累计局部增量；local_only去Mom；mom_mean控制均值与参数；mom_global移除局部空间定位。全部seed/阴性保留，不能据点估计称创新或独立确认。
