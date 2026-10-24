@@ -1,0 +1,39 @@
+{
+  "passed": true,
+  "timestamp": "2026-10-24T09:15:12.194620+08:00",
+  "policies": [
+    {
+      "variant": "head_only",
+      "trainable_parameters": 1539,
+      "frozen_bn": 36,
+      "active_bn": 0
+    },
+    {
+      "variant": "stage4_only",
+      "trainable_parameters": 13115907,
+      "frozen_bn": 29,
+      "active_bn": 7
+    },
+    {
+      "variant": "bn_frozen",
+      "trainable_parameters": 21286211,
+      "frozen_bn": 36,
+      "active_bn": 0
+    },
+    {
+      "variant": "starting_anchor",
+      "trainable_parameters": 21286211,
+      "frozen_bn": 0,
+      "active_bn": 36
+    }
+  ],
+  "checks": [
+    "paired initialized eval predictions bitwise identical",
+    "exact trainable parameter sets",
+    "real-image finite AMP gradients and updates at settled scale 128; trainer retains original dynamic scale",
+    "frozen parameters unchanged and required backbone/head gradients nonzero",
+    "frozen/active BN counters independently checked",
+    "starting-point penalty zero at initialization and analytical gradient",
+    "six copied baseline hashes and checkpoint signatures"
+  ]
+}
