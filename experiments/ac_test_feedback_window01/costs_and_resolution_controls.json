@@ -1,6 +1,6 @@
 {
-  "created_at": "2026-10-24T20:14:47.169785+08:00",
-  "test_results_sha256": "9f293b3449157279292927a01a26857e941a013090c188aef09ec9f2a9af257d",
+  "created_at": "2026-10-24T20:51:29.635431+08:00",
+  "test_results_sha256": "1b24f5a1218a1c54bff913e5dcad2d7c011d8673c9f3c5f9ae8473bdb3ce8e36",
   "costs": {
     "dino_baseline": {
       "parameters": 21631107,
@@ -1051,6 +1051,81 @@
         ]
       ],
       "note": "Training elapsed is original run under its recorded concurrency, not an isolated speed benchmark. Reused DINO primary time excludes old inference; independent reinference is timed separately."
+    },
+    "qualification_convnext_base_B": {
+      "parameters": 87569539,
+      "counted_flops": 90242193408,
+      "gflops": 90.242193408,
+      "crop": 384,
+      "training_seconds_by_seed": [
+        1473.7948492690048,
+        1474.0939006929984,
+        692.2232264529739
+      ],
+      "primary_inference_seconds": [
+        3.2201831320126075,
+        2.7653145370131824,
+        2.5162815730145667
+      ],
+      "independent_reinference_seconds": [
+        2.4964107779960614,
+        1.9592500360158738,
+        2.0105968120042235
+      ],
+      "seed_confusion_matrices": [
+        [
+          [
+            202,
+            4,
+            2
+          ],
+          [
+            13,
+            161,
+            2
+          ],
+          [
+            5,
+            0,
+            187
+          ]
+        ],
+        [
+          [
+            202,
+            4,
+            2
+          ],
+          [
+            10,
+            162,
+            4
+          ],
+          [
+            3,
+            0,
+            189
+          ]
+        ],
+        [
+          [
+            199,
+            6,
+            3
+          ],
+          [
+            7,
+            166,
+            3
+          ],
+          [
+            4,
+            0,
+            188
+          ]
+        ]
+      ],
+      "note": "Training elapsed is original run under its recorded concurrency, not an isolated speed benchmark. Reused DINO primary time excludes old inference; independent reinference is timed separately."
     }
   },
   "resolution_controls": {
@@ -1117,6 +1192,28 @@
         "scope": "conditional descriptive interval after adaptive test feedback; not selection-adjusted"
       },
       "compute_ratio": 3.1847593992229,
+      "novel_network_component": false,
+      "independent_confirmation": false
+    },
+    "convnext_base": {
+      "B384_minus_A224_seed_deltas": [
+        -0.00010204052914830619,
+        0.007061313089495536,
+        0.008477373222394391
+      ],
+      "mean_delta": 0.005145548594247207,
+      "patient_conditional_bootstrap": {
+        "ci95": [
+          -0.008451973061412122,
+          0.02487928029937595
+        ],
+        "draws": 20000,
+        "patients": 41,
+        "paired_seeds": 3,
+        "patient_draws_shared_across_seeds": true,
+        "scope": "conditional descriptive interval after adaptive test feedback; not selection-adjusted"
+      },
+      "compute_ratio": 2.93877512229009,
       "novel_network_component": false,
       "independent_confirmation": false
     }
