@@ -1,0 +1,29 @@
+{
+  "passed": true,
+  "timestamp": "2026-10-24T15:49:30.197917+08:00",
+  "profile": {
+    "loader_wait_seconds": 0.052858745999401435,
+    "compute_seconds": 0.40131566603668034,
+    "batches": 12,
+    "peak_gpu_allocated_mib": 877.51904296875,
+    "cpu_threads": 1,
+    "loader_workers": 2,
+    "max_parallel": 6,
+    "resource_snapshot": {
+      "timestamp": "2026-10-24T15:49:30.197773+08:00",
+      "gpu_util": 38,
+      "gpu_used_mib": 9419,
+      "gpu_free_mib": 39081,
+      "cpu_load1": 0.080078125,
+      "cpu_count": 24
+    }
+  },
+  "checks": [
+    "15 reused train checkpoints/signatures/60ep/outer probabilities",
+    "30 split-local val/test patient-isolated tasks with exact coverage",
+    "full cache SHA and original labels/splits",
+    "CPU-thread1 model state and AMP logits identical to reference",
+    "12 real training batches finite AMP updates,loader wait and GPU memory profile",
+    "original loader2 workers preserved; no augmentation rewrite"
+  ]
+}
