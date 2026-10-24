@@ -1,0 +1,27 @@
+{
+  "class_names": [
+    "Benign_lesions",
+    "Malignant_lesions",
+    "body_of_stomach_normal"
+  ],
+  "models": {
+    "dino": {
+      "final_job_id": "final_round3_acbackbone_dino_full_s45",
+      "checkpoint": "weights/ac_final_evaluation/deployment/dino_s45.pth",
+      "checkpoint_sha256": "439a9c08765ada39e11962f0763591a31d1b144d31081d88d744f520a2a4b4f7",
+      "seed": 45,
+      "validation_f1": 0.9852333295608263,
+      "selection": "First preregistered new seed; not best seed and never selected on test."
+    },
+    "cnn": {
+      "final_job_id": "final_round2_acls_plain_s45",
+      "checkpoint": "weights/ac_final_evaluation/deployment/cnn_s45.pth",
+      "checkpoint_sha256": "11579eda9d0360df558de83cbbcdf72d0ec10c17a0175428bdd738c5958d33d0",
+      "seed": 45,
+      "validation_f1": 0.9727566638718113,
+      "selection": "First preregistered new seed; not best seed and never selected on test."
+    }
+  },
+  "default": "dino",
+  "policy": "Higher validation-mean exploratory DINO candidate; validation family gate failed. CNN compute alternative. No test reselection."
+}
