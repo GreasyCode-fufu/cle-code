@@ -22,5 +22,11 @@
 |mom_permuted_c4_vs_M_c4_moments|-0.3560|[-0.9800, 0.0287]|
 |mom_permuted_c4_vs_M_c4_aug|-0.2261|[-0.8998, 0.8211]|
 |mom_permuted_c4_vs_M_eca|0.2365|[-0.5970, 1.4489]|
+|mom_dcn_single_vs_M_c4_moments|-0.7732|[-1.8464, 0.0105]|
+|mom_dcn_single_vs_M_c4_aug|-0.5834|[-1.7201, 0.6640]|
+|mom_dcn_single_vs_M_eca|-0.3494|[-0.9008, 0.3449]|
+|mom_dcn_c4_vs_M_c4_moments|-1.1705|[-2.5344, -0.2872]|
+|mom_dcn_c4_vs_M_c4_aug|-1.0405|[-2.1462, 0.3559]|
+|mom_dcn_c4_vs_M_eca|-0.5779|[-1.0976, 0.1218]|
 
 mom_affine与原M方向矩检验新增几何贡献，affine_only去一，mom_permuted同参数打乱，mom_dcn保留自由DCN成熟算子。全部seed/阴性保留，不能据点估计称创新或独立确认。
