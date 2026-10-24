@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "timestamp": "2026-10-24T08:41:57.867997+08:00",
+  "objectives": [
+    "label_smooth",
+    "gce",
+    "elr",
+    "patient_balance"
+  ],
+  "checks": [
+    "GCE analytical gradient and CE limit",
+    "ELR official-equation values and index-isolated detached EMA",
+    "CE AdamW/AMP update bitwise identical to immutable trainer step",
+    "real-image finite objective/backward",
+    "patient class mass and within-class patient contribution balanced",
+    "six reused baseline checkpoint hashes and validation reproduction"
+  ]
+}
