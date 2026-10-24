@@ -10,8 +10,7 @@ D=S/'references_official';D.mkdir(exist_ok=True)
 sources={
  'fasternet.py':'https://raw.githubusercontent.com/JierunChen/FasterNet/master/models/fasternet.py',
  'partialconv2d.py':'https://raw.githubusercontent.com/NVIDIA/partialconv/master/models/partialconv2d.py',
- 'FasterNet_LICENSE':'https://raw.githubusercontent.com/JierunChen/FasterNet/master/LICENSE',
- 'PartialConv_LICENSE':'https://raw.githubusercontent.com/NVIDIA/partialconv/master/LICENSE.txt',
+ 'PartialConv_LICENSE':'https://raw.githubusercontent.com/NVIDIA/partialconv/master/LICENSE',
 }
 records={}
 opener=urllib.request.build_opener(urllib.request.ProxyHandler({'https':'http://127.0.0.1:12789'}))
@@ -25,7 +24,7 @@ for name,url in sources.items():
 
 def one_class(path,name):
  text=path.read_text(encoding='utf8');node=next(n for n in ast.parse(text).body if isinstance(n,ast.ClassDef) and n.name==name)
- namespace=dict(torch=torch,nn=nn,Tensor=torch.Tensor)
+ namespace=dict(torch=torch,nn=nn,F=torch.nn.functional,Tensor=torch.Tensor)
  exec(compile(ast.Module(body=[node],type_ignores=[]),str(path),'exec'),namespace)
  return namespace[name]
 
@@ -56,12 +55,19 @@ for i in range(5):
   total=mp[i:i+3,j:j+3].sum()
   if total:expected[i,j]=(xp[i:i+3,j:j+3]*kernel).sum()*9/(total+1e-8)+bias
 assert np.allclose(actual[0,0].numpy(),expected,atol=1e-12)
+Partial=one_class(D/'partialconv2d.py','PartialConv2d')
+operator=Partial(1,1,3,padding=1,return_mask=True).double()
+with torch.no_grad():operator.weight.copy_(w);operator.bias.fill_(bias)
+official,official_mask=operator(x,m)
+assert torch.allclose(official,actual,atol=1e-12,rtol=0)
+empty,_=operator(x,torch.zeros_like(m));assert torch.equal(empty,torch.zeros_like(empty))
 zero=nn.functional.conv2d(torch.zeros_like(m),torch.ones_like(w),padding=1)
 assert torch.equal(zero.clamp(0,1),torch.zeros_like(zero))
 report=dict(passed=True,timestamp=datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=8))).isoformat(),
- source_fetch_note='Initial direct raw.githubusercontent.com read timed out; existing SSH-configured proxy succeeded, no proxy/other process modified.',
+ source_fetch_note='Initial raw-host reads timed out; FasterNet read via existing configured proxy, NVIDIA source/license obtained via GitHub connector. No proxy or other process modified. FasterNet root has no separate LICENSE; source header declares MIT.',
  source_files=records,shared_path=str(shared),shared_sha256=hashlib.sha256(shared.read_bytes()).hexdigest(),
  faster_channel_pconv_checks=checks,masked_partialconv_bias_and_boundary_numpy_max_error=float(np.max(np.abs(actual[0,0].numpy()-expected))),
+ nvidia_official_operator_max_error=float((official-actual).abs().max().detach()),nvidia_empty_mask_output_zero=True,
  masked_partialconv_empty_support_valid_zero=True,
  meaning='Shared21 implements FasterNet channel-partial convolution, not support-normalized masked PartialConv. Only its class AST executed in an isolated namespace; no import/cache write in shared library.',
  limitation='NVIDIA operator formula checked against independent scalar reference; no claim of whole inpainting network reproduction or CLE performance.',
