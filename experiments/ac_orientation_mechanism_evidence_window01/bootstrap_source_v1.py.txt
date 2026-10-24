@@ -1,0 +1,41 @@
+from pathlib import Path
+import csv,hashlib,json,os,subprocess,sys,time
+S=Path(__file__).resolve().parent;R=S.parents[1];sys.path.insert(0,str(R/'experiments/ac_patient_mechanism_evidence_window01'))
+import patient_evidence as guard
+guard.S=S
+PY='/home/login/miniconda3/envs/sunfuxiang/bin/python'
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+def read(p):return json.loads(p.read_text())
+def save(p,x):p.parent.mkdir(parents=True,exist_ok=True);p.write_text(json.dumps(x,ensure_ascii=False,indent=2)+'\n')
+def prepare():
+    if (S/'config.json').exists():return
+    assert os.getuid()==1000 and S.stat().st_uid==1000
+    ac=R/'experiments/ac_dataset_v1';data=read(ac/'dataset_config.json');rows={r['index']:r for r in read(ac/'dataset_manifest.json')};val=[rows[i] for i in data['indices']['val']]
+    assert len(val)==427 and len({r['group_id'] for r in val})==39;save(S/'val_manifest.json',val)
+    sources={n:sha(S/n) for n in ['bootstrap_orientation_evidence.py','analyze_orientation_evidence.py','audit_orientation_evidence.py','ORIENTATION_MECHANISM_PROTOCOL_ZH.md']}
+    locked={str(p.relative_to(R)):sha(p) for p in [S/'val_manifest.json',ac/'dataset_config.json',ac/'dataset_manifest.json',ac/'independent_dataset_audit.json',R/'experiments/ac_patient_mechanism_evidence_window01/patient_evidence.py']}
+    units=[];T=R/'experiments/ac_test_feedback_window01'
+    families={'B0':(R/'experiments/ac_c4_budget_controls_window01/controls/B0','qualification_convnext_tiny_A'),'DINO':(R/'experiments/ac_c4_budget_controls_window01/controls/DINO','dino_baseline'),'Swin':(R/'experiments/ac_orientation_reference_window01','qualification_swin_t_B')}
+    for family,(root,method) in families.items():
+        registry=T/'methods_v2'/f'{method}.json';locked[str(registry.relative_to(R))]=sha(registry);registration=read(registry)
+        for seed in [45,46,47]:
+            unit=next(x for x in registration['units'] if x['seed']==seed);folder=root/'runs'/f's{seed}';complete=read(folder/'complete.json');assert complete['checkpoint_sha256']==unit['checkpoint_sha256']
+            training=R/unit['complete'];assert sha(training)==unit['complete_sha256']
+            original=training.parent/'validation_predictions.csv';assert original.exists(),str(original)
+            dest=S/'inputs'/family/f's{seed}';dest.mkdir(parents=True)
+            mapping={'val_views.npy':folder/'val_views.npy','val_predictions.csv':folder/'val_predictions.csv','original_validation_predictions.csv':original,'orientation_complete.json':folder/'complete.json','training_complete.json':training}
+            for name,path in mapping.items():
+                if name in ['val_views.npy','val_predictions.csv']:assert sha(path)==complete['files'][name]
+                (dest/name).write_bytes(path.read_bytes());locked[str((dest/name).relative_to(R))]=sha(dest/name)
+            units.append(dict(family=family,seed=seed,checkpoint_sha256=unit['checkpoint_sha256'],source_folder=str(folder.relative_to(R)),copied_only_val_arrays=True))
+    save(S/'config.json',dict(created_at=guard.core.timestamp(),sources=sources,locked=locked,families=list(families),seeds=[45,46,47],units=units,images=427,patients=39,bootstrap_seed=20261026,bootstrap_replicates=20000,network_forwards=0,training_updates=0,test_prediction_arrays_read=0,limitation='conditional diagnostic of val-selected models; Swin also selected using prior test; not OOF or independent confirmation; frozen18 module jobs unchanged'))
+    save(S/'jobs.json',[dict(family=k,task='probability-only val orientation diagnostic',paired_seeds=[45,46,47]) for k in families])
+    guard.commit('research: freeze val-only orientation disagreement, rescue-harm and patient uncertainty diagnostics')
+def main():
+    save(S/'identity.json',dict(pid=os.getpid(),source_sha256=sha(__file__),started_at=guard.core.timestamp()));prepare()
+    if not (S/'independent_computational_audit.json').exists():
+        for name in ['analyze_orientation_evidence.py','audit_orientation_evidence.py']:subprocess.run([PY,str(S/name)],cwd=R,stdin=subprocess.DEVNULL,check=True)
+    assert read(S/'independent_computational_audit.json')['passed']
+    guard.commit('analysis: independently audit fixed val orientation sensitivity and preserve unfavorable C4 evidence')
+    save(S/'complete.json',dict(passed=True,result_sha256=sha(S/'orientation_evidence_results.json'),audit_sha256=sha(S/'independent_computational_audit.json'),completed_at=guard.core.timestamp(),new_network_training=0,overall_research_complete=False))
+if __name__=='__main__':main()

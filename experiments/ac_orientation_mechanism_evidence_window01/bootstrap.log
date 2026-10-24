@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/data/cle/auto/GPT/experiments/ac_orientation_mechanism_evidence_window01/bootstrap_orientation_evidence.py", line 41, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/data/cle/auto/GPT/experiments/ac_orientation_mechanism_evidence_window01/bootstrap_orientation_evidence.py", line 35, in main
+    save(S/'identity.json',dict(pid=os.getpid(),source_sha256=sha(__file__),started_at=guard.core.timestamp()));prepare()
+                                                              ^^^^^^^^^^^^^
+  File "/data/cle/auto/GPT/experiments/ac_orientation_mechanism_evidence_window01/bootstrap_orientation_evidence.py", line 7, in sha
+    def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+                                     ^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'read_bytes'
