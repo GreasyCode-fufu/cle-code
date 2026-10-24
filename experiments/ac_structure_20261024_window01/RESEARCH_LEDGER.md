@@ -44,3 +44,8 @@ SSH ubuntu-server实际Dell-T2，uid1000 login；指定项目/models/shared modu
 0c6c084 research: preregister new CLE window baseline, relational depth mechanism and paired controls
 be2baed chore: close delivered AC-only dataset research and final model evaluation
 ```
+
+
+## 第一轮审计完成与第二阶段衔接
+
+2026-10-24T18:51:34.119088+08:00。首轮18新+3复用独立审计通过，候选开发差+0.159pt，五比较家族区间跨零且一个seed负，未确认结构贡献。全部结果提交1b95ce3。按追加授权转入独立ac_qualification_20261024_window01，24有效/21新训/3复用，已完成预注册、真图预检、吞吐实测并实际训练。无新test，整体目标继续；详见PHASE_TRANSITION_REPORT_ZH.md。

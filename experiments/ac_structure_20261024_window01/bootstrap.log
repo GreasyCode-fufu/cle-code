@@ -249,3 +249,22 @@
 [main 9fe01a9] results: retain new CLE window completed jobs window01_convnext_s46
  2 files changed, 10 insertions(+), 6 deletions(-)
 {"baseline": {"macro_f1": 0.9827838861568007, "accuracy": 0.9859484777517564, "malignant_recall": 0.9831223628691982, "patient_equal_accuracy": 0.9827139566501267, "seed_macro_f1": [0.9852333295608263, 0.97497595089378, 0.9881423780157957], "parameters": 21631107}, "relational": {"macro_f1": 0.9843778835179114, "accuracy": 0.9875097580015613, "malignant_recall": 0.9873417721518987, "patient_equal_accuracy": 0.9857220418697507, "seed_macro_f1": [0.9883153158915968, 0.9824729738373952, 0.9823453608247422], "parameters": 21816486}, "no_neighbor": {"macro_f1": 0.9839611778147361, "accuracy": 0.9867291178766587, "malignant_recall": 0.9789029535864979, "patient_equal_accuracy": 0.9832816103649437, "seed_macro_f1": [0.9851217141522907, 0.9833809096459589, 0.9833809096459589], "parameters": 21816486}, "no_depth": {"macro_f1": 0.9829421202929339, "accuracy": 0.9859484777517564, "malignant_recall": 0.9746835443037973, "patient_equal_accuracy": 0.9860678673178672, "seed_macro_f1": [0.9883153158915968, 0.9803849385708715, 0.9801261064163337], "parameters": 21816486}, "final_only": {"macro_f1": 0.9846445280077649, "accuracy": 0.9875097580015613, "malignant_recall": 0.9831223628691982, "patient_equal_accuracy": 0.9871158933658933, "seed_macro_f1": [0.9883153158915968, 0.9803849385708715, 0.9852333295608263], "parameters": 21816486}, "official4": {"macro_f1": 0.9845444497468848, "accuracy": 0.9875097580015613, "malignant_recall": 0.9704641350210971, "patient_equal_accuracy": 0.9825702075702075, "seed_macro_f1": [0.9881423780157957, 0.9822135670236936, 0.9832774042011652], "parameters": 21634563}, "convnext": {"macro_f1": 0.9796415888394483, "accuracy": 0.983606557377049, "malignant_recall": 0.9873417721518987, "patient_equal_accuracy": 0.9714744130967535, "seed_macro_f1": [0.9769549401795664, 0.9823453608247422, 0.979624465514036], "parameters": 87569539}}
+[main 1b95ce3] results: independently audit first new-window CLE round, preserve all outcomes
+ 19 files changed, 6930 insertions(+), 22 deletions(-)
+ create mode 100644 experiments/ac_structure_20261024_window01/ROUND1_REPORT_ZH.md
+ create mode 100644 experiments/ac_structure_20261024_window01/independent_audit.json
+ create mode 100644 experiments/ac_structure_20261024_window01/paired_comparisons.json
+ create mode 100644 experiments/ac_structure_20261024_window01/round1_results.json
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_final_only_s45/diagnostic_off_predictions.csv
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_final_only_s46/diagnostic_off_predictions.csv
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_final_only_s47/diagnostic_off_predictions.csv
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_no_depth_s45/diagnostic_off_predictions.csv
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_no_depth_s46/diagnostic_off_predictions.csv
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_no_depth_s47/diagnostic_off_predictions.csv
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_no_neighbor_s45/diagnostic_off_predictions.csv
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_no_neighbor_s46/diagnostic_off_predictions.csv
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_no_neighbor_s47/diagnostic_off_predictions.csv
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_relational_s45/diagnostic_off_predictions.csv
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_relational_s46/diagnostic_off_predictions.csv
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_relational_s47/diagnostic_off_predictions.csv
+ create mode 100644 experiments/ac_structure_20261024_window01/validation_error_evidence.csv
