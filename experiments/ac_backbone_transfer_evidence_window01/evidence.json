@@ -1,0 +1,599 @@
+{
+  "passed": true,
+  "source_sha256": "1536bdfdd3904d94f112fdf34ffe8c0641553b88b4c22729ed9a2c96845f4bc2",
+  "known_window_stages": [
+    {
+      "study": "ac_structure_20261024_window01",
+      "config_sha256": "296f2960324821cf76166d9815f48c6528957bb782d647d01a9abe9dfe9f5634",
+      "family": null,
+      "families": null,
+      "recipe": {
+        "epochs": 60,
+        "batch_size": 32,
+        "encoder_lr": 1e-05,
+        "head_and_readout_lr": 0.0001,
+        "weight_decay": 0.05,
+        "clip_norm": 1.0,
+        "optimizer": "AdamW",
+        "schedule": "cosine_to_zero",
+        "amp": "dynamic_fp16",
+        "cpu_threads": 1,
+        "workers": 2,
+        "convnext_stochastic_depth": 0.1,
+        "augmentation": "historical unchanged resize256/crop224"
+      },
+      "arms": [
+        "relational",
+        "no_neighbor",
+        "no_depth",
+        "final_only",
+        "official4",
+        "convnext"
+      ],
+      "jobs": 18
+    },
+    {
+      "study": "ac_qualification_20261024_window01",
+      "config_sha256": "0967996bd587a783df09a2ab04d1094b00e078e205ffaeb2e0f906d7294f5dbe",
+      "family": null,
+      "families": [
+        "convnext_tiny",
+        "efficientnet_v2_s",
+        "swin_t",
+        "convnext_base"
+      ],
+      "recipe": {
+        "epochs": 60,
+        "batch_size": 32,
+        "encoder_lr": 1e-05,
+        "head_lr": 0.0001,
+        "weight_decay": 0.05,
+        "clip1": true,
+        "amp": "dynamic_fp16",
+        "optimizer": "AdamW",
+        "scheduler": "cosine_to_zero",
+        "stochastic_depth": 0.1,
+        "efficientnet_dropout": 0.2,
+        "workers": 2,
+        "cpu_threads": 1
+      },
+      "arms": null,
+      "jobs": 21
+    },
+    {
+      "study": "ac_field_structure_window01",
+      "config_sha256": "9a0dcae7307eae412a846ddf09acfc755c03fd1f8c5736958560f9c4f99ee19c",
+      "family": "swin_t",
+      "families": null,
+      "recipe": "B",
+      "arms": [
+        "fov_residual",
+        "field_pool",
+        "reference",
+        "no_field",
+        "no_local_norm",
+        "no_pool"
+      ],
+      "jobs": 18
+    },
+    {
+      "study": "ac_module_structure_window01",
+      "config_sha256": "3346f22a92ddb1658d73d37e5512ffcb311625feb641dc2ef4565122b17ac633",
+      "family": "convnext_tiny",
+      "families": null,
+      "recipe": "A",
+      "arms": [
+        "wtconv",
+        "simam",
+        "eca",
+        "ema",
+        "c4_moments",
+        "c4_aug"
+      ],
+      "jobs": 18,
+      "factory_source": "def model_for(seed,arm):\n    assert arm in ['plain',*ARMS]\n    return LibraryNet(q.model_for(seed,'convnext_tiny_A'),arm).cuda()",
+      "factory_file_sha256": "f237e2e229b011e787047dfa852bf168695a6cb1997714473a1edf6194c2f3da"
+    },
+    {
+      "study": "ac_moment_refinement_window01",
+      "config_sha256": "0eb5c8765377105c0ff98bbaadf7fafcbd9b1b64473a9491e9c81271eb82e185",
+      "family": "convnext_tiny",
+      "families": null,
+      "recipe": "A",
+      "arms": [
+        "mean_only",
+        "random_moments",
+        "moments_eca",
+        "aug_moments"
+      ],
+      "jobs": 12,
+      "factory_source": "def model_for(seed,arm):\n    assert arm in ['plain','moments','eca_reference',*ARMS]\n    return LibraryNet(q.model_for(seed,'convnext_tiny_A'),arm).cuda()",
+      "factory_file_sha256": "d37d7d27adb812a8b2f662950d87c1784ae6ab841bc9d8bb043c87a8a64f43af"
+    },
+    {
+      "study": "ac_crossscale_structure_window01",
+      "config_sha256": "346b437341364f4cb8377dd251c7aa127b164aba25559ab713c3d283711dc69a",
+      "family": "convnext_tiny",
+      "families": null,
+      "recipe": "A",
+      "arms": [
+        "mom_corr",
+        "corr_only",
+        "mom_shuffle",
+        "mom_bilinear"
+      ],
+      "jobs": 12,
+      "factory_source": "def model_for(seed,arm):\n    assert arm in ['plain','moments',*ARMS]\n    return LibraryNet(q.model_for(seed,'convnext_tiny_A'),arm).cuda()",
+      "factory_file_sha256": "300688223e2da88e86e28d8acdf03036a977d237c774ae7e8586c355e3f9322f"
+    },
+    {
+      "study": "ac_affine_geometry_structure_window01",
+      "config_sha256": "3432da211c08f03d5984dd3d86bb4c9acc874e1171032a7d63270dd75745f682",
+      "family": "convnext_tiny",
+      "families": null,
+      "recipe": "A",
+      "arms": [
+        "mom_affine",
+        "affine_only",
+        "mom_permuted",
+        "mom_dcn"
+      ],
+      "jobs": 12,
+      "factory_source": "def model_for(seed,arm):\n    assert arm in ['plain','moments',*ARMS]\n    return LibraryNet(q.model_for(seed,'convnext_tiny_A'),arm).cuda()",
+      "factory_file_sha256": "58b50fdb6256b14088483844bf288dc8098efbadd01effe70d31fe903f28837b"
+    },
+    {
+      "study": "ac_patient_alignment_structure_window01",
+      "config_sha256": "68e99795c2f3de1018a879abadd51e77db72d4a04fd483b32689398a9de770be",
+      "family": "convnext_tiny",
+      "families": null,
+      "recipe": "A",
+      "arms": [
+        "mom_cross",
+        "cross_only",
+        "mom_supcon",
+        "mom_within"
+      ],
+      "jobs": 12,
+      "factory_source": "def model_for(seed,arm):\n    assert arm in ['plain','moments',*ARMS]\n    return LibraryNet(q.model_for(seed,'convnext_tiny_A'),arm).cuda()",
+      "factory_file_sha256": "0202b1a21e1129acbedf40a6d3a0c7fd1004570a911533327c20de520d088cb7"
+    },
+    {
+      "study": "ac_harmonic_partition_structure_window01",
+      "config_sha256": "39c104371c68e014d4925a7daab9dd7da003f722ea2169bcdf9a802f84eec0a7",
+      "family": "convnext_tiny",
+      "families": null,
+      "recipe": "A",
+      "arms": [
+        "mom_shape",
+        "shape_only",
+        "mom_permuted",
+        "mom_duplicate",
+        "mom_rawh2"
+      ],
+      "jobs": 15,
+      "factory_source": "def model_for(seed,arm):\n    assert arm in ['plain','moments',*ARMS]\n    return LibraryNet(q.model_for(seed,'convnext_tiny_A'),arm).cuda()",
+      "factory_file_sha256": "11e93b1d2d2e1c6ebaf3ba2412161645cf9adb5a36e154721f65769619821e15"
+    }
+  ],
+  "parent_references": {
+    "swin_t_A": {
+      "units": [
+        {
+          "seed": 45,
+          "checkpoint": "weights/ac_qualification_20261024_window01/qualification_swin_t_A_s45/model_best.pth",
+          "checkpoint_sha256": "cd59eaf4b17c2fc3af7ba3226d4c336b0b40b7a9a0c330c423f8de70b1b306a0",
+          "complete_sha256": "2317119c269111b1e71cfb453b123c79eb36b760e029bee451d5235ced0f7765",
+          "val": {
+            "macro_f1": 0.97681412996156,
+            "exact_macro_fraction": "27350317/27999510",
+            "accuracy": 0.9812646370023419,
+            "malignant_recall": 0.9367088607594937,
+            "patient_equal_accuracy": 0.9703347578347579,
+            "confusion_matrix": [
+              [
+                192,
+                2,
+                1
+              ],
+              [
+                4,
+                74,
+                1
+              ],
+              [
+                0,
+                0,
+                153
+              ]
+            ],
+            "images": 427,
+            "patients": 39,
+            "prediction_sha256": "10e509c2a23e33a870d34e6d216b9df0658150aece2f7bdecbdc42ebfde0c1d3"
+          },
+          "test": {
+            "macro_f1": 0.9456373915802312,
+            "exact_macro_fraction": "15883528/16796637",
+            "accuracy": 0.9461805555555556,
+            "malignant_recall": 0.8977272727272727,
+            "patient_equal_accuracy": 0.9151493628911159,
+            "confusion_matrix": [
+              [
+                197,
+                7,
+                4
+              ],
+              [
+                14,
+                158,
+                4
+              ],
+              [
+                2,
+                0,
+                190
+              ]
+            ],
+            "images": 576,
+            "patients": 41,
+            "prediction_sha256": "2993c872dedbdb623994f7bc69f2b107c645c75e27e8ccd591767a5b398250fa"
+          }
+        },
+        {
+          "seed": 46,
+          "checkpoint": "weights/ac_qualification_20261024_window01/qualification_swin_t_A_s46/model_best.pth",
+          "checkpoint_sha256": "178397d9462bba824a8f26951ceb3d4a1dccce05605e2ea4697c993d3b13c1ed",
+          "complete_sha256": "6ce6342c378c916a80c9f268fb6376a65acdb6079e8adfbff9187dca06e8cdac",
+          "val": {
+            "macro_f1": 0.9797464440321583,
+            "exact_macro_fraction": "6337/6468",
+            "accuracy": 0.9836065573770492,
+            "malignant_recall": 0.9367088607594937,
+            "patient_equal_accuracy": 0.9686828840674995,
+            "confusion_matrix": [
+              [
+                193,
+                1,
+                1
+              ],
+              [
+                4,
+                74,
+                1
+              ],
+              [
+                0,
+                0,
+                153
+              ]
+            ],
+            "images": 427,
+            "patients": 39,
+            "prediction_sha256": "0c224aea87663520878b25cff1cde8422a756675f74808a593a8f2131c81b7d4"
+          },
+          "test": {
+            "macro_f1": 0.9473322662398292,
+            "exact_macro_fraction": "142043/149940",
+            "accuracy": 0.9479166666666666,
+            "malignant_recall": 0.8977272727272727,
+            "patient_equal_accuracy": 0.9072410110803252,
+            "confusion_matrix": [
+              [
+                197,
+                6,
+                5
+              ],
+              [
+                14,
+                158,
+                4
+              ],
+              [
+                1,
+                0,
+                191
+              ]
+            ],
+            "images": 576,
+            "patients": 41,
+            "prediction_sha256": "2a9827116a7e69ad2051aaa5d33b42ca67641a30b9df9d141563919094ebe2c9"
+          }
+        },
+        {
+          "seed": 47,
+          "checkpoint": "weights/ac_qualification_20261024_window01/qualification_swin_t_A_s47/model_best.pth",
+          "checkpoint_sha256": "252f018da901930f2ff913e3dbd24a45cf2a7cd3d54cc073f36f392d60fa0cc1",
+          "complete_sha256": "3991e0becbb261e6211295cc2369090b97bef914c20e65ad5b68c37f125e77ec",
+          "val": {
+            "macro_f1": 0.9801261064163336,
+            "exact_macro_fraction": "9176809/9362886",
+            "accuracy": 0.9836065573770492,
+            "malignant_recall": 0.9493670886075949,
+            "patient_equal_accuracy": 0.9820375849222003,
+            "confusion_matrix": [
+              [
+                192,
+                2,
+                1
+              ],
+              [
+                4,
+                75,
+                0
+              ],
+              [
+                0,
+                0,
+                153
+              ]
+            ],
+            "images": 427,
+            "patients": 39,
+            "prediction_sha256": "85ac70ac8bb8d374a9344ac464c630dde3630853323de7ae80ddd1df412efc04"
+          },
+          "test": {
+            "macro_f1": 0.9453714819261038,
+            "exact_macro_fraction": "141749/149940",
+            "accuracy": 0.9461805555555556,
+            "malignant_recall": 0.8920454545454546,
+            "patient_equal_accuracy": 0.912768265541553,
+            "confusion_matrix": [
+              [
+                197,
+                7,
+                4
+              ],
+              [
+                14,
+                157,
+                5
+              ],
+              [
+                1,
+                0,
+                191
+              ]
+            ],
+            "images": 576,
+            "patients": 41,
+            "prediction_sha256": "544770943fc615f9938f26f0ed0f21979921614c274ab0d56bb1fdbea202c3eb"
+          }
+        }
+      ],
+      "val_mean": 0.9788955601366839,
+      "test_mean": 0.9461137132487214,
+      "budget": {
+        "arm": "swin_t_A",
+        "family": "swin_t",
+        "recipe": "A",
+        "parameters": 27521661,
+        "counted_flops": 8979601920,
+        "peak_gpu_mib": 2581.14111328125,
+        "finite_real_two_updates": true
+      },
+      "selection_scope": "already adaptively viewed historical test; reference reuse, no new neural inference"
+    },
+    "swin_t_B": {
+      "units": [
+        {
+          "seed": 45,
+          "checkpoint": "weights/ac_qualification_20261024_window01/qualification_swin_t_B_s45/model_best.pth",
+          "checkpoint_sha256": "33c6297784688c39718649d88bdd6991570565fade646b8ac3367af55c1386ef",
+          "complete_sha256": "95e004167523329af7a04ff76cff2604125dedcdc3e51b7b78cf94e314b12ba5",
+          "val": {
+            "macro_f1": 0.9769549401795664,
+            "exact_macro_fraction": "46463/47559",
+            "accuracy": 0.9812646370023419,
+            "malignant_recall": 1.0,
+            "patient_equal_accuracy": 0.9548967236467237,
+            "confusion_matrix": [
+              [
+                187,
+                8,
+                0
+              ],
+              [
+                0,
+                79,
+                0
+              ],
+              [
+                0,
+                0,
+                153
+              ]
+            ],
+            "images": 427,
+            "patients": 39,
+            "prediction_sha256": "76bc61e828020e50029971fa425b0ddd26111f0fde32a69e239e57d1eaf69de6"
+          },
+          "test": {
+            "macro_f1": 0.9598908986505885,
+            "exact_macro_fraction": "33433/34830",
+            "accuracy": 0.9600694444444444,
+            "malignant_recall": 0.9659090909090909,
+            "patient_equal_accuracy": 0.9239885017224833,
+            "confusion_matrix": [
+              [
+                192,
+                14,
+                2
+              ],
+              [
+                4,
+                170,
+                2
+              ],
+              [
+                1,
+                0,
+                191
+              ]
+            ],
+            "images": 576,
+            "patients": 41,
+            "prediction_sha256": "ba2c686b18986c61785305fa7f65531566c209a48f6653d947091686adf7960f"
+          }
+        },
+        {
+          "seed": 46,
+          "checkpoint": "weights/ac_qualification_20261024_window01/qualification_swin_t_B_s46/model_best.pth",
+          "checkpoint_sha256": "78a244b98787f6a642f92692fdc281118feecb9b5976d92578dcd0b82e54bdcd",
+          "complete_sha256": "185ec97b333a9210ed520c5ed4a323293382c422619d98bf52db1ab6291d8f4f",
+          "val": {
+            "macro_f1": 0.9769549401795664,
+            "exact_macro_fraction": "46463/47559",
+            "accuracy": 0.9812646370023419,
+            "malignant_recall": 1.0,
+            "patient_equal_accuracy": 0.9659506815091922,
+            "confusion_matrix": [
+              [
+                187,
+                8,
+                0
+              ],
+              [
+                0,
+                79,
+                0
+              ],
+              [
+                0,
+                0,
+                153
+              ]
+            ],
+            "images": 427,
+            "patients": 39,
+            "prediction_sha256": "7b898201bccc7f1fab454dcaf93b942a3c56a70cc5c8e1b71b3bc3e7a129876b"
+          },
+          "test": {
+            "macro_f1": 0.9566574035369089,
+            "exact_macro_fraction": "8971227/9377680",
+            "accuracy": 0.9565972222222222,
+            "malignant_recall": 0.9545454545454546,
+            "patient_equal_accuracy": 0.9341873359845119,
+            "confusion_matrix": [
+              [
+                197,
+                9,
+                2
+              ],
+              [
+                7,
+                168,
+                1
+              ],
+              [
+                4,
+                2,
+                186
+              ]
+            ],
+            "images": 576,
+            "patients": 41,
+            "prediction_sha256": "bd9ccc4734aeb2414b2ccf96af5564c4e78401e2b03203f255f31e0dcf292713"
+          }
+        },
+        {
+          "seed": 47,
+          "checkpoint": "weights/ac_qualification_20261024_window01/qualification_swin_t_B_s47/model_best.pth",
+          "checkpoint_sha256": "76912e4a8c7c4a470c2795627a1adcb20bda691ff284010dbd2696f82ca49dad",
+          "complete_sha256": "a6ed0dabcbea545381c8aa71a1f4dbab087a47993a0648fdbc0909b8bb259d2f",
+          "val": {
+            "macro_f1": 0.9790090016142713,
+            "exact_macro_fraction": "178909/182745",
+            "accuracy": 0.9836065573770492,
+            "malignant_recall": 0.9367088607594937,
+            "patient_equal_accuracy": 0.977661352180583,
+            "confusion_matrix": [
+              [
+                193,
+                2,
+                0
+              ],
+              [
+                5,
+                74,
+                0
+              ],
+              [
+                0,
+                0,
+                153
+              ]
+            ],
+            "images": 427,
+            "patients": 39,
+            "prediction_sha256": "58367cd22ce8e4bc6452934aeda9d81152333a642219de02992f14f424e3eded"
+          },
+          "test": {
+            "macro_f1": 0.9617588860848628,
+            "exact_macro_fraction": "26955752/28027557",
+            "accuracy": 0.9618055555555556,
+            "malignant_recall": 0.9318181818181818,
+            "patient_equal_accuracy": 0.9514878669566532,
+            "confusion_matrix": [
+              [
+                201,
+                6,
+                1
+              ],
+              [
+                11,
+                164,
+                1
+              ],
+              [
+                3,
+                0,
+                189
+              ]
+            ],
+            "images": 576,
+            "patients": 41,
+            "prediction_sha256": "d446bd846fe459720f6cb03797cdf639d09f39676cb5415385723bda3a213476"
+          }
+        }
+      ],
+      "val_mean": 0.977639627324468,
+      "test_mean": 0.9594357294241201,
+      "budget": {
+        "arm": "swin_t_B",
+        "family": "swin_t",
+        "recipe": "B",
+        "parameters": 27521661,
+        "counted_flops": 28597871616,
+        "peak_gpu_mib": 7185.111328125,
+        "finite_real_two_updates": true
+      },
+      "selection_scope": "already adaptively viewed historical test; reference reuse, no new neural inference"
+    }
+  },
+  "recipe_A": {
+    "resize": 256,
+    "crop": 224,
+    "physical_cache_images": 3595,
+    "actual_train": 2077
+  },
+  "recipe_B": {
+    "resize": 448,
+    "crop": 384,
+    "physical_cache_images": 2504,
+    "allowed_splits": [
+      "train",
+      "val"
+    ],
+    "test_images_in_training_cache": 0,
+    "cache_metadata_sha256": "acff265ad9df27db3871170a1c6913bab02ee8dfff0be7a176e8da120fe17e14",
+    "cache_sha256": "630081da3e38487987c02b60ba78f306192cb0abb036fd4e2411e6a05279b072",
+    "transform": "PIL RGB bilinear resize448",
+    "raw_source_sha_was_verified": true
+  },
+  "scope": "known own-window metadata/source and completed reference predictions/checkpoint hashes only; no scan of unrelated agent directories; no new images or model forward",
+  "CLE_images": 0,
+  "new_neural_training": 0,
+  "new_test_inference": 0,
+  "baseline_B0_unchanged": true,
+  "overall_research_complete": false
+}
