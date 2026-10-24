@@ -34,3 +34,9 @@
  create mode 100644 models/optimize/ac_crossscale_structure_window01/__init__.py
  create mode 100644 models/optimize/ac_crossscale_structure_window01/c4_moment_stem.py
  create mode 100644 models/optimize/ac_crossscale_structure_window01/library_cle.py
+[main f53f263] test: verify cross-scale correlation NumPy gradients and faithful BCNN operator with paired public initialization
+ 2 files changed, 99 insertions(+)
+ create mode 100644 experiments/ac_crossscale_structure_window01/module_source_audit.json
+/data/cle/auto/GPT/experiments/ac_crossscale_structure_window01/run_module_structure.py:146: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:838.)
+  grads.append(dict(step=step,loss=float(loss),gradient_norms=g))
