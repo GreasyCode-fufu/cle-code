@@ -40,3 +40,36 @@
  3 files changed, 101 insertions(+), 2 deletions(-)
  create mode 100644 experiments/ac_structure_20261024_window01/preflight.json
 [{"arm": "baseline", "parameters": 21631107, "counted_flops": 12247128576, "peak_gpu_mib": 1882.9248046875, "finite_two_updates": true}, {"arm": "relational", "parameters": 21816486, "counted_flops": 12304046592, "peak_gpu_mib": 2081.24169921875, "finite_two_updates": true}, {"arm": "no_neighbor", "parameters": 21816486, "counted_flops": 12304046592, "peak_gpu_mib": 2243.9736328125, "finite_two_updates": true}, {"arm": "no_depth", "parameters": 21816486, "counted_flops": 12304046592, "peak_gpu_mib": 2246.37060546875, "finite_two_updates": true}, {"arm": "final_only", "parameters": 21816486, "counted_flops": 12304046592, "peak_gpu_mib": 2412.83544921875, "finite_two_updates": true}, {"arm": "official4", "parameters": 21634563, "counted_flops": 12247135488, "peak_gpu_mib": 2595.5380859375, "finite_two_updates": true}, {"arm": "convnext", "parameters": 87569539, "counted_flops": 30707417088, "peak_gpu_mib": 5183.4921875, "finite_two_updates": true}]
+[main 56c5570] perf: measure single and concurrent CLE training throughput before scheduling
+ 29 files changed, 200 insertions(+), 2 deletions(-)
+ create mode 100644 experiments/ac_structure_20261024_window01/profile/bench_relational_100.json
+ create mode 100644 experiments/ac_structure_20261024_window01/profile/bench_relational_200.json
+ create mode 100644 experiments/ac_structure_20261024_window01/profile/bench_relational_201.json
+ create mode 100644 experiments/ac_structure_20261024_window01/profile/bench_relational_400.json
+ create mode 100644 experiments/ac_structure_20261024_window01/profile/bench_relational_401.json
+ create mode 100644 experiments/ac_structure_20261024_window01/profile/bench_relational_402.json
+ create mode 100644 experiments/ac_structure_20261024_window01/profile/bench_relational_403.json
+ create mode 100644 experiments/ac_structure_20261024_window01/profile/gate_1.json
+ create mode 100644 experiments/ac_structure_20261024_window01/profile/gate_2.json
+ create mode 100644 experiments/ac_structure_20261024_window01/profile/gate_4.json
+ create mode 100644 experiments/ac_structure_20261024_window01/profile/profile_1_0.log
+ create mode 100644 experiments/ac_structure_20261024_window01/profile/profile_2_0.log
+ create mode 100644 experiments/ac_structure_20261024_window01/profile/profile_2_1.log
+ create mode 100644 experiments/ac_structure_20261024_window01/profile/profile_4_0.log
+ create mode 100644 experiments/ac_structure_20261024_window01/profile/profile_4_1.log
+ create mode 100644 experiments/ac_structure_20261024_window01/profile/profile_4_2.log
+ create mode 100644 experiments/ac_structure_20261024_window01/profile/profile_4_3.log
+ create mode 100644 experiments/ac_structure_20261024_window01/profile/ready_1_100.json
+ create mode 100644 experiments/ac_structure_20261024_window01/profile/ready_2_200.json
+ create mode 100644 experiments/ac_structure_20261024_window01/profile/ready_2_201.json
+ create mode 100644 experiments/ac_structure_20261024_window01/profile/ready_4_400.json
+ create mode 100644 experiments/ac_structure_20261024_window01/profile/ready_4_401.json
+ create mode 100644 experiments/ac_structure_20261024_window01/profile/ready_4_402.json
+ create mode 100644 experiments/ac_structure_20261024_window01/profile/ready_4_403.json
+ create mode 100644 experiments/ac_structure_20261024_window01/profile/resource_samples.csv
+ create mode 100644 experiments/ac_structure_20261024_window01/profile/selected.json
+ create mode 100644 experiments/ac_structure_20261024_window01/profile/throughput_profile.json
+[launch] window01_relational_s45 791093
+[launch] window01_relational_s46 791188
+[launch] window01_relational_s47 791204
+[launch] window01_no_neighbor_s45 791959
