@@ -195,7 +195,9 @@ def check():
   if kind=='head_only':assert set(names)=={'fc.weight','fc.bias'}
   elif kind=='stage4_only':assert all(k.startswith(('layer4.','fc.')) for k in names) and len(names)>2
   else:assert len(names)==len(list(m.parameters()))
-  opt=torch.optim.AdamW([p for p in m.parameters() if p.requires_grad],lr=1e-4,weight_decay=.05);scaler=torch.amp.GradScaler('cuda')
+  # Use a settled scale for this one-step gradient assertion. Real training keeps
+  # the original dynamic scaler, which may skip initial overflowed updates.
+  opt=torch.optim.AdamW([p for p in m.parameters() if p.requires_grad],lr=1e-4,weight_decay=.05);scaler=torch.amp.GradScaler('cuda',init_scale=128.)
   with torch.autocast('cuda',dtype=torch.float16):loss=F.cross_entropy(m(x),y)
   if kind=='starting_anchor':assert anchor(m,initial).item()==0;loss=loss+anchor(m,initial)
   scaler.scale(loss).backward();assert torch.isfinite(loss) and torch.isfinite(m.fc.weight.grad).all() and m.fc.weight.grad.abs().sum()>0
@@ -220,7 +222,7 @@ def check():
  gradient=torch.autograd.grad(anchor(tiny,initial),tiny.weight)[0]
  assert torch.allclose(gradient,torch.full_like(gradient,.00125),atol=1e-7)
  core.save_json(STUDY/'preflight_validation.json',dict(passed=True,timestamp=core.timestamp(),policies=checks,
-    checks=['paired initialized eval predictions bitwise identical','exact trainable parameter sets','real-image finite AMP gradients and updates',
+    checks=['paired initialized eval predictions bitwise identical','exact trainable parameter sets','real-image finite AMP gradients and updates at settled scale 128; trainer retains original dynamic scale',
             'frozen parameters unchanged and required backbone/head gradients nonzero','frozen/active BN counters independently checked',
             'starting-point penalty zero at initialization and analytical gradient','six copied baseline hashes and checkpoint signatures']))
  arch.commit('test: validate transfer constraints, BN state and starting-point gradient')
