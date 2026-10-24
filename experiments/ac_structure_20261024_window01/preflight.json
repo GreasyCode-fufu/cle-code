@@ -1,0 +1,66 @@
+{
+  "passed": true,
+  "timestamp": "2026-10-24T18:04:39.965932+08:00",
+  "budgets": [
+    {
+      "arm": "baseline",
+      "parameters": 21631107,
+      "counted_flops": 12247128576,
+      "peak_gpu_mib": 1882.9248046875,
+      "finite_two_updates": true
+    },
+    {
+      "arm": "relational",
+      "parameters": 21816486,
+      "counted_flops": 12304046592,
+      "peak_gpu_mib": 2081.24169921875,
+      "finite_two_updates": true
+    },
+    {
+      "arm": "no_neighbor",
+      "parameters": 21816486,
+      "counted_flops": 12304046592,
+      "peak_gpu_mib": 2243.9736328125,
+      "finite_two_updates": true
+    },
+    {
+      "arm": "no_depth",
+      "parameters": 21816486,
+      "counted_flops": 12304046592,
+      "peak_gpu_mib": 2246.37060546875,
+      "finite_two_updates": true
+    },
+    {
+      "arm": "final_only",
+      "parameters": 21816486,
+      "counted_flops": 12304046592,
+      "peak_gpu_mib": 2412.83544921875,
+      "finite_two_updates": true
+    },
+    {
+      "arm": "official4",
+      "parameters": 21634563,
+      "counted_flops": 12247135488,
+      "peak_gpu_mib": 2595.5380859375,
+      "finite_two_updates": true
+    },
+    {
+      "arm": "convnext",
+      "parameters": 87569539,
+      "counted_flops": 30707417088,
+      "peak_gpu_mib": 5183.4921875,
+      "finite_two_updates": true
+    }
+  ],
+  "checks": [
+    "split and test loader denial",
+    "original DINO logits exact at initialization",
+    "all paired readout states identical",
+    "two real AMP backward updates/finite gradients",
+    "encoder and readout nonzero gradients",
+    "NumPy boundary-aware neighborhood reference",
+    "equal readout parameter counts",
+    "three historical baselines SHA/signatures and full427 independent probability reproduction"
+  ],
+  "flops_excludes": "norm, activation, pooling, pointwise products, softmax, data movement; conv/linear and attention counted2FLOPs/MAC"
+}
