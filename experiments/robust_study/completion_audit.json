@@ -1,0 +1,169 @@
+{
+  "passed": true,
+  "timestamp": "2026-10-24T09:09:14.237590+08:00",
+  "new_trainings": 12,
+  "reused_models": 6,
+  "checks": [
+    "immutable sources/config and baseline files",
+    "12 new and 6 reused checkpoint SHA256 and signatures",
+    "60 epochs each",
+    "18 complete validation sets of 538 images",
+    "recomputed probabilities and metrics",
+    "patient isolation, no test scoring",
+    "ELR state SHA256, finite train-only 2386 rows and 60 visits each",
+    "patient within-class equal contribution and conserved class mass",
+    "login ownership"
+  ],
+  "jobs": [
+    {
+      "job": "r5_label_smooth_s42",
+      "epochs": 60,
+      "validation_images": 538,
+      "checkpoint_sha256": "7d8fa2aaf36cc28a01474d2f31dd710cd5910ce5bbf3df36bd0306aa4b885367"
+    },
+    {
+      "job": "r5_label_smooth_s43",
+      "epochs": 60,
+      "validation_images": 538,
+      "checkpoint_sha256": "63c7ff5a1ae00521068e6846dfb9656e2a5c286404735b66f85fc25ee5f4508d"
+    },
+    {
+      "job": "r5_label_smooth_s44",
+      "epochs": 60,
+      "validation_images": 538,
+      "checkpoint_sha256": "39161f429edd6d8d96c9211d018f9d66c7148bb8934e2748fd6b660ffc4c5cc8"
+    },
+    {
+      "job": "r5_gce_s42",
+      "epochs": 60,
+      "validation_images": 538,
+      "checkpoint_sha256": "9cd85c549ce13a9f51fd7718886b6278dcf7fffa1cb9683c141c74aaff379af2"
+    },
+    {
+      "job": "r5_gce_s43",
+      "epochs": 60,
+      "validation_images": 538,
+      "checkpoint_sha256": "111fedf7aae114e337984dc44581f9dd4ffca5439c638d5303c77aa9d445e330"
+    },
+    {
+      "job": "r5_gce_s44",
+      "epochs": 60,
+      "validation_images": 538,
+      "checkpoint_sha256": "afa6e065f0a1f0eeebe37ff0d9c26493631c991f88ea8ea5e461dddbeccfe501"
+    },
+    {
+      "job": "r5_elr_s42",
+      "epochs": 60,
+      "validation_images": 538,
+      "checkpoint_sha256": "e09d05dbcbbfe56ba77d6958c1ebbd4a9a1ebf63f14e31de07145157b9113f9f"
+    },
+    {
+      "job": "r5_elr_s43",
+      "epochs": 60,
+      "validation_images": 538,
+      "checkpoint_sha256": "5683c1a4e84d605cf7ff4b9482c03100d2db410bbb1c44b9888fb81d0c5e4f95"
+    },
+    {
+      "job": "r5_elr_s44",
+      "epochs": 60,
+      "validation_images": 538,
+      "checkpoint_sha256": "02ffcf456225161dcd71fd66468bb22d3310a55fce83c807fccf99ec4c2b6eff"
+    },
+    {
+      "job": "r5_patient_balance_s42",
+      "epochs": 60,
+      "validation_images": 538,
+      "checkpoint_sha256": "2f058cf94375a9989b6001270450e01f6c923fd50055c8858cb4d1c703def1ac"
+    },
+    {
+      "job": "r5_patient_balance_s43",
+      "epochs": 60,
+      "validation_images": 538,
+      "checkpoint_sha256": "6d9c036d56dbf647f1dd119362493b68c1c67782576598954434ada9d3bce30d"
+    },
+    {
+      "job": "r5_patient_balance_s44",
+      "epochs": 60,
+      "validation_images": 538,
+      "checkpoint_sha256": "d72120894fd5a7cffce39a6c26bb2fe04b646f4be1eda16b5f3c1a0445e3ccde"
+    }
+  ],
+  "baselines": [
+    {
+      "variant": "full_ce",
+      "seed": 42,
+      "source_signature": "2bcde3a0a0240dfaeb0eee5bebe1552f873df7ddf777cc8bd7edef0b87313464",
+      "checkpoint_sha256": "f8666f35600181437690cf771f77d645868fdae4622694bcd168614c6b8e0cd6"
+    },
+    {
+      "variant": "full_ce",
+      "seed": 43,
+      "source_signature": "2a48bbc89f2aefbece9da109534053c7138bcb4a0a55a26f196ef7f445f31578",
+      "checkpoint_sha256": "39c1a8691014653b74dac100be394e41211d9e0691f908ac309c43f7782f5bbe"
+    },
+    {
+      "variant": "full_ce",
+      "seed": 44,
+      "source_signature": "bd06b1c49900aa0334279cb384aba6a0216504c646d4d01932ae026639fecde0",
+      "checkpoint_sha256": "1934c6bc65b112f44a4b4b7056324f411beece24dda5f2bfc299ca362848e227"
+    },
+    {
+      "variant": "grade_ce",
+      "seed": 42,
+      "source_signature": "20b228626f4ae017771b9845d347b45958729f25b393fcef2c8ecf636e780d35",
+      "checkpoint_sha256": "15e61e41e036180639828f3409d2606444b6c3adadeb40461dffda215cba072d"
+    },
+    {
+      "variant": "grade_ce",
+      "seed": 43,
+      "source_signature": "5fd1c1faea763b1f545b916217f0640d15fa143c8c036d0db941af7aa195d338",
+      "checkpoint_sha256": "91ef708793b7d49ad2342e86a2574c8e8c5792512285cd38129a6f36dc3a4908"
+    },
+    {
+      "variant": "grade_ce",
+      "seed": 44,
+      "source_signature": "ab12acae907962ecbf9450f06ff548e5eb900e94bf80430a234ec997a3b003f4",
+      "checkpoint_sha256": "c5f7c770ddb4133ce24d85b3057efee0e1ad40ecba84703fb1ed2d877a075530"
+    }
+  ],
+  "elr_states": [
+    {
+      "job": "r5_elr_s42",
+      "sha256": "97fc71edbbf6dff2329bf26479a709b2b038821ad9ef48f0e60bc7736d9ac38a",
+      "training_entries": 2386,
+      "visits_each": 60,
+      "memory_epoch": 59
+    },
+    {
+      "job": "r5_elr_s43",
+      "sha256": "8c4bba5809fe7534962560e25e5f8c2a50d51e73e5776c126a312440c12c695c",
+      "training_entries": 2386,
+      "visits_each": 60,
+      "memory_epoch": 59
+    },
+    {
+      "job": "r5_elr_s44",
+      "sha256": "1531489b652f3555a2e08b48451ee5e0b49b1785e6328042c01ca7021ea2e362",
+      "training_entries": 2386,
+      "visits_each": 60,
+      "memory_epoch": 59
+    }
+  ],
+  "patient_balance": {
+    "0": {
+      "class_total": 929,
+      "groups": 124,
+      "equal_patient_class_mass": 7.491935483870967
+    },
+    "1": {
+      "class_total": 564,
+      "groups": 62,
+      "equal_patient_class_mass": 9.096774193548388
+    },
+    "2": {
+      "class_total": 893,
+      "groups": 95,
+      "equal_patient_class_mass": 9.399999999999999
+    }
+  }
+}
