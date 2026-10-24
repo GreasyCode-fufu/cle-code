@@ -1,0 +1,5 @@
+# 功率形状结构：真实完成权重使用核验
+
+启动198文件包为首epoch快照，现mom_shape seed45全部60epoch已完成，原0度val最早最高F1选择epoch6。实际checkpoint SHA c46c806a18d3c5fe948e055fa510da532b9883db53581d44d68a72d78a84f127。固定首val索引2386（非按预测筛选）单图CLI对保存batch32概率最大差2.8073787689208984e-05<预设1e-4，通过独立核验；未新增训练、未读取test图。
+
+见independent_cli_audit.json。此仅验证真实权重加载/预处理/推理使用，不能据单图或一个seed宣布结构有效；其他配对seed与机制控制正在按冻结方案训练，整体目标active。
