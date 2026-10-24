@@ -1,1 +1,10 @@
 {"arm": "mom_cross", "seed": 45, "checkpoint": "weights/ac_patient_alignment_structure_window01/patient_mom_cross_s45/model_best.pth", "checkpoint_sha256": "e44716a8695183a20fb7e935f1e80e29665e9b70cfeba07b9b99ad3ddb39a220", "source_config_sha256": "68e99795c2f3de1018a879abadd51e77db72d4a04fd483b32689398a9de770be", "image_sha256": "da7a87a8135abccd61c3fb53e444fe94b652601ca88405904a5c397afb7f4760", "views": "single", "predicted_class": 0, "probabilities": [0.9982287287712097, 0.0016434582648798823, 0.0001278486306546256], "class_ids": [0, 1, 2], "malignant_class_id": 1, "scope": "Research model prediction; no independent clinical validation claimed"}
+[main e9b23ea] test: verify actual patient-alignment checkpoint single-image usage against fixed first validation probability
+ 13 files changed, 181 insertions(+), 13 deletions(-)
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/check_prediction_cli.py
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/logs/patient_mom_cross_s46.log
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/runs/patient_mom_cross_s46/run_meta.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/runs/patient_mom_cross_s46/train_log.csv
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/usage_smoke.log
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/usage_smoke/cli_prediction.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/usage_smoke/independent_cli_audit.json
