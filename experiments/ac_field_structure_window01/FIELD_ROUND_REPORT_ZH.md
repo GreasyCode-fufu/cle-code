@@ -8,6 +8,7 @@
 |qualification_convnext_tiny_A|95.2515%|94.2258%|95.4670%|94.9814%|95.0231%|92.2348%|91.1468%|
 |fov_residual|95.4279%|96.6702%|90.8811%|94.3264%|94.5023%|86.9318%|91.8583%|
 |field_pool|96.1807%|96.6580%|95.9971%|96.2786%|96.2963%|93.3712%|93.5150%|
+|reference|95.9728%|95.2208%|96.3177%|95.8371%|95.8912%|91.0985%|94.8284%|
 
 |配对比较|平均差（百分点）|患者条件95%区间（百分点）|
 |---|---:|---|
@@ -16,5 +17,8 @@
 |field_pool_vs_qualification_convnext_tiny_A|1.2972|[0.0328, 3.6230]|
 |field_pool_vs_fov_residual|1.9522|[0.4263, 4.9750]|
 |field_pool_vs_qualification_swin_t_B|0.3350|[-0.5767, 1.6312]|
+|reference_vs_qualification_convnext_tiny_A|0.8557|[-0.3362, 3.3539]|
+|reference_vs_fov_residual|1.5107|[0.0650, 4.7670]|
+|reference_vs_qualification_swin_t_B|-0.1065|[-1.1420, 1.5798]|
 
 逐seed混淆矩阵、门值、checkpoint SHA、逐图预测与预算见round_results.json及evaluations。历史test已被查看，A–C构建用过test标签；等级是模型一致性代理。现test参与方法选择，条件bootstrap不消除选择偏差。成熟算子组合不自动构成SCI创新；普通阴性后继续有证据的机制调整。
