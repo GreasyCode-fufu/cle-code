@@ -16,5 +16,11 @@
 |shape_only_c4_vs_M_c4_moments|-0.1647|[-1.5104, 0.5007]|
 |shape_only_c4_vs_M_c4_aug|-0.0348|[-0.9104, 0.8128]|
 |shape_only_c4_vs_M_eca|0.4279|[-0.7698, 1.5050]|
+|mom_permuted_single_vs_M_c4_moments|-0.1832|[-1.9109, 0.6875]|
+|mom_permuted_single_vs_M_c4_aug|0.0065|[-1.3861, 0.8873]|
+|mom_permuted_single_vs_M_eca|0.2405|[-1.3260, 1.3946]|
+|mom_permuted_c4_vs_M_c4_moments|-0.3588|[-1.5045, 0.2211]|
+|mom_permuted_c4_vs_M_c4_aug|-0.2289|[-0.8704, 0.4016]|
+|mom_permuted_c4_vs_M_eca|0.2338|[-0.9953, 1.3504]|
 
 mom_shape对原Mom检验功率增量；shape_only真去Mom；mom_permuted错循环；mom_duplicate重复σ控制；mom_rawh2保留成熟DFT幅值。全部seed/阴性保留，不能据点估计称创新或独立确认。
