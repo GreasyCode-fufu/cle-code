@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-25T00:08:43.329121+08:00",
+  "updated_at": "2026-10-25T00:08:47.989198+08:00",
   "primary_B0": "convnext_tiny_A",
   "working_W0": "swin_t_B",
   "summary": {
@@ -1648,6 +1648,27 @@
     }
   },
   "comparisons": {
+    "fov_residual_vs_qualification_swin_t_B": {
+      "paired_seed_deltas": [
+        -0.0056115302324952765,
+        0.01004504724064792,
+        -0.05294803351084365
+      ],
+      "mean_delta": -0.016171505500897004,
+      "conditional_patient_bootstrap": {
+        "ci95": [
+          -0.04521268819425415,
+          0.000493072853981435
+        ],
+        "draws": 20000,
+        "patients": 41,
+        "paired_seeds": 3,
+        "patient_draws_shared_across_seeds": true,
+        "scope": "conditional descriptive interval after adaptive test feedback; not selection-adjusted"
+      },
+      "numerical_gate": false,
+      "independent_confirmation": false
+    },
     "fov_residual_vs_qualification_convnext_tiny_A": {
       "paired_seed_deltas": [
         0.0017646122185446256,
@@ -1669,17 +1690,17 @@
       "numerical_gate": false,
       "independent_confirmation": false
     },
-    "fov_residual_vs_qualification_swin_t_B": {
+    "field_pool_vs_qualification_swin_t_B": {
       "paired_seed_deltas": [
-        -0.0056115302324952765,
-        0.01004504724064792,
-        -0.05294803351084365
+        0.0019159348419514055,
+        0.009923066425828075,
+        -0.0017876109926948658
       ],
-      "mean_delta": -0.016171505500897004,
+      "mean_delta": 0.003350463425028205,
       "conditional_patient_bootstrap": {
         "ci95": [
-          -0.04521268819425415,
-          0.000493072853981435
+          -0.005767165232630869,
+          0.016311576448014585
         ],
         "draws": 20000,
         "patients": 41,
@@ -1732,17 +1753,17 @@
       "numerical_gate": false,
       "independent_confirmation": false
     },
-    "field_pool_vs_qualification_swin_t_B": {
+    "reference_vs_qualification_swin_t_B": {
       "paired_seed_deltas": [
-        0.0019159348419514055,
-        0.009923066425828075,
-        -0.0017876109926948658
+        -0.00016310992043311323,
+        -0.004449228492628854,
+        0.0014182028246668699
       ],
-      "mean_delta": 0.003350463425028205,
+      "mean_delta": -0.0010647118627983658,
       "conditional_patient_bootstrap": {
         "ci95": [
-          -0.005767165232630869,
-          0.016311576448014585
+          -0.011419979548022216,
+          0.015797555842293004
         ],
         "draws": 20000,
         "patients": 41,
@@ -1795,17 +1816,17 @@
       "numerical_gate": false,
       "independent_confirmation": false
     },
-    "reference_vs_qualification_swin_t_B": {
+    "no_field_vs_qualification_swin_t_B": {
       "paired_seed_deltas": [
-        -0.00016310992043311323,
-        -0.004449228492628854,
-        0.0014182028246668699
+        0.001560719105761721,
+        -0.0035460718467623664,
+        -0.007533552952437739
       ],
-      "mean_delta": -0.0010647118627983658,
+      "mean_delta": -0.0031729685644794614,
       "conditional_patient_bootstrap": {
         "ci95": [
-          -0.011419979548022216,
-          0.015797555842293004
+          -0.011702183569237712,
+          0.006478721047461849
         ],
         "draws": 20000,
         "patients": 41,
@@ -1858,17 +1879,17 @@
       "numerical_gate": false,
       "independent_confirmation": false
     },
-    "no_field_vs_qualification_swin_t_B": {
+    "no_local_norm_vs_qualification_swin_t_B": {
       "paired_seed_deltas": [
-        0.001560719105761721,
-        -0.0035460718467623664,
-        -0.007533552952437739
+        -0.001537039865695422,
+        0.0017328574292814203,
+        -0.04892006003698013
       ],
-      "mean_delta": -0.0031729685644794614,
+      "mean_delta": -0.016241414157798045,
       "conditional_patient_bootstrap": {
         "ci95": [
-          -0.011702183569237712,
-          0.006478721047461849
+          -0.0404880889557027,
+          -0.003998341841817713
         ],
         "draws": 20000,
         "patients": 41,
@@ -1921,17 +1942,17 @@
       "numerical_gate": false,
       "independent_confirmation": false
     },
-    "no_local_norm_vs_qualification_swin_t_B": {
+    "no_pool_vs_qualification_swin_t_B": {
       "paired_seed_deltas": [
-        -0.001537039865695422,
-        0.0017328574292814203,
-        -0.04892006003698013
+        -0.007185090926421056,
+        0.0065759564552361205,
+        -0.052654646098269975
       ],
-      "mean_delta": -0.016241414157798045,
+      "mean_delta": -0.017754593523151636,
       "conditional_patient_bootstrap": {
         "ci95": [
-          -0.0404880889557027,
-          -0.003998341841817713
+          -0.048254713118751465,
+          -0.0005220195734754511
         ],
         "draws": 20000,
         "patients": 41,
@@ -1974,27 +1995,6 @@
         "ci95": [
           -0.006476517169989418,
           0.0029085232109169103
-        ],
-        "draws": 20000,
-        "patients": 41,
-        "paired_seeds": 3,
-        "patient_draws_shared_across_seeds": true,
-        "scope": "conditional descriptive interval after adaptive test feedback; not selection-adjusted"
-      },
-      "numerical_gate": false,
-      "independent_confirmation": false
-    },
-    "no_pool_vs_qualification_swin_t_B": {
-      "paired_seed_deltas": [
-        -0.007185090926421056,
-        0.0065759564552361205,
-        -0.052654646098269975
-      ],
-      "mean_delta": -0.017754593523151636,
-      "conditional_patient_bootstrap": {
-        "ci95": [
-          -0.048254713118751465,
-          -0.0005220195734754511
         ],
         "draws": 20000,
         "patients": 41,
