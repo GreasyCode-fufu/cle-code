@@ -117,8 +117,7 @@ class CLETokenAdapterNet(nn.Module):
 
     def source_state(self):
         current = self.encoder.state_dict()
-        return {key: current[key.replace('.attn.qkv.', '.attn.qkv.base.')
-                             if self.variant == 'lora_qv' and '.attn.qkv.' in key else key]
+        return {key: current[key if key in current else key.replace('.attn.qkv.', '.attn.qkv.base.')]
                 for key in self.source_keys}
 
     def descriptor(self, image):
