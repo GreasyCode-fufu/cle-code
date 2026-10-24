@@ -22,10 +22,11 @@ def commit(message):
 
 def sources():
     paths=[S/n for n in ['run_field_structure.py','audit_field_structure.py','bootstrap_field_structure.py','field_model.py','field_ops_v2.py','paired_field_data.py','FIELD_STRUCTURE_PROTOCOL_ZH.md']]
-    paths +=[FIRST/'run_window01.py',Q/'run_qualification.py',Q/'qualification_model.py',R/'experiments/run_data_study.py',T/'audit_test_feedback_v2.py']
+    paths +=[FIRST/'run_window01.py',Q/'run_qualification.py',Q/'qualification_model.py',R/'experiments/run_data_study.py',T/'audit_test_feedback_v2.py',T/'run_test_feedback_v2.py']
     return {str(p.relative_to(R)):sha(p) for p in paths}
 
 def verify():
+    q.verify()
     cfg=READ(S/'config.json');assert cfg['sources']==sources(),'formal field source drift'
     for p,h in cfg['locked'].items():assert sha(R/p)==h,p
     assert sha(S/'jobs.json')==cfg['jobs_sha256']
@@ -60,6 +61,7 @@ def prepare():
     jobs=[dict(id=f'field_{kind}_s{seed}',arm=kind,seed=seed,epochs=60,train=cfg['indices']['train'],select=cfg['indices']['val'],score=cfg['indices']['val']) for kind in ARMS for seed in SEEDS]
     SAVE(S/'jobs.json',jobs)
     locks=[S/'working_reference.json',*e.glob('*.json'),S/'manifest.json',Q/'config.json',Q/'pretrained_manifest.json',Q/'cache448_meta.json',
+        T/'cache_audit.json',T/'config_v2.json',R/'.cache_data_study/meta.json',
         R/'experiments/ac_dataset_v1/dataset_config.json',R/'experiments/ac_dataset_v1/dataset_manifest.json',R/'experiments/ac_dataset_v1/independent_dataset_audit.json']
     SAVE(S/'config.json',dict(created_at=core.timestamp(),identity=S.name,sources=sources(),locked={str(p.relative_to(R)):sha(p) for p in locks},
         jobs_sha256=sha(S/'jobs.json'),indices=cfg['indices'],arms=ARMS,seeds=SEEDS,family=family,recipe=recipe,

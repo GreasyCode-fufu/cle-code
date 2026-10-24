@@ -78,6 +78,11 @@ def audit_group(kind,jobs):
             for i,z in zip(cfg['indices']['test'],p):
                 row=rows[i];prediction_rows.append(dict(index=i,sample_id=row['sample_id'],group_id=row['group_id'],label=row['label'],pred=int(z.argmax()),**{f'p{k}':float(z[k]) for k in range(3)}))
             f.core.save_csv(target,prediction_rows)
+        persisted,persisted_p=predictions(dest)
+        assert [int(row['index']) for row in persisted]==cfg['indices']['test']
+        assert [int(row['label']) for row in persisted]==ty.tolist() and [row['group_id'] for row in persisted]==tg.tolist()
+        assert [row['sample_id'] for row in persisted]==[rows[i]['sample_id'] for i in cfg['indices']['test']]
+        assert [int(row['pred']) for row in persisted]==persisted_p.argmax(1).tolist() and np.max(np.abs(persisted_p-p))<1e-6
         # Re-infer through separately constructed paired loader and compare every probability.
         from run_test_feedback_v2 import TestData
         from paired_field_data import PairedFieldDataset
@@ -87,6 +92,7 @@ def audit_group(kind,jobs):
         assert ii==cfg['indices']['test'] and np.array_equal(yy,ty) and testerr<1e-6
         assert state_sha(model)==before and f.sha(R/unit['checkpoint'])==unit['checkpoint_sha256']
         gates={name:float(parameter.detach().cpu()) for name,parameter in model.named_parameters() if name.endswith('.alpha')}
+        assert sum(x.numel() for x in model.parameters())==next(b['parameters'] for b in f.READ(S/'preflight.json')['budgets'] if b['arm']==kind)
         audit=dict(passed=True,seed=job['seed'],kind=kind,checkpoint_sha256=unit['checkpoint_sha256'],prediction_sha256=f.sha(target),
             test_images=576,test_patients=len(set(tg)),val_images=427,val_max_probability_error=valerr,test_max_probability_error=testerr,
             state_unchanged=True,state_sha256=before,metrics=compute_metrics(p,ty,tg),val_metrics=vm,gate_values=gates,
@@ -141,6 +147,9 @@ def evaluate_completed_groups():
 
 def final_audit():
     cfg=f.verify();result=summarize();assert all(k in result['summary'] for k in f.ARMS)
+    assert f.sha(R/'.cache_data_study/resized_uint8.npy')==f.READ(R/'.cache_data_study/meta.json')['cache_sha256']
+    assert f.sha(f.Q/'cache448/images.npy')==f.READ(f.Q/'cache448_meta.json')['sha256']
+    assert f.sha(f.T/'cache/test448.npy')==f.READ(f.T/'cache_audit.json')['sha256']
     for kind in f.ARMS:
         folder=S/'evaluations'/kind;a=f.READ(folder/'group_audit.json');reg=f.READ(folder/'registration.json')
         assert a['passed'] and a['registration_sha256']==f.sha(folder/'registration.json')
@@ -152,7 +161,9 @@ def final_audit():
     weights=R/'weights/ac_field_structure_window01';assert all(p.stat().st_uid==1000 for root in [S,weights] for p in [root,*root.rglob('*')])
     f.SAVE(S/'independent_audit.json',dict(passed=True,models=18,seeds=f.SEEDS,train=2077,val=427,test=576,test_patients=41,
         earliest_val_best=True,actual_training_indices_exact=True,finite_parameters=True,source_and_weight_hashes_verified=True,
-        probability_reconstruction=True,patient_isolation=True,login_ownership=True,overall_research_complete=False,independent_generalization_confirmed=False))
+        probability_reconstruction=True,patient_isolation=True,login_ownership=True,whole_cache_checksum_verified=True,
+        cache_note='Whole-file checksum is not training image access: every training epoch is guarded to the same2077 AC indices.',
+        overall_research_complete=False,independent_generalization_confirmed=False))
 
 if __name__=='__main__':
     parser=argparse.ArgumentParser();parser.add_argument('--final',action='store_true');a=parser.parse_args()
