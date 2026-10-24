@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-24T21:18:01.062298+08:00",
+  "updated_at": "2026-10-24T21:45:04.464771+08:00",
   "primary_B0": "convnext_tiny_A",
   "working_W0": "swin_t_B",
   "summary": {
@@ -468,6 +468,215 @@
           "scope": "Independent computational reconstruction only; test adaptive selection remains."
         }
       ]
+    },
+    "field_pool": {
+      "role": "mechanism/control",
+      "seed_macro_f1": [
+        0.96180683349254,
+        0.966580469962737,
+        0.9599712750921681
+      ],
+      "macro_f1": 0.9627861928491485,
+      "accuracy": 0.9629629629629629,
+      "malignant_recall": 0.9337121212121211,
+      "patient_equal_accuracy": 0.935150216157369,
+      "units": [
+        {
+          "passed": true,
+          "seed": 45,
+          "kind": "field_pool",
+          "checkpoint_sha256": "6efa0a7a5dc0c2cb60070e344d84aba37805d072e4fa60520d316059c22df39d",
+          "prediction_sha256": "311114b0d39730b43cc8f7df1646fb40a195a92206cc14132affc6faada1aa1f",
+          "test_images": 576,
+          "test_patients": 41,
+          "val_images": 427,
+          "val_max_probability_error": 0.0,
+          "test_max_probability_error": 0.0,
+          "state_unchanged": true,
+          "state_sha256": "a69c166deee462c4c6df8362576d42ebdb50068f30424d4a72b085c3391af703",
+          "metrics": {
+            "macro_f1": 0.96180683349254,
+            "accuracy": 0.9618055555555556,
+            "malignant_recall": 0.9488636363636364,
+            "patient_equal_accuracy": 0.9178127264557469,
+            "confusion_matrix": [
+              [
+                197,
+                8,
+                3
+              ],
+              [
+                8,
+                167,
+                1
+              ],
+              [
+                2,
+                0,
+                190
+              ]
+            ]
+          },
+          "val_metrics": {
+            "macro_f1": 0.9766306317831938,
+            "accuracy": 0.9812646370023419,
+            "malignant_recall": 0.9746835443037974,
+            "patient_equal_accuracy": 0.9559650997150996,
+            "confusion_matrix": [
+              [
+                189,
+                6,
+                0
+              ],
+              [
+                2,
+                77,
+                0
+              ],
+              [
+                0,
+                0,
+                153
+              ]
+            ]
+          },
+          "gate_values": {},
+          "parameters": 27521661,
+          "seconds": 4.32692187698558,
+          "independent_generalization_confirmed": false,
+          "scope": "Independent computational reconstruction only; test adaptive selection remains."
+        },
+        {
+          "passed": true,
+          "seed": 46,
+          "kind": "field_pool",
+          "checkpoint_sha256": "20108190240d2856b7026596ef08dae61cb7674f8649ec2476313fd7427bac5d",
+          "prediction_sha256": "bc8337b93d6589b0ef7ddc25b5391429330ca111443872f43b1012cb1fa75f7b",
+          "test_images": 576,
+          "test_patients": 41,
+          "val_images": 427,
+          "val_max_probability_error": 0.0,
+          "test_max_probability_error": 0.0,
+          "state_unchanged": true,
+          "state_sha256": "effd6299b55fb6e951e4c87377402050b4d88e61acc5e4859962b838646a4bf7",
+          "metrics": {
+            "macro_f1": 0.966580469962737,
+            "accuracy": 0.9670138888888888,
+            "malignant_recall": 0.9204545454545454,
+            "patient_equal_accuracy": 0.9464604763457385,
+            "confusion_matrix": [
+              [
+                204,
+                2,
+                2
+              ],
+              [
+                11,
+                162,
+                3
+              ],
+              [
+                1,
+                0,
+                191
+              ]
+            ]
+          },
+          "val_metrics": {
+            "macro_f1": 0.9732190854741232,
+            "accuracy": 0.9789227166276346,
+            "malignant_recall": 0.9367088607594937,
+            "patient_equal_accuracy": 0.9629095441595441,
+            "confusion_matrix": [
+              [
+                191,
+                4,
+                0
+              ],
+              [
+                5,
+                74,
+                0
+              ],
+              [
+                0,
+                0,
+                153
+              ]
+            ]
+          },
+          "gate_values": {},
+          "parameters": 27521661,
+          "seconds": 4.22642100599478,
+          "independent_generalization_confirmed": false,
+          "scope": "Independent computational reconstruction only; test adaptive selection remains."
+        },
+        {
+          "passed": true,
+          "seed": 47,
+          "kind": "field_pool",
+          "checkpoint_sha256": "e33784946c4b529858e80a0bb54ed186cebdbeaa44cd63561f5b683a55c54139",
+          "prediction_sha256": "7501f76f337e8278a94a78a7bc6493815c8d28d66c848a7d6161f083179e7abc",
+          "test_images": 576,
+          "test_patients": 41,
+          "val_images": 427,
+          "val_max_probability_error": 0.0,
+          "test_max_probability_error": 0.0,
+          "state_unchanged": true,
+          "state_sha256": "6d3f855ea3700a14fe0d72ea95a279b0b1e69648670a98bc7fb52b9cf3a1de5f",
+          "metrics": {
+            "macro_f1": 0.9599712750921681,
+            "accuracy": 0.9600694444444444,
+            "malignant_recall": 0.9318181818181818,
+            "patient_equal_accuracy": 0.941177445670622,
+            "confusion_matrix": [
+              [
+                200,
+                6,
+                2
+              ],
+              [
+                10,
+                164,
+                2
+              ],
+              [
+                3,
+                0,
+                189
+              ]
+            ]
+          },
+          "val_metrics": {
+            "macro_f1": 0.9734199932094874,
+            "accuracy": 0.9789227166276346,
+            "malignant_recall": 0.9493670886075949,
+            "patient_equal_accuracy": 0.9746127459404874,
+            "confusion_matrix": [
+              [
+                190,
+                5,
+                0
+              ],
+              [
+                4,
+                75,
+                0
+              ],
+              [
+                0,
+                0,
+                153
+              ]
+            ]
+          },
+          "gate_values": {},
+          "parameters": 27521661,
+          "seconds": 4.220635745994514,
+          "independent_generalization_confirmed": false,
+          "scope": "Independent computational reconstruction only; test adaptive selection remains."
+        }
+      ]
     }
   },
   "comparisons": {
@@ -503,6 +712,69 @@
         "ci95": [
           -0.04521268819425415,
           0.000493072853981435
+        ],
+        "draws": 20000,
+        "patients": 41,
+        "paired_seeds": 3,
+        "patient_draws_shared_across_seeds": true,
+        "scope": "conditional descriptive interval after adaptive test feedback; not selection-adjusted"
+      },
+      "numerical_gate": false,
+      "independent_confirmation": false
+    },
+    "field_pool_vs_qualification_convnext_tiny_A": {
+      "paired_seed_deltas": [
+        0.009292077292991308,
+        0.024322220205184264,
+        0.005301087074467303
+      ],
+      "mean_delta": 0.012971794857547625,
+      "conditional_patient_bootstrap": {
+        "ci95": [
+          0.0003281301566996272,
+          0.036229951074010225
+        ],
+        "draws": 20000,
+        "patients": 41,
+        "paired_seeds": 3,
+        "patient_draws_shared_across_seeds": true,
+        "scope": "conditional descriptive interval after adaptive test feedback; not selection-adjusted"
+      },
+      "numerical_gate": false,
+      "independent_confirmation": false
+    },
+    "field_pool_vs_fov_residual": {
+      "paired_seed_deltas": [
+        0.007527465074446682,
+        -0.00012198081481984424,
+        0.051160422518148785
+      ],
+      "mean_delta": 0.01952196892592521,
+      "conditional_patient_bootstrap": {
+        "ci95": [
+          0.00426275542793893,
+          0.04974953398066569
+        ],
+        "draws": 20000,
+        "patients": 41,
+        "paired_seeds": 3,
+        "patient_draws_shared_across_seeds": true,
+        "scope": "conditional descriptive interval after adaptive test feedback; not selection-adjusted"
+      },
+      "numerical_gate": false,
+      "independent_confirmation": false
+    },
+    "field_pool_vs_qualification_swin_t_B": {
+      "paired_seed_deltas": [
+        0.0019159348419514055,
+        0.009923066425828075,
+        -0.0017876109926948658
+      ],
+      "mean_delta": 0.003350463425028205,
+      "conditional_patient_bootstrap": {
+        "ci95": [
+          -0.005767165232630869,
+          0.016311576448014585
         ],
         "draws": 20000,
         "patients": 41,
