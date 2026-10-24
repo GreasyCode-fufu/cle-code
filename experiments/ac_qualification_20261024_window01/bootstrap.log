@@ -61,3 +61,39 @@ cache448 2504 2504
  create mode 100644 experiments/ac_qualification_20261024_window01/preflight.json
  create mode 100644 experiments/ac_qualification_20261024_window01/references_official/partialconv2d.py
 [{"arm": "convnext_tiny_A", "family": "convnext_tiny", "recipe": "A", "parameters": 27822435, "counted_flops": 8909531136, "peak_gpu_mib": 2307.8017578125, "finite_real_two_updates": true}, {"arm": "convnext_tiny_B", "family": "convnext_tiny", "recipe": "B", "parameters": 27822435, "counted_flops": 26183102976, "peak_gpu_mib": 6012.921875, "finite_real_two_updates": true}, {"arm": "efficientnet_v2_s_A", "family": "efficientnet_v2_s", "recipe": "A", "parameters": 20181331, "counted_flops": 5697239424, "peak_gpu_mib": 2714.02392578125, "finite_real_two_updates": true}, {"arm": "efficientnet_v2_s_B", "family": "efficientnet_v2_s", "recipe": "B", "parameters": 20181331, "counted_flops": 16728681984, "peak_gpu_mib": 7352.18408203125, "finite_real_two_updates": true}, {"arm": "swin_t_A", "family": "swin_t", "recipe": "A", "parameters": 27521661, "counted_flops": 8979601920, "peak_gpu_mib": 2581.14111328125, "finite_real_two_updates": true}, {"arm": "swin_t_B", "family": "swin_t", "recipe": "B", "parameters": 27521661, "counted_flops": 28597871616, "peak_gpu_mib": 7185.111328125, "finite_real_two_updates": true}, {"arm": "convnext_base_A", "family": "convnext_base", "recipe": "A", "parameters": 87569539, "counted_flops": 30707417088, "peak_gpu_mib": 5182.86669921875, "finite_real_two_updates": true}, {"arm": "convnext_base_B", "family": "convnext_base", "recipe": "B", "parameters": 87569539, "counted_flops": 90242193408, "peak_gpu_mib": 12801.31884765625, "finite_real_two_updates": true}]
+[main e0c1438] perf: measure real high-resolution single and concurrent baseline qualification throughput
+ 32 files changed, 318 insertions(+), 6 deletions(-)
+ create mode 100644 experiments/ac_qualification_20261024_window01/partial_method_equation_audit.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/profile/bench_1_0.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/profile/bench_1_0.log
+ create mode 100644 experiments/ac_qualification_20261024_window01/profile/bench_2_0.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/profile/bench_2_0.log
+ create mode 100644 experiments/ac_qualification_20261024_window01/profile/bench_2_1.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/profile/bench_2_1.log
+ create mode 100644 experiments/ac_qualification_20261024_window01/profile/bench_4_0.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/profile/bench_4_0.log
+ create mode 100644 experiments/ac_qualification_20261024_window01/profile/bench_4_1.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/profile/bench_4_1.log
+ create mode 100644 experiments/ac_qualification_20261024_window01/profile/bench_4_2.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/profile/bench_4_2.log
+ create mode 100644 experiments/ac_qualification_20261024_window01/profile/bench_4_3.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/profile/bench_4_3.log
+ create mode 100644 experiments/ac_qualification_20261024_window01/profile/gate_1.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/profile/gate_2.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/profile/gate_4.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/profile/measurements.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/profile/ready_1_0.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/profile/ready_2_0.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/profile/ready_2_1.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/profile/ready_4_0.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/profile/ready_4_1.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/profile/ready_4_2.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/profile/ready_4_3.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/profile/resources.csv
+ create mode 100644 experiments/ac_qualification_20261024_window01/profile/selected.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/references_official/PartialConv_LICENSE
+launch qualification_convnext_tiny_A_s45 800912
+launch qualification_convnext_tiny_A_s46 800913
+launch qualification_convnext_tiny_A_s47 800914
+launch qualification_convnext_tiny_B_s45 800915
+launch qualification_convnext_tiny_B_s46 802440
