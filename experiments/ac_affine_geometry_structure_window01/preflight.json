@@ -1,0 +1,165 @@
+{
+  "passed": true,
+  "budgets": [
+    {
+      "arm": "plain",
+      "parameters": 27822435,
+      "counted_flops": 8909531136,
+      "peak_gpu_mib": 2308.912109375,
+      "finite_two_updates": true
+    },
+    {
+      "arm": "mom_affine",
+      "parameters": 27861705,
+      "counted_flops": 9134721024,
+      "peak_gpu_mib": 2913.87109375,
+      "finite_two_updates": true
+    },
+    {
+      "arm": "affine_only",
+      "parameters": 27843177,
+      "counted_flops": 8932411392,
+      "peak_gpu_mib": 2684.08154296875,
+      "finite_two_updates": true
+    },
+    {
+      "arm": "mom_permuted",
+      "parameters": 27861705,
+      "counted_flops": 9134721024,
+      "peak_gpu_mib": 2919.57373046875,
+      "finite_two_updates": true
+    },
+    {
+      "arm": "mom_dcn",
+      "parameters": 28179749,
+      "counted_flops": 9259358208,
+      "peak_gpu_mib": 2925.43505859375,
+      "finite_two_updates": true
+    }
+  ],
+  "geometry_diagnostics": [
+    {
+      "arm": "mom_affine",
+      "gradients": [
+        {
+          "step": 0,
+          "loss": 1.034576416015625,
+          "predictor_weight_gradient_norm": 1.07787024974823
+        },
+        {
+          "step": 1,
+          "loss": 0.9626312255859375,
+          "predictor_weight_gradient_norm": 0.6022908687591553
+        }
+      ],
+      "offset_rms": 0.08256988227367401,
+      "offset_max_abs": 0.37071678042411804,
+      "actual_train_images": 32,
+      "test_images": 0,
+      "local_determinant_range": [
+        1.0097941160202026,
+        1.0590708255767822
+      ]
+    },
+    {
+      "arm": "affine_only",
+      "gradients": [
+        {
+          "step": 0,
+          "loss": 1.034576416015625,
+          "predictor_weight_gradient_norm": 1.07787024974823
+        },
+        {
+          "step": 1,
+          "loss": 0.964324951171875,
+          "predictor_weight_gradient_norm": 0.6094104051589966
+        }
+      ],
+      "offset_rms": 0.08261053264141083,
+      "offset_max_abs": 0.3708401918411255,
+      "actual_train_images": 32,
+      "test_images": 0,
+      "local_determinant_range": [
+        1.0098580121994019,
+        1.0592018365859985
+      ]
+    },
+    {
+      "arm": "mom_permuted",
+      "gradients": [
+        {
+          "step": 0,
+          "loss": 1.034576416015625,
+          "predictor_weight_gradient_norm": 1.768787145614624
+        },
+        {
+          "step": 1,
+          "loss": 0.962158203125,
+          "predictor_weight_gradient_norm": 0.7870350480079651
+        }
+      ],
+      "offset_rms": 0.09790411591529846,
+      "offset_max_abs": 0.40425217151641846,
+      "actual_train_images": 32,
+      "test_images": 0,
+      "local_determinant_range": [
+        0.910538375377655,
+        0.985360324382782
+      ]
+    },
+    {
+      "arm": "mom_dcn",
+      "gradients": [
+        {
+          "step": 0,
+          "loss": 1.034576416015625,
+          "predictor_weight_gradient_norm": 0.9599400162696838
+        },
+        {
+          "step": 1,
+          "loss": 0.9623565673828125,
+          "predictor_weight_gradient_norm": 0.4723111391067505
+        }
+      ],
+      "offset_rms": 0.04378886893391609,
+      "offset_max_abs": 0.1195068359375,
+      "actual_train_images": 32,
+      "test_images": 0
+    }
+  ],
+  "reproduced_baselines": [
+    {
+      "kind": "plain",
+      "seed": 45,
+      "full427_max_probability_error": 0.0
+    },
+    {
+      "kind": "plain",
+      "seed": 46,
+      "full427_max_probability_error": 0.0
+    },
+    {
+      "kind": "plain",
+      "seed": 47,
+      "full427_max_probability_error": 0.0
+    },
+    {
+      "kind": "moments",
+      "seed": 45,
+      "full427_max_probability_error": 0.0
+    },
+    {
+      "kind": "moments",
+      "seed": 46,
+      "full427_max_probability_error": 0.0
+    },
+    {
+      "kind": "moments",
+      "seed": 47,
+      "full427_max_probability_error": 0.0
+    }
+  ],
+  "test_denied": true,
+  "cuda_offset_backward_may_use_atomic_reductions": true,
+  "flops_convention": "2FLOP/MAC including two functional DCN linear contractions, predictor and functional C4; excludes bilinear interpolation/pointwise/norm/pooling/memory, actual throughput must be measured"
+}
