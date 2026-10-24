@@ -1,0 +1,225 @@
+{
+  "passed": true,
+  "scope": "CPU numeric prototypes only; zero CLE classifier training or candidate selection",
+  "seed": 20261024,
+  "checks": [
+    {
+      "operator": "partial_conv",
+      "groups": 1,
+      "stride": 1,
+      "dilation": 1,
+      "bias": true,
+      "mask": "circle",
+      "numpy_max_error": 6.661338147750939e-16,
+      "official_max_error": 0.0
+    },
+    {
+      "operator": "partial_conv",
+      "groups": 1,
+      "stride": 1,
+      "dilation": 1,
+      "bias": true,
+      "mask": "zero",
+      "numpy_max_error": 0.0,
+      "official_max_error": 0.0
+    },
+    {
+      "operator": "partial_conv",
+      "groups": 1,
+      "stride": 1,
+      "dilation": 1,
+      "bias": true,
+      "mask": "one",
+      "numpy_max_error": 6.661338147750939e-16,
+      "official_max_error": 0.0
+    },
+    {
+      "operator": "partial_conv",
+      "groups": 1,
+      "stride": 1,
+      "dilation": 1,
+      "bias": true,
+      "mask": "fractional",
+      "numpy_max_error": 2.7755575615628914e-17,
+      "official_max_error": 0.0
+    },
+    {
+      "operator": "partial_conv",
+      "groups": 2,
+      "stride": 2,
+      "dilation": 1,
+      "bias": true,
+      "mask": "circle",
+      "numpy_max_error": 8.881784197001252e-16,
+      "official_max_error": 0.0
+    },
+    {
+      "operator": "partial_conv",
+      "groups": 2,
+      "stride": 2,
+      "dilation": 1,
+      "bias": true,
+      "mask": "zero",
+      "numpy_max_error": 0.0,
+      "official_max_error": 0.0
+    },
+    {
+      "operator": "partial_conv",
+      "groups": 2,
+      "stride": 2,
+      "dilation": 1,
+      "bias": true,
+      "mask": "one",
+      "numpy_max_error": 4.440892098500626e-16,
+      "official_max_error": 0.0
+    },
+    {
+      "operator": "partial_conv",
+      "groups": 2,
+      "stride": 2,
+      "dilation": 1,
+      "bias": true,
+      "mask": "fractional",
+      "numpy_max_error": 2.0816681711721685e-17,
+      "official_max_error": 0.0
+    },
+    {
+      "operator": "partial_conv",
+      "groups": 4,
+      "stride": 1,
+      "dilation": 2,
+      "bias": false,
+      "mask": "circle",
+      "numpy_max_error": 4.440892098500626e-16,
+      "official_max_error": 0.0
+    },
+    {
+      "operator": "partial_conv",
+      "groups": 4,
+      "stride": 1,
+      "dilation": 2,
+      "bias": false,
+      "mask": "zero",
+      "numpy_max_error": 0.0,
+      "official_max_error": 0.0
+    },
+    {
+      "operator": "partial_conv",
+      "groups": 4,
+      "stride": 1,
+      "dilation": 2,
+      "bias": false,
+      "mask": "one",
+      "numpy_max_error": 4.440892098500626e-16,
+      "official_max_error": 0.0
+    },
+    {
+      "operator": "partial_conv",
+      "groups": 4,
+      "stride": 1,
+      "dilation": 2,
+      "bias": false,
+      "mask": "fractional",
+      "numpy_max_error": 2.7755575615628914e-17,
+      "official_max_error": 0.0
+    },
+    {
+      "operator": "partial_conv",
+      "input_gradcheck": true
+    },
+    {
+      "operator": "partial_conv",
+      "zero_residual_exact": true,
+      "alpha_gradient_nonzero": true,
+      "finite_two_toy_updates": true
+    },
+    {
+      "operator": "window_attention",
+      "height": 14,
+      "width": 14,
+      "shift": [
+        0,
+        0
+      ],
+      "original_forward_error": 0.0,
+      "original_input_gradient_error": 0.0,
+      "official_weighted_bias_oracle_error": 0.0,
+      "empty_window_zero": true,
+      "zero_residual_exact": true,
+      "alpha_gradient_nonzero": true
+    },
+    {
+      "operator": "window_attention",
+      "height": 14,
+      "width": 14,
+      "shift": [
+        3,
+        3
+      ],
+      "original_forward_error": 0.0,
+      "original_input_gradient_error": 0.0,
+      "official_weighted_bias_oracle_error": 0.0,
+      "empty_window_zero": true,
+      "zero_residual_exact": true,
+      "alpha_gradient_nonzero": true
+    },
+    {
+      "operator": "window_attention",
+      "height": 13,
+      "width": 17,
+      "shift": [
+        3,
+        3
+      ],
+      "original_forward_error": 0.0,
+      "original_input_gradient_error": 0.0,
+      "official_weighted_bias_oracle_error": 0.0,
+      "empty_window_zero": true,
+      "zero_residual_exact": true,
+      "alpha_gradient_nonzero": true
+    },
+    {
+      "operator": "window_attention",
+      "height": 5,
+      "width": 6,
+      "shift": [
+        3,
+        3
+      ],
+      "original_forward_error": 0.0,
+      "original_input_gradient_error": 0.0,
+      "official_weighted_bias_oracle_error": 0.0,
+      "empty_window_zero": true,
+      "zero_residual_exact": true,
+      "alpha_gradient_nonzero": true
+    },
+    {
+      "operator": "weighted_pool",
+      "numpy_exact": true,
+      "empty_support_zero": true
+    },
+    {
+      "operator": "paired_image_and_mask_augmentation",
+      "cases": 160,
+      "raw_rgb_max_error": 0.0,
+      "all_exact": true,
+      "allowed_ac_train_indices": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "test_images_accessed": 0
+    }
+  ],
+  "torch": "2.12.0+cu130",
+  "torchvision": "0.27.0+cu130",
+  "source_sha256": {
+    "field_ops_v2.py": "323307ade184824c20bbd60d1c961297e99e0f439644aa75723f36648171d3d4",
+    "check_field_ops_v2.py": "a0145e68c0da0f99774eedc4e15feb2f56d7b3d0c5316ca7cf869852dc1adf6c",
+    "FIELD_PROTOTYPE_PROTOCOL_V2_ZH.md": "d952e546f1198f0bf67914e803548912c3e0c9c217dcbb0d603521b8ada84d02"
+  },
+  "nvidia_source_sha256": "ca92d642523b7b18e56c981d6198e29e6b7cdbfa7469b3a07f5f93e741435116",
+  "torchvision_swin_source_sha256": "9ec73f2333108389e152fda346b6f195ebced02e9ced367cef60f405093b40b1",
+  "limitation": "Actual selected-backbone integration and real batch32 CUDA/AMP/full baseline val equivalence remain required before formal structure training."
+}
