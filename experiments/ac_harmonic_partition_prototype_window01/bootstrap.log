@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/home/login/data/cle/auto/GPT/experiments/ac_harmonic_partition_prototype_window01/bootstrap.py", line 32, in <module>
+    try:main()
+        ^^^^^^
+  File "/home/login/data/cle/auto/GPT/experiments/ac_harmonic_partition_prototype_window01/bootstrap.py", line 28, in main
+    save('config.json',dict(created_at=time.strftime('%Y-%m-%d %H:%M:%S%z'),sources={str(p.relative_to(R)):sha(p) for p in files},locked={str(p.relative_to(R)):sha(p) for p in locked},operator='bounded C4 first/second power contrast complementary to frozen mean/std',controls=['noncyclic permutation','same-branch duplicate std','official rawH2 magnitude'],kind='CPU numerical prototype only',public_initialization_only=True,CLE_images=0,CLE_training=0,test_predictions=0,formal_next_round_not_started=True,overall_research_complete=False));save('identity.json',dict(pid=os.getpid(),source_sha256=sha(__file__)));commit('research: preregister C4 power-shape complement numerical prototype and faithful magnitude control')
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     ^^^^^^^^^^^^^
+  File "/home/login/data/cle/auto/GPT/experiments/ac_harmonic_partition_prototype_window01/bootstrap.py", line 4, in sha
+    def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+                                     ^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'read_bytes'
