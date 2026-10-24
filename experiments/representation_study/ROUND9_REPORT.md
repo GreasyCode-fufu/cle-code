@@ -1,0 +1,103 @@
+# Round9 frozen pretrained representation baselines
+
+Zero neural training;60 new ridge fits;6 copied OOF reference predictions. Pretraining/architecture/precision/compute differ; not a new network.
+
+| Scheme | Mean OOF F1 |
+|---|---:|
+| resnet_frozen_gap | 0.840943 |
+| dino_cls | 0.866158 |
+| dino_mean | 0.871247 |
+| dino_concat | 0.873057 |
+| cnn_finetuned_gap | 0.862553 |
+| cnn_frozenbn_gap | 0.871950 |
+
+{
+  "strong_primary_followup": false,
+  "comparisons": {
+    "dino_cls_vs_resnet_frozen_gap": {
+      "seed_deltas": [
+        0.02430035143075171,
+        0.02357952552125686,
+        0.027763585059542573
+      ],
+      "mean_delta": 0.025214487337183716,
+      "patient95": [
+        0.01061405712602452,
+        0.04217634039445668
+      ],
+      "family_interval": [
+        0.006218709053839857,
+        0.047553906315652116
+      ],
+      "strong_pair": true
+    },
+    "dino_mean_vs_resnet_frozen_gap": {
+      "seed_deltas": [
+        0.026593213692572837,
+        0.03196567855654697,
+        0.032352169289715516
+      ],
+      "mean_delta": 0.030303687179611776,
+      "patient95": [
+        0.014573861920580293,
+        0.04812779839967347
+      ],
+      "family_interval": [
+        0.00986778096443089,
+        0.05409519311134776
+      ],
+      "strong_pair": true
+    },
+    "dino_concat_vs_resnet_frozen_gap": {
+      "seed_deltas": [
+        0.029573380631631507,
+        0.032534354894937834,
+        0.03423328486058519
+      ],
+      "mean_delta": 0.03211367346238484,
+      "patient95": [
+        0.01694133685571851,
+        0.04911515762380474
+      ],
+      "family_interval": [
+        0.012294686177016146,
+        0.05490023610095514
+      ],
+      "strong_pair": true
+    },
+    "dino_concat_vs_cnn_finetuned_gap": {
+      "seed_deltas": [
+        0.0026939080794682324,
+        0.012085376096322875,
+        0.016733100443636517
+      ],
+      "mean_delta": 0.010504128206475874,
+      "patient95": [
+        -0.0053801921306777445,
+        0.026193324033257626
+      ],
+      "family_interval": [
+        -0.010852452701481665,
+        0.031544183464674067
+      ],
+      "strong_pair": false
+    },
+    "dino_concat_vs_cnn_frozenbn_gap": {
+      "seed_deltas": [
+        -0.0029054587265998633,
+        -0.0022823575451523803,
+        0.008507859066143708
+      ],
+      "mean_delta": 0.0011066809314638215,
+      "patient95": [
+        -0.017541066155943086,
+        0.021813376433145674
+      ],
+      "family_interval": [
+        -0.022832616288916585,
+        0.02897001934839953
+      ],
+      "strong_pair": false
+    }
+  }
+}
