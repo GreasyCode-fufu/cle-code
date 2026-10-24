@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-24T22:50:42.015344+08:00",
+  "updated_at": "2026-10-24T23:30:02.593745+08:00",
   "primary_B0": "convnext_tiny_A",
   "working_W0": "swin_t_B",
   "summary": {
@@ -1140,6 +1140,260 @@
           "scope": "Independent computational reconstruction only; test adaptive selection remains."
         }
       ]
+    },
+    "no_local_norm": {
+      "role": "mechanism/control",
+      "seed_macro_f1": [
+        0.9583538587848932,
+        0.9583902609661904,
+        0.9128388260478828
+      ],
+      "macro_f1": 0.9431943152663221,
+      "accuracy": 0.9444444444444445,
+      "malignant_recall": 0.8901515151515151,
+      "patient_equal_accuracy": 0.9175329675458648,
+      "units": [
+        {
+          "passed": true,
+          "seed": 45,
+          "kind": "no_local_norm",
+          "checkpoint_sha256": "1677cd83185cc6d51df9b2f6bd6811c3ae9fe39aaf08dea1035714c8fe3521af",
+          "prediction_sha256": "bc0c9dcfda9df0c084b33e6a3c9a3e8ac9215f6c8893c8620dedb459ac3b671d",
+          "test_images": 576,
+          "test_patients": 41,
+          "val_images": 427,
+          "val_max_probability_error": 0.0,
+          "test_max_probability_error": 0.0,
+          "state_unchanged": true,
+          "state_sha256": "8b0804e32968546b06d4eeebed7403c6e050aee1a021cc8765d8e7323d45e32f",
+          "metrics": {
+            "macro_f1": 0.9583538587848932,
+            "accuracy": 0.9583333333333334,
+            "malignant_recall": 0.9375,
+            "patient_equal_accuracy": 0.939330186169319,
+            "confusion_matrix": [
+              [
+                199,
+                7,
+                2
+              ],
+              [
+                9,
+                165,
+                2
+              ],
+              [
+                4,
+                0,
+                188
+              ]
+            ]
+          },
+          "val_metrics": {
+            "macro_f1": 0.9762847560315914,
+            "accuracy": 0.9812646370023419,
+            "malignant_recall": 0.9493670886075949,
+            "patient_equal_accuracy": 0.9658475783475783,
+            "confusion_matrix": [
+              [
+                191,
+                4,
+                0
+              ],
+              [
+                4,
+                75,
+                0
+              ],
+              [
+                0,
+                0,
+                153
+              ]
+            ]
+          },
+          "gate_values": {
+            "backbone.encoder.0.0.0.alpha": 0.0019384614424780011,
+            "backbone.encoder.0.1.0.attn.alpha": -0.003187584225088358,
+            "backbone.encoder.0.1.1.attn.alpha": 0.00733544398099184,
+            "backbone.encoder.0.3.0.attn.alpha": 0.0035757534205913544,
+            "backbone.encoder.0.3.1.attn.alpha": -0.011896157637238503,
+            "backbone.encoder.0.5.0.attn.alpha": 0.000620802806224674,
+            "backbone.encoder.0.5.1.attn.alpha": -0.002509519923478365,
+            "backbone.encoder.0.5.2.attn.alpha": -0.0047890618443489075,
+            "backbone.encoder.0.5.3.attn.alpha": 0.00020553864305838943,
+            "backbone.encoder.0.5.4.attn.alpha": 0.005375162698328495,
+            "backbone.encoder.0.5.5.attn.alpha": 0.013509992510080338,
+            "backbone.encoder.0.7.0.attn.alpha": -0.003447070484980941,
+            "backbone.encoder.0.7.1.attn.alpha": -0.011808427982032299,
+            "backbone.encoder.3.alpha": 0.05495276674628258
+          },
+          "parameters": 27521675,
+          "seconds": 5.567590900987852,
+          "independent_generalization_confirmed": false,
+          "scope": "Independent computational reconstruction only; test adaptive selection remains."
+        },
+        {
+          "passed": true,
+          "seed": 46,
+          "kind": "no_local_norm",
+          "checkpoint_sha256": "5a291ca4034a3ee282387a537763da63a9284924a98e148f6fba5a3f65d86778",
+          "prediction_sha256": "a20ae937a153491ccfeb6e6e075b6bae33af3371aec0f8cf0db2bdd8d7851096",
+          "test_images": 576,
+          "test_patients": 41,
+          "val_images": 427,
+          "val_max_probability_error": 0.0,
+          "test_max_probability_error": 0.0,
+          "state_unchanged": true,
+          "state_sha256": "2e1eae8aaca3ef7b5dfadfcbb4c827be48695cd036dd87bf8ab9ca7476f50ba5",
+          "metrics": {
+            "macro_f1": 0.9583902609661904,
+            "accuracy": 0.9583333333333334,
+            "malignant_recall": 0.9545454545454546,
+            "patient_equal_accuracy": 0.9362198563097152,
+            "confusion_matrix": [
+              [
+                198,
+                8,
+                2
+              ],
+              [
+                7,
+                168,
+                1
+              ],
+              [
+                4,
+                2,
+                186
+              ]
+            ]
+          },
+          "val_metrics": {
+            "macro_f1": 0.9741619123956812,
+            "accuracy": 0.9789227166276346,
+            "malignant_recall": 1.0,
+            "patient_equal_accuracy": 0.965405127772149,
+            "confusion_matrix": [
+              [
+                186,
+                9,
+                0
+              ],
+              [
+                0,
+                79,
+                0
+              ],
+              [
+                0,
+                0,
+                153
+              ]
+            ]
+          },
+          "gate_values": {
+            "backbone.encoder.0.0.0.alpha": 0.0026337383314967155,
+            "backbone.encoder.0.1.0.attn.alpha": -0.0002246630028821528,
+            "backbone.encoder.0.1.1.attn.alpha": 0.00394502142444253,
+            "backbone.encoder.0.3.0.attn.alpha": -0.0015347793232649565,
+            "backbone.encoder.0.3.1.attn.alpha": -0.0028148030396550894,
+            "backbone.encoder.0.5.0.attn.alpha": 0.0018239769851788878,
+            "backbone.encoder.0.5.1.attn.alpha": -0.0018723554676398635,
+            "backbone.encoder.0.5.2.attn.alpha": 0.002010149182751775,
+            "backbone.encoder.0.5.3.attn.alpha": 0.0038428183179348707,
+            "backbone.encoder.0.5.4.attn.alpha": 0.00713083241134882,
+            "backbone.encoder.0.5.5.attn.alpha": 0.005998331122100353,
+            "backbone.encoder.0.7.0.attn.alpha": -0.00665923859924078,
+            "backbone.encoder.0.7.1.attn.alpha": -0.006435219198465347,
+            "backbone.encoder.3.alpha": 0.022121110931038857
+          },
+          "parameters": 27521675,
+          "seconds": 5.456989352009259,
+          "independent_generalization_confirmed": false,
+          "scope": "Independent computational reconstruction only; test adaptive selection remains."
+        },
+        {
+          "passed": true,
+          "seed": 47,
+          "kind": "no_local_norm",
+          "checkpoint_sha256": "3322e3bd209294f7044f6d7f99d656495756089e0b3cdd828b5617fb168d37c6",
+          "prediction_sha256": "203b3f13c1bf0d7c56c4168dbd43d1098d89d15f08ce199bce0ee203ef57ee72",
+          "test_images": 576,
+          "test_patients": 41,
+          "val_images": 427,
+          "val_max_probability_error": 0.0,
+          "test_max_probability_error": 0.0,
+          "state_unchanged": true,
+          "state_sha256": "1af14aa1da06cc7e0a96b5ea0c08c1ef92e3cea33a61f8c62c61837fd43a38f5",
+          "metrics": {
+            "macro_f1": 0.9128388260478828,
+            "accuracy": 0.9166666666666666,
+            "malignant_recall": 0.7784090909090909,
+            "patient_equal_accuracy": 0.8770488601585601,
+            "confusion_matrix": [
+              [
+                201,
+                2,
+                5
+              ],
+              [
+                20,
+                137,
+                19
+              ],
+              [
+                2,
+                0,
+                190
+              ]
+            ]
+          },
+          "val_metrics": {
+            "macro_f1": 0.9727566638718113,
+            "accuracy": 0.9789227166276346,
+            "malignant_recall": 0.9240506329113924,
+            "patient_equal_accuracy": 0.9543091168091167,
+            "confusion_matrix": [
+              [
+                192,
+                3,
+                0
+              ],
+              [
+                5,
+                73,
+                1
+              ],
+              [
+                0,
+                0,
+                153
+              ]
+            ]
+          },
+          "gate_values": {
+            "backbone.encoder.0.0.0.alpha": 0.0009225558605976403,
+            "backbone.encoder.0.1.0.attn.alpha": 0.0007889189873822033,
+            "backbone.encoder.0.1.1.attn.alpha": 0.0019501651404425502,
+            "backbone.encoder.0.3.0.attn.alpha": -0.0010420784819871187,
+            "backbone.encoder.0.3.1.attn.alpha": -0.0023376953322440386,
+            "backbone.encoder.0.5.0.attn.alpha": -0.0023562659043818712,
+            "backbone.encoder.0.5.1.attn.alpha": -0.002166017657145858,
+            "backbone.encoder.0.5.2.attn.alpha": -0.0008034551283344626,
+            "backbone.encoder.0.5.3.attn.alpha": 0.0007054596208035946,
+            "backbone.encoder.0.5.4.attn.alpha": 0.0015377072850242257,
+            "backbone.encoder.0.5.5.attn.alpha": 0.0024013170041143894,
+            "backbone.encoder.0.7.0.attn.alpha": -0.004612255841493607,
+            "backbone.encoder.0.7.1.attn.alpha": -0.0032535758800804615,
+            "backbone.encoder.3.alpha": 0.005996959749609232
+          },
+          "parameters": 27521675,
+          "seconds": 5.461476844007848,
+          "independent_generalization_confirmed": false,
+          "scope": "Independent computational reconstruction only; test adaptive selection remains."
+        }
+      ]
     }
   },
   "comparisons": {
@@ -1364,6 +1618,69 @@
         "ci95": [
           -0.011702183569237712,
           0.006478721047461849
+        ],
+        "draws": 20000,
+        "patients": 41,
+        "paired_seeds": 3,
+        "patient_draws_shared_across_seeds": true,
+        "scope": "conditional descriptive interval after adaptive test feedback; not selection-adjusted"
+      },
+      "numerical_gate": false,
+      "independent_confirmation": false
+    },
+    "no_local_norm_vs_qualification_convnext_tiny_A": {
+      "paired_seed_deltas": [
+        0.00583910258534448,
+        0.01613201120863761,
+        -0.04183136196981796
+      ],
+      "mean_delta": -0.006620082725278624,
+      "conditional_patient_bootstrap": {
+        "ci95": [
+          -0.03131585173899301,
+          0.010085904839556046
+        ],
+        "draws": 20000,
+        "patients": 41,
+        "paired_seeds": 3,
+        "patient_draws_shared_across_seeds": true,
+        "scope": "conditional descriptive interval after adaptive test feedback; not selection-adjusted"
+      },
+      "numerical_gate": false,
+      "independent_confirmation": false
+    },
+    "no_local_norm_vs_fov_residual": {
+      "paired_seed_deltas": [
+        0.0040744903667998544,
+        -0.0083121898113665,
+        0.004027973473863522
+      ],
+      "mean_delta": -6.990865690104098e-05,
+      "conditional_patient_bootstrap": {
+        "ci95": [
+          -0.009450073695838968,
+          0.00848245728626127
+        ],
+        "draws": 20000,
+        "patients": 41,
+        "paired_seeds": 3,
+        "patient_draws_shared_across_seeds": true,
+        "scope": "conditional descriptive interval after adaptive test feedback; not selection-adjusted"
+      },
+      "numerical_gate": false,
+      "independent_confirmation": false
+    },
+    "no_local_norm_vs_qualification_swin_t_B": {
+      "paired_seed_deltas": [
+        -0.001537039865695422,
+        0.0017328574292814203,
+        -0.04892006003698013
+      ],
+      "mean_delta": -0.016241414157798045,
+      "conditional_patient_bootstrap": {
+        "ci95": [
+          -0.0404880889557027,
+          -0.003998341841817713
         ],
         "draws": 20000,
         "patients": 41,
