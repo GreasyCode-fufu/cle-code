@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-24T20:24:47.680741+08:00",
+  "updated_at": "2026-10-24T20:36:40.388007+08:00",
   "test_count": 576,
   "test_groups": 41,
   "summary": {
@@ -1472,6 +1472,111 @@
       "accuracy": 0.953125,
       "malignant_recall": 0.9469696969696969,
       "patient_equal_accuracy": 0.9293418976929281
+    },
+    "qualification_convnext_base_B": {
+      "recipe": "B",
+      "canonical": "mature_convnext_base",
+      "seeds": [
+        {
+          "seed": 45,
+          "fingerprint": "9973ed8717c853f0a15a26275060a9d7a1d25f6afcd7150fbd710adaa3ce03c3",
+          "metrics": {
+            "macro_f1": 0.9549026880181916,
+            "accuracy": 0.9548611111111112,
+            "malignant_recall": 0.9147727272727273,
+            "patient_equal_accuracy": 0.9398973709542435,
+            "confusion_matrix": [
+              [
+                202,
+                4,
+                2
+              ],
+              [
+                13,
+                161,
+                2
+              ],
+              [
+                5,
+                0,
+                187
+              ]
+            ]
+          },
+          "best_epoch": 46,
+          "checkpoint": "weights/ac_qualification_20261024_window01/qualification_convnext_base_B_s45/model_best.pth",
+          "checkpoint_sha256": "87dab4d1c6ea0504a46098e62dd6a8f73460a93c8d8ee9bda35f92f35ab7c3c5"
+        },
+        {
+          "seed": 46,
+          "fingerprint": "150eb4671d76b5255b0c470161dc0ac8d3f71de0d305e890f284613087297e14",
+          "metrics": {
+            "macro_f1": 0.9597317831386426,
+            "accuracy": 0.9600694444444444,
+            "malignant_recall": 0.9204545454545454,
+            "patient_equal_accuracy": 0.9467125460591572,
+            "confusion_matrix": [
+              [
+                202,
+                4,
+                2
+              ],
+              [
+                10,
+                162,
+                4
+              ],
+              [
+                3,
+                0,
+                189
+              ]
+            ]
+          },
+          "best_epoch": 40,
+          "checkpoint": "weights/ac_qualification_20261024_window01/qualification_convnext_base_B_s46/model_best.pth",
+          "checkpoint_sha256": "cf41a455acff0abd7ed4aa33093bd3d8c49fa52a73231de711f6d60ea995371f"
+        },
+        {
+          "seed": 47,
+          "fingerprint": "ccc271cf5bbe0b187f1299a1965202df0b5678547a0a0ab8a712fd24799d5b76",
+          "metrics": {
+            "macro_f1": 0.9600897876007662,
+            "accuracy": 0.9600694444444444,
+            "malignant_recall": 0.9431818181818182,
+            "patient_equal_accuracy": 0.9057145206757166,
+            "confusion_matrix": [
+              [
+                199,
+                6,
+                3
+              ],
+              [
+                7,
+                166,
+                3
+              ],
+              [
+                4,
+                0,
+                188
+              ]
+            ]
+          },
+          "best_epoch": 21,
+          "checkpoint": "weights/ac_qualification_20261024_window01/qualification_convnext_base_B_s47/model_best.pth",
+          "checkpoint_sha256": "eedb90f1e27f05df8cac10b5af2500fd3ac3c0251984253b4217c2331549c073"
+        }
+      ],
+      "seed_macro_f1": [
+        0.9549026880181916,
+        0.9597317831386426,
+        0.9600897876007662
+      ],
+      "macro_f1": 0.9582414195858667,
+      "accuracy": 0.9583333333333334,
+      "malignant_recall": 0.9261363636363636,
+      "patient_equal_accuracy": 0.9307748125630391
     }
   },
   "comparisons": {
@@ -1786,12 +1891,36 @@
       "numerical_gate": false,
       "independent_generalization_confirmed": false,
       "selection_bias_corrected": false
+    },
+    "qualification_convnext_base_B": {
+      "reference": "dino_baseline",
+      "primary_baseline_frozen": false,
+      "paired_seed_deltas": [
+        0.016331132035749762,
+        -0.00889525378107725,
+        0.011968656511240239
+      ],
+      "mean_delta": 0.006468178255304251,
+      "conditional_patient_bootstrap": {
+        "ci95": [
+          -0.009184251151758058,
+          0.03175222972567217
+        ],
+        "draws": 20000,
+        "patients": 41,
+        "paired_seeds": 3,
+        "patient_draws_shared_across_seeds": true,
+        "scope": "conditional descriptive interval after adaptive test feedback; not selection-adjusted"
+      },
+      "numerical_gate": false,
+      "independent_generalization_confirmed": false,
+      "selection_bias_corrected": false
     }
   },
   "primary_baseline": null,
   "temporary_reference": "dino_baseline",
-  "unique_audited_checkpoints": 39,
-  "complete_method_groups": 14,
+  "unique_audited_checkpoints": 42,
+  "complete_method_groups": 15,
   "units": {
     "cd810eb393759e14a0e840f534188877e21b466f33ad0b9f55ba41ba36c7c705": {
       "complete_sha256": "640a73d4a585d3675643956c9afbace4f5fa0b5f8d915bf631dd991115f0f9ef",
@@ -1948,6 +2077,18 @@
     "25dc7a344b52e607c30aedf52ba68932e97609c1b39c81b333ec9c70aef57792": {
       "complete_sha256": "79cae8c017939544b63c02941ce6b98fc825d678171f411225c2f48cf0ad6ce3",
       "audit_sha256": "167c89f2494016317e4e69ccb4dbd27e9c634ccd64e12b5e6a7c05935f9515d0"
+    },
+    "9973ed8717c853f0a15a26275060a9d7a1d25f6afcd7150fbd710adaa3ce03c3": {
+      "complete_sha256": "616c14edbe28a56b7cd79d7157ba984cd4f98fdc03c83bd1d8713164fb812c2e",
+      "audit_sha256": "1ce41c2dd5484660c730829c9169eb74005d69fd65b637c9098d78299985f01b"
+    },
+    "150eb4671d76b5255b0c470161dc0ac8d3f71de0d305e890f284613087297e14": {
+      "complete_sha256": "537518732f8f4d13ea086b39ff3e2480f73cbfdbd93793f54b036d85ccf3e3c0",
+      "audit_sha256": "929902936b716497a8df01ace35ec829254f1f18696d3cfe558619dae12dffb7"
+    },
+    "ccc271cf5bbe0b187f1299a1965202df0b5678547a0a0ab8a712fd24799d5b76": {
+      "complete_sha256": "80a79dfecc5e9f579f56a3d9c062fc04a8d107afb5edee65b5cb09a846ff8e6c",
+      "audit_sha256": "8590f443f287e3001aeeb889470dc5f6953b784d7414f454081d410bb8b625df"
     }
   },
   "test_role": "adaptive development feedback",

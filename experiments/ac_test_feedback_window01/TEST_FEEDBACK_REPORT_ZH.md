@@ -2,7 +2,7 @@
 
 用户授权流程：train训练 → val最早最佳权重 → test测试 → 根据test反馈设计下一方法。test参与开发和选择，以下不是独立泛化确认。历史研究已查看test，A–C构建使用过test标签；等级仅为模型一致性代理。
 
-完整方法组：14；独立复算权重：39；固定test：576图/41患者。
+完整方法组：15；独立复算权重：42；固定test：576图/41患者。
 固定主要baseline：资格审计尚未结束；DINO仅为临时报告参照。
 
 |方法|seed45 F1|seed46 F1|seed47 F1|平均F1|accuracy|恶性召回|患者等权accuracy|
@@ -21,6 +21,7 @@
 |qualification_swin_t_A|94.5637%|94.7332%|94.5371%|94.6114%|94.6759%|89.5833%|91.1720%|
 |qualification_swin_t_B|95.9891%|95.6657%|96.1759%|95.9436%|95.9491%|95.0758%|93.6555%|
 |qualification_convnext_base_A|95.5005%|95.2670%|95.1612%|95.3096%|95.3125%|94.6970%|92.9342%|
+|qualification_convnext_base_B|95.4903%|95.9732%|96.0090%|95.8241%|95.8333%|92.6136%|93.0775%|
 
 所有seed混淆矩阵、checkpoint SHA、预测与审计见test_results.json及predictions/。bootstrap按相同41患者联合重采样、逐seed计算F1再平均，不能消除test反馈选择偏差。完整3seed后才报告方法，无新增训练、无test选epoch。
 
@@ -41,3 +42,4 @@
 |qualification_swin_t_A|-0.5660|[-3.1456, 1.2159]|
 |qualification_swin_t_B|0.7662|[-1.2396, 2.6782]|
 |qualification_convnext_base_A|0.1323|[-2.0120, 1.7577]|
+|qualification_convnext_base_B|0.6468|[-0.9184, 3.1752]|
