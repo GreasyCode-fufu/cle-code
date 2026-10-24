@@ -1,0 +1,106 @@
+{
+  "passed": true,
+  "budgets": [
+    {
+      "arm": "plain",
+      "parameters": 27822435,
+      "counted_flops": 8909531136,
+      "zero_adapter_logits_exact": true,
+      "RNG_preserved": true,
+      "finite_backward": true
+    },
+    {
+      "arm": "eca_reference",
+      "parameters": 27822440,
+      "counted_flops": 8909538816,
+      "zero_adapter_logits_exact": true,
+      "RNG_preserved": true,
+      "finite_backward": true
+    },
+    {
+      "arm": "mean_only",
+      "parameters": 27840963,
+      "counted_flops": 9111840768,
+      "zero_adapter_logits_exact": true,
+      "RNG_preserved": true,
+      "finite_backward": true
+    },
+    {
+      "arm": "random_moments",
+      "parameters": 27840963,
+      "counted_flops": 9111840768,
+      "zero_adapter_logits_exact": true,
+      "RNG_preserved": true,
+      "finite_backward": true
+    },
+    {
+      "arm": "moments_eca",
+      "parameters": 27840968,
+      "counted_flops": 9111848448,
+      "zero_adapter_logits_exact": true,
+      "RNG_preserved": true,
+      "finite_backward": true
+    },
+    {
+      "arm": "aug_moments",
+      "parameters": 27840963,
+      "counted_flops": 9111840768,
+      "zero_adapter_logits_exact": true,
+      "RNG_preserved": true,
+      "finite_backward": true
+    }
+  ],
+  "data_checks": [
+    {
+      "arm": "mean_only",
+      "training": true,
+      "images": 8,
+      "RGB_and_RNG_exact": true
+    },
+    {
+      "arm": "mean_only",
+      "training": false,
+      "images": 8,
+      "RGB_and_RNG_exact": true
+    },
+    {
+      "arm": "random_moments",
+      "training": true,
+      "images": 8,
+      "RGB_and_RNG_exact": true
+    },
+    {
+      "arm": "random_moments",
+      "training": false,
+      "images": 8,
+      "RGB_and_RNG_exact": true
+    },
+    {
+      "arm": "moments_eca",
+      "training": true,
+      "images": 8,
+      "RGB_and_RNG_exact": true
+    },
+    {
+      "arm": "moments_eca",
+      "training": false,
+      "images": 8,
+      "RGB_and_RNG_exact": true
+    },
+    {
+      "arm": "aug_moments",
+      "training": true,
+      "images": 8,
+      "RGB_and_RNG_exact": true
+    },
+    {
+      "arm": "aug_moments",
+      "training": false,
+      "images": 8,
+      "RGB_and_RNG_exact": true
+    }
+  ],
+  "network_training": 0,
+  "test_images": 0,
+  "scope": "CPU computational checks; efficacy unknown until paired retraining"
+}
