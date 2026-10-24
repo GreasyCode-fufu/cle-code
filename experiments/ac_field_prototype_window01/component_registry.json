@@ -1,0 +1,32 @@
+{
+  "updated_at": "2026-10-24T19:35:04.192661+08:00",
+  "user_strategy": "retain an effective mechanism, add1-2 complementary mechanisms, cumulative and drop-one retraining; counts do not prove novelty",
+  "primary_baseline": {
+    "state": "awaiting complete fair qualification and independent audit",
+    "path": "experiments/ac_qualification_20261024_window01/selected_baseline.json"
+  },
+  "components": [
+    {
+      "slot": 1,
+      "name": "optical-field support constraint",
+      "state": "numeric_only_no_CLE_training_evidence",
+      "evidence": [
+        "numeric_preflight_v2.json",
+        "model_integration_cpu.json",
+        "paired_dataset_audit.json"
+      ],
+      "note": "Convolution/attention/pool are implementations/controls of one support mechanism, not3 innovations"
+    },
+    {
+      "slot": 2,
+      "state": "unselected_wait_first_component_evidence_and_residual_error_analysis"
+    },
+    {
+      "slot": 3,
+      "state": "optional_unselected_wait_complementary_evidence"
+    }
+  ],
+  "retained_effective_components": [],
+  "past_negative": "DINO relational round did not confirm stable development benefit; all results retained",
+  "evaluation": "train/val each iteration; all predeclared frozen progressive/drop-one models may be evaluated together in one final test, no test-adaptive tuning"
+}
