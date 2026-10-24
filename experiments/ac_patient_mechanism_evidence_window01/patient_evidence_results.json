@@ -1,0 +1,517 @@
+{
+  "created_at": "2026-10-24T21:23:59.697007+08:00",
+  "reference": "swin_t_B",
+  "train_description": {
+    "images": 2077,
+    "patient_groups": 182,
+    "min_images": 1,
+    "max_images": 102,
+    "top10_images": 579,
+    "image_weight_concentration_equivalent_groups": 69.7335887364014,
+    "mixed_label_groups": 71,
+    "class_images": {
+      "0": 830,
+      "1": 371,
+      "2": 876
+    },
+    "class_patient_groups": {
+      "0": 117,
+      "1": 56,
+      "2": 94
+    },
+    "note": "Equivalent group count is inverse image-weight concentration, not an independent-sample-size estimate."
+  },
+  "val_description": {
+    "images": 427,
+    "patient_groups": 39,
+    "min_images": 1,
+    "max_images": 71,
+    "top10_images": 296,
+    "image_weight_concentration_equivalent_groups": 14.700395065709909,
+    "mixed_label_groups": 11,
+    "class_images": {
+      "0": 195,
+      "1": 79,
+      "2": 153
+    },
+    "class_patient_groups": {
+      "0": 23,
+      "1": 16,
+      "2": 14
+    },
+    "note": "Equivalent group count is inverse image-weight concentration, not an independent-sample-size estimate."
+  },
+  "units": [
+    {
+      "seed": 45,
+      "checkpoint_sha256": "33c6297784688c39718649d88bdd6991570565fade646b8ac3367af55c1386ef",
+      "metrics": {
+        "frozen_linear_head_cpu": {
+          "macro_f1": 0.9769549401795664,
+          "accuracy": 0.9812646370023419,
+          "malignant_recall": 1.0,
+          "patient_equal_accuracy": 0.9548967236467237,
+          "confusion_matrix": [
+            [
+              187,
+              8,
+              0
+            ],
+            [
+              0,
+              79,
+              0
+            ],
+            [
+              0,
+              0,
+              153
+            ]
+          ]
+        },
+        "image_mean_euclidean": {
+          "macro_f1": 0.9741619123956812,
+          "accuracy": 0.9789227166276346,
+          "malignant_recall": 1.0,
+          "patient_equal_accuracy": 0.9536757224257224,
+          "confusion_matrix": [
+            [
+              186,
+              9,
+              0
+            ],
+            [
+              0,
+              79,
+              0
+            ],
+            [
+              0,
+              0,
+              153
+            ]
+          ]
+        },
+        "patient_class_mean_euclidean": {
+          "macro_f1": 0.9741619123956812,
+          "accuracy": 0.9789227166276346,
+          "malignant_recall": 1.0,
+          "patient_equal_accuracy": 0.9536757224257224,
+          "confusion_matrix": [
+            [
+              186,
+              9,
+              0
+            ],
+            [
+              0,
+              79,
+              0
+            ],
+            [
+              0,
+              0,
+              153
+            ]
+          ]
+        }
+      },
+      "variance": {
+        "classes": [
+          {
+            "label": 0,
+            "images": 830,
+            "patient_classes": 117,
+            "within_patient_class_sse": 157.75379795343142,
+            "between_patient_within_class_sse": 72.01014718586136,
+            "within_class_total_sse": 229.76394513929284,
+            "between_fraction": 0.31340925636616174
+          },
+          {
+            "label": 1,
+            "images": 371,
+            "patient_classes": 56,
+            "within_patient_class_sse": 29.7426257224656,
+            "between_patient_within_class_sse": 16.0756021088711,
+            "within_class_total_sse": 45.8182278313367,
+            "between_fraction": 0.35085604288423455
+          },
+          {
+            "label": 2,
+            "images": 876,
+            "patient_classes": 94,
+            "within_patient_class_sse": 90.40887600655464,
+            "between_patient_within_class_sse": 47.41543725288436,
+            "within_class_total_sse": 137.82431325943895,
+            "between_fraction": 0.34402810455968
+          }
+        ],
+        "aggregate_between_fraction": 0.32776744212041187,
+        "decomposition_verified": true,
+        "limitation": "Descriptive association in a fitted representation; does not establish patient style as a cause or independent out-of-patient performance."
+      },
+      "independent_linear_head_max_logit_error": 4.019811109756688e-06,
+      "prototype_inverse_count_oracle": true,
+      "cpu_gpu_val_prediction_agreement": 1.0,
+      "cpu_gpu_max_probability_difference": 0.007471609041904914,
+      "prototype_shift_norm_by_class": [
+        2.2638923012760648,
+        1.2933086443103916,
+        2.565301453677551
+      ],
+      "train_fit_count": 2077,
+      "val_evaluation_count": 427,
+      "test_count": 0
+    },
+    {
+      "seed": 46,
+      "checkpoint_sha256": "78a244b98787f6a642f92692fdc281118feecb9b5976d92578dcd0b82e54bdcd",
+      "metrics": {
+        "frozen_linear_head_cpu": {
+          "macro_f1": 0.9769549401795664,
+          "accuracy": 0.9812646370023419,
+          "malignant_recall": 1.0,
+          "patient_equal_accuracy": 0.9659506815091922,
+          "confusion_matrix": [
+            [
+              187,
+              8,
+              0
+            ],
+            [
+              0,
+              79,
+              0
+            ],
+            [
+              0,
+              0,
+              153
+            ]
+          ]
+        },
+        "image_mean_euclidean": {
+          "macro_f1": 0.9769549401795664,
+          "accuracy": 0.9812646370023419,
+          "malignant_recall": 1.0,
+          "patient_equal_accuracy": 0.9659506815091922,
+          "confusion_matrix": [
+            [
+              187,
+              8,
+              0
+            ],
+            [
+              0,
+              79,
+              0
+            ],
+            [
+              0,
+              0,
+              153
+            ]
+          ]
+        },
+        "patient_class_mean_euclidean": {
+          "macro_f1": 0.9711936752244581,
+          "accuracy": 0.9765807962529274,
+          "malignant_recall": 0.9873417721518988,
+          "patient_equal_accuracy": 0.9541985447570556,
+          "confusion_matrix": [
+            [
+              186,
+              9,
+              0
+            ],
+            [
+              1,
+              78,
+              0
+            ],
+            [
+              0,
+              0,
+              153
+            ]
+          ]
+        }
+      },
+      "variance": {
+        "classes": [
+          {
+            "label": 0,
+            "images": 830,
+            "patient_classes": 117,
+            "within_patient_class_sse": 165.1536988523782,
+            "between_patient_within_class_sse": 75.57407200371853,
+            "within_class_total_sse": 240.72777085609673,
+            "between_fraction": 0.31393998180997373
+          },
+          {
+            "label": 1,
+            "images": 371,
+            "patient_classes": 56,
+            "within_patient_class_sse": 52.97742157007741,
+            "between_patient_within_class_sse": 27.704397254815177,
+            "within_class_total_sse": 80.68181882489259,
+            "between_fraction": 0.3433784421115157
+          },
+          {
+            "label": 2,
+            "images": 876,
+            "patient_classes": 94,
+            "within_patient_class_sse": 118.40437995897837,
+            "between_patient_within_class_sse": 58.26315434929234,
+            "within_class_total_sse": 176.66753430827072,
+            "between_fraction": 0.32978982005617286
+          }
+        ],
+        "aggregate_between_fraction": 0.3243305420533816,
+        "decomposition_verified": true,
+        "limitation": "Descriptive association in a fitted representation; does not establish patient style as a cause or independent out-of-patient performance."
+      },
+      "independent_linear_head_max_logit_error": 2.9581586780125235e-06,
+      "prototype_inverse_count_oracle": true,
+      "cpu_gpu_val_prediction_agreement": 1.0,
+      "cpu_gpu_max_probability_difference": 0.0028244403285511144,
+      "prototype_shift_norm_by_class": [
+        1.8246016213013336,
+        1.3383625902700478,
+        2.639517267490412
+      ],
+      "train_fit_count": 2077,
+      "val_evaluation_count": 427,
+      "test_count": 0
+    },
+    {
+      "seed": 47,
+      "checkpoint_sha256": "76912e4a8c7c4a470c2795627a1adcb20bda691ff284010dbd2696f82ca49dad",
+      "metrics": {
+        "frozen_linear_head_cpu": {
+          "macro_f1": 0.9790090016142713,
+          "accuracy": 0.9836065573770492,
+          "malignant_recall": 0.9367088607594937,
+          "patient_equal_accuracy": 0.977661352180583,
+          "confusion_matrix": [
+            [
+              193,
+              2,
+              0
+            ],
+            [
+              5,
+              74,
+              0
+            ],
+            [
+              0,
+              0,
+              153
+            ]
+          ]
+        },
+        "image_mean_euclidean": {
+          "macro_f1": 0.973614521642833,
+          "accuracy": 0.9789227166276346,
+          "malignant_recall": 0.9620253164556962,
+          "patient_equal_accuracy": 0.9600366691712845,
+          "confusion_matrix": [
+            [
+              189,
+              6,
+              0
+            ],
+            [
+              3,
+              76,
+              0
+            ],
+            [
+              0,
+              0,
+              153
+            ]
+          ]
+        },
+        "patient_class_mean_euclidean": {
+          "macro_f1": 0.9764604810996563,
+          "accuracy": 0.9812646370023419,
+          "malignant_recall": 0.9620253164556962,
+          "patient_equal_accuracy": 0.9685836777182931,
+          "confusion_matrix": [
+            [
+              190,
+              5,
+              0
+            ],
+            [
+              3,
+              76,
+              0
+            ],
+            [
+              0,
+              0,
+              153
+            ]
+          ]
+        }
+      },
+      "variance": {
+        "classes": [
+          {
+            "label": 0,
+            "images": 830,
+            "patient_classes": 117,
+            "within_patient_class_sse": 148.9823138187874,
+            "between_patient_within_class_sse": 66.97273683463145,
+            "within_class_total_sse": 215.95505065341885,
+            "between_fraction": 0.31012350316415804
+          },
+          {
+            "label": 1,
+            "images": 371,
+            "patient_classes": 56,
+            "within_patient_class_sse": 46.400651715549884,
+            "between_patient_within_class_sse": 22.86101992582014,
+            "within_class_total_sse": 69.26167164137004,
+            "between_fraction": 0.3300674006857963
+          },
+          {
+            "label": 2,
+            "images": 876,
+            "patient_classes": 94,
+            "within_patient_class_sse": 89.2532301421124,
+            "between_patient_within_class_sse": 42.96247310729525,
+            "within_class_total_sse": 132.21570324940768,
+            "between_fraction": 0.3249422878782572
+          }
+        ],
+        "aggregate_between_fraction": 0.31812629240439,
+        "decomposition_verified": true,
+        "limitation": "Descriptive association in a fitted representation; does not establish patient style as a cause or independent out-of-patient performance."
+      },
+      "independent_linear_head_max_logit_error": 4.3308462522873015e-06,
+      "prototype_inverse_count_oracle": true,
+      "cpu_gpu_val_prediction_agreement": 1.0,
+      "cpu_gpu_max_probability_difference": 0.013620421120828619,
+      "prototype_shift_norm_by_class": [
+        2.2415502714616786,
+        1.5313826106142814,
+        2.5413409285353894
+      ],
+      "train_fit_count": 2077,
+      "val_evaluation_count": 427,
+      "test_count": 0
+    }
+  ],
+  "summary": {
+    "frozen_linear_head_cpu": {
+      "seed_macro_f1": [
+        0.9769549401795664,
+        0.9769549401795664,
+        0.9790090016142713
+      ],
+      "macro_f1": 0.977639627324468,
+      "accuracy": 0.9820452771272444,
+      "malignant_recall": 0.9789029535864979,
+      "patient_equal_accuracy": 0.9661695857788329
+    },
+    "image_mean_euclidean": {
+      "seed_macro_f1": [
+        0.9741619123956812,
+        0.9769549401795664,
+        0.973614521642833
+      ],
+      "macro_f1": 0.9749104580726935,
+      "accuracy": 0.9797033567525371,
+      "malignant_recall": 0.9873417721518987,
+      "patient_equal_accuracy": 0.9598876910353997
+    },
+    "patient_class_mean_euclidean": {
+      "seed_macro_f1": [
+        0.9741619123956812,
+        0.9711936752244581,
+        0.9764604810996563
+      ],
+      "macro_f1": 0.9739386895732652,
+      "accuracy": 0.9789227166276347,
+      "malignant_recall": 0.9831223628691982,
+      "patient_equal_accuracy": 0.9588193149670237
+    }
+  },
+  "comparisons": {
+    "patient_class_mean_euclidean_vs_image_mean_euclidean": {
+      "paired_seed_deltas": [
+        0.0,
+        -0.005761264955108314,
+        0.0028459594568233104
+      ],
+      "mean_delta": -0.0009717684994283345,
+      "conditional_val_patient_bootstrap": {
+        "ci95": [
+          -0.0052615069277955505,
+          0.0026098388303446764
+        ],
+        "draws": 20000,
+        "patients": 41,
+        "paired_seeds": 3,
+        "patient_draws_shared_across_seeds": true,
+        "scope": "conditional descriptive interval after adaptive test feedback; not selection-adjusted"
+      }
+    },
+    "patient_class_mean_euclidean_vs_frozen_linear_head_cpu": {
+      "paired_seed_deltas": [
+        -0.002793027783885238,
+        -0.005761264955108314,
+        -0.0025485205146149603
+      ],
+      "mean_delta": -0.0037009377512028374,
+      "conditional_val_patient_bootstrap": {
+        "ci95": [
+          -0.013927874065816758,
+          0.0022830162329029956
+        ],
+        "draws": 20000,
+        "patients": 41,
+        "paired_seeds": 3,
+        "patient_draws_shared_across_seeds": true,
+        "scope": "conditional descriptive interval after adaptive test feedback; not selection-adjusted"
+      }
+    },
+    "image_mean_euclidean_vs_frozen_linear_head_cpu": {
+      "paired_seed_deltas": [
+        -0.002793027783885238,
+        0.0,
+        -0.005394479971438271
+      ],
+      "mean_delta": -0.0027291692517745028,
+      "conditional_val_patient_bootstrap": {
+        "ci95": [
+          -0.011401518822669265,
+          0.0025760316367767766
+        ],
+        "draws": 20000,
+        "patients": 41,
+        "paired_seeds": 3,
+        "patient_draws_shared_across_seeds": true,
+        "scope": "conditional descriptive interval after adaptive test feedback; not selection-adjusted"
+      }
+    }
+  },
+  "config_sha256": "af92f2e525840810963e133f01ffa02bcc8ca42a16f7c5c34ab70bf44b042e68",
+  "source_hashes": {
+    "experiments/ac_patient_mechanism_evidence_window01/patient_evidence.py": "d4763b359fbed90752bbf676a68695abc337315d52b24666141493e411ead519",
+    "experiments/ac_patient_mechanism_evidence_window01/analyze_patient_evidence.py": "42903c03e8caff7eb2aa19c1622278a2ff61168bca0e9742657330b0d822e72b",
+    "experiments/ac_patient_mechanism_evidence_window01/bootstrap_patient_evidence.py": "a4a04582a81f27672ddc5eb38aac2ac3013938c62a09f32bfeba7915417c20ea",
+    "experiments/ac_patient_mechanism_evidence_window01/PATIENT_EVIDENCE_PROTOCOL_ZH.md": "af39cf7ea5cd346135cfe5e4f4c57100c527185011dcbb2e884485ec68bba75e",
+    "experiments/ac_qualification_20261024_window01/run_qualification.py": "989108463118a19e4837774bd21ba156383b62adc54332d5a738fef0ecd0df9c",
+    "experiments/ac_qualification_20261024_window01/qualification_model.py": "61235ce72fa36d20dd12e7f39a839453587c3daf29bd87000af1e5f0d6f55e28",
+    "experiments/ac_test_feedback_window01/audit_test_feedback_v2.py": "316e20722295a23f6fb9375a46472256f31c58c9e84c214f120d0363a38c8dcb"
+  },
+  "test_images": 0,
+  "network_updates": 0,
+  "independent_validation": false,
+  "limitation": "Only train/val images used directly, but mature reference had prior adaptive test selection. Fitted encoder saw all train patients. Not OOF, not independent validation, not a new trained network contribution."
+}
