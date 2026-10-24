@@ -1,0 +1,1 @@
+首个独立test反馈脚本在第一次推理前因psutil未安装退出。没有新模型训练或新test预测产生。保留v1源码/config/log。v2使用已冻结first.snapshot的/proc+nvidia-smi采样，避免修改共享Python环境；评估语义不变。
