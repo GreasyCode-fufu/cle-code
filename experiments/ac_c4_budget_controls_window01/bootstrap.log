@@ -1,3 +1,83 @@
 waiting for quiet own-pipeline Git window
 waiting for quiet own-pipeline Git window
 waiting for quiet own-pipeline Git window
+[main b5ae9c1] research: register identical C4 controls on frozen B0 and DINO, preserving primary baseline
+ 6 files changed, 125 insertions(+)
+ create mode 100644 experiments/ac_c4_budget_controls_window01/.gitignore
+ create mode 100644 experiments/ac_c4_budget_controls_window01/C4_BUDGET_CONTROLS_PROTOCOL_ZH.md
+ create mode 100644 experiments/ac_c4_budget_controls_window01/bootstrap.log
+ create mode 100644 experiments/ac_c4_budget_controls_window01/bootstrap_c4_budget_controls.py
+ create mode 100644 experiments/ac_c4_budget_controls_window01/launch.json
+ create mode 100644 experiments/ac_c4_budget_controls_window01/run_c4_budget_control.py
+[main 2de3a99] research: register identical C4 budget control for B0 without changing fixed primary baseline
+ 3 files changed, 15202 insertions(+)
+ create mode 100644 experiments/ac_c4_budget_controls_window01/controls/B0/config.json
+ create mode 100644 experiments/ac_c4_budget_controls_window01/controls/B0/manifest.json
+ create mode 100644 experiments/ac_c4_budget_controls_window01/controls/B0/reference.json
+[main bc26600] test: validate fixed C4 transform identity, data counts and split boundary before inference
+ 1 file changed, 8 insertions(+)
+ create mode 100644 experiments/ac_c4_budget_controls_window01/controls/B0/preflight.json
+[main 6024084] results: preserve all angles and fixed C4 reference for seed45
+ 6 files changed, 1324 insertions(+)
+ create mode 100644 experiments/ac_c4_budget_controls_window01/controls/B0/resources.csv
+ create mode 100644 experiments/ac_c4_budget_controls_window01/controls/B0/runs/s45/complete.json
+ create mode 100644 experiments/ac_c4_budget_controls_window01/controls/B0/runs/s45/test_predictions.csv
+ create mode 100644 experiments/ac_c4_budget_controls_window01/controls/B0/runs/s45/test_views.npy
+ create mode 100644 experiments/ac_c4_budget_controls_window01/controls/B0/runs/s45/val_predictions.csv
+ create mode 100644 experiments/ac_c4_budget_controls_window01/controls/B0/runs/s45/val_views.npy
+[main 0c1dd1e] results: preserve all angles and fixed C4 reference for seed46
+ 6 files changed, 1323 insertions(+)
+ create mode 100644 experiments/ac_c4_budget_controls_window01/controls/B0/runs/s46/complete.json
+ create mode 100644 experiments/ac_c4_budget_controls_window01/controls/B0/runs/s46/test_predictions.csv
+ create mode 100644 experiments/ac_c4_budget_controls_window01/controls/B0/runs/s46/test_views.npy
+ create mode 100644 experiments/ac_c4_budget_controls_window01/controls/B0/runs/s46/val_predictions.csv
+ create mode 100644 experiments/ac_c4_budget_controls_window01/controls/B0/runs/s46/val_views.npy
+[main 4f0cc56] results: preserve all angles and fixed C4 reference for seed47
+ 6 files changed, 1323 insertions(+)
+ create mode 100644 experiments/ac_c4_budget_controls_window01/controls/B0/runs/s47/complete.json
+ create mode 100644 experiments/ac_c4_budget_controls_window01/controls/B0/runs/s47/test_predictions.csv
+ create mode 100644 experiments/ac_c4_budget_controls_window01/controls/B0/runs/s47/test_views.npy
+ create mode 100644 experiments/ac_c4_budget_controls_window01/controls/B0/runs/s47/val_predictions.csv
+ create mode 100644 experiments/ac_c4_budget_controls_window01/controls/B0/runs/s47/val_views.npy
+[main 7b4e726] audit: retain every matched C4 control and stronger-reference difference for B0
+ 3 files changed, 1030 insertions(+)
+ create mode 100644 experiments/ac_c4_budget_controls_window01/controls/B0/BUDGET_CONTROL_REPORT_ZH.md
+ create mode 100644 experiments/ac_c4_budget_controls_window01/controls/B0/control_results.json
+ create mode 100644 experiments/ac_c4_budget_controls_window01/controls/B0/independent_computational_audit.json
+{"control": "B0", "summary": {"val": {"C4_seed_macro_f1": [0.9763927122595236, 0.9756132756132757, 0.9732190854741232], "plain_seed_macro_f1": [0.9792401228964766, 0.9845252649064217, 0.9793266613851568], "macro_f1": 0.9750750244489742, "accuracy": 0.9804839968774394, "malignant_recall": 0.949367088607595, "patient_equal_accuracy": 0.9557103983386034}, "test": {"C4_seed_macro_f1": [0.9667597761122081, 0.9510690679695336, 0.9599637350953141], "plain_seed_macro_f1": [0.9525147561995487, 0.9422582497575528, 0.9546701880177008], "macro_f1": 0.9592641930590187, "accuracy": 0.9594907407407408, "malignant_recall": 0.9337121212121212, "patient_equal_accuracy": 0.9284770468671463}}, "comparisons": {"val_control_C4_vs_plain": {"paired_seed_deltas": [-0.0028474106369529295, -0.008911989293145961, -0.006107575911033614], "mean_delta": -0.005955658613710835, "conditional_patient_bootstrap": {"ci95": [-0.014188306201701995, -0.0010577865990159074], "draws": 20000, "patients": 39, "images": 427, "paired_seeds": 3, "draw_group_count_verified": true, "scope": "Conditional interval only; repeated val/test feedback and AC cohort selection remain."}}, "val_Swin_C4_vs_control_C4": {"paired_seed_deltas": [-0.0015715493635495292, -0.007409040046115756, 0.002884176343424305], "mean_delta": -0.0020321376887469933, "conditional_patient_bootstrap": {"ci95": [-0.01391814706992795, 0.014477184748366666], "draws": 20000, "patients": 39, "images": 427, "paired_seeds": 3, "draw_group_count_verified": true, "scope": "Conditional interval only; repeated val/test feedback and AC cohort selection remain."}}, "test_control_C4_vs_plain": {"paired_seed_deltas": [0.014245019912659362, 0.00881081821198082, 0.005293547077613314], "mean_delta": 0.009449795067417832, "conditional_patient_bootstrap": {"ci95": [0.002815658423774087, 0.017251895776890052], "draws": 20000, "patients": 41, "images": 576, "paired_seeds": 3, "draw_group_count_verified": true, "scope": "Conditional interval only; repeated val/test feedback and AC cohort selection remain."}}, "test_Swin_C4_vs_control_C4": {"paired_seed_deltas": [0.003629088968192251, 0.01245825661344524, 0.0034303915706673793], "mean_delta": 0.006505912384101624, "conditional_patient_bootstrap": {"ci95": [-0.004797644376890478, 0.02411568765379127], "draws": 20000, "patients": 41, "images": 576, "paired_seeds": 3, "draw_group_count_verified": true, "scope": "Conditional interval only; repeated val/test feedback and AC cohort selection remain."}}}}
+[main 7f1d6dd] research: register identical C4 budget control for DINO without changing fixed primary baseline
+ 3 files changed, 15209 insertions(+)
+ create mode 100644 experiments/ac_c4_budget_controls_window01/controls/DINO/config.json
+ create mode 100644 experiments/ac_c4_budget_controls_window01/controls/DINO/manifest.json
+ create mode 100644 experiments/ac_c4_budget_controls_window01/controls/DINO/reference.json
+[main c059628] test: validate fixed C4 transform identity, data counts and split boundary before inference
+ 1 file changed, 8 insertions(+)
+ create mode 100644 experiments/ac_c4_budget_controls_window01/controls/DINO/preflight.json
+[main 67691dd] results: preserve all angles and fixed C4 reference for seed45
+ 6 files changed, 1333 insertions(+)
+ create mode 100644 experiments/ac_c4_budget_controls_window01/controls/DINO/resources.csv
+ create mode 100644 experiments/ac_c4_budget_controls_window01/controls/DINO/runs/s45/complete.json
+ create mode 100644 experiments/ac_c4_budget_controls_window01/controls/DINO/runs/s45/test_predictions.csv
+ create mode 100644 experiments/ac_c4_budget_controls_window01/controls/DINO/runs/s45/test_views.npy
+ create mode 100644 experiments/ac_c4_budget_controls_window01/controls/DINO/runs/s45/val_predictions.csv
+ create mode 100644 experiments/ac_c4_budget_controls_window01/controls/DINO/runs/s45/val_views.npy
+[main 2ffb418] results: preserve all angles and fixed C4 reference for seed46
+ 6 files changed, 1332 insertions(+)
+ create mode 100644 experiments/ac_c4_budget_controls_window01/controls/DINO/runs/s46/complete.json
+ create mode 100644 experiments/ac_c4_budget_controls_window01/controls/DINO/runs/s46/test_predictions.csv
+ create mode 100644 experiments/ac_c4_budget_controls_window01/controls/DINO/runs/s46/test_views.npy
+ create mode 100644 experiments/ac_c4_budget_controls_window01/controls/DINO/runs/s46/val_predictions.csv
+ create mode 100644 experiments/ac_c4_budget_controls_window01/controls/DINO/runs/s46/val_views.npy
+[main 5df18d5] results: preserve all angles and fixed C4 reference for seed47
+ 6 files changed, 1332 insertions(+)
+ create mode 100644 experiments/ac_c4_budget_controls_window01/controls/DINO/runs/s47/complete.json
+ create mode 100644 experiments/ac_c4_budget_controls_window01/controls/DINO/runs/s47/test_predictions.csv
+ create mode 100644 experiments/ac_c4_budget_controls_window01/controls/DINO/runs/s47/test_views.npy
+ create mode 100644 experiments/ac_c4_budget_controls_window01/controls/DINO/runs/s47/val_predictions.csv
+ create mode 100644 experiments/ac_c4_budget_controls_window01/controls/DINO/runs/s47/val_views.npy
+[main 27fcddf] audit: retain every matched C4 control and stronger-reference difference for DINO
+ 3 files changed, 1066 insertions(+)
+ create mode 100644 experiments/ac_c4_budget_controls_window01/controls/DINO/BUDGET_CONTROL_REPORT_ZH.md
+ create mode 100644 experiments/ac_c4_budget_controls_window01/controls/DINO/control_results.json
+ create mode 100644 experiments/ac_c4_budget_controls_window01/controls/DINO/independent_computational_audit.json
+{"control": "DINO", "summary": {"val": {"C4_seed_macro_f1": [0.9823453608247422, 0.9692101053594117, 0.9912048405476109], "plain_seed_macro_f1": [0.9852333295608263, 0.97497595089378, 0.9881423780157957], "macro_f1": 0.9809201022439216, "accuracy": 0.9843871975019516, "malignant_recall": 0.9873417721518987, "patient_equal_accuracy": 0.9817308233531638}, "test": {"C4_seed_macro_f1": [0.9594766914644791, 0.9632592627960365, 0.9619166177279634], "plain_seed_macro_f1": [0.9385715559824418, 0.9686270369197199, 0.948121131089526], "macro_f1": 0.961550857329493, "accuracy": 0.9618055555555557, "malignant_recall": 0.9450757575757575, "patient_equal_accuracy": 0.9469580871595155}}, "comparisons": {"val_control_C4_vs_plain": {"paired_seed_deltas": [-0.002887968736084101, -0.005765845534368319, 0.003062462531815191], "mean_delta": -0.0018637839128790763, "conditional_patient_bootstrap": {"ci95": [-0.009293156763766042, 0.0033310322294112602], "draws": 20000, "patients": 39, "images": 427, "paired_seeds": 3, "draw_group_count_verified": true, "scope": "Conditional interval only; repeated val/test feedback and AC cohort selection remain."}}, "val_Swin_C4_vs_control_C4": {"paired_seed_deltas": [-0.007524197928768128, -0.0010058697922517013, -0.015101578730063459], "mean_delta": -0.00787721548369443, "conditional_patient_bootstrap": {"ci95": [-0.02275759315238108, 0.0036140946182066707], "draws": 20000, "patients": 39, "images": 427, "paired_seeds": 3, "draw_group_count_verified": true, "scope": "Conditional interval only; repeated val/test feedback and AC cohort selection remain."}}, "test_control_C4_vs_plain": {"paired_seed_deltas": [0.020905135482037318, -0.005367774123683389, 0.013795486638437437], "mean_delta": 0.009777615998930456, "conditional_patient_bootstrap": {"ci95": [0.004742305016010079, 0.01996778155430204], "draws": 20000, "patients": 41, "images": 576, "paired_seeds": 3, "draw_group_count_verified": true, "scope": "Conditional interval only; repeated val/test feedback and AC cohort selection remain."}}, "test_Swin_C4_vs_control_C4": {"paired_seed_deltas": [0.010912173615921228, 0.00026806178694238625, 0.0014775089380180129], "mean_delta": 0.004219248113627209, "conditional_patient_bootstrap": {"ci95": [-0.015300239405633517, 0.0199151470538423], "draws": 20000, "patients": 41, "images": 576, "paired_seeds": 3, "draw_group_count_verified": true, "scope": "Conditional interval only; repeated val/test feedback and AC cohort selection remain."}}}}
