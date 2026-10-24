@@ -16,5 +16,11 @@
 |random_moments_c4_vs_M_c4_moments|-0.5227|[-1.0333, -0.1488]|
 |random_moments_c4_vs_M_c4_aug|-0.3928|[-0.9831, 0.5056]|
 |random_moments_c4_vs_M_eca|0.0699|[-0.9191, 1.5427]|
+|moments_eca_single_vs_M_c4_moments|0.1145|[-0.1885, 0.5048]|
+|moments_eca_single_vs_M_c4_aug|0.3043|[-0.2443, 1.4270]|
+|moments_eca_single_vs_M_eca|0.5383|[-0.0261, 1.6202]|
+|moments_eca_c4_vs_M_c4_moments|-0.5326|[-1.0300, -0.0232]|
+|moments_eca_c4_vs_M_c4_aug|-0.4027|[-1.2246, 0.9241]|
+|moments_eca_c4_vs_M_eca|0.0599|[-0.8035, 1.4119]|
 
 mean_only/random_moments与M_c4_moments的反向差检验完整机制；moments_eca与M_moments检验ECA增量，aug_moments与M_c4_aug检验结构是否超出成熟旋转增强。全部seed/阴性保留，不能据点估计称创新或独立确认。

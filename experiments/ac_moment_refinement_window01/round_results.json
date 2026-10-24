@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-25T01:26:07.211829+08:00",
+  "updated_at": "2026-10-25T01:33:56.354128+08:00",
   "baseline": "qualification_convnext_tiny_A",
   "summary": {
     "qualification_convnext_tiny_A": {
@@ -784,6 +784,180 @@
       "malignant_recall": 0.9393939393939394,
       "patient_equal_accuracy": 0.9413135867587409,
       "counted_flops": 36447363072
+    },
+    "moments_eca_single": {
+      "role": "learned mechanism/reference",
+      "seeds": [
+        {
+          "seed": 45,
+          "macro_f1": 0.9633316816967971,
+          "accuracy": 0.9635416666666666,
+          "malignant_recall": 0.9318181818181818,
+          "patient_equal_accuracy": 0.9558562376892171,
+          "confusion_matrix": [
+            [
+              203,
+              5,
+              0
+            ],
+            [
+              9,
+              164,
+              3
+            ],
+            [
+              4,
+              0,
+              188
+            ]
+          ]
+        },
+        {
+          "seed": 46,
+          "macro_f1": 0.9581334121430182,
+          "accuracy": 0.9583333333333334,
+          "malignant_recall": 0.9318181818181818,
+          "patient_equal_accuracy": 0.9389401253462755,
+          "confusion_matrix": [
+            [
+              199,
+              7,
+              2
+            ],
+            [
+              9,
+              164,
+              3
+            ],
+            [
+              3,
+              0,
+              189
+            ]
+          ]
+        },
+        {
+          "seed": 47,
+          "macro_f1": 0.9581803825431184,
+          "accuracy": 0.9583333333333334,
+          "malignant_recall": 0.9431818181818182,
+          "patient_equal_accuracy": 0.9265622630355421,
+          "confusion_matrix": [
+            [
+              197,
+              9,
+              2
+            ],
+            [
+              7,
+              166,
+              3
+            ],
+            [
+              3,
+              0,
+              189
+            ]
+          ]
+        }
+      ],
+      "seed_macro_f1": [
+        0.9633316816967971,
+        0.9581334121430182,
+        0.9581803825431184
+      ],
+      "macro_f1": 0.9598818254609779,
+      "accuracy": 0.9600694444444445,
+      "malignant_recall": 0.9356060606060606,
+      "patient_equal_accuracy": 0.9404528753570117,
+      "counted_flops": 9111848448
+    },
+    "moments_eca_c4": {
+      "role": "learned mechanism/reference",
+      "seeds": [
+        {
+          "seed": 45,
+          "macro_f1": 0.9563570905045324,
+          "accuracy": 0.9565972222222222,
+          "malignant_recall": 0.9090909090909091,
+          "patient_equal_accuracy": 0.9490734628194157,
+          "confusion_matrix": [
+            [
+              204,
+              4,
+              0
+            ],
+            [
+              13,
+              160,
+              3
+            ],
+            [
+              5,
+              0,
+              187
+            ]
+          ]
+        },
+        {
+          "seed": 46,
+          "macro_f1": 0.9614382400387528,
+          "accuracy": 0.9618055555555556,
+          "malignant_recall": 0.9375,
+          "patient_equal_accuracy": 0.9519322726382496,
+          "confusion_matrix": [
+            [
+              200,
+              8,
+              0
+            ],
+            [
+              7,
+              165,
+              4
+            ],
+            [
+              3,
+              0,
+              189
+            ]
+          ]
+        },
+        {
+          "seed": 47,
+          "macro_f1": 0.9599642534728966,
+          "accuracy": 0.9600694444444444,
+          "malignant_recall": 0.9318181818181818,
+          "patient_equal_accuracy": 0.948180888312704,
+          "confusion_matrix": [
+            [
+              201,
+              7,
+              0
+            ],
+            [
+              10,
+              164,
+              2
+            ],
+            [
+              4,
+              0,
+              188
+            ]
+          ]
+        }
+      ],
+      "seed_macro_f1": [
+        0.9563570905045324,
+        0.9614382400387528,
+        0.9599642534728966
+      ],
+      "macro_f1": 0.9592531946720606,
+      "accuracy": 0.9594907407407408,
+      "malignant_recall": 0.9261363636363636,
+      "patient_equal_accuracy": 0.9497288745901232,
+      "counted_flops": 36447393792
     }
   },
   "comparisons": {
@@ -1197,6 +1371,216 @@
         "ci95": [
           -0.021104075715446913,
           0.008937866892612148
+        ],
+        "draws": 20000,
+        "patients": 41,
+        "paired_seeds": 3,
+        "patient_draws_shared_across_seeds": true,
+        "scope": "conditional descriptive interval after adaptive test feedback; not selection-adjusted"
+      },
+      "numerical_gate": false,
+      "independent_generalization_confirmation": false
+    },
+    "moments_eca_single_vs_qualification_convnext_tiny_A": {
+      "paired_seed_deltas": [
+        0.01081692549724833,
+        0.01587516238546538,
+        0.003510194525417676
+      ],
+      "mean_delta": 0.01006742746937713,
+      "conditional_patient_bootstrap": {
+        "ci95": [
+          0.0032931830882939024,
+          0.024444326265269448
+        ],
+        "draws": 20000,
+        "patients": 41,
+        "paired_seeds": 3,
+        "patient_draws_shared_across_seeds": true,
+        "scope": "conditional descriptive interval after adaptive test feedback; not selection-adjusted"
+      },
+      "numerical_gate": false,
+      "independent_generalization_confirmation": false
+    },
+    "moments_eca_single_vs_B0_C4": {
+      "paired_seed_deltas": [
+        -0.0034280944154110315,
+        0.00706434417348456,
+        -0.0017833525521956384
+      ],
+      "mean_delta": 0.0006176324019592968,
+      "conditional_patient_bootstrap": {
+        "ci95": [
+          -0.006673611384918551,
+          0.014233990934433912
+        ],
+        "draws": 20000,
+        "patients": 41,
+        "paired_seeds": 3,
+        "patient_draws_shared_across_seeds": true,
+        "scope": "conditional descriptive interval after adaptive test feedback; not selection-adjusted"
+      },
+      "numerical_gate": false,
+      "independent_generalization_confirmation": false
+    },
+    "moments_eca_single_vs_dino_baseline": {
+      "paired_seed_deltas": [
+        0.024760125714355263,
+        -0.010493624776701682,
+        0.010059251453592433
+      ],
+      "mean_delta": 0.008108584130415339,
+      "conditional_patient_bootstrap": {
+        "ci95": [
+          -0.008567898887620542,
+          0.031330615835404724
+        ],
+        "draws": 20000,
+        "patients": 41,
+        "paired_seeds": 3,
+        "patient_draws_shared_across_seeds": true,
+        "scope": "conditional descriptive interval after adaptive test feedback; not selection-adjusted"
+      },
+      "numerical_gate": false,
+      "independent_generalization_confirmation": false
+    },
+    "moments_eca_single_vs_DINO_C4": {
+      "paired_seed_deltas": [
+        0.0038549902323179452,
+        -0.0051258506530182935,
+        -0.003736235184845005
+      ],
+      "mean_delta": -0.0016690318685151178,
+      "conditional_patient_bootstrap": {
+        "ci95": [
+          -0.01924746506470499,
+          0.015485161901877985
+        ],
+        "draws": 20000,
+        "patients": 41,
+        "paired_seeds": 3,
+        "patient_draws_shared_across_seeds": true,
+        "scope": "conditional descriptive interval after adaptive test feedback; not selection-adjusted"
+      },
+      "numerical_gate": false,
+      "independent_generalization_confirmation": false
+    },
+    "moments_eca_single_vs_Swin_C4": {
+      "paired_seed_deltas": [
+        -0.007057183383603283,
+        -0.00539391243996068,
+        -0.005213744122863018
+      ],
+      "mean_delta": -0.005888279982142326,
+      "conditional_patient_bootstrap": {
+        "ci95": [
+          -0.019043797629232462,
+          0.009239745411316027
+        ],
+        "draws": 20000,
+        "patients": 41,
+        "paired_seeds": 3,
+        "patient_draws_shared_across_seeds": true,
+        "scope": "conditional descriptive interval after adaptive test feedback; not selection-adjusted"
+      },
+      "numerical_gate": false,
+      "independent_generalization_confirmation": false
+    },
+    "moments_eca_c4_vs_qualification_convnext_tiny_A": {
+      "paired_seed_deltas": [
+        0.0038423343049837078,
+        0.019179990281199988,
+        0.00529406545519584
+      ],
+      "mean_delta": 0.009438796680459846,
+      "conditional_patient_bootstrap": {
+        "ci95": [
+          -0.00048053960546144404,
+          0.02718599928000497
+        ],
+        "draws": 20000,
+        "patients": 41,
+        "paired_seeds": 3,
+        "patient_draws_shared_across_seeds": true,
+        "scope": "conditional descriptive interval after adaptive test feedback; not selection-adjusted"
+      },
+      "numerical_gate": false,
+      "independent_generalization_confirmation": false
+    },
+    "moments_eca_c4_vs_B0_C4": {
+      "paired_seed_deltas": [
+        -0.010402685607675655,
+        0.010369172069219168,
+        5.183775825257086e-07
+      ],
+      "mean_delta": -1.0998386957986975e-05,
+      "conditional_patient_bootstrap": {
+        "ci95": [
+          -0.009063762958137753,
+          0.014645902889809347
+        ],
+        "draws": 20000,
+        "patients": 41,
+        "paired_seeds": 3,
+        "patient_draws_shared_across_seeds": true,
+        "scope": "conditional descriptive interval after adaptive test feedback; not selection-adjusted"
+      },
+      "numerical_gate": false,
+      "independent_generalization_confirmation": false
+    },
+    "moments_eca_c4_vs_dino_baseline": {
+      "paired_seed_deltas": [
+        0.01778553452209064,
+        -0.007188796880967074,
+        0.011843122383370597
+      ],
+      "mean_delta": 0.007479953341498054,
+      "conditional_patient_bootstrap": {
+        "ci95": [
+          -0.010961329337861323,
+          0.030568436027598136
+        ],
+        "draws": 20000,
+        "patients": 41,
+        "paired_seeds": 3,
+        "patient_draws_shared_across_seeds": true,
+        "scope": "conditional descriptive interval after adaptive test feedback; not selection-adjusted"
+      },
+      "numerical_gate": false,
+      "independent_generalization_confirmation": false
+    },
+    "moments_eca_c4_vs_DINO_C4": {
+      "paired_seed_deltas": [
+        -0.003119600959946678,
+        -0.0018210227572836857,
+        -0.0019523642550668407
+      ],
+      "mean_delta": -0.0022976626574324013,
+      "conditional_patient_bootstrap": {
+        "ci95": [
+          -0.022519724811009063,
+          0.015409458295808826
+        ],
+        "draws": 20000,
+        "patients": 41,
+        "paired_seeds": 3,
+        "patient_draws_shared_across_seeds": true,
+        "scope": "conditional descriptive interval after adaptive test feedback; not selection-adjusted"
+      },
+      "numerical_gate": false,
+      "independent_generalization_confirmation": false
+    },
+    "moments_eca_c4_vs_Swin_C4": {
+      "paired_seed_deltas": [
+        -0.014031774575867906,
+        -0.002089084544226072,
+        -0.0034298731930848536
+      ],
+      "mean_delta": -0.00651691077105961,
+      "conditional_patient_bootstrap": {
+        "ci95": [
+          -0.02296916311831263,
+          0.011282546691798564
         ],
         "draws": 20000,
         "patients": 41,
