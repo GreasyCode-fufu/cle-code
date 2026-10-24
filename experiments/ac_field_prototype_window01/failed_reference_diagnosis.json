@@ -1,0 +1,38 @@
+{
+  "failed_prototype_preserved": true,
+  "diagnosis": "Original no-bias branch returns raw*mask_ratio without the extra update_mask multiply. Binary masks hid this difference; area-downsampled fractional supports expose it.",
+  "differences": [
+    {
+      "bias": true,
+      "mask_scale": 1.0,
+      "max_error": 0.0
+    },
+    {
+      "bias": true,
+      "mask_scale": 0.03,
+      "max_error": 0.0
+    },
+    {
+      "bias": true,
+      "mask_scale": 0.0,
+      "max_error": 0.0
+    },
+    {
+      "bias": false,
+      "mask_scale": 1.0,
+      "max_error": 0.0
+    },
+    {
+      "bias": false,
+      "mask_scale": 0.03,
+      "max_error": 0.3644770160484656
+    },
+    {
+      "bias": false,
+      "mask_scale": 0.0,
+      "max_error": 0.0
+    }
+  ],
+  "cle_classifier_training": 0,
+  "test_access": 0
+}
