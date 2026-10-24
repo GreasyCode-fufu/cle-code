@@ -22,5 +22,11 @@
 |mom_supcon_c4_vs_M_c4_moments|-0.7679|[-1.9020, -0.1388]|
 |mom_supcon_c4_vs_M_c4_aug|-0.6380|[-1.4263, 0.3451]|
 |mom_supcon_c4_vs_M_eca|-0.1754|[-0.7438, 0.4744]|
+|mom_within_single_vs_M_c4_moments|-0.6033|[-1.5537, -0.0785]|
+|mom_within_single_vs_M_c4_aug|-0.4135|[-1.3354, 0.4144]|
+|mom_within_single_vs_M_eca|-0.1795|[-0.8209, 0.4805]|
+|mom_within_c4_vs_M_c4_moments|-0.6113|[-1.6769, 0.2173]|
+|mom_within_c4_vs_M_c4_aug|-0.4814|[-1.3535, 0.9753]|
+|mom_within_c4_vs_M_eca|-0.0188|[-0.4401, 0.7834]|
 
 mom_cross与原M检验辅助目标增量，cross_only去方向矩，mom_supcon是成熟标准目标，mom_within检验相反患者内机制。全部seed/阴性保留，不能据点估计称创新或独立确认。
