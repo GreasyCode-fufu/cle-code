@@ -16,6 +16,8 @@
 |mom_local_c4|96.8502%|96.1255%|96.6672%|96.5477%|96.5856%|92.8030%|94.3718%|
 |local_only_single|95.6376%|95.6705%|96.1885%|95.8322%|95.8333%|94.1288%|94.0908%|
 |local_only_c4|97.0295%|96.0220%|96.5119%|96.5211%|96.5278%|94.3182%|94.6351%|
+|mom_mean_single|95.7020%|94.9697%|95.3216%|95.3311%|95.3125%|92.9924%|93.9998%|
+|mom_mean_c4|95.8622%|96.3237%|96.6903%|96.2920%|96.2963%|93.3712%|95.0316%|
 
 |比较|平均差（百分点）|患者条件95%区间（百分点）|
 |---|---:|---|
@@ -55,5 +57,17 @@
 |local_only_c4_vs_dino_baseline|1.3438|[-0.2824, 3.4965]|
 |local_only_c4_vs_DINO_C4|0.3660|[-1.1995, 1.9216]|
 |local_only_c4_vs_Swin_C4|-0.0559|[-0.5985, 0.8012]|
+|mom_mean_single_vs_qualification_convnext_tiny_A|0.3497|[-1.2210, 2.7859]|
+|mom_mean_single_vs_qualification_swin_t_B|-0.6125|[-1.4755, 0.4690]|
+|mom_mean_single_vs_B0_C4|-0.5953|[-2.0988, 1.6562]|
+|mom_mean_single_vs_dino_baseline|0.1538|[-1.6968, 2.3206]|
+|mom_mean_single_vs_DINO_C4|-0.8240|[-2.6272, 0.7583]|
+|mom_mean_single_vs_Swin_C4|-1.2459|[-2.1850, -0.2076]|
+|mom_mean_c4_vs_qualification_convnext_tiny_A|1.3106|[0.2862, 3.6057]|
+|mom_mean_c4_vs_qualification_swin_t_B|0.3485|[-0.5882, 2.0472]|
+|mom_mean_c4_vs_B0_C4|0.3656|[-0.6505, 2.4556]|
+|mom_mean_c4_vs_dino_baseline|1.1147|[-0.2879, 3.5936]|
+|mom_mean_c4_vs_DINO_C4|0.1370|[-1.1630, 1.8855]|
+|mom_mean_c4_vs_Swin_C4|-0.2850|[-1.1124, 0.9386]|
 
 逐图预测、每seed混淆矩阵、训练预算、SHA见round_results.json及evaluations。库模块为成熟参照；组合不自动构成SCI创新。历史test已被查看，A–C构建用过test标签，等级为模型一致性代理。条件bootstrap不校正适应性筛选偏差。原18项几何结构研究另有完整账本，不混为本轮结果。
