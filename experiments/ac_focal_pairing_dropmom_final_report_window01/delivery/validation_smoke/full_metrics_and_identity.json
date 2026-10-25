@@ -1,0 +1,118 @@
+{
+  "passed": true,
+  "arm": "mom_misaligned",
+  "seed": 45,
+  "checkpoint": "weights/ac_midstage_focal_structure_window01/mfc_mom_misaligned_s45/model_best.pth",
+  "checkpoint_sha256": "1fa9b8ee82d05ebf1ced3b341487c48b0655e8658ace75d939d1c27cdaf6d5fd",
+  "config_sha256": "1fbbf22a250c195195216c588ec113246fc6e05092f2ddb0717621cc25f8e781",
+  "script_sha256": "53a0a460bff41a5a5b19b9d446c088654fcafb0943d7d13e53c6dca7f19e2793",
+  "evaluate_sha256": "e5213828f81e04baf2aa025c35dfa3a1b585efbdcf8a7cfbd9033510592b0ee7",
+  "strict_load": true,
+  "preprocess": "research",
+  "precision": "research_amp",
+  "physical_batch": 32,
+  "views": "single",
+  "dataset": "registered original AC validation427",
+  "metrics": {
+    "macro_f1": 0.9761032618175475,
+    "overall_accuracy": 0.9812646370023419,
+    "auc_roc_macro": 0.99876980529534,
+    "auc_pr_macro": 0.995899748076369,
+    "weighted_f1": 0.9811923328149491,
+    "balanced_accuracy": 0.9737747484582928,
+    "kappa": 0.9701456013703659,
+    "mcc": 0.9701815809669418,
+    "macro_precision": 0.9785527501263541,
+    "macro_recall": 0.9737747484582928,
+    "macro_sensitivity": 0.9737747484582928,
+    "macro_specificity": 0.9899425287356323,
+    "weighted_precision": 0.9812010289072546,
+    "weighted_recall": 0.9812646370023419,
+    "per_class": {
+      "Benign_lesions": {
+        "precision": 0.9746192893401016,
+        "recall": 0.9846153846153847,
+        "sensitivity": 0.9846153846153847,
+        "specificity": 0.978448275862069,
+        "f1": 0.979591836734694,
+        "npv": 0.9869565217391304,
+        "tp": 192,
+        "fp": 5,
+        "tn": 227,
+        "fn": 3,
+        "support": 195
+      },
+      "Malignant_lesions": {
+        "precision": 0.961038961038961,
+        "recall": 0.9367088607594937,
+        "sensitivity": 0.9367088607594937,
+        "specificity": 0.9913793103448276,
+        "f1": 0.9487179487179488,
+        "npv": 0.9857142857142858,
+        "tp": 74,
+        "fp": 3,
+        "tn": 345,
+        "fn": 5,
+        "support": 79
+      },
+      "body_of_stomach_normal": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "sensitivity": 1.0,
+        "specificity": 1.0,
+        "f1": 1.0,
+        "npv": 1.0,
+        "tp": 153,
+        "fp": 0,
+        "tn": 274,
+        "fn": 0,
+        "support": 153
+      }
+    },
+    "confusion_matrix": [
+      [
+        192,
+        3,
+        0
+      ],
+      [
+        5,
+        74,
+        0
+      ],
+      [
+        0,
+        0,
+        153
+      ]
+    ],
+    "auc_roc_per_class": {
+      "Benign_lesions": 0.9986737400530504,
+      "Malignant_lesions": 0.9976356758329695,
+      "body_of_stomach_normal": 1.0
+    },
+    "auc_pr_per_class": {
+      "Benign_lesions": 0.9985000246948599,
+      "Malignant_lesions": 0.9891992195342473,
+      "body_of_stomach_normal": 0.9999999999999999
+    }
+  },
+  "efficiency": {
+    "pure_infer_time": 0.712287187576294,
+    "pure_fps": 599.4772999539088,
+    "pure_ms_per_img": 1.6681198772278547,
+    "e2e_time": 1.945732831954956,
+    "e2e_fps": 219.4545895445347,
+    "total_samples": 427
+  },
+  "complexity": {
+    "macs": "4.5652G",
+    "flops": "9.1304G",
+    "params": "27.8528M",
+    "params_raw": 27852795,
+    "macs_raw": 4565196672
+  },
+  "confidence_interval": null,
+  "CI_scope": "native evaluate.py per-image1000 seed42 if enabled; not paired41patient20k research audit",
+  "test_independent_generalization_claim": false
+}
