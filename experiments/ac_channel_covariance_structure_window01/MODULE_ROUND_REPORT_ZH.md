@@ -13,6 +13,8 @@
 |mom_covsqrt_c4|96.1564%|96.3359%|95.6438%|96.0454%|96.0648%|93.1818%|94.3481%|
 |covsqrt_only_single|95.7889%|94.2258%|95.8083%|95.2743%|95.3125%|92.2348%|92.4791%|
 |covsqrt_only_c4|96.6760%|94.9284%|96.1496%|95.9180%|95.9491%|92.9924%|93.2056%|
+|mom_rawcov_single|95.9641%|93.8590%|95.6438%|95.1556%|95.1968%|91.8561%|92.5250%|
+|mom_rawcov_c4|96.3019%|95.0916%|96.0018%|95.7984%|95.8333%|92.6136%|93.1978%|
 
 |比较|平均差（百分点）|患者条件95%区间（百分点）|
 |---|---:|---|
@@ -36,5 +38,15 @@
 |covsqrt_only_c4_vs_dino_baseline|0.7407|[-1.6106, 2.7764]|
 |covsqrt_only_c4_vs_DINO_C4|-0.2371|[-2.8421, 1.3981]|
 |covsqrt_only_c4_vs_Swin_C4|-0.6590|[-2.5583, 0.4471]|
+|mom_rawcov_single_vs_qualification_convnext_tiny_A|0.1742|[-0.4472, 1.0577]|
+|mom_rawcov_single_vs_B0_C4|-0.7708|[-1.4244, 0.0524]|
+|mom_rawcov_single_vs_dino_baseline|-0.0217|[-2.0472, 1.9775]|
+|mom_rawcov_single_vs_DINO_C4|-0.9995|[-3.2420, 0.5323]|
+|mom_rawcov_single_vs_Swin_C4|-1.4214|[-3.2369, 0.0512]|
+|mom_rawcov_c4_vs_qualification_convnext_tiny_A|0.8170|[0.1670, 1.7027]|
+|mom_rawcov_c4_vs_B0_C4|-0.1280|[-0.3973, 0.2286]|
+|mom_rawcov_c4_vs_dino_baseline|0.6211|[-1.5273, 2.5833]|
+|mom_rawcov_c4_vs_DINO_C4|-0.3567|[-2.7398, 1.1896]|
+|mom_rawcov_c4_vs_Swin_C4|-0.7786|[-2.4382, 0.3480]|
 
 逐图预测、每seed混淆矩阵、训练预算、SHA见round_results.json及evaluations。库模块为成熟参照；组合不自动构成SCI创新。历史test已被查看，A–C构建用过test标签，等级为模型一致性代理。条件bootstrap不校正适应性筛选偏差。原几何与Swin局部研究另有完整账本，不混为本轮结果。
