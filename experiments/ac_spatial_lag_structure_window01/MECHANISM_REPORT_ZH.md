@@ -28,5 +28,11 @@
 |mom_duplicate_c4_vs_M_c4_moments|-1.0839|[-3.4970, 0.1285]|
 |mom_duplicate_c4_vs_M_c4_aug|-0.9540|[-2.8787, 0.2676]|
 |mom_duplicate_c4_vs_M_eca|-0.4913|[-1.9278, 0.3091]|
+|mom_acf_single_vs_M_c4_moments|0.1037|[-0.4336, 0.6391]|
+|mom_acf_single_vs_M_c4_aug|0.2935|[-0.1909, 1.1185]|
+|mom_acf_single_vs_M_eca|0.5275|[-0.2535, 1.7091]|
+|mom_acf_c4_vs_M_c4_moments|-0.5433|[-1.3251, 0.0485]|
+|mom_acf_c4_vs_M_c4_aug|-0.4134|[-1.3882, 1.0210]|
+|mom_acf_c4_vs_M_eca|0.0492|[-0.8912, 1.5006]|
 
 mom_lag对原Mom检验空间间隔增量；lag_only真去Mom；permuted改邻接、duplicate去lag3、acf同间隔成熟全能量归一控制。全部seed/阴性保留，不能据点估计称创新或独立确认。
