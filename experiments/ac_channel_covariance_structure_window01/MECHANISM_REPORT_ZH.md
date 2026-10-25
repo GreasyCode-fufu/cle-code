@@ -10,5 +10,11 @@
 |mom_covsqrt_c4_vs_M_c4_moments|-0.4125|[-0.9035, 0.0369]|
 |mom_covsqrt_c4_vs_M_c4_aug|-0.2826|[-1.2006, 1.1236]|
 |mom_covsqrt_c4_vs_M_eca|0.1800|[-0.6846, 1.5312]|
+|covsqrt_only_single_vs_M_c4_moments|-0.5993|[-1.8672, 0.0701]|
+|covsqrt_only_single_vs_M_c4_aug|-0.4096|[-1.6962, 0.5808]|
+|covsqrt_only_single_vs_M_eca|-0.1756|[-0.9534, 0.5206]|
+|covsqrt_only_c4_vs_M_c4_moments|-0.5399|[-2.2867, 0.4620]|
+|covsqrt_only_c4_vs_M_c4_aug|-0.4100|[-1.7226, 0.8321]|
+|covsqrt_only_c4_vs_M_eca|0.0526|[-0.4121, 0.4441]|
 
 mom_covsqrt对原Mom检验同层协方差读出增量；covsqrt_only真去Mom；rawcov去矩阵幂、diag仅16有效对角坐标、channelperm改变联合配对。全部seed/阴性保留，不能据点估计称创新或独立确认。
