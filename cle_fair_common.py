@@ -110,6 +110,9 @@ MODEL_REGISTRY = {
     "resnet34_lib_msctx_l3": ("models.optimize.lib_variants", "resnet34_lib_msctx_l3"),
     "resnet34_hybrid_dil_msctx": ("models.optimize.lib_variants", "resnet34_hybrid_dil_msctx"),
     "resnet34_atrous34": ("models.optimize.resnet34_atrous", "resnet34_atrous34"),
+    # ── ConvNeXt (models/Convnext.py, 本会话 baseline 方向, 2026-10-25) ──
+    "convnext_tiny":  ("models.Convnext", "convnext_tiny"),
+    "convnext_small": ("models.Convnext", "convnext_small"),
 }
 
 SUPPORTED_EXTS = (".jpg", ".jpeg", ".png", ".bmp", ".tif", ".tiff")
