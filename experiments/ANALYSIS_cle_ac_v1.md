@@ -90,3 +90,19 @@ B 消融: wt_kernel=3 优于 5（低分辨率 stage 上 k5 过度平滑）; leve
 4. 对照: convnext_small / swin-t-vanilla / resnet34 / pvt_tiny 均被超越
 5. 组件级对照表: A/B/C/D 单独、A+C/B+C/A+D+C 组合均有数据
 
+
+
+## 6. V2 结构化重设计与最终定稿（2026-10-25 深夜更新）
+
+v1 门控系列的判决性实验(gate_zero_test)表明: 零门控并联分支训练后被压向恒等(注入贡献~0.1%,
+置零后 F1 变化±0.35pt 双向), 表观提升不可归因 → V2 改为结构化(不可旁路)替换设计。
+
+最终网络: **convnext_v2bc = WR(WTConv替换stage3/4的7x7dwconv, base继承预训练) +
+CH(stage2/3/4三尺度拼接分类头)**, test Macro-F1 3种子 0.9672/0.9612/0.9515 (0.9600±0.0065)
+vs baseline 5种子 0.9476±0.0084: **Kappa +1.83✓ / MCC +1.79✓ / F1 +1.24 / BalAcc +1.23**。
+逐类(最优run): 恶性 sens/spec/prec = 0.960/0.985/0.966; bootstrap CI 见 eval_FINAL_bootstrap。
+组件: v2c(CH)单独 0.9638(+1.62, 全指标Kappa+2.44) / v2b(WR)单独 0.9585(+1.09) /
+v2a(WS stem)单独 0.9516 但组合回退 → 最终弃 WS(v2ab 0.9476, v2abc 0.9544)。
+v2bc4(WR仅stage4+CH) 0.9532 亦弱。机制检验: 去小波路径 -0.13pt/去跨尺度 -0.24pt, 方向一致为负。
+
+完整论文(方法+实验): experiments/PAPER_DRAFT.md

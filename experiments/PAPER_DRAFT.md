@@ -197,7 +197,7 @@ $$
 
 ## 附：实验记录与可复现性
 
-- 实验总表：`experiments/results_cle_ac_v1.csv`（47 项训练/评估任务，Batch R–AB）
+- 实验总表：`experiments/results_cle_ac_v1.csv`（71 项训练/评估任务，Batch R–AB）
 - 最终网络实现：`models/optimize/convnext_cle_v2.py`（`convnext_v2bc`），机制检验脚本：`experiments/v2_mechanism_test.py`、`experiments/gate_zero_test.py`、`experiments/contribution_analysis.py`
 - 最终权重：`weights_cle_ac_v1/convnext_v2bc_seed42/convnext_v2bc/model_best.pth`（最优 run），seed 43/44 同目录
 - 全部 git 提交可追溯；论文各表数字均由上述脚本从 `results.json` 自动汇总
