@@ -1,0 +1,206 @@
+{
+  "passed": true,
+  "budgets": [
+    {
+      "arm": "plain",
+      "parameters": 27822435,
+      "counted_flops": 8909531136,
+      "peak_gpu_mib": 2308.912109375,
+      "finite_two_updates": true
+    },
+    {
+      "arm": "mom_only",
+      "parameters": 27840963,
+      "counted_flops": 9111840768,
+      "peak_gpu_mib": 2540.9990234375,
+      "finite_two_updates": true
+    },
+    {
+      "arm": "mom_covsqrt",
+      "parameters": 27853662,
+      "counted_flops": 9113193776,
+      "peak_gpu_mib": 2541.291015625,
+      "finite_two_updates": true
+    },
+    {
+      "arm": "covsqrt_only",
+      "parameters": 27835134,
+      "counted_flops": 8910884144,
+      "peak_gpu_mib": 2308.5166015625,
+      "finite_two_updates": true
+    },
+    {
+      "arm": "mom_rawcov",
+      "parameters": 27853662,
+      "counted_flops": 9113070896,
+      "peak_gpu_mib": 2541.291015625,
+      "finite_two_updates": true
+    },
+    {
+      "arm": "mom_diag",
+      "parameters": 27853662,
+      "counted_flops": 9113193776,
+      "peak_gpu_mib": 2541.291015625,
+      "finite_two_updates": true
+    },
+    {
+      "arm": "mom_channelperm",
+      "parameters": 27853662,
+      "counted_flops": 9113193776,
+      "peak_gpu_mib": 2541.29736328125,
+      "finite_two_updates": true
+    }
+  ],
+  "descriptor_diagnostics": [
+    {
+      "arm": "mom_covsqrt",
+      "gradients": [
+        {
+          "step": 0,
+          "CE_loss": 1.034576416015625,
+          "zero_classifier_gradient_norm": 1.760396957397461,
+          "upstream_project_gradient_norm": 0.0,
+          "retained_moment_gradient_norm": 0.5790783762931824,
+          "expected_upstream_first_zero_second_positive": true
+        },
+        {
+          "step": 1,
+          "CE_loss": 0.9614105224609375,
+          "zero_classifier_gradient_norm": 1.5686378479003906,
+          "upstream_project_gradient_norm": 0.008672686293721199,
+          "retained_moment_gradient_norm": 0.4912705421447754,
+          "expected_upstream_first_zero_second_positive": true
+        }
+      ],
+      "actual_train_images": 32,
+      "test_images": 0
+    },
+    {
+      "arm": "covsqrt_only",
+      "gradients": [
+        {
+          "step": 0,
+          "CE_loss": 1.034576416015625,
+          "zero_classifier_gradient_norm": 1.760396957397461,
+          "upstream_project_gradient_norm": 0.0,
+          "retained_moment_gradient_norm": null,
+          "expected_upstream_first_zero_second_positive": true
+        },
+        {
+          "step": 1,
+          "CE_loss": 0.9631805419921875,
+          "zero_classifier_gradient_norm": 1.5673887729644775,
+          "upstream_project_gradient_norm": 0.00867277942597866,
+          "retained_moment_gradient_norm": null,
+          "expected_upstream_first_zero_second_positive": true
+        }
+      ],
+      "actual_train_images": 32,
+      "test_images": 0
+    },
+    {
+      "arm": "mom_rawcov",
+      "gradients": [
+        {
+          "step": 0,
+          "CE_loss": 1.034576416015625,
+          "zero_classifier_gradient_norm": 1.6762268543243408,
+          "upstream_project_gradient_norm": 0.0,
+          "retained_moment_gradient_norm": 0.5790783762931824,
+          "expected_upstream_first_zero_second_positive": true
+        },
+        {
+          "step": 1,
+          "CE_loss": 0.9613494873046875,
+          "zero_classifier_gradient_norm": 1.5734997987747192,
+          "upstream_project_gradient_norm": 0.011537760496139526,
+          "retained_moment_gradient_norm": 0.49186038970947266,
+          "expected_upstream_first_zero_second_positive": true
+        }
+      ],
+      "actual_train_images": 32,
+      "test_images": 0
+    },
+    {
+      "arm": "mom_diag",
+      "gradients": [
+        {
+          "step": 0,
+          "CE_loss": 1.034576416015625,
+          "zero_classifier_gradient_norm": 1.727704405784607,
+          "upstream_project_gradient_norm": 0.0,
+          "retained_moment_gradient_norm": 0.5790783762931824,
+          "expected_upstream_first_zero_second_positive": true
+        },
+        {
+          "step": 1,
+          "CE_loss": 0.9617767333984375,
+          "zero_classifier_gradient_norm": 1.352784276008606,
+          "upstream_project_gradient_norm": 0.0019868887029588223,
+          "retained_moment_gradient_norm": 0.49076566100120544,
+          "expected_upstream_first_zero_second_positive": true
+        }
+      ],
+      "actual_train_images": 32,
+      "test_images": 0
+    },
+    {
+      "arm": "mom_channelperm",
+      "gradients": [
+        {
+          "step": 0,
+          "CE_loss": 1.034576416015625,
+          "zero_classifier_gradient_norm": 1.7288990020751953,
+          "upstream_project_gradient_norm": 0.0,
+          "retained_moment_gradient_norm": 0.5790783762931824,
+          "expected_upstream_first_zero_second_positive": true
+        },
+        {
+          "step": 1,
+          "CE_loss": 0.9617919921875,
+          "zero_classifier_gradient_norm": 1.407449722290039,
+          "upstream_project_gradient_norm": 0.004188312217593193,
+          "retained_moment_gradient_norm": 0.4901738166809082,
+          "expected_upstream_first_zero_second_positive": true
+        }
+      ],
+      "actual_train_images": 32,
+      "test_images": 0
+    }
+  ],
+  "reproduced_baselines": [
+    {
+      "kind": "plain",
+      "seed": 45,
+      "full427_max_probability_error": 0.0
+    },
+    {
+      "kind": "plain",
+      "seed": 46,
+      "full427_max_probability_error": 0.0
+    },
+    {
+      "kind": "plain",
+      "seed": 47,
+      "full427_max_probability_error": 0.0
+    },
+    {
+      "kind": "mom_only",
+      "seed": 45,
+      "full427_max_probability_error": 0.0
+    },
+    {
+      "kind": "mom_only",
+      "seed": 46,
+      "full427_max_probability_error": 0.0
+    },
+    {
+      "kind": "mom_only",
+      "seed": 47,
+      "full427_max_probability_error": 0.0
+    }
+  ],
+  "test_denied": true,
+  "objective": "original CE only; patient auxiliary targets not retained as confirmed increments",
+  "flops_convention": "2FLOP/MAC includes3 functional rotated convolutions,new Conv/Linear,covariance BMM and5iterations each3BMM; cached constructor floor excluded; excludes centering/normalization/pointwise/memory, actual throughput separately measured"
+}
