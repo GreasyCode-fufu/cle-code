@@ -1,0 +1,98 @@
+{
+  "passed": true,
+  "config_sha256": "467b744fdc7630934c47f0d5e9e4d6b0fca70b40f759a913c6a48e65be1cc321",
+  "proof_sha256": "306dd268fe7f26d0f82cb89f313c7528133bc8a8247193cb2e6bf1ffc9384a46",
+  "actual_CPU_pid_normal_exit": 1119870,
+  "public_variants": 21,
+  "budgets": [
+    {
+      "seed": 45,
+      "arm": "plain",
+      "parameters": 27822435,
+      "counted_flops": 8909531136,
+      "initial_logits_exact": true,
+      "RNG_preserved": true,
+      "original_parameter_objects_retained": true,
+      "classifier_first_grad": null
+    },
+    {
+      "seed": 45,
+      "arm": "mom_only",
+      "parameters": 27840963,
+      "counted_flops": 9111840768,
+      "initial_logits_exact": true,
+      "RNG_preserved": true,
+      "original_parameter_objects_retained": true,
+      "classifier_first_grad": null
+    },
+    {
+      "seed": 45,
+      "arm": "mom_covsqrt",
+      "parameters": 27853662,
+      "counted_flops": 9113193776,
+      "initial_logits_exact": true,
+      "RNG_preserved": true,
+      "original_parameter_objects_retained": true,
+      "classifier_first_grad": 8.811055183410645
+    },
+    {
+      "seed": 45,
+      "arm": "covsqrt_only",
+      "parameters": 27835134,
+      "counted_flops": 8910884144,
+      "initial_logits_exact": true,
+      "RNG_preserved": true,
+      "original_parameter_objects_retained": true,
+      "classifier_first_grad": 10.206873893737793
+    },
+    {
+      "seed": 45,
+      "arm": "mom_rawcov",
+      "parameters": 27853662,
+      "counted_flops": 9113070896,
+      "initial_logits_exact": true,
+      "RNG_preserved": true,
+      "original_parameter_objects_retained": true,
+      "classifier_first_grad": 8.58786392211914
+    },
+    {
+      "seed": 45,
+      "arm": "mom_diag",
+      "parameters": 27853662,
+      "counted_flops": 9113193776,
+      "initial_logits_exact": true,
+      "RNG_preserved": true,
+      "original_parameter_objects_retained": true,
+      "classifier_first_grad": 9.627907752990723
+    },
+    {
+      "seed": 45,
+      "arm": "mom_channelperm",
+      "parameters": 27853662,
+      "counted_flops": 9113193776,
+      "initial_logits_exact": true,
+      "RNG_preserved": true,
+      "original_parameter_objects_retained": true,
+      "classifier_first_grad": 9.470979690551758
+    }
+  ],
+  "official_reference": {
+    "source_sha256": "80a08bf0eca7ebdcff929298fb0bfa8000af983c1471f7f5fd0f6043e59e0aab",
+    "license_sha256": "d4dbaf28f7c7af485978a3cd47fc642b6cfe2c6022812253cb20e5972f1b09bf",
+    "restricted_AST_classes": [
+      "Covpool",
+      "Sqrtm"
+    ],
+    "sqrt_forward_error": 4.440892098500626e-16,
+    "symmetric_domain_gradient_error": 1.1102230246251565e-16,
+    "covariance_float32_error": 2.384185791015625e-07,
+    "covariance_gradient_error": 5.960464477539063e-08,
+    "full_paper_reproduction": false
+  },
+  "first_project_gradient_zero_expected": true,
+  "second_project_gradient_positive": true,
+  "CLE_images": 0,
+  "CLE_training": 0,
+  "formal_training_started": false,
+  "overall_research_complete": false
+}
