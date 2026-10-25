@@ -1,0 +1,14 @@
+# 末层空间奇统计：累计与消融对照
+
+配对参考复用原M轮同seed有效模型，不重复训练。所有原B0/强参照指标仍见MODULE_ROUND_REPORT_ZH.md。
+
+|比较|平均差（百分点）|患者条件95%区间（百分点）|
+|---|---:|---|
+|mom_odd_single_vs_M_c4_moments|-0.6665|[-1.8631, 0.1683]|
+|mom_odd_single_vs_M_c4_aug|-0.4768|[-1.8267, 0.8499]|
+|mom_odd_single_vs_M_eca|-0.2428|[-0.8854, 0.5652]|
+|mom_odd_c4_vs_M_c4_moments|-0.5453|[-2.0464, 0.3707]|
+|mom_odd_c4_vs_M_c4_aug|-0.4154|[-1.6454, 1.0641]|
+|mom_odd_c4_vs_M_eca|0.0473|[-0.4844, 0.7611]|
+
+mom_odd对原Mom检验末层奇统计增量；odd_only真去Mom；raw3/std/even为同参数成熟矩与去符号控制。全部seed/阴性保留，不能据点估计称创新或独立确认。
