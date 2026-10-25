@@ -87,6 +87,15 @@ MODEL_ALLOWED_MISSING_SEGMENTS = {
     "resnet34_lib_msctx_l4": {"lib"},
     "resnet34_lib_msctx_l3": {"lib"},
     "resnet34_hybrid_dil_msctx": {"lib"},
+    # ConvNeXt-CLE 创新变体: 零门控新分支参数段(wds/wtc/wtg/msf*) 随机初始化属设计预期
+    "convnext_wds": {"wds", "wds_gate"},
+    "convnext_wtb": {"wtc", "wtg"},
+    "convnext_msf": {"msf_p2", "msf_p3", "msf_g2", "msf_g3"},
+    "convnext_wds_wtb": {"wds", "wds_gate", "wtc", "wtg"},
+    "convnext_wds_wtb_msf": {"wds", "wds_gate", "wtc", "wtg", "msf_p2", "msf_p3", "msf_g2", "msf_g3"},
+    "convnext_wds_wtb_l1": {"wds", "wds_gate", "wtc", "wtg"},
+    "convnext_wds_wtb_s234": {"wds", "wds_gate", "wtc", "wtg"},
+    "convnext_wds_wtb_k3": {"wds", "wds_gate", "wtc", "wtg"},
 }
 
 # 各模型加载 ImageNet 预训练权重前需做的"权重变换"(如 s2d 变体的 conv1 通道膨胀)。

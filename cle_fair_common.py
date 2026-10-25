@@ -113,6 +113,16 @@ MODEL_REGISTRY = {
     # ── ConvNeXt (models/Convnext.py, 本会话 baseline 方向, 2026-10-25) ──
     "convnext_tiny":  ("models.Convnext", "convnext_tiny"),
     "convnext_small": ("models.Convnext", "convnext_small"),
+    # ── ConvNeXt-CLE 创新变体 (models/optimize/convnext_cle.py, 2026-10-25) ──
+    # A=WDS小波细节stem B=WTB小波增强块(stage3/4) C=MSF多尺度融合头, 递进叠加
+    "convnext_wds":           ("models.optimize.convnext_cle", "convnext_wds"),
+    "convnext_wtb":           ("models.optimize.convnext_cle", "convnext_wtb"),
+    "convnext_msf":           ("models.optimize.convnext_cle", "convnext_msf"),
+    "convnext_wds_wtb":       ("models.optimize.convnext_cle", "convnext_wds_wtb"),
+    "convnext_wds_wtb_msf":   ("models.optimize.convnext_cle", "convnext_wds_wtb_msf"),
+    "convnext_wds_wtb_l1":    ("models.optimize.convnext_cle", "convnext_wds_wtb_l1"),
+    "convnext_wds_wtb_s234":  ("models.optimize.convnext_cle", "convnext_wds_wtb_s234"),
+    "convnext_wds_wtb_k3":    ("models.optimize.convnext_cle", "convnext_wds_wtb_k3"),
 }
 
 SUPPORTED_EXTS = (".jpg", ".jpeg", ".png", ".bmp", ".tif", ".tiff")
