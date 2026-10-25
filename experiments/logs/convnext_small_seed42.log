@@ -1,0 +1,17 @@
+/home/login/miniconda3/envs/sunfuxiang/lib/python3.12/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+[seed] seed = 42 (set)
+Traceback (most recent call last):
+  File "/data/cle/auto/ZCode/Classification/train_cle_fair.py", line 604, in <module>
+    main(opt)
+  File "/data/cle/auto/ZCode/Classification/train_cle_fair.py", line 417, in main
+    train_images_path, train_images_label, manifest_info = prepare_training_samples(
+                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/cle/auto/ZCode/Classification/train_cle_fair.py", line 240, in prepare_training_samples
+    train_images_path, train_images_label = read_split_train_data(data_path_train)
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/cle/auto/ZCode/Classification/utils.py", line 14, in read_split_train_data
+    assert os.path.exists(root), "dataset root: {} does not exist.".format(root)
+AssertionError: dataset root: ./datasets/cle/train does not exist.
+
+===== [2026-10-25 18:23:07.010428] /home/login/miniconda3/envs/sunfuxiang/bin/python train_cle_fair.py --model convnext_small --num_classes 3 --img_size 224 --seed 42 --data-path-train ./datasets/cle/train --data-path-val ./datasets/cle/val --weights /home/login/data/cle/sunfuxiang/classifyML/pth/convnext_small_1k_224_ema.pth --save-dir ./weights/convnext_small_seed42 --epochs 300

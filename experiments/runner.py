@@ -13,7 +13,11 @@ from datetime import datetime
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # 自动探测所在仓库
 PY = "/home/login/miniconda3/envs/sunfuxiang/bin/python"
 PTH = "/home/login/data/cle/sunfuxiang/classifyML/pth"
-RESULTS = os.path.join(REPO, "experiments", "results.csv")
+# 2026-10-25 起数据集切换为 cle_ac_v1(旧 results.csv/weights 均为旧数据集时代, 不可比):
+# 权重与结果落到独立目录, 防止读到旧数据集训练的陈旧权重
+DATA = "datasets/cle_ac_v1"
+WEIGHTS_ROOT = "weights_cle_ac_v1"
+RESULTS = os.path.join(REPO, "experiments", "results_cle_ac_v1.csv")
 LOGDIR = os.path.join(REPO, "experiments", "logs")
 
 FIELDS = ["ts", "batch", "model", "seed", "status", "val_f1", "test_f1", "test_acc",
@@ -28,7 +32,7 @@ def sh(cmd, log_path):
 
 
 def run_dir(model, seed):
-    return os.path.join(REPO, "weights", f"{model}_seed{seed}", model)
+    return os.path.join(REPO, WEIGHTS_ROOT, f"{model}_seed{seed}", model)
 
 
 def read_metric(model, seed, which):
@@ -68,9 +72,9 @@ def run_job(batch, job):
            "seed": seed, "status": "error", "note": ""}
     try:
         rc = sh(f"{PY} train_cle_fair.py --model {model} --num_classes 3 --img_size 224 "
-                f"--seed {seed} --data-path-train ./datasets/cle/train "
-                f"--data-path-val ./datasets/cle/val --weights {weights} "
-                f"--save-dir ./weights/{model}_seed{seed} --epochs 300", log)
+                f"--seed {seed} --data-path-train ./{DATA}/train "
+                f"--data-path-val ./{DATA}/val --weights {weights} "
+                f"--save-dir ./{WEIGHTS_ROOT}/{model}_seed{seed} --epochs 300", log)
         if rc != 0:
             row["note"] = "train_failed"
             raise RuntimeError(f"train rc={rc}")
@@ -78,8 +82,8 @@ def run_job(batch, job):
         if not os.path.exists(best):
             row["note"] = "ckpt_missing"
             raise RuntimeError("model_best.pth not found at " + best)
-        sh(f"{PY} evaluate.py --model {model} --weights {best} --data-path ./datasets/cle/val", log)
-        sh(f"{PY} evaluate.py --model {model} --weights {best} --data-path ./datasets/cle/test", log)
+        sh(f"{PY} evaluate.py --model {model} --weights {best} --data-path ./{DATA}/val", log)
+        sh(f"{PY} evaluate.py --model {model} --weights {best} --data-path ./{DATA}/test", log)
         v, t = read_metric(model, seed, "val"), read_metric(model, seed, "test")
         if not v or not t:
             row["note"] = "eval_missing"
