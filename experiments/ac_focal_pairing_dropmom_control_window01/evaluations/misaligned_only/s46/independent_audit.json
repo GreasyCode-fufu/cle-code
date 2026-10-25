@@ -1,0 +1,91 @@
+{
+  "passed": true,
+  "seed": 46,
+  "arm": "misaligned_only",
+  "checkpoint_sha256": "3e1ad0fb4e06226f424c4a4e8d585a2ade9594c279fd72730f5fd7e6db291149",
+  "prediction_files": {
+    "test_views.npy": "66e66c9bb71ebc685e2fd2a0bcfb6d46ef970b699538015b54796eba23dc7caf",
+    "test_single_predictions.csv": "252fc6e8d0645092e97a5426f750e39385e9d49699248bcb0a9f92a464943813",
+    "test_c4_predictions.csv": "88144103a67b3e3ee55b764ea23679992da36b5038ae7fd4426f4a4aca2cc419"
+  },
+  "val_max_probability_error": 0.0,
+  "test_max_probability_error": 0.0,
+  "test_images": 576,
+  "test_patients": 41,
+  "state_unchanged": true,
+  "state_sha256": "bf94bbf27a2814cc72b47483d0e01554c3f7057f4823f60ff7d8321833068cf1",
+  "val_metrics": {
+    "macro_f1": 0.9845252649064217,
+    "accuracy": 0.9882903981264637,
+    "malignant_recall": 0.9493670886075949,
+    "patient_equal_accuracy": 0.9658119658119657,
+    "confusion_matrix": [
+      [
+        194,
+        1,
+        0
+      ],
+      [
+        2,
+        75,
+        2
+      ],
+      [
+        0,
+        0,
+        153
+      ]
+    ]
+  },
+  "single_metrics": {
+    "macro_f1": 0.9422582497575528,
+    "accuracy": 0.9427083333333334,
+    "malignant_recall": 0.8977272727272727,
+    "patient_equal_accuracy": 0.914382522608578,
+    "confusion_matrix": [
+      [
+        198,
+        5,
+        5
+      ],
+      [
+        12,
+        158,
+        6
+      ],
+      [
+        4,
+        1,
+        187
+      ]
+    ]
+  },
+  "c4_metrics": {
+    "macro_f1": 0.9494141789395174,
+    "accuracy": 0.9496527777777778,
+    "malignant_recall": 0.9090909090909091,
+    "patient_equal_accuracy": 0.9295653361284739,
+    "confusion_matrix": [
+      [
+        200,
+        4,
+        4
+      ],
+      [
+        10,
+        160,
+        6
+      ],
+      [
+        5,
+        0,
+        187
+      ]
+    ]
+  },
+  "parameters": 27834267,
+  "single_counted_flops": 8928083712,
+  "c4_counted_flops": 35712334848,
+  "seconds": 1.94024223901215,
+  "independent_generalization_confirmation": false
+}
