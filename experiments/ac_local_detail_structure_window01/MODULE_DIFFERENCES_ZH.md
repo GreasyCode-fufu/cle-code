@@ -1,0 +1,5 @@
+# 局部细节算子来源与接口
+
+local_detail.py和c4_moment_stem.py逐字复制已通过无CLE图像CPU原型。本轮在第一stage96×56×56加零特征残差；与旧Swin merge邻域统计、SAL末层注意力读出、MFC第二stage学习Focal残差不同。新增9216参数，up为唯一新增可学习权重。固定二项核与每通道局部RMS强度门控；参数相同不代表有效表达容量完全相同。功能性固定F.conv2d也计MAC，raw高通少一次blur，其实际吞吐独立测量。
+
+Adobe2019 CC BY-NC-SA4.0原源码/许可/归属及受限forward oracle在CPU原型references保留，本任务非商业研究适配；未执行官方整网或训练入口，不宣称BlurPool本身新颖，也不把高通残差称抗混叠。原Mom/B0和历史全部有效全轮不重训，不改冻结目录或共享库。所有test均自适应内部开发，患者条件CI不校正设计选择偏差。
