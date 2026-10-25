@@ -105,3 +105,115 @@ train epoch 36 loss: 0.023, acc: 0.989:  10…   ,
 Epoch 36: train_loss=0.023, train_acc=0.989, val_loss=0.104, val_acc=0.972, val_macroF1=0.9653, lr=0.000096, best_macroF1=0.9772 (epoch 12)
 train epoch 37 loss: 0.019, acc: 0.992:  10…   , 
 Epoch 37: train_loss=0.019, train_acc=0.992, val_loss=0.171, val_acc=0.970, val_macroF1=0.9613, lr=0.000096, best_macroF1=0.9772 (epoch 12)
+train epoch 38 loss: 0.030, acc: 0.989:  10…   , 
+Epoch 38: train_loss=0.030, train_acc=0.989, val_loss=0.181, val_acc=0.944, val_macroF1=0.9242, lr=0.000096, best_macroF1=0.9772 (epoch 12)
+train epoch 39 loss: 0.022, acc: 0.993:  10…   , 
+Epoch 39: train_loss=0.022, train_acc=0.993, val_loss=0.101, val_acc=0.974, val_macroF1=0.9677, lr=0.000096, best_macroF1=0.9772 (epoch 12)
+train epoch 40 loss: 0.010, acc: 0.997:  10…   , 
+Epoch 40: train_loss=0.010, train_acc=0.997, val_loss=0.081, val_acc=0.981, val_macroF1=0.9761, lr=0.000095, best_macroF1=0.9772 (epoch 12)
+train epoch 41 loss: 0.010, acc: 0.995:  10…   , 
+Epoch 41: train_loss=0.010, train_acc=0.995, val_loss=0.167, val_acc=0.965, val_macroF1=0.9546, lr=0.000095, best_macroF1=0.9772 (epoch 12)
+train epoch 42 loss: 0.008, acc: 1.000:  10…   , 
+Epoch 42: train_loss=0.008, train_acc=1.000, val_loss=0.082, val_acc=0.972, val_macroF1=0.9645, lr=0.000095, best_macroF1=0.9772 (epoch 12)
+
+[early stop] epoch 42: val_macro_f1 not improved for 30 epochs
+
+===========================================================
+             Training Summary (fair baseline)              
+===========================================================
+  Model:              swin_tiny_vanilla_patch4_window7_224
+  Best val macro-F1:  0.9772  (epoch 12)
+  Selection:          val macro-F1
+  Loss:               unweighted CrossEntropy
+  Training Time:      0:05:13
+  Weights:            ./weights_cle_ac_v1/swin_tiny_vanilla_patch4_window7_224_seed42/swin_tiny_vanilla_patch4_window7_224/model_best.pth
+  Run meta:           ./weights_cle_ac_v1/swin_tiny_vanilla_patch4_window7_224_seed42/swin_tiny_vanilla_patch4_window7_224/run_meta.json
+===========================================================
+
+===== [2026-10-25 18:30:58.929681] /home/login/miniconda3/envs/sunfuxiang/bin/python train_cle_fair.py --model swin_tiny_vanilla_patch4_window7_224 --num_classes 3 --img_size 224 --seed 42 --data-path-train ./datasets/cle_ac_v1/train --data-path-val ./datasets/cle_ac_v1/val --weights /home/login/data/cle/sunfuxiang/classifyML/pth/swin_tiny_patch4_window7_224.pth --save-dir ./weights_cle_ac_v1/swin_tiny_vanilla_patch4_window7_224_seed42 --epochs 300
+[norm] source=run_meta.json(imagenet)  mean=[0.485, 0.456, 0.406] std=[0.229, 0.224, 0.225]  img_size=224
+[model] swin_tiny_vanilla_patch4_window7_224  weights=/data/cle/auto/ZCode/Classification/weights_cle_ac_v1/swin_tiny_vanilla_patch4_window7_224_seed42/swin_tiny_vanilla_patch4_window7_224/model_best.pth
+[complexity] MACs=4.37G FLOPs=8.74G Params=27.50M
+[data] test=427 张  Benign_lesions=195  Malignant_lesions=79  body_of_stomach_normal=153
+
+================================================================
+  评估结果 — swin_tiny_vanilla_patch4_window7_224  (test=427 张)
+================================================================
+  【主指标】
+  Macro-F1         : 0.9801   ← 主指标(类别不平衡首选)
+  Accuracy         : 0.9836
+  Macro-AUROC(OvR) : 0.9976
+----------------------------------------------------------------
+  【补充总体指标】
+  Weighted-F1      : 0.9835
+  Balanced Acc     : 0.9780
+  Macro-Sensitivity: 0.9780   (= 各类 Recall 均值)
+  Macro-Specificity: 0.9911
+  Macro-Precision  : 0.9824
+  AUC-PR (Macro)   : 0.9918
+  Cohen's Kappa    : 0.9739
+  MCC              : 0.9739
+----------------------------------------------------------------
+  【每类指标】 Sensitivity / Specificity / Precision / F1 / AUROC
+  Benign_lesions        : 0.985 / 0.983 / 0.980 / 0.982 / 0.997  (n=195)
+  Malignant_lesions     : 0.949 / 0.994 / 0.974 / 0.962 / 0.996  (n=79)
+  body_of_stomach_normal: 1.000 / 0.996 / 0.994 / 0.997 / 1.000  (n=153)
+----------------------------------------------------------------
+  【模型复杂度】(仅与架构+输入尺寸有关，与数据集无关)
+  MACs : 4.37G    FLOPs : 8.74G    Params : 27.50M
+  【推理效率】(受 GPU 负载影响，为参考量级)
+  Pure FPS : 364.1  (2.75 ms/张)    End-to-End FPS : 149.6
+----------------------------------------------------------------
+  【混淆矩阵】(行=真实, 列=预测)
+                  Benign_l  Malignan  body_of_
+  Benign_lesio         192         2         1
+  Malignant_le           4        75         0
+  body_of_stom           0         0       153
+================================================================
+
+[saved] /data/cle/auto/ZCode/Classification/weights_cle_ac_v1/swin_tiny_vanilla_patch4_window7_224_seed42/swin_tiny_vanilla_patch4_window7_224/eval_20261025_183624/  (results.json / predictions.csv / evaluation_report.md)
+
+===== [2026-10-25 18:36:17.202832] /home/login/miniconda3/envs/sunfuxiang/bin/python evaluate.py --model swin_tiny_vanilla_patch4_window7_224 --weights /data/cle/auto/ZCode/Classification/weights_cle_ac_v1/swin_tiny_vanilla_patch4_window7_224_seed42/swin_tiny_vanilla_patch4_window7_224/model_best.pth --data-path ./datasets/cle_ac_v1/val
+[norm] source=run_meta.json(imagenet)  mean=[0.485, 0.456, 0.406] std=[0.229, 0.224, 0.225]  img_size=224
+[model] swin_tiny_vanilla_patch4_window7_224  weights=/data/cle/auto/ZCode/Classification/weights_cle_ac_v1/swin_tiny_vanilla_patch4_window7_224_seed42/swin_tiny_vanilla_patch4_window7_224/model_best.pth
+[complexity] MACs=4.37G FLOPs=8.74G Params=27.50M
+[data] test=576 张  Benign_lesions=208  Malignant_lesions=176  body_of_stomach_normal=192
+
+================================================================
+  评估结果 — swin_tiny_vanilla_patch4_window7_224  (test=576 张)
+================================================================
+  【主指标】
+  Macro-F1         : 0.9471   ← 主指标(类别不平衡首选)
+  Accuracy         : 0.9479
+  Macro-AUROC(OvR) : 0.9931
+----------------------------------------------------------------
+  【补充总体指标】
+  Weighted-F1      : 0.9475
+  Balanced Acc     : 0.9470
+  Macro-Sensitivity: 0.9470   (= 各类 Recall 均值)
+  Macro-Specificity: 0.9738
+  Macro-Precision  : 0.9477
+  AUC-PR (Macro)   : 0.9877
+  Cohen's Kappa    : 0.9217
+  MCC              : 0.9219
+----------------------------------------------------------------
+  【每类指标】 Sensitivity / Specificity / Precision / F1 / AUROC
+  Benign_lesions        : 0.938 / 0.965 / 0.938 / 0.938 / 0.989  (n=208)
+  Malignant_lesions     : 0.903 / 0.975 / 0.941 / 0.922 / 0.991  (n=176)
+  body_of_stomach_normal: 1.000 / 0.982 / 0.965 / 0.982 / 1.000  (n=192)
+----------------------------------------------------------------
+  【模型复杂度】(仅与架构+输入尺寸有关，与数据集无关)
+  MACs : 4.37G    FLOPs : 8.74G    Params : 27.50M
+  【推理效率】(受 GPU 负载影响，为参考量级)
+  Pure FPS : 343.3  (2.91 ms/张)    End-to-End FPS : 160.0
+----------------------------------------------------------------
+  【混淆矩阵】(行=真实, 列=预测)
+                  Benign_l  Malignan  body_of_
+  Benign_lesio         195        10         3
+  Malignant_le          13       159         4
+  body_of_stom           0         0       192
+================================================================
+
+[saved] /data/cle/auto/ZCode/Classification/weights_cle_ac_v1/swin_tiny_vanilla_patch4_window7_224_seed42/swin_tiny_vanilla_patch4_window7_224/eval_20261025_183633/  (results.json / predictions.csv / evaluation_report.md)
+
+===== [2026-10-25 18:36:25.120570] /home/login/miniconda3/envs/sunfuxiang/bin/python evaluate.py --model swin_tiny_vanilla_patch4_window7_224 --weights /data/cle/auto/ZCode/Classification/weights_cle_ac_v1/swin_tiny_vanilla_patch4_window7_224_seed42/swin_tiny_vanilla_patch4_window7_224/model_best.pth --data-path ./datasets/cle_ac_v1/test

@@ -1,0 +1,75 @@
+# convnext_wds 评估报告
+
+- 权重: `/data/cle/auto/ZCode/Classification/weights_cle_ac_v1/convnext_wds_seed43/convnext_wds/model_best.pth`
+- 测试集: `./datasets/cle_ac_v1/val`  (共 427 张)
+- 归一化: run_meta.json(imagenet)  mean=[0.485, 0.456, 0.406]
+- img_size: 224
+
+## 主指标
+
+| 指标 | 值 |
+|---|---|
+| **Macro-F1** | 0.9796 |
+| Accuracy | 0.9836 |
+| Macro-AUROC (OvR) | 0.9982 |
+
+## 补充总体指标
+
+| 指标 | 值 |
+|---|---|
+| Weighted-F1 | 0.9838 |
+| Balanced Acc | 0.9855 |
+| Macro-Sensitivity | 0.9855 |
+| Macro-Specificity | 0.9928 |
+| Macro-Precision | 0.9744 |
+| AUC-PR (Macro) | 0.9944 |
+| Cohen's Kappa | 0.9741 |
+| MCC | 0.9743 |
+
+## 模型复杂度与推理效率
+
+| 指标 | 值 |
+|---|---|
+| MACs | 4.49G |
+| FLOPs | 8.97G |
+| Params | 27.81M |
+| Pure-Inference FPS | 1647.1 (0.61 ms/张) |
+| End-to-End FPS | 261.7 |
+| 测试样本数 | 427 |
+
+## 每类指标 (One-vs-Rest)
+
+| 类 | Sensitivity | Specificity | Precision | F1 | NPV | AUROC | AUC-PR | support |
+|---|---|---|---|---|---|---|---|---|
+| Benign_lesions | 0.9692 | 0.9957 | 0.9947 | 0.9818 | 0.9747 | 0.9980 | 0.9977 | 195 |
+| Malignant_lesions | 0.9873 | 0.9828 | 0.9286 | 0.9571 | 0.9971 | 0.9964 | 0.9855 | 79 |
+| body_of_stomach_normal | 1.0000 | 1.0000 | 1.0000 | 1.0000 | 1.0000 | 1.0000 | 1.0000 | 153 |
+
+### 每类 TP/FP/TN/FN
+
+- **Benign_lesions**: TP=189 FP=1 TN=231 FN=6
+- **Malignant_lesions**: TP=78 FP=6 TN=342 FN=1
+- **body_of_stomach_normal**: TP=153 FP=0 TN=274 FN=0
+
+## 混淆矩阵 (行=真实, 列=预测)
+
+| | Benign_lesions | Malignant_lesions | body_of_stomach_normal |
+|---|---|---|---|
+| Benign_lesions | 189 | 6 | 0 |
+| Malignant_lesions | 1 | 78 | 0 |
+| body_of_stomach_normal | 0 | 0 | 153 |
+
+## Classification Report (sklearn)
+
+```
+                        precision    recall  f1-score   support
+
+        Benign_lesions     0.9947    0.9692    0.9818       195
+     Malignant_lesions     0.9286    0.9873    0.9571        79
+body_of_stomach_normal     1.0000    1.0000    1.0000       153
+
+              accuracy                         0.9836       427
+             macro avg     0.9744    0.9855    0.9796       427
+          weighted avg     0.9844    0.9836    0.9838       427
+
+```
