@@ -1,0 +1,35 @@
+{
+  "passed": true,
+  "resolved_at": "2026-10-25T13:53:01.888413+08:00",
+  "posthoc_usage_numerics_repair": true,
+  "index": 2386,
+  "prespecified_tolerance": 0.0001,
+  "original_failure_error": 0.00012111663818359375,
+  "repaired_error": 6.377696990966797e-05,
+  "actual_checkpoint_sha256": "79a9165a6e4863804ca1c7ef5df37584886904c86420bc5b440a28467ddf9a22",
+  "source_config_sha256": "39fe542f23915dd7032b59f1244c5851e634e05e842945e98b918c0e10b946e0",
+  "audit_sha256": "901b69f30837e47d89d28db7c5416040067025f0b3ba1904e8f3e4e52d8137c6",
+  "prediction_sha256": "b73ca8cb1a131a94d7f45ffce7db736ac05c0becd0391867212750bf18ac5714",
+  "historical_failure_sha256": {
+    "experiments/ac_midstage_focal_structure_window01/usage_smoke_failure.json": "0e1a902d4ea94ec1257337c46b5d112797e1ffaa5bb581cc793f7ff0119c303b",
+    "experiments/ac_midstage_focal_structure_window01/usage_export_failure.json": "1f25584c30e00c2fbbcfa63de2baee31b2e9c6b6c0a808d1152be083c7769142",
+    "experiments/ac_midstage_focal_final_report_window01/export_failure.json": "1826d9c27cb9e715427419f760f1fca5ac651ec3c306b50b1ef02fa2199ca43f"
+  },
+  "repair_source_sha256": {
+    "experiments/ac_midstage_focal_structure_window01/check_prediction_cli_v2.py": "81d0d8102e453913ef5c55e5fb99695800e4a8f19bd234a70cbd054bd4c4acd6",
+    "experiments/ac_midstage_focal_structure_window01/predict_module_stable.py": "06c2fabebe4e6d6ff8cebbf97bf80e5a70002c4cb939a3c829463a01738e82f6",
+    "experiments/ac_midstage_focal_structure_window01/verify_usage_resolution_v2.py": "fbf4b970b8c0d30c52f9808ad4671dea995635909622b5ddb03f95bc4f60ec66"
+  },
+  "original_cli_prediction_sha256": "c0fd05951e075f32fefeb8fd26eb1500377395d8bc77bfd7dff1c48bc420bec8",
+  "diagnostic_sha256": {
+    "numerics_diagnostic.json": "a72d0f3beba8ec89f9f70c8f7c4cf26be97e0c05893956f994ecb7280f66d2a4",
+    "native_kernel_diagnostic.json": "de94684f4fa11925fdfe48737245d0cf3ae1866ea4ddce778f68d6e451b1fec3"
+  },
+  "frozen_core_unchanged": true,
+  "threshold_case_weights_unchanged": true,
+  "new_training": 0,
+  "test_images": 0,
+  "default_CLI_remains_failed": true,
+  "native_kernel_CLI_passed": true,
+  "scope": "Only resolves single-image numerical backend audit and downstream evidence exporters; no neural retraining or test-driven gain claim"
+}

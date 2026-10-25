@@ -1,3 +1,5 @@
+> 单图数值核验已有结果后修正：使用predict_module_stable.py，见NUMERICAL_USAGE_CORRECTION_ZH.md。原默认CLI曾超出1e-4；原失败记录和启动包保留。
+
 # CLE中间层聚焦对比：结构、实际开训与使用
 
 这是实际训练快照。source/config/12直接比较均事前冻结；本说明在实际开训后生成，不伪称效果确认。原CNNMom继续保留，本轮在第二stage中间特征加入互补上下文变换。最终2–3网络设计组合累计相对固定B0提升1.5个百分点，单点不要求各自+1.5；成熟Focal模块或组合不自动创新。
@@ -84,7 +86,7 @@ train训练→val最早最佳选权重→test→下一设计；test均为自适�
 
 ```bash
 cd /home/login/data/cle/auto/GPT
-/home/login/miniconda3/envs/sunfuxiang/bin/python experiments/ac_midstage_focal_structure_window01/predict_module_model.py --arm mom_focalcontrast --seed 45 --image /absolute/path/image.png --views single --output /absolute/path/prediction.json
+/home/login/miniconda3/envs/sunfuxiang/bin/python experiments/ac_midstage_focal_structure_window01/predict_module_stable.py --arm mom_focalcontrast --seed 45 --image /absolute/path/image.png --views single --output /absolute/path/prediction.json
 ```
 
 RGB原图双线性resize256/center224/ImageNet归一，类别0/1/2、恶性1。C4四旋转概率均值非三seed集成。weights/ac_midstage_focal_structure_window01/mfc_<arm>_s<seed>/model_best.pth为实际路径；固定首val2386真实CLI对原batch32概率由独立helper在首权重完成后核验，通过后才称使用核验完成。
