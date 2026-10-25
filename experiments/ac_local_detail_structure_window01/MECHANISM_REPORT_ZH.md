@@ -16,5 +16,11 @@
 |detailcontrast_only_c4_vs_M_c4_moments|-0.7430|[-1.6204, -0.2105]|
 |detailcontrast_only_c4_vs_M_c4_aug|-0.6131|[-1.4534, 0.6141]|
 |detailcontrast_only_c4_vs_M_eca|-0.1505|[-0.6738, 0.6789]|
+|mom_detailrawgate_single_vs_M_c4_moments|-0.5558|[-1.5914, 0.1116]|
+|mom_detailrawgate_single_vs_M_c4_aug|-0.3660|[-1.3628, 0.6569]|
+|mom_detailrawgate_single_vs_M_eca|-0.1321|[-0.6904, 0.5418]|
+|mom_detailrawgate_c4_vs_M_c4_moments|-0.6124|[-1.3592, -0.0900]|
+|mom_detailrawgate_c4_vs_M_c4_aug|-0.4825|[-1.3265, 0.8582]|
+|mom_detailrawgate_c4_vs_M_eca|-0.0198|[-0.7962, 1.1061]|
 
 mom_detailcontrast对原Mom检验第一stage新增贡献；detailcontrast_only真去18528Mom；detailrawgate去q中心化；highpass仅D；misaligned固定错配q与D。最终2–3网络设计累计+1.5，单点以对父模型贡献评估。全部seed/阴性保留，不能据点估计称创新或独立确认。
