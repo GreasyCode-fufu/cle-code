@@ -16,5 +16,11 @@
 |focalcontrast_only_c4_vs_M_c4_moments|-1.0665|[-3.0412, 0.0841]|
 |focalcontrast_only_c4_vs_M_c4_aug|-0.9366|[-2.5435, 0.5780]|
 |focalcontrast_only_c4_vs_M_eca|-0.4740|[-1.2984, 0.1982]|
+|mom_focalraw_single_vs_M_c4_moments|-0.4872|[-1.5825, -0.0102]|
+|mom_focalraw_single_vs_M_c4_aug|-0.2975|[-1.4009, 0.4505]|
+|mom_focalraw_single_vs_M_eca|-0.0635|[-0.9639, 0.6640]|
+|mom_focalraw_c4_vs_M_c4_moments|-0.5978|[-1.7393, -0.0262]|
+|mom_focalraw_c4_vs_M_c4_aug|-0.4678|[-1.3743, 0.6016]|
+|mom_focalraw_c4_vs_M_eca|-0.0052|[-0.6659, 0.7990]|
 
 mom_focalcontrast对原Mom检验中间特征新增贡献；focalcontrast_only真去18528Mom；focalraw去调制器中心化；additive用加法代乘法；misaligned固定错配调制器和query。最终2–3网络设计累计+1.5，单点以对父模型贡献评估。全部seed/阴性保留，不能据点估计称创新或独立确认。

@@ -13,6 +13,8 @@
 |mom_focalcontrast_c4|96.1134%|96.5241%|94.8969%|95.8448%|95.8912%|92.2348%|92.4902%|
 |focalcontrast_only_single|96.1532%|95.2349%|94.3579%|95.2487%|95.3125%|90.5303%|93.1496%|
 |focalcontrast_only_c4|96.0029%|95.4377%|94.7335%|95.3914%|95.4282%|91.4773%|92.5107%|
+|mom_focalraw_single|94.8805%|95.4739%|95.8049%|95.3864%|95.4282%|93.3712%|91.8490%|
+|mom_focalraw_c4|95.6057%|95.6453%|96.3295%|95.8602%|95.8912%|93.5606%|93.2393%|
 
 |比较|平均差（百分点）|患者条件95%区间（百分点）|
 |---|---:|---|
@@ -36,5 +38,15 @@
 |focalcontrast_only_c4_vs_dino_baseline|0.2141|[-2.2591, 2.2657]|
 |focalcontrast_only_c4_vs_DINO_C4|-0.7637|[-3.5336, 0.9431]|
 |focalcontrast_only_c4_vs_Swin_C4|-1.1856|[-3.5099, 0.4375]|
+|mom_focalraw_single_vs_qualification_convnext_tiny_A|0.4050|[-0.3926, 1.3690]|
+|mom_focalraw_single_vs_B0_C4|-0.5400|[-1.3267, 0.3458]|
+|mom_focalraw_single_vs_dino_baseline|0.2091|[-2.0595, 2.3130]|
+|mom_focalraw_single_vs_DINO_C4|-0.7687|[-3.2643, 0.9054]|
+|mom_focalraw_single_vs_Swin_C4|-1.1906|[-3.1662, 0.3564]|
+|mom_focalraw_c4_vs_qualification_convnext_tiny_A|0.8787|[0.0826, 2.0307]|
+|mom_focalraw_c4_vs_B0_C4|-0.0662|[-0.7372, 0.8343]|
+|mom_focalraw_c4_vs_dino_baseline|0.6828|[-1.2136, 2.5943]|
+|mom_focalraw_c4_vs_DINO_C4|-0.2949|[-2.4067, 1.1633]|
+|mom_focalraw_c4_vs_Swin_C4|-0.7168|[-2.4459, 0.7698]|
 
 逐图预测、每seed混淆矩阵、训练预算、SHA见round_results.json及evaluations。库模块为成熟参照；组合不自动构成SCI创新。历史test已被查看，A–C构建用过test标签，等级为模型一致性代理。条件bootstrap不校正适应性筛选偏差。原几何与Swin局部研究另有完整账本，不混为本轮结果。
