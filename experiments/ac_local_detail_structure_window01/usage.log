@@ -1,1 +1,8 @@
 {"arm": "mom_detailcontrast", "seed": 45, "checkpoint": "weights/ac_local_detail_structure_window01/ldc_mom_detailcontrast_s45/model_best.pth", "checkpoint_sha256": "d53335233b78f9c638ef195776e968c5d639de6bad0e4f3af33110774f98b655", "source_config_sha256": "13ca4aa555543ed77cd9cc725c589c69e48b522fe5a21ef93a7963c22a61347d", "image_sha256": "da7a87a8135abccd61c3fb53e444fe94b652601ca88405904a5c397afb7f4760", "views": "single", "backend": "preregistered nativeCUDA cudnnDisabled AMPfp16 physicalB1", "predicted_class": 0, "probabilities": [0.9322165250778198, 0.056823935359716415, 0.010959490202367306], "class_ids": [0, 1, 2], "malignant_class_id": 1, "scope": "Research model prediction; no independent clinical validation claimed"}
+[main 7dcdb63b] test: verify actual local detail contrast checkpoint single-image usage against fixed first validation probability
+ 12 files changed, 135 insertions(+), 10 deletions(-)
+ create mode 100644 experiments/ac_local_detail_structure_window01/logs/ldc_mom_detailcontrast_s46.log
+ create mode 100644 experiments/ac_local_detail_structure_window01/runs/ldc_mom_detailcontrast_s46/run_meta.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/runs/ldc_mom_detailcontrast_s46/train_log.csv
+ create mode 100644 experiments/ac_local_detail_structure_window01/usage_smoke/cli_prediction.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/usage_smoke/independent_cli_audit.json
