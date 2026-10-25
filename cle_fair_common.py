@@ -136,6 +136,7 @@ MODEL_REGISTRY = {
     "convnext_v2abc": ("models.optimize.convnext_cle_v2", "convnext_v2abc"),
     "convnext_v2ac":  ("models.optimize.convnext_cle_v2", "convnext_v2ac"),
     "convnext_v2bc":  ("models.optimize.convnext_cle_v2", "convnext_v2bc"),
+    "convnext_v2bc4": ("models.optimize.convnext_cle_v2", "convnext_v2bc4"),
 }
 
 SUPPORTED_EXTS = (".jpg", ".jpeg", ".png", ".bmp", ".tif", ".tiff")

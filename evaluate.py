@@ -87,6 +87,7 @@ MODEL_REGISTRY = {
     "convnext_v2abc": ("models.optimize.convnext_cle_v2", "convnext_v2abc"),
     "convnext_v2ac":  ("models.optimize.convnext_cle_v2", "convnext_v2ac"),
     "convnext_v2bc":  ("models.optimize.convnext_cle_v2", "convnext_v2bc"),
+    "convnext_v2bc4": ("models.optimize.convnext_cle_v2", "convnext_v2bc4"),
     "efficientnet_b0":  ("models.EfficientNet", "efficientnet_b0"),
     "mobilenet_v2":     ("models.MobileNetV2", "mobilenet_v2"),
     "swin_tiny_patch4_window7_224": ("models.Swin", "swin_tiny_patch4_window7_224"),

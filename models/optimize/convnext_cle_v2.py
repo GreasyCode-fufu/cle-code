@@ -136,3 +136,7 @@ def convnext_v2ac(num_classes: int):  # A+C 两创新点链
 
 def convnext_v2bc(num_classes: int):  # B+C 两创新点链(主干预训练保持最佳)
     return _v2(num_classes, wr_stages=(2, 3), use_ch=True)
+
+
+def convnext_v2bc4(num_classes: int):  # B(仅stage4)+C 轻扰动组合
+    return _v2(num_classes, wr_stages=(3,), use_ch=True)
