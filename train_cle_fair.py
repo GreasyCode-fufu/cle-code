@@ -98,6 +98,10 @@ MODEL_ALLOWED_MISSING_SEGMENTS = {
     "convnext_wds_wtb_k3": {"wds", "wds_gate", "wtc", "wtg"},
     "convnext_wtb_k3": {"wtc", "wtg"},
     "convnext_wds_wtb_k3_msf": {"wds", "wds_gate", "wtc", "wtg", "msf_p2", "msf_p3", "msf_g2", "msf_g3"},
+    "convnext_wdd": {"wdd", "wdd_gate"},
+    "convnext_wds_msf": {"wds", "wds_gate", "msf_p2", "msf_p3", "msf_g2", "msf_g3"},
+    "convnext_wtb_msf": {"wtc", "wtg", "msf_p2", "msf_p3", "msf_g2", "msf_g3"},
+    "convnext_wds_wdd_msf": {"wds", "wds_gate", "wdd", "wdd_gate", "msf_p2", "msf_p3", "msf_g2", "msf_g3"},
 }
 
 # 各模型加载 ImageNet 预训练权重前需做的"权重变换"(如 s2d 变体的 conv1 通道膨胀)。

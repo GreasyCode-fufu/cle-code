@@ -176,12 +176,15 @@ class WTEBlock(Block):
 # ═══════════════ 组合网络 ═══════════════
 
 class ConvNeXtCLE(ConvNeXt):
-    """ConvNeXt + {A:WDS, B:WTB@stages, C:MSF} 可组合。
+    """ConvNeXt + {A:WDS, B:WTB@stages, C:MSF, D:WDD} 可组合。
 
     构造后对 stages 做外科手术式替换(参数名不变), 故官方预训练权重可整体加载。
+    D: Wavelet downsample Dual-branch —— 对 baseline 自身 3 个中间下采样层
+    (k2s2 conv) 并联 Haar 小波抗混叠分支(DWT 无损 /2 + 1x1 投影), 零门控融合。
+    针对 CLE 图像下采样过程中腺体边缘高频逐渐衰减的问题(PFESA/MICCAI2026 动机)。
     """
     def __init__(self, use_wds=False, wtb_stages=(), wt_kernel=5, wt_levels=2,
-                 use_msf=False, **convnext_kwargs):
+                 use_msf=False, use_wdd=False, **convnext_kwargs):
         super().__init__(**convnext_kwargs)
         self._dims = [dl[1].out_channels if i > 0 else dl[0].out_channels
                       for i, dl in enumerate(self.downsample_layers)]
@@ -211,6 +214,32 @@ class ConvNeXtCLE(ConvNeXt):
             self.msf_g2 = nn.Parameter(torch.zeros(d4))
             self.msf_g3 = nn.Parameter(torch.zeros(d4))
 
+        # D: 小波抗混叠下采样对偶分支(3 个中间 downsample 各一条)
+        self.use_wdd = use_wdd
+        if use_wdd:
+            self.wdd = nn.ModuleList()
+            self.wdd_gate = nn.ParameterList()
+            for i in range(3):
+                d_in, d_out = self._dims[i], self._dims[i + 1]
+                wt_filter, _ = _create_haar_filters(d_in)
+                m = nn.Module()
+                m.wt_filter = nn.Parameter(wt_filter, requires_grad=False)
+                m.proj = nn.Conv2d(d_in * 4, d_out, 1, bias=False)
+                self.wdd.append(m)
+                self.wdd_gate.append(nn.Parameter(torch.zeros(d_out)))
+
+    def _downsample(self, i, x):
+        """i=1..3 对应 downsample_layers[i], wdd 列表按 0..2 索引。"""
+        y = self.downsample_layers[i](x)
+        if self.use_wdd:
+            j = i - 1
+            b, c, h, w = x.shape
+            t = F.conv2d(x, self.wdd[j].wt_filter, stride=2, groups=c,
+                         padding=(0, 0))
+            t = t.reshape(b, c * 4, h // 2, w // 2)
+            y = y + self.wdd_gate[j].view(1, -1, 1, 1) * self.wdd[j].proj(t)
+        return y
+
     def forward_features(self, x):
         if self.use_wds:
             extra = self.wds(x)                                   # (B,d0,H/4,W/4)
@@ -220,13 +249,13 @@ class ConvNeXtCLE(ConvNeXt):
             x = self.stages[0](x)
             feats = [x]
             for i in range(1, 4):
-                x = self.downsample_layers[i](x)
+                x = self._downsample(i, x)
                 x = self.stages[i](x)
                 feats.append(x)
         else:
             feats = []
             for i in range(4):
-                x = self.downsample_layers[i](x)
+                x = self._downsample(i, x) if i > 0 else self.downsample_layers[i](x)
                 x = self.stages[i](x)
                 feats.append(x)
 
@@ -287,3 +316,19 @@ def convnext_wtb_k3(num_classes: int):         # B 单独(k3), 消融表用
 
 def convnext_wds_wtb_k3_msf(num_classes: int):  # A+B(k3)+C 最终链
     return _tiny(num_classes, use_wds=True, wtb_stages=(2, 3), wt_kernel=3, use_msf=True)
+
+
+def convnext_wdd(num_classes: int):             # D 单独: 小波抗混叠下采样对偶分支
+    return _tiny(num_classes, use_wdd=True)
+
+
+def convnext_wds_msf(num_classes: int):         # A+C 两创新点链
+    return _tiny(num_classes, use_wds=True, use_msf=True)
+
+
+def convnext_wtb_msf(num_classes: int):         # B+C 两创新点链
+    return _tiny(num_classes, wtb_stages=(2, 3), use_msf=True)
+
+
+def convnext_wds_wdd_msf(num_classes: int):     # A+D+C 两位置正交链(弃B)
+    return _tiny(num_classes, use_wds=True, use_wdd=True, use_msf=True)

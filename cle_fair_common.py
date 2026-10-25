@@ -125,6 +125,10 @@ MODEL_REGISTRY = {
     "convnext_wds_wtb_k3":    ("models.optimize.convnext_cle", "convnext_wds_wtb_k3"),
     "convnext_wtb_k3":        ("models.optimize.convnext_cle", "convnext_wtb_k3"),
     "convnext_wds_wtb_k3_msf": ("models.optimize.convnext_cle", "convnext_wds_wtb_k3_msf"),
+    "convnext_wdd":           ("models.optimize.convnext_cle", "convnext_wdd"),
+    "convnext_wds_msf":       ("models.optimize.convnext_cle", "convnext_wds_msf"),
+    "convnext_wtb_msf":       ("models.optimize.convnext_cle", "convnext_wtb_msf"),
+    "convnext_wds_wdd_msf":   ("models.optimize.convnext_cle", "convnext_wds_wdd_msf"),
 }
 
 SUPPORTED_EXTS = (".jpg", ".jpeg", ".png", ".bmp", ".tif", ".tiff")
