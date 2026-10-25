@@ -1,0 +1,85 @@
+{
+  "passed": true,
+  "version": 2,
+  "parent_archive_sha256": "0225b9da1a4c93f3bed3472a393211b4b5df91965cf099191f8547d391ede1ff",
+  "original_metric_result_sha256": "51aa44a657a70bca804299b8e9c684eb3347b73ccea818e421c28e7307aabcbe",
+  "reason": "Original sklearn AUROC floats produce +1.1102230246251565e-16 for four exact-zero paired seeds. Independent rank Fraction oracle requires zero. Correct only all-seed-sign metadata for these nonqualified comparisons; no prediction, weight, point-metric, CI, threshold or qualified candidate changes.",
+  "changes": [
+    {
+      "comparison": "ac_module_structure_window01/simam_c4_vs_M_c4",
+      "metric": "class0.auroc",
+      "old_all_seeds_positive": true,
+      "corrected_all_seeds_positive": false,
+      "exact_seed_deltas": [
+        "111/76544",
+        "19/38272",
+        "0"
+      ],
+      "old_float_seed_deltas": [
+        0.0014501463210702115,
+        0.0004964464882942776,
+        1.1102230246251565e-16
+      ],
+      "qualified_before": false,
+      "qualified_after": false
+    },
+    {
+      "comparison": "ac_affine_geometry_structure_window01/mom_affine_single_vs_B0_single",
+      "metric": "class1.auroc",
+      "old_all_seeds_positive": true,
+      "corrected_all_seeds_positive": false,
+      "exact_seed_deltas": [
+        "0",
+        "87/70400",
+        "63/70400"
+      ],
+      "old_float_seed_deltas": [
+        1.1102230246251565e-16,
+        0.0012357954545454408,
+        0.0008948863636364379
+      ],
+      "qualified_before": false,
+      "qualified_after": false
+    },
+    {
+      "comparison": "ac_channel_covariance_structure_window01/mom_channelperm_c4_vs_M_c4",
+      "metric": "class0.auroc",
+      "old_all_seeds_positive": true,
+      "corrected_all_seeds_positive": false,
+      "exact_seed_deltas": [
+        "61/38272",
+        "9/76544",
+        "0"
+      ],
+      "old_float_seed_deltas": [
+        0.0015938545150501193,
+        0.00011757943143808625,
+        1.1102230246251565e-16
+      ],
+      "qualified_before": false,
+      "qualified_after": false
+    },
+    {
+      "comparison": "ac_crossscale_structure_window01/mom_bilinear_single_vs_B0_single",
+      "metric": "class1.auroc",
+      "old_all_seeds_positive": true,
+      "corrected_all_seeds_positive": false,
+      "exact_seed_deltas": [
+        "3/8800",
+        "107/70400",
+        "0"
+      ],
+      "old_float_seed_deltas": [
+        0.0003409090909091139,
+        0.0015198863636364246,
+        1.1102230246251565e-16
+      ],
+      "qualified_before": false,
+      "qualified_after": false
+    }
+  ],
+  "affected_qualified_candidates": 0,
+  "original_files_preserved": true,
+  "new_training": 0,
+  "new_inference": 0
+}
