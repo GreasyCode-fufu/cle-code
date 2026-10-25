@@ -167,6 +167,17 @@ def _remap_stem2_wr(state):
     return _remap_wr(_remap_stem2(state))
 
 
+def _remap_wr_s4(state):
+    """仅 stage4(stages.3) 的 dwconv 重映射(v2bc4 只替换 stage4)。"""
+    out = {}
+    pat = re.compile(r"^(stages\.3\.[0-9]+)\.dwconv\.(weight|bias)$")
+    for k, v in state.items():
+        m = pat.match(k)
+        k = f"{m.group(1)}.dwconv.base_conv.{m.group(2)}" if m else k
+        out[k] = v
+    return out
+
+
 MODEL_CHECKPOINT_TRANSFORMS = {
     "resnet34_s2d_v2": _inflate_conv1_for_s2d,
     "resnet34_dshortcut": _remap_dshortcut,
@@ -177,7 +188,7 @@ MODEL_CHECKPOINT_TRANSFORMS = {
     "convnext_v2abc": _remap_stem2_wr,
     "convnext_v2ac": _remap_stem2,
     "convnext_v2bc": _remap_wr,
-    "convnext_v2bc4": _remap_wr,
+    "convnext_v2bc4": _remap_wr_s4,
 }
 SWIN_VANILLA_IGNORED_CHECKPOINT_BUFFERS = {
     "layers.0.blocks.1.attn_mask",
