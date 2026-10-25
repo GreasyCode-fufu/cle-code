@@ -1,0 +1,350 @@
+{
+  "passed": true,
+  "numeric": {
+    "contrast": {
+      "numpy_descriptor_error": 2.2648549702353193e-14,
+      "numpy_blur_error": 0.0,
+      "FFT_replicate_linear_convolution_error": 4.440892098500626e-16,
+      "doublegradcheck": true,
+      "batch_independent": true,
+      "finite_spatial_constant": true,
+      "constant_descriptor_zero_with_tolerance": true
+    },
+    "rawgate": {
+      "numpy_descriptor_error": 9.992007221626409e-16,
+      "numpy_blur_error": 0.0,
+      "FFT_replicate_linear_convolution_error": 4.440892098500626e-16,
+      "doublegradcheck": true,
+      "batch_independent": true,
+      "finite_spatial_constant": true,
+      "constant_descriptor_zero_with_tolerance": true
+    },
+    "misaligned": {
+      "numpy_descriptor_error": 1.1657341758564144e-14,
+      "numpy_blur_error": 0.0,
+      "FFT_replicate_linear_convolution_error": 5.551115123125783e-16,
+      "doublegradcheck": true,
+      "batch_independent": true,
+      "finite_spatial_constant": true,
+      "constant_descriptor_zero_with_tolerance": true
+    },
+    "highpass": {
+      "numpy_descriptor_error": 4.996003610813204e-16,
+      "numpy_blur_error": 0.0,
+      "FFT_replicate_linear_convolution_error": 3.3306690738754696e-16,
+      "doublegradcheck": true,
+      "batch_independent": true,
+      "finite_spatial_constant": true,
+      "constant_descriptor_zero_with_tolerance": true
+    }
+  },
+  "official": {
+    "passed": true,
+    "source_sha256": "126e1379b39afa0ae88936810039b84e73ab3e1a7b59c9cbc7f340ee18843467",
+    "license_sha256": "6227e247338b7ebac3dcfc05e6f86fbb16811ba56c77f96877f8c6ac9e53c20a",
+    "restricted_AST": "BlurPool.forward only; constructed binomial3/replicate/stride1; no thirdparty init/network/train executed",
+    "output_error": 0.0,
+    "input_gradient_error": 0.0,
+    "full_paper_reproduction": false,
+    "license": "Adobe2019 CC BY-NC-SA4.0; noncommercial research adaptation"
+  },
+  "toy_updates": {
+    "contrast": [
+      {
+        "loss": 1.0004678964614868,
+        "gradients": {
+          "up.weight": 0.020735934376716614
+        }
+      },
+      {
+        "loss": 1.0004637241363525,
+        "gradients": {
+          "up.weight": 0.020731529220938683
+        }
+      }
+    ],
+    "rawgate": [
+      {
+        "loss": 1.00149667263031,
+        "gradients": {
+          "up.weight": 0.0209208894520998
+        }
+      },
+      {
+        "loss": 1.0014923810958862,
+        "gradients": {
+          "up.weight": 0.02091643214225769
+        }
+      }
+    ],
+    "misaligned": [
+      {
+        "loss": 1.0032896995544434,
+        "gradients": {
+          "up.weight": 0.020643610507249832
+        }
+      },
+      {
+        "loss": 1.0032854080200195,
+        "gradients": {
+          "up.weight": 0.020639242604374886
+        }
+      }
+    ],
+    "highpass": [
+      {
+        "loss": 0.9991523027420044,
+        "gradients": {
+          "up.weight": 0.020684847608208656
+        }
+      },
+      {
+        "loss": 0.9991480112075806,
+        "gradients": {
+          "up.weight": 0.020680442452430725
+        }
+      }
+    ]
+  },
+  "same_channel_marginals_different_spatial_context_counterexample": 2.802009513249713,
+  "perchannel_gate_survives_LN_counterexample": 0.13612188721168983,
+  "public_initializations": [
+    {
+      "seed": 45,
+      "arm": "plain",
+      "parameters": 27822435,
+      "counted_flops": 8909531136,
+      "logit_exact": true,
+      "RNG_preserved": true,
+      "original_parameter_ids_and_values_preserved": true,
+      "finite_backward": true,
+      "fixed_filter_Fconv_included": true
+    },
+    {
+      "seed": 45,
+      "arm": "mom_only",
+      "parameters": 27840963,
+      "counted_flops": 9111840768,
+      "logit_exact": true,
+      "RNG_preserved": true,
+      "original_parameter_ids_and_values_preserved": true,
+      "finite_backward": true,
+      "fixed_filter_Fconv_included": true
+    },
+    {
+      "seed": 45,
+      "arm": "mom_detailcontrast",
+      "parameters": 27850179,
+      "counted_flops": 9180481536,
+      "logit_exact": true,
+      "RNG_preserved": true,
+      "original_parameter_ids_and_values_preserved": true,
+      "finite_backward": true,
+      "fixed_filter_Fconv_included": true
+    },
+    {
+      "seed": 45,
+      "arm": "detailcontrast_only",
+      "parameters": 27831651,
+      "counted_flops": 8978171904,
+      "logit_exact": true,
+      "RNG_preserved": true,
+      "original_parameter_ids_and_values_preserved": true,
+      "finite_backward": true,
+      "fixed_filter_Fconv_included": true
+    },
+    {
+      "seed": 45,
+      "arm": "mom_detailrawgate",
+      "parameters": 27850179,
+      "counted_flops": 9180481536,
+      "logit_exact": true,
+      "RNG_preserved": true,
+      "original_parameter_ids_and_values_preserved": true,
+      "finite_backward": true,
+      "fixed_filter_Fconv_included": true
+    },
+    {
+      "seed": 45,
+      "arm": "mom_misaligned",
+      "parameters": 27850179,
+      "counted_flops": 9180481536,
+      "logit_exact": true,
+      "RNG_preserved": true,
+      "original_parameter_ids_and_values_preserved": true,
+      "finite_backward": true,
+      "fixed_filter_Fconv_included": true
+    },
+    {
+      "seed": 45,
+      "arm": "mom_highpass",
+      "parameters": 27850179,
+      "counted_flops": 9175062528,
+      "logit_exact": true,
+      "RNG_preserved": true,
+      "original_parameter_ids_and_values_preserved": true,
+      "finite_backward": true,
+      "fixed_filter_Fconv_included": true
+    },
+    {
+      "seed": 46,
+      "arm": "plain",
+      "parameters": 27822435,
+      "counted_flops": 8909531136,
+      "logit_exact": true,
+      "RNG_preserved": true,
+      "original_parameter_ids_and_values_preserved": true,
+      "finite_backward": true,
+      "fixed_filter_Fconv_included": true
+    },
+    {
+      "seed": 46,
+      "arm": "mom_only",
+      "parameters": 27840963,
+      "counted_flops": 9111840768,
+      "logit_exact": true,
+      "RNG_preserved": true,
+      "original_parameter_ids_and_values_preserved": true,
+      "finite_backward": true,
+      "fixed_filter_Fconv_included": true
+    },
+    {
+      "seed": 46,
+      "arm": "mom_detailcontrast",
+      "parameters": 27850179,
+      "counted_flops": 9180481536,
+      "logit_exact": true,
+      "RNG_preserved": true,
+      "original_parameter_ids_and_values_preserved": true,
+      "finite_backward": true,
+      "fixed_filter_Fconv_included": true
+    },
+    {
+      "seed": 46,
+      "arm": "detailcontrast_only",
+      "parameters": 27831651,
+      "counted_flops": 8978171904,
+      "logit_exact": true,
+      "RNG_preserved": true,
+      "original_parameter_ids_and_values_preserved": true,
+      "finite_backward": true,
+      "fixed_filter_Fconv_included": true
+    },
+    {
+      "seed": 46,
+      "arm": "mom_detailrawgate",
+      "parameters": 27850179,
+      "counted_flops": 9180481536,
+      "logit_exact": true,
+      "RNG_preserved": true,
+      "original_parameter_ids_and_values_preserved": true,
+      "finite_backward": true,
+      "fixed_filter_Fconv_included": true
+    },
+    {
+      "seed": 46,
+      "arm": "mom_misaligned",
+      "parameters": 27850179,
+      "counted_flops": 9180481536,
+      "logit_exact": true,
+      "RNG_preserved": true,
+      "original_parameter_ids_and_values_preserved": true,
+      "finite_backward": true,
+      "fixed_filter_Fconv_included": true
+    },
+    {
+      "seed": 46,
+      "arm": "mom_highpass",
+      "parameters": 27850179,
+      "counted_flops": 9175062528,
+      "logit_exact": true,
+      "RNG_preserved": true,
+      "original_parameter_ids_and_values_preserved": true,
+      "finite_backward": true,
+      "fixed_filter_Fconv_included": true
+    },
+    {
+      "seed": 47,
+      "arm": "plain",
+      "parameters": 27822435,
+      "counted_flops": 8909531136,
+      "logit_exact": true,
+      "RNG_preserved": true,
+      "original_parameter_ids_and_values_preserved": true,
+      "finite_backward": true,
+      "fixed_filter_Fconv_included": true
+    },
+    {
+      "seed": 47,
+      "arm": "mom_only",
+      "parameters": 27840963,
+      "counted_flops": 9111840768,
+      "logit_exact": true,
+      "RNG_preserved": true,
+      "original_parameter_ids_and_values_preserved": true,
+      "finite_backward": true,
+      "fixed_filter_Fconv_included": true
+    },
+    {
+      "seed": 47,
+      "arm": "mom_detailcontrast",
+      "parameters": 27850179,
+      "counted_flops": 9180481536,
+      "logit_exact": true,
+      "RNG_preserved": true,
+      "original_parameter_ids_and_values_preserved": true,
+      "finite_backward": true,
+      "fixed_filter_Fconv_included": true
+    },
+    {
+      "seed": 47,
+      "arm": "detailcontrast_only",
+      "parameters": 27831651,
+      "counted_flops": 8978171904,
+      "logit_exact": true,
+      "RNG_preserved": true,
+      "original_parameter_ids_and_values_preserved": true,
+      "finite_backward": true,
+      "fixed_filter_Fconv_included": true
+    },
+    {
+      "seed": 47,
+      "arm": "mom_detailrawgate",
+      "parameters": 27850179,
+      "counted_flops": 9180481536,
+      "logit_exact": true,
+      "RNG_preserved": true,
+      "original_parameter_ids_and_values_preserved": true,
+      "finite_backward": true,
+      "fixed_filter_Fconv_included": true
+    },
+    {
+      "seed": 47,
+      "arm": "mom_misaligned",
+      "parameters": 27850179,
+      "counted_flops": 9180481536,
+      "logit_exact": true,
+      "RNG_preserved": true,
+      "original_parameter_ids_and_values_preserved": true,
+      "finite_backward": true,
+      "fixed_filter_Fconv_included": true
+    },
+    {
+      "seed": 47,
+      "arm": "mom_highpass",
+      "parameters": 27850179,
+      "counted_flops": 9175062528,
+      "logit_exact": true,
+      "RNG_preserved": true,
+      "original_parameter_ids_and_values_preserved": true,
+      "finite_backward": true,
+      "fixed_filter_Fconv_included": true
+    }
+  ],
+  "CLE_images": 0,
+  "new_training": 0,
+  "test_images": 0,
+  "trainable_detail_parameters": "up.weight only; no upstream learned chain",
+  "logical_FLOPs_exclusions": "LN/sqrt/centering/elementwise/padding/memory",
+  "novelty_confirmed": false
+}
