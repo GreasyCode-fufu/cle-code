@@ -16,5 +16,11 @@
 |salience_only_c4_vs_M_c4_moments|-0.6452|[-2.7207, 0.3721]|
 |salience_only_c4_vs_M_c4_aug|-0.5153|[-1.8402, 0.1501]|
 |salience_only_c4_vs_M_eca|-0.0527|[-1.8732, 0.9578]|
+|mom_weightedmean_single_vs_M_c4_moments|-0.9604|[-2.2418, -0.3295]|
+|mom_weightedmean_single_vs_M_c4_aug|-0.7706|[-1.9335, 0.2291]|
+|mom_weightedmean_single_vs_M_eca|-0.5366|[-1.1310, -0.0657]|
+|mom_weightedmean_c4_vs_M_c4_moments|-0.9511|[-2.6530, 0.0272]|
+|mom_weightedmean_c4_vs_M_c4_aug|-0.8212|[-2.2450, 0.6679]|
+|mom_weightedmean_c4_vs_M_eca|-0.3586|[-1.0592, 0.2106]|
 
 mom_salience对原Mom检验内容注意力对比增量；salience_only真去Mom；weightedmean去减均值；ungated更少参数非等容量；misaligned改变权重和值配对。全部seed/阴性保留，不能据点估计称创新或独立确认。
