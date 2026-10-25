@@ -28,5 +28,11 @@
 |mom_misaligned_c4_vs_M_c4_moments|-0.4754|[-1.5052, 0.0763]|
 |mom_misaligned_c4_vs_M_c4_aug|-0.3455|[-1.2045, 0.6997]|
 |mom_misaligned_c4_vs_M_eca|0.1171|[-0.8198, 1.2938]|
+|mom_highpass_single_vs_M_c4_moments|-0.5054|[-1.7297, 0.2094]|
+|mom_highpass_single_vs_M_c4_aug|-0.3156|[-1.4631, 0.6181]|
+|mom_highpass_single_vs_M_eca|-0.0816|[-0.8262, 0.6589]|
+|mom_highpass_c4_vs_M_c4_moments|-0.3212|[-1.2422, 0.4183]|
+|mom_highpass_c4_vs_M_c4_aug|-0.1913|[-0.9831, 1.1944]|
+|mom_highpass_c4_vs_M_eca|0.2713|[-0.3627, 1.3754]|
 
 mom_detailcontrast对原Mom检验第一stage新增贡献；detailcontrast_only真去18528Mom；detailrawgate去q中心化；highpass仅D；misaligned固定错配q与D。最终2–3网络设计累计+1.5，单点以对父模型贡献评估。全部seed/阴性保留，不能据点估计称创新或独立确认。

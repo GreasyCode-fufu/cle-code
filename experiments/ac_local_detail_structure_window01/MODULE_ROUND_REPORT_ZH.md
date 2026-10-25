@@ -17,6 +17,8 @@
 |mom_detailrawgate_c4|96.0921%|95.4523%|95.9922%|95.8455%|95.8912%|92.4242%|94.1748%|
 |mom_misaligned_single|95.0610%|96.3223%|95.1258%|95.5030%|95.5440%|92.4242%|93.5112%|
 |mom_misaligned_c4|96.1479%|95.7985%|96.0010%|95.9825%|96.0069%|93.5606%|93.5023%|
+|mom_highpass_single|95.5770%|94.5307%|95.9973%|95.3683%|95.4282%|91.4773%|93.0193%|
+|mom_highpass_c4|96.6140%|95.4523%|96.3438%|96.1367%|96.1806%|93.1818%|94.3898%|
 
 |比较|平均差（百分点）|患者条件95%区间（百分点）|
 |---|---:|---|
@@ -60,5 +62,15 @@
 |mom_misaligned_c4_vs_dino_baseline|0.8052|[-1.1906, 2.7289]|
 |mom_misaligned_c4_vs_DINO_C4|-0.1726|[-2.5073, 1.3648]|
 |mom_misaligned_c4_vs_Swin_C4|-0.5945|[-2.5126, 1.1968]|
+|mom_highpass_single_vs_qualification_convnext_tiny_A|0.3869|[-0.4187, 1.5562]|
+|mom_highpass_single_vs_B0_C4|-0.5581|[-1.3797, 0.5950]|
+|mom_highpass_single_vs_dino_baseline|0.1910|[-2.1704, 2.4557]|
+|mom_highpass_single_vs_DINO_C4|-0.7868|[-3.3885, 1.0016]|
+|mom_highpass_single_vs_Swin_C4|-1.2087|[-3.1116, 0.3669]|
+|mom_highpass_c4_vs_qualification_convnext_tiny_A|1.1553|[0.3205, 2.6202]|
+|mom_highpass_c4_vs_B0_C4|0.2103|[-0.4795, 1.4430]|
+|mom_highpass_c4_vs_dino_baseline|0.9594|[-0.9904, 3.1073]|
+|mom_highpass_c4_vs_DINO_C4|-0.0184|[-2.2602, 1.6414]|
+|mom_highpass_c4_vs_Swin_C4|-0.4403|[-2.1787, 1.2739]|
 
 逐图预测、每seed混淆矩阵、训练预算、SHA见round_results.json及evaluations。库模块为成熟参照；组合不自动构成SCI创新。历史test已被查看，A–C构建用过test标签，等级为模型一致性代理。条件bootstrap不校正适应性筛选偏差。原几何与Swin局部研究另有完整账本，不混为本轮结果。
