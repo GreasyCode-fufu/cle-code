@@ -1,0 +1,11 @@
+# 固定错配Focal组合的真正去Mom补充控制
+
+这是用户结果后澄清整套evaluate.py截图指标后，对已有108方案补审发现的候选，不伪称历史事前选择。原Mom+mom_misaligned原为破坏配对控制，在良性Sensitivity上具已有条件增量；不能据此证明aligned机制。原完整轮、阴性和原始包全部保留。
+
+只训练缺失misaligned_only 45/46/47三seed。原selected3/Mom3/B03及所有原成熟对照直接复用。新wrapper先按原mom_misaligned逐字模型构造，再仅将MomentStem还原为它的原base。保留相同第二stage192×28×28 rank24 Focal残差、所有11832新参数、固定default_rng20261025的784位置排列、随机起点与原seed head。不使用任何CLE旧权重热启动；移除18528Mom，原始Stem和其optimizer encoder组保留。
+
+公开起点CPU验证原参数及RNG/初始logits逐字一致，三seed完整保留参数与固定perm相同，up首步正、上游首步0次步正；CUDA32两更新，同原Q/M CE60epoch/B32/encoder1e-5、新模块head1e-4/AdamW.05/cosine0/clip1/AMP/stochdepth.1/HVrotation15random224/workers2/thread1。原selected3/Mom3/B03严格load重建完整427val概率误差0、缓存SHA/2077/test拒绝通过后独立目标并发profile，6GiB余量且97%最小有效并发才开训。独立60epoch/最早valbest/actualweightSHA后全427val/576test×4两路线概率审计。
+
+最终完整呈现截图v4主/补充/每类指标、混淆矩阵、成本和三seed，以及相对固定B0、原Mom、真去Mom及原aligned/raw/additive等控制的直接Fraction差与41患者20k配对条件区间。它不是evaluate.py原逐图1000bootstrap，不校正模型/指标适应性筛选偏差，不称独立/外部验证。旧macroF1报告仅辅助，不以其中旧门槛替代截图口径。C4同view同强预算参照，不能算第二/第三网络设计。
+
+实际selected模型CLI事前登记于本补充控制：seed45首固定val2386、nativeCUDA关闭cuDNN、原AMP FP16和物理B1，原B32概率误差<1e-4且类别同，不改变训练后端。这不是历史选择前登记，也不推广所有图误差。使用原evaluate.py精确compute_metrics，绝不运行其不兼容自定义结构的strictFalse过滤加载入口。所有新分析单独补充，不改旧冻结源码/配置/权重/包。成熟算子组合不自动SCI创新，普通阴性不中止整体研究。
