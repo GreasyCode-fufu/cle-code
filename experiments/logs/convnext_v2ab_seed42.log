@@ -1,0 +1,44 @@
+/home/login/miniconda3/envs/sunfuxiang/lib/python3.12/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+/data/cle/auto/ZCode/Classification/train_cle_fair.py:560: FutureWarning: `torch.cuda.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler('cuda', args...)` instead.
+  scaler = torch.cuda.amp.GradScaler()
+[seed] seed = 42 (set)
+2077 images for training.
+427 images were found in the val dataset.
+427 images for test.
+[norm] ImageNet 归一化(加载了预训练权重) MEAN=[0.485, 0.456, 0.406] STD=[0.229, 0.224, 0.225]
+[weights] strict load passed /data/cle/sunfuxiang/classifyML/pth/convnext_tiny_1k_224_ema.pth | classifier_missing=89 ignored_buffers=0 unexpected=0
+[train] model=convnext_v2ab num_classes=3 img=224 bs=32 epochs=300 | CE (label_smoothing=0.0) | select=val_macro_f1
+[out]   run_dir=./weights_cle_ac_v1/convnext_v2ab_seed42/convnext_v2ab
+train epoch 0 loss: 0.989, acc: 0.531:  10… [  , 
+Epoch 0: train_loss=0.989, train_acc=0.531, val_loss=0.977, val_acc=0.581, val_macroF1=0.4019, lr=0.000100, best_macroF1=0.4019 (epoch 0) *
+train epoch 1 loss: 0.561, acc: 0.763:  10… [  , 
+Epoch 1: train_loss=0.561, train_acc=0.763, val_loss=0.399, val_acc=0.785, val_macroF1=0.7639, lr=0.000100, best_macroF1=0.7639 (epoch 1) *
+train epoch 2 loss: 0.310, acc: 0.874:  10… [  , 
+Epoch 2: train_loss=0.310, train_acc=0.874, val_loss=0.310, val_acc=0.878, val_macroF1=0.8305, lr=0.000100, best_macroF1=0.8305 (epoch 2) *
+train epoch 3 loss: 0.228, acc: 0.904:  10… [  , 
+Epoch 3: train_loss=0.228, train_acc=0.904, val_loss=0.185, val_acc=0.927, val_macroF1=0.8974, lr=0.000100, best_macroF1=0.8974 (epoch 3) *
+train epoch 4 loss: 0.158, acc: 0.936:  10… [  , 
+Epoch 4: train_loss=0.158, train_acc=0.936, val_loss=0.138, val_acc=0.944, val_macroF1=0.9277, lr=0.000100, best_macroF1=0.9277 (epoch 4) *
+train epoch 5 loss: 0.107, acc: 0.957:  10… [  , 
+Epoch 5: train_loss=0.107, train_acc=0.957, val_loss=0.140, val_acc=0.948, val_macroF1=0.9368, lr=0.000100, best_macroF1=0.9368 (epoch 5) *
+train epoch 6 loss: 0.095, acc: 0.963:  10… [  , 
+Epoch 6: train_loss=0.095, train_acc=0.963, val_loss=0.117, val_acc=0.956, val_macroF1=0.9455, lr=0.000100, best_macroF1=0.9455 (epoch 6) *
+train epoch 7 loss: 0.082, acc: 0.967:  10… [  , 
+Epoch 7: train_loss=0.082, train_acc=0.967, val_loss=0.113, val_acc=0.956, val_macroF1=0.9438, lr=0.000100, best_macroF1=0.9455 (epoch 6)
+train epoch 8 loss: 0.048, acc: 0.980:  10… [  , 
+Epoch 8: train_loss=0.048, train_acc=0.980, val_loss=0.185, val_acc=0.944, val_macroF1=0.9275, lr=0.000100, best_macroF1=0.9455 (epoch 6)
+train epoch 9 loss: 0.050, acc: 0.982:  10… [  , 
+Epoch 9: train_loss=0.050, train_acc=0.982, val_loss=0.114, val_acc=0.958, val_macroF1=0.9460, lr=0.000100, best_macroF1=0.9460 (epoch 9) *
+train epoch 10 loss: 0.035, acc: 0.986:  10…   , 
+Epoch 10: train_loss=0.035, train_acc=0.986, val_loss=0.142, val_acc=0.953, val_macroF1=0.9391, lr=0.000100, best_macroF1=0.9460 (epoch 9)
+train epoch 11 loss: 0.039, acc: 0.987:  10…   , 
+Epoch 11: train_loss=0.039, train_acc=0.987, val_loss=0.107, val_acc=0.963, val_macroF1=0.9529, lr=0.000100, best_macroF1=0.9529 (epoch 11) *
+train epoch 12 loss: 0.033, acc: 0.988:  10…   , 
+Epoch 12: train_loss=0.033, train_acc=0.988, val_loss=0.164, val_acc=0.946, val_macroF1=0.9318, lr=0.000100, best_macroF1=0.9529 (epoch 11)
+train epoch 13 loss: 0.037, acc: 0.988:  10…   , 
+Epoch 13: train_loss=0.037, train_acc=0.988, val_loss=0.170, val_acc=0.937, val_macroF1=0.9137, lr=0.000099, best_macroF1=0.9529 (epoch 11)
+train epoch 14 loss: 0.044, acc: 0.983:  10…   , 
+Epoch 14: train_loss=0.044, train_acc=0.983, val_loss=0.186, val_acc=0.946, val_macroF1=0.9291, lr=0.000099, best_macroF1=0.9529 (epoch 11)
+train epoch 15 loss: 0.015, acc: 0.995:  10…   , 
+Epoch 15: train_loss=0.015, train_acc=0.995, val_loss=0.174, val_acc=0.946, val_macroF1=0.9269, lr=0.000099, best_macroF1=0.9529 (epoch 11)

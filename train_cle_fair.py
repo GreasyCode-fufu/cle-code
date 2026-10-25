@@ -110,6 +110,9 @@ MODEL_ALLOWED_MISSING_SEGMENTS = {
     "convnext_v2ab": {"dwt", "conv", "wavelet_convs", "wavelet_scale", "base_scale", "wt_filter", "iwt_filter"},
     "convnext_v2abc": {"dwt", "conv", "wavelet_convs", "wavelet_scale", "base_scale", "wt_filter", "iwt_filter",
                        "msf2_p2", "msf2_p3", "msf2_n2", "msf2_n3"},
+    "convnext_v2ac": {"dwt", "conv", "msf2_p2", "msf2_p3", "msf2_n2", "msf2_n3"},
+    "convnext_v2bc": {"wavelet_convs", "wavelet_scale", "base_scale", "wt_filter", "iwt_filter",
+                      "msf2_p2", "msf2_p3", "msf2_n2", "msf2_n3"},
 }
 
 # 各模型加载 ImageNet 预训练权重前需做的"权重变换"(如 s2d 变体的 conv1 通道膨胀)。
@@ -170,6 +173,8 @@ MODEL_CHECKPOINT_TRANSFORMS = {
     "convnext_v2b": _remap_wr,
     "convnext_v2ab": _remap_stem2_wr,
     "convnext_v2abc": _remap_stem2_wr,
+    "convnext_v2ac": _remap_stem2,
+    "convnext_v2bc": _remap_wr,
 }
 SWIN_VANILLA_IGNORED_CHECKPOINT_BUFFERS = {
     "layers.0.blocks.1.attn_mask",

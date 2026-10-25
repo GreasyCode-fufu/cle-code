@@ -12,7 +12,7 @@ load_pretrained_weights_strict(ref, PTH, "convnext_tiny"); ref.eval()
 with torch.no_grad():
     y0 = ref.forward_features(x)
 
-for name in ["convnext_v2a", "convnext_v2b", "convnext_v2c", "convnext_v2ab", "convnext_v2abc"]:
+for name in ["convnext_v2a", "convnext_v2b", "convnext_v2c", "convnext_v2ab", "convnext_v2abc", "convnext_v2ac", "convnext_v2bc"]:
     m = build_model(name, num_classes=3).to(dev)
     load_pretrained_weights_strict(m, PTH, name)
     m.train()

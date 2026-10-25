@@ -128,3 +128,11 @@ def convnext_v2ab(num_classes: int):   # A+B
 
 def convnext_v2abc(num_classes: int):  # A+B+C 最终链
     return _v2(num_classes, use_ws=True, wr_stages=(2, 3), use_ch=True)
+
+
+def convnext_v2ac(num_classes: int):  # A+C 两创新点链
+    return _v2(num_classes, use_ws=True, use_ch=True)
+
+
+def convnext_v2bc(num_classes: int):  # B+C 两创新点链(主干预训练保持最佳)
+    return _v2(num_classes, wr_stages=(2, 3), use_ch=True)
