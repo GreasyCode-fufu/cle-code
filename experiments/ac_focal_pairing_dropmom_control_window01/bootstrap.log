@@ -39,3 +39,7 @@
  2 files changed, 159 insertions(+)
  create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/preflight.json
 {"arm": "mom_misaligned", "seed": 45, "checkpoint": "weights/ac_midstage_focal_structure_window01/mfc_mom_misaligned_s45/model_best.pth", "checkpoint_sha256": "1fa9b8ee82d05ebf1ced3b341487c48b0655e8658ace75d939d1c27cdaf6d5fd", "source_config_sha256": "1fbbf22a250c195195216c588ec113246fc6e05092f2ddb0717621cc25f8e781", "image_sha256": "da7a87a8135abccd61c3fb53e444fe94b652601ca88405904a5c397afb7f4760", "views": "single", "backend": "preregistered nativeCUDA cudnnDisabled AMPfp16 physicalB1", "predicted_class": 0, "probabilities": [0.9971663355827332, 0.0027520316652953625, 8.165610779542476e-05], "class_ids": [0, 1, 2], "malignant_class_id": 1, "scope": "Research model prediction; no independent clinical validation claimed"}
+[main 3baf11d7] test: verify original selected fixed-misaligned model actual-weight native B1 usage on first fixed val case
+ 3 files changed, 42 insertions(+)
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/usage_smoke/cli_prediction.json
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/usage_smoke/independent_cli_audit.json
