@@ -1,0 +1,62 @@
+{
+  "passed": true,
+  "numeric_target_met": true,
+  "target_metric_scope": "user screenshot v4 proportional per-class metrics",
+  "selected_arm": "mom_misaligned",
+  "components": [
+    "original CNNMom",
+    "fixed spatial-permuted midstage Focal residual"
+  ],
+  "mode": "single",
+  "seed_ensemble": false,
+  "qualified_metrics": {
+    "class0.sensitivity": {
+      "mean_delta": 0.022435897435897436,
+      "paired_seed_deltas": [
+        0.019230769230769273,
+        0.019230769230769273,
+        0.028846153846153855
+      ],
+      "exact_seed_fractions": [
+        "1/52",
+        "1/52",
+        "3/104"
+      ],
+      "exact_mean_fraction": "7/312",
+      "all_seeds_positive": true,
+      "conditional_ci95": [
+        0.00420124116592242,
+        0.05011122923064788
+      ],
+      "valid_draws": 20000,
+      "screenshot_proportional_metric": true,
+      "conditional_numeric_qualified": true
+    },
+    "class2.precision": {
+      "mean_delta": 0.02608660970957693,
+      "paired_seed_deltas": [
+        0.033622112211221133,
+        0.03483016695451935,
+        0.00980754996299038
+      ],
+      "exact_seed_fractions": [
+        "163/4848",
+        "121/3474",
+        "53/5404"
+      ],
+      "exact_mean_fraction": "1537723/58946832",
+      "all_seeds_positive": true,
+      "conditional_ci95": [
+        0.009055072308671388,
+        0.07499701829241927
+      ],
+      "valid_draws": 20000,
+      "screenshot_proportional_metric": true,
+      "conditional_numeric_qualified": true
+    }
+  },
+  "retention": "deliverable two-component candidate; causal interaction in benignSensitivity not confirmed; all tradeoffs disclosed",
+  "main_archive_sha256": "79cf3436a867cc3f906e483ee3d7e89794657a2a9a83f48d042207b64169dcb8",
+  "strict_entry_sha256": "ce2e0f2804a64b9eb701f159dc28f77fd23ca3edeee318fdbffbcd7a27d0feae",
+  "overall_research_complete": false
+}
