@@ -1,0 +1,331 @@
+{
+  "passed": true,
+  "numeric": {
+    "contrast": {
+      "numpy_error": 9.71445146547012e-17,
+      "doublegradcheck": true,
+      "batch_independent": true,
+      "finite_flat": true,
+      "permutation_invariant": true
+    },
+    "weightedmean": {
+      "numpy_error": 5.551115123125783e-17,
+      "doublegradcheck": true,
+      "batch_independent": true,
+      "finite_flat": true,
+      "permutation_invariant": true
+    },
+    "misaligned": {
+      "numpy_error": 5.551115123125783e-17,
+      "doublegradcheck": true,
+      "batch_independent": true,
+      "finite_flat": true,
+      "permutation_invariant": false
+    },
+    "ungated": {
+      "numpy_error": 5.551115123125783e-17,
+      "doublegradcheck": true,
+      "batch_independent": true,
+      "finite_flat": true,
+      "permutation_invariant": true
+    }
+  },
+  "official": {
+    "passed": true,
+    "source_sha256": "21775302071de4e811ae70330c06fae31a3029e85c6be0c5b1aaab4a08789df4",
+    "license_sha256": "f652daf79344b562c725c684b2dea90b3ce2670d7db269619d0ce6e209ac9baa",
+    "restricted_AST_assignment_targets": [
+      "A_V",
+      "A_U",
+      "A",
+      "Z"
+    ],
+    "forward_error": 0.0,
+    "all_input_and_score_parameter_gradient_error": 2.7755575615628914e-17,
+    "full_paper_reproduction": false
+  },
+  "same_mean_different_content_counterexample": true,
+  "toy_updates": {
+    "contrast": [
+      {
+        "CE": 1.0986123085021973,
+        "classifier_grad": 12.56788158416748,
+        "v_grad": 0.0,
+        "u_grad": 0.0,
+        "w_grad": 0.0
+      },
+      {
+        "CE": 0.9470675587654114,
+        "classifier_grad": 11.537181854248047,
+        "v_grad": 0.11270154267549515,
+        "u_grad": 0.027462583035230637,
+        "w_grad": 0.014295369386672974
+      }
+    ],
+    "weightedmean": [
+      {
+        "CE": 1.0986123085021973,
+        "classifier_grad": 13.186742782592773,
+        "v_grad": 0.0,
+        "u_grad": 0.0,
+        "w_grad": 0.0
+      },
+      {
+        "CE": 0.9324977993965149,
+        "classifier_grad": 11.993396759033203,
+        "v_grad": 0.016260962933301926,
+        "u_grad": 0.004259628709405661,
+        "w_grad": 0.0017557372339069843
+      }
+    ],
+    "misaligned": [
+      {
+        "CE": 1.0986123085021973,
+        "classifier_grad": 12.83080005645752,
+        "v_grad": 0.0,
+        "u_grad": 0.0,
+        "w_grad": 0.0
+      },
+      {
+        "CE": 0.9409909844398499,
+        "classifier_grad": 11.72667407989502,
+        "v_grad": 0.11599130928516388,
+        "u_grad": 0.03030218370258808,
+        "w_grad": 0.01802409626543522
+      }
+    ],
+    "ungated": [
+      {
+        "CE": 1.0986123085021973,
+        "classifier_grad": 12.496678352355957,
+        "v_grad": 0.0,
+        "u_grad": null,
+        "w_grad": 0.0
+      },
+      {
+        "CE": 0.9487013816833496,
+        "classifier_grad": 11.484525680541992,
+        "v_grad": 0.09627273678779602,
+        "u_grad": null,
+        "w_grad": 0.01202678307890892
+      }
+    ]
+  },
+  "public_initializations": [
+    {
+      "seed": 45,
+      "arm": "plain",
+      "parameters": 27822435,
+      "counted_flops": 8909531136,
+      "logit_exact": true,
+      "RNG_preserved": true,
+      "original_parameter_ids_preserved": true,
+      "finite_backward": true
+    },
+    {
+      "seed": 45,
+      "arm": "mom_only",
+      "parameters": 27840963,
+      "counted_flops": 9111840768,
+      "logit_exact": true,
+      "RNG_preserved": true,
+      "original_parameter_ids_preserved": true,
+      "finite_backward": true
+    },
+    {
+      "seed": 45,
+      "arm": "mom_salience",
+      "parameters": 27867894,
+      "counted_flops": 9114330656,
+      "logit_exact": true,
+      "RNG_preserved": true,
+      "original_parameter_ids_preserved": true,
+      "finite_backward": true
+    },
+    {
+      "seed": 45,
+      "arm": "salience_only",
+      "parameters": 27849366,
+      "counted_flops": 8912021024,
+      "logit_exact": true,
+      "RNG_preserved": true,
+      "original_parameter_ids_preserved": true,
+      "finite_backward": true
+    },
+    {
+      "seed": 45,
+      "arm": "mom_weightedmean",
+      "parameters": 27867894,
+      "counted_flops": 9114330656,
+      "logit_exact": true,
+      "RNG_preserved": true,
+      "original_parameter_ids_preserved": true,
+      "finite_backward": true
+    },
+    {
+      "seed": 45,
+      "arm": "mom_misaligned",
+      "parameters": 27867894,
+      "counted_flops": 9114330656,
+      "logit_exact": true,
+      "RNG_preserved": true,
+      "original_parameter_ids_preserved": true,
+      "finite_backward": true
+    },
+    {
+      "seed": 45,
+      "arm": "mom_ungated",
+      "parameters": 27855590,
+      "counted_flops": 9113126432,
+      "logit_exact": true,
+      "RNG_preserved": true,
+      "original_parameter_ids_preserved": true,
+      "finite_backward": true
+    },
+    {
+      "seed": 46,
+      "arm": "plain",
+      "parameters": 27822435,
+      "counted_flops": 8909531136,
+      "logit_exact": true,
+      "RNG_preserved": true,
+      "original_parameter_ids_preserved": true,
+      "finite_backward": true
+    },
+    {
+      "seed": 46,
+      "arm": "mom_only",
+      "parameters": 27840963,
+      "counted_flops": 9111840768,
+      "logit_exact": true,
+      "RNG_preserved": true,
+      "original_parameter_ids_preserved": true,
+      "finite_backward": true
+    },
+    {
+      "seed": 46,
+      "arm": "mom_salience",
+      "parameters": 27867894,
+      "counted_flops": 9114330656,
+      "logit_exact": true,
+      "RNG_preserved": true,
+      "original_parameter_ids_preserved": true,
+      "finite_backward": true
+    },
+    {
+      "seed": 46,
+      "arm": "salience_only",
+      "parameters": 27849366,
+      "counted_flops": 8912021024,
+      "logit_exact": true,
+      "RNG_preserved": true,
+      "original_parameter_ids_preserved": true,
+      "finite_backward": true
+    },
+    {
+      "seed": 46,
+      "arm": "mom_weightedmean",
+      "parameters": 27867894,
+      "counted_flops": 9114330656,
+      "logit_exact": true,
+      "RNG_preserved": true,
+      "original_parameter_ids_preserved": true,
+      "finite_backward": true
+    },
+    {
+      "seed": 46,
+      "arm": "mom_misaligned",
+      "parameters": 27867894,
+      "counted_flops": 9114330656,
+      "logit_exact": true,
+      "RNG_preserved": true,
+      "original_parameter_ids_preserved": true,
+      "finite_backward": true
+    },
+    {
+      "seed": 46,
+      "arm": "mom_ungated",
+      "parameters": 27855590,
+      "counted_flops": 9113126432,
+      "logit_exact": true,
+      "RNG_preserved": true,
+      "original_parameter_ids_preserved": true,
+      "finite_backward": true
+    },
+    {
+      "seed": 47,
+      "arm": "plain",
+      "parameters": 27822435,
+      "counted_flops": 8909531136,
+      "logit_exact": true,
+      "RNG_preserved": true,
+      "original_parameter_ids_preserved": true,
+      "finite_backward": true
+    },
+    {
+      "seed": 47,
+      "arm": "mom_only",
+      "parameters": 27840963,
+      "counted_flops": 9111840768,
+      "logit_exact": true,
+      "RNG_preserved": true,
+      "original_parameter_ids_preserved": true,
+      "finite_backward": true
+    },
+    {
+      "seed": 47,
+      "arm": "mom_salience",
+      "parameters": 27867894,
+      "counted_flops": 9114330656,
+      "logit_exact": true,
+      "RNG_preserved": true,
+      "original_parameter_ids_preserved": true,
+      "finite_backward": true
+    },
+    {
+      "seed": 47,
+      "arm": "salience_only",
+      "parameters": 27849366,
+      "counted_flops": 8912021024,
+      "logit_exact": true,
+      "RNG_preserved": true,
+      "original_parameter_ids_preserved": true,
+      "finite_backward": true
+    },
+    {
+      "seed": 47,
+      "arm": "mom_weightedmean",
+      "parameters": 27867894,
+      "counted_flops": 9114330656,
+      "logit_exact": true,
+      "RNG_preserved": true,
+      "original_parameter_ids_preserved": true,
+      "finite_backward": true
+    },
+    {
+      "seed": 47,
+      "arm": "mom_misaligned",
+      "parameters": 27867894,
+      "counted_flops": 9114330656,
+      "logit_exact": true,
+      "RNG_preserved": true,
+      "original_parameter_ids_preserved": true,
+      "finite_backward": true
+    },
+    {
+      "seed": 47,
+      "arm": "mom_ungated",
+      "parameters": 27855590,
+      "counted_flops": 9113126432,
+      "logit_exact": true,
+      "RNG_preserved": true,
+      "original_parameter_ids_preserved": true,
+      "finite_backward": true
+    }
+  ],
+  "CLE_images": 0,
+  "new_training": 0,
+  "test_images": 0,
+  "logical_FLOPs_exclusions": "LN/softmax/tanh/sigmoid/centering/elementwise/memory; attention weighted pooling BMM included",
+  "novelty_confirmed": false
+}
