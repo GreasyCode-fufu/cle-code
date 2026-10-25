@@ -1,0 +1,262 @@
+{
+  "passed": true,
+  "budgets": [
+    {
+      "arm": "plain",
+      "parameters": 27822435,
+      "counted_flops": 8909531136,
+      "initial_logits_exact": true,
+      "RNG_preserved": true,
+      "original_parameter_ids_preserved": true,
+      "finite_backward": true,
+      "finite_two_updates": true,
+      "midstage_in_head_lr_group": false,
+      "gradient_records": [
+        {
+          "step": 0,
+          "CE": 1.1269948482513428,
+          "midstage_gradients": {},
+          "moment_gradient": null
+        },
+        {
+          "step": 1,
+          "CE": 1.0377634763717651,
+          "midstage_gradients": {},
+          "moment_gradient": null
+        }
+      ],
+      "drop_moment_removes_all18528_parameters": false
+    },
+    {
+      "arm": "mom_only",
+      "parameters": 27840963,
+      "counted_flops": 9111840768,
+      "initial_logits_exact": true,
+      "RNG_preserved": true,
+      "original_parameter_ids_preserved": true,
+      "finite_backward": true,
+      "finite_two_updates": true,
+      "midstage_in_head_lr_group": false,
+      "gradient_records": [
+        {
+          "step": 0,
+          "CE": 1.1269948482513428,
+          "midstage_gradients": {},
+          "moment_gradient": 0.7182998657226562
+        },
+        {
+          "step": 1,
+          "CE": 1.034005880355835,
+          "midstage_gradients": {},
+          "moment_gradient": 0.6481680870056152
+        }
+      ],
+      "drop_moment_removes_all18528_parameters": false
+    },
+    {
+      "arm": "mom_focalcontrast",
+      "parameters": 27852795,
+      "counted_flops": 9130393344,
+      "initial_logits_exact": true,
+      "RNG_preserved": true,
+      "original_parameter_ids_preserved": true,
+      "finite_backward": true,
+      "finite_two_updates": true,
+      "midstage_in_head_lr_group": true,
+      "gradient_records": [
+        {
+          "step": 0,
+          "CE": 1.1269948482513428,
+          "midstage_gradients": {
+            "down.weight": 0.0,
+            "core.f.weight": 0.0,
+            "core.h.weight": 0.0,
+            "core.layers.0.weight": 0.0,
+            "core.layers.1.weight": 0.0,
+            "up.weight": 0.3053618371486664
+          },
+          "moment_gradient": 0.7182998657226562
+        },
+        {
+          "step": 1,
+          "CE": 1.0331025123596191,
+          "midstage_gradients": {
+            "down.weight": 0.018892411142587662,
+            "core.f.weight": 0.006565603893250227,
+            "core.h.weight": 0.0008838695357553661,
+            "core.layers.0.weight": 0.001001010532490909,
+            "core.layers.1.weight": 0.0007429622928611934,
+            "up.weight": 0.25348126888275146
+          },
+          "moment_gradient": 0.6471980810165405
+        }
+      ],
+      "drop_moment_removes_all18528_parameters": false
+    },
+    {
+      "arm": "focalcontrast_only",
+      "parameters": 27834267,
+      "counted_flops": 8928083712,
+      "initial_logits_exact": true,
+      "RNG_preserved": true,
+      "original_parameter_ids_preserved": true,
+      "finite_backward": true,
+      "finite_two_updates": true,
+      "midstage_in_head_lr_group": true,
+      "gradient_records": [
+        {
+          "step": 0,
+          "CE": 1.1269948482513428,
+          "midstage_gradients": {
+            "down.weight": 0.0,
+            "core.f.weight": 0.0,
+            "core.h.weight": 0.0,
+            "core.layers.0.weight": 0.0,
+            "core.layers.1.weight": 0.0,
+            "up.weight": 0.3053618371486664
+          },
+          "moment_gradient": null
+        },
+        {
+          "step": 1,
+          "CE": 1.0368397235870361,
+          "midstage_gradients": {
+            "down.weight": 0.019286639988422394,
+            "core.f.weight": 0.006708741188049316,
+            "core.h.weight": 0.0009188626427203417,
+            "core.layers.0.weight": 0.0010394856799393892,
+            "core.layers.1.weight": 0.0007595441420562565,
+            "up.weight": 0.2574727535247803
+          },
+          "moment_gradient": null
+        }
+      ],
+      "drop_moment_removes_all18528_parameters": true
+    },
+    {
+      "arm": "mom_focalraw",
+      "parameters": 27852795,
+      "counted_flops": 9130393344,
+      "initial_logits_exact": true,
+      "RNG_preserved": true,
+      "original_parameter_ids_preserved": true,
+      "finite_backward": true,
+      "finite_two_updates": true,
+      "midstage_in_head_lr_group": true,
+      "gradient_records": [
+        {
+          "step": 0,
+          "CE": 1.1269948482513428,
+          "midstage_gradients": {
+            "down.weight": 0.0,
+            "core.f.weight": 0.0,
+            "core.h.weight": 0.0,
+            "core.layers.0.weight": 0.0,
+            "core.layers.1.weight": 0.0,
+            "up.weight": 1.2215548753738403
+          },
+          "moment_gradient": 0.7182998657226562
+        },
+        {
+          "step": 1,
+          "CE": 1.030706763267517,
+          "midstage_gradients": {
+            "down.weight": 0.1477140486240387,
+            "core.f.weight": 0.051673244684934616,
+            "core.h.weight": 0.011798650026321411,
+            "core.layers.0.weight": 0.010121678002178669,
+            "core.layers.1.weight": 0.008320086635649204,
+            "up.weight": 1.0822031497955322
+          },
+          "moment_gradient": 0.6462932825088501
+        }
+      ],
+      "drop_moment_removes_all18528_parameters": false
+    },
+    {
+      "arm": "mom_misaligned",
+      "parameters": 27852795,
+      "counted_flops": 9130393344,
+      "initial_logits_exact": true,
+      "RNG_preserved": true,
+      "original_parameter_ids_preserved": true,
+      "finite_backward": true,
+      "finite_two_updates": true,
+      "midstage_in_head_lr_group": true,
+      "gradient_records": [
+        {
+          "step": 0,
+          "CE": 1.1269948482513428,
+          "midstage_gradients": {
+            "down.weight": 0.0,
+            "core.f.weight": 0.0,
+            "core.h.weight": 0.0,
+            "core.layers.0.weight": 0.0,
+            "core.layers.1.weight": 0.0,
+            "up.weight": 0.2187347710132599
+          },
+          "moment_gradient": 0.7182998657226562
+        },
+        {
+          "step": 1,
+          "CE": 1.0332382917404175,
+          "midstage_gradients": {
+            "down.weight": 0.020764732733368874,
+            "core.f.weight": 0.007551839109510183,
+            "core.h.weight": 0.000633765768725425,
+            "core.layers.0.weight": 0.0006704544648528099,
+            "core.layers.1.weight": 0.00023903136025182903,
+            "up.weight": 0.2130705714225769
+          },
+          "moment_gradient": 0.6481074094772339
+        }
+      ],
+      "drop_moment_removes_all18528_parameters": false
+    },
+    {
+      "arm": "mom_additive",
+      "parameters": 27852795,
+      "counted_flops": 9130393344,
+      "initial_logits_exact": true,
+      "RNG_preserved": true,
+      "original_parameter_ids_preserved": true,
+      "finite_backward": true,
+      "finite_two_updates": true,
+      "midstage_in_head_lr_group": true,
+      "gradient_records": [
+        {
+          "step": 0,
+          "CE": 1.1269948482513428,
+          "midstage_gradients": {
+            "down.weight": 0.0,
+            "core.f.weight": 0.0,
+            "core.h.weight": 0.0,
+            "core.layers.0.weight": 0.0,
+            "core.layers.1.weight": 0.0,
+            "up.weight": 5.364154815673828
+          },
+          "moment_gradient": 0.7182998657226562
+        },
+        {
+          "step": 1,
+          "CE": 1.0181360244750977,
+          "midstage_gradients": {
+            "down.weight": 0.04128621146082878,
+            "core.f.weight": 0.01504783146083355,
+            "core.h.weight": 1.1382227967260405e-05,
+            "core.layers.0.weight": 1.1268624803051353e-05,
+            "core.layers.1.weight": 7.481306965928525e-06,
+            "up.weight": 4.636581897735596
+          },
+          "moment_gradient": 0.6453659534454346
+        }
+      ],
+      "drop_moment_removes_all18528_parameters": false
+    }
+  ],
+  "prototype_numeric_sha256": "fb5ce35162d3ca14ad08aa0e085e298ec3eea6c35eef8df9bcbbe7eaa405b3c8",
+  "prototype_operator_byte_exact": true,
+  "new_CLE_training": 0,
+  "CLE_images": 0,
+  "test_images": 0
+}
