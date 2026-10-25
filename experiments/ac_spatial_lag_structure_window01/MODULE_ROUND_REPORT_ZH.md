@@ -13,6 +13,8 @@
 |mom_lag_c4|96.6691%|95.0897%|95.8372%|95.8653%|95.8912%|92.6136%|93.7380%|
 |lag_only_single|91.6498%|93.6317%|96.0058%|93.7625%|93.8657%|87.3106%|91.6546%|
 |lag_only_c4|93.4550%|95.2685%|95.8291%|94.8509%|94.9074%|90.1515%|92.2774%|
+|mom_permuted_single|95.0678%|94.5382%|95.1220%|94.9093%|94.9653%|91.4773%|91.9408%|
+|mom_permuted_c4|95.9550%|95.1034%|96.0002%|95.6862%|95.7176%|92.9924%|92.3356%|
 
 |比较|平均差（百分点）|患者条件95%区间（百分点）|
 |---|---:|---|
@@ -36,5 +38,15 @@
 |lag_only_c4_vs_dino_baseline|-0.3264|[-2.7180, 1.7719]|
 |lag_only_c4_vs_DINO_C4|-1.3042|[-3.8981, 0.4558]|
 |lag_only_c4_vs_Swin_C4|-1.7261|[-3.6198, -0.4457]|
+|mom_permuted_single_vs_qualification_convnext_tiny_A|-0.0721|[-0.8003, 0.6394]|
+|mom_permuted_single_vs_B0_C4|-1.0171|[-1.7567, -0.3627]|
+|mom_permuted_single_vs_dino_baseline|-0.2680|[-2.7088, 1.7479]|
+|mom_permuted_single_vs_DINO_C4|-1.2458|[-3.9253, 0.3832]|
+|mom_permuted_single_vs_Swin_C4|-1.6677|[-3.8788, -0.2015]|
+|mom_permuted_c4_vs_qualification_convnext_tiny_A|0.7048|[0.0216, 1.3833]|
+|mom_permuted_c4_vs_B0_C4|-0.2402|[-0.5674, -0.0295]|
+|mom_permuted_c4_vs_dino_baseline|0.5089|[-1.8241, 2.4458]|
+|mom_permuted_c4_vs_DINO_C4|-0.4689|[-3.0387, 1.1340]|
+|mom_permuted_c4_vs_Swin_C4|-0.8908|[-2.7452, 0.2504]|
 
 逐图预测、每seed混淆矩阵、训练预算、SHA见round_results.json及evaluations。库模块为成熟参照；组合不自动构成SCI创新。历史test已被查看，A–C构建用过test标签，等级为模型一致性代理。条件bootstrap不校正适应性筛选偏差。原几何与Swin局部研究另有完整账本，不混为本轮结果。
