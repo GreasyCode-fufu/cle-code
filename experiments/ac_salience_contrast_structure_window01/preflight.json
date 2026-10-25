@@ -1,0 +1,226 @@
+{
+  "passed": true,
+  "budgets": [
+    {
+      "arm": "plain",
+      "parameters": 27822435,
+      "counted_flops": 8909531136,
+      "peak_gpu_mib": 2308.912109375,
+      "finite_two_updates": true
+    },
+    {
+      "arm": "mom_only",
+      "parameters": 27840963,
+      "counted_flops": 9111840768,
+      "peak_gpu_mib": 2540.9990234375,
+      "finite_two_updates": true
+    },
+    {
+      "arm": "mom_salience",
+      "parameters": 27867894,
+      "counted_flops": 9114330656,
+      "peak_gpu_mib": 2541.6044921875,
+      "finite_two_updates": true
+    },
+    {
+      "arm": "salience_only",
+      "parameters": 27849366,
+      "counted_flops": 8912021024,
+      "peak_gpu_mib": 2308.736328125,
+      "finite_two_updates": true
+    },
+    {
+      "arm": "mom_weightedmean",
+      "parameters": 27867894,
+      "counted_flops": 9114330656,
+      "peak_gpu_mib": 2541.4169921875,
+      "finite_two_updates": true
+    },
+    {
+      "arm": "mom_misaligned",
+      "parameters": 27867894,
+      "counted_flops": 9114330656,
+      "peak_gpu_mib": 2541.60498046875,
+      "finite_two_updates": true
+    },
+    {
+      "arm": "mom_ungated",
+      "parameters": 27855590,
+      "counted_flops": 9113126432,
+      "peak_gpu_mib": 2541.4150390625,
+      "finite_two_updates": true
+    }
+  ],
+  "descriptor_diagnostics": [
+    {
+      "arm": "mom_salience",
+      "gradients": [
+        {
+          "step": 0,
+          "CE_loss": 1.034576416015625,
+          "zero_classifier_gradient_norm": 3.6720330715179443,
+          "upstream_v_gradient_norm": 0.0,
+          "upstream_u_gradient_norm": 0.0,
+          "upstream_w_gradient_norm": 0.0,
+          "retained_moment_gradient_norm": 0.5790783762931824,
+          "expected_upstream_first_zero_second_positive": true
+        },
+        {
+          "step": 1,
+          "CE_loss": 0.958251953125,
+          "zero_classifier_gradient_norm": 3.6034011840820312,
+          "upstream_v_gradient_norm": 0.13618987798690796,
+          "upstream_u_gradient_norm": 0.027429979294538498,
+          "upstream_w_gradient_norm": 0.01394926942884922,
+          "retained_moment_gradient_norm": 0.4864722788333893,
+          "expected_upstream_first_zero_second_positive": true
+        }
+      ],
+      "actual_train_images": 32,
+      "test_images": 0
+    },
+    {
+      "arm": "salience_only",
+      "gradients": [
+        {
+          "step": 0,
+          "CE_loss": 1.034576416015625,
+          "zero_classifier_gradient_norm": 3.6720330715179443,
+          "upstream_v_gradient_norm": 0.0,
+          "upstream_u_gradient_norm": 0.0,
+          "upstream_w_gradient_norm": 0.0,
+          "retained_moment_gradient_norm": null,
+          "expected_upstream_first_zero_second_positive": true
+        },
+        {
+          "step": 1,
+          "CE_loss": 0.9599456787109375,
+          "zero_classifier_gradient_norm": 3.594521999359131,
+          "upstream_v_gradient_norm": 0.13670089840888977,
+          "upstream_u_gradient_norm": 0.027484430000185966,
+          "upstream_w_gradient_norm": 0.013956551440060139,
+          "retained_moment_gradient_norm": null,
+          "expected_upstream_first_zero_second_positive": true
+        }
+      ],
+      "actual_train_images": 32,
+      "test_images": 0
+    },
+    {
+      "arm": "mom_weightedmean",
+      "gradients": [
+        {
+          "step": 0,
+          "CE_loss": 1.034576416015625,
+          "zero_classifier_gradient_norm": 4.777432441711426,
+          "upstream_v_gradient_norm": 0.0,
+          "upstream_u_gradient_norm": 0.0,
+          "upstream_w_gradient_norm": 0.0,
+          "retained_moment_gradient_norm": 0.5790783762931824,
+          "expected_upstream_first_zero_second_positive": true
+        },
+        {
+          "step": 1,
+          "CE_loss": 0.9516448974609375,
+          "zero_classifier_gradient_norm": 3.914979934692383,
+          "upstream_v_gradient_norm": 0.008475595153868198,
+          "upstream_u_gradient_norm": 0.0017822046065703034,
+          "upstream_w_gradient_norm": 0.00087462313240394,
+          "retained_moment_gradient_norm": 0.48808375000953674,
+          "expected_upstream_first_zero_second_positive": true
+        }
+      ],
+      "actual_train_images": 32,
+      "test_images": 0
+    },
+    {
+      "arm": "mom_misaligned",
+      "gradients": [
+        {
+          "step": 0,
+          "CE_loss": 1.034576416015625,
+          "zero_classifier_gradient_norm": 3.3731203079223633,
+          "upstream_v_gradient_norm": 0.0,
+          "upstream_u_gradient_norm": 0.0,
+          "upstream_w_gradient_norm": 0.0,
+          "retained_moment_gradient_norm": 0.5790783762931824,
+          "expected_upstream_first_zero_second_positive": true
+        },
+        {
+          "step": 1,
+          "CE_loss": 0.9567108154296875,
+          "zero_classifier_gradient_norm": 3.3682167530059814,
+          "upstream_v_gradient_norm": 0.07003484666347504,
+          "upstream_u_gradient_norm": 0.018873469904065132,
+          "upstream_w_gradient_norm": 0.006981570739299059,
+          "retained_moment_gradient_norm": 0.489329993724823,
+          "expected_upstream_first_zero_second_positive": true
+        }
+      ],
+      "actual_train_images": 32,
+      "test_images": 0
+    },
+    {
+      "arm": "mom_ungated",
+      "gradients": [
+        {
+          "step": 0,
+          "CE_loss": 1.034576416015625,
+          "zero_classifier_gradient_norm": 4.4634690284729,
+          "upstream_v_gradient_norm": 0.0,
+          "upstream_u_gradient_norm": null,
+          "upstream_w_gradient_norm": 0.0,
+          "retained_moment_gradient_norm": 0.5790783762931824,
+          "expected_upstream_first_zero_second_positive": true
+        },
+        {
+          "step": 1,
+          "CE_loss": 0.951263427734375,
+          "zero_classifier_gradient_norm": 4.680709362030029,
+          "upstream_v_gradient_norm": 0.11022055149078369,
+          "upstream_u_gradient_norm": null,
+          "upstream_w_gradient_norm": 0.018138932064175606,
+          "retained_moment_gradient_norm": 0.4928681254386902,
+          "expected_upstream_first_zero_second_positive": true
+        }
+      ],
+      "actual_train_images": 32,
+      "test_images": 0
+    }
+  ],
+  "reproduced_baselines": [
+    {
+      "kind": "plain",
+      "seed": 45,
+      "full427_max_probability_error": 0.0
+    },
+    {
+      "kind": "plain",
+      "seed": 46,
+      "full427_max_probability_error": 0.0
+    },
+    {
+      "kind": "plain",
+      "seed": 47,
+      "full427_max_probability_error": 0.0
+    },
+    {
+      "kind": "mom_only",
+      "seed": 45,
+      "full427_max_probability_error": 0.0
+    },
+    {
+      "kind": "mom_only",
+      "seed": 46,
+      "full427_max_probability_error": 0.0
+    },
+    {
+      "kind": "mom_only",
+      "seed": 47,
+      "full427_max_probability_error": 0.0
+    }
+  ],
+  "test_denied": true,
+  "objective": "original CE only; patient auxiliary targets not retained as confirmed increments",
+  "flops_convention": "2FLOP/MAC includes3 functional rotated convolutions,new score and classifier Linear,attention weighted pooling BMM; excludes LN/softmax/tanh/sigmoid/centering/pointwise/memory, actual throughput separately measured"
+}
