@@ -150,3 +150,107 @@ train epoch 68 loss: 0.000, acc: 1.000:  10…   ,
 Epoch 68: train_loss=0.000, train_acc=1.000, val_loss=0.142, val_acc=0.970, val_macroF1=0.9617, lr=0.000088, best_macroF1=0.9734 (epoch 40)
 train epoch 69 loss: 0.003, acc: 0.998:  10…   , 
 Epoch 69: train_loss=0.003, train_acc=0.998, val_loss=0.210, val_acc=0.953, val_macroF1=0.9363, lr=0.000087, best_macroF1=0.9734 (epoch 40)
+train epoch 70 loss: 0.015, acc: 0.994:  10…   , 
+Epoch 70: train_loss=0.015, train_acc=0.994, val_loss=0.245, val_acc=0.930, val_macroF1=0.9096, lr=0.000087, best_macroF1=0.9734 (epoch 40)
+
+[early stop] epoch 70: val_macro_f1 not improved for 30 epochs
+
+===========================================================
+             Training Summary (fair baseline)              
+===========================================================
+  Model:              convnext_v2abc
+  Best val macro-F1:  0.9734  (epoch 40)
+  Selection:          val macro-F1
+  Loss:               unweighted CrossEntropy
+  Training Time:      0:12:10
+  Weights:            ./weights_cle_ac_v1/convnext_v2abc_seed44/convnext_v2abc/model_best.pth
+  Run meta:           ./weights_cle_ac_v1/convnext_v2abc_seed44/convnext_v2abc/run_meta.json
+===========================================================
+
+===== [2026-10-25 21:41:04.423298] /home/login/miniconda3/envs/sunfuxiang/bin/python train_cle_fair.py --model convnext_v2abc --num_classes 3 --img_size 224 --seed 44 --data-path-train ./datasets/cle_ac_v1/train --data-path-val ./datasets/cle_ac_v1/val --weights /home/login/data/cle/sunfuxiang/classifyML/pth/convnext_tiny_1k_224_ema.pth --save-dir ./weights_cle_ac_v1/convnext_v2abc_seed44 --epochs 300
+[norm] source=run_meta.json(imagenet)  mean=[0.485, 0.456, 0.406] std=[0.229, 0.224, 0.225]  img_size=224
+[model] convnext_v2abc  weights=/data/cle/auto/ZCode/Classification/weights_cle_ac_v1/convnext_v2abc_seed44/convnext_v2abc/model_best.pth
+[complexity] MACs=4.66G FLOPs=9.31G Params=28.67M
+[data] test=427 张  Benign_lesions=195  Malignant_lesions=79  body_of_stomach_normal=153
+
+================================================================
+  评估结果 — convnext_v2abc  (test=427 张)
+================================================================
+  【主指标】
+  Macro-F1         : 0.9734   ← 主指标(类别不平衡首选)
+  Accuracy         : 0.9789
+  Macro-AUROC(OvR) : 0.9971
+----------------------------------------------------------------
+  【补充总体指标】
+  Weighted-F1      : 0.9790
+  Balanced Acc     : 0.9746
+  Macro-Sensitivity: 0.9746   (= 各类 Recall 均值)
+  Macro-Specificity: 0.9895
+  Macro-Precision  : 0.9723
+  AUC-PR (Macro)   : 0.9918
+  Cohen's Kappa    : 0.9665
+  MCC              : 0.9665
+----------------------------------------------------------------
+  【每类指标】 Sensitivity / Specificity / Precision / F1 / AUROC
+  Benign_lesions        : 0.974 / 0.983 / 0.979 / 0.977 / 0.997  (n=195)
+  Malignant_lesions     : 0.949 / 0.986 / 0.938 / 0.943 / 0.995  (n=79)
+  body_of_stomach_normal: 1.000 / 1.000 / 1.000 / 1.000 / 1.000  (n=153)
+----------------------------------------------------------------
+  【模型复杂度】(仅与架构+输入尺寸有关，与数据集无关)
+  MACs : 4.66G    FLOPs : 9.31G    Params : 28.67M
+  【推理效率】(受 GPU 负载影响，为参考量级)
+  Pure FPS : 507.8  (1.97 ms/张)    End-to-End FPS : 192.6
+----------------------------------------------------------------
+  【混淆矩阵】(行=真实, 列=预测)
+                  Benign_l  Malignan  body_of_
+  Benign_lesio         190         5         0
+  Malignant_le           4        75         0
+  body_of_stom           0         0       153
+================================================================
+
+[saved] /data/cle/auto/ZCode/Classification/weights_cle_ac_v1/convnext_v2abc_seed44/convnext_v2abc/eval_20261025_215323/  (results.json / predictions.csv / evaluation_report.md)
+
+===== [2026-10-25 21:53:18.055387] /home/login/miniconda3/envs/sunfuxiang/bin/python evaluate.py --model convnext_v2abc --weights /data/cle/auto/ZCode/Classification/weights_cle_ac_v1/convnext_v2abc_seed44/convnext_v2abc/model_best.pth --data-path ./datasets/cle_ac_v1/val
+[norm] source=run_meta.json(imagenet)  mean=[0.485, 0.456, 0.406] std=[0.229, 0.224, 0.225]  img_size=224
+[model] convnext_v2abc  weights=/data/cle/auto/ZCode/Classification/weights_cle_ac_v1/convnext_v2abc_seed44/convnext_v2abc/model_best.pth
+[complexity] MACs=4.66G FLOPs=9.31G Params=28.67M
+[data] test=576 张  Benign_lesions=208  Malignant_lesions=176  body_of_stomach_normal=192
+
+================================================================
+  评估结果 — convnext_v2abc  (test=576 张)
+================================================================
+  【主指标】
+  Macro-F1         : 0.9599   ← 主指标(类别不平衡首选)
+  Accuracy         : 0.9601
+  Macro-AUROC(OvR) : 0.9963
+----------------------------------------------------------------
+  【补充总体指标】
+  Weighted-F1      : 0.9600
+  Balanced Acc     : 0.9594
+  Macro-Sensitivity: 0.9594   (= 各类 Recall 均值)
+  Macro-Specificity: 0.9798
+  Macro-Precision  : 0.9605
+  AUC-PR (Macro)   : 0.9927
+  Cohen's Kappa    : 0.9399
+  MCC              : 0.9400
+----------------------------------------------------------------
+  【每类指标】 Sensitivity / Specificity / Precision / F1 / AUROC
+  Benign_lesions        : 0.957 / 0.967 / 0.943 / 0.950 / 0.995  (n=208)
+  Malignant_lesions     : 0.932 / 0.983 / 0.959 / 0.945 / 0.995  (n=176)
+  body_of_stomach_normal: 0.990 / 0.990 / 0.979 / 0.984 / 0.999  (n=192)
+----------------------------------------------------------------
+  【模型复杂度】(仅与架构+输入尺寸有关，与数据集无关)
+  MACs : 4.66G    FLOPs : 9.31G    Params : 28.67M
+  【推理效率】(受 GPU 负载影响，为参考量级)
+  Pure FPS : 527.6  (1.90 ms/张)    End-to-End FPS : 194.6
+----------------------------------------------------------------
+  【混淆矩阵】(行=真实, 列=预测)
+                  Benign_l  Malignan  body_of_
+  Benign_lesio         199         7         2
+  Malignant_le          10       164         2
+  body_of_stom           2         0       190
+================================================================
+
+[saved] /data/cle/auto/ZCode/Classification/weights_cle_ac_v1/convnext_v2abc_seed44/convnext_v2abc/eval_20261025_215330/  (results.json / predictions.csv / evaluation_report.md)
+
+===== [2026-10-25 21:53:24.337028] /home/login/miniconda3/envs/sunfuxiang/bin/python evaluate.py --model convnext_v2abc --weights /data/cle/auto/ZCode/Classification/weights_cle_ac_v1/convnext_v2abc_seed44/convnext_v2abc/model_best.pth --data-path ./datasets/cle_ac_v1/test
