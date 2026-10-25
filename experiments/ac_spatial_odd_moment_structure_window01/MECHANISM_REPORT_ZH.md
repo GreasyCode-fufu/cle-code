@@ -16,5 +16,11 @@
 |odd_only_c4_vs_M_c4_moments|-1.1753|[-3.0363, -0.0863]|
 |odd_only_c4_vs_M_c4_aug|-1.0453|[-2.5691, 0.4000]|
 |odd_only_c4_vs_M_eca|-0.5827|[-1.3780, 0.1047]|
+|mom_raw3_single_vs_M_c4_moments|-0.3644|[-1.6033, 0.1591]|
+|mom_raw3_single_vs_M_c4_aug|-0.1747|[-1.0121, 0.2991]|
+|mom_raw3_single_vs_M_eca|0.0593|[-1.2329, 0.9326]|
+|mom_raw3_c4_vs_M_c4_moments|-0.4940|[-1.6747, 0.0385]|
+|mom_raw3_c4_vs_M_c4_aug|-0.3641|[-1.3519, 0.7130]|
+|mom_raw3_c4_vs_M_eca|0.0986|[-0.8698, 1.1885]|
 
 mom_odd对原Mom检验末层奇统计增量；odd_only真去Mom；raw3/std/even为同参数成熟矩与去符号控制。全部seed/阴性保留，不能据点估计称创新或独立确认。
