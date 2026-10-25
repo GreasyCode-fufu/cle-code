@@ -129,6 +129,11 @@ MODEL_REGISTRY = {
     "convnext_wds_msf":       ("models.optimize.convnext_cle", "convnext_wds_msf"),
     "convnext_wtb_msf":       ("models.optimize.convnext_cle", "convnext_wtb_msf"),
     "convnext_wds_wdd_msf":   ("models.optimize.convnext_cle", "convnext_wds_wdd_msf"),
+    "convnext_v2a":  ("models.optimize.convnext_cle_v2", "convnext_v2a"),
+    "convnext_v2b":  ("models.optimize.convnext_cle_v2", "convnext_v2b"),
+    "convnext_v2c":  ("models.optimize.convnext_cle_v2", "convnext_v2c"),
+    "convnext_v2ab": ("models.optimize.convnext_cle_v2", "convnext_v2ab"),
+    "convnext_v2abc": ("models.optimize.convnext_cle_v2", "convnext_v2abc"),
 }
 
 SUPPORTED_EXTS = (".jpg", ".jpeg", ".png", ".bmp", ".tif", ".tiff")

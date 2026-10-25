@@ -73,11 +73,12 @@ class _ScaleModule(nn.Module):
 class WTConv2d(nn.Module):
     """WTConv (ECCV 2024) 忠实移植, wt_type 固定 db1(Haar)。输入输出 (B,C,H,W) 同形。"""
 
-    def __init__(self, in_channels, kernel_size=5, bias=True, wt_levels=2):
+    def __init__(self, in_channels, kernel_size=5, bias=True, wt_levels=2, wt_kernel=None):
         super().__init__()
         assert wt_levels >= 1
         self.in_channels = in_channels
         self.wt_levels = wt_levels
+        wt_kernel = wt_kernel if wt_kernel is not None else kernel_size  # 空间基核与子带核可分离(V2用)
 
         wt_filter, iwt_filter = _create_haar_filters(in_channels)
         self.wt_filter = nn.Parameter(wt_filter, requires_grad=False)
@@ -89,7 +90,7 @@ class WTConv2d(nn.Module):
                                    stride=1, dilation=1, groups=in_channels, bias=bias)
         self.base_scale = _ScaleModule([1, in_channels, 1, 1])
         self.wavelet_convs = nn.ModuleList([
-            nn.Conv2d(in_channels * 4, in_channels * 4, kernel_size, padding='same',
+            nn.Conv2d(in_channels * 4, in_channels * 4, wt_kernel, padding='same',
                       stride=1, dilation=1, groups=in_channels * 4, bias=False)
             for _ in range(self.wt_levels)])
         self.wavelet_scale = nn.ModuleList([

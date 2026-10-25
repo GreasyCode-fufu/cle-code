@@ -17,6 +17,7 @@ Usage:
       --save-dir ./weights --epochs 300
 """
 import os
+import re
 import sys
 import csv
 import json
@@ -102,6 +103,13 @@ MODEL_ALLOWED_MISSING_SEGMENTS = {
     "convnext_wds_msf": {"wds", "wds_gate", "msf_p2", "msf_p3", "msf_g2", "msf_g3"},
     "convnext_wtb_msf": {"wtc", "wtg", "msf_p2", "msf_p3", "msf_g2", "msf_g3"},
     "convnext_wds_wdd_msf": {"wds", "wds_gate", "wdd", "wdd_gate", "msf_p2", "msf_p3", "msf_g2", "msf_g3"},
+    # ConvNeXt-CLE V2 结构化变体
+    "convnext_v2a": {"dwt", "conv"},
+    "convnext_v2b": {"wavelet_convs", "wavelet_scale", "base_scale", "wt_filter", "iwt_filter"},
+    "convnext_v2c": {"msf2_p2", "msf2_p3", "msf2_n2", "msf2_n3"},
+    "convnext_v2ab": {"dwt", "conv", "wavelet_convs", "wavelet_scale", "base_scale", "wt_filter", "iwt_filter"},
+    "convnext_v2abc": {"dwt", "conv", "wavelet_convs", "wavelet_scale", "base_scale", "wt_filter", "iwt_filter",
+                       "msf2_p2", "msf2_p3", "msf2_n2", "msf2_n3"},
 }
 
 # 各模型加载 ImageNet 预训练权重前需做的"权重变换"(如 s2d 变体的 conv1 通道膨胀)。
@@ -126,9 +134,42 @@ def _remap_dshortcut(state):
     return out
 
 
+def _remap_stem2(state):
+    """V2-A: 预训练 stem conv(3ch输入k4s4)与新 WaveletStem.conv(12ch输入k3s2)形状
+    不兼容, 属设计预期 -> 删除; stem LayerNorm(形状相同)迁移为 WaveletStem.norm。"""
+    out = {}
+    for k, v in state.items():
+        if k.startswith("downsample_layers.0.0."):
+            continue  # 旧 stem conv 无法迁移, WaveletStem.conv 随机初始化
+        if k.startswith("downsample_layers.0.1."):
+            k = k.replace("downsample_layers.0.1.", "downsample_layers.0.norm.")
+        out[k] = v
+    return out
+
+
+def _remap_wr(state):
+    """V2-B: stage3/4 预训练 dwconv.{weight,bias} -> WTConv.base_conv.*。"""
+    out = {}
+    pat = re.compile(r"^(stages\.[23]\.[0-9]+)\.dwconv\.(weight|bias)$")
+    for k, v in state.items():
+        m = pat.match(k)
+        k = f"{m.group(1)}.dwconv.base_conv.{m.group(2)}" if m else k
+        out[k] = v
+    return out
+
+
+def _remap_stem2_wr(state):
+    return _remap_wr(_remap_stem2(state))
+
+
 MODEL_CHECKPOINT_TRANSFORMS = {
     "resnet34_s2d_v2": _inflate_conv1_for_s2d,
     "resnet34_dshortcut": _remap_dshortcut,
+    # ConvNeXt-CLE V2 结构化变体的预训练键重映射
+    "convnext_v2a": _remap_stem2,
+    "convnext_v2b": _remap_wr,
+    "convnext_v2ab": _remap_stem2_wr,
+    "convnext_v2abc": _remap_stem2_wr,
 }
 SWIN_VANILLA_IGNORED_CHECKPOINT_BUFFERS = {
     "layers.0.blocks.1.attn_mask",
