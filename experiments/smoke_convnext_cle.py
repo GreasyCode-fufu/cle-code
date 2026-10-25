@@ -15,7 +15,7 @@ PTH = "/home/login/data/cle/sunfuxiang/classifyML/pth/convnext_tiny_1k_224_ema.p
 dev = torch.device("cuda:0")
 NAMES = ["convnext_wds", "convnext_wtb", "convnext_msf",
          "convnext_wds_wtb", "convnext_wds_wtb_msf",
-         "convnext_wds_wtb_l1", "convnext_wds_wtb_s234", "convnext_wds_wtb_k3"]
+         "convnext_wds_wtb_l1", "convnext_wds_wtb_s234", "convnext_wds_wtb_k3", "convnext_wtb_k3", "convnext_wds_wtb_k3_msf"]
 
 torch.manual_seed(0)
 x = torch.randn(4, 3, 224, 224, device=dev)

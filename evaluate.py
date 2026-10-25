@@ -74,6 +74,8 @@ MODEL_REGISTRY = {
     "convnext_wds_wtb_l1":    ("models.optimize.convnext_cle", "convnext_wds_wtb_l1"),
     "convnext_wds_wtb_s234":  ("models.optimize.convnext_cle", "convnext_wds_wtb_s234"),
     "convnext_wds_wtb_k3":    ("models.optimize.convnext_cle", "convnext_wds_wtb_k3"),
+    "convnext_wtb_k3":        ("models.optimize.convnext_cle", "convnext_wtb_k3"),
+    "convnext_wds_wtb_k3_msf": ("models.optimize.convnext_cle", "convnext_wds_wtb_k3_msf"),
     "efficientnet_b0":  ("models.EfficientNet", "efficientnet_b0"),
     "mobilenet_v2":     ("models.MobileNetV2", "mobilenet_v2"),
     "swin_tiny_patch4_window7_224": ("models.Swin", "swin_tiny_patch4_window7_224"),

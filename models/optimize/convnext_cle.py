@@ -279,3 +279,11 @@ def convnext_wds_wtb_s234(num_classes: int):   # A+B 消融: WTB 三个 stage
 
 def convnext_wds_wtb_k3(num_classes: int):     # A+B 消融: 小核
     return _tiny(num_classes, use_wds=True, wtb_stages=(2, 3), wt_kernel=3)
+
+
+def convnext_wtb_k3(num_classes: int):         # B 单独(k3), 消融表用
+    return _tiny(num_classes, wtb_stages=(2, 3), wt_kernel=3)
+
+
+def convnext_wds_wtb_k3_msf(num_classes: int):  # A+B(k3)+C 最终链
+    return _tiny(num_classes, use_wds=True, wtb_stages=(2, 3), wt_kernel=3, use_msf=True)
