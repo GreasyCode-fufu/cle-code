@@ -15,6 +15,8 @@
 |focalcontrast_only_c4|96.0029%|95.4377%|94.7335%|95.3914%|95.4282%|91.4773%|92.5107%|
 |mom_focalraw_single|94.8805%|95.4739%|95.8049%|95.3864%|95.4282%|93.3712%|91.8490%|
 |mom_focalraw_c4|95.6057%|95.6453%|96.3295%|95.8602%|95.8912%|93.5606%|93.2393%|
+|mom_misaligned_single|95.4672%|95.6197%|96.3358%|95.8076%|95.8333%|92.6136%|95.1266%|
+|mom_misaligned_c4|96.6737%|96.1725%|96.3138%|96.3867%|96.4120%|93.5606%|95.2572%|
 
 |比较|平均差（百分点）|患者条件95%区间（百分点）|
 |---|---:|---|
@@ -48,5 +50,15 @@
 |mom_focalraw_c4_vs_dino_baseline|0.6828|[-1.2136, 2.5943]|
 |mom_focalraw_c4_vs_DINO_C4|-0.2949|[-2.4067, 1.1633]|
 |mom_focalraw_c4_vs_Swin_C4|-0.7168|[-2.4459, 0.7698]|
+|mom_misaligned_single_vs_qualification_convnext_tiny_A|0.8261|[-0.1814, 2.8224]|
+|mom_misaligned_single_vs_B0_C4|-0.1189|[-1.1669, 1.6609]|
+|mom_misaligned_single_vs_dino_baseline|0.6302|[-0.8425, 3.1495]|
+|mom_misaligned_single_vs_DINO_C4|-0.3475|[-1.8555, 1.5477]|
+|mom_misaligned_single_vs_Swin_C4|-0.7694|[-2.2367, 1.0196]|
+|mom_misaligned_c4_vs_qualification_convnext_tiny_A|1.4053|[0.2861, 3.4321]|
+|mom_misaligned_c4_vs_B0_C4|0.4603|[-0.5778, 2.2117]|
+|mom_misaligned_c4_vs_dino_baseline|1.2094|[-0.5195, 3.5199]|
+|mom_misaligned_c4_vs_DINO_C4|0.2316|[-1.6610, 2.0068]|
+|mom_misaligned_c4_vs_Swin_C4|-0.1903|[-1.7938, 1.7575]|
 
 逐图预测、每seed混淆矩阵、训练预算、SHA见round_results.json及evaluations。库模块为成熟参照；组合不自动构成SCI创新。历史test已被查看，A–C构建用过test标签，等级为模型一致性代理。条件bootstrap不校正适应性筛选偏差。原几何与Swin局部研究另有完整账本，不混为本轮结果。
