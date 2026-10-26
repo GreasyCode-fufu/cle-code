@@ -76,7 +76,8 @@ def run_job(batch, job):
     try:
         epochs = os.environ.get("RUN_EPOCHS", "300")
         early = os.environ.get("RUN_EARLY", "30")
-        rc = sh(f"{PY} train_cle_fair.py --model {model} --num_classes 3 --img_size 224 "
+        ncls = os.environ.get("RUN_NCLS", "3")
+        rc = sh(f"{PY} train_cle_fair.py --model {model} --num_classes {ncls} --img_size 224 "
                 f"--seed {seed} --data-path-train ./{DATA}/train "
                 f"--data-path-val ./{DATA}/val --weights {weights} "
                 f"--save-dir ./{WEIGHTS_ROOT}/{model}_seed{seed} "
