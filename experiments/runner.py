@@ -74,6 +74,9 @@ def run_job(batch, job):
     row = {"ts": datetime.now().strftime("%m-%d %H:%M"), "batch": batch, "model": name,
            "seed": seed, "status": "error", "note": ""}
     try:
+        import shutil
+        shutil.rmtree(os.path.join(REPO, WEIGHTS_ROOT, f"{model}_seed{seed}"),
+                      ignore_errors=True)  # 防陈旧空目录触发自动后缀
         epochs = os.environ.get("RUN_EPOCHS", "300")
         early = os.environ.get("RUN_EARLY", "30")
         ncls = os.environ.get("RUN_NCLS", "3")

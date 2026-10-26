@@ -444,3 +444,17 @@ Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
 
 
 ===== [2026-10-26 21:36:08.790504] /home/login/miniconda3/envs/sunfuxiang/bin/python train_cle_fair.py --model convnext_v2bc --num_classes 3 --img_size 224 --seed 44 --data-path-train ./datasets/cifar10/train --data-path-val ./datasets/cifar10/val --weights /home/login/data/cle/sunfuxiang/classifyML/pth/convnext_tiny_1k_224_ema.pth --save-dir ./weights_cifar10/convnext_v2bc_seed44 --epochs 50 --early-stop 10
+/home/login/miniconda3/envs/sunfuxiang/lib/python3.12/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+/data/cle/auto/ZCode/Classification/train_cle_fair.py:579: FutureWarning: `torch.cuda.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler('cuda', args...)` instead.
+  scaler = torch.cuda.amp.GradScaler()
+[seed] seed = 44 (set)
+45000 images for training.
+5000 images were found in the val dataset.
+5000 images for test.
+[norm] ImageNet 归一化(加载了预训练权重) MEAN=[0.485, 0.456, 0.406] STD=[0.229, 0.224, 0.225]
+[weights] strict load passed /data/cle/sunfuxiang/classifyML/pth/convnext_tiny_1k_224_ema.pth | classifier_missing=92 ignored_buffers=0 unexpected=0
+[train] model=convnext_v2bc num_classes=10 img=224 bs=32 epochs=50 | CE (label_smoothing=0.0) | select=val_macro_f1
+[out]   run_dir=./weights_cifar10/convnext_v2bc_seed44/convnext_v2bc-1
+train epoch 0 loss: 0.425, acc: 0.856:  10… [  , 
+Epoch 0: train_loss=0.425, train_acc=0.856, val_loss=0.151, val_acc=0.948, val_macroF1=0.9478, lr=0.000100, best_macroF1=0.9478 (epoch 0) *
