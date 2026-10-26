@@ -557,3 +557,61 @@ Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
 [out]   run_dir=./weights_cifar10/convnext_v2bc_seed43/convnext_v2bc-1
 train epoch 0 loss: 0.424, acc: 0.860:  10… [  , 
 Epoch 0: train_loss=0.424, train_acc=0.860, val_loss=0.171, val_acc=0.944, val_macroF1=0.9439, lr=0.000100, best_macroF1=0.9439 (epoch 0) *
+/home/login/miniconda3/envs/sunfuxiang/lib/python3.12/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+/data/cle/auto/ZCode/Classification/train_cle_fair.py:579: FutureWarning: `torch.cuda.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler('cuda', args...)` instead.
+  scaler = torch.cuda.amp.GradScaler()
+[seed] seed = 43 (set)
+45000 images for training.
+5000 images were found in the val dataset.
+5000 images for test.
+[norm] ImageNet 归一化(加载了预训练权重) MEAN=[0.485, 0.456, 0.406] STD=[0.229, 0.224, 0.225]
+[weights] strict load passed /data/cle/sunfuxiang/classifyML/pth/convnext_tiny_1k_224_ema.pth | classifier_missing=92 ignored_buffers=0 unexpected=0
+[train] model=convnext_v2bc num_classes=10 img=224 bs=32 epochs=50 | CE (label_smoothing=0.0) | select=val_macro_f1
+[out]   run_dir=./weights_cifar10/convnext_v2bc_seed43/convnext_v2bc
+train epoch 0 loss: 0.424, acc: 0.860:  10… [  , 
+Epoch 0: train_loss=0.424, train_acc=0.860, val_loss=0.171, val_acc=0.944, val_macroF1=0.9439, lr=0.000100, best_macroF1=0.9439 (epoch 0) *
+train epoch 1 loss: 0.160, acc: 0.947:  10… [  , 
+Epoch 1: train_loss=0.160, train_acc=0.947, val_loss=0.111, val_acc=0.961, val_macroF1=0.9608, lr=0.000100, best_macroF1=0.9608 (epoch 1) *
+train epoch 2 loss: 0.106, acc: 0.964:  10… [  , 
+Epoch 2: train_loss=0.106, train_acc=0.964, val_loss=0.106, val_acc=0.965, val_macroF1=0.9652, lr=0.000099, best_macroF1=0.9652 (epoch 2) *
+train epoch 3 loss: 0.080, acc: 0.973:  10… [  , 
+Epoch 3: train_loss=0.080, train_acc=0.973, val_loss=0.086, val_acc=0.973, val_macroF1=0.9732, lr=0.000098, best_macroF1=0.9732 (epoch 3) *
+train epoch 4 loss: 0.061, acc: 0.980:  10… [  , 
+Epoch 4: train_loss=0.061, train_acc=0.980, val_loss=0.100, val_acc=0.970, val_macroF1=0.9696, lr=0.000098, best_macroF1=0.9732 (epoch 3)
+train epoch 5 loss: 0.051, acc: 0.983:  10… [  , 
+Epoch 5: train_loss=0.051, train_acc=0.983, val_loss=0.120, val_acc=0.965, val_macroF1=0.9647, lr=0.000096, best_macroF1=0.9732 (epoch 3)
+train epoch 6 loss: 0.044, acc: 0.985:  10… [  , 
+Epoch 6: train_loss=0.044, train_acc=0.985, val_loss=0.085, val_acc=0.974, val_macroF1=0.9738, lr=0.000095, best_macroF1=0.9738 (epoch 6) *
+train epoch 7 loss: 0.037, acc: 0.988:  10… [  , 
+Epoch 7: train_loss=0.037, train_acc=0.988, val_loss=0.097, val_acc=0.969, val_macroF1=0.9693, lr=0.000094, best_macroF1=0.9738 (epoch 6)
+train epoch 8 loss: 0.031, acc: 0.990:  10… [  , 
+Epoch 8: train_loss=0.031, train_acc=0.990, val_loss=0.108, val_acc=0.971, val_macroF1=0.9712, lr=0.000092, best_macroF1=0.9738 (epoch 6)
+train epoch 9 loss: 0.030, acc: 0.990:  10… [  , 
+Epoch 9: train_loss=0.030, train_acc=0.990, val_loss=0.111, val_acc=0.968, val_macroF1=0.9684, lr=0.000090, best_macroF1=0.9738 (epoch 6)
+train epoch 10 loss: 0.028, acc: 0.991:  10…   , 
+Epoch 10: train_loss=0.028, train_acc=0.991, val_loss=0.118, val_acc=0.967, val_macroF1=0.9671, lr=0.000089, best_macroF1=0.9738 (epoch 6)
+train epoch 11 loss: 0.025, acc: 0.992:  10…   , 
+Epoch 11: train_loss=0.025, train_acc=0.992, val_loss=0.112, val_acc=0.971, val_macroF1=0.9710, lr=0.000086, best_macroF1=0.9738 (epoch 6)
+train epoch 12 loss: 0.022, acc: 0.992:  10…   , 
+Epoch 12: train_loss=0.022, train_acc=0.992, val_loss=0.096, val_acc=0.974, val_macroF1=0.9742, lr=0.000084, best_macroF1=0.9742 (epoch 12) *
+train epoch 13 loss: 0.020, acc: 0.993:  10…   , 
+Epoch 13: train_loss=0.020, train_acc=0.993, val_loss=0.110, val_acc=0.971, val_macroF1=0.9706, lr=0.000082, best_macroF1=0.9742 (epoch 12)
+train epoch 14 loss: 0.019, acc: 0.993:  10…   , 
+Epoch 14: train_loss=0.019, train_acc=0.993, val_loss=0.095, val_acc=0.974, val_macroF1=0.9740, lr=0.000079, best_macroF1=0.9742 (epoch 12)
+train epoch 15 loss: 0.017, acc: 0.994:  10…   , 
+Epoch 15: train_loss=0.017, train_acc=0.994, val_loss=0.125, val_acc=0.970, val_macroF1=0.9704, lr=0.000077, best_macroF1=0.9742 (epoch 12)
+train epoch 16 loss: 0.016, acc: 0.995:  10…   , 
+Epoch 16: train_loss=0.016, train_acc=0.995, val_loss=0.095, val_acc=0.974, val_macroF1=0.9744, lr=0.000074, best_macroF1=0.9744 (epoch 16) *
+train epoch 17 loss: 0.014, acc: 0.995:  10…   , 
+Epoch 17: train_loss=0.014, train_acc=0.995, val_loss=0.134, val_acc=0.968, val_macroF1=0.9680, lr=0.000071, best_macroF1=0.9744 (epoch 16)
+train epoch 18 loss: 0.014, acc: 0.996:  10…   , 
+Epoch 18: train_loss=0.014, train_acc=0.996, val_loss=0.111, val_acc=0.972, val_macroF1=0.9716, lr=0.000068, best_macroF1=0.9744 (epoch 16)
+train epoch 19 loss: 0.015, acc: 0.995:  10…   , 
+Epoch 19: train_loss=0.015, train_acc=0.995, val_loss=0.112, val_acc=0.970, val_macroF1=0.9704, lr=0.000065, best_macroF1=0.9744 (epoch 16)
+train epoch 20 loss: 0.010, acc: 0.997:  10…   , 
+Epoch 20: train_loss=0.010, train_acc=0.997, val_loss=0.128, val_acc=0.969, val_macroF1=0.9688, lr=0.000062, best_macroF1=0.9744 (epoch 16)
+train epoch 21 loss: 0.009, acc: 0.997:  10…   , 
+Epoch 21: train_loss=0.009, train_acc=0.997, val_loss=0.103, val_acc=0.974, val_macroF1=0.9740, lr=0.000059, best_macroF1=0.9744 (epoch 16)
+train epoch 22 loss: 0.009, acc: 0.997:  10…   , 
+Epoch 22: train_loss=0.009, train_acc=0.997, val_loss=0.108, val_acc=0.974, val_macroF1=0.9744, lr=0.000056, best_macroF1=0.9744 (epoch 22) *
