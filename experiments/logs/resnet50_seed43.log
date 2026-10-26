@@ -194,3 +194,249 @@ Epoch 40: train_loss=0.025, train_acc=0.990, val_loss=0.175, val_acc=0.941, val_
 [saved] /data/cle/auto/ZCode/Classification/weights_cle_ac_v1/resnet50_seed43/resnet50/eval_20261026_141404/  (results.json / predictions.csv / evaluation_report.md)
 
 ===== [2026-10-26 14:13:59.229425] /home/login/miniconda3/envs/sunfuxiang/bin/python evaluate.py --model resnet50 --weights /data/cle/auto/ZCode/Classification/weights_cle_ac_v1/resnet50_seed43/resnet50/model_best.pth --data-path ./datasets/cle_ac_v1/test
+/home/login/miniconda3/envs/sunfuxiang/lib/python3.12/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+/data/cle/auto/ZCode/Classification/train_cle_fair.py:579: FutureWarning: `torch.cuda.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler('cuda', args...)` instead.
+  scaler = torch.cuda.amp.GradScaler()
+[seed] seed = 43 (set)
+2770 images for training.
+593 images were found in the val dataset.
+593 images for test.
+[norm] ImageNet 归一化(加载了预训练权重) MEAN=[0.485, 0.456, 0.406] STD=[0.229, 0.224, 0.225]
+[weights] strict load passed /data/cle/sunfuxiang/classifyML/pth/resnet50-0676ba61.pth | classifier_missing=2 ignored_buffers=0 unexpected=0
+[train] model=resnet50 num_classes=3 img=224 bs=32 epochs=300 | CE (label_smoothing=0.0) | select=val_macro_f1
+[out]   run_dir=./weights_heelBone/resnet50_seed43/resnet50
+train epoch 0 loss: 0.730, acc: 0.635:  10… [  , 
+Epoch 0: train_loss=0.730, train_acc=0.635, val_loss=0.649, val_acc=0.693, val_macroF1=0.6775, lr=0.000100, best_macroF1=0.6775 (epoch 0) *
+train epoch 1 loss: 0.511, acc: 0.771:  10… [  , 
+Epoch 1: train_loss=0.511, train_acc=0.771, val_loss=0.598, val_acc=0.759, val_macroF1=0.7455, lr=0.000100, best_macroF1=0.7455 (epoch 1) *
+train epoch 2 loss: 0.367, acc: 0.851:  10… [  , 
+Epoch 2: train_loss=0.367, train_acc=0.851, val_loss=0.276, val_acc=0.899, val_macroF1=0.9072, lr=0.000100, best_macroF1=0.9072 (epoch 2) *
+train epoch 3 loss: 0.291, acc: 0.888:  10… [  , 
+Epoch 3: train_loss=0.291, train_acc=0.888, val_loss=0.237, val_acc=0.909, val_macroF1=0.9121, lr=0.000100, best_macroF1=0.9121 (epoch 3) *
+train epoch 4 loss: 0.264, acc: 0.898:  10… [  , 
+Epoch 4: train_loss=0.264, train_acc=0.898, val_loss=0.225, val_acc=0.909, val_macroF1=0.9148, lr=0.000100, best_macroF1=0.9148 (epoch 4) *
+train epoch 5 loss: 0.238, acc: 0.912:  10… [  , 
+Epoch 5: train_loss=0.238, train_acc=0.912, val_loss=0.227, val_acc=0.917, val_macroF1=0.9241, lr=0.000100, best_macroF1=0.9241 (epoch 5) *
+train epoch 6 loss: 0.221, acc: 0.918:  10… [  , 
+Epoch 6: train_loss=0.221, train_acc=0.918, val_loss=0.265, val_acc=0.904, val_macroF1=0.9083, lr=0.000100, best_macroF1=0.9241 (epoch 5)
+train epoch 7 loss: 0.223, acc: 0.914:  10… [  , 
+Epoch 7: train_loss=0.223, train_acc=0.914, val_loss=0.201, val_acc=0.929, val_macroF1=0.9339, lr=0.000100, best_macroF1=0.9339 (epoch 7) *
+train epoch 8 loss: 0.208, acc: 0.922:  10… [  , 
+Epoch 8: train_loss=0.208, train_acc=0.922, val_loss=0.182, val_acc=0.933, val_macroF1=0.9353, lr=0.000100, best_macroF1=0.9353 (epoch 8) *
+train epoch 9 loss: 0.209, acc: 0.922:  10… [  , 
+Epoch 9: train_loss=0.209, train_acc=0.922, val_loss=0.217, val_acc=0.927, val_macroF1=0.9304, lr=0.000100, best_macroF1=0.9353 (epoch 8)
+train epoch 10 loss: 0.189, acc: 0.928:  10…   , 
+Epoch 10: train_loss=0.189, train_acc=0.928, val_loss=0.214, val_acc=0.909, val_macroF1=0.9199, lr=0.000100, best_macroF1=0.9353 (epoch 8)
+train epoch 11 loss: 0.169, acc: 0.936:  10…   , 
+Epoch 11: train_loss=0.169, train_acc=0.936, val_loss=0.190, val_acc=0.938, val_macroF1=0.9434, lr=0.000100, best_macroF1=0.9434 (epoch 11) *
+train epoch 12 loss: 0.184, acc: 0.934:  10…   , 
+Epoch 12: train_loss=0.184, train_acc=0.934, val_loss=0.198, val_acc=0.934, val_macroF1=0.9400, lr=0.000100, best_macroF1=0.9434 (epoch 11)
+train epoch 13 loss: 0.168, acc: 0.934:  10…   , 
+Epoch 13: train_loss=0.168, train_acc=0.934, val_loss=0.178, val_acc=0.931, val_macroF1=0.9367, lr=0.000099, best_macroF1=0.9434 (epoch 11)
+train epoch 14 loss: 0.165, acc: 0.940:  10…   , 
+Epoch 14: train_loss=0.165, train_acc=0.940, val_loss=0.223, val_acc=0.919, val_macroF1=0.9244, lr=0.000099, best_macroF1=0.9434 (epoch 11)
+train epoch 15 loss: 0.159, acc: 0.945:  10…   , 
+Epoch 15: train_loss=0.159, train_acc=0.945, val_loss=0.221, val_acc=0.931, val_macroF1=0.9338, lr=0.000099, best_macroF1=0.9434 (epoch 11)
+train epoch 16 loss: 0.177, acc: 0.936:  10…   , 
+Epoch 16: train_loss=0.177, train_acc=0.936, val_loss=0.236, val_acc=0.904, val_macroF1=0.9089, lr=0.000099, best_macroF1=0.9434 (epoch 11)
+train epoch 17 loss: 0.166, acc: 0.937:  10…   , 
+Epoch 17: train_loss=0.166, train_acc=0.937, val_loss=0.198, val_acc=0.943, val_macroF1=0.9458, lr=0.000099, best_macroF1=0.9458 (epoch 17) *
+train epoch 18 loss: 0.153, acc: 0.939:  10…   , 
+Epoch 18: train_loss=0.153, train_acc=0.939, val_loss=0.228, val_acc=0.922, val_macroF1=0.9284, lr=0.000099, best_macroF1=0.9458 (epoch 17)
+train epoch 19 loss: 0.155, acc: 0.947:  10…   , 
+Epoch 19: train_loss=0.155, train_acc=0.947, val_loss=0.177, val_acc=0.938, val_macroF1=0.9432, lr=0.000099, best_macroF1=0.9458 (epoch 17)
+train epoch 20 loss: 0.160, acc: 0.944:  10…   , 
+Epoch 20: train_loss=0.160, train_acc=0.944, val_loss=0.149, val_acc=0.938, val_macroF1=0.9422, lr=0.000099, best_macroF1=0.9458 (epoch 17)
+train epoch 21 loss: 0.152, acc: 0.944:  10…   , 
+Epoch 21: train_loss=0.152, train_acc=0.944, val_loss=0.259, val_acc=0.926, val_macroF1=0.9266, lr=0.000099, best_macroF1=0.9458 (epoch 17)
+train epoch 22 loss: 0.144, acc: 0.943:  10…   , 
+Epoch 22: train_loss=0.144, train_acc=0.943, val_loss=0.191, val_acc=0.936, val_macroF1=0.9369, lr=0.000099, best_macroF1=0.9458 (epoch 17)
+train epoch 23 loss: 0.128, acc: 0.956:  10…   , 
+Epoch 23: train_loss=0.128, train_acc=0.956, val_loss=0.236, val_acc=0.927, val_macroF1=0.9256, lr=0.000098, best_macroF1=0.9458 (epoch 17)
+train epoch 24 loss: 0.141, acc: 0.947:  10…   , 
+Epoch 24: train_loss=0.141, train_acc=0.947, val_loss=0.135, val_acc=0.948, val_macroF1=0.9507, lr=0.000098, best_macroF1=0.9507 (epoch 24) *
+train epoch 25 loss: 0.113, acc: 0.958:  10…   , 
+Epoch 25: train_loss=0.113, train_acc=0.958, val_loss=0.266, val_acc=0.912, val_macroF1=0.9096, lr=0.000098, best_macroF1=0.9507 (epoch 24)
+train epoch 26 loss: 0.143, acc: 0.943:  10…   , 
+Epoch 26: train_loss=0.143, train_acc=0.943, val_loss=0.177, val_acc=0.936, val_macroF1=0.9404, lr=0.000098, best_macroF1=0.9507 (epoch 24)
+train epoch 27 loss: 0.137, acc: 0.949:  10…   , 
+Epoch 27: train_loss=0.137, train_acc=0.949, val_loss=0.196, val_acc=0.922, val_macroF1=0.9319, lr=0.000098, best_macroF1=0.9507 (epoch 24)
+train epoch 28 loss: 0.122, acc: 0.955:  10…   , 
+Epoch 28: train_loss=0.122, train_acc=0.955, val_loss=0.205, val_acc=0.943, val_macroF1=0.9452, lr=0.000098, best_macroF1=0.9507 (epoch 24)
+train epoch 29 loss: 0.119, acc: 0.956:  10…   , 
+Epoch 29: train_loss=0.119, train_acc=0.956, val_loss=0.183, val_acc=0.946, val_macroF1=0.9484, lr=0.000098, best_macroF1=0.9507 (epoch 24)
+train epoch 30 loss: 0.129, acc: 0.953:  10…   , 
+Epoch 30: train_loss=0.129, train_acc=0.953, val_loss=0.197, val_acc=0.931, val_macroF1=0.9355, lr=0.000097, best_macroF1=0.9507 (epoch 24)
+train epoch 31 loss: 0.109, acc: 0.960:  10…   , 
+Epoch 31: train_loss=0.109, train_acc=0.960, val_loss=0.265, val_acc=0.933, val_macroF1=0.9368, lr=0.000097, best_macroF1=0.9507 (epoch 24)
+train epoch 32 loss: 0.127, acc: 0.954:  10…   , 
+Epoch 32: train_loss=0.127, train_acc=0.954, val_loss=0.180, val_acc=0.938, val_macroF1=0.9423, lr=0.000097, best_macroF1=0.9507 (epoch 24)
+train epoch 33 loss: 0.113, acc: 0.956:  10…   , 
+Epoch 33: train_loss=0.113, train_acc=0.956, val_loss=0.189, val_acc=0.938, val_macroF1=0.9395, lr=0.000097, best_macroF1=0.9507 (epoch 24)
+train epoch 34 loss: 0.140, acc: 0.949:  10…   , 
+Epoch 34: train_loss=0.140, train_acc=0.949, val_loss=0.154, val_acc=0.946, val_macroF1=0.9497, lr=0.000097, best_macroF1=0.9507 (epoch 24)
+train epoch 35 loss: 0.100, acc: 0.966:  10…   , 
+Epoch 35: train_loss=0.100, train_acc=0.966, val_loss=0.158, val_acc=0.956, val_macroF1=0.9603, lr=0.000096, best_macroF1=0.9603 (epoch 35) *
+train epoch 36 loss: 0.101, acc: 0.967:  10…   , 
+Epoch 36: train_loss=0.101, train_acc=0.967, val_loss=0.269, val_acc=0.931, val_macroF1=0.9356, lr=0.000096, best_macroF1=0.9603 (epoch 35)
+train epoch 37 loss: 0.117, acc: 0.957:  10…   , 
+Epoch 37: train_loss=0.117, train_acc=0.957, val_loss=0.168, val_acc=0.954, val_macroF1=0.9568, lr=0.000096, best_macroF1=0.9603 (epoch 35)
+train epoch 38 loss: 0.114, acc: 0.955:  10…   , 
+Epoch 38: train_loss=0.114, train_acc=0.955, val_loss=0.167, val_acc=0.936, val_macroF1=0.9427, lr=0.000096, best_macroF1=0.9603 (epoch 35)
+train epoch 39 loss: 0.094, acc: 0.966:  10…   , 
+Epoch 39: train_loss=0.094, train_acc=0.966, val_loss=0.189, val_acc=0.939, val_macroF1=0.9449, lr=0.000096, best_macroF1=0.9603 (epoch 35)
+train epoch 40 loss: 0.093, acc: 0.963:  10…   , 
+Epoch 40: train_loss=0.093, train_acc=0.963, val_loss=0.208, val_acc=0.938, val_macroF1=0.9434, lr=0.000095, best_macroF1=0.9603 (epoch 35)
+train epoch 41 loss: 0.095, acc: 0.965:  10…   , 
+Epoch 41: train_loss=0.095, train_acc=0.965, val_loss=0.164, val_acc=0.946, val_macroF1=0.9516, lr=0.000095, best_macroF1=0.9603 (epoch 35)
+train epoch 42 loss: 0.108, acc: 0.961:  10…   , 
+Epoch 42: train_loss=0.108, train_acc=0.961, val_loss=0.178, val_acc=0.936, val_macroF1=0.9395, lr=0.000095, best_macroF1=0.9603 (epoch 35)
+train epoch 43 loss: 0.098, acc: 0.965:  10…   , 
+Epoch 43: train_loss=0.098, train_acc=0.965, val_loss=0.184, val_acc=0.943, val_macroF1=0.9459, lr=0.000095, best_macroF1=0.9603 (epoch 35)
+train epoch 44 loss: 0.095, acc: 0.967:  10…   , 
+Epoch 44: train_loss=0.095, train_acc=0.967, val_loss=0.180, val_acc=0.943, val_macroF1=0.9485, lr=0.000095, best_macroF1=0.9603 (epoch 35)
+train epoch 45 loss: 0.096, acc: 0.965:  10…   , 
+Epoch 45: train_loss=0.096, train_acc=0.965, val_loss=0.210, val_acc=0.939, val_macroF1=0.9438, lr=0.000094, best_macroF1=0.9603 (epoch 35)
+train epoch 46 loss: 0.111, acc: 0.960:  10…   , 
+Epoch 46: train_loss=0.111, train_acc=0.960, val_loss=0.214, val_acc=0.933, val_macroF1=0.9361, lr=0.000094, best_macroF1=0.9603 (epoch 35)
+train epoch 47 loss: 0.097, acc: 0.965:  10…   , 
+Epoch 47: train_loss=0.097, train_acc=0.965, val_loss=0.238, val_acc=0.916, val_macroF1=0.9222, lr=0.000094, best_macroF1=0.9603 (epoch 35)
+train epoch 48 loss: 0.080, acc: 0.970:  10…   , 
+Epoch 48: train_loss=0.080, train_acc=0.970, val_loss=0.235, val_acc=0.934, val_macroF1=0.9378, lr=0.000094, best_macroF1=0.9603 (epoch 35)
+train epoch 49 loss: 0.093, acc: 0.963:  10…   , 
+Epoch 49: train_loss=0.093, train_acc=0.963, val_loss=0.268, val_acc=0.936, val_macroF1=0.9406, lr=0.000093, best_macroF1=0.9603 (epoch 35)
+train epoch 50 loss: 0.090, acc: 0.969:  10…   , 
+Epoch 50: train_loss=0.090, train_acc=0.969, val_loss=0.282, val_acc=0.936, val_macroF1=0.9394, lr=0.000093, best_macroF1=0.9603 (epoch 35)
+train epoch 51 loss: 0.088, acc: 0.968:  10…   , 
+Epoch 51: train_loss=0.088, train_acc=0.968, val_loss=0.160, val_acc=0.941, val_macroF1=0.9468, lr=0.000093, best_macroF1=0.9603 (epoch 35)
+train epoch 52 loss: 0.090, acc: 0.967:  10…   , 
+Epoch 52: train_loss=0.090, train_acc=0.967, val_loss=0.213, val_acc=0.934, val_macroF1=0.9379, lr=0.000092, best_macroF1=0.9603 (epoch 35)
+train epoch 53 loss: 0.087, acc: 0.966:  10…   , 
+Epoch 53: train_loss=0.087, train_acc=0.966, val_loss=0.250, val_acc=0.936, val_macroF1=0.9401, lr=0.000092, best_macroF1=0.9603 (epoch 35)
+train epoch 54 loss: 0.089, acc: 0.968:  10…   , 
+Epoch 54: train_loss=0.089, train_acc=0.968, val_loss=0.178, val_acc=0.944, val_macroF1=0.9487, lr=0.000092, best_macroF1=0.9603 (epoch 35)
+train epoch 55 loss: 0.081, acc: 0.969:  10…   , 
+Epoch 55: train_loss=0.081, train_acc=0.969, val_loss=0.202, val_acc=0.948, val_macroF1=0.9511, lr=0.000092, best_macroF1=0.9603 (epoch 35)
+train epoch 56 loss: 0.090, acc: 0.969:  10…   , 
+Epoch 56: train_loss=0.090, train_acc=0.969, val_loss=0.192, val_acc=0.933, val_macroF1=0.9374, lr=0.000091, best_macroF1=0.9603 (epoch 35)
+train epoch 57 loss: 0.068, acc: 0.977:  10…   , 
+Epoch 57: train_loss=0.068, train_acc=0.977, val_loss=0.196, val_acc=0.946, val_macroF1=0.9501, lr=0.000091, best_macroF1=0.9603 (epoch 35)
+train epoch 58 loss: 0.098, acc: 0.966:  10…   , 
+Epoch 58: train_loss=0.098, train_acc=0.966, val_loss=0.192, val_acc=0.946, val_macroF1=0.9470, lr=0.000091, best_macroF1=0.9603 (epoch 35)
+train epoch 59 loss: 0.087, acc: 0.970:  10…   , 
+Epoch 59: train_loss=0.087, train_acc=0.970, val_loss=0.180, val_acc=0.948, val_macroF1=0.9500, lr=0.000090, best_macroF1=0.9603 (epoch 35)
+train epoch 60 loss: 0.078, acc: 0.973:  10…   , 
+Epoch 60: train_loss=0.078, train_acc=0.973, val_loss=0.247, val_acc=0.941, val_macroF1=0.9446, lr=0.000090, best_macroF1=0.9603 (epoch 35)
+train epoch 61 loss: 0.082, acc: 0.973:  10…   , 
+Epoch 61: train_loss=0.082, train_acc=0.973, val_loss=0.272, val_acc=0.929, val_macroF1=0.9338, lr=0.000090, best_macroF1=0.9603 (epoch 35)
+train epoch 62 loss: 0.078, acc: 0.971:  10…   , 
+Epoch 62: train_loss=0.078, train_acc=0.971, val_loss=0.210, val_acc=0.946, val_macroF1=0.9499, lr=0.000090, best_macroF1=0.9603 (epoch 35)
+train epoch 63 loss: 0.070, acc: 0.977:  10…   , 
+Epoch 63: train_loss=0.070, train_acc=0.977, val_loss=0.187, val_acc=0.944, val_macroF1=0.9462, lr=0.000089, best_macroF1=0.9603 (epoch 35)
+train epoch 64 loss: 0.084, acc: 0.964:  10…   , 
+Epoch 64: train_loss=0.084, train_acc=0.964, val_loss=0.232, val_acc=0.931, val_macroF1=0.9352, lr=0.000089, best_macroF1=0.9603 (epoch 35)
+train epoch 65 loss: 0.075, acc: 0.970:  10…   , 
+Epoch 65: train_loss=0.075, train_acc=0.970, val_loss=0.165, val_acc=0.951, val_macroF1=0.9551, lr=0.000089, best_macroF1=0.9603 (epoch 35)
+
+[early stop] epoch 65: val_macro_f1 not improved for 30 epochs
+
+===========================================================
+             Training Summary (fair baseline)              
+===========================================================
+  Model:              resnet50
+  Best val macro-F1:  0.9603  (epoch 35)
+  Selection:          val macro-F1
+  Loss:               unweighted CrossEntropy
+  Training Time:      0:07:15
+  Weights:            ./weights_heelBone/resnet50_seed43/resnet50/model_best.pth
+  Run meta:           ./weights_heelBone/resnet50_seed43/resnet50/run_meta.json
+===========================================================
+
+===== [2026-10-26 18:05:33.875312] /home/login/miniconda3/envs/sunfuxiang/bin/python train_cle_fair.py --model resnet50 --num_classes 3 --img_size 224 --seed 43 --data-path-train ./datasets/heelBone/train --data-path-val ./datasets/heelBone/val --weights /home/login/data/cle/sunfuxiang/classifyML/pth/resnet50-0676ba61.pth --save-dir ./weights_heelBone/resnet50_seed43 --epochs 300
+[norm] source=run_meta.json(imagenet)  mean=[0.485, 0.456, 0.406] std=[0.229, 0.224, 0.225]  img_size=224
+[model] resnet50  weights=/data/cle/auto/ZCode/Classification/weights_heelBone/resnet50_seed43/resnet50/model_best.pth
+[complexity] MACs=4.13G FLOPs=8.26G Params=23.51M
+[data] test=593 张  heelspur=197  normal=276  sever=120
+
+================================================================
+  评估结果 — resnet50  (test=593 张)
+================================================================
+  【主指标】
+  Macro-F1         : 0.9063   ← 主指标(类别不平衡首选)
+  Accuracy         : 0.9039
+  Macro-AUROC(OvR) : 0.9774
+----------------------------------------------------------------
+  【补充总体指标】
+  Weighted-F1      : 0.9031
+  Balanced Acc     : 0.9016
+  Macro-Sensitivity: 0.9016   (= 各类 Recall 均值)
+  Macro-Specificity: 0.9454
+  Macro-Precision  : 0.9136
+  AUC-PR (Macro)   : 0.9670
+  Cohen's Kappa    : 0.8467
+  MCC              : 0.8485
+----------------------------------------------------------------
+  【每类指标】 Sensitivity / Specificity / Precision / F1 / AUROC
+  heelspur              : 0.822 / 0.965 / 0.920 / 0.869 / 0.963  (n=197)
+  normal                : 0.949 / 0.886 / 0.879 / 0.913 / 0.974  (n=276)
+  sever                 : 0.933 / 0.985 / 0.941 / 0.937 / 0.996  (n=120)
+----------------------------------------------------------------
+  【模型复杂度】(仅与架构+输入尺寸有关，与数据集无关)
+  MACs : 4.13G    FLOPs : 8.26G    Params : 23.51M
+  【推理效率】(受 GPU 负载影响，为参考量级)
+  Pure FPS : 1044.1  (0.96 ms/张)    End-to-End FPS : 285.5
+----------------------------------------------------------------
+  【混淆矩阵】(行=真实, 列=预测)
+                  heelspur    normal     sever
+  heelspur             162        30         5
+  normal                12       262         2
+  sever                  2         6       112
+================================================================
+
+[saved] /data/cle/auto/ZCode/Classification/weights_heelBone/resnet50_seed43/resnet50/eval_20261026_181259/  (results.json / predictions.csv / evaluation_report.md)
+
+===== [2026-10-26 18:12:54.472683] /home/login/miniconda3/envs/sunfuxiang/bin/python evaluate.py --model resnet50 --weights /data/cle/auto/ZCode/Classification/weights_heelBone/resnet50_seed43/resnet50/model_best.pth --data-path ./datasets/heelBone/val --class-names heelspur normal sever
+[norm] source=run_meta.json(imagenet)  mean=[0.485, 0.456, 0.406] std=[0.229, 0.224, 0.225]  img_size=224
+[model] resnet50  weights=/data/cle/auto/ZCode/Classification/weights_heelBone/resnet50_seed43/resnet50/model_best.pth
+[complexity] MACs=4.13G FLOPs=8.26G Params=23.51M
+[data] test=593 张  heelspur=197  normal=276  sever=120
+
+================================================================
+  评估结果 — resnet50  (test=593 张)
+================================================================
+  【主指标】
+  Macro-F1         : 0.8941   ← 主指标(类别不平衡首选)
+  Accuracy         : 0.8887
+  Macro-AUROC(OvR) : 0.9749
+----------------------------------------------------------------
+  【补充总体指标】
+  Weighted-F1      : 0.8878
+  Balanced Acc     : 0.8940
+  Macro-Sensitivity: 0.8940   (= 各类 Recall 均值)
+  Macro-Specificity: 0.9376
+  Macro-Precision  : 0.8966
+  AUC-PR (Macro)   : 0.9618
+  Cohen's Kappa    : 0.8232
+  MCC              : 0.8246
+----------------------------------------------------------------
+  【每类指标】 Sensitivity / Specificity / Precision / F1 / AUROC
+  heelspur              : 0.807 / 0.957 / 0.903 / 0.853 / 0.966  (n=197)
+  normal                : 0.917 / 0.877 / 0.866 / 0.891 / 0.964  (n=276)
+  sever                 : 0.958 / 0.979 / 0.920 / 0.939 / 0.994  (n=120)
+----------------------------------------------------------------
+  【模型复杂度】(仅与架构+输入尺寸有关，与数据集无关)
+  MACs : 4.13G    FLOPs : 8.26G    Params : 23.51M
+  【推理效率】(受 GPU 负载影响，为参考量级)
+  Pure FPS : 839.4  (1.19 ms/张)    End-to-End FPS : 262.7
+----------------------------------------------------------------
+  【混淆矩阵】(行=真实, 列=预测)
+                  heelspur    normal     sever
+  heelspur             159        34         4
+  normal                17       253         6
+  sever                  0         5       115
+================================================================
+
+[saved] /data/cle/auto/ZCode/Classification/weights_heelBone/resnet50_seed43/resnet50/eval_20261026_181305/  (results.json / predictions.csv / evaluation_report.md)
+
+===== [2026-10-26 18:13:00.469157] /home/login/miniconda3/envs/sunfuxiang/bin/python evaluate.py --model resnet50 --weights /data/cle/auto/ZCode/Classification/weights_heelBone/resnet50_seed43/resnet50/model_best.pth --data-path ./datasets/heelBone/test --class-names heelspur normal sever
