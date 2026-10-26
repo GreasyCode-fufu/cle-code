@@ -116,4 +116,8 @@ class MobileNetV2(nn.Module):
         x = self.avgpool(x)
         x = torch.flatten(x, 1)
         x = self.classifier(x)
-        return
+        return x
+
+def mobilenet_v2(num_classes: int = 1000):
+    """tonylins 风格 MobileNetV2 工厂(补), 兼容 torchvision 官方 checkpoint。"""
+    return MobileNetV2(num_classes=num_classes)

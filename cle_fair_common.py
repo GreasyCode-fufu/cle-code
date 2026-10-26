@@ -26,6 +26,7 @@ MODEL_REGISTRY = {
     "resnet34":    ("models.Resnet",    "resnet34"),
     "resnet50":    ("models.Resnet",    "resnet50"),
     "resnet101":   ("models.Resnet",    "resnet101"),
+    "resnext50_32x4d":  ("models.Resnet", "resnext50_32x4d"),
     "resnet34_sa":   ("models.optimize.resnet34_msinit", "resnet34_sa"),
     "resnet34_degconv_sa": ("models.optimize.resnet34_msinit", "resnet34_degconv_sa"),
     "resnet34_degconv_cpca": ("models.optimize.resnet34_CPCA", "resnet34_degconv_cpca"),
@@ -137,6 +138,15 @@ MODEL_REGISTRY = {
     "convnext_v2ac":  ("models.optimize.convnext_cle_v2", "convnext_v2ac"),
     "convnext_v2bc":  ("models.optimize.convnext_cle_v2", "convnext_v2bc"),
     "convnext_v2bc4": ("models.optimize.convnext_cle_v2", "convnext_v2bc4"),
+    # ── 对比实验扩展主干 (2026-10-26) ──
+    "mobilenet_v2":       ("models.MobileNet", "mobilenet_v2"),
+    "mobilenet_v3_large": ("models.MobileNetV3", "mobilenet_v3_large"),
+    "shufflenet_v2_x1_0": ("models.ShuffleNet", "shufflenet_v2_x1_0"),
+    "ghostnet":           ("models.GhostNet", "ghostnet"),
+    "deit_tiny_patch16_224":  ("models.Deit", "deit_tiny_patch16_224"),
+    "deit_small_patch16_224": ("models.Deit", "deit_small_patch16_224"),
+    "deit_base_patch16_224":  ("models.Deit", "deit_base_patch16_224"),
+    "poolformer_s24":     ("models.PoolFormer", "poolformer_s24"),
 }
 
 SUPPORTED_EXTS = (".jpg", ".jpeg", ".png", ".bmp", ".tif", ".tiff")
