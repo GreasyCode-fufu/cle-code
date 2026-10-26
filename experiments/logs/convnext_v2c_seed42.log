@@ -496,3 +496,193 @@ Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
 
 
 ===== [2026-10-26 21:36:16.829161] /home/login/miniconda3/envs/sunfuxiang/bin/python train_cle_fair.py --model convnext_v2c --num_classes 3 --img_size 224 --seed 42 --data-path-train ./datasets/cifar10/train --data-path-val ./datasets/cifar10/val --weights /home/login/data/cle/sunfuxiang/classifyML/pth/convnext_tiny_1k_224_ema.pth --save-dir ./weights_cifar10/convnext_v2c_seed42 --epochs 50 --early-stop 10
+/home/login/miniconda3/envs/sunfuxiang/lib/python3.12/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+/data/cle/auto/ZCode/Classification/train_cle_fair.py:579: FutureWarning: `torch.cuda.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler('cuda', args...)` instead.
+  scaler = torch.cuda.amp.GradScaler()
+[seed] seed = 42 (set)
+45000 images for training.
+5000 images were found in the val dataset.
+5000 images for test.
+[norm] ImageNet 归一化(加载了预训练权重) MEAN=[0.485, 0.456, 0.406] STD=[0.229, 0.224, 0.225]
+[weights] strict load passed /data/cle/sunfuxiang/classifyML/pth/convnext_tiny_1k_224_ema.pth | classifier_missing=8 ignored_buffers=0 unexpected=0
+[train] model=convnext_v2c num_classes=10 img=224 bs=32 epochs=25 | CE (label_smoothing=0.0) | select=val_macro_f1
+[out]   run_dir=./weights_cifar10/convnext_v2c_seed42/convnext_v2c
+train epoch 0 loss: 0.414, acc: 0.865:  10… [  , 
+Epoch 0: train_loss=0.414, train_acc=0.865, val_loss=0.153, val_acc=0.950, val_macroF1=0.9500, lr=0.000100, best_macroF1=0.9500 (epoch 0) *
+train epoch 1 loss: 0.154, acc: 0.949:  10… [  , 
+Epoch 1: train_loss=0.154, train_acc=0.949, val_loss=0.116, val_acc=0.961, val_macroF1=0.9611, lr=0.000098, best_macroF1=0.9611 (epoch 1) *
+train epoch 2 loss: 0.098, acc: 0.967:  10… [  , 
+Epoch 2: train_loss=0.098, train_acc=0.967, val_loss=0.093, val_acc=0.968, val_macroF1=0.9678, lr=0.000096, best_macroF1=0.9678 (epoch 2) *
+train epoch 3 loss: 0.076, acc: 0.975:  10… [  , 
+Epoch 3: train_loss=0.076, train_acc=0.975, val_loss=0.119, val_acc=0.961, val_macroF1=0.9609, lr=0.000094, best_macroF1=0.9678 (epoch 2)
+train epoch 4 loss: 0.058, acc: 0.982:  10… [  , 
+Epoch 4: train_loss=0.058, train_acc=0.982, val_loss=0.102, val_acc=0.967, val_macroF1=0.9676, lr=0.000090, best_macroF1=0.9678 (epoch 2)
+train epoch 5 loss: 0.047, acc: 0.984:  10… [  , 
+Epoch 5: train_loss=0.047, train_acc=0.984, val_loss=0.111, val_acc=0.967, val_macroF1=0.9669, lr=0.000086, best_macroF1=0.9678 (epoch 2)
+train epoch 6 loss: 0.039, acc: 0.987:  10… [  , 
+Epoch 6: train_loss=0.039, train_acc=0.987, val_loss=0.101, val_acc=0.969, val_macroF1=0.9694, lr=0.000082, best_macroF1=0.9694 (epoch 6) *
+train epoch 7 loss: 0.031, acc: 0.990:  10… [  , 
+Epoch 7: train_loss=0.031, train_acc=0.990, val_loss=0.108, val_acc=0.968, val_macroF1=0.9681, lr=0.000077, best_macroF1=0.9694 (epoch 6)
+train epoch 8 loss: 0.026, acc: 0.991:  10… [  , 
+Epoch 8: train_loss=0.026, train_acc=0.991, val_loss=0.117, val_acc=0.966, val_macroF1=0.9664, lr=0.000071, best_macroF1=0.9694 (epoch 6)
+train epoch 9 loss: 0.023, acc: 0.992:  10… [  , 
+Epoch 9: train_loss=0.023, train_acc=0.992, val_loss=0.112, val_acc=0.971, val_macroF1=0.9711, lr=0.000065, best_macroF1=0.9711 (epoch 9) *
+train epoch 10 loss: 0.017, acc: 0.994:  10…   , 
+Epoch 10: train_loss=0.017, train_acc=0.994, val_loss=0.098, val_acc=0.974, val_macroF1=0.9736, lr=0.000059, best_macroF1=0.9736 (epoch 10) *
+train epoch 11 loss: 0.014, acc: 0.995:  10…   , 
+Epoch 11: train_loss=0.014, train_acc=0.995, val_loss=0.094, val_acc=0.972, val_macroF1=0.9723, lr=0.000053, best_macroF1=0.9736 (epoch 10)
+train epoch 12 loss: 0.011, acc: 0.996:  10…   , 
+Epoch 12: train_loss=0.011, train_acc=0.996, val_loss=0.098, val_acc=0.974, val_macroF1=0.9736, lr=0.000047, best_macroF1=0.9736 (epoch 10)
+train epoch 13 loss: 0.008, acc: 0.997:  10…   , 
+Epoch 13: train_loss=0.008, train_acc=0.997, val_loss=0.103, val_acc=0.975, val_macroF1=0.9748, lr=0.000041, best_macroF1=0.9748 (epoch 13) *
+train epoch 14 loss: 0.009, acc: 0.997:  10…   , 
+Epoch 14: train_loss=0.009, train_acc=0.997, val_loss=0.094, val_acc=0.973, val_macroF1=0.9726, lr=0.000035, best_macroF1=0.9748 (epoch 13)
+train epoch 15 loss: 0.006, acc: 0.998:  10…   , 
+Epoch 15: train_loss=0.006, train_acc=0.998, val_loss=0.088, val_acc=0.978, val_macroF1=0.9780, lr=0.000029, best_macroF1=0.9780 (epoch 15) *
+train epoch 16 loss: 0.004, acc: 0.999:  10…   , 
+Epoch 16: train_loss=0.004, train_acc=0.999, val_loss=0.086, val_acc=0.978, val_macroF1=0.9778, lr=0.000023, best_macroF1=0.9780 (epoch 15)
+train epoch 17 loss: 0.003, acc: 0.999:  10…   , 
+Epoch 17: train_loss=0.003, train_acc=0.999, val_loss=0.097, val_acc=0.978, val_macroF1=0.9778, lr=0.000018, best_macroF1=0.9780 (epoch 15)
+train epoch 18 loss: 0.002, acc: 0.999:  10…   , 
+Epoch 18: train_loss=0.002, train_acc=0.999, val_loss=0.087, val_acc=0.978, val_macroF1=0.9778, lr=0.000014, best_macroF1=0.9780 (epoch 15)
+train epoch 19 loss: 0.002, acc: 1.000:  10…   , 
+Epoch 19: train_loss=0.002, train_acc=1.000, val_loss=0.083, val_acc=0.979, val_macroF1=0.9790, lr=0.000010, best_macroF1=0.9790 (epoch 19) *
+train epoch 20 loss: 0.001, acc: 1.000:  10…   , 
+Epoch 20: train_loss=0.001, train_acc=1.000, val_loss=0.080, val_acc=0.982, val_macroF1=0.9816, lr=0.000006, best_macroF1=0.9816 (epoch 20) *
+train epoch 21 loss: 0.001, acc: 1.000:  10…   , 
+Epoch 21: train_loss=0.001, train_acc=1.000, val_loss=0.080, val_acc=0.981, val_macroF1=0.9810, lr=0.000004, best_macroF1=0.9816 (epoch 20)
+train epoch 22 loss: 0.001, acc: 1.000:  10…   , 
+Epoch 22: train_loss=0.001, train_acc=1.000, val_loss=0.084, val_acc=0.980, val_macroF1=0.9804, lr=0.000002, best_macroF1=0.9816 (epoch 20)
+train epoch 23 loss: 0.001, acc: 1.000:  10…   , 
+Epoch 23: train_loss=0.001, train_acc=1.000, val_loss=0.079, val_acc=0.982, val_macroF1=0.9820, lr=0.000000, best_macroF1=0.9820 (epoch 23) *
+train epoch 24 loss: 0.001, acc: 1.000:  10…   , 
+Epoch 24: train_loss=0.001, train_acc=1.000, val_loss=0.079, val_acc=0.982, val_macroF1=0.9816, lr=0.000000, best_macroF1=0.9820 (epoch 23)
+
+===========================================================
+             Training Summary (fair baseline)              
+===========================================================
+  Model:              convnext_v2c
+  Best val macro-F1:  0.9820  (epoch 23)
+  Selection:          val macro-F1
+  Loss:               unweighted CrossEntropy
+  Training Time:      1:15:52
+  Weights:            ./weights_cifar10/convnext_v2c_seed42/convnext_v2c/model_best.pth
+  Run meta:           ./weights_cifar10/convnext_v2c_seed42/convnext_v2c/run_meta.json
+===========================================================
+
+===== [2026-10-27 00:42:50.613058] /home/login/miniconda3/envs/sunfuxiang/bin/python train_cle_fair.py --model convnext_v2c --num_classes 10 --img_size 224 --seed 42 --data-path-train ./datasets/cifar10/train --data-path-val ./datasets/cifar10/val --weights /home/login/data/cle/sunfuxiang/classifyML/pth/convnext_tiny_1k_224_ema.pth --save-dir ./weights_cifar10/convnext_v2c_seed42 --epochs 25 --early-stop 8
+[norm] source=run_meta.json(imagenet)  mean=[0.485, 0.456, 0.406] std=[0.229, 0.224, 0.225]  img_size=224
+[model] convnext_v2c  weights=/data/cle/auto/ZCode/Classification/weights_cifar10/convnext_v2c_seed42/convnext_v2c/model_best.pth
+[complexity] MACs=4.63G FLOPs=9.26G Params=28.27M
+[data] test=5000 张  airplane=500  automobile=500  bird=500  cat=500  deer=500  dog=500  frog=500  horse=500  ship=500  truck=500
+
+================================================================
+  评估结果 — convnext_v2c  (test=5000 张)
+================================================================
+  【主指标】
+  Macro-F1         : 0.9820   ← 主指标(类别不平衡首选)
+  Accuracy         : 0.9820
+  Macro-AUROC(OvR) : 0.9997
+----------------------------------------------------------------
+  【补充总体指标】
+  Weighted-F1      : 0.9820
+  Balanced Acc     : 0.9820
+  Macro-Sensitivity: 0.9820   (= 各类 Recall 均值)
+  Macro-Specificity: 0.9980
+  Macro-Precision  : 0.9821
+  AUC-PR (Macro)   : 0.9978
+  Cohen's Kappa    : 0.9800
+  MCC              : 0.9800
+----------------------------------------------------------------
+  【每类指标】 Sensitivity / Specificity / Precision / F1 / AUROC
+  airplane              : 0.990 / 0.998 / 0.978 / 0.984 / 1.000  (n=500)
+  automobile            : 0.988 / 0.999 / 0.990 / 0.989 / 1.000  (n=500)
+  bird                  : 0.978 / 0.998 / 0.980 / 0.979 / 1.000  (n=500)
+  cat                   : 0.972 / 0.995 / 0.957 / 0.964 / 0.999  (n=500)
+  deer                  : 0.982 / 0.999 / 0.990 / 0.986 / 1.000  (n=500)
+  dog                   : 0.966 / 0.998 / 0.980 / 0.973 / 0.999  (n=500)
+  frog                  : 0.974 / 0.999 / 0.990 / 0.982 / 1.000  (n=500)
+  horse                 : 0.990 / 0.997 / 0.976 / 0.983 / 1.000  (n=500)
+  ship                  : 0.992 / 0.999 / 0.994 / 0.993 / 1.000  (n=500)
+  truck                 : 0.988 / 0.998 / 0.986 / 0.987 / 1.000  (n=500)
+----------------------------------------------------------------
+  【模型复杂度】(仅与架构+输入尺寸有关，与数据集无关)
+  MACs : 4.63G    FLOPs : 9.26G    Params : 28.27M
+  【推理效率】(受 GPU 负载影响，为参考量级)
+  Pure FPS : 644.3  (1.55 ms/张)    End-to-End FPS : 481.3
+----------------------------------------------------------------
+  【混淆矩阵】(行=真实, 列=预测)
+                  airplane  automobi      bird       cat      deer       dog      frog     horse      ship     truck
+  airplane             495         0         2         0         0         0         1         0         1         1
+  automobile             1       494         0         0         0         0         0         0         0         5
+  bird                   4         0       489         3         1         0         2         0         1         0
+  cat                    1         0         1       486         1         8         1         1         0         1
+  deer                   0         0         1         0       491         1         0         7         0         0
+  dog                    0         0         0        12         0       483         1         4         0         0
+  frog                   1         0         3         5         3         0       487         0         1         0
+  horse                  0         0         2         2         0         1         0       495         0         0
+  ship                   3         1         0         0         0         0         0         0       496         0
+  truck                  1         4         1         0         0         0         0         0         0       494
+================================================================
+
+[saved] /data/cle/auto/ZCode/Classification/weights_cifar10/convnext_v2c_seed42/convnext_v2c/eval_20261027_015900/  (results.json / predictions.csv / evaluation_report.md)
+
+===== [2026-10-27 01:58:46.993201] /home/login/miniconda3/envs/sunfuxiang/bin/python evaluate.py --model convnext_v2c --weights /data/cle/auto/ZCode/Classification/weights_cifar10/convnext_v2c_seed42/convnext_v2c/model_best.pth --data-path ./datasets/cifar10/val --class-names airplane automobile bird cat deer dog frog horse ship truck
+[norm] source=run_meta.json(imagenet)  mean=[0.485, 0.456, 0.406] std=[0.229, 0.224, 0.225]  img_size=224
+[model] convnext_v2c  weights=/data/cle/auto/ZCode/Classification/weights_cifar10/convnext_v2c_seed42/convnext_v2c/model_best.pth
+[complexity] MACs=4.63G FLOPs=9.26G Params=28.27M
+[data] test=10000 张  airplane=1000  automobile=1000  bird=1000  cat=1000  deer=1000  dog=1000  frog=1000  horse=1000  ship=1000  truck=1000
+
+================================================================
+  评估结果 — convnext_v2c  (test=10000 张)
+================================================================
+  【主指标】
+  Macro-F1         : 0.9771   ← 主指标(类别不平衡首选)
+  Accuracy         : 0.9771
+  Macro-AUROC(OvR) : 0.9992
+----------------------------------------------------------------
+  【补充总体指标】
+  Weighted-F1      : 0.9771
+  Balanced Acc     : 0.9771
+  Macro-Sensitivity: 0.9771   (= 各类 Recall 均值)
+  Macro-Specificity: 0.9975
+  Macro-Precision  : 0.9771
+  AUC-PR (Macro)   : 0.9955
+  Cohen's Kappa    : 0.9746
+  MCC              : 0.9746
+----------------------------------------------------------------
+  【每类指标】 Sensitivity / Specificity / Precision / F1 / AUROC
+  airplane              : 0.986 / 0.998 / 0.980 / 0.983 / 1.000  (n=1000)
+  automobile            : 0.989 / 0.998 / 0.983 / 0.986 / 0.998  (n=1000)
+  bird                  : 0.970 / 0.998 / 0.980 / 0.975 / 0.999  (n=1000)
+  cat                   : 0.945 / 0.994 / 0.946 / 0.945 / 0.998  (n=1000)
+  deer                  : 0.976 / 0.998 / 0.982 / 0.979 / 1.000  (n=1000)
+  dog                   : 0.959 / 0.995 / 0.958 / 0.959 / 0.998  (n=1000)
+  frog                  : 0.987 / 0.998 / 0.982 / 0.985 / 1.000  (n=1000)
+  horse                 : 0.989 / 0.998 / 0.982 / 0.986 / 1.000  (n=1000)
+  ship                  : 0.989 / 0.999 / 0.988 / 0.989 / 1.000  (n=1000)
+  truck                 : 0.981 / 0.999 / 0.990 / 0.985 / 0.999  (n=1000)
+----------------------------------------------------------------
+  【模型复杂度】(仅与架构+输入尺寸有关，与数据集无关)
+  MACs : 4.63G    FLOPs : 9.26G    Params : 28.27M
+  【推理效率】(受 GPU 负载影响，为参考量级)
+  Pure FPS : 587.1  (1.70 ms/张)    End-to-End FPS : 444.2
+----------------------------------------------------------------
+  【混淆矩阵】(行=真实, 列=预测)
+                  airplane  automobi      bird       cat      deer       dog      frog     horse      ship     truck
+  airplane             986         0         3         1         0         0         0         1         9         0
+  automobile             1       989         0         0         0         0         0         0         1         9
+  bird                   5         0       970         7         6         3         8         1         0         0
+  cat                    1         0         6       945         3        33         6         5         1         0
+  deer                   0         0         6         3       976         2         3        10         0         0
+  dog                    0         0         0        38         3       959         0         0         0         0
+  frog                   2         0         4         3         2         1       987         1         0         0
+  horse                  0         0         1         2         4         3         1       989         0         0
+  ship                   9         1         0         0         0         0         0         0       989         1
+  truck                  2        16         0         0         0         0         0         0         1       981
+================================================================
+
+[saved] /data/cle/auto/ZCode/Classification/weights_cifar10/convnext_v2c_seed42/convnext_v2c/eval_20261027_015926/  (results.json / predictions.csv / evaluation_report.md)
+
+===== [2026-10-27 01:59:00.828656] /home/login/miniconda3/envs/sunfuxiang/bin/python evaluate.py --model convnext_v2c --weights /data/cle/auto/ZCode/Classification/weights_cifar10/convnext_v2c_seed42/convnext_v2c/model_best.pth --data-path ./datasets/cifar10/test --class-names airplane automobile bird cat deer dog frog horse ship truck

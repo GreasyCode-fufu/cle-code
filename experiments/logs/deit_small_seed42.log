@@ -493,3 +493,211 @@ Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
 
 
 ===== [2026-10-26 21:36:28.527579] /home/login/miniconda3/envs/sunfuxiang/bin/python train_cle_fair.py --model deit_small_patch16_224 --num_classes 3 --img_size 224 --seed 42 --data-path-train ./datasets/cifar10/train --data-path-val ./datasets/cifar10/val --weights /home/login/data/cle/sunfuxiang/classifyML/pth/deit_small_patch16_224-cd65a155.pth --save-dir ./weights_cifar10/deit_small_patch16_224_seed42 --epochs 50 --early-stop 10
+/home/login/miniconda3/envs/sunfuxiang/lib/python3.12/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+/home/login/miniconda3/envs/sunfuxiang/lib/python3.12/site-packages/timm/models/registry.py:4: FutureWarning: Importing from timm.models.registry is deprecated, please import via timm.models
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.models", FutureWarning)
+/data/cle/auto/ZCode/Classification/models/Deit.py:62: UserWarning: Overwriting deit_tiny_patch16_224 in registry with models.Deit.deit_tiny_patch16_224. This is because the name being registered conflicts with an existing name. Please check if this is not expected.
+  @register_model
+/data/cle/auto/ZCode/Classification/models/Deit.py:77: UserWarning: Overwriting deit_small_patch16_224 in registry with models.Deit.deit_small_patch16_224. This is because the name being registered conflicts with an existing name. Please check if this is not expected.
+  @register_model
+/data/cle/auto/ZCode/Classification/models/Deit.py:92: UserWarning: Overwriting deit_base_patch16_224 in registry with models.Deit.deit_base_patch16_224. This is because the name being registered conflicts with an existing name. Please check if this is not expected.
+  @register_model
+/data/cle/auto/ZCode/Classification/models/Deit.py:107: UserWarning: Overwriting deit_tiny_distilled_patch16_224 in registry with models.Deit.deit_tiny_distilled_patch16_224. This is because the name being registered conflicts with an existing name. Please check if this is not expected.
+  @register_model
+/data/cle/auto/ZCode/Classification/models/Deit.py:122: UserWarning: Overwriting deit_small_distilled_patch16_224 in registry with models.Deit.deit_small_distilled_patch16_224. This is because the name being registered conflicts with an existing name. Please check if this is not expected.
+  @register_model
+/data/cle/auto/ZCode/Classification/models/Deit.py:137: UserWarning: Overwriting deit_base_distilled_patch16_224 in registry with models.Deit.deit_base_distilled_patch16_224. This is because the name being registered conflicts with an existing name. Please check if this is not expected.
+  @register_model
+/data/cle/auto/ZCode/Classification/models/Deit.py:152: UserWarning: Overwriting deit_base_patch16_384 in registry with models.Deit.deit_base_patch16_384. This is because the name being registered conflicts with an existing name. Please check if this is not expected.
+  @register_model
+/data/cle/auto/ZCode/Classification/models/Deit.py:167: UserWarning: Overwriting deit_base_distilled_patch16_384 in registry with models.Deit.deit_base_distilled_patch16_384. This is because the name being registered conflicts with an existing name. Please check if this is not expected.
+  @register_model
+/data/cle/auto/ZCode/Classification/train_cle_fair.py:579: FutureWarning: `torch.cuda.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler('cuda', args...)` instead.
+  scaler = torch.cuda.amp.GradScaler()
+[seed] seed = 42 (set)
+45000 images for training.
+5000 images were found in the val dataset.
+5000 images for test.
+[norm] ImageNet 归一化(加载了预训练权重) MEAN=[0.485, 0.456, 0.406] STD=[0.229, 0.224, 0.225]
+[weights] strict load passed /data/cle/sunfuxiang/classifyML/pth/deit_small_patch16_224-cd65a155.pth | classifier_missing=2 ignored_buffers=0 unexpected=0
+[train] model=deit_small_patch16_224 num_classes=10 img=224 bs=32 epochs=25 | CE (label_smoothing=0.0) | select=val_macro_f1
+[out]   run_dir=./weights_cifar10/deit_small_patch16_224_seed42/deit_small_patch16_224
+train epoch 0 loss: 0.402, acc: 0.863:  10… [  , 
+Epoch 0: train_loss=0.402, train_acc=0.863, val_loss=0.205, val_acc=0.931, val_macroF1=0.9313, lr=0.000100, best_macroF1=0.9313 (epoch 0) *
+train epoch 1 loss: 0.213, acc: 0.927:  10… [  , 
+Epoch 1: train_loss=0.213, train_acc=0.927, val_loss=0.175, val_acc=0.941, val_macroF1=0.9409, lr=0.000098, best_macroF1=0.9409 (epoch 1) *
+train epoch 2 loss: 0.165, acc: 0.944:  10… [  , 
+Epoch 2: train_loss=0.165, train_acc=0.944, val_loss=0.151, val_acc=0.948, val_macroF1=0.9478, lr=0.000096, best_macroF1=0.9478 (epoch 2) *
+train epoch 3 loss: 0.135, acc: 0.953:  10… [  , 
+Epoch 3: train_loss=0.135, train_acc=0.953, val_loss=0.150, val_acc=0.945, val_macroF1=0.9452, lr=0.000094, best_macroF1=0.9478 (epoch 2)
+train epoch 4 loss: 0.108, acc: 0.963:  10… [  , 
+Epoch 4: train_loss=0.108, train_acc=0.963, val_loss=0.149, val_acc=0.947, val_macroF1=0.9475, lr=0.000090, best_macroF1=0.9478 (epoch 2)
+train epoch 5 loss: 0.091, acc: 0.969:  10… [  , 
+Epoch 5: train_loss=0.091, train_acc=0.969, val_loss=0.171, val_acc=0.948, val_macroF1=0.9477, lr=0.000086, best_macroF1=0.9478 (epoch 2)
+train epoch 6 loss: 0.084, acc: 0.971:  10… [  , 
+Epoch 6: train_loss=0.084, train_acc=0.971, val_loss=0.155, val_acc=0.948, val_macroF1=0.9476, lr=0.000082, best_macroF1=0.9478 (epoch 2)
+train epoch 7 loss: 0.064, acc: 0.977:  10… [  , 
+Epoch 7: train_loss=0.064, train_acc=0.977, val_loss=0.157, val_acc=0.951, val_macroF1=0.9508, lr=0.000077, best_macroF1=0.9508 (epoch 7) *
+train epoch 8 loss: 0.057, acc: 0.981:  10… [  , 
+Epoch 8: train_loss=0.057, train_acc=0.981, val_loss=0.136, val_acc=0.955, val_macroF1=0.9555, lr=0.000071, best_macroF1=0.9555 (epoch 8) *
+train epoch 9 loss: 0.048, acc: 0.984:  10… [  , 
+Epoch 9: train_loss=0.048, train_acc=0.984, val_loss=0.162, val_acc=0.948, val_macroF1=0.9483, lr=0.000065, best_macroF1=0.9555 (epoch 8)
+train epoch 10 loss: 0.039, acc: 0.987:  10…   , 
+Epoch 10: train_loss=0.039, train_acc=0.987, val_loss=0.129, val_acc=0.960, val_macroF1=0.9598, lr=0.000059, best_macroF1=0.9598 (epoch 10) *
+train epoch 11 loss: 0.029, acc: 0.990:  10…   , 
+Epoch 11: train_loss=0.029, train_acc=0.990, val_loss=0.147, val_acc=0.955, val_macroF1=0.9551, lr=0.000053, best_macroF1=0.9598 (epoch 10)
+train epoch 12 loss: 0.025, acc: 0.992:  10…   , 
+Epoch 12: train_loss=0.025, train_acc=0.992, val_loss=0.150, val_acc=0.954, val_macroF1=0.9543, lr=0.000047, best_macroF1=0.9598 (epoch 10)
+train epoch 13 loss: 0.022, acc: 0.993:  10…   , 
+Epoch 13: train_loss=0.022, train_acc=0.993, val_loss=0.138, val_acc=0.963, val_macroF1=0.9628, lr=0.000041, best_macroF1=0.9628 (epoch 13) *
+train epoch 14 loss: 0.015, acc: 0.995:  10…   , 
+Epoch 14: train_loss=0.015, train_acc=0.995, val_loss=0.140, val_acc=0.961, val_macroF1=0.9613, lr=0.000035, best_macroF1=0.9628 (epoch 13)
+train epoch 15 loss: 0.012, acc: 0.996:  10…   , 
+Epoch 15: train_loss=0.012, train_acc=0.996, val_loss=0.147, val_acc=0.961, val_macroF1=0.9613, lr=0.000029, best_macroF1=0.9628 (epoch 13)
+train epoch 16 loss: 0.008, acc: 0.997:  10…   , 
+Epoch 16: train_loss=0.008, train_acc=0.997, val_loss=0.127, val_acc=0.967, val_macroF1=0.9672, lr=0.000023, best_macroF1=0.9672 (epoch 16) *
+train epoch 17 loss: 0.006, acc: 0.998:  10…   , 
+Epoch 17: train_loss=0.006, train_acc=0.998, val_loss=0.136, val_acc=0.967, val_macroF1=0.9670, lr=0.000018, best_macroF1=0.9672 (epoch 16)
+train epoch 18 loss: 0.004, acc: 0.999:  10…   , 
+Epoch 18: train_loss=0.004, train_acc=0.999, val_loss=0.130, val_acc=0.968, val_macroF1=0.9683, lr=0.000014, best_macroF1=0.9683 (epoch 18) *
+train epoch 19 loss: 0.003, acc: 0.999:  10…   , 
+Epoch 19: train_loss=0.003, train_acc=0.999, val_loss=0.142, val_acc=0.964, val_macroF1=0.9644, lr=0.000010, best_macroF1=0.9683 (epoch 18)
+train epoch 20 loss: 0.002, acc: 0.999:  10…   , 
+Epoch 20: train_loss=0.002, train_acc=0.999, val_loss=0.140, val_acc=0.967, val_macroF1=0.9666, lr=0.000006, best_macroF1=0.9683 (epoch 18)
+train epoch 21 loss: 0.002, acc: 0.999:  10…   , 
+Epoch 21: train_loss=0.002, train_acc=0.999, val_loss=0.124, val_acc=0.970, val_macroF1=0.9702, lr=0.000004, best_macroF1=0.9702 (epoch 21) *
+train epoch 22 loss: 0.001, acc: 1.000:  10…   , 
+Epoch 22: train_loss=0.001, train_acc=1.000, val_loss=0.122, val_acc=0.971, val_macroF1=0.9706, lr=0.000002, best_macroF1=0.9706 (epoch 22) *
+train epoch 23 loss: 0.001, acc: 1.000:  10…   , 
+Epoch 23: train_loss=0.001, train_acc=1.000, val_loss=0.121, val_acc=0.971, val_macroF1=0.9712, lr=0.000000, best_macroF1=0.9712 (epoch 23) *
+train epoch 24 loss: 0.001, acc: 1.000:  10…   , 
+Epoch 24: train_loss=0.001, train_acc=1.000, val_loss=0.121, val_acc=0.971, val_macroF1=0.9708, lr=0.000000, best_macroF1=0.9712 (epoch 23)
+
+===========================================================
+             Training Summary (fair baseline)              
+===========================================================
+  Model:              deit_small_patch16_224
+  Best val macro-F1:  0.9712  (epoch 23)
+  Selection:          val macro-F1
+  Loss:               unweighted CrossEntropy
+  Training Time:      0:31:46
+  Weights:            ./weights_cifar10/deit_small_patch16_224_seed42/deit_small_patch16_224/model_best.pth
+  Run meta:           ./weights_cifar10/deit_small_patch16_224_seed42/deit_small_patch16_224/run_meta.json
+===========================================================
+
+===== [2026-10-27 01:59:26.894303] /home/login/miniconda3/envs/sunfuxiang/bin/python train_cle_fair.py --model deit_small_patch16_224 --num_classes 10 --img_size 224 --seed 42 --data-path-train ./datasets/cifar10/train --data-path-val ./datasets/cifar10/val --weights /home/login/data/cle/sunfuxiang/classifyML/pth/deit_small_patch16_224-cd65a155.pth --save-dir ./weights_cifar10/deit_small_patch16_224_seed42 --epochs 25 --early-stop 8
+[norm] source=run_meta.json(imagenet)  mean=[0.485, 0.456, 0.406] std=[0.229, 0.224, 0.225]  img_size=224
+[model] deit_small_patch16_224  weights=/data/cle/auto/ZCode/Classification/weights_cifar10/deit_small_patch16_224_seed42/deit_small_patch16_224/model_best.pth
+[complexity] MACs=4.25G FLOPs=8.50G Params=21.59M
+[data] test=5000 张  airplane=500  automobile=500  bird=500  cat=500  deer=500  dog=500  frog=500  horse=500  ship=500  truck=500
+
+================================================================
+  评估结果 — deit_small_patch16_224  (test=5000 张)
+================================================================
+  【主指标】
+  Macro-F1         : 0.9712   ← 主指标(类别不平衡首选)
+  Accuracy         : 0.9712
+  Macro-AUROC(OvR) : 0.9993
+----------------------------------------------------------------
+  【补充总体指标】
+  Weighted-F1      : 0.9712
+  Balanced Acc     : 0.9712
+  Macro-Sensitivity: 0.9712   (= 各类 Recall 均值)
+  Macro-Specificity: 0.9968
+  Macro-Precision  : 0.9713
+  AUC-PR (Macro)   : 0.9949
+  Cohen's Kappa    : 0.9680
+  MCC              : 0.9680
+----------------------------------------------------------------
+  【每类指标】 Sensitivity / Specificity / Precision / F1 / AUROC
+  airplane              : 0.976 / 0.998 / 0.978 / 0.977 / 1.000  (n=500)
+  automobile            : 0.984 / 0.997 / 0.976 / 0.980 / 1.000  (n=500)
+  bird                  : 0.962 / 0.998 / 0.978 / 0.970 / 0.999  (n=500)
+  cat                   : 0.958 / 0.992 / 0.932 / 0.945 / 0.998  (n=500)
+  deer                  : 0.978 / 0.997 / 0.972 / 0.975 / 1.000  (n=500)
+  dog                   : 0.926 / 0.996 / 0.963 / 0.944 / 0.997  (n=500)
+  frog                  : 0.986 / 0.999 / 0.988 / 0.987 / 1.000  (n=500)
+  horse                 : 0.984 / 0.996 / 0.969 / 0.976 / 1.000  (n=500)
+  ship                  : 0.978 / 0.999 / 0.988 / 0.983 / 1.000  (n=500)
+  truck                 : 0.980 / 0.997 / 0.970 / 0.975 / 1.000  (n=500)
+----------------------------------------------------------------
+  【模型复杂度】(仅与架构+输入尺寸有关，与数据集无关)
+  MACs : 4.25G    FLOPs : 8.50G    Params : 21.59M
+  【推理效率】(受 GPU 负载影响，为参考量级)
+  Pure FPS : 969.5  (1.03 ms/张)    End-to-End FPS : 639.7
+----------------------------------------------------------------
+  【混淆矩阵】(行=真实, 列=预测)
+                  airplane  automobi      bird       cat      deer       dog      frog     horse      ship     truck
+  airplane             488         1         2         2         1         0         0         0         5         1
+  automobile             0       492         0         0         0         0         0         0         0         8
+  bird                   3         0       481         5         8         1         0         1         1         0
+  cat                    2         0         2       479         0        13         2         0         0         2
+  deer                   0         0         1         2       489         1         0         7         0         0
+  dog                    1         0         1        22         2       463         3         8         0         0
+  frog                   1         0         2         3         1         0       493         0         0         0
+  horse                  0         0         2         0         2         3         0       492         0         1
+  ship                   4         2         1         1         0         0         0         0       489         3
+  truck                  0         9         0         0         0         0         1         0         0       490
+================================================================
+
+[saved] /data/cle/auto/ZCode/Classification/weights_cifar10/deit_small_patch16_224_seed42/deit_small_patch16_224/eval_20261027_023127/  (results.json / predictions.csv / evaluation_report.md)
+
+===== [2026-10-27 02:31:17.117114] /home/login/miniconda3/envs/sunfuxiang/bin/python evaluate.py --model deit_small_patch16_224 --weights /data/cle/auto/ZCode/Classification/weights_cifar10/deit_small_patch16_224_seed42/deit_small_patch16_224/model_best.pth --data-path ./datasets/cifar10/val --class-names airplane automobile bird cat deer dog frog horse ship truck
+[norm] source=run_meta.json(imagenet)  mean=[0.485, 0.456, 0.406] std=[0.229, 0.224, 0.225]  img_size=224
+[model] deit_small_patch16_224  weights=/data/cle/auto/ZCode/Classification/weights_cifar10/deit_small_patch16_224_seed42/deit_small_patch16_224/model_best.pth
+[complexity] MACs=4.25G FLOPs=8.50G Params=21.59M
+[data] test=10000 张  airplane=1000  automobile=1000  bird=1000  cat=1000  deer=1000  dog=1000  frog=1000  horse=1000  ship=1000  truck=1000
+
+================================================================
+  评估结果 — deit_small_patch16_224  (test=10000 张)
+================================================================
+  【主指标】
+  Macro-F1         : 0.9681   ← 主指标(类别不平衡首选)
+  Accuracy         : 0.9681
+  Macro-AUROC(OvR) : 0.9988
+----------------------------------------------------------------
+  【补充总体指标】
+  Weighted-F1      : 0.9681
+  Balanced Acc     : 0.9681
+  Macro-Sensitivity: 0.9681   (= 各类 Recall 均值)
+  Macro-Specificity: 0.9965
+  Macro-Precision  : 0.9682
+  AUC-PR (Macro)   : 0.9927
+  Cohen's Kappa    : 0.9646
+  MCC              : 0.9646
+----------------------------------------------------------------
+  【每类指标】 Sensitivity / Specificity / Precision / F1 / AUROC
+  airplane              : 0.973 / 0.998 / 0.981 / 0.977 / 1.000  (n=1000)
+  automobile            : 0.992 / 0.996 / 0.969 / 0.980 / 0.999  (n=1000)
+  bird                  : 0.961 / 0.996 / 0.967 / 0.964 / 0.998  (n=1000)
+  cat                   : 0.938 / 0.991 / 0.922 / 0.930 / 0.996  (n=1000)
+  deer                  : 0.967 / 0.998 / 0.980 / 0.973 / 0.999  (n=1000)
+  dog                   : 0.929 / 0.994 / 0.945 / 0.937 / 0.997  (n=1000)
+  frog                  : 0.984 / 0.998 / 0.978 / 0.981 / 1.000  (n=1000)
+  horse                 : 0.983 / 0.997 / 0.976 / 0.980 / 1.000  (n=1000)
+  ship                  : 0.987 / 0.997 / 0.976 / 0.982 / 1.000  (n=1000)
+  truck                 : 0.967 / 0.999 / 0.988 / 0.977 / 0.999  (n=1000)
+----------------------------------------------------------------
+  【模型复杂度】(仅与架构+输入尺寸有关，与数据集无关)
+  MACs : 4.25G    FLOPs : 8.50G    Params : 21.59M
+  【推理效率】(受 GPU 负载影响，为参考量级)
+  Pure FPS : 971.7  (1.03 ms/张)    End-to-End FPS : 635.5
+----------------------------------------------------------------
+  【混淆矩阵】(行=真实, 列=预测)
+                  airplane  automobi      bird       cat      deer       dog      frog     horse      ship     truck
+  airplane             973         3         5         2         0         0         0         0        16         1
+  automobile             2       992         0         0         0         0         0         0         0         6
+  bird                   4         0       961        14         7         4         5         4         1         0
+  cat                    2         1         7       938         2        35         8         3         2         2
+  deer                   0         0         6         5       967         7         4        10         1         0
+  dog                    0         1         6        48         4       929         4         5         1         2
+  frog                   1         0         4         6         3         1       984         1         0         0
+  horse                  2         0         1         3         4         6         1       983         0         0
+  ship                   7         0         3         0         0         1         0         1       987         1
+  truck                  1        27         1         1         0         0         0         0         3       967
+================================================================
+
+[saved] /data/cle/auto/ZCode/Classification/weights_cifar10/deit_small_patch16_224_seed42/deit_small_patch16_224/eval_20261027_023147/  (results.json / predictions.csv / evaluation_report.md)
+
+===== [2026-10-27 02:31:28.680921] /home/login/miniconda3/envs/sunfuxiang/bin/python evaluate.py --model deit_small_patch16_224 --weights /data/cle/auto/ZCode/Classification/weights_cifar10/deit_small_patch16_224_seed42/deit_small_patch16_224/model_best.pth --data-path ./datasets/cifar10/test --class-names airplane automobile bird cat deer dog frog horse ship truck
