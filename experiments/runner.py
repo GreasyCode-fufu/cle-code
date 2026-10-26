@@ -74,10 +74,13 @@ def run_job(batch, job):
     row = {"ts": datetime.now().strftime("%m-%d %H:%M"), "batch": batch, "model": name,
            "seed": seed, "status": "error", "note": ""}
     try:
+        epochs = os.environ.get("RUN_EPOCHS", "300")
+        early = os.environ.get("RUN_EARLY", "30")
         rc = sh(f"{PY} train_cle_fair.py --model {model} --num_classes 3 --img_size 224 "
                 f"--seed {seed} --data-path-train ./{DATA}/train "
                 f"--data-path-val ./{DATA}/val --weights {weights} "
-                f"--save-dir ./{WEIGHTS_ROOT}/{model}_seed{seed} --epochs 300", log)
+                f"--save-dir ./{WEIGHTS_ROOT}/{model}_seed{seed} "
+                f"--epochs {epochs} --early-stop {early}", log)
         if rc != 0:
             row["note"] = "train_failed"
             raise RuntimeError(f"train rc={rc}")
