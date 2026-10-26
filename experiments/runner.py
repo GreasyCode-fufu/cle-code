@@ -15,10 +15,13 @@ PY = "/home/login/miniconda3/envs/sunfuxiang/bin/python"
 PTH = "/home/login/data/cle/sunfuxiang/classifyML/pth"
 # 2026-10-25 起数据集切换为 cle_ac_v1(旧 results.csv/weights 均为旧数据集时代, 不可比):
 # 权重与结果落到独立目录, 防止读到旧数据集训练的陈旧权重
-DATA = "datasets/cle_ac_v1"
-WEIGHTS_ROOT = "weights_cle_ac_v1"
-RESULTS = os.path.join(REPO, "experiments", "results_cle_ac_v1.csv")
+# 可用环境变量切换数据集(如 heelBone): RUN_DATA/RUN_WEIGHTS/RUN_RESULTS/RUN_CLASSES
+DATA = os.environ.get("RUN_DATA", "datasets/cle_ac_v1")
+WEIGHTS_ROOT = os.environ.get("RUN_WEIGHTS", "weights_cle_ac_v1")
+RESULTS = os.path.join(REPO, os.environ.get("RUN_RESULTS", "experiments/results_cle_ac_v1.csv"))
 LOGDIR = os.path.join(REPO, "experiments", "logs")
+# 评估类名(空格分隔, 须与训练 sorted 目录序一致); 留空则用 evaluate.py 默认(CLE三类)
+EVAL_CLASSES = os.environ.get("RUN_CLASSES", "").split()
 
 FIELDS = ["ts", "batch", "model", "seed", "status", "val_f1", "test_f1", "test_acc",
           "test_auroc", "sens_benign", "sens_malignant", "sens_normal", "elapsed_min", "note"]
@@ -82,8 +85,9 @@ def run_job(batch, job):
         if not os.path.exists(best):
             row["note"] = "ckpt_missing"
             raise RuntimeError("model_best.pth not found at " + best)
-        sh(f"{PY} evaluate.py --model {model} --weights {best} --data-path ./{DATA}/val", log)
-        sh(f"{PY} evaluate.py --model {model} --weights {best} --data-path ./{DATA}/test", log)
+        cls_args = ("--class-names " + " ".join(EVAL_CLASSES)) if EVAL_CLASSES else ""
+        sh(f"{PY} evaluate.py --model {model} --weights {best} --data-path ./{DATA}/val {cls_args}", log)
+        sh(f"{PY} evaluate.py --model {model} --weights {best} --data-path ./{DATA}/test {cls_args}", log)
         v, t = read_metric(model, seed, "val"), read_metric(model, seed, "test")
         if not v or not t:
             row["note"] = "eval_missing"
