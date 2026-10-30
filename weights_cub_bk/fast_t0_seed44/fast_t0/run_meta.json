@@ -1,0 +1,40 @@
+{
+  "model": "fast_t0",
+  "num_classes": 200,
+  "img_size": 224,
+  "seed": 44,
+  "norm_mean": [
+    0.485,
+    0.456,
+    0.406
+  ],
+  "norm_std": [
+    0.229,
+    0.224,
+    0.225
+  ],
+  "norm_source": "imagenet",
+  "selection_metric": "val_macro_f1",
+  "loss": "unweighted_cross_entropy",
+  "data_path_train": "/data/cle/auto/ZCode/Classification/datasets/cub_v1/train",
+  "data_path_val": "/data/cle/auto/ZCode/Classification/datasets/cub_v1/val",
+  "weights": "/data/cle/auto/ZCode/Classification/weights_cub_bk/fast_t0_seed44/fast_t0/model_best.pth",
+  "created_at": "2026-10-29 10:48:34",
+  "pretrained_load": {
+    "checkpoint": "/data/cle/sunfuxiang/classifyML/pth/fasternet_t0-epoch.281-val_acc1.71.9180.pth",
+    "checkpoint_sha256": "368085dd84ea4eab04928c76655cfeeea76c9aa7a73b8dca77af81bba6d57c40",
+    "removed_classifier_keys": [
+      "head.bias",
+      "head.weight"
+    ],
+    "ignored_nonparameter_buffer_keys": [],
+    "missing_keys": [
+      "head.bias",
+      "head.weight"
+    ],
+    "unexpected_keys": [],
+    "allowed_missing_segments": [],
+    "checkpoint_transform": null,
+    "all_trainable_backbone_parameters_loaded": true
+  }
+}
