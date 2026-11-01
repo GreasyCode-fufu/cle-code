@@ -88,6 +88,14 @@ MODEL_REGISTRY = {
     "convnext_v2ac":  ("models.optimize.convnext_cle_v2", "convnext_v2ac"),
     "convnext_v2bc":  ("models.optimize.convnext_cle_v2", "convnext_v2bc"),
     "convnext_v2bc4": ("models.optimize.convnext_cle_v2", "convnext_v2bc4"),
+    # ── EPNet 三创新点变体 (models/optimize/convnext_ep.py, 2026-11-01) ──
+    "convnext_dph":           ("models.optimize.convnext_ep", "convnext_dph"),
+    "convnext_fesr":          ("models.optimize.convnext_ep", "convnext_fesr"),
+    "convnext_lsdg":          ("models.optimize.convnext_ep", "convnext_lsdg"),
+    "convnext_dph_fesr":      ("models.optimize.convnext_ep", "convnext_dph_fesr"),
+    "convnext_dph_lsdg":      ("models.optimize.convnext_ep", "convnext_dph_lsdg"),
+    "convnext_fesr_lsdg":     ("models.optimize.convnext_ep", "convnext_fesr_lsdg"),
+    "convnext_dph_fesr_lsdg": ("models.optimize.convnext_ep", "convnext_dph_fesr_lsdg"),
     # ── 对比实验扩展主干 (2026-10-26) ──
     "mobilenet_v2":       ("models.MobileNet", "mobilenet_v2"),
     "mobilenet_v3_large": ("models.MobileNetV3", "mobilenet_v3_large"),
