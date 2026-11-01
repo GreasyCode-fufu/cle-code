@@ -302,6 +302,7 @@ class ConvNeXtEP(ConvNeXt):
         self.use_dph = use_dph
         self.use_am = use_am
         self.use_aep = use_aep
+        self.use_dph4 = use_dph4
         self.forward_labels = use_am or am_aux   # AMH 需要标签(主头或辅助模式)
         if use_mfm:
             self.mfm = MFM(self.dims[2], mask_ratio=mfm_mask)
