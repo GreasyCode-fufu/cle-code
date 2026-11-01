@@ -541,3 +541,17 @@ def convnext_fgc_dsd_ri(num_classes: int):   # 随机初始化对照(消融: 投
 def convnext_fgc_dsd_fse(num_classes: int):  # 三域机制三合一: FGC提取+FSE选择+DSD空间
     return _ep(num_classes, fgc_stages=(3,), dsd_stages=(1,),
                fesr_stages=(2, 3), fesr_soft=True)
+
+
+# ── 算子-位置矩阵变体 (Batch BM: 尺度-域分配消融) ──
+def convnext_fgc3_dsd2(num_classes: int):   # FGC@stage3 + DSD@stage2
+    return _ep(num_classes, fgc_stages=(2,), dsd_stages=(1,))
+
+def convnext_fgc4_dsd1(num_classes: int):   # FGC@stage4 + DSD@stage1
+    return _ep(num_classes, fgc_stages=(3,), dsd_stages=(0,))
+
+def convnext_fgc3_dsd1(num_classes: int):   # FGC@stage3 + DSD@stage1
+    return _ep(num_classes, fgc_stages=(2,), dsd_stages=(0,))
+
+def convnext_fgc34_dsd2(num_classes: int):  # FGC@stage3+4 + DSD@stage2
+    return _ep(num_classes, fgc_stages=(2, 3), dsd_stages=(1,))

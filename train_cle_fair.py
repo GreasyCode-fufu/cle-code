@@ -163,6 +163,10 @@ MODEL_ALLOWED_MISSING_SEGMENTS = {
     "convnext_dpea2": {"cmp_head", "dsm"},
     "convnext_fgc_dsd_ri": {"dsv", "dsh", "dsm", "flt", "flt_bias"},
     "convnext_fgc_dsd_fse": {"fesr", "w_s", "w_e", "alpha", "dsm"},
+    "convnext_fgc3_dsd2": {"dsm"},
+    "convnext_fgc4_dsd1": {"dsm"},
+    "convnext_fgc3_dsd1": {"dsm"},
+    "convnext_fgc34_dsd2": {"dsm"},
 }
 
 # 各模型加载 ImageNet 预训练权重前需做的"权重变换"(如 s2d 变体的 conv1 通道膨胀)。
@@ -243,6 +247,49 @@ def _remap_dsd(state):
     return out
 
 
+
+
+def _remap_dsd_at(prefix):
+    """DSD 投影初始化(可变 stage 前缀, 如 "stages.0.")。"""
+    def f(state):
+        out = {}
+        for k, v in state.items():
+            if k.startswith(prefix) and ".dwconv.weight" in k:
+                w = v.float()
+                base = k.replace(".dwconv.weight", ".dwconv.")
+                out[base + "dsv.weight"] = w.sum(dim=3, keepdim=True)
+                out[base + "dsh.weight"] = w.sum(dim=2, keepdim=True)
+            elif k.startswith(prefix) and ".dwconv.bias" in k:
+                out[k.replace(".dwconv.bias", ".dwconv.dsv.bias")] = v
+            else:
+                out[k] = v
+        return out
+    return f
+
+
+def _remap_fgc_at(prefix, hw):
+    """FGC 频域对偶初始化(可变 stage 前缀与特征尺寸)。"""
+    def f(state):
+        out = {}
+        for k, v in state.items():
+            if k.startswith(prefix) and ".dwconv.weight" in k:
+                w = torch.roll(v.float().squeeze(1), shifts=(-3, -3), dims=(1, 2))
+                out[k.replace(".dwconv.weight", ".dwconv.flt")] = torch.view_as_real(
+                    torch.fft.rfft2(w)) if hw == 7 else torch.view_as_real(
+                    torch.fft.rfft2(_pad_to(w, hw)))
+            elif k.startswith(prefix) and ".dwconv.bias" in k:
+                out[k.replace(".dwconv.bias", ".dwconv.flt_bias")] = v
+            else:
+                out[k] = v
+        return out
+    return f
+
+
+def _pad_to(w, hw):
+    pad = torch.zeros(w.shape[0], hw, hw)
+    pad[:, 3:10, 3:10] = w
+    return torch.roll(pad, shifts=(-3, -3), dims=(1, 2))
+
 def _remap_ri_drop(state):
     """随机初始化对照: 丢弃被替换算子(stage1/stage3 dwconv)的预训练核,
     其余全部保留 —— 与投影初始化组的唯一差异是新算子的初始化方式。"""
@@ -287,6 +334,11 @@ MODEL_CHECKPOINT_TRANSFORMS = {
     "convnext_cmp_fgc": _remap_fgc,
     "convnext_dpea2": lambda st: _remap_fgc(_remap_dsd(st)),
     "convnext_fgc_dsd_fse": lambda st: _remap_fgc(_remap_dsd(st)),
+    "convnext_fgc3_dsd2": lambda st: _remap_fgc_at("stages.2.", 14)(_remap_dsd(st)),
+    "convnext_fgc4_dsd1": lambda st: _remap_fgc(_remap_dsd_at("stages.0.")(st)),
+    "convnext_fgc3_dsd1": lambda st: _remap_fgc_at("stages.2.", 14)(_remap_dsd_at("stages.0.")(st)),
+    "convnext_fgc34_dsd2": lambda st: _remap_fgc_at("stages.3.", 7)(
+        _remap_fgc_at("stages.2.", 14)(_remap_dsd(st))),
     "convnext_fgc_dsd_ri": _remap_ri_drop,
     "convnext_epnet2": lambda st: _remap_fgc(_remap_dsd(st)),
     "convnext_v2bc4": _remap_wr_s4,
