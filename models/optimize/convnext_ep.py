@@ -532,3 +532,7 @@ def convnext_cmp_fse(num_classes: int):     # CMP + FSE (聚合头+频域重标�
 
 def convnext_dpea2(num_classes: int):        # DPEA-v2: CMP + FGC + DSD 三合一
     return _ep(num_classes, use_cmp=True, fgc_stages=(3,), dsd_stages=(1,))
+
+
+def convnext_fgc_dsd_ri(num_classes: int):   # 随机初始化对照(消融: 投影初始化贡献)
+    return _ep(num_classes, fgc_stages=(3,), dsd_stages=(1,))

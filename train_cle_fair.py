@@ -161,6 +161,7 @@ MODEL_ALLOWED_MISSING_SEGMENTS = {
     "convnext_cmp_dsd": {"cmp_head", "dsm"},
     "convnext_cmp_fse": {"cmp_head", "fesr", "w_s", "w_e", "alpha"},
     "convnext_dpea2": {"cmp_head", "dsm"},
+    "convnext_fgc_dsd_ri": {"dsv", "dsh", "dsm", "flt", "flt_bias"},
 }
 
 # 各模型加载 ImageNet 预训练权重前需做的"权重变换"(如 s2d 变体的 conv1 通道膨胀)。
