@@ -115,6 +115,20 @@ MODEL_ALLOWED_MISSING_SEGMENTS = {
                       "msf2_p2", "msf2_p3", "msf2_n2", "msf2_n3"},
     "convnext_v2bc4": {"wavelet_convs", "wavelet_scale", "base_scale", "wt_filter", "iwt_filter",
                        "msf2_p2", "msf2_p3", "msf2_n2", "msf2_n3"},
+    # EPNet 三创新点变体 (convnext_ep.py, 2026-11-01): DPH 双池化头/FESR 频域重标定/LSDG 方向门控
+    "convnext_dph": {"dph4_n", "dph3_a", "dph3_m", "dph3_an", "dph3_mn",
+                     "dph2_a", "dph2_m", "dph2_an", "dph2_mn"},
+    "convnext_fesr": {"fesr", "w_s", "w_e"},
+    "convnext_lsdg": {"lsdg", "strip_h", "strip_v", "fuse"},
+    "convnext_dph_fesr": {"dph4_n", "dph3_a", "dph3_m", "dph3_an", "dph3_mn",
+                          "dph2_a", "dph2_m", "dph2_an", "dph2_mn", "fesr", "w_s", "w_e"},
+    "convnext_dph_lsdg": {"dph4_n", "dph3_a", "dph3_m", "dph3_an", "dph3_mn",
+                          "dph2_a", "dph2_m", "dph2_an", "dph2_mn", "lsdg", "strip_h",
+                          "strip_v", "fuse"},
+    "convnext_fesr_lsdg": {"fesr", "w_s", "w_e", "lsdg", "strip_h", "strip_v", "fuse"},
+    "convnext_dph_fesr_lsdg": {"dph4_n", "dph3_a", "dph3_m", "dph3_an", "dph3_mn",
+                               "dph2_a", "dph2_m", "dph2_an", "dph2_mn", "fesr", "w_s", "w_e",
+                               "lsdg", "strip_h", "strip_v", "fuse"},
 }
 
 # 各模型加载 ImageNet 预训练权重前需做的"权重变换"(如 s2d 变体的 conv1 通道膨胀)。
