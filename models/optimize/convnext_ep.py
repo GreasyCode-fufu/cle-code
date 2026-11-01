@@ -319,18 +319,21 @@ class ConvNeXtEP(ConvNeXt):
         if use_dph:
             d2, d3, d4 = self.dims[1], self.dims[2], self.dims[3]
             self.dph4_n = nn.LayerNorm(d4, eps=1e-6)            # s4 GMP 的 LN
-            self.dph3_a = nn.Linear(d3, d4, bias=False)
-            self.dph3_m = nn.Linear(d3, d4, bias=False)
-            self.dph3_an = nn.LayerNorm(d4, eps=1e-6)
-            self.dph3_mn = nn.LayerNorm(d4, eps=1e-6)
-            self.dph2_a = nn.Linear(d2, d4, bias=False)
-            self.dph2_m = nn.Linear(d2, d4, bias=False)
-            self.dph2_an = nn.LayerNorm(d4, eps=1e-6)
-            self.dph2_mn = nn.LayerNorm(d4, eps=1e-6)
-            if use_am:
-                self.head = ArcMarginHead(6 * d4, self.head.out_features)
+            if use_aep:   # s2/s3 走 AEP 谱池化, 不创建双池化投影
+                self.head = nn.Linear(4 * d4, self.head.out_features)
             else:
-                self.head = nn.Linear(6 * d4, self.head.out_features)
+                self.dph3_a = nn.Linear(d3, d4, bias=False)
+                self.dph3_m = nn.Linear(d3, d4, bias=False)
+                self.dph3_an = nn.LayerNorm(d4, eps=1e-6)
+                self.dph3_mn = nn.LayerNorm(d4, eps=1e-6)
+                self.dph2_a = nn.Linear(d2, d4, bias=False)
+                self.dph2_m = nn.Linear(d2, d4, bias=False)
+                self.dph2_an = nn.LayerNorm(d4, eps=1e-6)
+                self.dph2_mn = nn.LayerNorm(d4, eps=1e-6)
+                if use_am:
+                    self.head = ArcMarginHead(6 * d4, self.head.out_features)
+                else:
+                    self.head = nn.Linear(6 * d4, self.head.out_features)
         elif use_am:                        # 无 DPH 时基于 s4 单尺度
             self.head = ArcMarginHead(d4, self.head.out_features)
 
