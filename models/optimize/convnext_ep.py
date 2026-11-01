@@ -84,7 +84,9 @@ class FESR(nn.Module):
 
 
 class LSDG(nn.Module):
-    """C: 局部统计方向门控卷积(H/V 条带边缘 + 3x3 局部信噪门控)。"""
+    """C-v1: 局部统计方向门控卷积(残差注入式) — Batch BB 证实与 DPH 的 GMP 功能
+    冗余(A+C < A), 且残差注入本质是可被优化器压制的叠加分支 -> 被 DSD 替换式设计取代,
+    保留仅作消融对照。"""
 
     def __init__(self, dim: int, k: int = 7):
         super().__init__()
@@ -103,6 +105,52 @@ class LSDG(nn.Module):
         return x + e * g
 
 
+class DSDConv(nn.Module):
+    """C-v2: 方向条带深度卷积 —— 替换式(非叠加)重设计, 2026-11-01。
+
+    7×7 dwconv 整体替换为 (7×1)+(1×7) 并联条带深度卷积 + 通道级 softmax 混合。
+    数学动机: CLE 胃体腺体呈方向性管状结构, 条带核以 14C 参数(C,1,7,7) 的 29%)
+    显式编码 H/V 方向感受野; 全核是条带复合的严格超集, 属算子子空间替换。
+    预训练投影初始化: K(u,v) -> [Σ_v K (7,1); Σ_u K (1,7)] (幅值守恒投影),
+    使替换后初始响应与原 7×7 核统计一致, 预训练语义无损迁移。
+    """
+
+    def __init__(self, dim: int, k: int = 7):
+        super().__init__()
+        self.dsv = nn.Conv2d(dim, dim, (k, 1), padding=(k // 2, 0), groups=dim, bias=True)
+        self.dsh = nn.Conv2d(dim, dim, (1, k), padding=(0, k // 2), groups=dim, bias=False)
+        self.dsm = nn.Parameter(torch.zeros(2, dim, 1, 1))   # softmax -> [0.5, 0.5]
+
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
+        w = torch.softmax(self.dsm, dim=0)
+        return w[0] * self.dsv(x) + w[1] * self.dsh(x)
+
+
+class FGC(nn.Module):
+    """B-v2: 频域全局卷积 —— 替换式重设计(GFNet 思想 + 预训练核频域等价初始化)。
+
+    stage4 的 7×7 dwconv(7×7 特征图) 整体替换为 rfft2 频域乘性滤波(循环卷积的频域对偶)。
+    初始化 = rfft2(roll(预训练核, -3)): 初始行为原 dwconv 的循环卷积近似,
+    训练中感受野可自由从 7×7 扩展到全图(全局频率调制), 参数 37.7K->86K。
+    依据: M→B 漏诊样本高频占比低 15%, 需要超局部核的全局频率重组能力。
+    """
+
+    def __init__(self, dim: int, hw: int = 7, k: int = 7):
+        super().__init__()
+        self.hw = hw
+        self.flt = nn.Parameter(torch.zeros(dim, hw, hw // 2 + 1, 2))   # 实部/虚部
+        self.flt_bias = nn.Parameter(torch.zeros(dim))
+
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
+        b, c, h, w = x.shape
+        assert h == self.hw and w == self.hw, f"FGC 需要 {self.hw}x{self.hw} 输入, got {h}x{w}"
+        in_dtype = x.dtype
+        xf = x.float()
+        f = torch.view_as_complex(self.flt)
+        y = torch.fft.irfft2(torch.fft.rfft2(xf, dim=(-2, -1)) * f, s=(h, w), dim=(-2, -1))
+        return (y + self.flt_bias.view(1, -1, 1, 1)).to(in_dtype)
+
+
 class EPBlock(Block):
     """ConvNeXt Block + 可选 FESR(dwconv 后) / LSDG(dwconv 后)。
 
@@ -112,10 +160,14 @@ class EPBlock(Block):
 
     def __init__(self, dim, drop_rate=0., layer_scale_init_value=1e-6,
                  use_fesr=False, use_lsdg=False, fesr_ratio=0.1, lsdg_k=7,
-                 fesr_soft=False):
+                 fesr_soft=False, use_dsd=False, dsd_k=7, use_fgc=False, fgc_hw=14):
         super().__init__(dim, drop_rate, layer_scale_init_value)
         self.fesr = FESR(fesr_ratio, soft_start=fesr_soft) if use_fesr else None
         self.lsdg = LSDG(dim, lsdg_k) if use_lsdg else None
+        if use_dsd:
+            self.dwconv = DSDConv(dim, dsd_k)
+        if use_fgc:
+            self.dwconv = FGC(dim, fgc_hw)
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         shortcut = x
@@ -138,7 +190,8 @@ class EPBlock(Block):
 class ConvNeXtEP(ConvNeXt):
     """ConvNeXt + {A:DPH head, B:FESR@stages, C:LSDG@stages} 结构化组合。"""
 
-    def __init__(self, use_dph=False, fesr_stages=(), lsdg_stages=(), fesr_soft=False, **kw):
+    def __init__(self, use_dph=False, fesr_stages=(), lsdg_stages=(), fesr_soft=False,
+                 dsd_stages=(), fgc_stages=(), **kw):
         super().__init__(**kw)
         dims0 = self.downsample_layers[0][0].out_channels
         self.dims = [dims0] + [self.downsample_layers[i][1].out_channels for i in (1, 2, 3)]
@@ -146,6 +199,14 @@ class ConvNeXtEP(ConvNeXt):
         for si in fesr_stages:
             self.stages[si] = nn.Sequential(
                 *[EPBlock(self.dims[si], use_fesr=True, fesr_soft=fesr_soft)
+                  for _ in self.stages[si]])
+        for si in dsd_stages:
+            self.stages[si] = nn.Sequential(
+                *[EPBlock(self.dims[si], use_dsd=True) for _ in self.stages[si]])
+        for si in fgc_stages:
+            self.stages[si] = nn.Sequential(
+                *[EPBlock(self.dims[si], use_fgc=True,
+                          fgc_hw={0: 56, 1: 28, 2: 14, 3: 7}.get(si, 7))
                   for _ in self.stages[si]])
         for si in lsdg_stages:
             self.stages[si] = nn.Sequential(
@@ -216,6 +277,28 @@ def convnext_fesr_lsdg(num_classes: int):      # B+C
 def convnext_dph_fesr_lsdg(num_classes: int):  # A+B+C 三合一(最终候选)
     return _ep(num_classes, use_dph=True, fesr_stages=(2, 3), lsdg_stages=(1,))
 
-def convnext_epnet(num_classes: int):          # A+B(v2软启动)+C 三合一
+def convnext_epnet(num_classes: int):          # A+B(v2软启动)+C(v1) 三合一(旧链)
     return _ep(num_classes, use_dph=True, fesr_stages=(2, 3), lsdg_stages=(1,),
                fesr_soft=True)
+
+# ── 算子替换式变体 (2026-11-01 重设计: 替换 > 叠加) ──
+def convnext_dsd(num_classes: int):            # C-v2: DSD 条带卷积替换 stage2 dwconv
+    return _ep(num_classes, dsd_stages=(1,))
+
+def convnext_fgc(num_classes: int):            # B-v2: FGC 频域全局卷积替换 stage4 dwconv
+    return _ep(num_classes, fgc_stages=(3,))
+
+def convnext_dph_dsd(num_classes: int):        # A + C-v2
+    return _ep(num_classes, use_dph=True, dsd_stages=(1,))
+
+def convnext_dph_fgc(num_classes: int):        # A + B-v2
+    return _ep(num_classes, use_dph=True, fgc_stages=(3,))
+
+def convnext_fgc_dsd(num_classes: int):        # B-v2 + C-v2
+    return _ep(num_classes, fgc_stages=(3,), dsd_stages=(1,))
+
+def convnext_epnet2(num_classes: int):         # A + B-v2 + C-v2 (替换式三合一)
+    return _ep(num_classes, use_dph=True, fgc_stages=(3,), dsd_stages=(1,))
+
+def convnext_dph_fesr2(num_classes: int):      # A + B'(软启动FESR) 组合
+    return _ep(num_classes, use_dph=True, fesr_stages=(2, 3), fesr_soft=True)

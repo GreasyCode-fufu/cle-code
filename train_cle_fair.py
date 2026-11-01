@@ -133,6 +133,17 @@ MODEL_ALLOWED_MISSING_SEGMENTS = {
     "convnext_epnet": {"dph4_n", "dph3_a", "dph3_m", "dph3_an", "dph3_mn",
                        "dph2_a", "dph2_m", "dph2_an", "dph2_mn", "fesr", "w_s", "w_e", "alpha",
                        "lsdg", "strip_h", "strip_v", "fuse"},
+    # dsd/fgc 的核均由投影初始化填充, 仅 dsm(混合权重)真正随机初始化
+    "convnext_dsd": {"dsm"},
+    "convnext_dph_dsd": {"dph4_n", "dph3_a", "dph3_m", "dph3_an", "dph3_mn",
+                         "dph2_a", "dph2_m", "dph2_an", "dph2_mn", "dsm"},
+    "convnext_dph_fgc": {"dph4_n", "dph3_a", "dph3_m", "dph3_an", "dph3_mn",
+                         "dph2_a", "dph2_m", "dph2_an", "dph2_mn"},
+    "convnext_fgc_dsd": {"dsm"},
+    "convnext_epnet2": {"dph4_n", "dph3_a", "dph3_m", "dph3_an", "dph3_mn",
+                        "dph2_a", "dph2_m", "dph2_an", "dph2_mn", "dsm"},
+    "convnext_dph_fesr2": {"dph4_n", "dph3_a", "dph3_m", "dph3_an", "dph3_mn",
+                           "dph2_a", "dph2_m", "dph2_an", "dph2_mn", "fesr", "w_s", "w_e", "alpha"},
 }
 
 # 各模型加载 ImageNet 预训练权重前需做的"权重变换"(如 s2d 变体的 conv1 通道膨胀)。
@@ -196,6 +207,39 @@ def _remap_wr_s4(state):
     return out
 
 
+def _remap_dsd(state):
+    """EPNet C-v2: stage2(stages.1) 的 7x7 dwconv 核 -> DSD 条带核投影初始化。
+    (C,1,7,7) -> v(C,1,7,1)=Σ_w K, h(C,1,1,7)=Σ_h K (幅值守恒投影); bias -> dsv。"""
+    out = {}
+    for k, v in state.items():
+        if k.startswith("stages.1.") and ".dwconv.weight" in k:
+            w = v.float()
+            base = k.replace(".dwconv.weight", ".dwconv.")
+            out[base + "dsv.weight"] = w.sum(dim=3, keepdim=True)
+            out[base + "dsh.weight"] = w.sum(dim=2, keepdim=True)
+        elif k.startswith("stages.1.") and ".dwconv.bias" in k:
+            out[k.replace(".dwconv.bias", ".dwconv.dsv.bias")] = v
+        else:
+            out[k] = v
+    return out
+
+
+def _remap_fgc(state):
+    """EPNet B-v2: stage4(stages.3) 的 7x7 dwconv 核 -> 7x7 rfft2 频域滤波器初始值。
+    核中心循环移位到原点后 rfft2 = 原 dwconv 的循环卷积频域对偶(投影初始化)。"""
+    out = {}
+    for k, v in state.items():
+        if k.startswith("stages.3.") and ".dwconv.weight" in k:
+            w = torch.roll(v.float().squeeze(1), shifts=(-3, -3), dims=(1, 2))  # 中心->原点
+            out[k.replace(".dwconv.weight", ".dwconv.flt")] = torch.view_as_real(
+                torch.fft.rfft2(w))                       # 7x7 canvas = 特征尺寸
+        elif k.startswith("stages.3.") and ".dwconv.bias" in k:
+            out[k.replace(".dwconv.bias", ".dwconv.flt_bias")] = v
+        else:
+            out[k] = v
+    return out
+
+
 MODEL_CHECKPOINT_TRANSFORMS = {
     "resnet34_s2d_v2": _inflate_conv1_for_s2d,
     "resnet34_dshortcut": _remap_dshortcut,
@@ -206,6 +250,12 @@ MODEL_CHECKPOINT_TRANSFORMS = {
     "convnext_v2abc": _remap_stem2_wr,
     "convnext_v2ac": _remap_stem2,
     "convnext_v2bc": _remap_wr,
+    "convnext_dsd": _remap_dsd,
+    "convnext_fgc": _remap_fgc,
+    "convnext_dph_dsd": _remap_dsd,
+    "convnext_dph_fgc": _remap_fgc,
+    "convnext_fgc_dsd": lambda st: _remap_fgc(_remap_dsd(st)),
+    "convnext_epnet2": lambda st: _remap_fgc(_remap_dsd(st)),
     "convnext_v2bc4": _remap_wr_s4,
 }
 SWIN_VANILLA_IGNORED_CHECKPOINT_BUFFERS = {
