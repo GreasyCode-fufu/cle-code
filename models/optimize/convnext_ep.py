@@ -277,7 +277,8 @@ class ConvNeXtEP(ConvNeXt):
 
     def __init__(self, use_dph=False, fesr_stages=(), lsdg_stages=(), fesr_soft=False,
                  dsd_stages=(), fgc_stages=(), use_am=False, use_mfm=False,
-                 use_aep=False, am_aux=False, mfm_lam=0.05, mfm_mask=0.15, **kw):
+                 use_aep=False, am_aux=False, mfm_lam=0.05, mfm_mask=0.15,
+                 use_dph4=False, **kw):
         super().__init__(**kw)
         dims0 = self.downsample_layers[0][0].out_channels
         self.dims = [dims0] + [self.downsample_layers[i][1].out_channels for i in (1, 2, 3)]
@@ -321,6 +322,12 @@ class ConvNeXtEP(ConvNeXt):
             self.dph4_n = nn.LayerNorm(d4, eps=1e-6)            # s4 GMP 的 LN
             if use_aep:   # s2/s3 走 AEP 谱池化, 不创建双池化投影
                 self.head = nn.Linear(4 * d4, self.head.out_features)
+            elif use_dph4:  # DPH-lite: GMP 仅语义层 s4, s2/s3 仅 GAP 投影
+                self.dph3_a = nn.Linear(d3, d4, bias=False)
+                self.dph3_an = nn.LayerNorm(d4, eps=1e-6)
+                self.dph2_a = nn.Linear(d2, d4, bias=False)
+                self.dph2_an = nn.LayerNorm(d4, eps=1e-6)
+                self.head = nn.Linear(4 * d4, self.head.out_features)
             else:
                 self.dph3_a = nn.Linear(d3, d4, bias=False)
                 self.dph3_m = nn.Linear(d3, d4, bias=False)
@@ -349,6 +356,10 @@ class ConvNeXtEP(ConvNeXt):
         if not self.use_dph:
             return gap4
         gmp4 = self.dph4_n(feats[3].amax([-2, -1]))
+        if getattr(self, "use_dph4", False):   # DPH-lite: GMP 仅 s4
+            a3 = self.dph3_an(self.dph3_a(feats[2].mean([-2, -1])))
+            a2 = self.dph2_an(self.dph2_a(feats[1].mean([-2, -1])))
+            return torch.cat([gap4, gmp4, a3, a2], dim=-1)   # 4*768
         if self.use_aep:   # s2/s3: 双池化拼接 -> 自适应谱池化(参数更少, 尺度自适应)
             e3 = self.aep3_n(self.aep3_p(self.aep3(feats[2])))
             e2 = self.aep2_n(self.aep2_p(self.aep2(feats[1])))
@@ -442,3 +453,7 @@ def convnext_dph_mfm2(num_classes: int):     # A + MFM温和化(λ=0.05, mask15%
 
 def convnext_aep(num_classes: int):          # A-v3: s4双池 + s2/s3自适应谱池化
     return _ep(num_classes, use_dph=True, use_aep=True)
+
+
+def convnext_dph4(num_classes: int):         # A-lite: GMP 仅 s4(语义层), s2/s3 GAP
+    return _ep(num_classes, use_dph=True, use_dph4=True)
