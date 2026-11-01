@@ -555,3 +555,7 @@ def convnext_fgc3_dsd1(num_classes: int):   # FGC@stage3 + DSD@stage1
 
 def convnext_fgc34_dsd2(num_classes: int):  # FGC@stage3+4 + DSD@stage2
     return _ep(num_classes, fgc_stages=(2, 3), dsd_stages=(1,))
+
+
+def convnext_fgc_ri(num_classes: int):       # FGC随机初始化对照(创新点2判决实验)
+    return _ep(num_classes, fgc_stages=(3,))

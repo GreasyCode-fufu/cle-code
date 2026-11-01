@@ -167,6 +167,7 @@ MODEL_ALLOWED_MISSING_SEGMENTS = {
     "convnext_fgc4_dsd1": {"dsm"},
     "convnext_fgc3_dsd1": {"dsm"},
     "convnext_fgc34_dsd2": {"dsm"},
+    "convnext_fgc_ri": {"flt", "flt_bias"},
 }
 
 # 各模型加载 ImageNet 预训练权重前需做的"权重变换"(如 s2d 变体的 conv1 通道膨胀)。
@@ -335,6 +336,7 @@ MODEL_CHECKPOINT_TRANSFORMS = {
     "convnext_dpea2": lambda st: _remap_fgc(_remap_dsd(st)),
     "convnext_fgc_dsd_fse": lambda st: _remap_fgc(_remap_dsd(st)),
     "convnext_fgc3_dsd2": lambda st: _remap_fgc_at("stages.2.", 14)(_remap_dsd(st)),
+    "convnext_fgc_ri": lambda st: _remap_ri_drop(st),
     "convnext_fgc4_dsd1": lambda st: _remap_fgc(_remap_dsd_at("stages.0.")(st)),
     "convnext_fgc3_dsd1": lambda st: _remap_fgc_at("stages.2.", 14)(_remap_dsd_at("stages.0.")(st)),
     "convnext_fgc34_dsd2": lambda st: _remap_fgc_at("stages.3.", 7)(

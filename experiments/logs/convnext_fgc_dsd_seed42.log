@@ -306,3 +306,115 @@ train epoch 45 loss: 0.012, acc: 0.997:  10…   ,
 Epoch 45: train_loss=0.012, train_acc=0.997, val_loss=0.134, val_acc=0.976, val_macroF1=0.9762, lr=0.000094, best_macroF1=0.9887 (epoch 21)
 train epoch 46 loss: 0.006, acc: 0.998:  10…   , 
 Epoch 46: train_loss=0.006, train_acc=0.998, val_loss=0.188, val_acc=0.971, val_macroF1=0.9712, lr=0.000094, best_macroF1=0.9887 (epoch 21)
+train epoch 47 loss: 0.004, acc: 0.999:  10…   , 
+Epoch 47: train_loss=0.004, train_acc=0.999, val_loss=0.213, val_acc=0.969, val_macroF1=0.9700, lr=0.000094, best_macroF1=0.9887 (epoch 21)
+train epoch 48 loss: 0.042, acc: 0.987:  10…   , 
+Epoch 48: train_loss=0.042, train_acc=0.987, val_loss=0.118, val_acc=0.977, val_macroF1=0.9775, lr=0.000094, best_macroF1=0.9887 (epoch 21)
+train epoch 49 loss: 0.008, acc: 0.998:  10…   , 
+Epoch 49: train_loss=0.008, train_acc=0.998, val_loss=0.128, val_acc=0.974, val_macroF1=0.9750, lr=0.000093, best_macroF1=0.9887 (epoch 21)
+train epoch 50 loss: 0.001, acc: 1.000:  10…   , 
+Epoch 50: train_loss=0.001, train_acc=1.000, val_loss=0.130, val_acc=0.981, val_macroF1=0.9811, lr=0.000093, best_macroF1=0.9887 (epoch 21)
+train epoch 51 loss: 0.005, acc: 0.999:  10…   , 
+Epoch 51: train_loss=0.005, train_acc=0.999, val_loss=0.166, val_acc=0.978, val_macroF1=0.9787, lr=0.000093, best_macroF1=0.9887 (epoch 21)
+
+[early stop] epoch 51: val_macro_f1 not improved for 30 epochs
+
+===========================================================
+             Training Summary (fair baseline)              
+===========================================================
+  Model:              convnext_fgc_dsd
+  Best val macro-F1:  0.9887  (epoch 21)
+  Selection:          val macro-F1
+  Loss:               unweighted CrossEntropy
+  Training Time:      0:23:41
+  Weights:            ./weights_covid_ep/convnext_fgc_dsd_seed42/convnext_fgc_dsd/model_best.pth
+  Run meta:           ./weights_covid_ep/convnext_fgc_dsd_seed42/convnext_fgc_dsd/run_meta.json
+===========================================================
+
+===== [2026-11-02 03:09:09.460841] /home/login/miniconda3/envs/sunfuxiang/bin/python train_cle_fair.py --model convnext_fgc_dsd --num_classes 3 --img_size 224 --seed 42 --data-path-train ./datasets/covid_v1/train --data-path-val ./datasets/covid_v1/val --weights /home/login/data/cle/sunfuxiang/classifyML/pth/convnext_tiny_1k_224_ema.pth --save-dir ./weights_covid_ep/convnext_fgc_dsd_seed42 --epochs 300 --early-stop 30 
+[norm] source=run_meta.json(imagenet)  mean=[0.485, 0.456, 0.406] std=[0.229, 0.224, 0.225]  img_size=224
+[model] convnext_fgc_dsd  weights=/data/cle/auto/ZCode/Classification/weights_covid_ep/convnext_fgc_dsd_seed42/convnext_fgc_dsd/model_best.pth
+[complexity] MACs=4.43G FLOPs=8.87G Params=27.67M
+[data] test=784 张  COVID=244  NORMAL=270  PNEUMONIA=270
+
+================================================================
+  评估结果 — convnext_fgc_dsd  (test=784 张)
+================================================================
+  【主指标】
+  Macro-F1         : 0.9887   ← 主指标(类别不平衡首选)
+  Accuracy         : 0.9885
+  Macro-AUROC(OvR) : 0.9960
+----------------------------------------------------------------
+  【补充总体指标】
+  Weighted-F1      : 0.9885
+  Balanced Acc     : 0.9888
+  Macro-Sensitivity: 0.9888   (= 各类 Recall 均值)
+  Macro-Specificity: 0.9942
+  Macro-Precision  : 0.9886
+  AUC-PR (Macro)   : 0.9905
+  Cohen's Kappa    : 0.9828
+  MCC              : 0.9828
+----------------------------------------------------------------
+  【每类指标】 Sensitivity / Specificity / Precision / F1 / AUROC
+  COVID                 : 0.996 / 0.996 / 0.992 / 0.994 / 0.995  (n=244)
+  NORMAL                : 0.985 / 0.996 / 0.993 / 0.989 / 0.999  (n=270)
+  PNEUMONIA             : 0.985 / 0.990 / 0.982 / 0.983 / 0.994  (n=270)
+----------------------------------------------------------------
+  【模型复杂度】(仅与架构+输入尺寸有关，与数据集无关)
+  MACs : 4.43G    FLOPs : 8.87G    Params : 27.67M
+  【推理效率】(受 GPU 负载影响，为参考量级)
+  Pure FPS : 261.1  (3.83 ms/张)    End-to-End FPS : 202.0
+----------------------------------------------------------------
+  【混淆矩阵】(行=真实, 列=预测)
+                     COVID    NORMAL  PNEUMONI
+  COVID                243         0         1
+  NORMAL                 0       266         4
+  PNEUMONIA              2         2       266
+================================================================
+
+[saved] /data/cle/auto/ZCode/Classification/weights_covid_ep/convnext_fgc_dsd_seed42/convnext_fgc_dsd/eval_20261102_033307/  (results.json / predictions.csv / evaluation_report.md)
+
+===== [2026-11-02 03:32:57.098008] /home/login/miniconda3/envs/sunfuxiang/bin/python evaluate.py --model convnext_fgc_dsd --weights /data/cle/auto/ZCode/Classification/weights_covid_ep/convnext_fgc_dsd_seed42/convnext_fgc_dsd/model_best.pth --data-path ./datasets/covid_v1/val --class-names COVID NORMAL PNEUMONIA
+[norm] source=run_meta.json(imagenet)  mean=[0.485, 0.456, 0.406] std=[0.229, 0.224, 0.225]  img_size=224
+[model] convnext_fgc_dsd  weights=/data/cle/auto/ZCode/Classification/weights_covid_ep/convnext_fgc_dsd_seed42/convnext_fgc_dsd/model_best.pth
+[complexity] MACs=4.43G FLOPs=8.87G Params=27.67M
+[data] test=785 张  COVID=244  NORMAL=271  PNEUMONIA=270
+
+================================================================
+  评估结果 — convnext_fgc_dsd  (test=785 张)
+================================================================
+  【主指标】
+  Macro-F1         : 0.9814   ← 主指标(类别不平衡首选)
+  Accuracy         : 0.9809
+  Macro-AUROC(OvR) : 0.9993
+----------------------------------------------------------------
+  【补充总体指标】
+  Weighted-F1      : 0.9809
+  Balanced Acc     : 0.9813
+  Macro-Sensitivity: 0.9813   (= 各类 Recall 均值)
+  Macro-Specificity: 0.9903
+  Macro-Precision  : 0.9819
+  AUC-PR (Macro)   : 0.9988
+  Cohen's Kappa    : 0.9713
+  MCC              : 0.9715
+----------------------------------------------------------------
+  【每类指标】 Sensitivity / Specificity / Precision / F1 / AUROC
+  COVID                 : 0.992 / 1.000 / 1.000 / 0.996 / 1.000  (n=244)
+  NORMAL                : 0.963 / 0.994 / 0.989 / 0.976 / 0.999  (n=271)
+  PNEUMONIA             : 0.989 / 0.977 / 0.957 / 0.973 / 0.999  (n=270)
+----------------------------------------------------------------
+  【模型复杂度】(仅与架构+输入尺寸有关，与数据集无关)
+  MACs : 4.43G    FLOPs : 8.87G    Params : 27.67M
+  【推理效率】(受 GPU 负载影响，为参考量级)
+  Pure FPS : 266.5  (3.75 ms/张)    End-to-End FPS : 205.2
+----------------------------------------------------------------
+  【混淆矩阵】(行=真实, 列=预测)
+                     COVID    NORMAL  PNEUMONI
+  COVID                242         0         2
+  NORMAL                 0       261        10
+  PNEUMONIA              0         3       267
+================================================================
+
+[saved] /data/cle/auto/ZCode/Classification/weights_covid_ep/convnext_fgc_dsd_seed42/convnext_fgc_dsd/eval_20261102_033317/  (results.json / predictions.csv / evaluation_report.md)
+
+===== [2026-11-02 03:33:07.812708] /home/login/miniconda3/envs/sunfuxiang/bin/python evaluate.py --model convnext_fgc_dsd --weights /data/cle/auto/ZCode/Classification/weights_covid_ep/convnext_fgc_dsd_seed42/convnext_fgc_dsd/model_best.pth --data-path ./datasets/covid_v1/test --class-names COVID NORMAL PNEUMONIA
