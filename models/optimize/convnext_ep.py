@@ -528,3 +528,7 @@ def convnext_cmp_dsd(num_classes: int):     # CMP + DSD (聚合头+方向算子)
 
 def convnext_cmp_fse(num_classes: int):     # CMP + FSE (聚合头+频域重标定)
     return _ep(num_classes, use_cmp=True, fesr_stages=(2, 3), fesr_soft=True)
+
+
+def convnext_dpea2(num_classes: int):        # DPEA-v2: CMP + FGC + DSD 三合一
+    return _ep(num_classes, use_cmp=True, fgc_stages=(3,), dsd_stages=(1,))

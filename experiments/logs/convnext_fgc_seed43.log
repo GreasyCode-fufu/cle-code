@@ -616,3 +616,109 @@ train epoch 45 loss: 0.003, acc: 0.999:  10…   ,
 Epoch 45: train_loss=0.003, train_acc=0.999, val_loss=0.108, val_acc=0.982, val_macroF1=0.9825, lr=0.000094, best_macroF1=0.9850 (epoch 18)
 train epoch 46 loss: 0.006, acc: 0.997:  10…   , 
 Epoch 46: train_loss=0.006, train_acc=0.997, val_loss=0.301, val_acc=0.955, val_macroF1=0.9561, lr=0.000094, best_macroF1=0.9850 (epoch 18)
+train epoch 47 loss: 0.010, acc: 0.998:  10…   , 
+Epoch 47: train_loss=0.010, train_acc=0.998, val_loss=0.118, val_acc=0.980, val_macroF1=0.9799, lr=0.000094, best_macroF1=0.9850 (epoch 18)
+train epoch 48 loss: 0.004, acc: 0.999:  10…   , 
+Epoch 48: train_loss=0.004, train_acc=0.999, val_loss=0.192, val_acc=0.969, val_macroF1=0.9700, lr=0.000094, best_macroF1=0.9850 (epoch 18)
+
+[early stop] epoch 48: val_macro_f1 not improved for 30 epochs
+
+===========================================================
+             Training Summary (fair baseline)              
+===========================================================
+  Model:              convnext_fgc
+  Best val macro-F1:  0.9850  (epoch 18)
+  Selection:          val macro-F1
+  Loss:               unweighted CrossEntropy
+  Training Time:      0:09:45
+  Weights:            ./weights_covid_ep/convnext_fgc_seed43/convnext_fgc/model_best.pth
+  Run meta:           ./weights_covid_ep/convnext_fgc_seed43/convnext_fgc/run_meta.json
+===========================================================
+
+===== [2026-11-02 01:29:43.597796] /home/login/miniconda3/envs/sunfuxiang/bin/python train_cle_fair.py --model convnext_fgc --num_classes 3 --img_size 224 --seed 43 --data-path-train ./datasets/covid_v1/train --data-path-val ./datasets/covid_v1/val --weights /home/login/data/cle/sunfuxiang/classifyML/pth/convnext_tiny_1k_224_ema.pth --save-dir ./weights_covid_ep/convnext_fgc_seed43 --epochs 300 --early-stop 30 
+[norm] source=run_meta.json(imagenet)  mean=[0.485, 0.456, 0.406] std=[0.229, 0.224, 0.225]  img_size=224
+[model] convnext_fgc  weights=/data/cle/auto/ZCode/Classification/weights_covid_ep/convnext_fgc_seed43/convnext_fgc/model_best.pth
+[complexity] MACs=4.45G FLOPs=8.90G Params=27.69M
+[data] test=784 张  COVID=244  NORMAL=270  PNEUMONIA=270
+
+================================================================
+  评估结果 — convnext_fgc  (test=784 张)
+================================================================
+  【主指标】
+  Macro-F1         : 0.9850   ← 主指标(类别不平衡首选)
+  Accuracy         : 0.9847
+  Macro-AUROC(OvR) : 0.9970
+----------------------------------------------------------------
+  【补充总体指标】
+  Weighted-F1      : 0.9847
+  Balanced Acc     : 0.9851
+  Macro-Sensitivity: 0.9851   (= 各类 Recall 均值)
+  Macro-Specificity: 0.9922
+  Macro-Precision  : 0.9851
+  AUC-PR (Macro)   : 0.9934
+  Cohen's Kappa    : 0.9770
+  MCC              : 0.9770
+----------------------------------------------------------------
+  【每类指标】 Sensitivity / Specificity / Precision / F1 / AUROC
+  COVID                 : 0.996 / 0.998 / 0.996 / 0.996 / 0.996  (n=244)
+  NORMAL                : 0.985 / 0.988 / 0.978 / 0.982 / 0.998  (n=270)
+  PNEUMONIA             : 0.974 / 0.990 / 0.981 / 0.978 / 0.996  (n=270)
+----------------------------------------------------------------
+  【模型复杂度】(仅与架构+输入尺寸有关，与数据集无关)
+  MACs : 4.45G    FLOPs : 8.90G    Params : 27.69M
+  【推理效率】(受 GPU 负载影响，为参考量级)
+  Pure FPS : 369.5  (2.71 ms/张)    End-to-End FPS : 263.1
+----------------------------------------------------------------
+  【混淆矩阵】(行=真实, 列=预测)
+                     COVID    NORMAL  PNEUMONI
+  COVID                243         0         1
+  NORMAL                 0       266         4
+  PNEUMONIA              1         6       263
+================================================================
+
+[saved] /data/cle/auto/ZCode/Classification/weights_covid_ep/convnext_fgc_seed43/convnext_fgc/eval_20261102_013939/  (results.json / predictions.csv / evaluation_report.md)
+
+===== [2026-11-02 01:39:32.249831] /home/login/miniconda3/envs/sunfuxiang/bin/python evaluate.py --model convnext_fgc --weights /data/cle/auto/ZCode/Classification/weights_covid_ep/convnext_fgc_seed43/convnext_fgc/model_best.pth --data-path ./datasets/covid_v1/val --class-names COVID NORMAL PNEUMONIA
+[norm] source=run_meta.json(imagenet)  mean=[0.485, 0.456, 0.406] std=[0.229, 0.224, 0.225]  img_size=224
+[model] convnext_fgc  weights=/data/cle/auto/ZCode/Classification/weights_covid_ep/convnext_fgc_seed43/convnext_fgc/model_best.pth
+[complexity] MACs=4.45G FLOPs=8.90G Params=27.69M
+[data] test=785 张  COVID=244  NORMAL=271  PNEUMONIA=270
+
+================================================================
+  评估结果 — convnext_fgc  (test=785 张)
+================================================================
+  【主指标】
+  Macro-F1         : 0.9912   ← 主指标(类别不平衡首选)
+  Accuracy         : 0.9911
+  Macro-AUROC(OvR) : 0.9997
+----------------------------------------------------------------
+  【补充总体指标】
+  Weighted-F1      : 0.9911
+  Balanced Acc     : 0.9912
+  Macro-Sensitivity: 0.9912   (= 各类 Recall 均值)
+  Macro-Specificity: 0.9955
+  Macro-Precision  : 0.9912
+  AUC-PR (Macro)   : 0.9994
+  Cohen's Kappa    : 0.9866
+  MCC              : 0.9866
+----------------------------------------------------------------
+  【每类指标】 Sensitivity / Specificity / Precision / F1 / AUROC
+  COVID                 : 0.996 / 0.998 / 0.996 / 0.996 / 1.000  (n=244)
+  NORMAL                : 0.989 / 0.996 / 0.993 / 0.991 / 1.000  (n=271)
+  PNEUMONIA             : 0.989 / 0.992 / 0.985 / 0.987 / 0.999  (n=270)
+----------------------------------------------------------------
+  【模型复杂度】(仅与架构+输入尺寸有关，与数据集无关)
+  MACs : 4.45G    FLOPs : 8.90G    Params : 27.69M
+  【推理效率】(受 GPU 负载影响，为参考量级)
+  Pure FPS : 370.3  (2.70 ms/张)    End-to-End FPS : 263.1
+----------------------------------------------------------------
+  【混淆矩阵】(行=真实, 列=预测)
+                     COVID    NORMAL  PNEUMONI
+  COVID                243         0         1
+  NORMAL                 0       268         3
+  PNEUMONIA              1         2       267
+================================================================
+
+[saved] /data/cle/auto/ZCode/Classification/weights_covid_ep/convnext_fgc_seed43/convnext_fgc/eval_20261102_013948/  (results.json / predictions.csv / evaluation_report.md)
+
+===== [2026-11-02 01:39:40.536428] /home/login/miniconda3/envs/sunfuxiang/bin/python evaluate.py --model convnext_fgc --weights /data/cle/auto/ZCode/Classification/weights_covid_ep/convnext_fgc_seed43/convnext_fgc/model_best.pth --data-path ./datasets/covid_v1/test --class-names COVID NORMAL PNEUMONIA
