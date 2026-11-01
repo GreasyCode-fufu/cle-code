@@ -60,3 +60,23 @@ train 120张/类 + v2bc-seed42 test 错误样本取证:
 ## 4. 命名
    工作名 convnext_dph / convnext_fesr / convnext_lsdg / 两两 / convnext_dph_fesr_lsdg。
    定型后起正式网络名。
+
+## 5. 主域筛选全景 (Batch BA–BG, 2026-11-01/02 夜)
+
+cle_ac_v1 test(576张) 全部为 3seeds 起评, 重点模型补至 5:
+
+| 变体 | 类型 | 均值(test F1) | 判定 |
+|---|---|---|---|
+| convnext_tiny baseline | — | 94.76±0.84 (5s) | 参照 |
+| **convnext_dph (CH+GMP)** | head 替换 | **95.78±1.16 (5s)**, 3s=96.28 | 主域有效 F1+1.02/Kappa+1.57 |
+| convnext_v2c (CH, 前作) | head 替换 | 96.11±0.44 (5s) | 前作资产, 不可作为本作创新 |
+| fesr2 / fgc / dsd / lsdg / aep / dph4 | block/算子 | 94.7–95.6 | 单独弱正 |
+| dph+X 全部组合 (8种) | 叠加 | 93.8–95.6 | **全部回退** (饱和区冲突) |
+| amh/am2/mfm/mfm2/cw | 损失/SSL | 94.9–95.4 | 低于 DPH |
+
+结论: 主域深度饱和, DPH 触顶。GMP 贡献高方差高上限(sens_M 3s+4.13/5s+1.71)。
+创新点 2/3 的判定转向跨域增益(用户要求≥2数据集)。
+
+## 6. 跨域筛选 (Batch XD, covid+busi, 进行中)
+baseline: covid tiny 3s=98.02 / busi tiny 3s=86.78。
+候选: dph / dsd(条带替换) / fgc(频域替换)。
