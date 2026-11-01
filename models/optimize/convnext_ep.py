@@ -105,6 +105,74 @@ class LSDG(nn.Module):
         return x + e * g
 
 
+class ArcMarginHead(nn.Module):
+    """D: 判别性角度间隔头(ArcFace 思想融入分类网络, 网络结构+损失一体创新)。
+
+    DPH 拼接特征 -> Linear 降维 -> LN -> L2 归一化 -> 与类中心做角度间隔判别。
+    训练: s*cos(theta + m) 强制类间角间隔(m=0.3); 推理: s*cos(theta) 前向自洽。
+    动机: M/B 混淆(前作 8 例恶性漏诊)源于决策边界贴合, 角度间隔在归一化空间
+    强制 M/B 分离; 特征归一化同时消除类内幅值漂移(小样本稳健)。
+    """
+
+    def __init__(self, feat_dim: int, num_classes: int, emb_dim: int = 256,
+                 s: float = 16.0, m: float = 0.3):
+        super().__init__()
+        self.fc = nn.Linear(feat_dim, emb_dim, bias=False)
+        self.ln = nn.LayerNorm(emb_dim, eps=1e-6)
+        self.weight = nn.Parameter(torch.empty(num_classes, emb_dim))
+        nn.init.normal_(self.weight, std=0.01)
+        self.s, self.m = s, m
+
+    def forward(self, feat: torch.Tensor, labels: torch.Tensor = None) -> torch.Tensor:
+        x = F.normalize(self.ln(self.fc(feat)), dim=-1)
+        w = F.normalize(self.weight, dim=-1)
+        cos = x @ w.t()                                     # (B, nc) in [-1, 1]
+        if self.training:
+            onehot = torch.zeros_like(cos)
+            if labels is not None:
+                onehot.scatter_(1, labels.view(-1, 1).to(cos.device), 1.0)
+            else:                                           # 无标签时退化为伪标签
+                onehot.scatter_(1, cos.argmax(dim=1, keepdim=True), 1.0)
+            theta = torch.acos(torch.clamp(cos, -1 + 1e-7, 1 - 1e-7))
+            target_cos = torch.cos(theta + self.m * onehot)
+            cos = cos * (1 - onehot) + target_cos * onehot
+        return self.s * cos
+
+
+class MFM(nn.Module):
+    """E: 掩码特征重建自监督辅助头(Masked Feature Modeling)。
+
+    training 时对 stage3 特征(14x14)随机 mask 25% patch, 轻量 decoder 重建
+    (仅在被 mask 位置计 L2); 推理零开销。损失经 model.mfm_loss 由训练循环聚合
+    (CE + lambda*MFM, lambda=0.1)。动机: 2k 小样本下迫使网络编码完整腺体结构
+    语义而非捷径特征(自监督正则)。
+    """
+
+    def __init__(self, dim: int, mask_ratio: float = 0.25):
+        super().__init__()
+        self.mask_ratio = mask_ratio
+        self.ln = nn.LayerNorm(dim, eps=1e-6)
+        self.fc = nn.Linear(dim, dim)
+        self.loss = torch.zeros(1)
+
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
+        if not self.training:
+            return x
+        b, c, h, w = x.shape
+        n = h * w
+        k = max(1, int(n * self.mask_ratio))
+        idx = torch.randperm(n, device=x.device)[:k]
+        flat = x.reshape(b, c, n)
+        xm = flat.clone()
+        xm[:, :, idx] = 0                                   # patch 级掩码
+        inp = xm.permute(0, 2, 1).reshape(b * n, c)         # 逐位置特征
+        rec = self.fc(self.ln(inp))                         # 轻量 decoder
+        rec = rec.reshape(b, n, c).permute(0, 2, 1)         # (b, c, n)
+        self.loss = F.mse_loss(rec[:, :, idx].float(),
+                               flat[:, :, idx].detach().float())
+        return x
+
+
 class DSDConv(nn.Module):
     """C-v2: 方向条带深度卷积 —— 替换式(非叠加)重设计, 2026-11-01。
 
@@ -191,7 +259,7 @@ class ConvNeXtEP(ConvNeXt):
     """ConvNeXt + {A:DPH head, B:FESR@stages, C:LSDG@stages} 结构化组合。"""
 
     def __init__(self, use_dph=False, fesr_stages=(), lsdg_stages=(), fesr_soft=False,
-                 dsd_stages=(), fgc_stages=(), **kw):
+                 dsd_stages=(), fgc_stages=(), use_am=False, use_mfm=False, **kw):
         super().__init__(**kw)
         dims0 = self.downsample_layers[0][0].out_channels
         self.dims = [dims0] + [self.downsample_layers[i][1].out_channels for i in (1, 2, 3)]
@@ -213,6 +281,10 @@ class ConvNeXtEP(ConvNeXt):
                 *[EPBlock(self.dims[si], use_lsdg=True) for _ in self.stages[si]])
 
         self.use_dph = use_dph
+        self.use_am = use_am
+        self.forward_labels = use_am        # 训练循环据此传标签(AMH 需要目标类)
+        if use_mfm:
+            self.mfm = MFM(self.dims[2])
         if use_dph:
             d2, d3, d4 = self.dims[1], self.dims[2], self.dims[3]
             self.dph4_n = nn.LayerNorm(d4, eps=1e-6)            # s4 GMP 的 LN
@@ -224,13 +296,20 @@ class ConvNeXtEP(ConvNeXt):
             self.dph2_m = nn.Linear(d2, d4, bias=False)
             self.dph2_an = nn.LayerNorm(d4, eps=1e-6)
             self.dph2_mn = nn.LayerNorm(d4, eps=1e-6)
-            self.head = nn.Linear(6 * d4, self.head.out_features)
+            if use_am:
+                self.head = ArcMarginHead(6 * d4, self.head.out_features)
+            else:
+                self.head = nn.Linear(6 * d4, self.head.out_features)
+        elif use_am:                        # 无 DPH 时基于 s4 单尺度
+            self.head = ArcMarginHead(d4, self.head.out_features)
 
     def forward_features(self, x: torch.Tensor) -> torch.Tensor:
         feats = []
         for i in range(4):
             x = self.downsample_layers[i](x)
             x = self.stages[i](x)
+            if i == 2 and getattr(self, "mfm", None) is not None:
+                x = self.mfm(x)                             # 训练时掩码重建(返回原x)
             feats.append(x)
         gap4 = self.norm(feats[3].mean([-2, -1]))
         if not self.use_dph:
@@ -242,8 +321,11 @@ class ConvNeXtEP(ConvNeXt):
         m2 = self.dph2_mn(self.dph2_m(feats[1].amax([-2, -1])))
         return torch.cat([gap4, gmp4, a3, m3, a2, m2], dim=-1)
 
-    def forward(self, x: torch.Tensor) -> torch.Tensor:
-        return self.head(self.forward_features(x))
+    def forward(self, x: torch.Tensor, labels: torch.Tensor = None) -> torch.Tensor:
+        f = self.forward_features(x)
+        if self.use_am and self.training and labels is not None:
+            return self.head(f, labels)      # 目标类角度间隔(见 ArcMarginHead.forward)
+        return self.head(f)
 
 
 _TINY = dict(depths=[3, 3, 9, 3], dims=[96, 192, 384, 768])
@@ -302,3 +384,11 @@ def convnext_epnet2(num_classes: int):         # A + B-v2 + C-v2 (替换式三�
 
 def convnext_dph_fesr2(num_classes: int):      # A + B'(软启动FESR) 组合
     return _ep(num_classes, use_dph=True, fesr_stages=(2, 3), fesr_soft=True)
+
+
+# ── 损失/自监督增强变体 (2026-11-01: loss+SSL 正交于结构, 无组合回退) ──
+def convnext_dph_am(num_classes: int):       # A + D(AMH 角度间隔头)
+    return _ep(num_classes, use_dph=True, use_am=True)
+
+def convnext_dph_mfm(num_classes: int):      # A + E(MFM 掩码特征重建自监督)
+    return _ep(num_classes, use_dph=True, use_mfm=True)

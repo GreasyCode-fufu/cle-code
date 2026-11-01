@@ -144,6 +144,10 @@ MODEL_ALLOWED_MISSING_SEGMENTS = {
                         "dph2_a", "dph2_m", "dph2_an", "dph2_mn", "dsm"},
     "convnext_dph_fesr2": {"dph4_n", "dph3_a", "dph3_m", "dph3_an", "dph3_mn",
                            "dph2_a", "dph2_m", "dph2_an", "dph2_mn", "fesr", "w_s", "w_e", "alpha"},
+    "convnext_dph_am": {"dph4_n", "dph3_a", "dph3_m", "dph3_an", "dph3_mn",
+                         "dph2_a", "dph2_m", "dph2_an", "dph2_mn"},
+"convnext_dph_mfm": {"dph4_n", "dph3_a", "dph3_m", "dph3_an", "dph3_mn",
+                          "dph2_a", "dph2_m", "dph2_an", "dph2_mn", "mfm"},
 }
 
 # 各模型加载 ImageNet 预训练权重前需做的"权重变换"(如 s2d 变体的 conv1 通道膨胀)。
@@ -460,7 +464,7 @@ def build_run_meta(
     return run_meta
 
 
-def train_one_epoch(model, optimizer, data_loader, device, epoch, scaler=None, class_weights=None, label_smoothing=0.0):
+def train_one_epoch(model, optimizer, data_loader, device, epoch, scaler=None, class_weights=None, label_smoothing=0.0, mfm_lambda=0.1):
     """单个 epoch 训练；进度条用与 evaluate_2class.py 一致的 rich 金色样式。
 
     训练逻辑与 utils.train_one_epoch 一致（CrossEntropy / AMP / AdamW），额外支持
@@ -486,8 +490,14 @@ def train_one_epoch(model, optimizer, data_loader, device, epoch, scaler=None, c
         sample_num += images.shape[0]
 
         with torch.amp.autocast('cuda', enabled=use_amp):
-            pred = model(images.to(device))
+            if getattr(model, "forward_labels", False):   # AMH: 目标类角度间隔需标签
+                pred = model(images.to(device), labels.to(device))
+            else:
+                pred = model(images.to(device))
             loss = loss_function(pred, labels.to(device))
+            mfm_mod = getattr(model, "mfm", None)          # MFM 自监督辅助损失聚合
+            if mfm_mod is not None:
+                loss = loss + mfm_lambda * mfm_mod.loss
 
         pred_classes = torch.max(pred, dim=1)[1]
         accu_num += torch.eq(pred_classes, labels.to(device)).sum()
@@ -661,9 +671,12 @@ def main(args):
     start_time = time.time()
 
     for epoch in range(args.epochs):
+        cw = torch.tensor([float(x) for x in args.class_weights.split(",")]) \
+            if getattr(args, "class_weights", "") else None
         train_loss, train_acc = train_one_epoch(model=model, optimizer=optimizer,
                                                  data_loader=train_loader, device=device,
                                                  epoch=epoch, scaler=scaler,
+                                                 class_weights=cw,
                                                  label_smoothing=args.label_smoothing)
 
         val_loss, val_acc, val_macro_f1 = evaluate_val_macro_f1(model, val_loader, device,
@@ -742,6 +755,8 @@ if __name__ == '__main__':
     parser.add_argument('--early-stop', type=int, default=30,
                         help='early stopping patience on val_macro_f1 (0 = disabled)')
     parser.add_argument('--recompute-norm', action='store_true')
+    parser.add_argument('--class-weights', type=str, default='',
+                        help='逗号分隔各类CE权重(类序=sorted目录), 如 "1,1.5,1"')
     parser.add_argument('--norm-cache-dir', type=str, default='./norm_cache')
     opt = parser.parse_args()
     main(opt)

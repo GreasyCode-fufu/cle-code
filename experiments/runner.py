@@ -80,11 +80,12 @@ def run_job(batch, job):
         epochs = os.environ.get("RUN_EPOCHS", "300")
         early = os.environ.get("RUN_EARLY", "30")
         ncls = os.environ.get("RUN_NCLS", "3")
+        extra = job.get("extra", "")
         rc = sh(f"{PY} train_cle_fair.py --model {model} --num_classes {ncls} --img_size 224 "
                 f"--seed {seed} --data-path-train ./{DATA}/train "
                 f"--data-path-val ./{DATA}/val --weights {weights} "
                 f"--save-dir ./{WEIGHTS_ROOT}/{model}_seed{seed} "
-                f"--epochs {epochs} --early-stop {early}", log)
+                f"--epochs {epochs} --early-stop {early} {extra}", log)
         if rc != 0:
             row["note"] = "train_failed"
             raise RuntimeError(f"train rc={rc}")
