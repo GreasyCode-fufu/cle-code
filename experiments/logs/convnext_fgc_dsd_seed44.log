@@ -428,3 +428,211 @@ Epoch 48: train_loss=0.005, train_acc=0.999, val_loss=0.147, val_acc=0.981, val_
 [saved] /data/cle/auto/ZCode/Classification/weights_covid_ep/convnext_fgc_dsd_seed44/convnext_fgc_dsd/eval_20261102_034952/  (results.json / predictions.csv / evaluation_report.md)
 
 ===== [2026-11-02 03:49:45.515622] /home/login/miniconda3/envs/sunfuxiang/bin/python evaluate.py --model convnext_fgc_dsd --weights /data/cle/auto/ZCode/Classification/weights_covid_ep/convnext_fgc_dsd_seed44/convnext_fgc_dsd/model_best.pth --data-path ./datasets/covid_v1/test --class-names COVID NORMAL PNEUMONIA
+/home/login/miniconda3/envs/sunfuxiang/lib/python3.12/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+/data/cle/auto/ZCode/Classification/train_cle_fair.py:743: FutureWarning: `torch.cuda.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler('cuda', args...)` instead.
+  scaler = torch.cuda.amp.GradScaler()
+[seed] seed = 44 (set)
+2770 images for training.
+593 images were found in the val dataset.
+593 images for test.
+[norm] ImageNet 归一化(加载了预训练权重) MEAN=[0.485, 0.456, 0.406] STD=[0.229, 0.224, 0.225]
+[weights] strict load passed /data/cle/sunfuxiang/classifyML/pth/convnext_tiny_1k_224_ema.pth | classifier_missing=5 ignored_buffers=0 unexpected=0
+[train] model=convnext_fgc_dsd num_classes=3 img=224 bs=32 epochs=300 | CE (label_smoothing=0.0) | select=val_macro_f1
+[out]   run_dir=./weights_heelBone_ep/convnext_fgc_dsd_seed44/convnext_fgc_dsd
+train epoch 0 loss: 0.853, acc: 0.575:  10… [  , 
+Epoch 0: train_loss=0.853, train_acc=0.575, val_loss=0.547, val_acc=0.745, val_macroF1=0.7680, lr=0.000100, best_macroF1=0.7680 (epoch 0) *
+train epoch 1 loss: 0.551, acc: 0.731:  10… [  , 
+Epoch 1: train_loss=0.551, train_acc=0.731, val_loss=0.459, val_acc=0.791, val_macroF1=0.8127, lr=0.000100, best_macroF1=0.8127 (epoch 1) *
+train epoch 2 loss: 0.398, acc: 0.829:  10… [  , 
+Epoch 2: train_loss=0.398, train_acc=0.829, val_loss=0.444, val_acc=0.794, val_macroF1=0.7920, lr=0.000100, best_macroF1=0.8127 (epoch 1)
+train epoch 3 loss: 0.278, acc: 0.887:  10… [  , 
+Epoch 3: train_loss=0.278, train_acc=0.887, val_loss=0.225, val_acc=0.916, val_macroF1=0.9213, lr=0.000100, best_macroF1=0.9213 (epoch 3) *
+train epoch 4 loss: 0.216, acc: 0.917:  10… [  , 
+Epoch 4: train_loss=0.216, train_acc=0.917, val_loss=0.175, val_acc=0.944, val_macroF1=0.9476, lr=0.000100, best_macroF1=0.9476 (epoch 4) *
+train epoch 5 loss: 0.208, acc: 0.923:  10… [  , 
+Epoch 5: train_loss=0.208, train_acc=0.923, val_loss=0.248, val_acc=0.916, val_macroF1=0.9217, lr=0.000100, best_macroF1=0.9476 (epoch 4)
+train epoch 6 loss: 0.192, acc: 0.928:  10… [  , 
+Epoch 6: train_loss=0.192, train_acc=0.928, val_loss=0.153, val_acc=0.949, val_macroF1=0.9540, lr=0.000100, best_macroF1=0.9540 (epoch 6) *
+train epoch 7 loss: 0.182, acc: 0.933:  10… [  , 
+Epoch 7: train_loss=0.182, train_acc=0.933, val_loss=0.183, val_acc=0.936, val_macroF1=0.9368, lr=0.000100, best_macroF1=0.9540 (epoch 6)
+train epoch 8 loss: 0.155, acc: 0.946:  10… [  , 
+Epoch 8: train_loss=0.155, train_acc=0.946, val_loss=0.171, val_acc=0.949, val_macroF1=0.9525, lr=0.000100, best_macroF1=0.9540 (epoch 6)
+train epoch 9 loss: 0.136, acc: 0.951:  10… [  , 
+Epoch 9: train_loss=0.136, train_acc=0.951, val_loss=0.151, val_acc=0.948, val_macroF1=0.9490, lr=0.000100, best_macroF1=0.9540 (epoch 6)
+train epoch 10 loss: 0.148, acc: 0.941:  10…   , 
+Epoch 10: train_loss=0.148, train_acc=0.941, val_loss=0.144, val_acc=0.958, val_macroF1=0.9605, lr=0.000100, best_macroF1=0.9605 (epoch 10) *
+train epoch 11 loss: 0.142, acc: 0.948:  10…   , 
+Epoch 11: train_loss=0.142, train_acc=0.948, val_loss=0.149, val_acc=0.951, val_macroF1=0.9548, lr=0.000100, best_macroF1=0.9605 (epoch 10)
+train epoch 12 loss: 0.153, acc: 0.945:  10…   , 
+Epoch 12: train_loss=0.153, train_acc=0.945, val_loss=0.233, val_acc=0.924, val_macroF1=0.9278, lr=0.000100, best_macroF1=0.9605 (epoch 10)
+train epoch 13 loss: 0.115, acc: 0.956:  10…   , 
+Epoch 13: train_loss=0.115, train_acc=0.956, val_loss=0.164, val_acc=0.958, val_macroF1=0.9607, lr=0.000099, best_macroF1=0.9607 (epoch 13) *
+train epoch 14 loss: 0.142, acc: 0.945:  10…   , 
+Epoch 14: train_loss=0.142, train_acc=0.945, val_loss=0.171, val_acc=0.944, val_macroF1=0.9455, lr=0.000099, best_macroF1=0.9607 (epoch 13)
+train epoch 15 loss: 0.126, acc: 0.954:  10…   , 
+Epoch 15: train_loss=0.126, train_acc=0.954, val_loss=0.157, val_acc=0.960, val_macroF1=0.9631, lr=0.000099, best_macroF1=0.9631 (epoch 15) *
+train epoch 16 loss: 0.109, acc: 0.959:  10…   , 
+Epoch 16: train_loss=0.109, train_acc=0.959, val_loss=0.160, val_acc=0.965, val_macroF1=0.9678, lr=0.000099, best_macroF1=0.9678 (epoch 16) *
+train epoch 17 loss: 0.108, acc: 0.960:  10…   , 
+Epoch 17: train_loss=0.108, train_acc=0.960, val_loss=0.145, val_acc=0.956, val_macroF1=0.9597, lr=0.000099, best_macroF1=0.9678 (epoch 16)
+train epoch 18 loss: 0.114, acc: 0.960:  10…   , 
+Epoch 18: train_loss=0.114, train_acc=0.960, val_loss=0.142, val_acc=0.958, val_macroF1=0.9594, lr=0.000099, best_macroF1=0.9678 (epoch 16)
+train epoch 19 loss: 0.097, acc: 0.963:  10…   , 
+Epoch 19: train_loss=0.097, train_acc=0.963, val_loss=0.217, val_acc=0.941, val_macroF1=0.9448, lr=0.000099, best_macroF1=0.9678 (epoch 16)
+train epoch 20 loss: 0.101, acc: 0.964:  10…   , 
+Epoch 20: train_loss=0.101, train_acc=0.964, val_loss=0.201, val_acc=0.946, val_macroF1=0.9498, lr=0.000099, best_macroF1=0.9678 (epoch 16)
+train epoch 21 loss: 0.077, acc: 0.971:  10…   , 
+Epoch 21: train_loss=0.077, train_acc=0.971, val_loss=0.165, val_acc=0.956, val_macroF1=0.9598, lr=0.000099, best_macroF1=0.9678 (epoch 16)
+train epoch 22 loss: 0.094, acc: 0.966:  10…   , 
+Epoch 22: train_loss=0.094, train_acc=0.966, val_loss=0.162, val_acc=0.951, val_macroF1=0.9541, lr=0.000099, best_macroF1=0.9678 (epoch 16)
+train epoch 23 loss: 0.081, acc: 0.969:  10…   , 
+Epoch 23: train_loss=0.081, train_acc=0.969, val_loss=0.166, val_acc=0.961, val_macroF1=0.9638, lr=0.000098, best_macroF1=0.9678 (epoch 16)
+train epoch 24 loss: 0.090, acc: 0.966:  10…   , 
+Epoch 24: train_loss=0.090, train_acc=0.966, val_loss=0.187, val_acc=0.949, val_macroF1=0.9541, lr=0.000098, best_macroF1=0.9678 (epoch 16)
+train epoch 25 loss: 0.092, acc: 0.964:  10…   , 
+Epoch 25: train_loss=0.092, train_acc=0.964, val_loss=0.189, val_acc=0.948, val_macroF1=0.9507, lr=0.000098, best_macroF1=0.9678 (epoch 16)
+train epoch 26 loss: 0.084, acc: 0.968:  10…   , 
+Epoch 26: train_loss=0.084, train_acc=0.968, val_loss=0.259, val_acc=0.943, val_macroF1=0.9455, lr=0.000098, best_macroF1=0.9678 (epoch 16)
+train epoch 27 loss: 0.078, acc: 0.971:  10…   , 
+Epoch 27: train_loss=0.078, train_acc=0.971, val_loss=0.204, val_acc=0.948, val_macroF1=0.9501, lr=0.000098, best_macroF1=0.9678 (epoch 16)
+train epoch 28 loss: 0.078, acc: 0.966:  10…   , 
+Epoch 28: train_loss=0.078, train_acc=0.966, val_loss=0.248, val_acc=0.936, val_macroF1=0.9405, lr=0.000098, best_macroF1=0.9678 (epoch 16)
+train epoch 29 loss: 0.080, acc: 0.972:  10…   , 
+Epoch 29: train_loss=0.080, train_acc=0.972, val_loss=0.189, val_acc=0.949, val_macroF1=0.9520, lr=0.000098, best_macroF1=0.9678 (epoch 16)
+train epoch 30 loss: 0.073, acc: 0.972:  10…   , 
+Epoch 30: train_loss=0.073, train_acc=0.972, val_loss=0.197, val_acc=0.954, val_macroF1=0.9576, lr=0.000097, best_macroF1=0.9678 (epoch 16)
+train epoch 31 loss: 0.067, acc: 0.979:  10…   , 
+Epoch 31: train_loss=0.067, train_acc=0.979, val_loss=0.238, val_acc=0.941, val_macroF1=0.9447, lr=0.000097, best_macroF1=0.9678 (epoch 16)
+train epoch 32 loss: 0.061, acc: 0.977:  10…   , 
+Epoch 32: train_loss=0.061, train_acc=0.977, val_loss=0.211, val_acc=0.953, val_macroF1=0.9565, lr=0.000097, best_macroF1=0.9678 (epoch 16)
+train epoch 33 loss: 0.067, acc: 0.976:  10…   , 
+Epoch 33: train_loss=0.067, train_acc=0.976, val_loss=0.170, val_acc=0.954, val_macroF1=0.9584, lr=0.000097, best_macroF1=0.9678 (epoch 16)
+train epoch 34 loss: 0.060, acc: 0.977:  10…   , 
+Epoch 34: train_loss=0.060, train_acc=0.977, val_loss=0.133, val_acc=0.958, val_macroF1=0.9603, lr=0.000097, best_macroF1=0.9678 (epoch 16)
+train epoch 35 loss: 0.058, acc: 0.981:  10…   , 
+Epoch 35: train_loss=0.058, train_acc=0.981, val_loss=0.219, val_acc=0.939, val_macroF1=0.9444, lr=0.000096, best_macroF1=0.9678 (epoch 16)
+train epoch 36 loss: 0.070, acc: 0.973:  10…   , 
+Epoch 36: train_loss=0.070, train_acc=0.973, val_loss=0.153, val_acc=0.948, val_macroF1=0.9517, lr=0.000096, best_macroF1=0.9678 (epoch 16)
+train epoch 37 loss: 0.064, acc: 0.975:  10…   , 
+Epoch 37: train_loss=0.064, train_acc=0.975, val_loss=0.225, val_acc=0.939, val_macroF1=0.9447, lr=0.000096, best_macroF1=0.9678 (epoch 16)
+train epoch 38 loss: 0.056, acc: 0.978:  10…   , 
+Epoch 38: train_loss=0.056, train_acc=0.978, val_loss=0.221, val_acc=0.944, val_macroF1=0.9489, lr=0.000096, best_macroF1=0.9678 (epoch 16)
+train epoch 39 loss: 0.055, acc: 0.979:  10…   , 
+Epoch 39: train_loss=0.055, train_acc=0.979, val_loss=0.158, val_acc=0.954, val_macroF1=0.9583, lr=0.000096, best_macroF1=0.9678 (epoch 16)
+train epoch 40 loss: 0.060, acc: 0.979:  10…   , 
+Epoch 40: train_loss=0.060, train_acc=0.979, val_loss=0.172, val_acc=0.948, val_macroF1=0.9517, lr=0.000095, best_macroF1=0.9678 (epoch 16)
+train epoch 41 loss: 0.044, acc: 0.986:  10…   , 
+Epoch 41: train_loss=0.044, train_acc=0.986, val_loss=0.152, val_acc=0.951, val_macroF1=0.9543, lr=0.000095, best_macroF1=0.9678 (epoch 16)
+train epoch 42 loss: 0.039, acc: 0.986:  10…   , 
+Epoch 42: train_loss=0.039, train_acc=0.986, val_loss=0.239, val_acc=0.941, val_macroF1=0.9448, lr=0.000095, best_macroF1=0.9678 (epoch 16)
+train epoch 43 loss: 0.047, acc: 0.984:  10…   , 
+Epoch 43: train_loss=0.047, train_acc=0.984, val_loss=0.266, val_acc=0.939, val_macroF1=0.9448, lr=0.000095, best_macroF1=0.9678 (epoch 16)
+train epoch 44 loss: 0.044, acc: 0.982:  10…   , 
+Epoch 44: train_loss=0.044, train_acc=0.982, val_loss=0.277, val_acc=0.951, val_macroF1=0.9553, lr=0.000095, best_macroF1=0.9678 (epoch 16)
+train epoch 45 loss: 0.048, acc: 0.982:  10…   , 
+Epoch 45: train_loss=0.048, train_acc=0.982, val_loss=0.212, val_acc=0.949, val_macroF1=0.9536, lr=0.000094, best_macroF1=0.9678 (epoch 16)
+train epoch 46 loss: 0.039, acc: 0.986:  10…   , 
+Epoch 46: train_loss=0.039, train_acc=0.986, val_loss=0.151, val_acc=0.963, val_macroF1=0.9661, lr=0.000094, best_macroF1=0.9678 (epoch 16)
+
+[early stop] epoch 46: val_macro_f1 not improved for 30 epochs
+
+===========================================================
+             Training Summary (fair baseline)              
+===========================================================
+  Model:              convnext_fgc_dsd
+  Best val macro-F1:  0.9678  (epoch 16)
+  Selection:          val macro-F1
+  Loss:               unweighted CrossEntropy
+  Training Time:      0:05:59
+  Weights:            ./weights_heelBone_ep/convnext_fgc_dsd_seed44/convnext_fgc_dsd/model_best.pth
+  Run meta:           ./weights_heelBone_ep/convnext_fgc_dsd_seed44/convnext_fgc_dsd/run_meta.json
+===========================================================
+
+===== [2026-11-02 04:44:10.931504] /home/login/miniconda3/envs/sunfuxiang/bin/python train_cle_fair.py --model convnext_fgc_dsd --num_classes 3 --img_size 224 --seed 44 --data-path-train ./datasets/heelBone/train --data-path-val ./datasets/heelBone/val --weights /home/login/data/cle/sunfuxiang/classifyML/pth/convnext_tiny_1k_224_ema.pth --save-dir ./weights_heelBone_ep/convnext_fgc_dsd_seed44 --epochs 300 --early-stop 30 
+[norm] source=run_meta.json(imagenet)  mean=[0.485, 0.456, 0.406] std=[0.229, 0.224, 0.225]  img_size=224
+[model] convnext_fgc_dsd  weights=/data/cle/auto/ZCode/Classification/weights_heelBone_ep/convnext_fgc_dsd_seed44/convnext_fgc_dsd/model_best.pth
+[complexity] MACs=4.43G FLOPs=8.87G Params=27.67M
+[data] test=593 张  heelspur=197  normal=276  sever=120
+
+================================================================
+  评估结果 — convnext_fgc_dsd  (test=593 张)
+================================================================
+  【主指标】
+  Macro-F1         : 0.8594   ← 主指标(类别不平衡首选)
+  Accuracy         : 0.8634
+  Macro-AUROC(OvR) : 0.9682
+----------------------------------------------------------------
+  【补充总体指标】
+  Weighted-F1      : 0.8636
+  Balanced Acc     : 0.8766
+  Macro-Sensitivity: 0.8766   (= 各类 Recall 均值)
+  Macro-Specificity: 0.9307
+  Macro-Precision  : 0.8565
+  AUC-PR (Macro)   : 0.9532
+  Cohen's Kappa    : 0.7869
+  MCC              : 0.7910
+----------------------------------------------------------------
+  【每类指标】 Sensitivity / Specificity / Precision / F1 / AUROC
+  heelspur              : 0.782 / 0.972 / 0.933 / 0.851 / 0.952  (n=197)
+  normal                : 0.873 / 0.902 / 0.886 / 0.880 / 0.962  (n=276)
+  sever                 : 0.975 / 0.918 / 0.750 / 0.848 / 0.992  (n=120)
+----------------------------------------------------------------
+  【模型复杂度】(仅与架构+输入尺寸有关，与数据集无关)
+  MACs : 4.43G    FLOPs : 8.87G    Params : 27.67M
+  【推理效率】(受 GPU 负载影响，为参考量级)
+  Pure FPS : 953.4  (1.05 ms/张)    End-to-End FPS : 284.8
+----------------------------------------------------------------
+  【混淆矩阵】(行=真实, 列=预测)
+                  heelspur    normal     sever
+  heelspur             154        28        15
+  normal                11       241        24
+  sever                  0         3       117
+================================================================
+
+[saved] /data/cle/auto/ZCode/Classification/weights_heelBone_ep/convnext_fgc_dsd_seed44/convnext_fgc_dsd/eval_20261102_045018/  (results.json / predictions.csv / evaluation_report.md)
+
+===== [2026-11-02 04:50:13.472720] /home/login/miniconda3/envs/sunfuxiang/bin/python evaluate.py --model convnext_fgc_dsd --weights /data/cle/auto/ZCode/Classification/weights_heelBone_ep/convnext_fgc_dsd_seed44/convnext_fgc_dsd/model_best.pth --data-path ./datasets/heelBone/val --class-names heelspur normal sever
+[norm] source=run_meta.json(imagenet)  mean=[0.485, 0.456, 0.406] std=[0.229, 0.224, 0.225]  img_size=224
+[model] convnext_fgc_dsd  weights=/data/cle/auto/ZCode/Classification/weights_heelBone_ep/convnext_fgc_dsd_seed44/convnext_fgc_dsd/model_best.pth
+[complexity] MACs=4.43G FLOPs=8.87G Params=27.67M
+[data] test=593 张  heelspur=197  normal=276  sever=120
+
+================================================================
+  评估结果 — convnext_fgc_dsd  (test=593 张)
+================================================================
+  【主指标】
+  Macro-F1         : 0.8376   ← 主指标(类别不平衡首选)
+  Accuracy         : 0.8398
+  Macro-AUROC(OvR) : 0.9665
+----------------------------------------------------------------
+  【补充总体指标】
+  Weighted-F1      : 0.8403
+  Balanced Acc     : 0.8634
+  Macro-Sensitivity: 0.8634   (= 各类 Recall 均值)
+  Macro-Specificity: 0.9209
+  Macro-Precision  : 0.8302
+  AUC-PR (Macro)   : 0.9505
+  Cohen's Kappa    : 0.7528
+  MCC              : 0.7584
+----------------------------------------------------------------
+  【每类指标】 Sensitivity / Specificity / Precision / F1 / AUROC
+  heelspur              : 0.787 / 0.949 / 0.886 / 0.833 / 0.955  (n=197)
+  normal                : 0.812 / 0.915 / 0.892 / 0.850 / 0.951  (n=276)
+  sever                 : 0.992 / 0.899 / 0.713 / 0.829 / 0.993  (n=120)
+----------------------------------------------------------------
+  【模型复杂度】(仅与架构+输入尺寸有关，与数据集无关)
+  MACs : 4.43G    FLOPs : 8.87G    Params : 27.67M
+  【推理效率】(受 GPU 负载影响，为参考量级)
+  Pure FPS : 1012.6  (0.99 ms/张)    End-to-End FPS : 284.2
+----------------------------------------------------------------
+  【混淆矩阵】(行=真实, 列=预测)
+                  heelspur    normal     sever
+  heelspur             155        26        16
+  normal                20       224        32
+  sever                  0         1       119
+================================================================
+
+[saved] /data/cle/auto/ZCode/Classification/weights_heelBone_ep/convnext_fgc_dsd_seed44/convnext_fgc_dsd/eval_20261102_045023/  (results.json / predictions.csv / evaluation_report.md)
+
+===== [2026-11-02 04:50:18.954251] /home/login/miniconda3/envs/sunfuxiang/bin/python evaluate.py --model convnext_fgc_dsd --weights /data/cle/auto/ZCode/Classification/weights_heelBone_ep/convnext_fgc_dsd_seed44/convnext_fgc_dsd/model_best.pth --data-path ./datasets/heelBone/test --class-names heelspur normal sever
