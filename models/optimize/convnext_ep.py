@@ -518,3 +518,13 @@ def convnext_fse_dsd(num_classes: int):      # 创新1+2: 频域路+空间路
 def convnext_dpea(num_classes: int):         # DPEA-Net 三合一(最终网络候选)
     return _ep(num_classes, fesr_stages=(2, 3), fesr_soft=True, dsd_stages=(1,),
                use_cmp=True)
+
+
+def convnext_cmp_fgc(num_classes: int):     # CMP + FGC (聚合头+频域算子)
+    return _ep(num_classes, use_cmp=True, fgc_stages=(3,))
+
+def convnext_cmp_dsd(num_classes: int):     # CMP + DSD (聚合头+方向算子)
+    return _ep(num_classes, use_cmp=True, dsd_stages=(1,))
+
+def convnext_cmp_fse(num_classes: int):     # CMP + FSE (聚合头+频域重标定)
+    return _ep(num_classes, use_cmp=True, fesr_stages=(2, 3), fesr_soft=True)

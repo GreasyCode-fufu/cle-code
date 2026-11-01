@@ -157,6 +157,9 @@ MODEL_ALLOWED_MISSING_SEGMENTS = {
     "convnext_cmp": {"cmp_head"},
     "convnext_fse_dsd": {"fesr", "w_s", "w_e", "alpha", "dsm"},
     "convnext_dpea": {"cmp_head", "fesr", "w_s", "w_e", "alpha", "dsm"},
+    "convnext_cmp_fgc": {"cmp_head"},
+    "convnext_cmp_dsd": {"cmp_head", "dsm"},
+    "convnext_cmp_fse": {"cmp_head", "fesr", "w_s", "w_e", "alpha"},
 }
 
 # 各模型加载 ImageNet 预训练权重前需做的"权重变换"(如 s2d 变体的 conv1 通道膨胀)。
@@ -270,6 +273,8 @@ MODEL_CHECKPOINT_TRANSFORMS = {
     "convnext_fgc_dsd": lambda st: _remap_fgc(_remap_dsd(st)),
     "convnext_fse_dsd": _remap_dsd,
     "convnext_dpea": _remap_dsd,
+    "convnext_cmp_dsd": _remap_dsd,
+    "convnext_cmp_fgc": _remap_fgc,
     "convnext_epnet2": lambda st: _remap_fgc(_remap_dsd(st)),
     "convnext_v2bc4": _remap_wr_s4,
 }
