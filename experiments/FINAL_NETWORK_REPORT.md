@@ -62,3 +62,17 @@
 ## 5. 会话 git 轨迹
 9bb1f99 EPNet 三创新点入库 → ... → 1a2d9c5 损失/SSL → BK2 投影初始化消融 →
 BM 位置矩阵 → BN fgc_ri 判决 → 本报告。全部实验数据: experiments/results_*.csv。
+
+## 6. 最优 run 终评 (seed45, eval_FINAL_bootstrap)
+
+| 指标 | 数值 |
+|---|---|
+| Macro-F1 | **0.9704** |
+| Cohen's Kappa / MCC | **0.9556 / 0.9556** |
+| Balanced Acc / Sens(M) | 0.9700 / — |
+| Macro-AUROC | 0.9961 |
+| 混淆矩阵 | 良→恶5 / 恶→良5(前作8例改善) / 正常仅3错 |
+| **参数量** | **27.67M (baseline 28.06M, -0.39M)** |
+| MACs / FPS | 4.43G / 1714 |
+
+卖点: 涨点的同时参数更少更快(DSD 参数缩减抵消 FGC 增量)。
