@@ -122,6 +122,43 @@ class AEP(nn.Module):
         return (w * x.flatten(2)).sum(-1)
 
 
+class CMPHead(nn.Module):
+    """DPEA 创新点3: 通道级混合池化聚合头(Channel-wise Mixed Pooling)。
+
+    每尺度 pooled_i = a_i ⊙ GAP_i + (1-a_i) ⊙ GMP_i, a_i 为逐通道可学习
+    插值系数(sigmoid, init≈0.75 偏向 GAP 控方差), 三尺度投影拼接 -> 分类。
+    数学上 DPH(GAP/GMP 两端硬拼接, 6*d4) 的连续松弛版: 每通道在"均值-最大"
+    谱上自适应取点, 维度减 1/3(2304 vs 4608), 小样本下方差更小。
+    吸收 DPH 验证过的 sens_M 增益证据(max 通道对恶性局部证据敏感)但受控。"""
+
+    def __init__(self, dims, num_classes, init_bias: float = 1.1):
+        super().__init__()
+        d2, d3, d4 = dims[1], dims[2], dims[3]
+        self.p3 = nn.Linear(d3, d4, bias=False)
+        self.p2 = nn.Linear(d2, d4, bias=False)
+        self.n4 = nn.LayerNorm(d4, eps=1e-6)
+        self.n3 = nn.LayerNorm(d4, eps=1e-6)
+        self.n2 = nn.LayerNorm(d4, eps=1e-6)
+        self.a4 = nn.Parameter(torch.full((d4,), init_bias))   # sigmoid(1.1)≈0.75
+        self.a3 = nn.Parameter(torch.full((d3,), init_bias))   # 插值在原尺度通道上, 投影后
+        self.a2 = nn.Parameter(torch.full((d2,), init_bias))
+        self.head = nn.Linear(3 * d4, num_classes)
+
+    def _mix(self, t):
+        gap = t.mean([-2, -1])
+        gmp = t.amax([-2, -1])
+        return gap, gmp
+
+    def forward(self, feats):
+        gap4, gmp4 = self._mix(feats[3])
+        gap3, gmp3 = self._mix(feats[2])
+        gap2, gmp2 = self._mix(feats[1])
+        e4 = self.n4(torch.sigmoid(self.a4) * gap4 + (1 - torch.sigmoid(self.a4)) * gmp4)
+        e3 = self.n3(self.p3(torch.sigmoid(self.a3) * gap3 + (1 - torch.sigmoid(self.a3)) * gmp3))
+        e2 = self.n2(self.p2(torch.sigmoid(self.a2) * gap2 + (1 - torch.sigmoid(self.a2)) * gmp2))
+        return self.head(torch.cat([e4, e3, e2], dim=-1))
+
+
 class ArcMarginHead(nn.Module):
     """D: 判别性角度间隔头(ArcFace 思想融入分类网络, 网络结构+损失一体创新)。
 
@@ -278,7 +315,7 @@ class ConvNeXtEP(ConvNeXt):
     def __init__(self, use_dph=False, fesr_stages=(), lsdg_stages=(), fesr_soft=False,
                  dsd_stages=(), fgc_stages=(), use_am=False, use_mfm=False,
                  use_aep=False, am_aux=False, mfm_lam=0.05, mfm_mask=0.15,
-                 use_dph4=False, **kw):
+                 use_dph4=False, use_cmp=False, **kw):
         super().__init__(**kw)
         dims0 = self.downsample_layers[0][0].out_channels
         self.dims = [dims0] + [self.downsample_layers[i][1].out_channels for i in (1, 2, 3)]
@@ -303,6 +340,9 @@ class ConvNeXtEP(ConvNeXt):
         self.use_am = use_am
         self.use_aep = use_aep
         self.use_dph4 = use_dph4
+        if use_cmp:
+            self.cmp_head = CMPHead(self.dims, self.head.out_features)
+            self.head = nn.Identity()
         self.forward_labels = use_am or am_aux   # AMH 需要标签(主头或辅助模式)
         if use_mfm:
             self.mfm = MFM(self.dims[2], mask_ratio=mfm_mask)
@@ -372,6 +412,14 @@ class ConvNeXtEP(ConvNeXt):
         return torch.cat([gap4, gmp4, a3, m3, a2, m2], dim=-1)
 
     def forward(self, x: torch.Tensor, labels: torch.Tensor = None) -> torch.Tensor:
+        if getattr(self, "cmp_head", None) is not None:
+            feats = []
+            xx = x
+            for i in range(4):
+                xx = self.downsample_layers[i](xx)
+                xx = self.stages[i](xx)
+                feats.append(xx)
+            return self.cmp_head(feats)               # cmp 内部含分类层
         f = self.forward_features(x)
         if getattr(self, "am_aux", None) is not None and self.training:
             self.aux_logits = self.am_aux(f, labels if labels is not None else None)
@@ -458,3 +506,15 @@ def convnext_aep(num_classes: int):          # A-v3: s4双池 + s2/s3自适应�
 
 def convnext_dph4(num_classes: int):         # A-lite: GMP 仅 s4(语义层), s2/s3 GAP
     return _ep(num_classes, use_dph=True, use_dph4=True)
+
+
+# ── DPEA-Net: 双路证据提取+自适应聚合 (2026-11-02 重设计) ──
+def convnext_cmp(num_classes: int):          # 创新点3单独: CMP 聚合头
+    return _ep(num_classes, use_cmp=True)
+
+def convnext_fse_dsd(num_classes: int):      # 创新1+2: 频域路+空间路
+    return _ep(num_classes, fesr_stages=(2, 3), fesr_soft=True, dsd_stages=(1,))
+
+def convnext_dpea(num_classes: int):         # DPEA-Net 三合一(最终网络候选)
+    return _ep(num_classes, fesr_stages=(2, 3), fesr_soft=True, dsd_stages=(1,),
+               use_cmp=True)
