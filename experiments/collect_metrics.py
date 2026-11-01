@@ -48,7 +48,7 @@ def main():
     std = {k: float(np.std([r[k] for r in rows])) for k in rows[0]}
     print(f"\n== {model} ({'val' if want_val else 'test'}) n={len(rows)} seeds={seeds}")
     print("  ".join(f"{k}={mean[k]:.2f}±{std[k]:.2f}" for k in
-                    ["macro_f1", "cohen_kappa", "mcc", "balanced_accuracy", "sens_M"]))
+                    ["macro_f1", "kappa", "mcc", "balanced_accuracy", "sens_M"]))
     for k in KEYS + ["sens_M"]:
         print(f"  {k:20s} {mean[k]:7.2f} ±{std[k]:.2f}   [{', '.join(f'{r[k]:.2f}' for r in rows)}]")
 

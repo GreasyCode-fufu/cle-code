@@ -105,6 +105,23 @@ class LSDG(nn.Module):
         return x + e * g
 
 
+class AEP(nn.Module):
+    """自适应证据池化(Adaptive Evidence Pooling): softmax 加权池化谱。
+
+    pool(x) = sum_i softmax(alpha*x_i) * x_i: alpha->0 退化为 GAP(全局统计),
+    alpha->inf 逼近 GMP(最显著局部证据) —— 在"均值-最大"连续谱上为每个尺度
+    学习最优插值点。支持正负响应(无需半波整流), 每尺度独立 alpha(init 1.0)。
+    DPH(GAP/GMP 两端拼接)的数学深化: 拼接 -> 谱上自适应。"""
+
+    def __init__(self, init_alpha: float = 1.0):
+        super().__init__()
+        self.alpha = nn.Parameter(torch.tensor(float(init_alpha)))
+
+    def forward(self, x: torch.Tensor) -> torch.Tensor:   # (B, C, H, W)
+        w = torch.softmax(self.alpha * x.flatten(2), dim=-1)
+        return (w * x.flatten(2)).sum(-1)
+
+
 class ArcMarginHead(nn.Module):
     """D: 判别性角度间隔头(ArcFace 思想融入分类网络, 网络结构+损失一体创新)。
 
@@ -259,7 +276,8 @@ class ConvNeXtEP(ConvNeXt):
     """ConvNeXt + {A:DPH head, B:FESR@stages, C:LSDG@stages} 结构化组合。"""
 
     def __init__(self, use_dph=False, fesr_stages=(), lsdg_stages=(), fesr_soft=False,
-                 dsd_stages=(), fgc_stages=(), use_am=False, use_mfm=False, **kw):
+                 dsd_stages=(), fgc_stages=(), use_am=False, use_mfm=False,
+                 use_aep=False, am_aux=False, mfm_lam=0.05, mfm_mask=0.15, **kw):
         super().__init__(**kw)
         dims0 = self.downsample_layers[0][0].out_channels
         self.dims = [dims0] + [self.downsample_layers[i][1].out_channels for i in (1, 2, 3)]
@@ -282,9 +300,22 @@ class ConvNeXtEP(ConvNeXt):
 
         self.use_dph = use_dph
         self.use_am = use_am
-        self.forward_labels = use_am        # 训练循环据此传标签(AMH 需要目标类)
+        self.use_aep = use_aep
+        self.forward_labels = use_am or am_aux   # AMH 需要标签(主头或辅助模式)
         if use_mfm:
-            self.mfm = MFM(self.dims[2])
+            self.mfm = MFM(self.dims[2], mask_ratio=mfm_mask)
+            self.mfm_lambda = mfm_lam
+        if use_aep:
+            d4_ = self.dims[3]
+            self.aep3 = AEP(); self.aep2 = AEP()      # s3/s2 尺度的自适应谱池化
+            self.aep3_n = nn.LayerNorm(d4_, eps=1e-6)
+            self.aep2_n = nn.LayerNorm(d4_, eps=1e-6)
+            self.aep3_p = nn.Linear(self.dims[2], d4_, bias=False)
+            self.aep2_p = nn.Linear(self.dims[1], d4_, bias=False)
+        if am_aux:                                     # AMH 辅助正则(主 head 不变)
+            d4_ = self.dims[3]
+            self.am_aux = ArcMarginHead(6 * d4_ if use_dph else d4_,
+                                        self.head.out_features)
         if use_dph:
             d2, d3, d4 = self.dims[1], self.dims[2], self.dims[3]
             self.dph4_n = nn.LayerNorm(d4, eps=1e-6)            # s4 GMP 的 LN
@@ -315,6 +346,10 @@ class ConvNeXtEP(ConvNeXt):
         if not self.use_dph:
             return gap4
         gmp4 = self.dph4_n(feats[3].amax([-2, -1]))
+        if self.use_aep:   # s2/s3: 双池化拼接 -> 自适应谱池化(参数更少, 尺度自适应)
+            e3 = self.aep3_n(self.aep3_p(self.aep3(feats[2])))
+            e2 = self.aep2_n(self.aep2_p(self.aep2(feats[1])))
+            return torch.cat([gap4, gmp4, e3, e2], dim=-1)   # 4*768
         a3 = self.dph3_an(self.dph3_a(feats[2].mean([-2, -1])))
         m3 = self.dph3_mn(self.dph3_m(feats[2].amax([-2, -1])))
         a2 = self.dph2_an(self.dph2_a(feats[1].mean([-2, -1])))
@@ -323,6 +358,8 @@ class ConvNeXtEP(ConvNeXt):
 
     def forward(self, x: torch.Tensor, labels: torch.Tensor = None) -> torch.Tensor:
         f = self.forward_features(x)
+        if getattr(self, "am_aux", None) is not None and self.training:
+            self.aux_logits = self.am_aux(f, labels if labels is not None else None)
         if self.use_am and self.training and labels is not None:
             return self.head(f, labels)      # 目标类角度间隔(见 ArcMarginHead.forward)
         return self.head(f)
@@ -392,3 +429,13 @@ def convnext_dph_am(num_classes: int):       # A + D(AMH 角度间隔头)
 
 def convnext_dph_mfm(num_classes: int):      # A + E(MFM 掩码特征重建自监督)
     return _ep(num_classes, use_dph=True, use_mfm=True)
+
+
+def convnext_dph_am2(num_classes: int):      # A + AMH辅助正则(主head不变, 零瓶颈)
+    return _ep(num_classes, use_dph=True, am_aux=True)
+
+def convnext_dph_mfm2(num_classes: int):     # A + MFM温和化(λ=0.05, mask15%)
+    return _ep(num_classes, use_dph=True, use_mfm=True, mfm_lam=0.05, mfm_mask=0.15)
+
+def convnext_aep(num_classes: int):          # A-v3: s4双池 + s2/s3自适应谱池化
+    return _ep(num_classes, use_dph=True, use_aep=True)

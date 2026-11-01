@@ -1,0 +1,68 @@
+{
+  "model": "convnext_epnet2",
+  "num_classes": 3,
+  "img_size": 224,
+  "seed": 43,
+  "norm_mean": [
+    0.485,
+    0.456,
+    0.406
+  ],
+  "norm_std": [
+    0.229,
+    0.224,
+    0.225
+  ],
+  "norm_source": "imagenet",
+  "selection_metric": "val_macro_f1",
+  "loss": "unweighted_cross_entropy",
+  "data_path_train": "/data/cle/auto/ZCode/Classification/datasets/cle_ac_v1/train",
+  "data_path_val": "/data/cle/auto/ZCode/Classification/datasets/cle_ac_v1/val",
+  "weights": "/data/cle/auto/ZCode/Classification/weights_cle_ac_v1/convnext_epnet2_seed43/convnext_epnet2/model_best.pth",
+  "created_at": "2026-11-01 23:04:19",
+  "pretrained_load": {
+    "checkpoint": "/data/cle/sunfuxiang/classifyML/pth/convnext_tiny_1k_224_ema.pth",
+    "checkpoint_sha256": "14f3164e3ea6ac32ab3f574f528ce817696c9176fad4221e0a77a905a7360595",
+    "removed_classifier_keys": [
+      "head.bias",
+      "head.weight"
+    ],
+    "ignored_nonparameter_buffer_keys": [],
+    "missing_keys": [
+      "dph2_a.weight",
+      "dph2_an.bias",
+      "dph2_an.weight",
+      "dph2_m.weight",
+      "dph2_mn.bias",
+      "dph2_mn.weight",
+      "dph3_a.weight",
+      "dph3_an.bias",
+      "dph3_an.weight",
+      "dph3_m.weight",
+      "dph3_mn.bias",
+      "dph3_mn.weight",
+      "dph4_n.bias",
+      "dph4_n.weight",
+      "head.bias",
+      "head.weight",
+      "stages.1.0.dwconv.dsm",
+      "stages.1.1.dwconv.dsm",
+      "stages.1.2.dwconv.dsm"
+    ],
+    "unexpected_keys": [],
+    "allowed_missing_segments": [
+      "dph2_a",
+      "dph2_an",
+      "dph2_m",
+      "dph2_mn",
+      "dph3_a",
+      "dph3_an",
+      "dph3_m",
+      "dph3_mn",
+      "dph4_n",
+      "dsm"
+    ],
+    "checkpoint_transform": "<lambda>",
+    "all_trainable_backbone_parameters_loaded": true
+  }
+}

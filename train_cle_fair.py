@@ -148,6 +148,11 @@ MODEL_ALLOWED_MISSING_SEGMENTS = {
                          "dph2_a", "dph2_m", "dph2_an", "dph2_mn"},
 "convnext_dph_mfm": {"dph4_n", "dph3_a", "dph3_m", "dph3_an", "dph3_mn",
                           "dph2_a", "dph2_m", "dph2_an", "dph2_mn", "mfm"},
+    "convnext_dph_am2": {"dph4_n", "dph3_a", "dph3_m", "dph3_an", "dph3_mn",
+                         "dph2_a", "dph2_m", "dph2_an", "dph2_mn", "am_aux"},
+    "convnext_dph_mfm2": {"dph4_n", "dph3_a", "dph3_m", "dph3_an", "dph3_mn",
+                          "dph2_a", "dph2_m", "dph2_an", "dph2_mn", "mfm"},
+    "convnext_aep": {"dph4_n", "aep3", "aep2", "aep3_n", "aep2_n", "aep3_p", "aep2_p"},
 }
 
 # 各模型加载 ImageNet 预训练权重前需做的"权重变换"(如 s2d 变体的 conv1 通道膨胀)。
@@ -497,7 +502,10 @@ def train_one_epoch(model, optimizer, data_loader, device, epoch, scaler=None, c
             loss = loss_function(pred, labels.to(device))
             mfm_mod = getattr(model, "mfm", None)          # MFM 自监督辅助损失聚合
             if mfm_mod is not None:
-                loss = loss + mfm_lambda * mfm_mod.loss
+                loss = loss + getattr(model, "mfm_lambda", mfm_lambda) * mfm_mod.loss
+            aux = getattr(model, "aux_logits", None)         # AMH 辅助 margin 正则
+            if aux is not None:
+                loss = loss + 0.3 * loss_function(aux, labels.to(device))
 
         pred_classes = torch.max(pred, dim=1)[1]
         accu_num += torch.eq(pred_classes, labels.to(device)).sum()
