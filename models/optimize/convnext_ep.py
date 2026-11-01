@@ -536,3 +536,8 @@ def convnext_dpea2(num_classes: int):        # DPEA-v2: CMP + FGC + DSD 三合�
 
 def convnext_fgc_dsd_ri(num_classes: int):   # 随机初始化对照(消融: 投影初始化贡献)
     return _ep(num_classes, fgc_stages=(3,), dsd_stages=(1,))
+
+
+def convnext_fgc_dsd_fse(num_classes: int):  # 三域机制三合一: FGC提取+FSE选择+DSD空间
+    return _ep(num_classes, fgc_stages=(3,), dsd_stages=(1,),
+               fesr_stages=(2, 3), fesr_soft=True)

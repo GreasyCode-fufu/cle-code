@@ -119,6 +119,7 @@ MODEL_REGISTRY = {
     "convnext_cmp_fse": ("models.optimize.convnext_ep", "convnext_cmp_fse"),
     "convnext_dpea2": ("models.optimize.convnext_ep", "convnext_dpea2"),
     "convnext_fgc_dsd_ri": ("models.optimize.convnext_ep", "convnext_fgc_dsd_ri"),
+    "convnext_fgc_dsd_fse": ("models.optimize.convnext_ep", "convnext_fgc_dsd_fse"),
     # ── 对比实验扩展主干 (2026-10-26) ──
     "mobilenet_v2":       ("models.MobileNet", "mobilenet_v2"),
     "mobilenet_v3_large": ("models.MobileNetV3", "mobilenet_v3_large"),

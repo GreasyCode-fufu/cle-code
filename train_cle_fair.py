@@ -162,6 +162,7 @@ MODEL_ALLOWED_MISSING_SEGMENTS = {
     "convnext_cmp_fse": {"cmp_head", "fesr", "w_s", "w_e", "alpha"},
     "convnext_dpea2": {"cmp_head", "dsm"},
     "convnext_fgc_dsd_ri": {"dsv", "dsh", "dsm", "flt", "flt_bias"},
+    "convnext_fgc_dsd_fse": {"fesr", "w_s", "w_e", "alpha", "dsm"},
 }
 
 # 各模型加载 ImageNet 预训练权重前需做的"权重变换"(如 s2d 变体的 conv1 通道膨胀)。
@@ -242,6 +243,13 @@ def _remap_dsd(state):
     return out
 
 
+def _remap_ri_drop(state):
+    """随机初始化对照: 丢弃被替换算子(stage1/stage3 dwconv)的预训练核,
+    其余全部保留 —— 与投影初始化组的唯一差异是新算子的初始化方式。"""
+    return {k: v for k, v in state.items()
+            if not (k.startswith("stages.1.") or k.startswith("stages.3.")) or ".dwconv." not in k}
+
+
 def _remap_fgc(state):
     """EPNet B-v2: stage4(stages.3) 的 7x7 dwconv 核 -> 7x7 rfft2 频域滤波器初始值。
     核中心循环移位到原点后 rfft2 = 原 dwconv 的循环卷积频域对偶(投影初始化)。"""
@@ -278,6 +286,8 @@ MODEL_CHECKPOINT_TRANSFORMS = {
     "convnext_cmp_dsd": _remap_dsd,
     "convnext_cmp_fgc": _remap_fgc,
     "convnext_dpea2": lambda st: _remap_fgc(_remap_dsd(st)),
+    "convnext_fgc_dsd_fse": lambda st: _remap_fgc(_remap_dsd(st)),
+    "convnext_fgc_dsd_ri": _remap_ri_drop,
     "convnext_epnet2": lambda st: _remap_fgc(_remap_dsd(st)),
     "convnext_v2bc4": _remap_wr_s4,
 }
