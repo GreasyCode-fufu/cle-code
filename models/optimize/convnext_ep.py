@@ -44,13 +44,20 @@ def _gaussian_lowpass(h: int, w: int, device, dtype, base_ratio: float = 0.1):
 
 
 class FESR(nn.Module):
-    """B: 频域边缘-结构交互重标定(参数~2标量)。输入输出 (B,C,H,W) 同形。"""
+    """B: 频域边缘-结构交互重标定(参数~2标量)。输入输出 (B,C,H,W) 同形。
 
-    def __init__(self, base_ratio: float = 0.1):
+    v2(2026-11-01 快筛反馈): 原 x*(1+sigmoid) 初始幅值放大~73%, 破坏预训练特征
+    平衡(Batch BA 仅 +0.50) -> 加软启动 alpha(init 0.1, 前作 wavelet_scale 0.1
+    的成功经验): x*(1+alpha*sigmoid(...)), 初始扰动~7%, 梯度仍非零、不可旁路。
+    """
+
+    def __init__(self, base_ratio: float = 0.1, soft_start: bool = False):
         super().__init__()
         self.base_ratio = base_ratio
+        self.soft_start = soft_start
         self.w_s = nn.Parameter(torch.ones(1))   # 结构路权重(非零初始化)
         self.w_e = nn.Parameter(torch.ones(1))   # 边缘路权重
+        self.alpha = nn.Parameter(torch.tensor(0.1)) if soft_start else None
 
     @staticmethod
     def _norm_map(t: torch.Tensor) -> torch.Tensor:
@@ -70,6 +77,8 @@ class FESR(nn.Module):
         s_map = self._norm_map(low ** 2)                     # 结构能量注意力
         e_map = self._norm_map((high - high.mean(dim=[2, 3], keepdim=True)) ** 2)  # 边缘方差注意力
         gate = torch.sigmoid(self.w_s * s_map + self.w_e * e_map)
+        if self.alpha is not None:
+            gate = self.alpha * gate
         out = xf * (1 + gate)
         return out.to(in_dtype)
 
@@ -102,9 +111,10 @@ class EPBlock(Block):
     """
 
     def __init__(self, dim, drop_rate=0., layer_scale_init_value=1e-6,
-                 use_fesr=False, use_lsdg=False, fesr_ratio=0.1, lsdg_k=7):
+                 use_fesr=False, use_lsdg=False, fesr_ratio=0.1, lsdg_k=7,
+                 fesr_soft=False):
         super().__init__(dim, drop_rate, layer_scale_init_value)
-        self.fesr = FESR(fesr_ratio) if use_fesr else None
+        self.fesr = FESR(fesr_ratio, soft_start=fesr_soft) if use_fesr else None
         self.lsdg = LSDG(dim, lsdg_k) if use_lsdg else None
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
@@ -128,14 +138,15 @@ class EPBlock(Block):
 class ConvNeXtEP(ConvNeXt):
     """ConvNeXt + {A:DPH head, B:FESR@stages, C:LSDG@stages} 结构化组合。"""
 
-    def __init__(self, use_dph=False, fesr_stages=(), lsdg_stages=(), **kw):
+    def __init__(self, use_dph=False, fesr_stages=(), lsdg_stages=(), fesr_soft=False, **kw):
         super().__init__(**kw)
         dims0 = self.downsample_layers[0][0].out_channels
         self.dims = [dims0] + [self.downsample_layers[i][1].out_channels for i in (1, 2, 3)]
 
         for si in fesr_stages:
             self.stages[si] = nn.Sequential(
-                *[EPBlock(self.dims[si], use_fesr=True) for _ in self.stages[si]])
+                *[EPBlock(self.dims[si], use_fesr=True, fesr_soft=fesr_soft)
+                  for _ in self.stages[si]])
         for si in lsdg_stages:
             self.stages[si] = nn.Sequential(
                 *[EPBlock(self.dims[si], use_lsdg=True) for _ in self.stages[si]])
@@ -187,6 +198,9 @@ def convnext_dph(num_classes: int):            # A 单独
 def convnext_fesr(num_classes: int):           # B 单独 (stage3/4)
     return _ep(num_classes, fesr_stages=(2, 3))
 
+def convnext_fesr2(num_classes: int):          # B-v2 软启动(alpha init 0.1)
+    return _ep(num_classes, fesr_stages=(2, 3), fesr_soft=True)
+
 def convnext_lsdg(num_classes: int):           # C 单独 (stage2)
     return _ep(num_classes, lsdg_stages=(1,))
 
@@ -201,3 +215,7 @@ def convnext_fesr_lsdg(num_classes: int):      # B+C
 
 def convnext_dph_fesr_lsdg(num_classes: int):  # A+B+C 三合一(最终候选)
     return _ep(num_classes, use_dph=True, fesr_stages=(2, 3), lsdg_stages=(1,))
+
+def convnext_epnet(num_classes: int):          # A+B(v2软启动)+C 三合一
+    return _ep(num_classes, use_dph=True, fesr_stages=(2, 3), lsdg_stages=(1,),
+               fesr_soft=True)

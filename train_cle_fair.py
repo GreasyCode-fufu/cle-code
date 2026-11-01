@@ -129,6 +129,10 @@ MODEL_ALLOWED_MISSING_SEGMENTS = {
     "convnext_dph_fesr_lsdg": {"dph4_n", "dph3_a", "dph3_m", "dph3_an", "dph3_mn",
                                "dph2_a", "dph2_m", "dph2_an", "dph2_mn", "fesr", "w_s", "w_e",
                                "lsdg", "strip_h", "strip_v", "fuse"},
+    "convnext_fesr2": {"fesr", "w_s", "w_e", "alpha"},
+    "convnext_epnet": {"dph4_n", "dph3_a", "dph3_m", "dph3_an", "dph3_mn",
+                       "dph2_a", "dph2_m", "dph2_an", "dph2_mn", "fesr", "w_s", "w_e", "alpha",
+                       "lsdg", "strip_h", "strip_v", "fuse"},
 }
 
 # 各模型加载 ImageNet 预训练权重前需做的"权重变换"(如 s2d 变体的 conv1 通道膨胀)。
