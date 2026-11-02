@@ -805,3 +805,15 @@ Epoch 24: train_loss=0.001, train_acc=1.000, val_loss=0.090, val_acc=0.979, val_
 [saved] /data/cle/auto/ZCode/Classification/weights_cifar10/convnext_v2bc_seed43/convnext_v2bc/eval_20261027_004250/  (results.json / predictions.csv / evaluation_report.md)
 
 ===== [2026-10-27 00:42:25.236703] /home/login/miniconda3/envs/sunfuxiang/bin/python evaluate.py --model convnext_v2bc --weights /data/cle/auto/ZCode/Classification/weights_cifar10/convnext_v2bc_seed43/convnext_v2bc/model_best.pth --data-path ./datasets/cifar10/test --class-names airplane automobile bird cat deer dog frog horse ship truck
+/home/login/miniconda3/envs/sunfuxiang/lib/python3.12/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+/data/cle/auto/ZCode/Classification/train_cle_fair.py:800: FutureWarning: `torch.cuda.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler('cuda', args...)` instead.
+  scaler = torch.cuda.amp.GradScaler()
+[seed] seed = 43 (set)
+36377 images for training.
+10634 images were found in the val dataset.
+10634 images for test.
+[norm] ImageNet 归一化(加载了预训练权重) MEAN=[0.485, 0.456, 0.406] STD=[0.229, 0.224, 0.225]
+[weights] strict load passed /data/cle/sunfuxiang/classifyML/pth/convnext_tiny_1k_224_ema.pth | classifier_missing=92 ignored_buffers=0 unexpected=0
+[train] model=convnext_v2bc num_classes=6 img=224 bs=32 epochs=300 | CE (label_smoothing=0.0) | select=val_macro_f1
+[out]   run_dir=./weights_tcga_ep/convnext_v2bc_seed43/convnext_v2bc
