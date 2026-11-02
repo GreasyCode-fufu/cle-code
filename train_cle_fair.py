@@ -174,6 +174,7 @@ MODEL_ALLOWED_MISSING_SEGMENTS = {
     "convnext_ef_r75": {},
     "convnext_svd75": {},
     "convnext_egb_scg_hsc": {"egb", "egb_g", "scg", "scg_g", "hsc"},
+    "convnext_egb_scg": {"egb", "egb_g", "scg", "scg_g"},
 }
 
 # 各模型加载 ImageNet 预训练权重前需做的"权重变换"(如 s2d 变体的 conv1 通道膨胀)。
