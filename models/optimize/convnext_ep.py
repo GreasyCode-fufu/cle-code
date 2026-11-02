@@ -253,14 +253,20 @@ class FGC(nn.Module):
 
     stage4 的 7×7 dwconv(7×7 特征图) 整体替换为 rfft2 频域乘性滤波(循环卷积的频域对偶)。
     初始化 = rfft2(roll(预训练核, -3)): 初始行为原 dwconv 的循环卷积近似,
-    训练中感受野可自由从 7×7 扩展到全图(全局频率调制), 参数 37.7K->86K。
+    训练中感受野可自由从 7×7 扩展到全图(全局频率调制)。
     依据: M→B 漏诊样本高频占比低 15%, 需要超局部核的全局频率重组能力。
+
+    groups>1 时升级为 GFC(分组频域滤波): 滤波器按通道分组共享 —— 频域响应的
+    组内共享既是轻量化(参数 /groups)也是频率先验正则(医学图像通道间频率
+    响应高度相关)。初始化 = 同组预训练核均值的频域投影。
     """
 
-    def __init__(self, dim: int, hw: int = 7, k: int = 7):
+    def __init__(self, dim: int, hw: int = 7, k: int = 7, groups: int = 1):
         super().__init__()
         self.hw = hw
-        self.flt = nn.Parameter(torch.zeros(dim, hw, hw // 2 + 1, 2))   # 实部/虚部
+        self.groups = groups
+        self.ch_per_g = dim // groups
+        self.flt = nn.Parameter(torch.zeros(groups, hw, hw // 2 + 1, 2))  # 实部/虚部
         self.flt_bias = nn.Parameter(torch.zeros(dim))
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
@@ -269,8 +275,26 @@ class FGC(nn.Module):
         in_dtype = x.dtype
         xf = x.float()
         f = torch.view_as_complex(self.flt)
+        if self.groups > 1:
+            f = f.repeat_interleave(self.ch_per_g, dim=0)     # (C,H,Wf) 组内共享
         y = torch.fft.irfft2(torch.fft.rfft2(xf, dim=(-2, -1)) * f, s=(h, w), dim=(-2, -1))
         return (y + self.flt_bias.view(1, -1, 1, 1)).to(in_dtype)
+
+
+class FoldedLinear(nn.Module):
+    """SVD 低秩折叠线性层: Linear(in,out) -> p(q(x)), q: in->r, p: r->out。
+
+    预训练权重 W(out,in) 的最优秩 r 近似(Eckart-Young): W ≈ P·Q,
+    P=(U_r Σ_r), Q=V_r^T。中间无激活, 数学合法; 参数 4·C² -> 2.5·C²(r=C/2)。
+    SVD 折叠由 checkpoint transform 完成(初始化即预训练最优低秩近似)。"""
+
+    def __init__(self, in_f: int, out_f: int, rank: int, bias: bool = True):
+        super().__init__()
+        self.q = nn.Linear(in_f, rank, bias=False)
+        self.p = nn.Linear(rank, out_f, bias=bias)
+
+    def forward(self, x):
+        return self.p(self.q(x))
 
 
 class EPBlock(Block):
@@ -282,14 +306,18 @@ class EPBlock(Block):
 
     def __init__(self, dim, drop_rate=0., layer_scale_init_value=1e-6,
                  use_fesr=False, use_lsdg=False, fesr_ratio=0.1, lsdg_k=7,
-                 fesr_soft=False, use_dsd=False, dsd_k=7, use_fgc=False, fgc_hw=14):
+                 fesr_soft=False, use_dsd=False, dsd_k=7, use_fgc=False, fgc_hw=14,
+                 fgc_groups=1, svd_ratio=0.0):
         super().__init__(dim, drop_rate, layer_scale_init_value)
         self.fesr = FESR(fesr_ratio, soft_start=fesr_soft) if use_fesr else None
         self.lsdg = LSDG(dim, lsdg_k) if use_lsdg else None
         if use_dsd:
             self.dwconv = DSDConv(dim, dsd_k)
         if use_fgc:
-            self.dwconv = FGC(dim, fgc_hw)
+            self.dwconv = FGC(dim, fgc_hw, groups=fgc_groups)
+        if svd_ratio > 0:   # SVD 低秩折叠 pwconv1/2(transform 提供最优低秩初始化)
+            self.pwconv1 = FoldedLinear(dim, 4 * dim, max(8, int(dim * svd_ratio)))
+            self.pwconv2 = FoldedLinear(4 * dim, dim, max(8, int(dim * svd_ratio)))
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         shortcut = x
@@ -315,26 +343,23 @@ class ConvNeXtEP(ConvNeXt):
     def __init__(self, use_dph=False, fesr_stages=(), lsdg_stages=(), fesr_soft=False,
                  dsd_stages=(), fgc_stages=(), use_am=False, use_mfm=False,
                  use_aep=False, am_aux=False, mfm_lam=0.05, mfm_mask=0.15,
-                 use_dph4=False, use_cmp=False, **kw):
+                 use_dph4=False, use_cmp=False, fgc_groups=1, svd_stages=(), svd_ratio=0.5, **kw):
         super().__init__(**kw)
         dims0 = self.downsample_layers[0][0].out_channels
         self.dims = [dims0] + [self.downsample_layers[i][1].out_channels for i in (1, 2, 3)]
 
-        for si in fesr_stages:
+        touched = sorted(set(list(fesr_stages) + list(lsdg_stages) + list(dsd_stages)
+                             + list(fgc_stages) + list(svd_stages)))
+        for si in touched:   # 每 stage 只重建一次, 多算子标志合并(防覆盖)
             self.stages[si] = nn.Sequential(
-                *[EPBlock(self.dims[si], use_fesr=True, fesr_soft=fesr_soft)
+                *[EPBlock(self.dims[si],
+                          use_fesr=si in fesr_stages, fesr_soft=fesr_soft,
+                          use_lsdg=si in lsdg_stages, use_dsd=si in dsd_stages,
+                          use_fgc=si in fgc_stages,
+                          fgc_hw={0: 56, 1: 28, 2: 14, 3: 7}.get(si, 7),
+                          fgc_groups=fgc_groups,
+                          svd_ratio=svd_ratio if si in svd_stages else 0.0)
                   for _ in self.stages[si]])
-        for si in dsd_stages:
-            self.stages[si] = nn.Sequential(
-                *[EPBlock(self.dims[si], use_dsd=True) for _ in self.stages[si]])
-        for si in fgc_stages:
-            self.stages[si] = nn.Sequential(
-                *[EPBlock(self.dims[si], use_fgc=True,
-                          fgc_hw={0: 56, 1: 28, 2: 14, 3: 7}.get(si, 7))
-                  for _ in self.stages[si]])
-        for si in lsdg_stages:
-            self.stages[si] = nn.Sequential(
-                *[EPBlock(self.dims[si], use_lsdg=True) for _ in self.stages[si]])
 
         self.use_dph = use_dph
         self.use_am = use_am
@@ -559,3 +584,15 @@ def convnext_fgc34_dsd2(num_classes: int):  # FGC@stage3+4 + DSD@stage2
 
 def convnext_fgc_ri(num_classes: int):       # FGC随机初始化对照(创新点2判决实验)
     return _ep(num_classes, fgc_stages=(3,))
+
+
+# ── EF-ConvNeXt: 高效频域网络 (2026-11-02 轻量化转向) ──
+def convnext_fgc_g8(num_classes: int):       # FGC 分组滤波(GFC, 8组共享)
+    return _ep(num_classes, fgc_stages=(3,), fgc_groups=8)
+
+def convnext_svd(num_classes: int):          # 仅 SVD 低秩折叠(stage3/4 MLP, r=C/2)
+    return _ep(num_classes, svd_stages=(2, 3), svd_ratio=0.5)
+
+def convnext_ef(num_classes: int):           # EF-ConvNeXt = GFC + SVD 折叠
+    return _ep(num_classes, fgc_stages=(3,), fgc_groups=8,
+               svd_stages=(2, 3), svd_ratio=0.5)
