@@ -596,3 +596,11 @@ def convnext_svd(num_classes: int):          # 仅 SVD 低秩折叠(stage3/4 MLP
 def convnext_ef(num_classes: int):           # EF-ConvNeXt = GFC + SVD 折叠
     return _ep(num_classes, fgc_stages=(3,), fgc_groups=8,
                svd_stages=(2, 3), svd_ratio=0.5)
+
+
+def convnext_ef_r75(num_classes: int):       # EF 消融: SVD r=0.75C(更轻损更小)
+    return _ep(num_classes, fgc_stages=(3,), fgc_groups=8,
+               svd_stages=(2, 3), svd_ratio=0.75)
+
+def convnext_svd75(num_classes: int):        # SVD 消融: r=0.75C
+    return _ep(num_classes, svd_stages=(2, 3), svd_ratio=0.75)
