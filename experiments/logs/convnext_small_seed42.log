@@ -1843,3 +1843,245 @@ Epoch 82: train_loss=0.000, train_acc=1.000, val_loss=1.095, val_acc=0.802, val_
 [saved] /data/cle/auto/ZCode/Classification/weights_cub_bk/convnext_small_seed42/convnext_small/eval_20261029_093138/  (results.json / predictions.csv / evaluation_report.md)
 
 ===== [2026-10-29 09:31:20.353331] /home/login/miniconda3/envs/sunfuxiang/bin/python evaluate.py --model convnext_small --weights /data/cle/auto/ZCode/Classification/weights_cub_bk/convnext_small_seed42/convnext_small/model_best.pth --data-path ./datasets/cub_v1/test --class-names 001.Black_footed_Albatross 002.Laysan_Albatross 003.Sooty_Albatross 004.Groove_billed_Ani 005.Crested_Auklet 006.Least_Auklet 007.Parakeet_Auklet 008.Rhinoceros_Auklet 009.Brewer_Blackbird 010.Red_winged_Blackbird 011.Rusty_Blackbird 012.Yellow_headed_Blackbird 013.Bobolink 014.Indigo_Bunting 015.Lazuli_Bunting 016.Painted_Bunting 017.Cardinal 018.Spotted_Catbird 019.Gray_Catbird 020.Yellow_breasted_Chat 021.Eastern_Towhee 022.Chuck_will_Widow 023.Brandt_Cormorant 024.Red_faced_Cormorant 025.Pelagic_Cormorant 026.Bronzed_Cowbird 027.Shiny_Cowbird 028.Brown_Creeper 029.American_Crow 030.Fish_Crow 031.Black_billed_Cuckoo 032.Mangrove_Cuckoo 033.Yellow_billed_Cuckoo 034.Gray_crowned_Rosy_Finch 035.Purple_Finch 036.Northern_Flicker 037.Acadian_Flycatcher 038.Great_Crested_Flycatcher 039.Least_Flycatcher 040.Olive_sided_Flycatcher 041.Scissor_tailed_Flycatcher 042.Vermilion_Flycatcher 043.Yellow_bellied_Flycatcher 044.Frigatebird 045.Northern_Fulmar 046.Gadwall 047.American_Goldfinch 048.European_Goldfinch 049.Boat_tailed_Grackle 050.Eared_Grebe 051.Horned_Grebe 052.Pied_billed_Grebe 053.Western_Grebe 054.Blue_Grosbeak 055.Evening_Grosbeak 056.Pine_Grosbeak 057.Rose_breasted_Grosbeak 058.Pigeon_Guillemot 059.California_Gull 060.Glaucous_winged_Gull 061.Heermann_Gull 062.Herring_Gull 063.Ivory_Gull 064.Ring_billed_Gull 065.Slaty_backed_Gull 066.Western_Gull 067.Anna_Hummingbird 068.Ruby_throated_Hummingbird 069.Rufous_Hummingbird 070.Green_Violetear 071.Long_tailed_Jaeger 072.Pomarine_Jaeger 073.Blue_Jay 074.Florida_Jay 075.Green_Jay 076.Dark_eyed_Junco 077.Tropical_Kingbird 078.Gray_Kingbird 079.Belted_Kingfisher 080.Green_Kingfisher 081.Pied_Kingfisher 082.Ringed_Kingfisher 083.White_breasted_Kingfisher 084.Red_legged_Kittiwake 085.Horned_Lark 086.Pacific_Loon 087.Mallard 088.Western_Meadowlark 089.Hooded_Merganser 090.Red_breasted_Merganser 091.Mockingbird 092.Nighthawk 093.Clark_Nutcracker 094.White_breasted_Nuthatch 095.Baltimore_Oriole 096.Hooded_Oriole 097.Orchard_Oriole 098.Scott_Oriole 099.Ovenbird 100.Brown_Pelican 101.White_Pelican 102.Western_Wood_Pewee 103.Sayornis 104.American_Pipit 105.Whip_poor_Will 106.Horned_Puffin 107.Common_Raven 108.White_necked_Raven 109.American_Redstart 110.Geococcyx 111.Loggerhead_Shrike 112.Great_Grey_Shrike 113.Baird_Sparrow 114.Black_throated_Sparrow 115.Brewer_Sparrow 116.Chipping_Sparrow 117.Clay_colored_Sparrow 118.House_Sparrow 119.Field_Sparrow 120.Fox_Sparrow 121.Grasshopper_Sparrow 122.Harris_Sparrow 123.Henslow_Sparrow 124.Le_Conte_Sparrow 125.Lincoln_Sparrow 126.Nelson_Sharp_tailed_Sparrow 127.Savannah_Sparrow 128.Seaside_Sparrow 129.Song_Sparrow 130.Tree_Sparrow 131.Vesper_Sparrow 132.White_crowned_Sparrow 133.White_throated_Sparrow 134.Cape_Glossy_Starling 135.Bank_Swallow 136.Barn_Swallow 137.Cliff_Swallow 138.Tree_Swallow 139.Scarlet_Tanager 140.Summer_Tanager 141.Artic_Tern 142.Black_Tern 143.Caspian_Tern 144.Common_Tern 145.Elegant_Tern 146.Forsters_Tern 147.Least_Tern 148.Green_tailed_Towhee 149.Brown_Thrasher 150.Sage_Thrasher 151.Black_capped_Vireo 152.Blue_headed_Vireo 153.Philadelphia_Vireo 154.Red_eyed_Vireo 155.Warbling_Vireo 156.White_eyed_Vireo 157.Yellow_throated_Vireo 158.Bay_breasted_Warbler 159.Black_and_white_Warbler 160.Black_throated_Blue_Warbler 161.Blue_winged_Warbler 162.Canada_Warbler 163.Cape_May_Warbler 164.Cerulean_Warbler 165.Chestnut_sided_Warbler 166.Golden_winged_Warbler 167.Hooded_Warbler 168.Kentucky_Warbler 169.Magnolia_Warbler 170.Mourning_Warbler 171.Myrtle_Warbler 172.Nashville_Warbler 173.Orange_crowned_Warbler 174.Palm_Warbler 175.Pine_Warbler 176.Prairie_Warbler 177.Prothonotary_Warbler 178.Swainson_Warbler 179.Tennessee_Warbler 180.Wilson_Warbler 181.Worm_eating_Warbler 182.Yellow_Warbler 183.Northern_Waterthrush 184.Louisiana_Waterthrush 185.Bohemian_Waxwing 186.Cedar_Waxwing 187.American_Three_toed_Woodpecker 188.Pileated_Woodpecker 189.Red_bellied_Woodpecker 190.Red_cockaded_Woodpecker 191.Red_headed_Woodpecker 192.Downy_Woodpecker 193.Bewick_Wren 194.Cactus_Wren 195.Carolina_Wren 196.House_Wren 197.Marsh_Wren 198.Rock_Wren 199.Winter_Wren 200.Common_Yellowthroat
+/home/login/miniconda3/envs/sunfuxiang/lib/python3.12/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+/data/cle/auto/ZCode/Classification/train_cle_fair.py:800: FutureWarning: `torch.cuda.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler('cuda', args...)` instead.
+  scaler = torch.cuda.amp.GradScaler()
+[seed] seed = 42 (set)
+36377 images for training.
+10634 images were found in the val dataset.
+10634 images for test.
+[norm] ImageNet 归一化(加载了预训练权重) MEAN=[0.485, 0.456, 0.406] STD=[0.229, 0.224, 0.225]
+[weights] strict load passed /data/cle/sunfuxiang/classifyML/pth/convnext_small_1k_224_ema.pth | classifier_missing=2 ignored_buffers=0 unexpected=0
+[train] model=convnext_small num_classes=6 img=224 bs=32 epochs=300 | CE (label_smoothing=0.0) | select=val_macro_f1
+[out]   run_dir=./weights_tcga_ep/convnext_small_seed42/convnext_small
+train epoch 0 loss: 0.248, acc: 0.916:  10… [  , 
+Epoch 0: train_loss=0.248, train_acc=0.916, val_loss=0.981, val_acc=0.792, val_macroF1=0.7255, lr=0.000100, best_macroF1=0.7255 (epoch 0) *
+train epoch 1 loss: 0.139, acc: 0.952:  10… [  , 
+Epoch 1: train_loss=0.139, train_acc=0.952, val_loss=0.696, val_acc=0.822, val_macroF1=0.7755, lr=0.000100, best_macroF1=0.7755 (epoch 1) *
+train epoch 2 loss: 0.110, acc: 0.961:  10… [  , 
+Epoch 2: train_loss=0.110, train_acc=0.961, val_loss=0.556, val_acc=0.836, val_macroF1=0.7945, lr=0.000100, best_macroF1=0.7945 (epoch 2) *
+train epoch 3 loss: 0.089, acc: 0.968:  10… [  , 
+Epoch 3: train_loss=0.089, train_acc=0.968, val_loss=0.562, val_acc=0.831, val_macroF1=0.7943, lr=0.000100, best_macroF1=0.7945 (epoch 2)
+train epoch 4 loss: 0.074, acc: 0.974:  10… [  , 
+Epoch 4: train_loss=0.074, train_acc=0.974, val_loss=0.701, val_acc=0.846, val_macroF1=0.8066, lr=0.000100, best_macroF1=0.8066 (epoch 4) *
+train epoch 5 loss: 0.064, acc: 0.978:  10… [  , 
+Epoch 5: train_loss=0.064, train_acc=0.978, val_loss=0.832, val_acc=0.825, val_macroF1=0.7815, lr=0.000100, best_macroF1=0.8066 (epoch 4)
+train epoch 6 loss: 0.054, acc: 0.982:  10… [  , 
+Epoch 6: train_loss=0.054, train_acc=0.982, val_loss=0.941, val_acc=0.824, val_macroF1=0.7747, lr=0.000100, best_macroF1=0.8066 (epoch 4)
+train epoch 7 loss: 0.046, acc: 0.984:  10… [  , 
+Epoch 7: train_loss=0.046, train_acc=0.984, val_loss=0.841, val_acc=0.827, val_macroF1=0.7859, lr=0.000100, best_macroF1=0.8066 (epoch 4)
+train epoch 8 loss: 0.039, acc: 0.986:  10… [  , 
+Epoch 8: train_loss=0.039, train_acc=0.986, val_loss=0.947, val_acc=0.826, val_macroF1=0.7661, lr=0.000100, best_macroF1=0.8066 (epoch 4)
+train epoch 9 loss: 0.040, acc: 0.986:  10… [  , 
+Epoch 9: train_loss=0.040, train_acc=0.986, val_loss=0.804, val_acc=0.837, val_macroF1=0.7948, lr=0.000100, best_macroF1=0.8066 (epoch 4)
+train epoch 10 loss: 0.035, acc: 0.988:  10…   , 
+Epoch 10: train_loss=0.035, train_acc=0.988, val_loss=0.929, val_acc=0.830, val_macroF1=0.7895, lr=0.000100, best_macroF1=0.8066 (epoch 4)
+train epoch 11 loss: 0.031, acc: 0.990:  10…   , 
+Epoch 11: train_loss=0.031, train_acc=0.990, val_loss=0.846, val_acc=0.841, val_macroF1=0.8006, lr=0.000100, best_macroF1=0.8066 (epoch 4)
+train epoch 12 loss: 0.032, acc: 0.989:  10…   , 
+Epoch 12: train_loss=0.032, train_acc=0.989, val_loss=1.098, val_acc=0.808, val_macroF1=0.7642, lr=0.000100, best_macroF1=0.8066 (epoch 4)
+train epoch 13 loss: 0.029, acc: 0.990:  10…   , 
+Epoch 13: train_loss=0.029, train_acc=0.990, val_loss=1.113, val_acc=0.822, val_macroF1=0.7648, lr=0.000099, best_macroF1=0.8066 (epoch 4)
+train epoch 14 loss: 0.029, acc: 0.990:  10…   , 
+Epoch 14: train_loss=0.029, train_acc=0.990, val_loss=1.099, val_acc=0.827, val_macroF1=0.7836, lr=0.000099, best_macroF1=0.8066 (epoch 4)
+train epoch 15 loss: 0.027, acc: 0.991:  10…   , 
+Epoch 15: train_loss=0.027, train_acc=0.991, val_loss=1.029, val_acc=0.813, val_macroF1=0.7717, lr=0.000099, best_macroF1=0.8066 (epoch 4)
+train epoch 16 loss: 0.025, acc: 0.991:  10…   , 
+Epoch 16: train_loss=0.025, train_acc=0.991, val_loss=0.936, val_acc=0.836, val_macroF1=0.7871, lr=0.000099, best_macroF1=0.8066 (epoch 4)
+/home/login/miniconda3/envs/sunfuxiang/lib/python3.12/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+/data/cle/auto/ZCode/Classification/train_cle_fair.py:800: FutureWarning: `torch.cuda.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler('cuda', args...)` instead.
+  scaler = torch.cuda.amp.GradScaler()
+[seed] seed = 42 (set)
+36377 images for training.
+10634 images were found in the val dataset.
+10634 images for test.
+[norm] ImageNet 归一化(加载了预训练权重) MEAN=[0.485, 0.456, 0.406] STD=[0.229, 0.224, 0.225]
+[weights] strict load passed /data/cle/sunfuxiang/classifyML/pth/convnext_small_1k_224_ema.pth | classifier_missing=2 ignored_buffers=0 unexpected=0
+[train] model=convnext_small num_classes=6 img=224 bs=32 epochs=300 | CE (label_smoothing=0.0) | select=val_macro_f1
+[out]   run_dir=./weights_tcga_ep/convnext_small_seed42/convnext_small
+train epoch 0 loss: 0.248, acc: 0.916:  10… [  , 
+Epoch 0: train_loss=0.248, train_acc=0.916, val_loss=0.981, val_acc=0.792, val_macroF1=0.7255, lr=0.000100, best_macroF1=0.7255 (epoch 0) *
+train epoch 1 loss: 0.139, acc: 0.952:  10… [  , 
+Epoch 1: train_loss=0.139, train_acc=0.952, val_loss=0.696, val_acc=0.822, val_macroF1=0.7755, lr=0.000100, best_macroF1=0.7755 (epoch 1) *
+train epoch 2 loss: 0.110, acc: 0.961:  10… [  , 
+Epoch 2: train_loss=0.110, train_acc=0.961, val_loss=0.556, val_acc=0.836, val_macroF1=0.7945, lr=0.000100, best_macroF1=0.7945 (epoch 2) *
+train epoch 3 loss: 0.089, acc: 0.968:  10… [  , 
+Epoch 3: train_loss=0.089, train_acc=0.968, val_loss=0.562, val_acc=0.831, val_macroF1=0.7943, lr=0.000100, best_macroF1=0.7945 (epoch 2)
+train epoch 4 loss: 0.074, acc: 0.974:  10… [  , 
+Epoch 4: train_loss=0.074, train_acc=0.974, val_loss=0.701, val_acc=0.846, val_macroF1=0.8066, lr=0.000100, best_macroF1=0.8066 (epoch 4) *
+train epoch 5 loss: 0.064, acc: 0.978:  10… [  , 
+Epoch 5: train_loss=0.064, train_acc=0.978, val_loss=0.832, val_acc=0.825, val_macroF1=0.7815, lr=0.000100, best_macroF1=0.8066 (epoch 4)
+train epoch 6 loss: 0.054, acc: 0.982:  10… [  , 
+Epoch 6: train_loss=0.054, train_acc=0.982, val_loss=0.941, val_acc=0.824, val_macroF1=0.7747, lr=0.000100, best_macroF1=0.8066 (epoch 4)
+train epoch 7 loss: 0.046, acc: 0.984:  10… [  , 
+Epoch 7: train_loss=0.046, train_acc=0.984, val_loss=0.841, val_acc=0.827, val_macroF1=0.7859, lr=0.000100, best_macroF1=0.8066 (epoch 4)
+train epoch 8 loss: 0.039, acc: 0.986:  10… [  , 
+Epoch 8: train_loss=0.039, train_acc=0.986, val_loss=0.947, val_acc=0.826, val_macroF1=0.7661, lr=0.000100, best_macroF1=0.8066 (epoch 4)
+train epoch 9 loss: 0.040, acc: 0.986:  10… [  , 
+Epoch 9: train_loss=0.040, train_acc=0.986, val_loss=0.804, val_acc=0.837, val_macroF1=0.7948, lr=0.000100, best_macroF1=0.8066 (epoch 4)
+train epoch 10 loss: 0.035, acc: 0.988:  10…   , 
+Epoch 10: train_loss=0.035, train_acc=0.988, val_loss=0.929, val_acc=0.830, val_macroF1=0.7895, lr=0.000100, best_macroF1=0.8066 (epoch 4)
+train epoch 11 loss: 0.031, acc: 0.990:  10…   , 
+Epoch 11: train_loss=0.031, train_acc=0.990, val_loss=0.846, val_acc=0.841, val_macroF1=0.8006, lr=0.000100, best_macroF1=0.8066 (epoch 4)
+train epoch 12 loss: 0.032, acc: 0.989:  10…   , 
+Epoch 12: train_loss=0.032, train_acc=0.989, val_loss=1.098, val_acc=0.808, val_macroF1=0.7642, lr=0.000100, best_macroF1=0.8066 (epoch 4)
+train epoch 13 loss: 0.029, acc: 0.990:  10…   , 
+Epoch 13: train_loss=0.029, train_acc=0.990, val_loss=1.113, val_acc=0.822, val_macroF1=0.7648, lr=0.000099, best_macroF1=0.8066 (epoch 4)
+train epoch 14 loss: 0.029, acc: 0.990:  10…   , 
+Epoch 14: train_loss=0.029, train_acc=0.990, val_loss=1.099, val_acc=0.827, val_macroF1=0.7836, lr=0.000099, best_macroF1=0.8066 (epoch 4)
+train epoch 15 loss: 0.027, acc: 0.991:  10…   , 
+Epoch 15: train_loss=0.027, train_acc=0.991, val_loss=1.029, val_acc=0.813, val_macroF1=0.7717, lr=0.000099, best_macroF1=0.8066 (epoch 4)
+train epoch 16 loss: 0.025, acc: 0.991:  10…   , 
+Epoch 16: train_loss=0.025, train_acc=0.991, val_loss=0.936, val_acc=0.836, val_macroF1=0.7871, lr=0.000099, best_macroF1=0.8066 (epoch 4)
+train epoch 17 loss: 0.024, acc: 0.992:  10…   , 
+Epoch 17: train_loss=0.024, train_acc=0.992, val_loss=1.153, val_acc=0.820, val_macroF1=0.7768, lr=0.000099, best_macroF1=0.8066 (epoch 4)
+train epoch 18 loss: 0.022, acc: 0.992:  10…   , 
+Epoch 18: train_loss=0.022, train_acc=0.992, val_loss=1.088, val_acc=0.807, val_macroF1=0.7650, lr=0.000099, best_macroF1=0.8066 (epoch 4)
+train epoch 19 loss: 0.021, acc: 0.993:  10…   , 
+Epoch 19: train_loss=0.021, train_acc=0.993, val_loss=1.104, val_acc=0.835, val_macroF1=0.7916, lr=0.000099, best_macroF1=0.8066 (epoch 4)
+train epoch 20 loss: 0.023, acc: 0.993:  10…   , 
+Epoch 20: train_loss=0.023, train_acc=0.993, val_loss=1.375, val_acc=0.815, val_macroF1=0.7680, lr=0.000099, best_macroF1=0.8066 (epoch 4)
+train epoch 21 loss: 0.023, acc: 0.993:  10…   , 
+Epoch 21: train_loss=0.023, train_acc=0.993, val_loss=1.035, val_acc=0.831, val_macroF1=0.7948, lr=0.000099, best_macroF1=0.8066 (epoch 4)
+train epoch 22 loss: 0.019, acc: 0.994:  10…   , 
+Epoch 22: train_loss=0.019, train_acc=0.994, val_loss=1.107, val_acc=0.835, val_macroF1=0.7877, lr=0.000099, best_macroF1=0.8066 (epoch 4)
+train epoch 23 loss: 0.021, acc: 0.992:  10…   , 
+Epoch 23: train_loss=0.021, train_acc=0.992, val_loss=0.995, val_acc=0.827, val_macroF1=0.7845, lr=0.000098, best_macroF1=0.8066 (epoch 4)
+train epoch 24 loss: 0.019, acc: 0.993:  10…   , 
+Epoch 24: train_loss=0.019, train_acc=0.993, val_loss=1.047, val_acc=0.821, val_macroF1=0.7715, lr=0.000098, best_macroF1=0.8066 (epoch 4)
+train epoch 25 loss: 0.017, acc: 0.994:  10…   , 
+Epoch 25: train_loss=0.017, train_acc=0.994, val_loss=1.134, val_acc=0.806, val_macroF1=0.7585, lr=0.000098, best_macroF1=0.8066 (epoch 4)
+train epoch 26 loss: 0.021, acc: 0.992:  10…   , 
+Epoch 26: train_loss=0.021, train_acc=0.992, val_loss=1.077, val_acc=0.808, val_macroF1=0.7517, lr=0.000098, best_macroF1=0.8066 (epoch 4)
+train epoch 27 loss: 0.018, acc: 0.994:  10…   , 
+Epoch 27: train_loss=0.018, train_acc=0.994, val_loss=1.272, val_acc=0.820, val_macroF1=0.7622, lr=0.000098, best_macroF1=0.8066 (epoch 4)
+train epoch 28 loss: 0.019, acc: 0.993:  10…   , 
+Epoch 28: train_loss=0.019, train_acc=0.993, val_loss=0.947, val_acc=0.832, val_macroF1=0.7912, lr=0.000098, best_macroF1=0.8066 (epoch 4)
+train epoch 29 loss: 0.016, acc: 0.994:  10…   , 
+Epoch 29: train_loss=0.016, train_acc=0.994, val_loss=1.067, val_acc=0.814, val_macroF1=0.7737, lr=0.000098, best_macroF1=0.8066 (epoch 4)
+train epoch 30 loss: 0.015, acc: 0.995:  10…   , 
+Epoch 30: train_loss=0.015, train_acc=0.995, val_loss=0.871, val_acc=0.832, val_macroF1=0.7958, lr=0.000097, best_macroF1=0.8066 (epoch 4)
+train epoch 31 loss: 0.018, acc: 0.994:  10…   , 
+Epoch 31: train_loss=0.018, train_acc=0.994, val_loss=1.103, val_acc=0.835, val_macroF1=0.8038, lr=0.000097, best_macroF1=0.8066 (epoch 4)
+train epoch 32 loss: 0.017, acc: 0.994:  10…   , 
+Epoch 32: train_loss=0.017, train_acc=0.994, val_loss=1.203, val_acc=0.814, val_macroF1=0.7819, lr=0.000097, best_macroF1=0.8066 (epoch 4)
+train epoch 33 loss: 0.016, acc: 0.995:  10…   , 
+Epoch 33: train_loss=0.016, train_acc=0.995, val_loss=1.282, val_acc=0.805, val_macroF1=0.7642, lr=0.000097, best_macroF1=0.8066 (epoch 4)
+train epoch 34 loss: 0.016, acc: 0.994:  10…   , 
+Epoch 34: train_loss=0.016, train_acc=0.994, val_loss=1.159, val_acc=0.805, val_macroF1=0.7612, lr=0.000097, best_macroF1=0.8066 (epoch 4)
+
+[early stop] epoch 34: val_macro_f1 not improved for 30 epochs
+
+===========================================================
+             Training Summary (fair baseline)              
+===========================================================
+  Model:              convnext_small
+  Best val macro-F1:  0.8066  (epoch 4)
+  Selection:          val macro-F1
+  Loss:               unweighted CrossEntropy
+  Training Time:      2:19:56
+  Weights:            ./weights_tcga_ep/convnext_small_seed42/convnext_small/model_best.pth
+  Run meta:           ./weights_tcga_ep/convnext_small_seed42/convnext_small/run_meta.json
+===========================================================
+
+===== [2026-11-03 10:48:36.130414] /home/login/miniconda3/envs/sunfuxiang/bin/python train_cle_fair.py --model convnext_small --num_classes 6 --img_size 224 --seed 42 --data-path-train ./../../datasets/TCGA/train --data-path-val ./../../datasets/TCGA/val --weights /home/login/data/cle/sunfuxiang/classifyML/pth/convnext_small_1k_224_ema.pth --save-dir ./weights_tcga_ep/convnext_small_seed42 --epochs 300 --early-stop 30 
+[norm] source=run_meta.json(imagenet)  mean=[0.485, 0.456, 0.406] std=[0.229, 0.224, 0.225]  img_size=224
+[model] convnext_small  weights=/data/cle/auto/ZCode/Classification/weights_tcga_ep/convnext_small_seed42/convnext_small/model_best.pth
+[complexity] MACs=8.68G FLOPs=17.37G Params=49.42M
+[data] test=10634 张  blood=199  cancer=2645  empty=3256  normal=1735  other=1717  stroma=1082
+
+================================================================
+  评估结果 — convnext_small  (test=10634 张)
+================================================================
+  【主指标】
+  Macro-F1         : 0.8068   ← 主指标(类别不平衡首选)
+  Accuracy         : 0.8462
+  Macro-AUROC(OvR) : 0.9639
+----------------------------------------------------------------
+  【补充总体指标】
+  Weighted-F1      : 0.8400
+  Balanced Acc     : 0.8011
+  Macro-Sensitivity: 0.8011   (= 各类 Recall 均值)
+  Macro-Specificity: 0.9677
+  Macro-Precision  : 0.8188
+  AUC-PR (Macro)   : 0.8727
+  Cohen's Kappa    : 0.8013
+  MCC              : 0.8025
+----------------------------------------------------------------
+  【每类指标】 Sensitivity / Specificity / Precision / F1 / AUROC
+  blood                 : 0.839 / 0.996 / 0.815 / 0.827 / 0.997  (n=199)
+  cancer                : 0.910 / 0.944 / 0.844 / 0.876 / 0.980  (n=2645)
+  empty                 : 0.996 / 0.962 / 0.920 / 0.957 / 0.981  (n=3256)
+  normal                : 0.862 / 0.969 / 0.846 / 0.854 / 0.976  (n=1735)
+  other                 : 0.610 / 0.955 / 0.722 / 0.662 / 0.894  (n=1717)
+  stroma                : 0.590 / 0.980 / 0.766 / 0.666 / 0.956  (n=1082)
+----------------------------------------------------------------
+  【模型复杂度】(仅与架构+输入尺寸有关，与数据集无关)
+  MACs : 8.68G    FLOPs : 17.37G    Params : 49.42M
+  【推理效率】(受 GPU 负载影响，为参考量级)
+  Pure FPS : 414.9  (2.41 ms/张)    End-to-End FPS : 255.7
+----------------------------------------------------------------
+  【混淆矩阵】(行=真实, 列=预测)
+                     blood    cancer     empty    normal     other    stroma
+  blood                167         3         2         8        18         1
+  cancer                 3      2406         1        83       113        39
+  empty                  0         1      3244         0        11         0
+  normal                 2       153         1      1495        36        48
+  other                 31       191       279        61      1048       107
+  stroma                 2        97         0       120       225       638
+================================================================
+
+[saved] /data/cle/auto/ZCode/Classification/weights_tcga_ep/convnext_small_seed42/convnext_small/eval_20261103_130922/  (results.json / predictions.csv / evaluation_report.md)
+
+===== [2026-11-03 13:08:36.770170] /home/login/miniconda3/envs/sunfuxiang/bin/python evaluate.py --model convnext_small --weights /data/cle/auto/ZCode/Classification/weights_tcga_ep/convnext_small_seed42/convnext_small/model_best.pth --data-path ./../../datasets/TCGA/val --class-names blood cancer empty normal other stroma
+[norm] source=run_meta.json(imagenet)  mean=[0.485, 0.456, 0.406] std=[0.229, 0.224, 0.225]  img_size=224
+[model] convnext_small  weights=/data/cle/auto/ZCode/Classification/weights_tcga_ep/convnext_small_seed42/convnext_small/model_best.pth
+[complexity] MACs=8.68G FLOPs=17.37G Params=49.42M
+[data] test=5702 张  blood=100  cancer=1329  empty=1621  normal=1014  other=879  stroma=759
+
+================================================================
+  评估结果 — convnext_small  (test=5702 张)
+================================================================
+  【主指标】
+  Macro-F1         : 0.8570   ← 主指标(类别不平衡首选)
+  Accuracy         : 0.8869
+  Macro-AUROC(OvR) : 0.9820
+----------------------------------------------------------------
+  【补充总体指标】
+  Weighted-F1      : 0.8860
+  Balanced Acc     : 0.8527
+  Macro-Sensitivity: 0.8527   (= 各类 Recall 均值)
+  Macro-Specificity: 0.9774
+  Macro-Precision  : 0.8646
+  AUC-PR (Macro)   : 0.9155
+  Cohen's Kappa    : 0.8571
+  MCC              : 0.8578
+----------------------------------------------------------------
+  【每类指标】 Sensitivity / Specificity / Precision / F1 / AUROC
+  blood                 : 0.780 / 0.998 / 0.867 / 0.821 / 0.995  (n=100)
+  cancer                : 0.853 / 0.978 / 0.923 / 0.886 / 0.982  (n=1329)
+  empty                 : 0.996 / 0.999 / 0.996 / 0.996 / 1.000  (n=1621)
+  normal                : 0.981 / 0.960 / 0.840 / 0.905 / 0.995  (n=1014)
+  other                 : 0.779 / 0.968 / 0.815 / 0.797 / 0.960  (n=879)
+  stroma                : 0.727 / 0.962 / 0.747 / 0.737 / 0.960  (n=759)
+----------------------------------------------------------------
+  【模型复杂度】(仅与架构+输入尺寸有关，与数据集无关)
+  MACs : 8.68G    FLOPs : 17.37G    Params : 49.42M
+  【推理效率】(受 GPU 负载影响，为参考量级)
+  Pure FPS : 406.5  (2.46 ms/张)    End-to-End FPS : 251.7
+----------------------------------------------------------------
+  【混淆矩阵】(行=真实, 列=预测)
+                     blood    cancer     empty    normal     other    stroma
+  blood                 78         3         1         8         8         2
+  cancer                10      1133         0        84        38        64
+  empty                  0         1      1614         0         5         1
+  normal                 1         8         0       995         0        10
+  other                  0        41         5        38       685       110
+  stroma                 1        42         0        59       105       552
+================================================================
+
+[saved] /data/cle/auto/ZCode/Classification/weights_tcga_ep/convnext_small_seed42/convnext_small/eval_20261103_130949/  (results.json / predictions.csv / evaluation_report.md)
+
+===== [2026-11-03 13:09:23.027192] /home/login/miniconda3/envs/sunfuxiang/bin/python evaluate.py --model convnext_small --weights /data/cle/auto/ZCode/Classification/weights_tcga_ep/convnext_small_seed42/convnext_small/model_best.pth --data-path ./../../datasets/TCGA/test --class-names blood cancer empty normal other stroma
