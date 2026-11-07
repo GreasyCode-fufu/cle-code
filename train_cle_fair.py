@@ -442,6 +442,7 @@ MODEL_CHECKPOINT_TRANSFORMS = {
     "convnext_v3s": _remap_wr,
     "convnext_v3x": _remap_wr,
     "convnext_v3r": lambda st: _remap_wr(_remap_drc(st)),
+    "convnext_v3cr": _remap_drc,
 }
 SWIN_VANILLA_IGNORED_CHECKPOINT_BUFFERS = {
     "layers.0.blocks.1.attn_mask",
