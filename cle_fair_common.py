@@ -146,6 +146,10 @@ MODEL_REGISTRY = {
     "convnext_v3cs":  ("models.optimize.convnext_cle_v3", "convnext_v3cs"),
     "convnext_v3cx":  ("models.optimize.convnext_cle_v3", "convnext_v3cx"),
     "convnext_v3cr":  ("models.optimize.convnext_cle_v3", "convnext_v3cr"),
+    # ── V4: CH + CSM 循环谱前馈(轻量化, convnext_cle_v4.py) ──
+    "convnext_v4a":   ("models.optimize.convnext_cle_v4", "convnext_v4a"),
+    "convnext_v4b":   ("models.optimize.convnext_cle_v4", "convnext_v4b"),
+    "convnext_v4c":   ("models.optimize.convnext_cle_v4", "convnext_v4c"),
     # ── EPNet 三创新点变体 (models/optimize/convnext_ep.py, 2026-11-01) ──
     "convnext_dph":           ("models.optimize.convnext_ep", "convnext_dph"),
     "convnext_fesr":          ("models.optimize.convnext_ep", "convnext_fesr"),

@@ -53,11 +53,12 @@ class SecondOrderPool(nn.Module):
             cov = torch.bmm(x, x.transpose(1, 2)) / n         # (B,d,d) PSD
             norm = cov.flatten(1).norm(dim=-1).view(-1, 1, 1) + 1e-8
             cov = cov / norm
-            cov = cov + 1e-3 * eye                            # 秩亏正则(s4 仅 49 token)
+            cov = cov + 1e-2 * eye                            # 秩亏正则(加大: NS 梯度放大 ~λ^-3/2)
             s = eye.unsqueeze(0).expand(cov.shape[0], -1, -1).contiguous()
             for _ in range(self.iters):                       # S ← (3S − S³C)/2 → C^(-1/2)
                 s = 1.5 * s - 0.5 * torch.bmm(torch.bmm(torch.bmm(s, s), s), cov)
-            outs.append((s * norm.pow(0.5)).flatten(1))       # 恢复幅值
+            out = (s * norm.detach().pow(0.5)).flatten(1)     # 幅值回缩 detach(梯度稳)
+            outs.append(torch.nan_to_num(out, nan=0.0, posinf=0.0, neginf=0.0))
         return torch.cat(outs, dim=-1)                        # (B, 3d²)
 
 

@@ -130,6 +130,10 @@ MODEL_ALLOWED_MISSING_SEGMENTS = {
     "convnext_v3cx": {"msf2_p2", "msf2_p3", "msf2_n2", "msf2_n3", "xrm"},
     "convnext_v3cr": {"msf2_p2", "msf2_p3", "msf2_n2", "msf2_n3",
                       "drc_d3", "drc_d6", "drc_s3", "drc_s6"},
+    # V4: CH + CSM 循环谱前馈(轻量化)
+    "convnext_v4a": {"msf2_p2", "msf2_p3", "msf2_n2", "msf2_n3", "csm"},
+    "convnext_v4b": {"msf2_p2", "msf2_p3", "msf2_n2", "msf2_n3", "csm"},
+    "convnext_v4c": {"msf2_p2", "msf2_p3", "msf2_n2", "msf2_n3", "csm"},
     # EPNet 三创新点变体 (convnext_ep.py, 2026-11-01): DPH 双池化头/FESR 频域重标定/LSDG 方向门控
     "convnext_dph": {"dph4_n", "dph3_a", "dph3_m", "dph3_an", "dph3_mn",
                      "dph2_a", "dph2_m", "dph2_an", "dph2_mn"},
@@ -403,6 +407,65 @@ def _remap_fgc(state):
     return out
 
 
+def _best_circ_spectrum(W):
+    """方阵 W -> 最优循环逼近的谱(rfft 前半段)。
+
+    循环矩阵构成子空间, Frobenius 投影闭式解: c_j = (1/m)Σ_i W[i,(j−i) mod m]
+    (对角平均); 谱 λ = fft(c), 实输入算子只需 Hermitian 前半段。
+    """
+    m = W.shape[0]
+    i = torch.arange(m)
+    j = (i[:, None] + i[None, :]) % m
+    c = torch.zeros(m, dtype=W.dtype)
+    c.index_add_(0, j.reshape(-1), W.reshape(-1))
+    c = c / m
+    lam = torch.fft.fft(c)
+    return lam[: m // 2 + 1]
+
+
+def _inv_softplus(x):
+    return torch.log(torch.expm1(x.clamp(min=1e-6)))
+
+
+def _fold_csm(state, prefixes):
+    """V4-CSM: 预训练 pwconv 权重 -> 各 DCD 0 号单元的最优循环投影初始化。
+
+    pwconv1 (4C,C): 行分 4 块 W_j -> up.{j}.0 谱;
+    pwconv2 (C,4C): 列分 4 块取均值 -> down.0 谱(对称最小二乘近似);
+    bias 丢弃(白名单)。其余 g≥1 单元随机小初始化(白名单)。
+    """
+    out = {}
+    for k, v in state.items():
+        hit = False
+        for p in prefixes:
+            if not k.startswith(p):
+                continue
+            if k.endswith(".pwconv1.weight"):
+                base = k[: -len(".pwconv1.weight")]
+                C = v.shape[1]
+                for j in range(v.shape[0] // C):
+                    lam = _best_circ_spectrum(v[j * C:(j + 1) * C].float())
+                    out[f"{base}.csm.up.{j}.0.amp"] = _inv_softplus(lam.abs())
+                    out[f"{base}.csm.up.{j}.0.phs"] = lam.angle()
+                hit = True
+            elif k.endswith(".pwconv2.weight"):
+                base = k[: -len(".pwconv2.weight")]
+                C = v.shape[0]
+                Wm = sum(v[:, j * C:(j + 1) * C].float()
+                         for j in range(v.shape[1] // C)) / (v.shape[1] // C)
+                lam = _best_circ_spectrum(Wm)
+                out[f"{base}.csm.down.0.amp"] = _inv_softplus(lam.abs())
+                out[f"{base}.csm.down.0.phs"] = lam.angle()
+                hit = True
+            elif k.endswith(".pwconv1.bias") or k.endswith(".pwconv2.bias"):
+                hit = True                              # 丢弃
+            if hit:
+                break
+        if not hit:
+            out[k] = v
+    return out
+
+
 MODEL_CHECKPOINT_TRANSFORMS = {
     "resnet34_s2d_v2": _inflate_conv1_for_s2d,
     "resnet34_dshortcut": _remap_dshortcut,
@@ -443,6 +506,9 @@ MODEL_CHECKPOINT_TRANSFORMS = {
     "convnext_v3x": _remap_wr,
     "convnext_v3r": lambda st: _remap_wr(_remap_drc(st)),
     "convnext_v3cr": _remap_drc,
+    "convnext_v4a": lambda st: _fold_csm(st, ("stages.2.",)),
+    "convnext_v4b": lambda st: _fold_csm(st, ("stages.3.",)),
+    "convnext_v4c": lambda st: _fold_csm(st, ("stages.2.", "stages.3.")),
 }
 SWIN_VANILLA_IGNORED_CHECKPOINT_BUFFERS = {
     "layers.0.blocks.1.attn_mask",
@@ -528,17 +594,22 @@ def load_pretrained_weights_strict(model, weights_path, model_name):
 
     incompat = model.load_state_dict(state, strict=False)
     allowed_segments = MODEL_ALLOWED_MISSING_SEGMENTS.get(model_name, set())
+    # 白名单段语义(2026-11-08 修订): 允许缺失 —— 变换也可向白名单段"注入"键
+    # (如 CSM 谱投影初始化), 注入键正常加载后不出现在 missing 中, 属设计预期。
+    # 严格性保持: 非白名单参数必须加载(actual⊆expected), 白名单外的注入一律 unexpected 报错。
+    state_keys = set(state.keys())
     expected_missing = sorted(
         key for key in model.state_dict()
         if (key.split(".", 1)[0] in CLASSIFIER_ROOTS
             or any(seg in allowed_segments for seg in key.split(".")))
+        and key not in state_keys
         # BN 的 num_batches_tracked 缓冲键: load_state_dict 不将其计入 missing_keys,
         # expected 侧同样排除, 保持两侧口径一致
         and not key.endswith("num_batches_tracked")
     )
     actual_missing = sorted(incompat.missing_keys)
     unexpected = sorted(incompat.unexpected_keys)
-    if actual_missing != expected_missing or unexpected:
+    if sorted(set(actual_missing) - set(expected_missing)) or unexpected:
         raise RuntimeError(
             "pretrained backbone loading mismatch: "
             f"missing={actual_missing}, expected_missing={expected_missing}, "
