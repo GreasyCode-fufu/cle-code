@@ -137,6 +137,15 @@ MODEL_ALLOWED_MISSING_SEGMENTS = {
     "convnext_v4d": {"msf2_p2", "msf2_p3", "msf2_n2", "msf2_n3", "csm"},
     "convnext_v4e": {"msf2_p2", "msf2_p3", "msf2_n2", "msf2_n3", "csm"},
     "convnext_v4f": {"msf2_p2", "msf2_p3", "msf2_n2", "msf2_n3", "csm"},
+    # V5 R4 轮: v2c(CH) 底座组件候选
+    "convnext_v5se":   {"msf2_p2", "msf2_p3", "msf2_n2", "msf2_n3", "se"},
+    "convnext_v5grn":  {"msf2_p2", "msf2_p3", "msf2_n2", "msf2_n3", "grn"},
+    "convnext_v5telu": {"msf2_p2", "msf2_p3", "msf2_n2", "msf2_n3"},
+    "convnext_v5xrm2": {"msf2_p2", "msf2_p3", "msf2_n2", "msf2_n3", "xrm"},
+    # v2c 损失探针别名(同一工厂, 权重目录隔离)
+    "convnext_v2cls": {"msf2_p2", "msf2_p3", "msf2_n2", "msf2_n3"},
+    "convnext_v2ccw": {"msf2_p2", "msf2_p3", "msf2_n2", "msf2_n3"},
+    "convnext_v2cfo": {"msf2_p2", "msf2_p3", "msf2_n2", "msf2_n3"},
     # EPNet 三创新点变体 (convnext_ep.py, 2026-11-01): DPH 双池化头/FESR 频域重标定/LSDG 方向门控
     "convnext_dph": {"dph4_n", "dph3_a", "dph3_m", "dph3_an", "dph3_mn",
                      "dph2_a", "dph2_m", "dph2_an", "dph2_mn"},
@@ -734,15 +743,29 @@ def build_run_meta(
     return run_meta
 
 
-def train_one_epoch(model, optimizer, data_loader, device, epoch, scaler=None, class_weights=None, label_smoothing=0.0, mfm_lambda=0.1):
+def focal_ce(pred, target, gamma=2.0, class_weights=None):
+    """多分类 Focal Loss: (1-p_t)^gamma · CE, 可选类权重(乘性)。"""
+    logp = torch.nn.functional.log_softmax(pred.float(), dim=-1)
+    logpt = logp.gather(1, target.unsqueeze(1)).squeeze(1)
+    pt = logpt.exp()
+    w = (1.0 - pt) ** gamma
+    if class_weights is not None:
+        w = w * class_weights.to(pt.device)[target]
+    return (w * (-logpt)).mean()
+
+
+def train_one_epoch(model, optimizer, data_loader, device, epoch, scaler=None, class_weights=None, label_smoothing=0.0, mfm_lambda=0.1, loss_name="ce", focal_gamma=2.0):
     """单个 epoch 训练；进度条用与 evaluate_2class.py 一致的 rich 金色样式。
 
     训练逻辑与 utils.train_one_epoch 一致（CrossEntropy / AMP / AdamW），额外支持
-    label_smoothing（默认 0 = 关闭，此时与原 UNWEIGHTED CE 行为完全等价）。仅把
-    tqdm(file=sys.stdout, colour="magenta") 换成 tqdm.rich(options=_TQDM_OPTIONS)。
+    label_smoothing（默认 0 = 关闭，此时与原 UNWEIGHTED CE 行为完全等价）与
+    --loss focal（R4 轮损失探针）。仅把 tqdm 换成 tqdm.rich。
     """
     model.train()
-    if class_weights is not None:
+    if loss_name == "focal":
+        def loss_function(p, t):
+            return focal_ce(p, t, gamma=focal_gamma, class_weights=class_weights)
+    elif class_weights is not None:
         loss_function = torch.nn.CrossEntropyLoss(weight=class_weights.to(device), label_smoothing=label_smoothing)
     else:
         loss_function = torch.nn.CrossEntropyLoss(label_smoothing=label_smoothing)
@@ -950,7 +973,9 @@ def main(args):
                                                  data_loader=train_loader, device=device,
                                                  epoch=epoch, scaler=scaler,
                                                  class_weights=cw,
-                                                 label_smoothing=args.label_smoothing)
+                                                 label_smoothing=args.label_smoothing,
+                                                 loss_name=args.loss,
+                                                 focal_gamma=args.focal_gamma)
 
         val_loss, val_acc, val_macro_f1 = evaluate_val_macro_f1(model, val_loader, device,
                                                                 label_smoothing=args.label_smoothing)
@@ -1012,6 +1037,10 @@ if __name__ == '__main__':
     parser.add_argument('--lr', type=float, default=0.0001)
     parser.add_argument('--label-smoothing', type=float, default=0.0,
                         help='label smoothing for CrossEntropy loss (0 = off)')
+    parser.add_argument('--loss', type=str, default='ce', choices=['ce', 'focal'],
+                        help='训练损失: ce(默认, 与历史协议一致) 或 focal')
+    parser.add_argument('--focal-gamma', type=float, default=2.0,
+                        help='focal loss 聚焦参数 gamma')
     parser.add_argument('--img_size', type=int, default=224)
     parser.add_argument('--data-path-train', type=str, default="/path/to/cle/train",
                         help='patient-level train split directory')

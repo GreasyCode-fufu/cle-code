@@ -153,6 +153,15 @@ MODEL_REGISTRY = {
     "convnext_v4d":   ("models.optimize.convnext_cle_v4", "convnext_v4d"),
     "convnext_v4e":   ("models.optimize.convnext_cle_v4", "convnext_v4e"),
     "convnext_v4f":   ("models.optimize.convnext_cle_v4", "convnext_v4f"),
+    # ── V5 R4 轮: v2c(CH) 底座组件候选 (convnext_cle_v5.py) ──
+    "convnext_v5se":   ("models.optimize.convnext_cle_v5", "convnext_v5se"),
+    "convnext_v5grn":  ("models.optimize.convnext_cle_v5", "convnext_v5grn"),
+    "convnext_v5telu": ("models.optimize.convnext_cle_v5", "convnext_v5telu"),
+    "convnext_v5xrm2": ("models.optimize.convnext_cle_v5", "convnext_v5xrm2"),
+    # v2c 损失探针别名(同工厂, 训练参数区分)
+    "convnext_v2cls": ("models.optimize.convnext_cle_v2", "convnext_v2c"),
+    "convnext_v2ccw": ("models.optimize.convnext_cle_v2", "convnext_v2c"),
+    "convnext_v2cfo": ("models.optimize.convnext_cle_v2", "convnext_v2c"),
     # ── EPNet 三创新点变体 (models/optimize/convnext_ep.py, 2026-11-01) ──
     "convnext_dph":           ("models.optimize.convnext_ep", "convnext_dph"),
     "convnext_fesr":          ("models.optimize.convnext_ep", "convnext_fesr"),

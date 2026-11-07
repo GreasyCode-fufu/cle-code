@@ -146,6 +146,13 @@ MODEL_REGISTRY = {
     "convnext_v4d": ("models.optimize.convnext_cle_v4", "convnext_v4d"),
     "convnext_v4e": ("models.optimize.convnext_cle_v4", "convnext_v4e"),
     "convnext_v4f": ("models.optimize.convnext_cle_v4", "convnext_v4f"),
+    "convnext_v5se": ("models.optimize.convnext_cle_v5", "convnext_v5se"),
+    "convnext_v5grn": ("models.optimize.convnext_cle_v5", "convnext_v5grn"),
+    "convnext_v5telu": ("models.optimize.convnext_cle_v5", "convnext_v5telu"),
+    "convnext_v5xrm2": ("models.optimize.convnext_cle_v5", "convnext_v5xrm2"),
+    "convnext_v2cls": ("models.optimize.convnext_cle_v2", "convnext_v2c"),
+    "convnext_v2ccw": ("models.optimize.convnext_cle_v2", "convnext_v2c"),
+    "convnext_v2cfo": ("models.optimize.convnext_cle_v2", "convnext_v2c"),
     "convnext_svd75": ("models.optimize.convnext_ep", "convnext_svd75"),
     # ── 对比实验扩展主干 (2026-10-26) ──
     "mobilenet_v2":       ("models.MobileNet", "mobilenet_v2"),
