@@ -1,0 +1,75 @@
+# convnext_tiny 评估报告
+
+- 权重: `/data/cle/auto/ZCode/Classification/weights_xd_covid_r3/convnext_tiny_seed44/convnext_tiny/model_best.pth`
+- 测试集: `./datasets/covid_v1/val`  (共 784 张)
+- 归一化: run_meta.json(imagenet)  mean=[0.485, 0.456, 0.406]
+- img_size: 224
+
+## 主指标
+
+| 指标 | 值 |
+|---|---|
+| **Macro-F1** | 0.9861 |
+| Accuracy | 0.9860 |
+| Macro-AUROC (OvR) | 0.9968 |
+
+## 补充总体指标
+
+| 指标 | 值 |
+|---|---|
+| Weighted-F1 | 0.9860 |
+| Balanced Acc | 0.9863 |
+| Macro-Sensitivity | 0.9863 |
+| Macro-Specificity | 0.9930 |
+| Macro-Precision | 0.9860 |
+| AUC-PR (Macro) | 0.9949 |
+| Cohen's Kappa | 0.9789 |
+| MCC | 0.9789 |
+
+## 模型复杂度与推理效率
+
+| 指标 | 值 |
+|---|---|
+| MACs | 4.45G |
+| FLOPs | 8.91G |
+| Params | 27.80M |
+| Pure-Inference FPS | 1727.7 (0.58 ms/张) |
+| End-to-End FPS | 608.0 |
+| 测试样本数 | 784 |
+
+## 每类指标 (One-vs-Rest)
+
+| 类 | Sensitivity | Specificity | Precision | F1 | NPV | AUROC | AUC-PR | support |
+|---|---|---|---|---|---|---|---|---|
+| COVID | 0.9959 | 0.9944 | 0.9878 | 0.9918 | 0.9981 | 0.9961 | 0.9969 | 244 |
+| NORMAL | 0.9815 | 0.9942 | 0.9888 | 0.9851 | 0.9903 | 0.9988 | 0.9980 | 270 |
+| PNEUMONIA | 0.9815 | 0.9903 | 0.9815 | 0.9815 | 0.9903 | 0.9957 | 0.9899 | 270 |
+
+### 每类 TP/FP/TN/FN
+
+- **COVID**: TP=243 FP=3 TN=537 FN=1
+- **NORMAL**: TP=265 FP=3 TN=511 FN=5
+- **PNEUMONIA**: TP=265 FP=5 TN=509 FN=5
+
+## 混淆矩阵 (行=真实, 列=预测)
+
+| | COVID | NORMAL | PNEUMONIA |
+|---|---|---|---|
+| COVID | 243 | 0 | 1 |
+| NORMAL | 1 | 265 | 4 |
+| PNEUMONIA | 2 | 3 | 265 |
+
+## Classification Report (sklearn)
+
+```
+              precision    recall  f1-score   support
+
+       COVID     0.9878    0.9959    0.9918       244
+      NORMAL     0.9888    0.9815    0.9851       270
+   PNEUMONIA     0.9815    0.9815    0.9815       270
+
+    accuracy                         0.9860       784
+   macro avg     0.9860    0.9863    0.9861       784
+weighted avg     0.9860    0.9860    0.9860       784
+
+```
