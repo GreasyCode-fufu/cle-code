@@ -136,6 +136,7 @@ MODEL_ALLOWED_MISSING_SEGMENTS = {
     "convnext_v4c": {"msf2_p2", "msf2_p3", "msf2_n2", "msf2_n3", "csm"},
     "convnext_v4d": {"msf2_p2", "msf2_p3", "msf2_n2", "msf2_n3", "csm"},
     "convnext_v4e": {"msf2_p2", "msf2_p3", "msf2_n2", "msf2_n3", "csm"},
+    "convnext_v4f": {"msf2_p2", "msf2_p3", "msf2_n2", "msf2_n3", "csm"},
     # EPNet 三创新点变体 (convnext_ep.py, 2026-11-01): DPH 双池化头/FESR 频域重标定/LSDG 方向门控
     "convnext_dph": {"dph4_n", "dph3_a", "dph3_m", "dph3_an", "dph3_mn",
                      "dph2_a", "dph2_m", "dph2_an", "dph2_mn"},
@@ -524,6 +525,7 @@ MODEL_CHECKPOINT_TRANSFORMS = {
     "convnext_v4c": lambda st: _fold_csm(st, ("stages.2.", "stages.3.")),
     "convnext_v4d": lambda st: _fold_csm(st, ("stages.2.",), fold_up=False),
     "convnext_v4e": lambda st: _fold_csm(st, ("stages.3.",), fold_up=False),
+    "convnext_v4f": lambda st: _fold_csm(st, ("stages.3.",), fold_up=False),
 }
 SWIN_VANILLA_IGNORED_CHECKPOINT_BUFFERS = {
     "layers.0.blocks.1.attn_mask",

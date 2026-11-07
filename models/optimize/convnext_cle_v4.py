@@ -104,7 +104,8 @@ class CSMBlock(Block):
         super().__init__(dim, drop_rate, layer_scale_init_value)
         self.pwconv1 = None                              # keep_up 时经重映射迁入 csm.dense_up
         self.pwconv2 = None
-        self.csm = CSMFeedForward(dim, **csm_kw)
+        dg = csm_kw.pop("down_groups", 4)
+        self.csm = CSMFeedForward(dim, down_groups=dg, **csm_kw)
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         shortcut = x
@@ -121,13 +122,14 @@ class CSMBlock(Block):
 class ConvNeXtV4(ConvNeXt):
     """ConvNeXt-T + 创新点1(CH 三尺度拼接头) + 创新点2(CSM 循环谱前馈, csm_stages)。"""
 
-    def __init__(self, csm_stages=(), keep_up=False, **kw):
+    def __init__(self, csm_stages=(), keep_up=False, down_groups=4, **kw):
         super().__init__(**kw)
         dims0 = self.downsample_layers[0][0].out_channels
         self.dims = [dims0] + [self.downsample_layers[i][1].out_channels for i in (1, 2, 3)]
         for si in csm_stages:
             self.stages[si] = nn.Sequential(
-                *[CSMBlock(self.dims[si], keep_up=keep_up) for _ in self.stages[si]])
+                *[CSMBlock(self.dims[si], keep_up=keep_up, down_groups=down_groups)
+                  for _ in self.stages[si]])
         d2, d3, d4 = self.dims[1], self.dims[2], self.dims[3]
         self.msf2_p2 = nn.Conv2d(d2, d4, 1, bias=False)
         self.msf2_p3 = nn.Conv2d(d3, d4, 1, bias=False)
@@ -172,3 +174,7 @@ def convnext_v4d(num_classes: int):    # CH + CSM(仅降维)@stage-3: 混合版 
 
 def convnext_v4e(num_classes: int):    # CH + CSM(仅降维)@stage-4: 混合版 ~21.6M
     return _v4(num_classes, csm_stages=(3,), keep_up=True)
+
+
+def convnext_v4f(num_classes: int):    # CH + CSM(仅降维,G'=8)@stage-4: 容量增强 ~21.2M
+    return _v4(num_classes, csm_stages=(3,), keep_up=True, down_groups=8)

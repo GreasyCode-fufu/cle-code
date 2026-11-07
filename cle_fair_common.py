@@ -152,6 +152,7 @@ MODEL_REGISTRY = {
     "convnext_v4c":   ("models.optimize.convnext_cle_v4", "convnext_v4c"),
     "convnext_v4d":   ("models.optimize.convnext_cle_v4", "convnext_v4d"),
     "convnext_v4e":   ("models.optimize.convnext_cle_v4", "convnext_v4e"),
+    "convnext_v4f":   ("models.optimize.convnext_cle_v4", "convnext_v4f"),
     # ── EPNet 三创新点变体 (models/optimize/convnext_ep.py, 2026-11-01) ──
     "convnext_dph":           ("models.optimize.convnext_ep", "convnext_dph"),
     "convnext_fesr":          ("models.optimize.convnext_ep", "convnext_fesr"),
