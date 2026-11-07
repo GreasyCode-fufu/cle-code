@@ -58,20 +58,35 @@ class DCDUnit(nn.Module):
 
 
 class CSMFeedForward(nn.Module):
-    """CSM 前馈层: r 个扩展副本(各 G 个 DCD 单元求和) + 共享收缩(G' 个单元对 h_j 求和)。"""
+    """CSM 前馈层: r 个扩展副本(各 G 个 DCD 单元求和) + 共享收缩(G' 个单元对 h_j 求和)。
 
-    def __init__(self, dim, expand=4, groups=4, down_groups=4):
+    keep_up=True 的混合模式(CD 批教训: 纯 CSM 容量损失过大): 升维保留预训练稠密
+    Linear(经键重映射加载), 仅降维换成 CSM 谱域 —— 参数减半而容量损失小。
+    """
+
+    def __init__(self, dim, expand=4, groups=4, down_groups=4, keep_up=False):
         super().__init__()
         self.r = expand
-        self.up = nn.ModuleList([
-            nn.ModuleList([DCDUnit(dim, init_amp=0.5 if g == 0 else 0.05)
-                           for g in range(groups)]) for _ in range(expand)])
+        self.keep_up = keep_up
+        if keep_up:
+            self.dense_up = nn.Linear(dim, expand * dim)    # 预训练 pwconv1 重映射加载
+        else:
+            self.up = nn.ModuleList([
+                nn.ModuleList([DCDUnit(dim, init_amp=0.5 if g == 0 else 0.05)
+                               for g in range(groups)]) for _ in range(expand)])
         self.down = nn.ModuleList([DCDUnit(dim, init_amp=0.5 if g == 0 else 0.05)
                                    for g in range(down_groups)])
         self.act = nn.GELU()
 
     def forward(self, x):                                   # (..., C)
         y = 0
+        if self.keep_up:
+            h = self.act(self.dense_up(x))                  # (..., 4C)
+            hs = h.unflatten(-1, (self.r, -1))              # (..., r, C)
+            for j in range(self.r):
+                for u in self.down:
+                    y = y + u(hs[..., j, :])
+            return y
         for units in self.up:
             h = 0
             for u in units:
@@ -83,11 +98,11 @@ class CSMFeedForward(nn.Module):
 
 
 class CSMBlock(Block):
-    """ConvNeXt Block, MLP 整体替换为 CSM; dwconv/LN/γ/残差不变。"""
+    """ConvNeXt Block, MLP 替换为 CSM(keep_up 时仅降维层替换); dwconv/LN/γ/残差不变。"""
 
     def __init__(self, dim, drop_rate=0., layer_scale_init_value=1e-6, **csm_kw):
         super().__init__(dim, drop_rate, layer_scale_init_value)
-        self.pwconv1 = None
+        self.pwconv1 = None                              # keep_up 时经重映射迁入 csm.dense_up
         self.pwconv2 = None
         self.csm = CSMFeedForward(dim, **csm_kw)
 
@@ -106,13 +121,13 @@ class CSMBlock(Block):
 class ConvNeXtV4(ConvNeXt):
     """ConvNeXt-T + 创新点1(CH 三尺度拼接头) + 创新点2(CSM 循环谱前馈, csm_stages)。"""
 
-    def __init__(self, csm_stages=(), **kw):
+    def __init__(self, csm_stages=(), keep_up=False, **kw):
         super().__init__(**kw)
         dims0 = self.downsample_layers[0][0].out_channels
         self.dims = [dims0] + [self.downsample_layers[i][1].out_channels for i in (1, 2, 3)]
         for si in csm_stages:
             self.stages[si] = nn.Sequential(
-                *[CSMBlock(self.dims[si]) for _ in self.stages[si]])
+                *[CSMBlock(self.dims[si], keep_up=keep_up) for _ in self.stages[si]])
         d2, d3, d4 = self.dims[1], self.dims[2], self.dims[3]
         self.msf2_p2 = nn.Conv2d(d2, d4, 1, bias=False)
         self.msf2_p3 = nn.Conv2d(d3, d4, 1, bias=False)
@@ -149,3 +164,11 @@ def convnext_v4b(num_classes: int):    # CH + CSM@stage-4(3块): ~13.6M
 
 def convnext_v4c(num_classes: int):    # CH + CSM@stage-3+4: ~3.0M(激进版)
     return _v4(num_classes, csm_stages=(2, 3))
+
+
+def convnext_v4d(num_classes: int):    # CH + CSM(仅降维)@stage-3: 混合版 ~23.4M
+    return _v4(num_classes, csm_stages=(2,), keep_up=True)
+
+
+def convnext_v4e(num_classes: int):    # CH + CSM(仅降维)@stage-4: 混合版 ~21.6M
+    return _v4(num_classes, csm_stages=(3,), keep_up=True)

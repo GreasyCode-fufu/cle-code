@@ -134,6 +134,8 @@ MODEL_ALLOWED_MISSING_SEGMENTS = {
     "convnext_v4a": {"msf2_p2", "msf2_p3", "msf2_n2", "msf2_n3", "csm"},
     "convnext_v4b": {"msf2_p2", "msf2_p3", "msf2_n2", "msf2_n3", "csm"},
     "convnext_v4c": {"msf2_p2", "msf2_p3", "msf2_n2", "msf2_n3", "csm"},
+    "convnext_v4d": {"msf2_p2", "msf2_p3", "msf2_n2", "msf2_n3", "csm"},
+    "convnext_v4e": {"msf2_p2", "msf2_p3", "msf2_n2", "msf2_n3", "csm"},
     # EPNet 三创新点变体 (convnext_ep.py, 2026-11-01): DPH 双池化头/FESR 频域重标定/LSDG 方向门控
     "convnext_dph": {"dph4_n", "dph3_a", "dph3_m", "dph3_an", "dph3_mn",
                      "dph2_a", "dph2_m", "dph2_an", "dph2_mn"},
@@ -427,12 +429,13 @@ def _inv_softplus(x):
     return torch.log(torch.expm1(x.clamp(min=1e-6)))
 
 
-def _fold_csm(state, prefixes):
+def _fold_csm(state, prefixes, fold_up=True):
     """V4-CSM: 预训练 pwconv 权重 -> 各 DCD 0 号单元的最优循环投影初始化。
 
-    pwconv1 (4C,C): 行分 4 块 W_j -> up.{j}.0 谱;
+    pwconv1 (4C,C): 行分 4 块 W_j -> up.{j}.0 谱(fold_up=False 时改为重映射到
+    csm.dense_up, 混合版保留稠密升维);
     pwconv2 (C,4C): 列分 4 块取均值 -> down.0 谱(对称最小二乘近似);
-    bias 丢弃(白名单)。其余 g≥1 单元随机小初始化(白名单)。
+    pwconv2.bias 丢弃(白名单)。
     """
     out = {}
     for k, v in state.items():
@@ -442,11 +445,21 @@ def _fold_csm(state, prefixes):
                 continue
             if k.endswith(".pwconv1.weight"):
                 base = k[: -len(".pwconv1.weight")]
-                C = v.shape[1]
-                for j in range(v.shape[0] // C):
-                    lam = _best_circ_spectrum(v[j * C:(j + 1) * C].float())
-                    out[f"{base}.csm.up.{j}.0.amp"] = _inv_softplus(lam.abs())
-                    out[f"{base}.csm.up.{j}.0.phs"] = lam.angle()
+                if fold_up:
+                    C = v.shape[1]
+                    for j in range(v.shape[0] // C):
+                        lam = _best_circ_spectrum(v[j * C:(j + 1) * C].float())
+                        out[f"{base}.csm.up.{j}.0.amp"] = _inv_softplus(lam.abs())
+                        out[f"{base}.csm.up.{j}.0.phs"] = lam.angle()
+                else:
+                    out[f"{base}.csm.dense_up.weight"] = v
+                hit = True
+            elif k.endswith(".pwconv1.bias"):
+                base = k[: -len(".pwconv1.bias")]
+                if fold_up:
+                    pass                                    # 丢弃
+                else:
+                    out[f"{base}.csm.dense_up.bias"] = v
                 hit = True
             elif k.endswith(".pwconv2.weight"):
                 base = k[: -len(".pwconv2.weight")]
@@ -457,8 +470,8 @@ def _fold_csm(state, prefixes):
                 out[f"{base}.csm.down.0.amp"] = _inv_softplus(lam.abs())
                 out[f"{base}.csm.down.0.phs"] = lam.angle()
                 hit = True
-            elif k.endswith(".pwconv1.bias") or k.endswith(".pwconv2.bias"):
-                hit = True                              # 丢弃
+            elif k.endswith(".pwconv2.bias"):
+                hit = True                                  # 丢弃
             if hit:
                 break
         if not hit:
@@ -509,6 +522,8 @@ MODEL_CHECKPOINT_TRANSFORMS = {
     "convnext_v4a": lambda st: _fold_csm(st, ("stages.2.",)),
     "convnext_v4b": lambda st: _fold_csm(st, ("stages.3.",)),
     "convnext_v4c": lambda st: _fold_csm(st, ("stages.2.", "stages.3.")),
+    "convnext_v4d": lambda st: _fold_csm(st, ("stages.2.",), fold_up=False),
+    "convnext_v4e": lambda st: _fold_csm(st, ("stages.3.",), fold_up=False),
 }
 SWIN_VANILLA_IGNORED_CHECKPOINT_BUFFERS = {
     "layers.0.blocks.1.attn_mask",
