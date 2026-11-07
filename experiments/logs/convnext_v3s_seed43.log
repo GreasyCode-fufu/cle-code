@@ -1,0 +1,24 @@
+/home/login/miniconda3/envs/sunfuxiang/lib/python3.12/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+/data/cle/auto/ZCode/Classification/train_cle_fair.py:836: FutureWarning: `torch.cuda.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler('cuda', args...)` instead.
+  scaler = torch.cuda.amp.GradScaler()
+[seed] seed = 43 (set)
+2077 images for training.
+427 images were found in the val dataset.
+427 images for test.
+[norm] ImageNet 归一化(加载了预训练权重) MEAN=[0.485, 0.456, 0.406] STD=[0.229, 0.224, 0.225]
+[weights] strict load passed /data/cle/sunfuxiang/classifyML/pth/convnext_tiny_1k_224_ema.pth | classifier_missing=97 ignored_buffers=0 unexpected=0
+[train] model=convnext_v3s num_classes=3 img=224 bs=32 epochs=300 | CE (label_smoothing=0.0) | select=val_macro_f1
+[out]   run_dir=./weights_cle_ac_v1_c/convnext_v3s_seed43/convnext_v3s
+train epoch 0 loss: 0.409, acc: 0.837:  10… [  , 
+Epoch 0: train_loss=0.409, train_acc=0.837, val_loss=0.100, val_acc=0.965, val_macroF1=0.9545, lr=0.000100, best_macroF1=0.9545 (epoch 0) *
+train epoch 1 loss: 0.113, acc: 0.959:  10… [  , 
+Epoch 1: train_loss=0.113, train_acc=0.959, val_loss=0.091, val_acc=0.963, val_macroF1=0.9493, lr=0.000100, best_macroF1=0.9545 (epoch 0)
+train epoch 2 loss: 0.141, acc: 0.948:  10… [  , 
+Epoch 2: train_loss=0.141, train_acc=0.948, val_loss=0.125, val_acc=0.946, val_macroF1=0.9248, lr=0.000100, best_macroF1=0.9545 (epoch 0)
+train epoch 3 loss: 0.046, acc: 0.985:  10… [  , 
+Epoch 3: train_loss=0.046, train_acc=0.985, val_loss=0.089, val_acc=0.965, val_macroF1=0.9518, lr=0.000100, best_macroF1=0.9545 (epoch 0)
+train epoch 4 loss: 0.037, acc: 0.986:  10… [  , 
+Epoch 4: train_loss=0.037, train_acc=0.986, val_loss=0.067, val_acc=0.977, val_macroF1=0.9703, lr=0.000100, best_macroF1=0.9703 (epoch 4) *
+train epoch 5 loss: 0.035, acc: 0.986:  10… [  , 
+Epoch 5: train_loss=0.035, train_acc=0.986, val_loss=0.199, val_acc=0.925, val_macroF1=0.8884, lr=0.000100, best_macroF1=0.9703 (epoch 4)

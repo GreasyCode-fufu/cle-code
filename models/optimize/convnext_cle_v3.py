@@ -185,3 +185,17 @@ def convnext_v3x(num_classes: int):   # WR@s34 + XRM 语义门控 + CH
 
 def convnext_v3r(num_classes: int):   # WR@s34 + DRC@stage2 + CH
     return _v3(num_classes, wr_stages=(2, 3), drc_stages=(1,), head="ch")
+
+
+# ═══════════════ v2c 底座变体 (CA 批结论: WR 拖累 CH, 以 CH 为底座叠加) ═══════════════
+
+def convnext_v3cs(num_classes: int):  # v2c + SOP 二阶池化头
+    return _v3(num_classes, wr_stages=(), head="sop")
+
+
+def convnext_v3cx(num_classes: int):  # v2c + XRM 语义门控
+    return _v3(num_classes, wr_stages=(), use_xrm=True, head="ch")
+
+
+def convnext_v3cr(num_classes: int):  # v2c + DRC@stage2
+    return _v3(num_classes, wr_stages=(), drc_stages=(1,), head="ch")

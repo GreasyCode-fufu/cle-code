@@ -125,6 +125,11 @@ MODEL_ALLOWED_MISSING_SEGMENTS = {
     "convnext_v3r": {"wavelet_convs", "wavelet_scale", "base_scale", "wt_filter", "iwt_filter",
                      "msf2_p2", "msf2_p3", "msf2_n2", "msf2_n3",
                      "drc_d3", "drc_d6", "drc_s3", "drc_s6"},
+    # v2c 底座变体(无 WR, 预训练 dwconv 原样加载, 无需 transform)
+    "convnext_v3cs": {"msf2_p2", "msf2_p3", "msf2_n2", "msf2_n3", "sop", "sop_ln"},
+    "convnext_v3cx": {"msf2_p2", "msf2_p3", "msf2_n2", "msf2_n3", "xrm"},
+    "convnext_v3cr": {"msf2_p2", "msf2_p3", "msf2_n2", "msf2_n3",
+                      "drc_d3", "drc_d6", "drc_s3", "drc_s6"},
     # EPNet 三创新点变体 (convnext_ep.py, 2026-11-01): DPH 双池化头/FESR 频域重标定/LSDG 方向门控
     "convnext_dph": {"dph4_n", "dph3_a", "dph3_m", "dph3_an", "dph3_mn",
                      "dph2_a", "dph2_m", "dph2_an", "dph2_mn"},

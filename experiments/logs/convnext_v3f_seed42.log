@@ -1,0 +1,22 @@
+/home/login/miniconda3/envs/sunfuxiang/lib/python3.12/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+/data/cle/auto/ZCode/Classification/train_cle_fair.py:836: FutureWarning: `torch.cuda.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler('cuda', args...)` instead.
+  scaler = torch.cuda.amp.GradScaler()
+[seed] seed = 42 (set)
+2077 images for training.
+427 images were found in the val dataset.
+427 images for test.
+[norm] ImageNet 归一化(加载了预训练权重) MEAN=[0.485, 0.456, 0.406] STD=[0.229, 0.224, 0.225]
+[weights] strict load passed /data/cle/sunfuxiang/classifyML/pth/convnext_tiny_1k_224_ema.pth | classifier_missing=134 ignored_buffers=0 unexpected=0
+[train] model=convnext_v3f num_classes=3 img=224 bs=32 epochs=300 | CE (label_smoothing=0.0) | select=val_macro_f1
+[out]   run_dir=./weights_cle_ac_v1_c/convnext_v3f_seed42/convnext_v3f
+train epoch 0 loss: 0.410, acc: 0.858:  10… [  , 
+Epoch 0: train_loss=0.410, train_acc=0.858, val_loss=0.223, val_acc=0.902, val_macroF1=0.8465, lr=0.000100, best_macroF1=0.8465 (epoch 0) *
+train epoch 1 loss: 0.105, acc: 0.961:  10… [  , 
+Epoch 1: train_loss=0.105, train_acc=0.961, val_loss=0.138, val_acc=0.948, val_macroF1=0.9305, lr=0.000100, best_macroF1=0.9305 (epoch 1) *
+train epoch 2 loss: 0.097, acc: 0.965:  10… [  , 
+Epoch 2: train_loss=0.097, train_acc=0.965, val_loss=0.082, val_acc=0.965, val_macroF1=0.9557, lr=0.000100, best_macroF1=0.9557 (epoch 2) *
+train epoch 3 loss: 0.056, acc: 0.979:  10… [  , 
+Epoch 3: train_loss=0.056, train_acc=0.979, val_loss=0.077, val_acc=0.977, val_macroF1=0.9708, lr=0.000100, best_macroF1=0.9708 (epoch 3) *
+train epoch 4 loss: 0.041, acc: 0.987:  10… [  , 
+Epoch 4: train_loss=0.041, train_acc=0.987, val_loss=0.140, val_acc=0.946, val_macroF1=0.9237, lr=0.000100, best_macroF1=0.9708 (epoch 3)
