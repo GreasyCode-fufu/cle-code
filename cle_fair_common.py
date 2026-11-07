@@ -138,6 +138,11 @@ MODEL_REGISTRY = {
     "convnext_v2ac":  ("models.optimize.convnext_cle_v2", "convnext_v2ac"),
     "convnext_v2bc":  ("models.optimize.convnext_cle_v2", "convnext_v2bc"),
     "convnext_v2bc4": ("models.optimize.convnext_cle_v2", "convnext_v2bc4"),
+    # ── V3 R3 轮候选 (models/optimize/convnext_cle_v3.py, 2026-11-08) ──
+    "convnext_v3f":   ("models.optimize.convnext_cle_v3", "convnext_v3f"),
+    "convnext_v3s":   ("models.optimize.convnext_cle_v3", "convnext_v3s"),
+    "convnext_v3x":   ("models.optimize.convnext_cle_v3", "convnext_v3x"),
+    "convnext_v3r":   ("models.optimize.convnext_cle_v3", "convnext_v3r"),
     # ── EPNet 三创新点变体 (models/optimize/convnext_ep.py, 2026-11-01) ──
     "convnext_dph":           ("models.optimize.convnext_ep", "convnext_dph"),
     "convnext_fesr":          ("models.optimize.convnext_ep", "convnext_fesr"),

@@ -115,6 +115,16 @@ MODEL_ALLOWED_MISSING_SEGMENTS = {
                       "msf2_p2", "msf2_p3", "msf2_n2", "msf2_n3"},
     "convnext_v2bc4": {"wavelet_convs", "wavelet_scale", "base_scale", "wt_filter", "iwt_filter",
                        "msf2_p2", "msf2_p3", "msf2_n2", "msf2_n3"},
+    # V3 R3 轮候选 (convnext_cle_v3.py, 2026-11-08)
+    "convnext_v3f": {"wavelet_convs", "wavelet_scale", "base_scale", "wt_filter", "iwt_filter",
+                     "msf2_p2", "msf2_p3", "msf2_n2", "msf2_n3"},
+    "convnext_v3s": {"wavelet_convs", "wavelet_scale", "base_scale", "wt_filter", "iwt_filter",
+                     "msf2_p2", "msf2_p3", "msf2_n2", "msf2_n3", "sop", "sop_ln"},
+    "convnext_v3x": {"wavelet_convs", "wavelet_scale", "base_scale", "wt_filter", "iwt_filter",
+                     "msf2_p2", "msf2_p3", "msf2_n2", "msf2_n3", "xrm"},
+    "convnext_v3r": {"wavelet_convs", "wavelet_scale", "base_scale", "wt_filter", "iwt_filter",
+                     "msf2_p2", "msf2_p3", "msf2_n2", "msf2_n3",
+                     "drc_d3", "drc_d6", "drc_s3", "drc_s6"},
     # EPNet 三创新点变体 (convnext_ep.py, 2026-11-01): DPH 双池化头/FESR 频域重标定/LSDG 方向门控
     "convnext_dph": {"dph4_n", "dph3_a", "dph3_m", "dph3_an", "dph3_mn",
                      "dph2_a", "dph2_m", "dph2_an", "dph2_mn"},
@@ -236,6 +246,28 @@ def _remap_wr_s4(state):
     for k, v in state.items():
         m = pat.match(k)
         k = f"{m.group(1)}.dwconv.base_conv.{m.group(2)}" if m else k
+        out[k] = v
+    return out
+
+
+def _remap_wr_all(state):
+    """V3-FWR: 全部 stage(0..3) 的 dwconv.{weight,bias} -> WTConv.base_conv.*。"""
+    out = {}
+    pat = re.compile(r"^(stages\.[0-3]\.[0-9]+)\.dwconv\.(weight|bias)$")
+    for k, v in state.items():
+        m = pat.match(k)
+        k = f"{m.group(1)}.dwconv.base_conv.{m.group(2)}" if m else k
+        out[k] = v
+    return out
+
+
+def _remap_drc(state):
+    """V3-DRC: stage-2(stages.1) 的 dwconv.{weight,bias} -> MultiDilConv.base.*。"""
+    out = {}
+    pat = re.compile(r"^(stages\.1\.[0-9]+)\.dwconv\.(weight|bias)$")
+    for k, v in state.items():
+        m = pat.match(k)
+        k = f"{m.group(1)}.dwconv.base.{m.group(2)}" if m else k
         out[k] = v
     return out
 
@@ -401,6 +433,10 @@ MODEL_CHECKPOINT_TRANSFORMS = {
     "convnext_fgc_dsd_ri": _remap_ri_drop,
     "convnext_epnet2": lambda st: _remap_fgc(_remap_dsd(st)),
     "convnext_v2bc4": _remap_wr_s4,
+    "convnext_v3f": _remap_wr_all,
+    "convnext_v3s": _remap_wr,
+    "convnext_v3x": _remap_wr,
+    "convnext_v3r": lambda st: _remap_wr(_remap_drc(st)),
 }
 SWIN_VANILLA_IGNORED_CHECKPOINT_BUFFERS = {
     "layers.0.blocks.1.attn_mask",
