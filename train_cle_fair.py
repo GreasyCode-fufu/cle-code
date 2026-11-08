@@ -227,6 +227,13 @@ MODEL_ALLOWED_MISSING_SEGMENTS = {
     "convnext_egb_scg": {"egb", "egb_g", "scg", "scg_g"},
     "cle_convnext_sn": {"sn"},
     "convnext_tiny_cle_oca_strip": {"oca1", "oca2", "dose"},
+    # R6 (MobileNetV3-L): /16 聚合(零初始残差) / 训练期锚定参照网络 / 训练期边缘头
+    "mbv3_r6_s2_lsbb": {"r6agg"},
+    "mbv3_r6_s2_lsside": {"r6agg"},
+    "mbv3_r6_s2_idcbb": {"r6agg"},
+    "mbv3_r6_s2_anc1": {"anchor_net"},
+    "mbv3_r6_s2_anc03": {"anchor_net"},
+    "mbv3_r6_s2_edge": {"r6edge"},
 }
 
 # 各模型加载 ImageNet 预训练权重前需做的"权重变换"(如 s2d 变体的 conv1 通道膨胀)。
@@ -324,6 +331,15 @@ def _inflate_fgs(state):
             out["downsample_layers.0.0.conv.bias"] = v
         else:
             out[k] = v
+    return out
+
+
+def _dup_anchor_mbv3(state):
+    """R6 锚定: 预训练 features.0-12 复制一份注入 anchor_net.0-12(冻结参照网络, 训练期专用)。"""
+    out = dict(state)
+    for k, v in state.items():
+        if k.startswith("features.") and int(k.split(".")[1]) <= 12:
+            out["anchor_net." + k[len("features."):]] = v.clone()
     return out
 
 
@@ -526,6 +542,9 @@ def _fold_csm(state, prefixes, fold_up=True):
 MODEL_CHECKPOINT_TRANSFORMS = {
     "resnet34_s2d_v2": _inflate_conv1_for_s2d,
     "resnet34_dshortcut": _remap_dshortcut,
+    # R6 锚定变体: 冻结参照网络注入预训练 features.0-12
+    "mbv3_r6_s2_anc1": _dup_anchor_mbv3,
+    "mbv3_r6_s2_anc03": _dup_anchor_mbv3,
     # ConvNeXt-CLE V2 结构化变体的预训练键重映射
     "convnext_v2a": _remap_stem2,
     "convnext_v2b": _remap_wr,

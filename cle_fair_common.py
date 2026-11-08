@@ -227,6 +227,18 @@ MODEL_REGISTRY = {
     # ── 对比实验扩展主干 (2026-10-26) ──
     "mobilenet_v2":       ("models.MobileNet", "mobilenet_v2"),
     "mobilenet_v3_large": ("models.MobileNetV3", "mobilenet_v3_large"),
+    # ── R6 轮: MobileNetV3-L 轻量 CLE 网络 (models/optimize/mbv3_cle_r6.py) ──
+    "mbv3_r6_lin":    ("models.optimize.mbv3_cle_r6", "mbv3_r6_lin"),
+    "mbv3_r6_mlp256": ("models.optimize.mbv3_cle_r6", "mbv3_r6_mlp256"),
+    "mbv3_r6_star1":  ("models.optimize.mbv3_cle_r6", "mbv3_r6_star1"),
+    "mbv3_r6_star2":  ("models.optimize.mbv3_cle_r6", "mbv3_r6_star2"),
+    "mbv3_r6_star3":  ("models.optimize.mbv3_cle_r6", "mbv3_r6_star3"),
+    "mbv3_r6_s2_lsbb":   ("models.optimize.mbv3_cle_r6", "mbv3_r6_s2_lsbb"),
+    "mbv3_r6_s2_lsside": ("models.optimize.mbv3_cle_r6", "mbv3_r6_s2_lsside"),
+    "mbv3_r6_s2_idcbb":  ("models.optimize.mbv3_cle_r6", "mbv3_r6_s2_idcbb"),
+    "mbv3_r6_s2_anc1":   ("models.optimize.mbv3_cle_r6", "mbv3_r6_s2_anc1"),
+    "mbv3_r6_s2_anc03":  ("models.optimize.mbv3_cle_r6", "mbv3_r6_s2_anc03"),
+    "mbv3_r6_s2_edge":   ("models.optimize.mbv3_cle_r6", "mbv3_r6_s2_edge"),
     "shufflenet_v2_x1_0": ("models.ShuffleNet", "shufflenet_v2_x1_0"),
     "ghostnet":           ("models.GhostNet", "ghostnet"),
     "deit_tiny_patch16_224":  ("models.Deit", "deit_tiny_patch16_224"),
