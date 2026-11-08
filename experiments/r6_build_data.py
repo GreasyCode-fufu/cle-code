@@ -33,7 +33,8 @@ CLE_CHAIN = [("baseline (MobileNetV3-L)", "mobilenet_v3_large"),
              ("+①+② (4-scale GAP)", "mbv3_fz16_dce4s"),
              ("+①+②+③ = EPIC-MobileNet", "mbv3_fz16_dce4m"),
              ("② only (convex head on full-FT backbone)", "mbv3_dce16"),
-             ("②+③ (no ①)", "mbv3_dce4m")]
+             ("②+③ (no ①)", "mbv3_dce4m"),
+             ("preserve-all (ImageNet backbone) + ②③", "mbv3_lp_dce4m")]
 BACKBONES = [("MobileNetV3-L", "mobilenet_v3_large"), ("StarNet-S2 (CVPR'24)", "starnet_s2"),
              ("MobileNetV4-Conv-S (ECCV'24)", "mobilenetv4_conv_small"), ("FasterNet-T0 (CVPR'23)", "fast_t0"),
              ("GhostNet", "ghostnet"), ("ShuffleNetV2 x1.0", "shufflenet_v2_x1_0"),
