@@ -89,9 +89,11 @@ class PFESA(nn.Module):
         low = torch.abs(torch.fft.ifftn(torch.fft.ifftshift(f * mask, dim=(-2, -1)), dim=(-2, -1)))
         high = torch.abs(torch.fft.ifftn(torch.fft.ifftshift(f * (1 - mask), dim=(-2, -1)), dim=(-2, -1)))
         le = low ** 2
-        s_att = torch.sigmoid((le - le.mean([2, 3], True)) / (le.var([2, 3], True) + self.eps))
-        dev = (high - high.mean([2, 3], True)).pow(2)
-        e_att = torch.sigmoid((dev - dev.mean([2, 3], True)) / (dev.var([2, 3], True) + self.eps))
+        s_att = torch.sigmoid((le - le.mean([2, 3], keepdim=True))
+                              / (le.var([2, 3], keepdim=True) + self.eps))
+        dev = (high - high.mean([2, 3], keepdim=True)).pow(2)
+        e_att = torch.sigmoid((dev - dev.mean([2, 3], keepdim=True))
+                              / (dev.var([2, 3], keepdim=True) + self.eps))
         return (torch.sigmoid(s_att + e_att) * xf).to(x.dtype)
 
 
@@ -105,7 +107,7 @@ class SDGW(nn.Module):
         m2 = torch.nn.functional.avg_pool2d(xf * xf, 3, 1, 1)
         std = (m2 - mu * mu + 1e-5).sqrt()
         dev = (xf - mu).abs()
-        g = torch.sigmoid((dev - dev.mean([2, 3], True)) / (2 * std + 1e-5))
+        g = torch.sigmoid((dev - dev.mean([2, 3], keepdim=True)) / (2 * std + 1e-5))
         return (xf * (0.5 + g)).to(x.dtype)
 
 
