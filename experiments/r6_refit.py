@@ -150,6 +150,7 @@ def main():
     classes = sorted(d for d in os.listdir(os.path.join(REPO, a.data, "train"))
                      if os.path.isdir(os.path.join(REPO, a.data, "train", d)))
     env_cls = os.environ.get("RUN_CLASSES", "").split()
+    is_cle = classes == ["Benign_lesions", "Malignant_lesions", "body_of_stomach_normal"]
     for seed in a.seeds:
         t0 = time.time()
         ckpt, best = refit_one(a, seed, classes)
@@ -167,7 +168,9 @@ def main():
         row = {"ts": datetime.now().strftime("%m-%d %H:%M"), "batch": a.batch, "model": a.dst_model, "seed": seed,
                "status": "ok", "val_f1": round(rv["macro_f1"], 4), "test_f1": round(rt["macro_f1"], 4),
                "test_acc": round(rt["accuracy"], 4), "test_auroc": round(rt.get("auc_roc_macro", float("nan")), 4),
-               "sens_benign": sen[0], "sens_malignant": sen[1] if len(sen) > 1 else "", "sens_normal": sen[2] if len(sen) > 2 else "",
+               # 逐类敏感度列与 runner 同口径: 仅 CLE 三类填写, 其余域为 nan(完整逐类指标见 results.json)
+               "sens_benign": sen[0] if is_cle else "nan", "sens_malignant": sen[1] if is_cle else "nan",
+               "sens_normal": sen[2] if is_cle else "nan",
                "elapsed_min": round((time.time() - t0) / 60, 1), "note": f"refit<-{a.src_model} C={best[1]}"}
         path = os.path.join(REPO, a.results)
         new = not os.path.exists(path)

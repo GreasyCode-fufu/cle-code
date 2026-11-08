@@ -251,6 +251,13 @@ MODEL_REGISTRY = {
     "mbv3_fz16_dce16": ("models.optimize.mbv3_cle_r6", "mbv3_dce16"),
     "mbv3_fz16_dce4s": ("models.optimize.mbv3_cle_r6", "mbv3_dce4s"),
     "mbv3_fz16_dce4m": ("models.optimize.mbv3_cle_r6", "mbv3_dce4m"),
+    "mbv3_r6_fz16bn": ("models.optimize.mbv3_cle_r6", "mbv3_r6_fz16bn"),
+    "mbv3_r6_fz8m": ("models.optimize.mbv3_cle_r6", "mbv3_r6_fz8m"),
+    "mbv3_fz16bn_dce4m": ("models.optimize.mbv3_cle_r6", "mbv3_dce4m"),
+    "mbv3_fz8_dce4m": ("models.optimize.mbv3_cle_r6", "mbv3_dce4m"),
+    # ── R6 对比: 近年轻量主干(timm) ──
+    "mobilenetv4_conv_small": ("models.timm_light", "mobilenetv4_conv_small"),
+    "starnet_s2": ("models.timm_light", "starnet_s2"),
     "shufflenet_v2_x1_0": ("models.ShuffleNet", "shufflenet_v2_x1_0"),
     "ghostnet":           ("models.GhostNet", "ghostnet"),
     "deit_tiny_patch16_224":  ("models.Deit", "deit_tiny_patch16_224"),

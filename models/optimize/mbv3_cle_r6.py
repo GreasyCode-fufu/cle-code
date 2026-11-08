@@ -1,10 +1,24 @@
-"""R6 轮: MobileNetV3-Large 轻量 CLE 网络 (2026-11-08)
+"""R6 轮: MobileNetV3-Large 轻量 CLE 网络 (2026-11-08 ~ 11-09)
+
+【最终网络 = EPIC-MobileNet(暂定名)】 = mobilenet_v3_large 主干 + 三个创新(均由 P0 数据分析直接支撑):
+  ① 证据保持冻结(Evidence-Preserving fine-tuning): 阶段 1 冻结 features[0..12](/2–/16, 参数 + BN 推理态),
+     只微调 /32 段 —— P0: ImageNet 预训练 /16 特征的良/恶性 AUC 0.997, 全量微调后降至 0.988(特征失真)。
+     工厂 mbv3_r6_fz16(原 MLP 头, 与 baseline 同 seed 初始逐位一致, 仅差冻结)。
+  ② 解耦凸证据头(Decoupled Convex Evidence head, DCE): 阶段 2(experiments/r6_refit.py)冻结主干, 在证据上以强 L2
+     多项逻辑回归重拟合分类头, C 仅在 val 上按 Macro-F1 选 —— P0: 同一特征上凸头比冷启动 MLP 头 +1.3 F1 / +4 sens_M。
+  ③ FOV 感知多尺度证据(FOV-aware multi-scale evidence): /4、/8、/16、/32 四抽头, 只在圆形视野内组织区做掩码平均池化
+     (fov_weights, 1/4 分辨率计算, CPU +1.4%) —— 视野外近黑背景占 25–31%。工厂 mbv3_dce4m(部署结构, 2.975M 参数)。
+  主域 5 seeds: 94.16 → ① 95.62 → ①+② 96.05 → ①+②+③ 96.51(+2.35 F1, κ +3.51, sens_M +6.70)。
+  泛化发现: ① 在超声/X 光域(BUSI/heelBone)阶段 1 −5~7 点(LP-FT 可迁移性探针可预判), 其温和形式见文件末尾。
+
+【历史候选(保留以复现 R6_REPORT 全部行; 5-seed 检验均未通过)】 下文 StarEvidenceHead / LSAgg / IDCAgg /
+EdgeHead / anchor 等为初版创新 1/2/3 候选, 借自模块库(StarNet / LSNet / InceptionNeXt / MatchED)。
 
 基座: models/MobileNetV3.py 的 mobilenet_v3_large(torchvision 同构, 键名逐一一致), features 原封不动,
 仅替换分类头 —— 本协议下 CLASSIFIER_ROOTS 本就丢弃 classifier.*(960→1280 隐层 FC 冷启动),
 因此任何头部重设计都不损失预训练知识, 主干严格加载(unexpected=0)不变。
 
-创新1 候选 —— 跨尺度星乘证据头 (Cross-scale Star Evidence head, CSE)
+创新1 候选(已否决) —— 跨尺度星乘证据头 (Cross-scale Star Evidence head, CSE)
   动机(P0 实测, experiments/r6_p0_analysis.json):
     ① 头部瓶颈: 同一微调 f16 特征上, 正则化线性头比网络自身 1.23M 参数冷启动 MLP 头
        test F1 +1.3 / 恶性敏感度 +4.0(3 seeds 配对全正), B-vs-M AUC 持平 —— 头过拟合、决策面差;
@@ -187,7 +201,8 @@ class MBV3R6(nn.Module):
     freeze_upto: 冻结 features[0..k](参数不训练 + BN 保持推理态 = 纯 ImageNet 预训练证据), -1 不冻结。"""
 
     def __init__(self, num_classes, head="star", sources=("f12",), d=256,
-                 agg=None, agg_pos="bb", anchor_lambda=0.0, edge_lambda=0.0, v_src="out", freeze_upto=-1):
+                 agg=None, agg_pos="bb", anchor_lambda=0.0, edge_lambda=0.0, v_src="out", freeze_upto=-1,
+                 freeze_bn=True):
         super().__init__()
         base = mobilenet_v3_large(num_classes=num_classes)
         self.features = base.features
@@ -229,13 +244,17 @@ class MBV3R6(nn.Module):
             self.r6edge = _isolated(lambda: EdgeHead(TAP_CH["f12"]), seed=1)
         self.mfm_lambda = 1.0
         self._aux = None
-        self.freeze_upto = freeze_upto
+        self.freeze_upto, self.freeze_bn = freeze_upto, freeze_bn
         if freeze_upto >= 0:
             self.features[:freeze_upto + 1].requires_grad_(False)
+            if not freeze_bn:                   # 只冻结卷积核(证据提取器), BN 仿射可训练 + 统计量随目标域更新
+                for mod in self.features[:freeze_upto + 1].modules():
+                    if isinstance(mod, nn.BatchNorm2d):
+                        mod.requires_grad_(True)
 
     def train(self, mode=True):
         super().train(mode)
-        if self.freeze_upto >= 0:
+        if self.freeze_upto >= 0 and self.freeze_bn:
             self.features[:self.freeze_upto + 1].eval()     # 冻结段 BN 保持 ImageNet running 统计量
         return self
 
@@ -434,3 +453,14 @@ def mbv3_dce4m(num_classes=3):
 # 证据保持(阶段 1 冻结 /2–/16, 原 MLP 头) —— 与 baseline 同 seed 逐位配对(仅差冻结)
 def mbv3_r6_fz16(num_classes=3):
     return MBV3R6(num_classes, head="mlp", freeze_upto=12)
+
+
+# ── 泛化修订(BUSI/heelBone 上全冻结 /2–/16 阶段 1 −5~7 点): ① 的两种温和形式 ──
+# fz16bn: 冻结 /2–/16 卷积核(结构证据提取器), BN 仿射可训练且统计量随目标域更新(TinyTL/BN 适配思想)
+def mbv3_r6_fz16bn(num_classes=3):
+    return MBV3R6(num_classes, head="mlp", freeze_upto=12, freeze_bn=False)
+
+
+# fz8: 只冻结 /2–/8(通用低层边缘/纹理, 跨模态更可迁移), BN 推理态
+def mbv3_r6_fz8m(num_classes=3):
+    return MBV3R6(num_classes, head="mlp", freeze_upto=6)
