@@ -162,6 +162,12 @@ MODEL_REGISTRY = {
     "convnext_v5grnx": ("models.optimize.convnext_cle_v5", "convnext_v5grnx"),
     "convnext_v5pf": ("models.optimize.convnext_cle_v5", "convnext_v5pf"),
     "convnext_v5sd": ("models.optimize.convnext_cle_v5", "convnext_v5sd"),
+    "convnext_v6c": ("models.optimize.convnext_cle_v5", "convnext_v6c"),
+    "convnext_v6f": ("models.optimize.convnext_cle_v5", "convnext_v6f"),
+    "convnext_v6cf": ("models.optimize.convnext_cle_v5", "convnext_v6cf"),
+    "convnext_v6f2": ("models.optimize.convnext_cle_v5", "convnext_v6f"),
+    "convnext_v2cam": ("models.optimize.convnext_cle_v2", "convnext_v2c"),
+    "convnext_v2cam2": ("models.optimize.convnext_cle_v2", "convnext_v2c"),
     # v2c 损失探针别名(同工厂, 训练参数区分)
     "convnext_v2cls": ("models.optimize.convnext_cle_v2", "convnext_v2c"),
     "convnext_v2ccw": ("models.optimize.convnext_cle_v2", "convnext_v2c"),

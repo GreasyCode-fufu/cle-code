@@ -1,0 +1,51 @@
+{
+  "model": "convnext_v2c",
+  "num_classes": 3,
+  "img_size": 224,
+  "seed": 44,
+  "norm_mean": [
+    0.485,
+    0.456,
+    0.406
+  ],
+  "norm_std": [
+    0.229,
+    0.224,
+    0.225
+  ],
+  "norm_source": "imagenet",
+  "selection_metric": "val_macro_f1",
+  "loss": "unweighted_cross_entropy",
+  "data_path_train": "/data/cle/auto/ZCode/Classification/datasets/heelBone/train",
+  "data_path_val": "/data/cle/auto/ZCode/Classification/datasets/heelBone/val",
+  "weights": "/data/cle/auto/ZCode/Classification/weights_xd_heel_r4/convnext_v2c_seed44/convnext_v2c/model_best.pth",
+  "created_at": "2026-11-08 09:02:55",
+  "pretrained_load": {
+    "checkpoint": "/data/cle/sunfuxiang/classifyML/pth/convnext_tiny_1k_224_ema.pth",
+    "checkpoint_sha256": "14f3164e3ea6ac32ab3f574f528ce817696c9176fad4221e0a77a905a7360595",
+    "removed_classifier_keys": [
+      "head.bias",
+      "head.weight"
+    ],
+    "ignored_nonparameter_buffer_keys": [],
+    "missing_keys": [
+      "head.bias",
+      "head.weight",
+      "msf2_n2.bias",
+      "msf2_n2.weight",
+      "msf2_n3.bias",
+      "msf2_n3.weight",
+      "msf2_p2.weight",
+      "msf2_p3.weight"
+    ],
+    "unexpected_keys": [],
+    "allowed_missing_segments": [
+      "msf2_n2",
+      "msf2_n3",
+      "msf2_p2",
+      "msf2_p3"
+    ],
+    "checkpoint_transform": null,
+    "all_trainable_backbone_parameters_loaded": true
+  }
+}

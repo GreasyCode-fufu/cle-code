@@ -147,6 +147,13 @@ MODEL_ALLOWED_MISSING_SEGMENTS = {
     "convnext_v5grnx": {"msf2_p2", "msf2_p3", "msf2_n2", "msf2_n3", "grn", "xrm"},
     "convnext_v5pf": {"msf2_p2", "msf2_p3", "msf2_n2", "msf2_n3"},
     "convnext_v5sd": {"msf2_p2", "msf2_p3", "msf2_n2", "msf2_n3"},
+    "convnext_v5sd": {"msf2_p2", "msf2_p3", "msf2_n2", "msf2_n3"},
+    "convnext_v6c": {"csap2", "csap3"},
+    "convnext_v6f": {"msf2_p2", "msf2_p3", "msf2_n2", "msf2_n3"},
+    "convnext_v6cf": {"csap2", "csap3"},
+    "convnext_v6f2": {"msf2_p2", "msf2_p3", "msf2_n2", "msf2_n3"},
+    "convnext_v2cam": {"msf2_p2", "msf2_p3", "msf2_n2", "msf2_n3"},
+    "convnext_v2cam2": {"msf2_p2", "msf2_p3", "msf2_n2", "msf2_n3"},
     "convnext_v2cema": {"msf2_p2", "msf2_p3", "msf2_n2", "msf2_n3"},
     "convnext_v5xrcw": {"msf2_p2", "msf2_p3", "msf2_n2", "msf2_n3", "xrm"},
     # v2c 损失探针别名(同一工厂, 权重目录隔离)
@@ -297,6 +304,21 @@ def _remap_drc(state):
         m = pat.match(k)
         k = f"{m.group(1)}.dwconv.base.{m.group(2)}" if m else k
         out[k] = v
+    return out
+
+
+def _inflate_fgs(state):
+    """V6-FGS: 预训练 stem conv(3ch) -> FGStem.conv(4ch), 第4通道(梯度)零初始化。"""
+    out = {}
+    for k, v in state.items():
+        if k == "downsample_layers.0.0.weight":
+            w = torch.zeros(v.shape[0], 4, *v.shape[2:], dtype=v.dtype)
+            w[:, :3] = v
+            out["downsample_layers.0.0.conv.weight"] = w
+        elif k == "downsample_layers.0.0.bias":
+            out["downsample_layers.0.0.conv.bias"] = v
+        else:
+            out[k] = v
     return out
 
 
@@ -536,6 +558,9 @@ MODEL_CHECKPOINT_TRANSFORMS = {
     "convnext_v3x": _remap_wr,
     "convnext_v3r": lambda st: _remap_wr(_remap_drc(st)),
     "convnext_v3cr": _remap_drc,
+    "convnext_v6f": _inflate_fgs,
+    "convnext_v6cf": _inflate_fgs,
+    "convnext_v6f2": _inflate_fgs,
     "convnext_v4a": lambda st: _fold_csm(st, ("stages.2.",)),
     "convnext_v4b": lambda st: _fold_csm(st, ("stages.3.",)),
     "convnext_v4c": lambda st: _fold_csm(st, ("stages.2.", "stages.3.")),
@@ -761,7 +786,7 @@ def focal_ce(pred, target, gamma=2.0, class_weights=None):
     return (w * (-logpt)).mean()
 
 
-def train_one_epoch(model, optimizer, data_loader, device, epoch, scaler=None, class_weights=None, label_smoothing=0.0, mfm_lambda=0.1, loss_name="ce", focal_gamma=2.0, ema_fn=None):
+def train_one_epoch(model, optimizer, data_loader, device, epoch, scaler=None, class_weights=None, label_smoothing=0.0, mfm_lambda=0.1, loss_name="ce", focal_gamma=2.0, ema_fn=None, asym_margin=0.0, margin_class=1):
     """单个 epoch 训练；进度条用与 evaluate_2class.py 一致的 rich 金色样式。
 
     训练逻辑与 utils.train_one_epoch 一致（CrossEntropy / AMP / AdamW），额外支持
@@ -769,6 +794,9 @@ def train_one_epoch(model, optimizer, data_loader, device, epoch, scaler=None, c
     （每个 optimizer.step 后调用的 EMA 影子权重更新回调）。仅把 tqdm 换成 tqdm.rich。
     """
     model.train()
+    margin_adj = None
+    if asym_margin > 0:                                      # ACM: 仅训练损失中给 margin_class 减 margin
+        margin_adj = torch.zeros(1, device=device)
     if loss_name == "focal":
         def loss_function(p, t):
             return focal_ce(p, t, gamma=focal_gamma, class_weights=class_weights)
@@ -794,7 +822,12 @@ def train_one_epoch(model, optimizer, data_loader, device, epoch, scaler=None, c
                 pred = model(images.to(device), labels.to(device))
             else:
                 pred = model(images.to(device))
-            loss = loss_function(pred, labels.to(device))
+            pl = pred
+            if asym_margin > 0:
+                adj = torch.zeros_like(pred)
+                adj[:, margin_class] = asym_margin
+                pl = pred - adj
+            loss = loss_function(pl, labels.to(device))
             mfm_mod = getattr(model, "mfm", None)          # MFM 自监督辅助损失聚合
             if mfm_mod is not None:
                 loss = loss + getattr(model, "mfm_lambda", mfm_lambda) * mfm_mod.loss
@@ -1002,7 +1035,9 @@ def main(args):
                                                  label_smoothing=args.label_smoothing,
                                                  loss_name=args.loss,
                                                  focal_gamma=args.focal_gamma,
-                                                 ema_fn=ema_fn)
+                                                 ema_fn=ema_fn,
+                                                 asym_margin=getattr(args, "asym_margin", 0.0),
+                                                 margin_class=getattr(args, "margin_class", 1))
 
         val_loss, val_acc, val_macro_f1 = evaluate_val_macro_f1(model, val_loader, device,
                                                                 label_smoothing=args.label_smoothing)
@@ -1077,6 +1112,10 @@ if __name__ == '__main__':
                         help='训练损失: ce(默认, 与历史协议一致) 或 focal')
     parser.add_argument('--focal-gamma', type=float, default=2.0,
                         help='focal loss 聚焦参数 gamma')
+    parser.add_argument('--asym-margin', type=float, default=0.0,
+                        help='>0 时训练损失对 --margin-class 类的 logit 减去该 margin(非对称代价)')
+    parser.add_argument('--margin-class', type=int, default=1,
+                        help='margin 作用的类索引(类序=sorted目录; CLE 三分类 1=Malignant)')
     parser.add_argument('--ema-decay', type=float, default=0.0,
                         help='>0 时启用 EMA 影子权重(每 step 更新), val 同时评估 raw/EMA 择优保存')
     parser.add_argument('--img_size', type=int, default=224)

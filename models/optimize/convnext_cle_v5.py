@@ -148,7 +148,8 @@ class ConvNeXtV5(ConvNeXt):
     """ConvNeXt-T + CH + {SE/GRN/TeLU@stages, XRM} 可组合。"""
 
     def __init__(self, mod_stages=(), use_se=False, use_grn=False, use_telu=False,
-                 use_xrm=False, pre_module=None, pre_stages=(), **kw):
+                 use_xrm=False, pre_module=None, pre_stages=(),
+                 use_fgs=False, use_csap=False, **kw):
         super().__init__(**kw)
         dims0 = self.downsample_layers[0][0].out_channels
         self.dims = [dims0] + [self.downsample_layers[i][1].out_channels for i in (1, 2, 3)]
@@ -161,10 +162,18 @@ class ConvNeXtV5(ConvNeXt):
                 self.stages[si] = nn.Sequential(
                     *[V5Block(self.dims[si], pre_module=pre_module())
                       for _ in self.stages[si]])
+        if use_fgs:                                          # FGS: 茎干梯度增广(零init等价)
+            self.downsample_layers[0][0] = FGStem(self.downsample_layers[0][0])
+        self.use_csap = use_csap
         self.use_xrm = use_xrm
         if use_xrm:
             self.xrm = TopDownGate2(self.dims[3], [self.dims[1], self.dims[2]])
         d2, d3, d4 = self.dims[1], self.dims[2], self.dims[3]
+        if use_csap:                                         # CSAP: 替换均匀池化(不建 msf2)
+            self.csap2 = CSAHead(d2)
+            self.csap3 = CSAHead(d3)
+            self.head = nn.Linear(3 * d4, self.head.out_features)
+            return
         self.msf2_p2 = nn.Conv2d(d2, d4, 1, bias=False)
         self.msf2_p3 = nn.Conv2d(d3, d4, 1, bias=False)
         self.msf2_n2 = nn.LayerNorm(d4, eps=1e-6)
@@ -182,6 +191,10 @@ class ConvNeXtV5(ConvNeXt):
             f2, f3 = self.xrm(m4.detach(), feats[1:3])
         else:
             f2, f3 = feats[1], feats[2]
+        if self.use_csap:
+            m3 = self.csap3(f3, m4)
+            m2 = self.csap2(f2, m4)
+            return torch.cat([m4, m3, m2], dim=-1)
         m3 = self.msf2_n3(self.msf2_p3(f3).mean([-2, -1]))
         m2 = self.msf2_n2(self.msf2_p2(f2).mean([-2, -1]))
         return torch.cat([m4, m3, m2], dim=-1)
@@ -222,9 +235,72 @@ def convnext_v5pf(num_classes: int):   # CH + PFESA@stage-3/4(库223 无参边�
     return _v5(num_classes, pre_module=PFESA, pre_stages=(2, 3))
 
 
-def convnext_v5sd(num_classes: int):   # CH + SDGW@stage-2/3(库233 局部偏差引导加权, 无参)
-    return _v5(num_classes, pre_module=SDGW, pre_stages=(1, 2))
+class CSAHead(nn.Module):
+    """CSAP 创新点: 跨尺度语义条件化注意力池化。
+
+    对 s2/s3 每个空间位置打分: score = MLP([P_s·f_s(x,y) ; g4]), softmax(带温度)为
+    空间注意力 α, 池化特征 = Σ α·(P_s·f_s)。s4 保持预训练 LN 的 GAP(语义自证)。
+    动机: 暗背景 25-31% 稀释均匀 GAP; 多灶异型证据集中(局部异质性 5.2-5.7x);
+    临床读片"多灶肿瘤取最差病灶"。完全替换均匀池化 → 不可旁路。
+    """
+
+    def __init__(self, d_s, d_sem=768):
+        super().__init__()
+        self.proj = nn.Conv2d(d_s, d_sem, 1, bias=False)
+        self.score = nn.Sequential(nn.Linear(2 * d_sem, d_sem), nn.GELU(), nn.Linear(d_sem, 1))
+        self.logit_scale = nn.Parameter(torch.zeros(1))      # softmax 温度 s=exp(0)=1
+        self.norm = nn.LayerNorm(d_sem, eps=1e-6)
+
+    def forward(self, f, g4):                                # f:(N,C,H,W) g4:(N,d_sem)
+        z = self.proj(f)                                     # (N,d,H,W)
+        b, d, h, w = z.shape
+        zf = z.flatten(2).transpose(1, 2)                    # (N,HW,d)
+        g = g4.unsqueeze(1).expand(-1, h * w, -1)            # (N,HW,d)
+        s = self.score(torch.cat([zf, g], -1)).squeeze(-1)   # (N,HW)
+        a = torch.softmax(s * self.logit_scale.exp(), dim=-1)
+        return self.norm((zf * a.unsqueeze(-1)).sum(1))
+
+
+class FGStem(nn.Module):
+    """FGS 创新点: 前景/梯度增广茎干 —— 输入 [R,G,B,Sobel 幅值], 梯度通道零初始化
+    (初始与预训练严格逐位等价; CLE 数据 RGB 同源, r=g=b 时原响应不变)。"""
+
+    def __init__(self, conv):
+        super().__init__()
+        self.conv = conv                                     # 原 Conv2d(3,C,4,4), 权重膨胀到 4ch
+        with torch.no_grad():
+            w = self.conv.weight
+            new_w = torch.zeros(w.shape[0], 4, *w.shape[2:], device=w.device, dtype=w.dtype)
+            new_w[:, :3] = w
+            self.conv.weight = nn.Parameter(new_w)
+        kx = torch.tensor([[1., 2., 1.], [0., 0., 0.], [-1., -2., -1.]])
+        self.register_buffer("sobel_x", kx[None, None], persistent=False)
+        self.register_buffer("sobel_y", kx.t()[None, None].contiguous(), persistent=False)
+
+    def forward(self, x):                                    # (N,3,H,W)
+        g = x.float().mean(1, keepdim=True)
+        gx = torch.nn.functional.conv2d(g, self.sobel_x, padding=1)
+        gy = torch.nn.functional.conv2d(g, self.sobel_y, padding=1)
+        mag = torch.hypot(gx, gy)
+        mag = (mag - mag.mean(dim=(2, 3), keepdim=True)) / (mag.std(dim=(2, 3), keepdim=True) + 1e-5)
+        return self.conv(torch.cat([x, mag.to(x.dtype)], 1))
 
 
 def convnext_v5xrcw_factory(num_classes: int):  # 占位, 实际经 extra --class-weights
     return _v5(num_classes, use_xrm=True)
+
+
+def convnext_v6c(num_classes: int):    # 创新2: CSAP 语义条件注意力池化头(替换均匀GAP)
+    return _v5(num_classes, use_csap=True)
+
+
+def convnext_v6f(num_classes: int):    # 创新2/3: FGS 梯度增广茎干(零init等价预训练)
+    return _v5(num_classes, use_fgs=True)
+
+
+def convnext_v6cf(num_classes: int):   # CSAP + FGS 组合
+    return _v5(num_classes, use_csap=True, use_fgs=True)
+
+
+def convnext_v6f2(num_classes: int):  # FGS(独立别名, 测试目录隔离用)
+    return _v5(num_classes, use_fgs=True)
