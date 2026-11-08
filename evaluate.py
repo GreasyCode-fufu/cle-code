@@ -161,6 +161,7 @@ MODEL_REGISTRY = {
     "convnext_v6c2": ("models.optimize.convnext_cle_v5", "convnext_v6c2"),
     "convnext_v6fx": ("models.optimize.convnext_cle_v5", "convnext_v6fx"),
     "convnext_v6x3": ("models.optimize.convnext_cle_v5", "convnext_v6x3"),
+    "convnext_v2m": ("models.optimize.convnext_cle_v5", "convnext_v2m"),
     "convnext_v2cls": ("models.optimize.convnext_cle_v2", "convnext_v2c"),
     "convnext_v2ccw": ("models.optimize.convnext_cle_v2", "convnext_v2c"),
     "convnext_v2cfo": ("models.optimize.convnext_cle_v2", "convnext_v2c"),

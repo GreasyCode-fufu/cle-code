@@ -108,3 +108,119 @@ train epoch 47 loss: 0.007, acc: 0.998:  10…   ,
 Epoch 47: train_loss=0.007, train_acc=0.998, val_loss=0.063, val_acc=0.979, val_macroF1=0.9740, lr=0.000094, best_macroF1=0.9819 (epoch 25)
 train epoch 48 loss: 0.001, acc: 1.000:  10…   , 
 Epoch 48: train_loss=0.001, train_acc=1.000, val_loss=0.053, val_acc=0.979, val_macroF1=0.9730, lr=0.000094, best_macroF1=0.9819 (epoch 25)
+train epoch 49 loss: 0.000, acc: 1.000:  10…   , 
+Epoch 49: train_loss=0.000, train_acc=1.000, val_loss=0.059, val_acc=0.984, val_macroF1=0.9792, lr=0.000093, best_macroF1=0.9819 (epoch 25)
+train epoch 50 loss: 0.000, acc: 1.000:  10…   , 
+Epoch 50: train_loss=0.000, train_acc=1.000, val_loss=0.060, val_acc=0.981, val_macroF1=0.9761, lr=0.000093, best_macroF1=0.9819 (epoch 25)
+train epoch 51 loss: 0.003, acc: 0.999:  10…   , 
+Epoch 51: train_loss=0.003, train_acc=0.999, val_loss=0.094, val_acc=0.981, val_macroF1=0.9765, lr=0.000093, best_macroF1=0.9819 (epoch 25)
+train epoch 52 loss: 0.010, acc: 0.997:  10…   , 
+Epoch 52: train_loss=0.010, train_acc=0.997, val_loss=0.168, val_acc=0.963, val_macroF1=0.9504, lr=0.000092, best_macroF1=0.9819 (epoch 25)
+train epoch 53 loss: 0.018, acc: 0.996:  10…   , 
+Epoch 53: train_loss=0.018, train_acc=0.996, val_loss=0.109, val_acc=0.972, val_macroF1=0.9662, lr=0.000092, best_macroF1=0.9819 (epoch 25)
+train epoch 54 loss: 0.030, acc: 0.991:  10…   , 
+Epoch 54: train_loss=0.030, train_acc=0.991, val_loss=0.115, val_acc=0.979, val_macroF1=0.9740, lr=0.000092, best_macroF1=0.9819 (epoch 25)
+train epoch 55 loss: 0.034, acc: 0.988:  10…   , 
+Epoch 55: train_loss=0.034, train_acc=0.988, val_loss=0.134, val_acc=0.963, val_macroF1=0.9491, lr=0.000092, best_macroF1=0.9819 (epoch 25)
+
+[early stop] epoch 55: val_macro_f1 not improved for 30 epochs
+
+===========================================================
+             Training Summary (fair baseline)              
+===========================================================
+  Model:              convnext_v6fx
+  Best val macro-F1:  0.9819  (epoch 25)
+  Selection:          val macro-F1
+  Loss:               unweighted CrossEntropy
+  Training Time:      0:10:56
+  Weights:            ./weights_cle_ac_v1_c/convnext_v6fx_seed42/convnext_v6fx/model_best.pth
+  Run meta:           ./weights_cle_ac_v1_c/convnext_v6fx_seed42/convnext_v6fx/run_meta.json
+===========================================================
+
+===== [2026-11-08 10:22:55.663812] /home/login/miniconda3/envs/sunfuxiang/bin/python train_cle_fair.py --model convnext_v6fx --num_classes 3 --img_size 224 --seed 42 --data-path-train ./datasets/cle_ac_v1/train --data-path-val ./datasets/cle_ac_v1/val --weights /home/login/data/cle/sunfuxiang/classifyML/pth/convnext_tiny_1k_224_ema.pth --save-dir ./weights_cle_ac_v1_c/convnext_v6fx_seed42 --epochs 300 --early-stop 30 
+[norm] source=run_meta.json(imagenet)  mean=[0.485, 0.456, 0.406] std=[0.229, 0.224, 0.225]  img_size=224
+[model] convnext_v6fx  weights=/data/cle/auto/ZCode/Classification/weights_cle_ac_v1_c/convnext_v6fx_seed42/convnext_v6fx/model_best.pth
+[complexity] MACs=4.63G FLOPs=9.27G Params=28.70M
+[data] test=427 张  Benign_lesions=195  Malignant_lesions=79  body_of_stomach_normal=153
+
+================================================================
+  评估结果 — convnext_v6fx  (test=427 张)
+================================================================
+  【主指标】
+  Macro-F1         : 0.9819   ← 主指标(类别不平衡首选)
+  Accuracy         : 0.9859
+  Macro-AUROC(OvR) : 0.9989
+----------------------------------------------------------------
+  【补充总体指标】
+  Weighted-F1      : 0.9858
+  Balanced Acc     : 0.9772
+  Macro-Sensitivity: 0.9772   (= 各类 Recall 均值)
+  Macro-Specificity: 0.9919
+  Macro-Precision  : 0.9872
+  AUC-PR (Macro)   : 0.9967
+  Cohen's Kappa    : 0.9776
+  MCC              : 0.9777
+----------------------------------------------------------------
+  【每类指标】 Sensitivity / Specificity / Precision / F1 / AUROC
+  Benign_lesions        : 0.995 / 0.978 / 0.975 / 0.985 / 0.999  (n=195)
+  Malignant_lesions     : 0.937 / 0.997 / 0.987 / 0.961 / 0.998  (n=79)
+  body_of_stomach_normal: 1.000 / 1.000 / 1.000 / 1.000 / 1.000  (n=153)
+----------------------------------------------------------------
+  【模型复杂度】(仅与架构+输入尺寸有关，与数据集无关)
+  MACs : 4.63G    FLOPs : 9.27G    Params : 28.70M
+  【推理效率】(受 GPU 负载影响，为参考量级)
+  Pure FPS : 482.1  (2.07 ms/张)    End-to-End FPS : 181.5
+----------------------------------------------------------------
+  【混淆矩阵】(行=真实, 列=预测)
+                  Benign_l  Malignan  body_of_
+  Benign_lesio         194         1         0
+  Malignant_le           5        74         0
+  body_of_stom           0         0       153
+================================================================
+
+[saved] /data/cle/auto/ZCode/Classification/weights_cle_ac_v1_c/convnext_v6fx_seed42/convnext_v6fx/eval_20261108_103402/  (results.json / predictions.csv / evaluation_report.md)
+
+===== [2026-11-08 10:33:55.562918] /home/login/miniconda3/envs/sunfuxiang/bin/python evaluate.py --model convnext_v6fx --weights /data/cle/auto/ZCode/Classification/weights_cle_ac_v1_c/convnext_v6fx_seed42/convnext_v6fx/model_best.pth --data-path ./datasets/cle_ac_v1/val 
+[norm] source=run_meta.json(imagenet)  mean=[0.485, 0.456, 0.406] std=[0.229, 0.224, 0.225]  img_size=224
+[model] convnext_v6fx  weights=/data/cle/auto/ZCode/Classification/weights_cle_ac_v1_c/convnext_v6fx_seed42/convnext_v6fx/model_best.pth
+[complexity] MACs=4.63G FLOPs=9.27G Params=28.70M
+[data] test=576 张  Benign_lesions=208  Malignant_lesions=176  body_of_stomach_normal=192
+
+================================================================
+  评估结果 — convnext_v6fx  (test=576 张)
+================================================================
+  【主指标】
+  Macro-F1         : 0.9559   ← 主指标(类别不平衡首选)
+  Accuracy         : 0.9566
+  Macro-AUROC(OvR) : 0.9962
+----------------------------------------------------------------
+  【补充总体指标】
+  Weighted-F1      : 0.9564
+  Balanced Acc     : 0.9553
+  Macro-Sensitivity: 0.9553   (= 各类 Recall 均值)
+  Macro-Specificity: 0.9781
+  Macro-Precision  : 0.9572
+  AUC-PR (Macro)   : 0.9936
+  Cohen's Kappa    : 0.9347
+  MCC              : 0.9350
+----------------------------------------------------------------
+  【每类指标】 Sensitivity / Specificity / Precision / F1 / AUROC
+  Benign_lesions        : 0.962 / 0.970 / 0.948 / 0.955 / 0.994  (n=208)
+  Malignant_lesions     : 0.915 / 0.985 / 0.964 / 0.939 / 0.996  (n=176)
+  body_of_stomach_normal: 0.990 / 0.979 / 0.960 / 0.974 / 0.998  (n=192)
+----------------------------------------------------------------
+  【模型复杂度】(仅与架构+输入尺寸有关，与数据集无关)
+  MACs : 4.63G    FLOPs : 9.27G    Params : 28.70M
+  【推理效率】(受 GPU 负载影响，为参考量级)
+  Pure FPS : 459.0  (2.18 ms/张)    End-to-End FPS : 184.2
+----------------------------------------------------------------
+  【混淆矩阵】(行=真实, 列=预测)
+                  Benign_l  Malignan  body_of_
+  Benign_lesio         200         6         2
+  Malignant_le           9       161         6
+  body_of_stom           2         0       190
+================================================================
+
+[saved] /data/cle/auto/ZCode/Classification/weights_cle_ac_v1_c/convnext_v6fx_seed42/convnext_v6fx/eval_20261108_103409/  (results.json / predictions.csv / evaluation_report.md)
+
+===== [2026-11-08 10:34:02.770326] /home/login/miniconda3/envs/sunfuxiang/bin/python evaluate.py --model convnext_v6fx --weights /data/cle/auto/ZCode/Classification/weights_cle_ac_v1_c/convnext_v6fx_seed42/convnext_v6fx/model_best.pth --data-path ./datasets/cle_ac_v1/test 

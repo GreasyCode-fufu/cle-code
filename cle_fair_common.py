@@ -169,6 +169,7 @@ MODEL_REGISTRY = {
     "convnext_v6c2": ("models.optimize.convnext_cle_v5", "convnext_v6c2"),
     "convnext_v6fx": ("models.optimize.convnext_cle_v5", "convnext_v6fx"),
     "convnext_v6x3": ("models.optimize.convnext_cle_v5", "convnext_v6x3"),
+    "convnext_v2m": ("models.optimize.convnext_cle_v5", "convnext_v2m"),
     "convnext_v2cam": ("models.optimize.convnext_cle_v2", "convnext_v2c"),
     "convnext_v2cam2": ("models.optimize.convnext_cle_v2", "convnext_v2c"),
     # v2c 损失探针别名(同工厂, 训练参数区分)

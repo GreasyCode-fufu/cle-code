@@ -156,6 +156,7 @@ MODEL_ALLOWED_MISSING_SEGMENTS = {
     "convnext_v6c2": {"csap2", "csap3"},
     "convnext_v6fx": {"msf2_p2", "msf2_p3", "msf2_n2", "msf2_n3", "xrm"},
     "convnext_v6x3": {"msf2_p2", "msf2_p3", "msf2_n2", "msf2_n3", "xrm"},
+    "convnext_v2m": {"msf2_p2", "msf2_p3", "msf2_n2", "msf2_n3"},
     "convnext_v2cam": {"msf2_p2", "msf2_p3", "msf2_n2", "msf2_n3"},
     "convnext_v2cam2": {"msf2_p2", "msf2_p3", "msf2_n2", "msf2_n3"},
     "convnext_v2cema": {"msf2_p2", "msf2_p3", "msf2_n2", "msf2_n3"},

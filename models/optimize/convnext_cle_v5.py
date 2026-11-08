@@ -149,7 +149,8 @@ class ConvNeXtV5(ConvNeXt):
 
     def __init__(self, mod_stages=(), use_se=False, use_grn=False, use_telu=False,
                  use_xrm=False, pre_module=None, pre_stages=(),
-                 use_fgs=False, use_csap=False, csap_soft=0.0, xrm_std=0.005, **kw):
+                 use_fgs=False, use_csap=False, csap_soft=0.0, xrm_std=0.005,
+                 head_mode="ch", **kw):
         super().__init__(**kw)
         dims0 = self.downsample_layers[0][0].out_channels
         self.dims = [dims0] + [self.downsample_layers[i][1].out_channels for i in (1, 2, 3)]
@@ -169,6 +170,7 @@ class ConvNeXtV5(ConvNeXt):
         if use_xrm:
             self.xrm = TopDownGate2(self.dims[3], [self.dims[1], self.dims[2]], std=xrm_std)
         d2, d3, d4 = self.dims[1], self.dims[2], self.dims[3]
+        self.head_mode = head_mode
         if use_csap:                                         # CSAP: 替换均匀池化(不建 msf2)
             self.csap2 = CSAHead(d2, soft_init=csap_soft)
             self.csap3 = CSAHead(d3, soft_init=csap_soft)
@@ -178,7 +180,7 @@ class ConvNeXtV5(ConvNeXt):
         self.msf2_p3 = nn.Conv2d(d3, d4, 1, bias=False)
         self.msf2_n2 = nn.LayerNorm(d4, eps=1e-6)
         self.msf2_n3 = nn.LayerNorm(d4, eps=1e-6)
-        self.head = nn.Linear(3 * d4, self.head.out_features)
+        self.head = nn.Linear(d4 if head_mode == "msp" else 3 * d4, self.head.out_features)
 
     def forward_features(self, x):
         feats = []
@@ -197,6 +199,8 @@ class ConvNeXtV5(ConvNeXt):
             return torch.cat([m4, m3, m2], dim=-1)
         m3 = self.msf2_n3(self.msf2_p3(f3).mean([-2, -1]))
         m2 = self.msf2_n2(self.msf2_p2(f2).mean([-2, -1]))
+        if self.head_mode == "msp":                         # 消融档: 投影证据求和(单 Linear)
+            return m4 + m3 + m2
         return torch.cat([m4, m3, m2], dim=-1)
 
 
@@ -316,3 +320,7 @@ def convnext_v6fx(num_classes: int):   # FGS + XRM 组合
 
 def convnext_v6x3(num_classes: int):   # XRM std=0.01(介于崩掉的0.02与过弱的0.005之间)
     return _v5(num_classes, use_xrm=True, xrm_std=0.01)
+
+
+def convnext_v2m(num_classes: int):     # 消融档: 仅 MSP(投影+求和, 无稠密拼接头)
+    return _v5(num_classes, head_mode="msp")
