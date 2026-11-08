@@ -174,3 +174,19 @@ Epoch 30: train_loss=0.004, train_acc=0.999, val_loss=0.099, val_acc=0.960, val_
 [saved] /data/cle/auto/ZCode/Classification/weights_cle_ac_v1_c/convnext_v6f_seed43/convnext_v6f/eval_20261108_100155/  (results.json / predictions.csv / evaluation_report.md)
 
 ===== [2026-11-08 10:01:49.493631] /home/login/miniconda3/envs/sunfuxiang/bin/python evaluate.py --model convnext_v6f --weights /data/cle/auto/ZCode/Classification/weights_cle_ac_v1_c/convnext_v6f_seed43/convnext_v6f/model_best.pth --data-path ./datasets/cle_ac_v1/test 
+/home/login/miniconda3/envs/sunfuxiang/lib/python3.12/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+/data/cle/auto/ZCode/Classification/train_cle_fair.py:1001: FutureWarning: `torch.cuda.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler('cuda', args...)` instead.
+  scaler = torch.cuda.amp.GradScaler()
+[seed] seed = 43 (set)
+546 images for training.
+118 images were found in the val dataset.
+118 images for test.
+[norm] ImageNet 归一化(加载了预训练权重) MEAN=[0.485, 0.456, 0.406] STD=[0.229, 0.224, 0.225]
+[weights] strict load passed /data/cle/sunfuxiang/classifyML/pth/convnext_tiny_1k_224_ema.pth | classifier_missing=8 ignored_buffers=0 unexpected=0
+[train] model=convnext_v6f num_classes=3 img=224 bs=32 epochs=300 | CE (label_smoothing=0.0) | select=val_macro_f1
+[out]   run_dir=./weights_xd_busi_r5/convnext_v6f_seed43/convnext_v6f
+train epoch 0 loss: 0.989, acc: 0.540:  10… [  , 
+Epoch 0: train_loss=0.989, train_acc=0.540, val_loss=1.002, val_acc=0.559, val_macroF1=0.2391, lr=0.000100, best_macroF1=0.2391 (epoch 0) *
+train epoch 1 loss: 0.830, acc: 0.647:  10… [  , 
+Epoch 1: train_loss=0.830, train_acc=0.647, val_loss=0.819, val_acc=0.653, val_macroF1=0.4509, lr=0.000100, best_macroF1=0.4509 (epoch 1) *
