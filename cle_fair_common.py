@@ -159,10 +159,13 @@ MODEL_REGISTRY = {
     "convnext_v5telu": ("models.optimize.convnext_cle_v5", "convnext_v5telu"),
     "convnext_v5xrm2": ("models.optimize.convnext_cle_v5", "convnext_v5xrm2"),
     "convnext_v5grn4": ("models.optimize.convnext_cle_v5", "convnext_v5grn4"),
+    "convnext_v5grnx": ("models.optimize.convnext_cle_v5", "convnext_v5grnx"),
     # v2c 损失探针别名(同工厂, 训练参数区分)
     "convnext_v2cls": ("models.optimize.convnext_cle_v2", "convnext_v2c"),
     "convnext_v2ccw": ("models.optimize.convnext_cle_v2", "convnext_v2c"),
     "convnext_v2cfo": ("models.optimize.convnext_cle_v2", "convnext_v2c"),
+    "convnext_v2cema": ("models.optimize.convnext_cle_v2", "convnext_v2c"),
+    "convnext_v5xrcw": ("models.optimize.convnext_cle_v5", "convnext_v5xrm2"),
     # ── EPNet 三创新点变体 (models/optimize/convnext_ep.py, 2026-11-01) ──
     "convnext_dph":           ("models.optimize.convnext_ep", "convnext_dph"),
     "convnext_fesr":          ("models.optimize.convnext_ep", "convnext_fesr"),

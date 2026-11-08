@@ -143,6 +143,9 @@ MODEL_ALLOWED_MISSING_SEGMENTS = {
     "convnext_v5telu": {"msf2_p2", "msf2_p3", "msf2_n2", "msf2_n3"},
     "convnext_v5xrm2": {"msf2_p2", "msf2_p3", "msf2_n2", "msf2_n3", "xrm"},
     "convnext_v5grn4": {"msf2_p2", "msf2_p3", "msf2_n2", "msf2_n3", "grn"},
+    "convnext_v5grnx": {"msf2_p2", "msf2_p3", "msf2_n2", "msf2_n3", "grn", "xrm"},
+    "convnext_v2cema": {"msf2_p2", "msf2_p3", "msf2_n2", "msf2_n3"},
+    "convnext_v5xrcw": {"msf2_p2", "msf2_p3", "msf2_n2", "msf2_n3", "xrm"},
     # v2c 损失探针别名(同一工厂, 权重目录隔离)
     "convnext_v2cls": {"msf2_p2", "msf2_p3", "msf2_n2", "msf2_n3"},
     "convnext_v2ccw": {"msf2_p2", "msf2_p3", "msf2_n2", "msf2_n3"},
@@ -755,12 +758,12 @@ def focal_ce(pred, target, gamma=2.0, class_weights=None):
     return (w * (-logpt)).mean()
 
 
-def train_one_epoch(model, optimizer, data_loader, device, epoch, scaler=None, class_weights=None, label_smoothing=0.0, mfm_lambda=0.1, loss_name="ce", focal_gamma=2.0):
+def train_one_epoch(model, optimizer, data_loader, device, epoch, scaler=None, class_weights=None, label_smoothing=0.0, mfm_lambda=0.1, loss_name="ce", focal_gamma=2.0, ema_fn=None):
     """单个 epoch 训练；进度条用与 evaluate_2class.py 一致的 rich 金色样式。
 
     训练逻辑与 utils.train_one_epoch 一致（CrossEntropy / AMP / AdamW），额外支持
-    label_smoothing（默认 0 = 关闭，此时与原 UNWEIGHTED CE 行为完全等价）与
-    --loss focal（R4 轮损失探针）。仅把 tqdm 换成 tqdm.rich。
+    label_smoothing（默认 0 = 关闭）、--loss focal（R4 轮损失探针）与 ema_fn
+    （每个 optimizer.step 后调用的 EMA 影子权重更新回调）。仅把 tqdm 换成 tqdm.rich。
     """
     model.train()
     if loss_name == "focal":
@@ -802,6 +805,8 @@ def train_one_epoch(model, optimizer, data_loader, device, epoch, scaler=None, c
         scaler.scale(loss).backward() if use_amp else loss.backward()
         scaler.step(optimizer) if use_amp else optimizer.step()
         scaler.update() if use_amp else None
+        if ema_fn is not None:
+            ema_fn()
         optimizer.zero_grad()
         accu_loss += loss.detach()
 
@@ -967,6 +972,23 @@ def main(args):
     patience_counter = 0
     start_time = time.time()
 
+    # ── EMA 影子权重(--ema-decay > 0 启用; 预训练本身为 ema 权重, 微调期延续该语义) ──
+    model_ema, ema_fn = None, None
+    if getattr(args, "ema_decay", 0.0) > 0:
+        model_ema = build_model(args.model, num_classes=args.num_classes).to(device)
+        model_ema.load_state_dict(model.state_dict())
+        for p in model_ema.parameters():
+            p.requires_grad_(False)
+        model_ema.eval()
+        _d = float(args.ema_decay)
+
+        @torch.no_grad()
+        def ema_fn():
+            for pe, pm in zip(model_ema.parameters(), model.parameters()):
+                pe.mul_(_d).add_(pm.detach(), alpha=1.0 - _d)
+            for be, bm in zip(model_ema.buffers(), model.buffers()):
+                be.copy_(bm)
+
     for epoch in range(args.epochs):
         cw = torch.tensor([float(x) for x in args.class_weights.split(",")]) \
             if getattr(args, "class_weights", "") else None
@@ -976,10 +998,15 @@ def main(args):
                                                  class_weights=cw,
                                                  label_smoothing=args.label_smoothing,
                                                  loss_name=args.loss,
-                                                 focal_gamma=args.focal_gamma)
+                                                 focal_gamma=args.focal_gamma,
+                                                 ema_fn=ema_fn)
 
         val_loss, val_acc, val_macro_f1 = evaluate_val_macro_f1(model, val_loader, device,
                                                                 label_smoothing=args.label_smoothing)
+        ema_val_f1 = 0.0
+        if model_ema is not None:
+            _, _, ema_val_f1 = evaluate_val_macro_f1(model_ema, val_loader, device,
+                                                     label_smoothing=args.label_smoothing)
 
         scheduler.step()
         current_lr = optimizer.state_dict()['param_groups'][0]['lr']
@@ -990,19 +1017,24 @@ def main(args):
                                     f'{val_loss:.6f}', f'{val_acc:.6f}',
                                     f'{val_macro_f1:.6f}', f'{current_lr:.8f}'])
 
-        # ── select best checkpoint by val MACRO-F1 (was val_acc in train.py) ──
-        is_best = val_macro_f1 > best_macro_f1
+        # ── select best checkpoint by val MACRO-F1 (raw 与 EMA 择优保存) ──
+        if model_ema is not None and ema_val_f1 > val_macro_f1:
+            sel_f1, sel_src = ema_val_f1, "ema"
+        else:
+            sel_f1, sel_src = val_macro_f1, "raw"
+        is_best = sel_f1 > best_macro_f1
         if is_best:
-            best_macro_f1 = val_macro_f1
+            best_macro_f1 = sel_f1
             best_epoch = epoch
-            torch.save(model.state_dict(), save_path)
+            torch.save((model_ema if sel_src == "ema" else model).state_dict(), save_path)
             patience_counter = 0
         else:
             patience_counter += 1
 
         flag = " *" if is_best else ""
+        ema_desc = f", emaF1={ema_val_f1:.4f}({sel_src})" if model_ema is not None else ""
         print(f"Epoch {epoch}: train_loss={train_loss:.3f}, train_acc={train_acc:.3f}, "
-              f"val_loss={val_loss:.3f}, val_acc={val_acc:.3f}, val_macroF1={val_macro_f1:.4f}, "
+              f"val_loss={val_loss:.3f}, val_acc={val_acc:.3f}, val_macroF1={val_macro_f1:.4f}{ema_desc}, "
               f"lr={current_lr:.6f}, best_macroF1={best_macro_f1:.4f} (epoch {best_epoch}){flag}")
 
         if args.early_stop > 0 and patience_counter >= args.early_stop:
@@ -1042,6 +1074,8 @@ if __name__ == '__main__':
                         help='训练损失: ce(默认, 与历史协议一致) 或 focal')
     parser.add_argument('--focal-gamma', type=float, default=2.0,
                         help='focal loss 聚焦参数 gamma')
+    parser.add_argument('--ema-decay', type=float, default=0.0,
+                        help='>0 时启用 EMA 影子权重(每 step 更新), val 同时评估 raw/EMA 择优保存')
     parser.add_argument('--img_size', type=int, default=224)
     parser.add_argument('--data-path-train', type=str, default="/path/to/cle/train",
                         help='patient-level train split directory')

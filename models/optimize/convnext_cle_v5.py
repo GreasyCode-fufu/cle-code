@@ -162,3 +162,11 @@ def convnext_v5xrm2(num_classes: int):  # CH + XRM(温和初始化)
 
 def convnext_v5grn4(num_classes: int):  # CH + GRN 仅@stage-4(缩小扰动范围重试)
     return _v5(num_classes, mod_stages=(3,), use_grn=True)
+
+
+def convnext_v5grnx(num_classes: int):  # CH + GRN@stage-4 + XRM(两个稳定微增益组件叠加)
+    return _v5(num_classes, mod_stages=(3,), use_grn=True, use_xrm=True)
+
+
+def convnext_v5xrcw_factory(num_classes: int):  # 占位, 实际经 extra --class-weights
+    return _v5(num_classes, use_xrm=True)
