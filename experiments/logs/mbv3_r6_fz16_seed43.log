@@ -2008,3 +2008,133 @@ train epoch 50 loss: 0.020, acc: 0.993:  10…   ,
 Epoch 50: train_loss=0.020, train_acc=0.993, val_loss=1.621, val_acc=0.814, val_macroF1=0.7542, lr=0.000093, best_macroF1=0.7863 (epoch 29)
 train epoch 51 loss: 0.023, acc: 0.992:  10…   , 
 Epoch 51: train_loss=0.023, train_acc=0.992, val_loss=1.648, val_acc=0.804, val_macroF1=0.7561, lr=0.000093, best_macroF1=0.7863 (epoch 29)
+train epoch 52 loss: 0.020, acc: 0.992:  10…   , 
+Epoch 52: train_loss=0.020, train_acc=0.992, val_loss=1.674, val_acc=0.787, val_macroF1=0.7356, lr=0.000092, best_macroF1=0.7863 (epoch 29)
+train epoch 53 loss: 0.023, acc: 0.991:  10…   , 
+Epoch 53: train_loss=0.023, train_acc=0.991, val_loss=1.552, val_acc=0.812, val_macroF1=0.7587, lr=0.000092, best_macroF1=0.7863 (epoch 29)
+train epoch 54 loss: 0.021, acc: 0.992:  10…   , 
+Epoch 54: train_loss=0.021, train_acc=0.992, val_loss=1.604, val_acc=0.813, val_macroF1=0.7631, lr=0.000092, best_macroF1=0.7863 (epoch 29)
+train epoch 55 loss: 0.020, acc: 0.992:  10…   , 
+Epoch 55: train_loss=0.020, train_acc=0.992, val_loss=1.600, val_acc=0.817, val_macroF1=0.7665, lr=0.000092, best_macroF1=0.7863 (epoch 29)
+train epoch 56 loss: 0.020, acc: 0.992:  10…   , 
+Epoch 56: train_loss=0.020, train_acc=0.992, val_loss=1.607, val_acc=0.804, val_macroF1=0.7542, lr=0.000091, best_macroF1=0.7863 (epoch 29)
+train epoch 57 loss: 0.022, acc: 0.992:  10…   , 
+Epoch 57: train_loss=0.022, train_acc=0.992, val_loss=1.455, val_acc=0.816, val_macroF1=0.7602, lr=0.000091, best_macroF1=0.7863 (epoch 29)
+train epoch 58 loss: 0.020, acc: 0.992:  10…   , 
+Epoch 58: train_loss=0.020, train_acc=0.992, val_loss=1.605, val_acc=0.816, val_macroF1=0.7602, lr=0.000091, best_macroF1=0.7863 (epoch 29)
+train epoch 59 loss: 0.020, acc: 0.992:  10…   , 
+Epoch 59: train_loss=0.020, train_acc=0.992, val_loss=1.807, val_acc=0.776, val_macroF1=0.7094, lr=0.000090, best_macroF1=0.7863 (epoch 29)
+
+[early stop] epoch 59: val_macro_f1 not improved for 30 epochs
+
+===========================================================
+             Training Summary (fair baseline)              
+===========================================================
+  Model:              mbv3_r6_fz16
+  Best val macro-F1:  0.7863  (epoch 29)
+  Selection:          val macro-F1
+  Loss:               unweighted CrossEntropy
+  Training Time:      0:41:42
+  Weights:            ./weights_xd_tcga_r6/mbv3_r6_fz16_seed43/mbv3_r6_fz16/model_best.pth
+  Run meta:           ./weights_xd_tcga_r6/mbv3_r6_fz16_seed43/mbv3_r6_fz16/run_meta.json
+===========================================================
+
+===== [2026-11-09 04:43:37.209781] /home/login/miniconda3/envs/sunfuxiang/bin/python train_cle_fair.py --model mbv3_r6_fz16 --num_classes 6 --img_size 224 --seed 43 --data-path-train ./datasets/TCGA/train --data-path-val ./datasets/TCGA/val --weights /home/login/data/cle/sunfuxiang/classifyML/pth/mobilenet_v3_large-8738ca79.pth --save-dir ./weights_xd_tcga_r6/mbv3_r6_fz16_seed43 --epochs 300 --early-stop 30 
+[norm] source=run_meta.json(imagenet)  mean=[0.485, 0.456, 0.406] std=[0.229, 0.224, 0.225]  img_size=224
+[model] mbv3_r6_fz16  weights=/data/cle/auto/ZCode/Classification/weights_xd_tcga_r6/mbv3_r6_fz16_seed43/mbv3_r6_fz16/model_best.pth
+[complexity] MACs=232.92M FLOPs=465.83M Params=4.21M
+[data] test=10634 张  blood=199  cancer=2645  empty=3256  normal=1735  other=1717  stroma=1082
+
+================================================================
+  评估结果 — mbv3_r6_fz16  (test=10634 张)
+================================================================
+  【主指标】
+  Macro-F1         : 0.7860   ← 主指标(类别不平衡首选)
+  Accuracy         : 0.8291
+  Macro-AUROC(OvR) : 0.9474
+----------------------------------------------------------------
+  【补充总体指标】
+  Weighted-F1      : 0.8230
+  Balanced Acc     : 0.7864
+  Macro-Sensitivity: 0.7864   (= 各类 Recall 均值)
+  Macro-Specificity: 0.9643
+  Macro-Precision  : 0.7922
+  AUC-PR (Macro)   : 0.8327
+  Cohen's Kappa    : 0.7793
+  MCC              : 0.7809
+----------------------------------------------------------------
+  【每类指标】 Sensitivity / Specificity / Precision / F1 / AUROC
+  blood                 : 0.859 / 0.995 / 0.767 / 0.810 / 0.992  (n=199)
+  cancer                : 0.926 / 0.930 / 0.814 / 0.866 / 0.975  (n=2645)
+  empty                 : 0.996 / 0.963 / 0.923 / 0.958 / 0.992  (n=3256)
+  normal                : 0.745 / 0.977 / 0.862 / 0.799 / 0.924  (n=1735)
+  other                 : 0.586 / 0.953 / 0.705 / 0.640 / 0.880  (n=1717)
+  stroma                : 0.606 / 0.968 / 0.683 / 0.643 / 0.922  (n=1082)
+----------------------------------------------------------------
+  【模型复杂度】(仅与架构+输入尺寸有关，与数据集无关)
+  MACs : 232.92M    FLOPs : 465.83M    Params : 4.21M
+  【推理效率】(受 GPU 负载影响，为参考量级)
+  Pure FPS : 7542.5  (0.13 ms/张)    End-to-End FPS : 33.2
+----------------------------------------------------------------
+  【混淆矩阵】(行=真实, 列=预测)
+                     blood    cancer     empty    normal     other    stroma
+  blood                171         6         2         7        12         1
+  cancer                 6      2448         0        47        88        56
+  empty                  0         1      3243         0        12         0
+  normal                 1       200         1      1293       129       111
+  other                 41       229       268        37      1006       136
+  stroma                 4       125         1       116       180       656
+================================================================
+
+[saved] /data/cle/auto/ZCode/Classification/weights_xd_tcga_r6/mbv3_r6_fz16_seed43/mbv3_r6_fz16/eval_20261109_053048/  (results.json / predictions.csv / evaluation_report.md)
+
+===== [2026-11-09 05:25:24.337874] /home/login/miniconda3/envs/sunfuxiang/bin/python evaluate.py --model mbv3_r6_fz16 --weights /data/cle/auto/ZCode/Classification/weights_xd_tcga_r6/mbv3_r6_fz16_seed43/mbv3_r6_fz16/model_best.pth --data-path ./datasets/TCGA/val --class-names blood cancer empty normal other stroma
+[norm] source=run_meta.json(imagenet)  mean=[0.485, 0.456, 0.406] std=[0.229, 0.224, 0.225]  img_size=224
+[model] mbv3_r6_fz16  weights=/data/cle/auto/ZCode/Classification/weights_xd_tcga_r6/mbv3_r6_fz16_seed43/mbv3_r6_fz16/model_best.pth
+[complexity] MACs=232.92M FLOPs=465.83M Params=4.21M
+[data] test=5702 张  blood=100  cancer=1329  empty=1621  normal=1014  other=879  stroma=759
+
+================================================================
+  评估结果 — mbv3_r6_fz16  (test=5702 张)
+================================================================
+  【主指标】
+  Macro-F1         : 0.7999   ← 主指标(类别不平衡首选)
+  Accuracy         : 0.8499
+  Macro-AUROC(OvR) : 0.9702
+----------------------------------------------------------------
+  【补充总体指标】
+  Weighted-F1      : 0.8476
+  Balanced Acc     : 0.8015
+  Macro-Sensitivity: 0.8015   (= 各类 Recall 均值)
+  Macro-Specificity: 0.9693
+  Macro-Precision  : 0.8054
+  AUC-PR (Macro)   : 0.8564
+  Cohen's Kappa    : 0.8094
+  MCC              : 0.8113
+----------------------------------------------------------------
+  【每类指标】 Sensitivity / Specificity / Precision / F1 / AUROC
+  blood                 : 0.750 / 0.993 / 0.658 / 0.701 / 0.983  (n=100)
+  cancer                : 0.920 / 0.910 / 0.757 / 0.831 / 0.972  (n=1329)
+  empty                 : 0.994 / 0.996 / 0.990 / 0.992 / 1.000  (n=1621)
+  normal                : 0.880 / 0.987 / 0.936 / 0.907 / 0.993  (n=1014)
+  other                 : 0.700 / 0.977 / 0.847 / 0.766 / 0.949  (n=879)
+  stroma                : 0.565 / 0.952 / 0.644 / 0.602 / 0.924  (n=759)
+----------------------------------------------------------------
+  【模型复杂度】(仅与架构+输入尺寸有关，与数据集无关)
+  MACs : 232.92M    FLOPs : 465.83M    Params : 4.21M
+  【推理效率】(受 GPU 负载影响，为参考量级)
+  Pure FPS : 7195.4  (0.14 ms/张)    End-to-End FPS : 55.4
+----------------------------------------------------------------
+  【混淆矩阵】(行=真实, 列=预测)
+                     blood    cancer     empty    normal     other    stroma
+  blood                 75         3         2         5         7         8
+  cancer                20      1223         1        20        22        43
+  empty                  0         1      1612         0         6         2
+  normal                 2        60         0       892        12        48
+  other                  7        94        12        15       615       136
+  stroma                10       234         1        21        64       429
+================================================================
+
+[saved] /data/cle/auto/ZCode/Classification/weights_xd_tcga_r6/mbv3_r6_fz16_seed43/mbv3_r6_fz16/eval_20261109_053235/  (results.json / predictions.csv / evaluation_report.md)
+
+===== [2026-11-09 05:30:49.284831] /home/login/miniconda3/envs/sunfuxiang/bin/python evaluate.py --model mbv3_r6_fz16 --weights /data/cle/auto/ZCode/Classification/weights_xd_tcga_r6/mbv3_r6_fz16_seed43/mbv3_r6_fz16/model_best.pth --data-path ./datasets/TCGA/test --class-names blood cancer empty normal other stroma
