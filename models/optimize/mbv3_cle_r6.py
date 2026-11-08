@@ -75,11 +75,12 @@ class StarEvidenceHead(nn.Module):
     """z = [u, ReLU6(u) ⊙ v_s (s ∈ sources)] -> Dropout -> Linear.
     sources=("f12",) 为跨尺度星乘; sources=("f16",) 为同尺度星乘对照(StarNet 原式)。"""
 
-    def __init__(self, num_classes, sources=("f12",), d=256, dropout=0.2):
+    def __init__(self, num_classes, sources=("f12",), d=256, dropout=0.2, ch=None):
         super().__init__()
         self.sources = tuple(sources)
+        cin = dict(TAP_CH, **(ch or {}))
         self.u = nn.Sequential(nn.Linear(TAP_CH["f16"], d, bias=False), nn.LayerNorm(d))
-        self.v = nn.ModuleDict({s: nn.Sequential(nn.Linear(TAP_CH[s], d, bias=False), nn.LayerNorm(d))
+        self.v = nn.ModuleDict({s: nn.Sequential(nn.Linear(cin[s], d, bias=False), nn.LayerNorm(d))
                                 for s in self.sources})
         self.act = nn.ReLU6()
         self.drop = nn.Dropout(dropout)
@@ -180,13 +181,17 @@ def edge_density_target(x, out_hw):
 
 
 class MBV3R6(nn.Module):
-    """features 与基座逐键一致; 头部按 head 选择; 可选 /16 聚合(r6agg)、训练期锚定(anchor_net)/边缘头(r6edge)。"""
+    """features 与基座逐键一致; 头部按 head 选择; 可选 /16 聚合(r6agg)、训练期锚定(anchor_net)/边缘头(r6edge)。
+    v_src: 头部 /16 证据来源 —— "out" = features[12] 线性瓶颈输出(112ch);
+           "exp" = features[12] 块内扩展空间(SE 之后、投影之前, 672ch, 已过 h-swish 激活)。
+    freeze_upto: 冻结 features[0..k](参数不训练 + BN 保持推理态 = 纯 ImageNet 预训练证据), -1 不冻结。"""
 
     def __init__(self, num_classes, head="star", sources=("f12",), d=256,
-                 agg=None, agg_pos="bb", anchor_lambda=0.0, edge_lambda=0.0):
+                 agg=None, agg_pos="bb", anchor_lambda=0.0, edge_lambda=0.0, v_src="out", freeze_upto=-1):
         super().__init__()
         base = mobilenet_v3_large(num_classes=num_classes)
         self.features = base.features
+        self.v_src = v_src
         if head == "mlp":                       # 原头(仅用于一致性自检, 等价 mobilenet_v3_large)
             self.classifier = base.classifier
         elif head == "lin":
@@ -195,7 +200,8 @@ class MBV3R6(nn.Module):
             self.classifier = nn.Sequential(nn.Linear(TAP_CH["f16"], d), nn.Hardswish(inplace=True),
                                             nn.Dropout(0.2), nn.Linear(d, num_classes))
         elif head == "star":
-            self.classifier = StarEvidenceHead(num_classes, sources=sources, d=d)
+            self.classifier = StarEvidenceHead(num_classes, sources=sources, d=d,
+                                               ch={"f12": 672} if v_src == "exp" else None)
         else:
             raise ValueError(head)
         if head in ("lin", "mlp256"):           # StarEvidenceHead 已在自身 __init__ 中初始化
@@ -223,6 +229,15 @@ class MBV3R6(nn.Module):
             self.r6edge = _isolated(lambda: EdgeHead(TAP_CH["f12"]), seed=1)
         self.mfm_lambda = 1.0
         self._aux = None
+        self.freeze_upto = freeze_upto
+        if freeze_upto >= 0:
+            self.features[:freeze_upto + 1].requires_grad_(False)
+
+    def train(self, mode=True):
+        super().train(mode)
+        if self.freeze_upto >= 0:
+            self.features[:self.freeze_upto + 1].eval()     # 冻结段 BN 保持 ImageNet running 统计量
+        return self
 
     @property
     def mfm(self):
@@ -244,9 +259,14 @@ class MBV3R6(nn.Module):
         return loss
 
     def forward_pooled(self, x):
-        x0, pooled, f12_pre = x, {}, None
+        x0, pooled, f12_pre, xe = x, {}, None, None
         for i, blk in enumerate(self.features):
-            x = blk(x)
+            if i == 12 and self.v_src == "exp":     # 逐步展开 InvertedResidual, 取扩展空间(672ch)作 /16 证据
+                xe = blk.block[2](blk.block[1](blk.block[0](x)))
+                y = blk.block[3](xe)
+                x = y + x if blk.use_res_connect else y
+            else:
+                x = blk(x)
             if i == 6 and "f6" in self.taps:
                 pooled["f6"] = x.mean(dim=(2, 3))
             elif i == 12:
@@ -256,7 +276,7 @@ class MBV3R6(nn.Module):
                     if self.agg_pos == "bb":
                         x = e
                 if "f12" in self.taps:
-                    pooled["f12"] = e.mean(dim=(2, 3))
+                    pooled["f12"] = (xe if xe is not None else e).mean(dim=(2, 3))
         pooled["f16"] = x.mean(dim=(2, 3))      # = AdaptiveAvgPool2d(1) + flatten
         if self.training and (self.anchor_lambda > 0 or self.edge_lambda > 0):
             self._aux = self._aux_loss(x0, f12_pre)
@@ -313,3 +333,104 @@ def mbv3_r6_s2_anc03(num_classes=3):
 
 def mbv3_r6_s2_edge(num_classes=3):
     return MBV3R6(num_classes, head="star", sources=("f12",), edge_lambda=0.2)
+
+
+# ── MB 批后的修订候选(MB 六候选全负; 见 R6_REPORT.md §3) ──
+# 创新1 修订: /16 证据取块内扩展空间(线性瓶颈理论: 112ch 瓶颈输出是压缩流形, 672ch 激活扩展空间信息更全)
+def mbv3_r6_star2x(num_classes=3):
+    return MBV3R6(num_classes, head="star", sources=("f12",), v_src="exp")
+
+
+# 训练期证据保持(推理零成本): 冻结预训练前段(参数不训 + BN 推理态), 动机 P0-F2(微调使 /16 AUC_BM 0.997→0.988)
+def mbv3_r6_s2_fz8(num_classes=3):
+    return MBV3R6(num_classes, head="star", sources=("f12",), freeze_upto=6)
+
+
+def mbv3_r6_s2_fz16(num_classes=3):
+    return MBV3R6(num_classes, head="star", sources=("f12",), freeze_upto=12)
+
+
+def mbv3_r6_s2x_fz16(num_classes=3):
+    return MBV3R6(num_classes, head="star", sources=("f12",), v_src="exp", freeze_upto=12)
+
+
+# ── 解耦凸证据头(Decoupled Convex Evidence head, DCE) —— P0d/P0e 离线验证后的主线 ──
+# 阶段 1: 主干按原协议端到端微调(与 baseline 逐位一致); 阶段 2(experiments/r6_refit.py): 冻结主干,
+# 在多尺度 GAP 证据上以强 L2 多项逻辑回归拟合分类头, 正则强度仅在 val 上按 Macro-F1 选择(不触碰 test)。
+# 推理结构: z = [GAP(f16), GAP(f12), GAP(f6), GAP(f3)] -> (z-μ)/σ -> Linear(D->K); μ/σ 为 buffer(可折叠进 Linear)。
+CVX_TAP_IDX = {"f3": 3, "f6": 6, "f12": 12, "f16": 16}
+CVX_TAP_CH = {"f3": 24, "f6": 40, "f12": 112, "f16": 960}
+
+
+class ConvexEvidenceHead(nn.Module):
+    def __init__(self, num_classes, taps=("f16",)):
+        super().__init__()
+        self.taps = tuple(taps)
+        d = sum(CVX_TAP_CH[t] for t in self.taps)
+        self.register_buffer("mu", torch.zeros(d))
+        self.register_buffer("sigma", torch.ones(d))
+        self.fc = nn.Linear(d, num_classes)
+
+    def forward(self, pooled):
+        z = torch.cat([pooled[t] for t in self.taps], dim=1)
+        return self.fc((z - self.mu) / self.sigma)
+
+
+def fov_weights(x):
+    """FOV 感知池化权重: 输入(ImageNet 归一化)反归一化灰度 -> 4× 平均下采样到 1/4 分辨率(=f3 尺度) -> 3×3 平滑
+    (约等于原分辨率 12px 窗口, 填平腺腔等小暗区) -> > 0.03 即圆形视野内组织区(视野外近黑背景占 25–31%, P0)。
+    在 1/4 分辨率上计算: 掩码只需在各抽头尺度(56²/28²/14²/7²)上准确, 全分辨率 15×15 池化会使 CPU 单线程延迟 +43%。
+    返回 (B,1,H/4,W/4) 掩码, 由各尺度自适应平均后归一化为池化权重; 无暗背景的图像退化为普通 GAP。"""
+    mean = torch.tensor(_IMNET_MEAN, device=x.device, dtype=x.dtype).view(1, 3, 1, 1)
+    std = torch.tensor(_IMNET_STD, device=x.device, dtype=x.dtype).view(1, 3, 1, 1)
+    g = F.avg_pool2d((x * std + mean).mean(1, keepdim=True), 4)
+    return (F.avg_pool2d(g, 3, 1, 1, count_include_pad=False) > 0.03).to(x.dtype)
+
+
+class MBV3Convex(nn.Module):
+    """mbv3 主干(键名与基座一致) + 解耦凸证据头。pool="gap" 普通全局平均; "mgap" FOV 感知掩码平均。"""
+
+    def __init__(self, num_classes, taps=("f16",), pool="gap"):
+        super().__init__()
+        self.features = mobilenet_v3_large(num_classes=num_classes).features
+        self.classifier = ConvexEvidenceHead(num_classes, taps)
+        self.tap_idx = {CVX_TAP_IDX[t]: t for t in taps}
+        self.pool = pool
+
+    def forward_pooled(self, x):
+        pooled = {}
+        fov = fov_weights(x) if self.pool == "mgap" else None
+        for i, blk in enumerate(self.features):
+            x = blk(x)
+            if i in self.tap_idx:
+                if fov is None:
+                    pooled[self.tap_idx[i]] = x.mean(dim=(2, 3))
+                else:
+                    w = F.adaptive_avg_pool2d(fov, x.shape[-2:])
+                    w = w / w.sum(dim=(2, 3), keepdim=True).clamp_min(1e-6)
+                    pooled[self.tap_idx[i]] = (x * w).sum(dim=(2, 3))
+        return pooled
+
+    def forward(self, x):
+        return self.classifier(self.forward_pooled(x))
+
+
+def mbv3_dce16(num_classes=3):
+    return MBV3Convex(num_classes, taps=("f16",))
+
+
+def mbv3_dce2s(num_classes=3):
+    return MBV3Convex(num_classes, taps=("f16", "f12"))
+
+
+def mbv3_dce4s(num_classes=3):
+    return MBV3Convex(num_classes, taps=("f16", "f12", "f6", "f3"))
+
+
+def mbv3_dce4m(num_classes=3):
+    return MBV3Convex(num_classes, taps=("f16", "f12", "f6", "f3"), pool="mgap")
+
+
+# 证据保持(阶段 1 冻结 /2–/16, 原 MLP 头) —— 与 baseline 同 seed 逐位配对(仅差冻结)
+def mbv3_r6_fz16(num_classes=3):
+    return MBV3R6(num_classes, head="mlp", freeze_upto=12)
