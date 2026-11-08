@@ -197,6 +197,7 @@ MODEL_REGISTRY = {
     "mbv3_fz16_dce16": ("models.optimize.mbv3_cle_r6", "mbv3_dce16"),
     "mbv3_fz16_dce4s": ("models.optimize.mbv3_cle_r6", "mbv3_dce4s"),
     "mbv3_fz16_dce4m": ("models.optimize.mbv3_cle_r6", "mbv3_dce4m"),
+    "mbv3_lp_dce4m": ("models.optimize.mbv3_cle_r6", "mbv3_dce4m"),   # LP 臂: 纯 ImageNet 主干(不微调) + DCE4m
     "mbv3_r6_fz16bn": ("models.optimize.mbv3_cle_r6", "mbv3_r6_fz16bn"),
     "mbv3_r6_fz8m": ("models.optimize.mbv3_cle_r6", "mbv3_r6_fz8m"),
     "mbv3_fz16bn_dce4m": ("models.optimize.mbv3_cle_r6", "mbv3_dce4m"),

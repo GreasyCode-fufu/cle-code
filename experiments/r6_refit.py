@@ -77,13 +77,20 @@ def sha256(path):
 
 
 def refit_one(a, seed, classes):
-    src_dir = os.path.join(REPO, a.src_root, f"{a.src_model}_seed{seed}", a.src_model)
-    src_ckpt = os.path.join(src_dir, "model_best.pth")
-    meta = json.load(open(os.path.join(src_dir, "run_meta.json")))
+    if a.src_ckpt:                               # 直接给定 checkpoint 路径(如纯 ImageNet pth → LP 臂)
+        src_dir = os.path.join(REPO, a.dst_root, f"{a.dst_model}_seed{seed}", a.dst_model)
+        src_ckpt = a.src_ckpt
+    else:
+        src_dir = os.path.join(REPO, a.src_root, f"{a.src_model}_seed{seed}", a.src_model)
+        src_ckpt = os.path.join(src_dir, "model_best.pth")
+    meta = ({"norm_mean": [0.485, 0.456, 0.406], "norm_std": [0.229, 0.224, 0.225], "norm_source": "imagenet"}
+            if a.src_ckpt else json.load(open(os.path.join(src_dir, "run_meta.json"))))
     tf = transforms.Compose([transforms.Resize(int(224 * 1.143)), transforms.CenterCrop(224), transforms.ToTensor(),
                              transforms.Normalize(meta["norm_mean"], meta["norm_std"])])
     model = build_model(a.dst_model, len(classes))
     sd = torch.load(src_ckpt, map_location="cpu")
+    if isinstance(sd, dict) and "model" in sd and "state_dict" not in sd and not any(k.startswith("features") for k in sd):
+        sd = sd["model"]
     feat_sd = {k: v for k, v in sd.items() if k.startswith("features.")}
     missing, unexpected = model.load_state_dict(feat_sd, strict=False)
     assert not unexpected and all(k.startswith("classifier.") for k in missing), (missing, unexpected)
@@ -113,7 +120,7 @@ def refit_one(a, seed, classes):
     os.makedirs(dst_dir, exist_ok=True)
     dst_ckpt = os.path.join(dst_dir, "model_best.pth")
     torch.save(model.cpu().state_dict(), dst_ckpt)
-    meta = dict(meta)
+    meta = dict({"norm_mean": [0.485, 0.456, 0.406], "norm_std": [0.229, 0.224, 0.225], "norm_source": "imagenet"}) if a.src_ckpt else dict(meta)
     meta.update({"model": a.dst_model, "stage": "R6 DCE stage-2 refit",
                  "refit": {"src_checkpoint": src_ckpt, "src_sha256": sha256(src_ckpt), "taps": list(model.classifier.taps),
                            "C_grid": grid, "C_selected": best[1], "val_macro_f1": round(best[0], 4),
@@ -136,6 +143,7 @@ def read_metric(dst_dir, which):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--src-model", required=True)
+    ap.add_argument("--src-ckpt", default="", help="直接指定源 checkpoint(如纯 ImageNet pth); 缺省按 src_root/src_model_seed<seed>")
     ap.add_argument("--dst-model", required=True)
     ap.add_argument("--seeds", type=int, nargs="+", required=True)
     ap.add_argument("--src-root", default="weights_cle_ac_v1_r6")
