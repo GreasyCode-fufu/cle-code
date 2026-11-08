@@ -10,9 +10,9 @@ import sys
 import numpy as np
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-ORDER = ["mobilenet_v3_large", "mbv3_r6_fz16", "mbv3_fz16_dce16", "mbv3_fz16_dce4m", "mbv3_dce4m"]
+ORDER = ["mobilenet_v3_large", "mbv3_r6_fz16", "mbv3_fz16_dce16", "mbv3_fz16_dce4m", "mbv3_dce4m", "mbv3_lp_dce4m"]
 NICE = {"mobilenet_v3_large": "baseline", "mbv3_r6_fz16": "①fz16", "mbv3_fz16_dce16": "①+②dce16",
-        "mbv3_fz16_dce4m": "①+②+③dce4m(final)", "mbv3_dce4m": "②+③dce4m(no-①)"}
+        "mbv3_fz16_dce4m": "①+②+③dce4m(final)", "mbv3_dce4m": "②+③dce4m(no-①)", "mbv3_lp_dce4m": "LP臂(全保留)+②③"}
 
 
 def load(root, model):
