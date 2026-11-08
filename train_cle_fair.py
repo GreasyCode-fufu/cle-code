@@ -144,6 +144,9 @@ MODEL_ALLOWED_MISSING_SEGMENTS = {
     "convnext_v5xrm2": {"msf2_p2", "msf2_p3", "msf2_n2", "msf2_n3", "xrm"},
     "convnext_v5grn4": {"msf2_p2", "msf2_p3", "msf2_n2", "msf2_n3", "grn"},
     "convnext_v5grnx": {"msf2_p2", "msf2_p3", "msf2_n2", "msf2_n3", "grn", "xrm"},
+    "convnext_v5grnx": {"msf2_p2", "msf2_p3", "msf2_n2", "msf2_n3", "grn", "xrm"},
+    "convnext_v5pf": {"msf2_p2", "msf2_p3", "msf2_n2", "msf2_n3"},
+    "convnext_v5sd": {"msf2_p2", "msf2_p3", "msf2_n2", "msf2_n3"},
     "convnext_v2cema": {"msf2_p2", "msf2_p3", "msf2_n2", "msf2_n3"},
     "convnext_v5xrcw": {"msf2_p2", "msf2_p3", "msf2_n2", "msf2_n3", "xrm"},
     # v2c 损失探针别名(同一工厂, 权重目录隔离)

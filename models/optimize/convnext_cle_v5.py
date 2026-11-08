@@ -69,13 +69,54 @@ class TopDownGate2(nn.Module):
                 for lin, f in zip(self.linears, feats)]
 
 
+class PFESA(nn.Module):
+    """库 223 (MICCAI 2026) 忠实移植: FFT 高斯掩码分离低频结构/高频边缘,
+    双分支无参统计注意力相加再 sigmoid, 乘性重标定。fp32 内部计算。"""
+
+    def __init__(self, base_ratio=0.1):
+        super().__init__()
+        self.base_ratio = base_ratio
+        self.eps = 1e-5
+
+    def forward(self, x):                                   # (N,C,H,W)
+        h, w = x.shape[-2:]
+        xf = x.float()
+        f = torch.fft.fftshift(torch.fft.fftn(xf, dim=(-2, -1)), dim=(-2, -1))
+        r = self.base_ratio * min(h, w) / max(h, w)
+        yy, xx = torch.meshgrid(torch.linspace(-1, 1, h, device=x.device),
+                                torch.linspace(-1, 1, w, device=x.device), indexing="ij")
+        mask = torch.exp(-(yy ** 2 + xx ** 2) / (2 * r ** 2))
+        low = torch.abs(torch.fft.ifftn(torch.fft.ifftshift(f * mask, dim=(-2, -1)), dim=(-2, -1)))
+        high = torch.abs(torch.fft.ifftn(torch.fft.ifftshift(f * (1 - mask), dim=(-2, -1)), dim=(-2, -1)))
+        le = low ** 2
+        s_att = torch.sigmoid((le - le.mean([2, 3], True)) / (le.var([2, 3], True) + self.eps))
+        dev = (high - high.mean([2, 3], True)).pow(2)
+        e_att = torch.sigmoid((dev - dev.mean([2, 3], True)) / (dev.var([2, 3], True) + self.eps))
+        return (torch.sigmoid(s_att + e_att) * xf).to(x.dtype)
+
+
+class SDGW(nn.Module):
+    """库 233 (CVPR 2026) 精神移植(无参温和版): 局部窗口统计 -> 偏差引导乘性门控,
+    调制范围限制在 (0.5, 1.5) 保持预训练特征量级。"""
+
+    def forward(self, x):                                   # (N,C,H,W)
+        xf = x.float()
+        mu = torch.nn.functional.avg_pool2d(xf, 3, 1, 1)
+        m2 = torch.nn.functional.avg_pool2d(xf * xf, 3, 1, 1)
+        std = (m2 - mu * mu + 1e-5).sqrt()
+        dev = (xf - mu).abs()
+        g = torch.sigmoid((dev - dev.mean([2, 3], True)) / (2 * std + 1e-5))
+        return (xf * (0.5 + g)).to(x.dtype)
+
+
 class V5Block(Block):
-    """ConvNeXt Block + 可选 {SE 门控 / GRN / TeLU}; dwconv/LN/残差不变。"""
+    """ConvNeXt Block + 可选 {SE 门控 / GRN / TeLU / dwconv 后无参重标定}; dwconv/LN/残差不变。"""
 
     def __init__(self, dim, drop_rate=0., layer_scale_init_value=1e-6,
-                 use_se=False, use_grn=False, use_telu=False):
+                 use_se=False, use_grn=False, use_telu=False, pre_module=None):
         super().__init__(dim, drop_rate, layer_scale_init_value)
         self.use_se, self.use_grn, self.use_telu = use_se, use_grn, use_telu
+        self.pre_module = pre_module
         if use_se:
             self.se = SEGate(dim)
         if use_grn:
@@ -84,6 +125,8 @@ class V5Block(Block):
     def forward(self, x):
         shortcut = x
         x = self.dwconv(x)
+        if self.pre_module is not None:
+            x = self.pre_module(x)
         x = x.permute(0, 2, 3, 1)
         x = self.norm(x)
         x = self.pwconv1(x)
@@ -103,7 +146,7 @@ class ConvNeXtV5(ConvNeXt):
     """ConvNeXt-T + CH + {SE/GRN/TeLU@stages, XRM} 可组合。"""
 
     def __init__(self, mod_stages=(), use_se=False, use_grn=False, use_telu=False,
-                 use_xrm=False, **kw):
+                 use_xrm=False, pre_module=None, pre_stages=(), **kw):
         super().__init__(**kw)
         dims0 = self.downsample_layers[0][0].out_channels
         self.dims = [dims0] + [self.downsample_layers[i][1].out_channels for i in (1, 2, 3)]
@@ -111,6 +154,11 @@ class ConvNeXtV5(ConvNeXt):
             self.stages[si] = nn.Sequential(
                 *[V5Block(self.dims[si], use_se=use_se, use_grn=use_grn, use_telu=use_telu)
                   for _ in self.stages[si]])
+        if pre_module is not None:                           # dwconv 后无参重标定(PFESA/SDGW)
+            for si in pre_stages:
+                self.stages[si] = nn.Sequential(
+                    *[V5Block(self.dims[si], pre_module=pre_module())
+                      for _ in self.stages[si]])
         self.use_xrm = use_xrm
         if use_xrm:
             self.xrm = TopDownGate2(self.dims[3], [self.dims[1], self.dims[2]])
@@ -166,6 +214,14 @@ def convnext_v5grn4(num_classes: int):  # CH + GRN 仅@stage-4(缩小扰动范�
 
 def convnext_v5grnx(num_classes: int):  # CH + GRN@stage-4 + XRM(两个稳定微增益组件叠加)
     return _v5(num_classes, mod_stages=(3,), use_grn=True, use_xrm=True)
+
+
+def convnext_v5pf(num_classes: int):   # CH + PFESA@stage-3/4(库223 无参边缘-结构注意力)
+    return _v5(num_classes, pre_module=PFESA, pre_stages=(2, 3))
+
+
+def convnext_v5sd(num_classes: int):   # CH + SDGW@stage-2/3(库233 局部偏差引导加权, 无参)
+    return _v5(num_classes, pre_module=SDGW, pre_stages=(1, 2))
 
 
 def convnext_v5xrcw_factory(num_classes: int):  # 占位, 实际经 extra --class-weights
