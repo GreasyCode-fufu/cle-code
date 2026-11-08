@@ -149,7 +149,7 @@ class ConvNeXtV5(ConvNeXt):
 
     def __init__(self, mod_stages=(), use_se=False, use_grn=False, use_telu=False,
                  use_xrm=False, pre_module=None, pre_stages=(),
-                 use_fgs=False, use_csap=False, **kw):
+                 use_fgs=False, use_csap=False, csap_soft=0.0, xrm_std=0.005, **kw):
         super().__init__(**kw)
         dims0 = self.downsample_layers[0][0].out_channels
         self.dims = [dims0] + [self.downsample_layers[i][1].out_channels for i in (1, 2, 3)]
@@ -167,11 +167,11 @@ class ConvNeXtV5(ConvNeXt):
         self.use_csap = use_csap
         self.use_xrm = use_xrm
         if use_xrm:
-            self.xrm = TopDownGate2(self.dims[3], [self.dims[1], self.dims[2]])
+            self.xrm = TopDownGate2(self.dims[3], [self.dims[1], self.dims[2]], std=xrm_std)
         d2, d3, d4 = self.dims[1], self.dims[2], self.dims[3]
         if use_csap:                                         # CSAP: 替换均匀池化(不建 msf2)
-            self.csap2 = CSAHead(d2)
-            self.csap3 = CSAHead(d3)
+            self.csap2 = CSAHead(d2, soft_init=csap_soft)
+            self.csap3 = CSAHead(d3, soft_init=csap_soft)
             self.head = nn.Linear(3 * d4, self.head.out_features)
             return
         self.msf2_p2 = nn.Conv2d(d2, d4, 1, bias=False)
@@ -244,11 +244,11 @@ class CSAHead(nn.Module):
     临床读片"多灶肿瘤取最差病灶"。完全替换均匀池化 → 不可旁路。
     """
 
-    def __init__(self, d_s, d_sem=768):
+    def __init__(self, d_s, d_sem=768, soft_init=0.0):
         super().__init__()
         self.proj = nn.Conv2d(d_s, d_sem, 1, bias=False)
         self.score = nn.Sequential(nn.Linear(2 * d_sem, d_sem), nn.GELU(), nn.Linear(d_sem, 1))
-        self.logit_scale = nn.Parameter(torch.zeros(1))      # softmax 温度 s=exp(0)=1
+        self.logit_scale = nn.Parameter(torch.full((1,), float(soft_init)))  # exp(soft)=温度, 负值=更软
         self.norm = nn.LayerNorm(d_sem, eps=1e-6)
 
     def forward(self, f, g4):                                # f:(N,C,H,W) g4:(N,d_sem)
@@ -304,3 +304,15 @@ def convnext_v6cf(num_classes: int):   # CSAP + FGS 组合
 
 def convnext_v6f2(num_classes: int):  # FGS(独立别名, 测试目录隔离用)
     return _v5(num_classes, use_fgs=True)
+
+
+def convnext_v6c2(num_classes: int):   # CSAP 软温度版(logit_scale init -2, 初始近似均匀池化)
+    return _v5(num_classes, use_csap=True, csap_soft=-2.0)
+
+
+def convnext_v6fx(num_classes: int):   # FGS + XRM 组合
+    return _v5(num_classes, use_fgs=True, use_xrm=True)
+
+
+def convnext_v6x3(num_classes: int):   # XRM std=0.01(介于崩掉的0.02与过弱的0.005之间)
+    return _v5(num_classes, use_xrm=True, xrm_std=0.01)
