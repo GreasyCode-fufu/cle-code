@@ -62,3 +62,15 @@ SDGW / DRC / WR全深度 / SOP二阶头 / GRN+XRM / XRM+cw / FGS+XRM / CSAP+FGS 
 - 权重: weights_cle_ac_v1_c/{convnext_v2m,convnext_v6f}_seed*/（含 run_meta 审计）
 - 报告: experiments/R3_REPORT.md(CSM轮) / R4_REPORT.md(16候选证伪) / 本文件
 - git: 逐批提交, 全可追溯
+
+## 5a. 泛化结果（R5 链, v6f vs 同批 tiny, 3 seeds Macro-F1 均值）
+
+| 域 | tiny | **v6f** | Δ | 备注 |
+|---|---|---|---|---|
+| heelBone(跟骨X光) | 87.95 | **88.74** | **+0.79** | ✓ |
+| covid_v1 | 98.42 | **98.63** | **+0.21** | ✓(FGS 把 v2c 的 -0.03 拉正) |
+| **CUB-200(细粒度)** | 77.98 | **80.53** | **+2.55** | ✓✓ 全家族最高(超历史最强 ConvNeXt-S 79.98) |
+| BUSI(乳腺超声) | 87.28 | 86.80 | -0.48 | 小样本域(546张), 与 v2c(-0.36)相当 |
+| TCGA(病理6类) | 运行中 | 运行中 | — | 过夜, ~17:00 |
+
+逐seed: heel 89.13/91.28/85.81; covid 98.88/98.49/98.51; CUB 81.37/79.02/81.20; BUSI 86.29/87.20/86.90。
