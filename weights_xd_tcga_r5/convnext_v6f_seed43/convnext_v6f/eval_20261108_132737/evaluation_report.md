@@ -1,0 +1,87 @@
+# convnext_v6f 评估报告
+
+- 权重: `/data/cle/auto/ZCode/Classification/weights_xd_tcga_r5/convnext_v6f_seed43/convnext_v6f/model_best.pth`
+- 测试集: `./datasets/TCGA/test`  (共 5702 张)
+- 归一化: run_meta.json(imagenet)  mean=[0.485, 0.456, 0.406]
+- img_size: 224
+
+## 主指标
+
+| 指标 | 值 |
+|---|---|
+| **Macro-F1** | 0.8598 |
+| Accuracy | 0.8921 |
+| Macro-AUROC (OvR) | 0.9811 |
+
+## 补充总体指标
+
+| 指标 | 值 |
+|---|---|
+| Weighted-F1 | 0.8936 |
+| Balanced Acc | 0.8680 |
+| Macro-Sensitivity | 0.8680 |
+| Macro-Specificity | 0.9786 |
+| Macro-Precision | 0.8571 |
+| AUC-PR (Macro) | 0.9113 |
+| Cohen's Kappa | 0.8640 |
+| MCC | 0.8650 |
+
+## 模型复杂度与推理效率
+
+| 指标 | 值 |
+|---|---|
+| MACs | 4.63G |
+| FLOPs | 9.27G |
+| Params | 28.26M |
+| Pure-Inference FPS | 641.4 (1.56 ms/张) |
+| End-to-End FPS | 326.4 |
+| 测试样本数 | 5702 |
+
+## 每类指标 (One-vs-Rest)
+
+| 类 | Sensitivity | Specificity | Precision | F1 | NPV | AUROC | AUC-PR | support |
+|---|---|---|---|---|---|---|---|---|
+| blood | 0.8300 | 0.9952 | 0.7545 | 0.7905 | 0.9970 | 0.9961 | 0.8870 | 100 |
+| cancer | 0.8668 | 0.9742 | 0.9107 | 0.8882 | 0.9601 | 0.9785 | 0.9510 | 1329 |
+| empty | 0.9957 | 0.9978 | 0.9945 | 0.9951 | 0.9983 | 1.0000 | 0.9999 | 1621 |
+| normal | 0.9408 | 0.9881 | 0.9446 | 0.9427 | 0.9872 | 0.9938 | 0.9818 | 1014 |
+| other | 0.7406 | 0.9795 | 0.8680 | 0.7993 | 0.9540 | 0.9569 | 0.8763 | 879 |
+| stroma | 0.8340 | 0.9371 | 0.6706 | 0.7434 | 0.9735 | 0.9615 | 0.7718 | 759 |
+
+### 每类 TP/FP/TN/FN
+
+- **blood**: TP=83 FP=27 TN=5575 FN=17
+- **cancer**: TP=1152 FP=113 TN=4260 FN=177
+- **empty**: TP=1614 FP=9 TN=4072 FN=7
+- **normal**: TP=954 FP=56 TN=4632 FN=60
+- **other**: TP=651 FP=99 TN=4724 FN=228
+- **stroma**: TP=633 FP=311 TN=4632 FN=126
+
+## 混淆矩阵 (行=真实, 列=预测)
+
+| | blood | cancer | empty | normal | other | stroma |
+|---|---|---|---|---|---|---|
+| blood | 83 | 2 | 1 | 3 | 6 | 5 |
+| cancer | 17 | 1152 | 1 | 17 | 29 | 113 |
+| empty | 1 | 0 | 1614 | 0 | 3 | 3 |
+| normal | 3 | 24 | 0 | 954 | 4 | 29 |
+| other | 2 | 45 | 7 | 13 | 651 | 161 |
+| stroma | 4 | 42 | 0 | 23 | 57 | 633 |
+
+## Classification Report (sklearn)
+
+```
+              precision    recall  f1-score   support
+
+       blood     0.7545    0.8300    0.7905       100
+      cancer     0.9107    0.8668    0.8882      1329
+       empty     0.9945    0.9957    0.9951      1621
+      normal     0.9446    0.9408    0.9427      1014
+       other     0.8680    0.7406    0.7993       879
+      stroma     0.6706    0.8340    0.7434       759
+
+    accuracy                         0.8921      5702
+   macro avg     0.8571    0.8680    0.8598      5702
+weighted avg     0.8992    0.8921    0.8936      5702
+
+```
