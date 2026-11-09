@@ -30,3 +30,13 @@ python experiments/runner.py experiments/jobs_MN.json 4   # 6 模型 × 5 seeds�
 ```
 结果: `experiments/results_cle_ac_v1_r6.csv`（batch=MN）+ `weights_cle_ac_v1_r6/<model>_seed*/.../results.json`；
 汇总脚本 `experiments/r6_collect.py`。
+
+## 结果（2026-11-09, MN 批, 5 seeds, 统一协议; 详见 R6_REPORT §16）
+| 网络 | CLE Macro-F1 | κ | 恶性敏感度 | 参数 | MACs | CLE-Net−该网络 |
+|---|---|---|---|---|---|---|
+| **CLE-Net (egb_scg)** | **95.58±0.15** | 93.42 | 93.30 | 31.3M | 4.85G | — |
+| ConvNeXt-T（同批基线） | 94.76±0.79 | 92.16 | 91.70 | 27.8M | 4.45G | +0.82（4/5） |
+| Jumbo-small | 94.05±1.45 | 91.16 | 88.64 | 64.2M | 4.78G | +1.54（3/5） |
+| GmNet-s3 | 92.96±0.66 | 89.43 | 86.14 | 7.4M | 1.27G | +2.63（5/5） |
+| iFormer-S | 93.68±1.53 | 90.48 | 89.89 | 6.2M | 1.08G | +1.91（5/5） |
+| LSNet-S | 91.42±0.55 | 87.23 | 84.09 | 15.7M | 0.55G | +4.17（5/5） |

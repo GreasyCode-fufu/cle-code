@@ -1,98 +1,51 @@
 {
- "mobilenet_v3_large": {
-  "params_M": 4.206,
-  "macs_G": 0.233,
-  "cpu_t1_ms": 7.91,
-  "cpu_t4_ms": 4.05,
-  "gpu_b1_ms": 1.182,
-  "gpu_b64_amp_img_s": 19063
+ "convnext_tiny": {
+  "params_M": 27.822,
+  "macs_G": 4.4548,
+  "cpu_t1_ms": 70.95,
+  "cpu_t4_ms": 22.52,
+  "gpu_b1_ms": 1.2,
+  "gpu_b64_amp_img_s": 3082
  },
- "mbv3_fz16_dce4m": {
-  "params_M": 2.975,
-  "macs_G": 0.2317,
-  "cpu_t1_ms": 7.98,
-  "cpu_t4_ms": 4.2,
-  "gpu_b1_ms": 1.393,
-  "gpu_b64_amp_img_s": 17842
+ "convnext_egb_scg": {
+  "params_M": 31.305,
+  "macs_G": 4.8514,
+  "cpu_t1_ms": 109.49,
+  "cpu_t4_ms": 40.74,
+  "gpu_b1_ms": 4.369,
+  "gpu_b64_amp_img_s": 1389
  },
- "lsnet_t": {
-  "params_M": 11.026,
-  "macs_G": 0.3203,
+ "jumbo_small": {
+  "params_M": 64.21,
+  "macs_G": 4.7794,
+  "cpu_t1_ms": 127.14,
+  "cpu_t4_ms": 54.91,
+  "gpu_b1_ms": 3.434,
+  "gpu_b64_amp_img_s": 5168
+ },
+ "gmnet_s3": {
+  "params_M": 7.439,
+  "macs_G": 1.2676,
+  "cpu_t1_ms": 22.53,
+  "cpu_t4_ms": 9.51,
+  "gpu_b1_ms": 1.607,
+  "gpu_b64_amp_img_s": 5201
+ },
+ "iformer_s": {
+  "params_M": 6.243,
+  "macs_G": 1.0824,
+  "cpu_t1_ms": 19.64,
+  "cpu_t4_ms": 9.43,
+  "gpu_b1_ms": 1.93,
+  "gpu_b64_amp_img_s": 11508
+ },
+ "lsnet_s": {
+  "params_M": 15.699,
+  "macs_G": 0.5457,
   "cpu_t1_ms": "NA",
-  "gpu_b1_ms": 3.127,
-  "gpu_b64_amp_img_s": 14033,
-  "note": "CPU \u4e0d\u53ef\u6d4b(Triton \u4ec5 GPU); GPU \u5ef6\u8fdf\u4e3a\u4e13\u7528\u6d4b\u91cf(200/30 iters), \u6279\u91cf\u811a\u672c\u4e2d\u56e0 CPU \u5931\u8d25\u8df3\u8fc7"
- },
- "shvit_s1": {
-  "params_M": 6.011,
-  "macs_G": 0.2457,
-  "cpu_t1_ms": 5.95,
-  "cpu_t4_ms": 4.2,
-  "gpu_b1_ms": 2.23,
-  "gpu_b64_amp_img_s": 23316
- },
- "iformer_t": {
-  "params_M": 2.63,
-  "macs_G": 0.5216,
-  "cpu_t1_ms": 10.37,
-  "cpu_t4_ms": 6.23,
-  "gpu_b1_ms": 1.785,
-  "gpu_b64_amp_img_s": 17214
- },
- "efficientvim_m1": {
-  "params_M": 5.718,
-  "macs_G": 0.2345,
-  "cpu_t1_ms": 6.76,
-  "cpu_t4_ms": 4.8,
-  "gpu_b1_ms": 2.343,
-  "gpu_b64_amp_img_s": 21129
- },
- "fast_t0": {
-  "params_M": 2.628,
-  "macs_G": 0.3394,
-  "cpu_t1_ms": 6.2,
-  "cpu_t4_ms": 3.55,
-  "gpu_b1_ms": 0.79,
-  "gpu_b64_amp_img_s": 33393
- },
- "ghostnet": {
-  "params_M": 3.905,
-  "macs_G": 0.1546,
-  "cpu_t1_ms": 6.18,
-  "cpu_t4_ms": 5.56,
-  "gpu_b1_ms": 2.01,
-  "gpu_b64_amp_img_s": 18334
- },
- "shufflenet_v2_x1_0": {
-  "params_M": 1.257,
-  "macs_G": 0.1517,
-  "cpu_t1_ms": 4.99,
-  "cpu_t4_ms": 3.96,
-  "gpu_b1_ms": 1.161,
-  "gpu_b64_amp_img_s": 34629
- },
- "mobilenetv4_conv_small": {
-  "params_M": 2.497,
-  "macs_G": 0.1848,
-  "cpu_t1_ms": 4.16,
-  "cpu_t4_ms": 2.91,
-  "gpu_b1_ms": 1.001,
-  "gpu_b64_amp_img_s": 37592
- },
- "starnet_s2": {
-  "params_M": 3.426,
-  "macs_G": 0.5493,
-  "cpu_t1_ms": 9.85,
-  "cpu_t4_ms": 4.97,
-  "gpu_b1_ms": 1.011,
-  "gpu_b64_amp_img_s": 13594
- },
- "mbv3_dce4s": {
-  "params_M": 2.975,
-  "macs_G": 0.2317,
-  "cpu_t1_ms": 7.99,
-  "cpu_t4_ms": 3.91,
-  "gpu_b1_ms": 1.31,
-  "gpu_b64_amp_img_s": 19010
+  "gpu_b1_ms": 3.264,
+  "gpu_b64_amp_img_s": 12083,
+  "cpu_t4_ms": "NA",
+  "note": "CPU \u4e0d\u53ef\u6d4b(Triton \u4ec5 GPU); GPU \u4e3a\u4e13\u7528\u6d4b\u91cf(200/30 iters)"
  }
 }
