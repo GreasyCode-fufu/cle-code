@@ -40,3 +40,5 @@ python experiments/runner.py experiments/jobs_MN.json 4   # 6 模型 × 5 seeds�
 | GmNet-s3 | 92.96±0.66 | 89.43 | 86.14 | 7.4M | 1.27G | +2.63（5/5） |
 | iFormer-S | 93.68±1.53 | 90.48 | 89.89 | 6.2M | 1.08G | +1.91（5/5） |
 | LSNet-S | 91.42±0.55 | 87.23 | 84.09 | 15.7M | 0.55G | +4.17（5/5） |
+
+## 三 seeds 口径（42/43/44）: 见 R6_REPORT §16.1 —— CLE-Net 95.50; Jumbo-small 95.23(+0.26, 1胜1平1负, 基本打平); GmNet 92.61(+2.89, 3/3); iFormer-S 94.17(+1.32, 3/3); LSNet-S 91.62(+3.88, 3/3)
