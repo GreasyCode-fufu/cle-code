@@ -252,6 +252,11 @@ MODEL_REGISTRY = {
     "mbv3_fz16_dce4s": ("models.optimize.mbv3_cle_r6", "mbv3_dce4s"),
     "mbv3_fz16_dce4m": ("models.optimize.mbv3_cle_r6", "mbv3_dce4m"),
     "mbv3_lp_dce4m": ("models.optimize.mbv3_cle_r6", "mbv3_dce4m"),   # LP 臂: 纯 ImageNet 主干(不微调) + DCE4m
+    # ── R6-B 对比: 最新顶会网络(sota_nets_2026/, models/sota2026.py) ──
+    "jumbo_small": ("models.sota2026", "jumbo_small"),
+    "gmnet_s3": ("models.sota2026", "gmnet_s3"),
+    "iformer_s": ("models.sota2026", "iformer_s"),
+    "lsnet_s": ("models.sota2026", "lsnet_s"),
     # ── R6 实验 1: 微调策略对比方法(models/optimize/r6_ftbaselines.py) ──
     "mbv3_lpft": ("models.optimize.r6_ftbaselines", "mbv3_lpft"),
     "mbv3_l2sp_a01": ("models.optimize.r6_ftbaselines", "mbv3_l2sp_a01"),
