@@ -35,10 +35,12 @@ CLE_CHAIN = [("baseline (MobileNetV3-L)", "mobilenet_v3_large"),
              ("② only (convex head on full-FT backbone)", "mbv3_dce16"),
              ("②+③ (no ①)", "mbv3_dce4m"),
              ("preserve-all (ImageNet backbone) + ②③", "mbv3_lp_dce4m")]
-BACKBONES = [("MobileNetV3-L", "mobilenet_v3_large"), ("StarNet-S2 (CVPR'24)", "starnet_s2"),
-             ("MobileNetV4-Conv-S (ECCV'24)", "mobilenetv4_conv_small"), ("FasterNet-T0 (CVPR'23)", "fast_t0"),
-             ("GhostNet", "ghostnet"), ("ShuffleNetV2 x1.0", "shufflenet_v2_x1_0"),
-             ("EPIC-MobileNet (ours)", "mbv3_fz16_dce4m")]
+LATEST = [("LSNet-T (CVPR'25)", "lsnet_t", 74.9), ("SHViT-S1 (CVPR'24)", "shvit_s1", 72.8),
+          ("iFormer-T (ICLR'25)", "iformer_t", 74.1), ("EfficientViM-M1 (CVPR'25)", "efficientvim_m1", 72.9)]
+BACKBONES = [("MobileNetV3-L", "mobilenet_v3_large", 74.042), ("StarNet-S2 (CVPR'24)", "starnet_s2", 73.5),
+             ("MobileNetV4-Conv-S (ECCV'24)", "mobilenetv4_conv_small", 74.6), ("FasterNet-T0 (CVPR'23)", "fast_t0", 71.9),
+             ("GhostNet", "ghostnet", 73.9), ("ShuffleNetV2 x1.0", "shufflenet_v2_x1_0", 69.4),
+             ("EPIC-MobileNet (ours)", "mbv3_fz16_dce4m", None)] + LATEST
 DOMAINS = [("busi", "BUSI"), ("heel", "heelBone"), ("covid", "covid"), ("cub", "CUB-200"), ("tcga", "TCGA")]
 XD_CFG = [("baseline", "mobilenet_v3_large"), ("①", "mbv3_r6_fz16"), ("①+②", "mbv3_fz16_dce16"),
           ("①+②+③", "mbv3_fz16_dce4m"), ("②+③", "mbv3_dce4m"), ("LP-arm+②③", "mbv3_lp_dce4m")]
@@ -82,16 +84,17 @@ def main():
     # 2. 轻量主干对比
     bench = json.load(open(os.path.join(REPO, "experiments", "r6_bench_latency.json")))
     rows = []
-    for label, model in BACKBONES:
+    for label, model, top1 in BACKBONES:
         runs = test_results("weights_cle_ac_v1_r6", model)
         f1 = np.array([r["macro_f1"] * 100 for r in runs.values()])
         kap = np.array([r["kappa"] * 100 for r in runs.values()])
         auc = np.array([r["auc_roc_macro"] * 100 for r in runs.values()])
-        b = bench.get(model if model != "mbv3_fz16_dce4m" else "mbv3_dce4m", {})
+        b = bench.get("mbv3_fz16_dce4m" if model == "mbv3_fz16_dce4m" else model, {})
         rows.append([label, model, len(f1), f"{f1.mean():.2f}±{f1.std():.2f}", f"{kap.mean():.2f}", f"{auc.mean():.2f}",
-                     b.get("params_M"), b.get("macs_G"), b.get("cpu_t1_ms"), b.get("gpu_b1_ms"), b.get("gpu_b64_amp_img_s")])
+                     b.get("params_M"), b.get("macs_G"), b.get("cpu_t1_ms"), b.get("gpu_b1_ms"), b.get("gpu_b64_amp_img_s"),
+                     top1 or ""])
     w("cle_comparison_backbones.csv", ["model", "registry", "n_seeds", "Macro-F1", "Kappa", "AUROC", "params_M", "MACs_G",
-                                       "cpu_1thread_ms", "gpu_bs1_ms", "gpu_bs64_amp_img_per_s"], rows)
+                                       "cpu_1thread_ms", "gpu_bs1_ms", "gpu_bs64_amp_img_per_s", "reported_imagenet_top1"], rows)
     # 3. 跨域消融
     rows = []
     for dom, nice in DOMAINS:

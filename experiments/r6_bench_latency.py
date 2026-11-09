@@ -27,8 +27,8 @@ def deploy_params(m):
 
 def macs_g(m):
     from thop import profile
-    mm = copy.deepcopy(m).cpu().eval()
-    macs, _ = profile(mm, inputs=(torch.randn(1, 3, 224, 224),), verbose=False)
+    mm = copy.deepcopy(m).cuda().eval()
+    macs, _ = profile(mm, inputs=(torch.randn(1, 3, 224, 224, device="cuda"),), verbose=False)
     return macs / 1e9
 
 
@@ -75,19 +75,29 @@ def main():
     ap.add_argument("--rounds", type=int, default=5)
     ap.add_argument("--out", default=os.path.join(REPO, "experiments", "r6_bench_latency.json"))
     args = ap.parse_args()
-    nets = {n: build_model(n, 3).eval() for n in args.models}
-    res = {n: {"params_M": round(deploy_params(m) / 1e6, 3), "macs_G": round(macs_g(m), 4)} for n, m in nets.items()}
+    nets = {}
+    res = {}
+    for n in args.models:                      # 逐模型容错: 如 LSNet 的 Triton 核无 CPU 路径
+        try:
+            m = build_model(n, 3).eval()
+            nets[n] = m
+            res[n] = {"params_M": round(deploy_params(m) / 1e6, 3), "macs_G": round(macs_g(m), 4)}
+        except Exception as e:
+            print(f"[skip] {n}: {type(e).__name__} {str(e)[:120]}")
+            res[n] = {"params_M": round(deploy_params(build_model(n, 3)) / 1e6, 3) if False else "NA", "error": str(e)[:100]}
     x = torch.randn(1, 3, 224, 224)
     for th in (1, 4):
         torch.set_num_threads(th)
-        for m in nets.values():
-            cpu_once(m, x, 5)                   # 预热
-        samples = {n: [] for n in nets}
-        for _ in range(args.rounds):            # 交替轮测
-            for n, m in nets.items():
-                samples[n].append(cpu_once(m, x, 20))
-        for n in nets:
-            res[n][f"cpu_t{th}_ms"] = round(statistics.median(samples[n]), 2)
+        for n, m in list(nets.items()):
+            try:
+                cpu_once(m.cpu(), x, 5)         # 预热(逐模型容错)
+                samples = []
+                for _ in range(args.rounds):    # 交替轮测
+                    samples.append(cpu_once(m, x, 20))
+                res[n][f"cpu_t{th}_ms"] = round(statistics.median(samples), 2)
+            except Exception:
+                res[n][f"cpu_t{th}_ms"] = "NA"  # 如 LSNet: Triton 核仅 GPU
+                nets.pop(n, None)
     for n, m in nets.items():
         g = m.cuda()
         res[n]["gpu_b1_ms"] = round(gpu_b1(g), 3)

@@ -1,0 +1,205 @@
+/home/login/miniconda3/envs/sunfuxiang/lib/python3.12/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+/home/login/miniconda3/envs/sunfuxiang/lib/python3.12/site-packages/timm/models/registry.py:4: FutureWarning: Importing from timm.models.registry is deprecated, please import via timm.models
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.models", FutureWarning)
+/home/login/miniconda3/envs/sunfuxiang/lib/python3.12/site-packages/timm/models/helpers.py:7: FutureWarning: Importing from timm.models.helpers is deprecated, please import via timm.models
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.models", FutureWarning)
+/data/cle/auto/ZCode/Classification/latest_lightweight_nets/SHViT_CVPR2024/model/build.py:18: UserWarning: Overwriting shvit_s1 in registry with _r6_shvit.build.shvit_s1. This is because the name being registered conflicts with an existing name. Please check if this is not expected.
+  @register_model
+/data/cle/auto/ZCode/Classification/latest_lightweight_nets/SHViT_CVPR2024/model/build.py:43: UserWarning: Overwriting shvit_s2 in registry with _r6_shvit.build.shvit_s2. This is because the name being registered conflicts with an existing name. Please check if this is not expected.
+  @register_model
+/data/cle/auto/ZCode/Classification/latest_lightweight_nets/SHViT_CVPR2024/model/build.py:68: UserWarning: Overwriting shvit_s3 in registry with _r6_shvit.build.shvit_s3. This is because the name being registered conflicts with an existing name. Please check if this is not expected.
+  @register_model
+/data/cle/auto/ZCode/Classification/latest_lightweight_nets/SHViT_CVPR2024/model/build.py:93: UserWarning: Overwriting shvit_s4 in registry with _r6_shvit.build.shvit_s4. This is because the name being registered conflicts with an existing name. Please check if this is not expected.
+  @register_model
+/data/cle/auto/ZCode/Classification/latest_lightweight_nets/MobileMamba_CVPR2025/model/lib_mamba/csms6s.py:13: UserWarning: Can not import selective_scan_cuda_oflex. This affects speed.
+  warnings.warn("Can not import selective_scan_cuda_oflex. This affects speed.")
+[seed] seed = 45 (set)
+2077 images for training.
+427 images were found in the val dataset.
+427 images for test.
+[norm] ImageNet 归一化(加载了预训练权重) MEAN=[0.485, 0.456, 0.406] STD=[0.229, 0.224, 0.225]
+Can not import selective_scan_cuda_oflex. This affects speed.
+/data/cle/auto/ZCode/Classification/latest_lightweight_nets/MobileMamba_CVPR2025/model/lib_mamba/csms6s.py:73: FutureWarning: `torch.cuda.amp.custom_fwd(args...)` is deprecated. Please use `torch.amp.custom_fwd(args..., device_type='cuda')` instead.
+  @torch.cuda.amp.custom_fwd
+/data/cle/auto/ZCode/Classification/latest_lightweight_nets/MobileMamba_CVPR2025/model/lib_mamba/csms6s.py:90: FutureWarning: `torch.cuda.amp.custom_bwd(args...)` is deprecated. Please use `torch.amp.custom_bwd(args..., device_type='cuda')` instead.
+  @torch.cuda.amp.custom_bwd
+/data/cle/auto/ZCode/Classification/train_cle_fair.py:1043: FutureWarning: `torch.cuda.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler('cuda', args...)` instead.
+  scaler = torch.cuda.amp.GradScaler()
+[weights] strict load passed /data/cle/sunfuxiang/classifyML/pth/latest_r6/lsnet_t.pth | classifier_missing=6 ignored_buffers=0 unexpected=0
+[train] model=lsnet_t num_classes=3 img=224 bs=32 epochs=300 | CE (label_smoothing=0.0) | select=val_macro_f1
+[out]   run_dir=./weights_cle_ac_v1_r6/lsnet_t_seed45/lsnet_t
+train epoch 0 loss: 0.853, acc: 0.621:  10… [  , 
+Epoch 0: train_loss=0.853, train_acc=0.621, val_loss=0.471, val_acc=0.876, val_macroF1=0.8371, lr=0.000100, best_macroF1=0.8371 (epoch 0) *
+train epoch 1 loss: 0.440, acc: 0.856:  10… [  , 
+Epoch 1: train_loss=0.440, train_acc=0.856, val_loss=0.243, val_acc=0.937, val_macroF1=0.9277, lr=0.000100, best_macroF1=0.9277 (epoch 1) *
+train epoch 2 loss: 0.354, acc: 0.871:  10… [  , 
+Epoch 2: train_loss=0.354, train_acc=0.871, val_loss=0.208, val_acc=0.934, val_macroF1=0.9260, lr=0.000100, best_macroF1=0.9277 (epoch 1)
+train epoch 3 loss: 0.262, acc: 0.905:  10… [  , 
+Epoch 3: train_loss=0.262, train_acc=0.905, val_loss=0.153, val_acc=0.953, val_macroF1=0.9414, lr=0.000100, best_macroF1=0.9414 (epoch 3) *
+train epoch 4 loss: 0.206, acc: 0.926:  10… [  , 
+Epoch 4: train_loss=0.206, train_acc=0.926, val_loss=0.117, val_acc=0.970, val_macroF1=0.9638, lr=0.000100, best_macroF1=0.9638 (epoch 4) *
+train epoch 5 loss: 0.186, acc: 0.935:  10… [  , 
+Epoch 5: train_loss=0.186, train_acc=0.935, val_loss=0.124, val_acc=0.956, val_macroF1=0.9430, lr=0.000100, best_macroF1=0.9638 (epoch 4)
+train epoch 6 loss: 0.156, acc: 0.944:  10… [  , 
+Epoch 6: train_loss=0.156, train_acc=0.944, val_loss=0.104, val_acc=0.960, val_macroF1=0.9512, lr=0.000100, best_macroF1=0.9638 (epoch 4)
+train epoch 7 loss: 0.157, acc: 0.943:  10… [  , 
+Epoch 7: train_loss=0.157, train_acc=0.943, val_loss=0.127, val_acc=0.956, val_macroF1=0.9451, lr=0.000100, best_macroF1=0.9638 (epoch 4)
+train epoch 8 loss: 0.136, acc: 0.948:  10… [  , 
+Epoch 8: train_loss=0.136, train_acc=0.948, val_loss=0.107, val_acc=0.965, val_macroF1=0.9572, lr=0.000100, best_macroF1=0.9638 (epoch 4)
+train epoch 9 loss: 0.108, acc: 0.961:  10… [  , 
+Epoch 9: train_loss=0.108, train_acc=0.961, val_loss=0.100, val_acc=0.963, val_macroF1=0.9543, lr=0.000100, best_macroF1=0.9638 (epoch 4)
+train epoch 10 loss: 0.101, acc: 0.964:  10…   , 
+Epoch 10: train_loss=0.101, train_acc=0.964, val_loss=0.114, val_acc=0.965, val_macroF1=0.9574, lr=0.000100, best_macroF1=0.9638 (epoch 4)
+train epoch 11 loss: 0.104, acc: 0.958:  10…   , 
+Epoch 11: train_loss=0.104, train_acc=0.958, val_loss=0.115, val_acc=0.960, val_macroF1=0.9524, lr=0.000100, best_macroF1=0.9638 (epoch 4)
+train epoch 12 loss: 0.107, acc: 0.962:  10…   , 
+Epoch 12: train_loss=0.107, train_acc=0.962, val_loss=0.106, val_acc=0.965, val_macroF1=0.9556, lr=0.000100, best_macroF1=0.9638 (epoch 4)
+train epoch 13 loss: 0.073, acc: 0.975:  10…   , 
+Epoch 13: train_loss=0.073, train_acc=0.975, val_loss=0.111, val_acc=0.956, val_macroF1=0.9451, lr=0.000099, best_macroF1=0.9638 (epoch 4)
+train epoch 14 loss: 0.083, acc: 0.970:  10…   , 
+Epoch 14: train_loss=0.083, train_acc=0.970, val_loss=0.106, val_acc=0.958, val_macroF1=0.9460, lr=0.000099, best_macroF1=0.9638 (epoch 4)
+train epoch 15 loss: 0.071, acc: 0.976:  10…   , 
+Epoch 15: train_loss=0.071, train_acc=0.976, val_loss=0.118, val_acc=0.956, val_macroF1=0.9455, lr=0.000099, best_macroF1=0.9638 (epoch 4)
+train epoch 16 loss: 0.066, acc: 0.979:  10…   , 
+Epoch 16: train_loss=0.066, train_acc=0.979, val_loss=0.129, val_acc=0.951, val_macroF1=0.9401, lr=0.000099, best_macroF1=0.9638 (epoch 4)
+train epoch 17 loss: 0.068, acc: 0.975:  10…   , 
+Epoch 17: train_loss=0.068, train_acc=0.975, val_loss=0.139, val_acc=0.948, val_macroF1=0.9380, lr=0.000099, best_macroF1=0.9638 (epoch 4)
+train epoch 18 loss: 0.064, acc: 0.975:  10…   , 
+Epoch 18: train_loss=0.064, train_acc=0.975, val_loss=0.120, val_acc=0.958, val_macroF1=0.9479, lr=0.000099, best_macroF1=0.9638 (epoch 4)
+train epoch 19 loss: 0.067, acc: 0.975:  10…   , 
+Epoch 19: train_loss=0.067, train_acc=0.975, val_loss=0.134, val_acc=0.958, val_macroF1=0.9470, lr=0.000099, best_macroF1=0.9638 (epoch 4)
+train epoch 20 loss: 0.064, acc: 0.980:  10…   , 
+Epoch 20: train_loss=0.064, train_acc=0.980, val_loss=0.137, val_acc=0.963, val_macroF1=0.9521, lr=0.000099, best_macroF1=0.9638 (epoch 4)
+train epoch 21 loss: 0.042, acc: 0.987:  10…   , 
+Epoch 21: train_loss=0.042, train_acc=0.987, val_loss=0.122, val_acc=0.963, val_macroF1=0.9530, lr=0.000099, best_macroF1=0.9638 (epoch 4)
+train epoch 22 loss: 0.049, acc: 0.982:  10…   , 
+Epoch 22: train_loss=0.049, train_acc=0.982, val_loss=0.143, val_acc=0.956, val_macroF1=0.9436, lr=0.000099, best_macroF1=0.9638 (epoch 4)
+train epoch 23 loss: 0.057, acc: 0.978:  10…   , 
+Epoch 23: train_loss=0.057, train_acc=0.978, val_loss=0.138, val_acc=0.956, val_macroF1=0.9447, lr=0.000098, best_macroF1=0.9638 (epoch 4)
+train epoch 24 loss: 0.037, acc: 0.986:  10…   , 
+Epoch 24: train_loss=0.037, train_acc=0.986, val_loss=0.140, val_acc=0.948, val_macroF1=0.9356, lr=0.000098, best_macroF1=0.9638 (epoch 4)
+train epoch 25 loss: 0.039, acc: 0.988:  10…   , 
+Epoch 25: train_loss=0.039, train_acc=0.988, val_loss=0.143, val_acc=0.953, val_macroF1=0.9408, lr=0.000098, best_macroF1=0.9638 (epoch 4)
+train epoch 26 loss: 0.044, acc: 0.985:  10…   , 
+Epoch 26: train_loss=0.044, train_acc=0.985, val_loss=0.147, val_acc=0.956, val_macroF1=0.9422, lr=0.000098, best_macroF1=0.9638 (epoch 4)
+train epoch 27 loss: 0.043, acc: 0.986:  10…   , 
+Epoch 27: train_loss=0.043, train_acc=0.986, val_loss=0.134, val_acc=0.958, val_macroF1=0.9457, lr=0.000098, best_macroF1=0.9638 (epoch 4)
+train epoch 28 loss: 0.050, acc: 0.980:  10…   , 
+Epoch 28: train_loss=0.050, train_acc=0.980, val_loss=0.141, val_acc=0.948, val_macroF1=0.9335, lr=0.000098, best_macroF1=0.9638 (epoch 4)
+train epoch 29 loss: 0.031, acc: 0.989:  10…   , 
+Epoch 29: train_loss=0.031, train_acc=0.989, val_loss=0.108, val_acc=0.960, val_macroF1=0.9478, lr=0.000098, best_macroF1=0.9638 (epoch 4)
+train epoch 30 loss: 0.029, acc: 0.990:  10…   , 
+Epoch 30: train_loss=0.029, train_acc=0.990, val_loss=0.118, val_acc=0.960, val_macroF1=0.9490, lr=0.000097, best_macroF1=0.9638 (epoch 4)
+train epoch 31 loss: 0.034, acc: 0.988:  10…   , 
+Epoch 31: train_loss=0.034, train_acc=0.988, val_loss=0.156, val_acc=0.951, val_macroF1=0.9374, lr=0.000097, best_macroF1=0.9638 (epoch 4)
+train epoch 32 loss: 0.028, acc: 0.993:  10…   , 
+Epoch 32: train_loss=0.028, train_acc=0.993, val_loss=0.130, val_acc=0.958, val_macroF1=0.9463, lr=0.000097, best_macroF1=0.9638 (epoch 4)
+train epoch 33 loss: 0.049, acc: 0.983:  10…   , 
+Epoch 33: train_loss=0.049, train_acc=0.983, val_loss=0.123, val_acc=0.963, val_macroF1=0.9524, lr=0.000097, best_macroF1=0.9638 (epoch 4)
+train epoch 34 loss: 0.037, acc: 0.987:  10…   , 
+Epoch 34: train_loss=0.037, train_acc=0.987, val_loss=0.134, val_acc=0.960, val_macroF1=0.9495, lr=0.000097, best_macroF1=0.9638 (epoch 4)
+
+[early stop] epoch 34: val_macro_f1 not improved for 30 epochs
+
+===========================================================
+             Training Summary (fair baseline)              
+===========================================================
+  Model:              lsnet_t
+  Best val macro-F1:  0.9638  (epoch 4)
+  Selection:          val macro-F1
+  Loss:               unweighted CrossEntropy
+  Training Time:      0:03:01
+  Weights:            ./weights_cle_ac_v1_r6/lsnet_t_seed45/lsnet_t/model_best.pth
+  Run meta:           ./weights_cle_ac_v1_r6/lsnet_t_seed45/lsnet_t/run_meta.json
+===========================================================
+
+===== [2026-11-09 11:35:28.483893] /home/login/miniconda3/envs/sunfuxiang/bin/python train_cle_fair.py --model lsnet_t --num_classes 3 --img_size 224 --seed 45 --data-path-train ./datasets/cle_ac_v1/train --data-path-val ./datasets/cle_ac_v1/val --weights /home/login/data/cle/sunfuxiang/classifyML/pth/latest_r6/lsnet_t.pth --save-dir ./weights_cle_ac_v1_r6/lsnet_t_seed45 --epochs 300 --early-stop 30 
+[norm] source=run_meta.json(imagenet)  mean=[0.485, 0.456, 0.406] std=[0.229, 0.224, 0.225]  img_size=224
+[model] lsnet_t  weights=/data/cle/auto/ZCode/Classification/weights_cle_ac_v1_r6/lsnet_t_seed45/lsnet_t/model_best.pth
+Can not import selective_scan_cuda_oflex. This affects speed.
+[complexity] MACs=320.32M FLOPs=640.63M Params=11.02M
+[data] test=427 张  Benign_lesions=195  Malignant_lesions=79  body_of_stomach_normal=153
+
+================================================================
+  评估结果 — lsnet_t  (test=427 张)
+================================================================
+  【主指标】
+  Macro-F1         : 0.9609   ← 主指标(类别不平衡首选)
+  Accuracy         : 0.9672
+  Macro-AUROC(OvR) : 0.9965
+----------------------------------------------------------------
+  【补充总体指标】
+  Weighted-F1      : 0.9669
+  Balanced Acc     : 0.9560
+  Macro-Sensitivity: 0.9560   (= 各类 Recall 均值)
+  Macro-Specificity: 0.9820
+  Macro-Precision  : 0.9665
+  AUC-PR (Macro)   : 0.9891
+  Cohen's Kappa    : 0.9477
+  MCC              : 0.9478
+----------------------------------------------------------------
+  【每类指标】 Sensitivity / Specificity / Precision / F1 / AUROC
+  Benign_lesions        : 0.969 / 0.966 / 0.959 / 0.964 / 0.996  (n=195)
+  Malignant_lesions     : 0.899 / 0.991 / 0.959 / 0.928 / 0.994  (n=79)
+  body_of_stomach_normal: 1.000 / 0.989 / 0.981 / 0.990 / 1.000  (n=153)
+----------------------------------------------------------------
+  【模型复杂度】(仅与架构+输入尺寸有关，与数据集无关)
+  MACs : 320.32M    FLOPs : 640.63M    Params : 11.02M
+  【推理效率】(受 GPU 负载影响，为参考量级)
+  Pure FPS : 3623.6  (0.28 ms/张)    End-to-End FPS : 238.0
+----------------------------------------------------------------
+  【混淆矩阵】(行=真实, 列=预测)
+                  Benign_l  Malignan  body_of_
+  Benign_lesio         189         3         3
+  Malignant_le           8        71         0
+  body_of_stom           0         0       153
+================================================================
+
+[saved] /data/cle/auto/ZCode/Classification/weights_cle_ac_v1_r6/lsnet_t_seed45/lsnet_t/eval_20261109_113839/  (results.json / predictions.csv / evaluation_report.md)
+
+===== [2026-11-09 11:38:34.205544] /home/login/miniconda3/envs/sunfuxiang/bin/python evaluate.py --model lsnet_t --weights /data/cle/auto/ZCode/Classification/weights_cle_ac_v1_r6/lsnet_t_seed45/lsnet_t/model_best.pth --data-path ./datasets/cle_ac_v1/val 
+[norm] source=run_meta.json(imagenet)  mean=[0.485, 0.456, 0.406] std=[0.229, 0.224, 0.225]  img_size=224
+[model] lsnet_t  weights=/data/cle/auto/ZCode/Classification/weights_cle_ac_v1_r6/lsnet_t_seed45/lsnet_t/model_best.pth
+Can not import selective_scan_cuda_oflex. This affects speed.
+[complexity] MACs=320.32M FLOPs=640.63M Params=11.02M
+[data] test=576 张  Benign_lesions=208  Malignant_lesions=176  body_of_stomach_normal=192
+
+================================================================
+  评估结果 — lsnet_t  (test=576 张)
+================================================================
+  【主指标】
+  Macro-F1         : 0.8999   ← 主指标(类别不平衡首选)
+  Accuracy         : 0.9028
+  Macro-AUROC(OvR) : 0.9863
+----------------------------------------------------------------
+  【补充总体指标】
+  Weighted-F1      : 0.9011
+  Balanced Acc     : 0.8998
+  Macro-Sensitivity: 0.8998   (= 各类 Recall 均值)
+  Macro-Specificity: 0.9510
+  Macro-Precision  : 0.9068
+  AUC-PR (Macro)   : 0.9751
+  Cohen's Kappa    : 0.8536
+  MCC              : 0.8565
+----------------------------------------------------------------
+  【每类指标】 Sensitivity / Specificity / Precision / F1 / AUROC
+  Benign_lesions        : 0.904 / 0.948 / 0.908 / 0.906 / 0.980  (n=208)
+  Malignant_lesions     : 0.795 / 0.978 / 0.940 / 0.862 / 0.982  (n=176)
+  body_of_stomach_normal: 1.000 / 0.927 / 0.873 / 0.932 / 0.997  (n=192)
+----------------------------------------------------------------
+  【模型复杂度】(仅与架构+输入尺寸有关，与数据集无关)
+  MACs : 320.32M    FLOPs : 640.63M    Params : 11.02M
+  【推理效率】(受 GPU 负载影响，为参考量级)
+  Pure FPS : 4179.0  (0.24 ms/张)    End-to-End FPS : 190.1
+----------------------------------------------------------------
+  【混淆矩阵】(行=真实, 列=预测)
+                  Benign_l  Malignan  body_of_
+  Benign_lesio         188         9        11
+  Malignant_le          19       140        17
+  body_of_stom           0         0       192
+================================================================
+
+[saved] /data/cle/auto/ZCode/Classification/weights_cle_ac_v1_r6/lsnet_t_seed45/lsnet_t/eval_20261109_113846/  (results.json / predictions.csv / evaluation_report.md)
+
+===== [2026-11-09 11:38:40.431351] /home/login/miniconda3/envs/sunfuxiang/bin/python evaluate.py --model lsnet_t --weights /data/cle/auto/ZCode/Classification/weights_cle_ac_v1_r6/lsnet_t_seed45/lsnet_t/model_best.pth --data-path ./datasets/cle_ac_v1/test 

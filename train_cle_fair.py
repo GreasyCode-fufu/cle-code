@@ -47,7 +47,7 @@ from consensus_manifest import filter_training_samples, sha256_file
 from sklearn.metrics import f1_score, accuracy_score
 
 
-CLASSIFIER_ROOTS = {"head", "fc", "classifier"}
+CLASSIFIER_ROOTS = {"head", "fc", "classifier", "heads", "weights"}   # heads/weights: EfficientViM 深监督头(随类数重建)
 
 # 各模型"新增模块"允许缺失的参数段名：ImageNet 预训练权重中不存在这些结构，
 # 随机初始化属于设计预期，不视为加载失败。段名与参数路径节点精确匹配。
@@ -343,6 +343,25 @@ def _dup_anchor_mbv3(state):
     return out
 
 
+def _inject_lpft_head(state):
+    """R6 实验 1 / LP-FT: 注入线性探针头(experiments/r6_lpft_head_cle.pt, 由 r6_lpft_prepare.py 只用 train/val 生成)。"""
+    head = torch.load(os.path.join(os.path.dirname(os.path.abspath(__file__)), "experiments", "r6_lpft_head_cle.pt"),
+                      map_location="cpu")
+    out = dict(state)
+    out["classifier.1.weight"] = head["weight"].clone()
+    out["classifier.1.bias"] = head["bias"].clone()
+    return out
+
+
+def _dup_sp_mbv3(state):
+    """R6 实验 1 / L2-SP: 预训练 features.* 复制为冻结起点 sp_ref.*(正则锚点 w⁰)。"""
+    out = dict(state)
+    for k, v in state.items():
+        if k.startswith("features."):
+            out["sp_ref." + k[len("features."):]] = v.clone()
+    return out
+
+
 def _remap_dsd(state):
     """EPNet C-v2: stage2(stages.1) 的 7x7 dwconv 核 -> DSD 条带核投影初始化。
     (C,1,7,7) -> v(C,1,7,1)=Σ_w K, h(C,1,1,7)=Σ_h K (幅值守恒投影); bias -> dsv。"""
@@ -543,6 +562,10 @@ MODEL_CHECKPOINT_TRANSFORMS = {
     "resnet34_s2d_v2": _inflate_conv1_for_s2d,
     "resnet34_dshortcut": _remap_dshortcut,
     # R6 锚定变体: 冻结参照网络注入预训练 features.0-12
+    # R6 实验 1: LP-FT 头注入 / L2-SP 起点注入
+    "mbv3_lpft": _inject_lpft_head,
+    "mbv3_l2sp_a01": _dup_sp_mbv3,
+    "mbv3_l2sp_a001": _dup_sp_mbv3,
     "mbv3_r6_s2_anc1": _dup_anchor_mbv3,
     "mbv3_r6_s2_anc03": _dup_anchor_mbv3,
     # ConvNeXt-CLE V2 结构化变体的预训练键重映射

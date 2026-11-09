@@ -1,0 +1,496 @@
+{
+ "exp1": {
+  "rows": [
+   {
+    "name": "baseline MobileNetV3-L (full FT)",
+    "n": 5,
+    "macro_f1": 94.16,
+    "kappa": 91.22,
+    "mcc": 91.29,
+    "auc_roc_macro": 99.1,
+    "sensM": 90.0,
+    "F1_std": 0.56,
+    "dF1_vs_baseline": 0.0,
+    "up_seeds": "0/5"
+   },
+   {
+    "name": "LP-FT (Kumar'22)",
+    "n": 5,
+    "macro_f1": 93.16,
+    "kappa": 89.69,
+    "mcc": 89.85,
+    "auc_roc_macro": 98.88,
+    "sensM": 87.61,
+    "F1_std": 1.83,
+    "dF1_vs_baseline": -1.0,
+    "up_seeds": "2/5"
+   },
+   {
+    "name": "L2-SP α=0.01 (Li'18, official default)",
+    "n": 5,
+    "macro_f1": 92.82,
+    "kappa": 89.21,
+    "mcc": 89.43,
+    "auc_roc_macro": 99.21,
+    "sensM": 85.91,
+    "F1_std": 1.42,
+    "dF1_vs_baseline": -1.33,
+    "up_seeds": "0/5"
+   },
+   {
+    "name": "L2-SP α=0.1",
+    "n": 5,
+    "macro_f1": 91.96,
+    "kappa": 87.9,
+    "mcc": 88.19,
+    "auc_roc_macro": 99.09,
+    "sensM": 84.77,
+    "F1_std": 1.74,
+    "dF1_vs_baseline": -2.2,
+    "up_seeds": "0/5"
+   },
+   {
+    "name": "L2-SP (α val-selected per seed)",
+    "n": 5,
+    "macro_f1": 91.96,
+    "kappa": 87.9,
+    "mcc": 88.19,
+    "auc_roc_macro": 99.09,
+    "sensM": 84.77,
+    "F1_std": 1.74,
+    "dF1_vs_baseline": -2.2,
+    "up_seeds": "0/5"
+   },
+   {
+    "name": "Surgical FT: block1 (/2–/4)",
+    "n": 5,
+    "macro_f1": 89.08,
+    "kappa": 83.65,
+    "mcc": 83.93,
+    "auc_roc_macro": 98.34,
+    "sensM": 79.2,
+    "F1_std": 0.36,
+    "dF1_vs_baseline": -5.08,
+    "up_seeds": "0/5"
+   },
+   {
+    "name": "Surgical FT: block2 (/8)",
+    "n": 5,
+    "macro_f1": 91.8,
+    "kappa": 87.89,
+    "mcc": 88.27,
+    "auc_roc_macro": 99.0,
+    "sensM": 80.34,
+    "F1_std": 1.18,
+    "dF1_vs_baseline": -2.35,
+    "up_seeds": "0/5"
+   },
+   {
+    "name": "Surgical FT: block3 (/16)",
+    "n": 5,
+    "macro_f1": 93.25,
+    "kappa": 89.9,
+    "mcc": 90.02,
+    "auc_roc_macro": 99.1,
+    "sensM": 87.27,
+    "F1_std": 1.09,
+    "dF1_vs_baseline": -0.9,
+    "up_seeds": "1/5"
+   },
+   {
+    "name": "Surgical FT: block4 (/32)",
+    "n": 5,
+    "macro_f1": 92.17,
+    "kappa": 88.26,
+    "mcc": 88.52,
+    "auc_roc_macro": 98.99,
+    "sensM": 83.18,
+    "F1_std": 1.05,
+    "dF1_vs_baseline": -1.99,
+    "up_seeds": "0/5"
+   },
+   {
+    "name": "Surgical FT: head only",
+    "n": 5,
+    "macro_f1": 85.93,
+    "kappa": 79.08,
+    "mcc": 79.59,
+    "auc_roc_macro": 97.48,
+    "sensM": 74.32,
+    "F1_std": 1.59,
+    "dF1_vs_baseline": -8.23,
+    "up_seeds": "0/5"
+   },
+   {
+    "name": "Surgical FT (block val-selected per seed)",
+    "n": 5,
+    "macro_f1": 93.09,
+    "kappa": 89.69,
+    "mcc": 89.84,
+    "auc_roc_macro": 99.14,
+    "sensM": 85.8,
+    "F1_std": 0.98,
+    "dF1_vs_baseline": -1.06,
+    "up_seeds": "1/5"
+   },
+   {
+    "name": "cRT (Kang'20)",
+    "n": 5,
+    "macro_f1": 94.19,
+    "kappa": 91.26,
+    "mcc": 91.36,
+    "auc_roc_macro": 99.13,
+    "sensM": 89.2,
+    "F1_std": 0.39,
+    "dF1_vs_baseline": 0.03,
+    "up_seeds": "1/5"
+   },
+   {
+    "name": "τ-norm (Kang'20)",
+    "n": 5,
+    "macro_f1": 94.06,
+    "kappa": 91.06,
+    "mcc": 91.14,
+    "auc_roc_macro": 99.05,
+    "sensM": 89.89,
+    "F1_std": 0.63,
+    "dF1_vs_baseline": -0.1,
+    "up_seeds": "0/5"
+   },
+   {
+    "name": "EPIC ① only (freeze /2–/16, BN eval)",
+    "n": 5,
+    "macro_f1": 95.62,
+    "kappa": 93.42,
+    "mcc": 93.45,
+    "auc_roc_macro": 99.51,
+    "sensM": 93.18,
+    "F1_std": 1.06,
+    "dF1_vs_baseline": 1.46,
+    "up_seeds": "5/5"
+   },
+   {
+    "name": "EPIC ①+②",
+    "n": 5,
+    "macro_f1": 96.05,
+    "kappa": 94.05,
+    "mcc": 94.06,
+    "auc_roc_macro": 99.49,
+    "sensM": 96.25,
+    "F1_std": 0.3,
+    "dF1_vs_baseline": 1.9,
+    "up_seeds": "5/5"
+   },
+   {
+    "name": "EPIC ①+②+③ (full)",
+    "n": 5,
+    "macro_f1": 96.51,
+    "kappa": 94.73,
+    "mcc": 94.73,
+    "auc_roc_macro": 99.57,
+    "sensM": 96.7,
+    "F1_std": 0.4,
+    "dF1_vs_baseline": 2.35,
+    "up_seeds": "5/5"
+   }
+  ],
+  "l2sp_pick": {
+   "42": "mbv3_l2sp_a01",
+   "43": "mbv3_l2sp_a01",
+   "44": "mbv3_l2sp_a01",
+   "45": "mbv3_l2sp_a01",
+   "46": "mbv3_l2sp_a01"
+  },
+  "sft_pick": {
+   "42": "mbv3_sft_b3",
+   "43": "mbv3_sft_b4",
+   "44": "mbv3_sft_b3",
+   "45": "mbv3_sft_b3",
+   "46": "mbv3_sft_b2"
+  }
+ },
+ "exp2": {
+  "convnext_tiny": {
+   "rows": [
+    {
+     "name": "convnext_tiny baseline (full FT)",
+     "n": 5,
+     "macro_f1": 94.76,
+     "kappa": 92.16,
+     "mcc": 92.22,
+     "auc_roc_macro": 99.4,
+     "sensM": 91.7,
+     "F1_std": 0.84,
+     "dF1_vs_baseline": 0.0,
+     "up_seeds": "0/5"
+    },
+    {
+     "name": "① fz3",
+     "n": 5,
+     "macro_f1": 94.25,
+     "kappa": 91.38,
+     "mcc": 91.39,
+     "auc_roc_macro": 99.22,
+     "sensM": 91.25,
+     "F1_std": 0.21,
+     "dF1_vs_baseline": -0.52,
+     "up_seeds": "2/5"
+    },
+    {
+     "name": "①+② (fz3, last-stage DCE)",
+     "n": 5,
+     "macro_f1": 94.64,
+     "kappa": 92.01,
+     "mcc": 92.02,
+     "auc_roc_macro": 99.44,
+     "sensM": 91.14,
+     "F1_std": 0.4,
+     "dF1_vs_baseline": -0.12,
+     "up_seeds": "2/5"
+    },
+    {
+     "name": "①+②+③ (fz3, 4-tap FOV DCE) = EPIC",
+     "n": 5,
+     "macro_f1": 95.17,
+     "kappa": 92.79,
+     "mcc": 92.8,
+     "auc_roc_macro": 99.63,
+     "sensM": 92.16,
+     "F1_std": 0.21,
+     "dF1_vs_baseline": 0.41,
+     "up_seeds": "4/5"
+    },
+    {
+     "name": "② only (full-FT, last-stage DCE)",
+     "n": 5,
+     "macro_f1": 95.55,
+     "kappa": 93.36,
+     "mcc": 93.4,
+     "auc_roc_macro": 99.54,
+     "sensM": 92.05,
+     "F1_std": 0.76,
+     "dF1_vs_baseline": 0.79,
+     "up_seeds": "4/5"
+    },
+    {
+     "name": "②+③ (full-FT, 4-tap FOV DCE)",
+     "n": 5,
+     "macro_f1": 95.8,
+     "kappa": 93.73,
+     "mcc": 93.76,
+     "auc_roc_macro": 99.6,
+     "sensM": 92.73,
+     "F1_std": 0.82,
+     "dF1_vs_baseline": 1.04,
+     "up_seeds": "5/5"
+    },
+    {
+     "name": "preserve-all LP arm + ②③",
+     "n": 1,
+     "macro_f1": 94.98,
+     "kappa": 92.43,
+     "mcc": 92.46,
+     "auc_roc_macro": 99.57,
+     "sensM": 92.61,
+     "F1_std": 0.0,
+     "dF1_vs_baseline": 0.18,
+     "up_seeds": "1/1"
+    }
+   ],
+   "gate": {
+    "LP_val": 97.08,
+    "FT_val": 97.66,
+    "gap": 0.58,
+    "tier": "①"
+   }
+  },
+  "starnet_s2": {
+   "rows": [
+    {
+     "name": "starnet_s2 baseline (full FT)",
+     "n": 5,
+     "macro_f1": 93.47,
+     "kappa": 90.22,
+     "mcc": 90.33,
+     "auc_roc_macro": 99.13,
+     "sensM": 87.73,
+     "F1_std": 0.74,
+     "dF1_vs_baseline": 0.0,
+     "up_seeds": "0/5"
+    },
+    {
+     "name": "① fz3",
+     "n": 5,
+     "macro_f1": 92.41,
+     "kappa": 88.71,
+     "mcc": 88.78,
+     "auc_roc_macro": 98.8,
+     "sensM": 86.36,
+     "F1_std": 0.42,
+     "dF1_vs_baseline": -1.06,
+     "up_seeds": "1/5"
+    },
+    {
+     "name": "①+② (fz3, last-stage DCE)",
+     "n": 5,
+     "macro_f1": 93.02,
+     "kappa": 89.65,
+     "mcc": 89.71,
+     "auc_roc_macro": 98.82,
+     "sensM": 86.7,
+     "F1_std": 0.87,
+     "dF1_vs_baseline": -0.46,
+     "up_seeds": "2/5"
+    },
+    {
+     "name": "①+②+③ (fz3, 4-tap FOV DCE) = EPIC",
+     "n": 5,
+     "macro_f1": 93.06,
+     "kappa": 89.7,
+     "mcc": 89.78,
+     "auc_roc_macro": 99.01,
+     "sensM": 86.7,
+     "F1_std": 0.93,
+     "dF1_vs_baseline": -0.42,
+     "up_seeds": "3/5"
+    },
+    {
+     "name": "② only (full-FT, last-stage DCE)",
+     "n": 5,
+     "macro_f1": 93.38,
+     "kappa": 90.12,
+     "mcc": 90.19,
+     "auc_roc_macro": 99.15,
+     "sensM": 87.73,
+     "F1_std": 0.42,
+     "dF1_vs_baseline": -0.09,
+     "up_seeds": "1/5"
+    },
+    {
+     "name": "②+③ (full-FT, 4-tap FOV DCE)",
+     "n": 5,
+     "macro_f1": 94.6,
+     "kappa": 91.9,
+     "mcc": 91.96,
+     "auc_roc_macro": 99.36,
+     "sensM": 90.11,
+     "F1_std": 0.83,
+     "dF1_vs_baseline": 1.12,
+     "up_seeds": "4/5"
+    },
+    {
+     "name": "preserve-all LP arm + ②③",
+     "n": 1,
+     "macro_f1": 92.87,
+     "kappa": 89.29,
+     "mcc": 89.33,
+     "auc_roc_macro": 99.16,
+     "sensM": 89.2,
+     "F1_std": 0.0,
+     "dF1_vs_baseline": -1.63,
+     "up_seeds": "0/1"
+    }
+   ],
+   "gate": {
+    "LP_val": 96.6,
+    "FT_val": 95.9,
+    "gap": -0.69,
+    "tier": "preserve-all"
+   }
+  },
+  "fast_t0": {
+   "rows": [
+    {
+     "name": "fast_t0 baseline (full FT)",
+     "n": 5,
+     "macro_f1": 93.06,
+     "kappa": 89.64,
+     "mcc": 89.78,
+     "auc_roc_macro": 99.03,
+     "sensM": 86.14,
+     "F1_std": 0.89,
+     "dF1_vs_baseline": 0.0,
+     "up_seeds": "0/5"
+    },
+    {
+     "name": "① fz3",
+     "n": 5,
+     "macro_f1": 93.98,
+     "kappa": 91.01,
+     "mcc": 91.04,
+     "auc_roc_macro": 99.24,
+     "sensM": 89.55,
+     "F1_std": 0.26,
+     "dF1_vs_baseline": 0.92,
+     "up_seeds": "4/5"
+    },
+    {
+     "name": "①+② (fz3, last-stage DCE)",
+     "n": 5,
+     "macro_f1": 93.68,
+     "kappa": 90.54,
+     "mcc": 90.57,
+     "auc_roc_macro": 99.24,
+     "sensM": 89.09,
+     "F1_std": 0.68,
+     "dF1_vs_baseline": 0.62,
+     "up_seeds": "3/5"
+    },
+    {
+     "name": "①+②+③ (fz3, 4-tap FOV DCE) = EPIC",
+     "n": 5,
+     "macro_f1": 94.34,
+     "kappa": 91.53,
+     "mcc": 91.59,
+     "auc_roc_macro": 99.48,
+     "sensM": 89.32,
+     "F1_std": 0.34,
+     "dF1_vs_baseline": 1.28,
+     "up_seeds": "4/5"
+    },
+    {
+     "name": "② only (full-FT, last-stage DCE)",
+     "n": 5,
+     "macro_f1": 92.87,
+     "kappa": 89.37,
+     "mcc": 89.56,
+     "auc_roc_macro": 99.09,
+     "sensM": 84.77,
+     "F1_std": 1.23,
+     "dF1_vs_baseline": -0.19,
+     "up_seeds": "2/5"
+    },
+    {
+     "name": "②+③ (full-FT, 4-tap FOV DCE)",
+     "n": 5,
+     "macro_f1": 93.54,
+     "kappa": 90.37,
+     "mcc": 90.5,
+     "auc_roc_macro": 99.33,
+     "sensM": 86.14,
+     "F1_std": 0.69,
+     "dF1_vs_baseline": 0.47,
+     "up_seeds": "4/5"
+    },
+    {
+     "name": "preserve-all LP arm + ②③",
+     "n": 1,
+     "macro_f1": 93.75,
+     "kappa": 90.59,
+     "mcc": 90.64,
+     "auc_roc_macro": 99.3,
+     "sensM": 89.77,
+     "F1_std": 0.0,
+     "dF1_vs_baseline": 0.4,
+     "up_seeds": "1/1"
+    }
+   ],
+   "gate": {
+    "LP_val": 96.79,
+    "FT_val": 96.4,
+    "gap": -0.39,
+    "tier": "preserve-all"
+   }
+  }
+ }
+}

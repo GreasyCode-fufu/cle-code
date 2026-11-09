@@ -91,9 +91,12 @@ def refit_one(a, seed, classes):
     sd = torch.load(src_ckpt, map_location="cpu")
     if isinstance(sd, dict) and "model" in sd and "state_dict" not in sd and not any(k.startswith("features") for k in sd):
         sd = sd["model"]
-    feat_sd = {k: v for k, v in sd.items() if k.startswith("features.")}
-    missing, unexpected = model.load_state_dict(feat_sd, strict=False)
-    assert not unexpected and all(k.startswith("classifier.") for k in missing), (missing, unexpected)
+    if hasattr(model, "load_stage1"):            # 通用主干(epic_generic): 原主干键 -> backbone.*, 丢弃原头部
+        model.load_stage1(sd)
+    else:
+        feat_sd = {k: v for k, v in sd.items() if k.startswith("features.")}
+        missing, unexpected = model.load_state_dict(feat_sd, strict=False)
+        assert not unexpected and all(k.startswith("classifier.") for k in missing), (missing, unexpected)
     model.cuda()
     Xtr = pooled_features(model, list_images(os.path.join(REPO, a.data, "train"), classes)[0], tf)
     ytr = list_images(os.path.join(REPO, a.data, "train"), classes)[1]
