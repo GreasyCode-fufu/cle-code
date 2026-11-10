@@ -1,0 +1,40 @@
+{
+  "model": "gmnet_s3",
+  "num_classes": 200,
+  "img_size": 224,
+  "seed": 42,
+  "norm_mean": [
+    0.485,
+    0.456,
+    0.406
+  ],
+  "norm_std": [
+    0.229,
+    0.224,
+    0.225
+  ],
+  "norm_source": "imagenet",
+  "selection_metric": "val_macro_f1",
+  "loss": "unweighted_cross_entropy",
+  "data_path_train": "/data/cle/auto/ZCode/Classification/datasets/cub_v1/train",
+  "data_path_val": "/data/cle/auto/ZCode/Classification/datasets/cub_v1/val",
+  "weights": "/data/cle/auto/ZCode/Classification/weights_xd_cub_r6b/gmnet_s3_seed42/gmnet_s3/model_best.pth",
+  "created_at": "2026-11-10 13:40:51",
+  "pretrained_load": {
+    "checkpoint": "/data/cle/sunfuxiang/classifyML/pth/sota2026/gmnet_s3.pth",
+    "checkpoint_sha256": "0430e7406ed094418820b80f1b7e24b568e2fdcfb3a12f7577d2dde99e899870",
+    "removed_classifier_keys": [
+      "head.bias",
+      "head.weight"
+    ],
+    "ignored_nonparameter_buffer_keys": [],
+    "missing_keys": [
+      "head.bias",
+      "head.weight"
+    ],
+    "unexpected_keys": [],
+    "allowed_missing_segments": [],
+    "checkpoint_transform": null,
+    "all_trainable_backbone_parameters_loaded": true
+  }
+}

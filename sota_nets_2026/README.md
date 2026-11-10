@@ -42,3 +42,5 @@ python experiments/runner.py experiments/jobs_MN.json 4   # 6 模型 × 5 seeds�
 | LSNet-S | 91.42±0.55 | 87.23 | 84.09 | 15.7M | 0.55G | +4.17（5/5） |
 
 ## 三 seeds 口径（42/43/44）: 见 R6_REPORT §16.1 —— CLE-Net 95.50; Jumbo-small 95.23(+0.26, 1胜1平1负, 基本打平); GmNet 92.61(+2.89, 3/3); iFormer-S 94.17(+1.32, 3/3); LSNet-S 91.62(+3.88, 3/3)
+
+## 跨域（BUSI/covid/CUB, 3 seeds）: 见 R6_REPORT §16.3 —— CLE-Net 对 4 网络在 GmNet/iFormer/LSNet 组合上保持全胜, Jumbo BUSI +1.55/CUB +4.20; CLE-Net 自身跨域增益不稳定(BUSI −1.60 低于基线)
