@@ -65,7 +65,7 @@ def main():
                    "dF1_vs_clenet": None if d is None else round(float(d.mean()), 2),
                    "win_tie_loss": None if d is None else f"{int((d > 0).sum())}/{int((d == 0).sum())}/{int((d < 0).sum())}",
                    "n": len(seeds)}
-            res.setdefault(nice, {})[dom] = row
+            res.setdefault(dom, {})[NICE[m]] = row
             dstr = "—" if d is None else f"{d.mean():+.2f} ({row['win_tie_loss']})"
             print(f"{NICE[m]:26s} {f1.mean():6.2f}±{f1.std(ddof=1):4.2f} {kap.mean():8.2f} {auc.mean():8.2f}   "
                   f"{'/'.join(f'{x:.2f}' for x in f1):16s}  {dstr}")
