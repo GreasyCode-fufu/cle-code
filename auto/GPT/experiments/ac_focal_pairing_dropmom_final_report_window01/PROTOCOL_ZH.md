@@ -1,0 +1,9 @@
+# 固定错配组合的真正去Mom：完整补充审计
+
+该报告独立于所有旧冻结研究与包。只等待当前新3seed真实去Mom控制终态、主服务和采样器正常退出，复用旧selected/Mom/B0及aligned/raw/additive等实际权重与原完整概率，不重训有效模型。新补充报告分析使用原evaluate.py精确compute_metrics受限AST，原CM/排序/AP直接Fraction核算；所有截图比例指标做41患者20k配对条件区间，Kappa/MCC规范列系数点估计与差。模型与指标结果后选择，区间未校正适应性偏差，不称外部/独立验证。全指标取舍、三seed和全部控制均保留，单个达标条目不自动完成整体研究。
+
+成本采用已验证全Conv/Linear及原Mom三额外方向卷积计数，MACs=FLOPs/2；排除LN/GELU/逐元素/边界padding/访存，不使用漏计函数卷积的thop结果冒充正确成本。
+
+效率仅当该3模型队列和服务全部结束后，strictload四种模型seed45实际权重，固定val427原图/原square256 center224变换、真实物理B32、FP32、各10批预热/3遍；采用原evaluate.run_inference逐字AST区分pure与端到端计时，记录GPU/CPU负载、中位数及每次量。它是同硬件/输入/精度/批量的成本参照，不代替原AMP分类概率，不能称FPS为分类提升1.5点。
+
+该阶段只执行必要效率计时，无新增训练或test图推理；全部测试点指标使用原完整精度576CSV。完整包包含新3seed60epoch/最早valbest/2077索引、source/config/checkpoint字节SHA链、原9模型完整427重建误差0、真去MomCPU/梯度/profile、固定首val真实selected CLI与新独立概率审计。原108多指标包保持并绑定本地v2验收与四项非达标AUC元数据roundoff sidecar。完整包下载后必须本地NumPy/Fraction重算，才决定保留及后续网络研究。

@@ -1,0 +1,240 @@
+{
+  "passed": true,
+  "timestamp": "2026-10-24T09:40:15.990345+08:00",
+  "new_trainings": 12,
+  "reused_models": 6,
+  "checks": [
+    "immutable sources/config and baseline files",
+    "12 new and 6 reused checkpoint SHA256 and signatures",
+    "60 epochs each",
+    "18 complete validation sets of 538 images",
+    "recomputed probabilities and metrics",
+    "patient isolation, no test scoring",
+    "frozen parameter equality to pretrained initialization",
+    "frozen BN statistics and counters unchanged, active counters incremented",
+    "trainable counts and RMS parameter drift",
+    "login ownership"
+  ],
+  "jobs": [
+    {
+      "job": "r6_head_only_s42",
+      "epochs": 60,
+      "validation_images": 538,
+      "checkpoint_sha256": "44421bd2ab37567ce89af3857cc7d2061ff5a4f8ba18ac922372dc7023f26d75"
+    },
+    {
+      "job": "r6_head_only_s43",
+      "epochs": 60,
+      "validation_images": 538,
+      "checkpoint_sha256": "2023c620f949cf8dd1e4d6ea4edd849256f97028ecbbab175a21b0b47d97c2ff"
+    },
+    {
+      "job": "r6_head_only_s44",
+      "epochs": 60,
+      "validation_images": 538,
+      "checkpoint_sha256": "75cc8be46e20855060b24abd576dadbfa1045e6d2e0fee1c4bc2ce8b9cf0f832"
+    },
+    {
+      "job": "r6_stage4_only_s42",
+      "epochs": 60,
+      "validation_images": 538,
+      "checkpoint_sha256": "b0e7cdc520543e78a5982243b5f0cdabc35f065c0304b3a0d5162aba10f40cae"
+    },
+    {
+      "job": "r6_stage4_only_s43",
+      "epochs": 60,
+      "validation_images": 538,
+      "checkpoint_sha256": "f96d68c0ffbebeeac0d0cb9545a82ed5331a39e30e30bc35786858b95fd43447"
+    },
+    {
+      "job": "r6_stage4_only_s44",
+      "epochs": 60,
+      "validation_images": 538,
+      "checkpoint_sha256": "c0f65c24d5720dec47b31b10ddcf6fc9d67d73089524229d26644b8e989b4fa6"
+    },
+    {
+      "job": "r6_bn_frozen_s42",
+      "epochs": 60,
+      "validation_images": 538,
+      "checkpoint_sha256": "bdacd35af43405980b1f3a143a628b1b574dc8c2ebb5bf3e2ad0c1f4d1656e8c"
+    },
+    {
+      "job": "r6_bn_frozen_s43",
+      "epochs": 60,
+      "validation_images": 538,
+      "checkpoint_sha256": "2f64a9584968454c83ea54232105a8b667d5a7a116f42a66f34afd485a10c551"
+    },
+    {
+      "job": "r6_bn_frozen_s44",
+      "epochs": 60,
+      "validation_images": 538,
+      "checkpoint_sha256": "d9b339f924cddff86da54d3a93676e4c620d6685c801da14df3f6712b0d116c4"
+    },
+    {
+      "job": "r6_starting_anchor_s42",
+      "epochs": 60,
+      "validation_images": 538,
+      "checkpoint_sha256": "f694c4e39af51409593723094394678b6cd7c3ea7c4c9006fc872916dc2a6781"
+    },
+    {
+      "job": "r6_starting_anchor_s43",
+      "epochs": 60,
+      "validation_images": 538,
+      "checkpoint_sha256": "9d050b533da346d4fde01e92c621c5ded1c01f166444925c76d49c82e655a0ff"
+    },
+    {
+      "job": "r6_starting_anchor_s44",
+      "epochs": 60,
+      "validation_images": 538,
+      "checkpoint_sha256": "2584b365dd337238d1a74c50c813ac2d57af8a061ca9de552934d1695ca09fb6"
+    }
+  ],
+  "baselines": [
+    {
+      "variant": "full_ce",
+      "seed": 42,
+      "source_signature": "2bcde3a0a0240dfaeb0eee5bebe1552f873df7ddf777cc8bd7edef0b87313464",
+      "checkpoint_sha256": "f8666f35600181437690cf771f77d645868fdae4622694bcd168614c6b8e0cd6"
+    },
+    {
+      "variant": "full_ce",
+      "seed": 43,
+      "source_signature": "2a48bbc89f2aefbece9da109534053c7138bcb4a0a55a26f196ef7f445f31578",
+      "checkpoint_sha256": "39c1a8691014653b74dac100be394e41211d9e0691f908ac309c43f7782f5bbe"
+    },
+    {
+      "variant": "full_ce",
+      "seed": 44,
+      "source_signature": "bd06b1c49900aa0334279cb384aba6a0216504c646d4d01932ae026639fecde0",
+      "checkpoint_sha256": "1934c6bc65b112f44a4b4b7056324f411beece24dda5f2bfc299ca362848e227"
+    },
+    {
+      "variant": "grade_ce",
+      "seed": 42,
+      "source_signature": "20b228626f4ae017771b9845d347b45958729f25b393fcef2c8ecf636e780d35",
+      "checkpoint_sha256": "15e61e41e036180639828f3409d2606444b6c3adadeb40461dffda215cba072d"
+    },
+    {
+      "variant": "grade_ce",
+      "seed": 43,
+      "source_signature": "5fd1c1faea763b1f545b916217f0640d15fa143c8c036d0db941af7aa195d338",
+      "checkpoint_sha256": "91ef708793b7d49ad2342e86a2574c8e8c5792512285cd38129a6f36dc3a4908"
+    },
+    {
+      "variant": "grade_ce",
+      "seed": 44,
+      "source_signature": "ab12acae907962ecbf9450f06ff548e5eb900e94bf80430a234ec997a3b003f4",
+      "checkpoint_sha256": "c5f7c770ddb4133ce24d85b3057efee0e1ad40ecba84703fb1ed2d877a075530"
+    }
+  ],
+  "policies": [
+    {
+      "job": "r6_head_only_s42",
+      "frozen_parameter_tensors": 108,
+      "changed_trainable_tensors": 2,
+      "trainable_parameters": 1539,
+      "frozen_bn": 36,
+      "active_bn": 0,
+      "backbone_rms_drift": 0.0
+    },
+    {
+      "job": "r6_head_only_s43",
+      "frozen_parameter_tensors": 108,
+      "changed_trainable_tensors": 2,
+      "trainable_parameters": 1539,
+      "frozen_bn": 36,
+      "active_bn": 0,
+      "backbone_rms_drift": 0.0
+    },
+    {
+      "job": "r6_head_only_s44",
+      "frozen_parameter_tensors": 108,
+      "changed_trainable_tensors": 2,
+      "trainable_parameters": 1539,
+      "frozen_bn": 36,
+      "active_bn": 0,
+      "backbone_rms_drift": 0.0
+    },
+    {
+      "job": "r6_stage4_only_s42",
+      "frozen_parameter_tensors": 87,
+      "changed_trainable_tensors": 23,
+      "trainable_parameters": 13115907,
+      "frozen_bn": 29,
+      "active_bn": 7,
+      "backbone_rms_drift": 0.002017254732848065
+    },
+    {
+      "job": "r6_stage4_only_s43",
+      "frozen_parameter_tensors": 87,
+      "changed_trainable_tensors": 23,
+      "trainable_parameters": 13115907,
+      "frozen_bn": 29,
+      "active_bn": 7,
+      "backbone_rms_drift": 0.0012895937763612486
+    },
+    {
+      "job": "r6_stage4_only_s44",
+      "frozen_parameter_tensors": 87,
+      "changed_trainable_tensors": 23,
+      "trainable_parameters": 13115907,
+      "frozen_bn": 29,
+      "active_bn": 7,
+      "backbone_rms_drift": 0.0014708785135081606
+    },
+    {
+      "job": "r6_bn_frozen_s42",
+      "frozen_parameter_tensors": 0,
+      "changed_trainable_tensors": 110,
+      "trainable_parameters": 21286211,
+      "frozen_bn": 36,
+      "active_bn": 0,
+      "backbone_rms_drift": 0.0019250201079704635
+    },
+    {
+      "job": "r6_bn_frozen_s43",
+      "frozen_parameter_tensors": 0,
+      "changed_trainable_tensors": 110,
+      "trainable_parameters": 21286211,
+      "frozen_bn": 36,
+      "active_bn": 0,
+      "backbone_rms_drift": 0.0019773757747273643
+    },
+    {
+      "job": "r6_bn_frozen_s44",
+      "frozen_parameter_tensors": 0,
+      "changed_trainable_tensors": 110,
+      "trainable_parameters": 21286211,
+      "frozen_bn": 36,
+      "active_bn": 0,
+      "backbone_rms_drift": 0.0009013195966284423
+    },
+    {
+      "job": "r6_starting_anchor_s42",
+      "frozen_parameter_tensors": 0,
+      "changed_trainable_tensors": 110,
+      "trainable_parameters": 21286211,
+      "frozen_bn": 0,
+      "active_bn": 36,
+      "backbone_rms_drift": 0.0009506753762822633
+    },
+    {
+      "job": "r6_starting_anchor_s43",
+      "frozen_parameter_tensors": 0,
+      "changed_trainable_tensors": 110,
+      "trainable_parameters": 21286211,
+      "frozen_bn": 0,
+      "active_bn": 36,
+      "backbone_rms_drift": 0.0010674983604647217
+    },
+    {
+      "job": "r6_starting_anchor_s44",
+      "frozen_parameter_tensors": 0,
+      "changed_trainable_tensors": 110,
+      "trainable_parameters": 21286211,
+      "frozen_bn": 0,
+      "active_bn": 36,
+      "backbone_rms_drift": 0.0010531771363755955
+    }
+  ]
+}

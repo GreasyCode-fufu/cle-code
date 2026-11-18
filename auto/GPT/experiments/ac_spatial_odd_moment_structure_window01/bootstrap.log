@@ -1,0 +1,370 @@
+[main c17ca5d] test: verify formal spatial odd controls CPU public pairing true removal gradients budgets and exact prototype copy
+ 3 files changed, 85 insertions(+)
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/bootstrap.log
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/bootstrap_identity.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/module_source_audit.json
+[main 36bcfe2] test: verify spatial odd controls CUDA AMP gradients pairing and all6 frozen full427 probability reconstructions
+ 2 files changed, 191 insertions(+)
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/preflight.json
+[main 5a0cf3d] perf: measure single and concurrent throughput for distinct library and orientation kernels
+ 123 files changed, 987 insertions(+)
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/document_odd_start.py
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_even/bench_1_0.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_even/bench_1_0.log
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_even/bench_2_0.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_even/bench_2_0.log
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_even/bench_2_1.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_even/bench_2_1.log
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_even/bench_4_0.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_even/bench_4_0.log
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_even/bench_4_1.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_even/bench_4_1.log
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_even/bench_4_2.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_even/bench_4_2.log
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_even/bench_4_3.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_even/bench_4_3.log
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_even/gate_1.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_even/gate_2.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_even/gate_4.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_even/measurements.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_even/ready_1_0.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_even/ready_2_0.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_even/ready_2_1.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_even/ready_4_0.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_even/ready_4_1.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_even/ready_4_2.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_even/ready_4_3.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_even/resources.csv
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_odd/bench_1_0.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_odd/bench_1_0.log
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_odd/bench_2_0.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_odd/bench_2_0.log
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_odd/bench_2_1.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_odd/bench_2_1.log
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_odd/bench_4_0.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_odd/bench_4_0.log
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_odd/bench_4_1.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_odd/bench_4_1.log
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_odd/bench_4_2.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_odd/bench_4_2.log
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_odd/bench_4_3.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_odd/bench_4_3.log
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_odd/gate_1.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_odd/gate_2.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_odd/gate_4.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_odd/measurements.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_odd/ready_1_0.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_odd/ready_2_0.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_odd/ready_2_1.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_odd/ready_4_0.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_odd/ready_4_1.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_odd/ready_4_2.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_odd/ready_4_3.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_odd/resources.csv
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_raw3/bench_1_0.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_raw3/bench_1_0.log
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_raw3/bench_2_0.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_raw3/bench_2_0.log
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_raw3/bench_2_1.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_raw3/bench_2_1.log
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_raw3/bench_4_0.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_raw3/bench_4_0.log
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_raw3/bench_4_1.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_raw3/bench_4_1.log
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_raw3/bench_4_2.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_raw3/bench_4_2.log
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_raw3/bench_4_3.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_raw3/bench_4_3.log
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_raw3/gate_1.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_raw3/gate_2.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_raw3/gate_4.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_raw3/measurements.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_raw3/ready_1_0.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_raw3/ready_2_0.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_raw3/ready_2_1.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_raw3/ready_4_0.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_raw3/ready_4_1.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_raw3/ready_4_2.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_raw3/ready_4_3.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_raw3/resources.csv
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_std/bench_1_0.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_std/bench_1_0.log
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_std/bench_2_0.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_std/bench_2_0.log
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_std/bench_2_1.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_std/bench_2_1.log
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_std/bench_4_0.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_std/bench_4_0.log
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_std/bench_4_1.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_std/bench_4_1.log
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_std/bench_4_2.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_std/bench_4_2.log
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_std/bench_4_3.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_std/bench_4_3.log
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_std/gate_1.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_std/gate_2.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_std/gate_4.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_std/measurements.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_std/ready_1_0.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_std/ready_2_0.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_std/ready_2_1.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_std/ready_4_0.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_std/ready_4_1.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_std/ready_4_2.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_std/ready_4_3.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/mom_std/resources.csv
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/odd_only/bench_1_0.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/odd_only/bench_1_0.log
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/odd_only/bench_2_0.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/odd_only/bench_2_0.log
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/odd_only/bench_2_1.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/odd_only/bench_2_1.log
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/odd_only/gate_1.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/odd_only/gate_2.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/odd_only/measurements.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/odd_only/ready_1_0.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/odd_only/ready_2_0.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/odd_only/ready_2_1.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/odd_only/resources.csv
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/profile/selected.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/start_supplement_helpers.py
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/supplement_launcher.log
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/supplement_launcher_identity.json
+launch odd_mom_odd_s45 1080266
+[main 7eb5d1f] results: preserve completed module training odd_mom_odd_s45
+ 11 files changed, 727 insertions(+), 6 deletions(-)
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/runs/odd_mom_odd_s45/complete.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/runs/odd_mom_odd_s45/validation_complete.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/runs/odd_mom_odd_s45/validation_predictions.csv
+launch odd_mom_odd_s46 1081731
+[main 210917c] results: preserve completed module training odd_mom_odd_s46
+ 11 files changed, 902 insertions(+), 8 deletions(-)
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/runs/odd_mom_odd_s46/complete.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/runs/odd_mom_odd_s46/validation_complete.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/runs/odd_mom_odd_s46/validation_predictions.csv
+launch odd_mom_odd_s47 1083306
+[main 85f86e3] results: preserve completed module training odd_mom_odd_s47
+ 13 files changed, 984 insertions(+), 10 deletions(-)
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/logs/odd_mom_odd_s47.log
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/runs/odd_mom_odd_s47/complete.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/runs/odd_mom_odd_s47/run_meta.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/runs/odd_mom_odd_s47/train_log.csv
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/runs/odd_mom_odd_s47/validation_complete.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/runs/odd_mom_odd_s47/validation_predictions.csv
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/supplement_launcher_resolution.json
+[main 938980b] research: freeze all3 val-selected mom_odd checkpoints before adaptive test feedback
+ 4 files changed, 81 insertions(+)
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/evaluations/mom_odd/registration.json
+[main 03f14a5] results: retain independently reconstructed single/C4 test feedback for mom_odd all3 seeds
+ 16 files changed, 4026 insertions(+)
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/evaluations/mom_odd/group_audit.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/evaluations/mom_odd/s45/independent_audit.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/evaluations/mom_odd/s45/test_c4_predictions.csv
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/evaluations/mom_odd/s45/test_single_predictions.csv
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/evaluations/mom_odd/s45/test_views.npy
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/evaluations/mom_odd/s46/independent_audit.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/evaluations/mom_odd/s46/test_c4_predictions.csv
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/evaluations/mom_odd/s46/test_single_predictions.csv
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/evaluations/mom_odd/s46/test_views.npy
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/evaluations/mom_odd/s47/independent_audit.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/evaluations/mom_odd/s47/test_c4_predictions.csv
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/evaluations/mom_odd/s47/test_single_predictions.csv
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/evaluations/mom_odd/s47/test_views.npy
+[main 128326a] analysis: record every paired module mechanism, budget control and negative result
+ 7 files changed, 1067 insertions(+)
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/MECHANISM_REPORT_ZH.md
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/MODULE_ROUND_REPORT_ZH.md
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/mechanism_comparisons.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/round_results.json
+launch odd_odd_only_s45 1084662
+[main dc97c4a] results: preserve completed module training odd_odd_only_s45
+ 12 files changed, 920 insertions(+), 12 deletions(-)
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/logs/odd_odd_only_s45.log
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/runs/odd_odd_only_s45/complete.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/runs/odd_odd_only_s45/run_meta.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/runs/odd_odd_only_s45/train_log.csv
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/runs/odd_odd_only_s45/validation_complete.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/runs/odd_odd_only_s45/validation_predictions.csv
+launch odd_odd_only_s46 1085449
+[main acec6fe] results: preserve completed module training odd_odd_only_s46
+ 12 files changed, 920 insertions(+), 12 deletions(-)
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/logs/odd_odd_only_s46.log
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/runs/odd_odd_only_s46/complete.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/runs/odd_odd_only_s46/run_meta.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/runs/odd_odd_only_s46/train_log.csv
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/runs/odd_odd_only_s46/validation_complete.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/runs/odd_odd_only_s46/validation_predictions.csv
+launch odd_odd_only_s47 1086318
+[main f25ac0d] results: preserve completed module training odd_odd_only_s47
+ 12 files changed, 920 insertions(+), 10 deletions(-)
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/logs/odd_odd_only_s47.log
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/runs/odd_odd_only_s47/complete.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/runs/odd_odd_only_s47/run_meta.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/runs/odd_odd_only_s47/train_log.csv
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/runs/odd_odd_only_s47/validation_complete.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/runs/odd_odd_only_s47/validation_predictions.csv
+[main a2cbadc] research: freeze all3 val-selected odd_only checkpoints before adaptive test feedback
+ 2 files changed, 78 insertions(+)
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/evaluations/odd_only/registration.json
+[main 74a013e] results: retain independently reconstructed single/C4 test feedback for odd_only all3 seeds
+ 16 files changed, 4024 insertions(+)
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/evaluations/odd_only/group_audit.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/evaluations/odd_only/s45/independent_audit.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/evaluations/odd_only/s45/test_c4_predictions.csv
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/evaluations/odd_only/s45/test_single_predictions.csv
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/evaluations/odd_only/s45/test_views.npy
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/evaluations/odd_only/s46/independent_audit.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/evaluations/odd_only/s46/test_c4_predictions.csv
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/evaluations/odd_only/s46/test_single_predictions.csv
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/evaluations/odd_only/s46/test_views.npy
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/evaluations/odd_only/s47/independent_audit.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/evaluations/odd_only/s47/test_c4_predictions.csv
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/evaluations/odd_only/s47/test_single_predictions.csv
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/evaluations/odd_only/s47/test_views.npy
+[main 5f4565e] analysis: record every paired module mechanism, budget control and negative result
+ 7 files changed, 544 insertions(+), 1 deletion(-)
+launch odd_mom_raw3_s45 1087296
+[main 8c1e80b] results: preserve completed module training odd_mom_raw3_s45
+ 12 files changed, 962 insertions(+), 12 deletions(-)
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/logs/odd_mom_raw3_s45.log
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/runs/odd_mom_raw3_s45/complete.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/runs/odd_mom_raw3_s45/run_meta.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/runs/odd_mom_raw3_s45/train_log.csv
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/runs/odd_mom_raw3_s45/validation_complete.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/runs/odd_mom_raw3_s45/validation_predictions.csv
+launch odd_mom_raw3_s46 1088214
+[main d91b5be] results: preserve completed module training odd_mom_raw3_s46
+ 12 files changed, 966 insertions(+), 10 deletions(-)
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/logs/odd_mom_raw3_s46.log
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/runs/odd_mom_raw3_s46/complete.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/runs/odd_mom_raw3_s46/run_meta.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/runs/odd_mom_raw3_s46/train_log.csv
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/runs/odd_mom_raw3_s46/validation_complete.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/runs/odd_mom_raw3_s46/validation_predictions.csv
+launch odd_mom_raw3_s47 1089220
+[main 14e81e6] results: preserve completed module training odd_mom_raw3_s47
+ 12 files changed, 969 insertions(+), 13 deletions(-)
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/logs/odd_mom_raw3_s47.log
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/runs/odd_mom_raw3_s47/complete.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/runs/odd_mom_raw3_s47/run_meta.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/runs/odd_mom_raw3_s47/train_log.csv
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/runs/odd_mom_raw3_s47/validation_complete.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/runs/odd_mom_raw3_s47/validation_predictions.csv
+[main 6382d35] research: freeze all3 val-selected mom_raw3 checkpoints before adaptive test feedback
+ 2 files changed, 78 insertions(+)
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/evaluations/mom_raw3/registration.json
+[main de28ec0] results: retain independently reconstructed single/C4 test feedback for mom_raw3 all3 seeds
+ 16 files changed, 4026 insertions(+)
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/evaluations/mom_raw3/group_audit.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/evaluations/mom_raw3/s45/independent_audit.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/evaluations/mom_raw3/s45/test_c4_predictions.csv
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/evaluations/mom_raw3/s45/test_single_predictions.csv
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/evaluations/mom_raw3/s45/test_views.npy
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/evaluations/mom_raw3/s46/independent_audit.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/evaluations/mom_raw3/s46/test_c4_predictions.csv
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/evaluations/mom_raw3/s46/test_single_predictions.csv
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/evaluations/mom_raw3/s46/test_views.npy
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/evaluations/mom_raw3/s47/independent_audit.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/evaluations/mom_raw3/s47/test_c4_predictions.csv
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/evaluations/mom_raw3/s47/test_single_predictions.csv
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/evaluations/mom_raw3/s47/test_views.npy
+[main 0b4726c] analysis: record every paired module mechanism, budget control and negative result
+ 7 files changed, 544 insertions(+), 1 deletion(-)
+launch odd_mom_std_s45 1090443
+[main e185ee9] results: preserve completed module training odd_mom_std_s45
+ 12 files changed, 961 insertions(+), 13 deletions(-)
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/logs/odd_mom_std_s45.log
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/runs/odd_mom_std_s45/complete.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/runs/odd_mom_std_s45/run_meta.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/runs/odd_mom_std_s45/train_log.csv
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/runs/odd_mom_std_s45/validation_complete.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/runs/odd_mom_std_s45/validation_predictions.csv
+launch odd_mom_std_s46 1091427
+[main d11fc01] results: preserve completed module training odd_mom_std_s46
+ 12 files changed, 964 insertions(+), 10 deletions(-)
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/logs/odd_mom_std_s46.log
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/runs/odd_mom_std_s46/complete.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/runs/odd_mom_std_s46/run_meta.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/runs/odd_mom_std_s46/train_log.csv
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/runs/odd_mom_std_s46/validation_complete.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/runs/odd_mom_std_s46/validation_predictions.csv
+launch odd_mom_std_s47 1092438
+[main af73066] results: preserve completed module training odd_mom_std_s47
+ 12 files changed, 968 insertions(+), 12 deletions(-)
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/logs/odd_mom_std_s47.log
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/runs/odd_mom_std_s47/complete.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/runs/odd_mom_std_s47/run_meta.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/runs/odd_mom_std_s47/train_log.csv
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/runs/odd_mom_std_s47/validation_complete.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/runs/odd_mom_std_s47/validation_predictions.csv
+[main f0da17a] research: freeze all3 val-selected mom_std checkpoints before adaptive test feedback
+ 2 files changed, 78 insertions(+)
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/evaluations/mom_std/registration.json
+[main 8817cc8] results: retain independently reconstructed single/C4 test feedback for mom_std all3 seeds
+ 16 files changed, 4026 insertions(+)
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/evaluations/mom_std/group_audit.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/evaluations/mom_std/s45/independent_audit.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/evaluations/mom_std/s45/test_c4_predictions.csv
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/evaluations/mom_std/s45/test_single_predictions.csv
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/evaluations/mom_std/s45/test_views.npy
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/evaluations/mom_std/s46/independent_audit.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/evaluations/mom_std/s46/test_c4_predictions.csv
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/evaluations/mom_std/s46/test_single_predictions.csv
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/evaluations/mom_std/s46/test_views.npy
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/evaluations/mom_std/s47/independent_audit.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/evaluations/mom_std/s47/test_c4_predictions.csv
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/evaluations/mom_std/s47/test_single_predictions.csv
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/evaluations/mom_std/s47/test_views.npy
+[main 652eb94] analysis: record every paired module mechanism, budget control and negative result
+ 7 files changed, 546 insertions(+), 1 deletion(-)
+launch odd_mom_even_s45 1093562
+[main 5795195] results: preserve completed module training odd_mom_even_s45
+ 12 files changed, 962 insertions(+), 12 deletions(-)
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/logs/odd_mom_even_s45.log
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/runs/odd_mom_even_s45/complete.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/runs/odd_mom_even_s45/run_meta.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/runs/odd_mom_even_s45/train_log.csv
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/runs/odd_mom_even_s45/validation_complete.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/runs/odd_mom_even_s45/validation_predictions.csv
+launch odd_mom_even_s46 1094555
+[main fd334ab] results: preserve completed module training odd_mom_even_s46
+ 12 files changed, 970 insertions(+), 10 deletions(-)
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/logs/odd_mom_even_s46.log
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/runs/odd_mom_even_s46/complete.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/runs/odd_mom_even_s46/run_meta.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/runs/odd_mom_even_s46/train_log.csv
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/runs/odd_mom_even_s46/validation_complete.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/runs/odd_mom_even_s46/validation_predictions.csv
+launch odd_mom_even_s47 1095486
+[main 4401398] results: preserve completed module training odd_mom_even_s47
+ 12 files changed, 964 insertions(+), 10 deletions(-)
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/logs/odd_mom_even_s47.log
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/runs/odd_mom_even_s47/complete.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/runs/odd_mom_even_s47/run_meta.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/runs/odd_mom_even_s47/train_log.csv
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/runs/odd_mom_even_s47/validation_complete.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/runs/odd_mom_even_s47/validation_predictions.csv
+[main b678896] research: freeze all3 val-selected mom_even checkpoints before adaptive test feedback
+ 2 files changed, 78 insertions(+)
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/evaluations/mom_even/registration.json
+[main 23c1858] results: retain independently reconstructed single/C4 test feedback for mom_even all3 seeds
+ 16 files changed, 4026 insertions(+)
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/evaluations/mom_even/group_audit.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/evaluations/mom_even/s45/independent_audit.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/evaluations/mom_even/s45/test_c4_predictions.csv
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/evaluations/mom_even/s45/test_single_predictions.csv
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/evaluations/mom_even/s45/test_views.npy
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/evaluations/mom_even/s46/independent_audit.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/evaluations/mom_even/s46/test_c4_predictions.csv
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/evaluations/mom_even/s46/test_single_predictions.csv
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/evaluations/mom_even/s46/test_views.npy
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/evaluations/mom_even/s47/independent_audit.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/evaluations/mom_even/s47/test_c4_predictions.csv
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/evaluations/mom_even/s47/test_single_predictions.csv
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/evaluations/mom_even/s47/test_views.npy
+[main 81dc1ba] analysis: record every paired module mechanism, budget control and negative result
+ 7 files changed, 548 insertions(+), 1 deletion(-)
+[main 4749a8e] results: audit complete faithful-module and orientation round; retain every seed and negative result
+ 9 files changed, 39 insertions(+), 23 deletions(-)
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/independent_audit.json
+ create mode 100644 experiments/ac_spatial_odd_moment_structure_window01/runtime_sampler_complete_v2.json

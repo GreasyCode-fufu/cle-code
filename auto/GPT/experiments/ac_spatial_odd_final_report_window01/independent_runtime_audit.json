@@ -1,0 +1,288 @@
+{
+  "passed": true,
+  "samples": 1125,
+  "first_timestamp": "2026-10-25T09:44:11.386807+08:00",
+  "last_timestamp": "2026-10-25T10:22:08.616736+08:00",
+  "coverage_seconds": 2277.2299234867096,
+  "max_gap_seconds": 2.046445846557617,
+  "whole": {
+    "seconds": 2277.2299234867096,
+    "mean_gpu_util": 85.79295799843072,
+    "fraction_gpu_at_least80": 0.8585628297407946,
+    "mean_cpu_percent": 8.22734647051854,
+    "mean_max_core_percent": 64.73237854201717,
+    "mean_iowait_percent": 0.0021785872292914097,
+    "mean_ram_used_percent": 6.98343172358299,
+    "peak_gpu_used_mib": 4254.0
+  },
+  "by_actual_parent_count": {
+    "0": {
+      "seconds": 82.99881958961487,
+      "mean_gpu_util": 25.857575898740016,
+      "fraction_gpu_at_least80": 0.14635349927515842,
+      "mean_cpu_percent": 4.988856944463555,
+      "mean_max_core_percent": 78.54059999696229,
+      "mean_iowait_percent": 0.004012587693321274,
+      "mean_ram_used_percent": 5.607318088284228,
+      "peak_gpu_used_mib": 4254.0
+    },
+    "1": {
+      "seconds": 2194.2311038970947,
+      "mean_gpu_util": 88.06006922344787,
+      "fraction_gpu_at_least80": 0.8855028059467512,
+      "mean_cpu_percent": 8.349845330113826,
+      "mean_max_core_percent": 64.21006980281604,
+      "mean_iowait_percent": 0.002109214466608877,
+      "mean_ram_used_percent": 7.035484493752969,
+      "peak_gpu_used_mib": 4254.0
+    }
+  },
+  "by_arm": {
+    "mom_odd": {
+      "seconds": 455.83815813064575,
+      "mean_gpu_util": 87.74785731602977,
+      "fraction_gpu_at_least80": 0.8667020988665861,
+      "mean_cpu_percent": 8.213588483926635,
+      "mean_max_core_percent": 64.26160472691042,
+      "mean_iowait_percent": 0.002561299498390916,
+      "mean_ram_used_percent": 6.470570081019006,
+      "peak_gpu_used_mib": 3739.0
+    },
+    "odd_only": {
+      "seconds": 378.78245520591736,
+      "mean_gpu_util": 86.5038544851879,
+      "fraction_gpu_at_least80": 0.8930019204467518,
+      "mean_cpu_percent": 8.745797243794502,
+      "mean_max_core_percent": 65.71591361248733,
+      "mean_iowait_percent": 0.0022008408357852473,
+      "mean_ram_used_percent": 7.180502961505764,
+      "peak_gpu_used_mib": 3630.0
+    },
+    "mom_raw3": {
+      "seconds": 449.7693901062012,
+      "mean_gpu_util": 88.88329131961521,
+      "fraction_gpu_at_least80": 0.8919008760126546,
+      "mean_cpu_percent": 8.291822374044333,
+      "mean_max_core_percent": 63.491083725828,
+      "mean_iowait_percent": 0.0017617955753804326,
+      "mean_ram_used_percent": 7.192228291888908,
+      "peak_gpu_used_mib": 4254.0
+    },
+    "mom_std": {
+      "seconds": 451.8739712238312,
+      "mean_gpu_util": 88.99418327938352,
+      "fraction_gpu_at_least80": 0.8923343359933538,
+      "mean_cpu_percent": 8.284503136343188,
+      "mean_max_core_percent": 64.09773803826727,
+      "mean_iowait_percent": 0.001938769734968158,
+      "mean_ram_used_percent": 7.163847633017462,
+      "peak_gpu_used_mib": 4254.0
+    },
+    "mom_even": {
+      "seconds": 457.96712923049927,
+      "mean_gpu_util": 87.92779556433418,
+      "fraction_gpu_at_least80": 0.8849894503295249,
+      "mean_cpu_percent": 8.279435949178959,
+      "mean_max_core_percent": 63.73025136967054,
+      "mean_iowait_percent": 0.002092824319313942,
+      "mean_ram_used_percent": 7.19723533878028,
+      "peak_gpu_used_mib": 4254.0
+    },
+    "manager_or_transition": {
+      "seconds": 82.99881958961487,
+      "mean_gpu_util": 25.857575898740016,
+      "fraction_gpu_at_least80": 0.14635349927515842,
+      "mean_cpu_percent": 4.988856944463555,
+      "mean_max_core_percent": 78.54059999696229,
+      "mean_iowait_percent": 0.004012587693321274,
+      "mean_ram_used_percent": 5.607318088284228,
+      "peak_gpu_used_mib": 4254.0
+    }
+  },
+  "verified_max_concurrent_training_parents": 1,
+  "all15_parent_pid_job_ppid_matched": true,
+  "all_intervals_partitioned": true,
+  "status_count_mismatch_rows": 41,
+  "profile_policy": {
+    "slots_by_arm": {
+      "mom_odd": 1,
+      "odd_only": 1,
+      "mom_raw3": 1,
+      "mom_std": 1,
+      "mom_even": 1
+    },
+    "rule": "smallest within97percent of measured best; active-kernel GPU samples, not interpreter startup;6GiB reserve"
+  },
+  "epoch_log_statistics": {
+    "mom_odd": {
+      "epoch_training_samples_per_second": 905.7479138826415,
+      "loader_wait_fraction": 0.01609060214072847,
+      "metadata_cohort_samples_per_second": 825.3499067992385,
+      "metadata_cohort_seconds": 452.9715178012848,
+      "units": [
+        {
+          "job": "odd_mom_odd_s45",
+          "train_seconds": 137.5657281250169,
+          "loader_wait_seconds": 2.199022655171575,
+          "start_unix": 1792892652.722534,
+          "endpoint_unix": 1792892801.7592952,
+          "samples": 124620
+        },
+        {
+          "job": "odd_mom_odd_s46",
+          "train_seconds": 137.64163293203455,
+          "loader_wait_seconds": 2.2230628919496667,
+          "start_unix": 1792892804.460914,
+          "endpoint_unix": 1792892953.5263746,
+          "samples": 124620
+        },
+        {
+          "job": "odd_mom_odd_s47",
+          "train_seconds": 137.55649328889558,
+          "loader_wait_seconds": 2.2195334112329874,
+          "start_unix": 1792892956.577138,
+          "endpoint_unix": 1792893105.6940517,
+          "samples": 124620
+        }
+      ]
+    },
+    "odd_only": {
+      "epoch_training_samples_per_second": 1099.8144719996444,
+      "loader_wait_fraction": 0.01972477087744039,
+      "metadata_cohort_samples_per_second": 986.9541808515221,
+      "metadata_cohort_seconds": 378.8017795085907,
+      "units": [
+        {
+          "job": "odd_odd_only_s45",
+          "train_seconds": 113.19112346990732,
+          "loader_wait_seconds": 2.185524501139298,
+          "start_unix": 1792893119.365362,
+          "endpoint_unix": 1792893243.6472278,
+          "samples": 124620
+        },
+        {
+          "job": "odd_odd_only_s46",
+          "train_seconds": 113.32216834896826,
+          "loader_wait_seconds": 2.2901187275419943,
+          "start_unix": 1792893246.802596,
+          "endpoint_unix": 1792893370.935427,
+          "samples": 124620
+        },
+        {
+          "job": "odd_odd_only_s47",
+          "train_seconds": 113.41676867601927,
+          "loader_wait_seconds": 2.22939932893496,
+          "start_unix": 1792893373.760517,
+          "endpoint_unix": 1792893498.1671414,
+          "samples": 124620
+        }
+      ]
+    },
+    "mom_raw3": {
+      "epoch_training_samples_per_second": 904.6110794686043,
+      "loader_wait_fraction": 0.016296571291539542,
+      "metadata_cohort_samples_per_second": 824.7160796498298,
+      "metadata_cohort_seconds": 453.31964445114136,
+      "units": [
+        {
+          "job": "odd_mom_raw3_s45",
+          "train_seconds": 137.68070059092133,
+          "loader_wait_seconds": 2.2630215244425926,
+          "start_unix": 1792893512.005521,
+          "endpoint_unix": 1792893661.0229747,
+          "samples": 124620
+        },
+        {
+          "job": "odd_mom_raw3_s46",
+          "train_seconds": 137.71848127627163,
+          "loader_wait_seconds": 2.2367942817800213,
+          "start_unix": 1792893663.993499,
+          "endpoint_unix": 1792893813.0444684,
+          "samples": 124620
+        },
+        {
+          "job": "odd_mom_raw3_s47",
+          "train_seconds": 137.88339722703677,
+          "loader_wait_seconds": 2.23527320753783,
+          "start_unix": 1792893815.967879,
+          "endpoint_unix": 1792893965.3251655,
+          "samples": 124620
+        }
+      ]
+    },
+    "mom_std": {
+      "epoch_training_samples_per_second": 908.640144304611,
+      "loader_wait_fraction": 0.01630280893504391,
+      "metadata_cohort_samples_per_second": 827.7076613229427,
+      "metadata_cohort_seconds": 451.68121242523193,
+      "units": [
+        {
+          "job": "odd_mom_std_s45",
+          "train_seconds": 136.93099992111092,
+          "loader_wait_seconds": 2.244027482869569,
+          "start_unix": 1792893982.326456,
+          "endpoint_unix": 1792894130.7778375,
+          "samples": 124620
+        },
+        {
+          "job": "odd_mom_std_s46",
+          "train_seconds": 137.16476824923302,
+          "loader_wait_seconds": 2.2532836168829817,
+          "start_unix": 1792894133.763262,
+          "endpoint_unix": 1792894282.3577673,
+          "samples": 124620
+        },
+        {
+          "job": "odd_mom_std_s47",
+          "train_seconds": 137.3542457250005,
+          "loader_wait_seconds": 2.2104798631044105,
+          "start_unix": 1792894285.194054,
+          "endpoint_unix": 1792894434.0076685,
+          "samples": 124620
+        }
+      ]
+    },
+    "mom_even": {
+      "epoch_training_samples_per_second": 905.6336491054117,
+      "loader_wait_fraction": 0.01606340662068263,
+      "metadata_cohort_samples_per_second": 821.5309252963258,
+      "metadata_cohort_seconds": 455.07720828056335,
+      "units": [
+        {
+          "job": "odd_mom_even_s45",
+          "train_seconds": 137.50980861487915,
+          "loader_wait_seconds": 2.208312692004256,
+          "start_unix": 1792894452.983821,
+          "endpoint_unix": 1792894601.9788718,
+          "samples": 124620
+        },
+        {
+          "job": "odd_mom_even_s46",
+          "train_seconds": 137.5765496280801,
+          "loader_wait_seconds": 2.1955310849880334,
+          "start_unix": 1792894605.020889,
+          "endpoint_unix": 1792894755.9917347,
+          "samples": 124620
+        },
+        {
+          "job": "odd_mom_even_s47",
+          "train_seconds": 137.72957496502204,
+          "loader_wait_seconds": 2.227386417624075,
+          "start_unix": 1792894758.776375,
+          "endpoint_unix": 1792894908.0610292,
+          "samples": 124620
+        }
+      ]
+    }
+  },
+  "resource_sha256": "30189644de210534a5df1cd9df0e4cc84f402967359bd2485422afd06f3896b7",
+  "process_io_sha256": "1589c06d0828010e9867960848a581cfa1bf580cbcbc6f2b34fcce218edfb08c",
+  "scope": [
+    "left sample held until next sample; includes startup/teardown, no omitted lowGPU intervals",
+    "zero actual worker may mean manager GPU inference/patient bootstrap/transition, not all idle",
+    "first CPU sample defaults0",
+    "epoch throughput excludes validation/startup; metadata cohort includes validation/checkpoint but excludes model/loader construction, not exact process end-to-end",
+    "no telemetry invented outside actual sampler coverage"
+  ],
+  "overall_research_complete": false
+}

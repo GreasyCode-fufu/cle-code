@@ -1,0 +1,438 @@
+{
+  "passed": true,
+  "actual_weights_strictloaded": true,
+  "evaluate_run_inference_exact_AST": true,
+  "evaluate_sha256": "e5213828f81e04baf2aa025c35dfa3a1b585efbdcf8a7cfbd9033510592b0ee7",
+  "timing_source_sha256": "0c2b58d156d26c87c5d3fd0024f80217b7d13d1bad66cc6af51262c11ab4cc5a",
+  "val_indices_sha256": "7c87717c3a85660af2ce589f3c3e44fefa3432a54edcef6c7caf2d8cc40b65a0",
+  "cases": 427,
+  "split": "val",
+  "test_images": 0,
+  "new_training": 0,
+  "physical_batch": 32,
+  "precision": "FP32; screenshot evaluate helper has no AMP; distinct from original AMP classification probabilities",
+  "transform": "original research squareResize256 center224; not replacing frozen classification predictions",
+  "repetitions": 3,
+  "warmup_batches": 10,
+  "seed": 45,
+  "results": [
+    {
+      "name": "B0",
+      "arm": "plain",
+      "seed": 45,
+      "checkpoint": "weights/ac_qualification_20261024_window01/qualification_convnext_tiny_A_s45/model_best.pth",
+      "checkpoint_sha256": "4e85d8b1374952836ffb999a7eecb079eaaec58f689e64e412182ba4063c5004",
+      "parameters": 27822435,
+      "MACs": 4454765568.0,
+      "FLOPs": 8909531136,
+      "pure_fps_median": 2074.601038130022,
+      "e2e_fps_median": 293.78231733292694,
+      "runs": [
+        {
+          "efficiency": {
+            "pure_infer_time": 0.4280116558074951,
+            "pure_fps": 997.6363825756415,
+            "pure_ms_per_img": 1.0023692173477639,
+            "e2e_time": 1.6987290382385254,
+            "e2e_fps": 251.36439678618316,
+            "total_samples": 427
+          },
+          "resources_before": {
+            "timestamp": "2026-10-25T16:33:46.191757+08:00",
+            "gpu_util": 0.0,
+            "gpu_used_mib": 1201.0,
+            "gpu_free_mib": 47299.0,
+            "cpu_percent": 0.0,
+            "cpu_max_core_percent": 0.0,
+            "cpu_iowait_percent": 0.0,
+            "ram_used_percent": 6.1446291748252
+          },
+          "resources_after": {
+            "timestamp": "2026-10-25T16:33:47.933584+08:00",
+            "gpu_util": 16.0,
+            "gpu_used_mib": 1201.0,
+            "gpu_free_mib": 47299.0,
+            "cpu_percent": 4.154658981748319,
+            "cpu_max_core_percent": 97.10982658959537,
+            "cpu_iowait_percent": 0.0,
+            "ram_used_percent": 6.226820866365057
+          }
+        },
+        {
+          "efficiency": {
+            "pure_infer_time": 0.20582270622253418,
+            "pure_fps": 2074.601038130022,
+            "pure_ms_per_img": 0.48202038927993957,
+            "e2e_time": 1.4534571170806885,
+            "e2e_fps": 293.78231733292694,
+            "total_samples": 427
+          },
+          "resources_before": {
+            "timestamp": "2026-10-25T16:33:47.976973+08:00",
+            "gpu_util": 16.0,
+            "gpu_used_mib": 1201.0,
+            "gpu_free_mib": 47299.0,
+            "cpu_percent": 3.8461538461538463,
+            "cpu_max_core_percent": 50.0,
+            "cpu_iowait_percent": 0.0,
+            "ram_used_percent": 6.209698485595161
+          },
+          "resources_after": {
+            "timestamp": "2026-10-25T16:33:49.473954+08:00",
+            "gpu_util": 16.0,
+            "gpu_used_mib": 1201.0,
+            "gpu_free_mib": 47299.0,
+            "cpu_percent": 4.178272980501393,
+            "cpu_max_core_percent": 98.0,
+            "cpu_iowait_percent": 0.0,
+            "ram_used_percent": 6.226665540605669
+          }
+        },
+        {
+          "efficiency": {
+            "pure_infer_time": 0.20582008361816406,
+            "pure_fps": 2074.6274731486715,
+            "pure_ms_per_img": 0.48201424734933035,
+            "e2e_time": 1.4454317092895508,
+            "e2e_fps": 295.41347215212005,
+            "total_samples": 427
+          },
+          "resources_before": {
+            "timestamp": "2026-10-25T16:33:49.514398+08:00",
+            "gpu_util": 16.0,
+            "gpu_used_mib": 1201.0,
+            "gpu_free_mib": 47299.0,
+            "cpu_percent": 3.8095238095238093,
+            "cpu_max_core_percent": 50.0,
+            "cpu_iowait_percent": 0.0,
+            "ram_used_percent": 6.231523277590368
+          },
+          "resources_after": {
+            "timestamp": "2026-10-25T16:33:50.999751+08:00",
+            "gpu_util": 14.0,
+            "gpu_used_mib": 1201.0,
+            "gpu_free_mib": 47299.0,
+            "cpu_percent": 4.238001683974179,
+            "cpu_max_core_percent": 97.98657718120805,
+            "cpu_iowait_percent": 0.0,
+            "ram_used_percent": 6.241917921056683
+          }
+        }
+      ]
+    },
+    {
+      "name": "Mom",
+      "arm": "mom_only",
+      "seed": 45,
+      "checkpoint": "weights/ac_module_structure_window01/module_c4_moments_s45/model_best.pth",
+      "checkpoint_sha256": "fcdf781b359d2b7c06a69c7fcd3dfd14e307b4639cb5e58bad78e5638baa9ddb",
+      "parameters": 27840963,
+      "MACs": 4555920384.0,
+      "FLOPs": 9111840768,
+      "pure_fps_median": 1813.3958883470766,
+      "e2e_fps_median": 296.49404112418125,
+      "runs": [
+        {
+          "efficiency": {
+            "pure_infer_time": 0.23517441749572754,
+            "pure_fps": 1815.673679760501,
+            "pure_ms_per_img": 0.5507597599431558,
+            "e2e_time": 1.4823524951934814,
+            "e2e_fps": 288.05564222041977,
+            "total_samples": 427
+          },
+          "resources_before": {
+            "timestamp": "2026-10-25T16:33:51.713106+08:00",
+            "gpu_util": 13.0,
+            "gpu_used_mib": 1275.0,
+            "gpu_free_mib": 47225.0,
+            "cpu_percent": 4.174015285126396,
+            "cpu_max_core_percent": 98.59154929577464,
+            "cpu_iowait_percent": 0.058788947677836566,
+            "ram_used_percent": 6.295776366722783
+          },
+          "resources_after": {
+            "timestamp": "2026-10-25T16:33:53.245054+08:00",
+            "gpu_util": 17.0,
+            "gpu_used_mib": 1423.0,
+            "gpu_free_mib": 47077.0,
+            "cpu_percent": 4.2825968357883255,
+            "cpu_max_core_percent": 96.07843137254902,
+            "cpu_iowait_percent": 0.0,
+            "ram_used_percent": 6.282046787834361
+          }
+        },
+        {
+          "efficiency": {
+            "pure_infer_time": 0.23546981811523438,
+            "pure_fps": 1813.3958883470766,
+            "pure_ms_per_img": 0.5514515646726801,
+            "e2e_time": 1.4070167541503906,
+            "e2e_fps": 303.4789733245491,
+            "total_samples": 427
+          },
+          "resources_before": {
+            "timestamp": "2026-10-25T16:33:53.289525+08:00",
+            "gpu_util": 17.0,
+            "gpu_used_mib": 1423.0,
+            "gpu_free_mib": 47077.0,
+            "cpu_percent": 4.273504273504273,
+            "cpu_max_core_percent": 33.333333333333336,
+            "cpu_iowait_percent": 0.0,
+            "ram_used_percent": 6.278285467974742
+          },
+          "resources_after": {
+            "timestamp": "2026-10-25T16:33:54.743009+08:00",
+            "gpu_util": 15.0,
+            "gpu_used_mib": 1423.0,
+            "gpu_free_mib": 47077.0,
+            "cpu_percent": 4.164273406088455,
+            "cpu_max_core_percent": 97.2027972027972,
+            "cpu_iowait_percent": 0.0,
+            "ram_used_percent": 6.258038298398382
+          }
+        },
+        {
+          "efficiency": {
+            "pure_infer_time": 0.23584675788879395,
+            "pure_fps": 1810.4976461085732,
+            "pure_ms_per_img": 0.5523343276084167,
+            "e2e_time": 1.4401638507843018,
+            "e2e_fps": 296.49404112418125,
+            "total_samples": 427
+          },
+          "resources_before": {
+            "timestamp": "2026-10-25T16:33:54.784636+08:00",
+            "gpu_util": 15.0,
+            "gpu_used_mib": 1423.0,
+            "gpu_free_mib": 47077.0,
+            "cpu_percent": 3.6036036036036037,
+            "cpu_max_core_percent": 50.0,
+            "cpu_iowait_percent": 0.0,
+            "ram_used_percent": 6.251831359229221
+          },
+          "resources_after": {
+            "timestamp": "2026-10-25T16:33:56.269987+08:00",
+            "gpu_util": 25.0,
+            "gpu_used_mib": 1423.0,
+            "gpu_free_mib": 47077.0,
+            "cpu_percent": 4.248733821046708,
+            "cpu_max_core_percent": 97.29729729729729,
+            "cpu_iowait_percent": 0.0,
+            "ram_used_percent": 6.243586911569299
+          }
+        }
+      ]
+    },
+    {
+      "name": "Selected",
+      "arm": "mom_misaligned",
+      "seed": 45,
+      "checkpoint": "weights/ac_midstage_focal_structure_window01/mfc_mom_misaligned_s45/model_best.pth",
+      "checkpoint_sha256": "1fa9b8ee82d05ebf1ced3b341487c48b0655e8658ace75d939d1c27cdaf6d5fd",
+      "parameters": 27852795,
+      "MACs": 4565196672.0,
+      "FLOPs": 9130393344,
+      "pure_fps_median": 1789.6953346170872,
+      "e2e_fps_median": 293.64908221944984,
+      "runs": [
+        {
+          "efficiency": {
+            "pure_infer_time": 0.23752260208129883,
+            "pure_fps": 1797.7236534898148,
+            "pure_ms_per_img": 0.5562590212676787,
+            "e2e_time": 1.4541165828704834,
+            "e2e_fps": 293.64908221944984,
+            "total_samples": 427
+          },
+          "resources_before": {
+            "timestamp": "2026-10-25T16:33:56.972148+08:00",
+            "gpu_util": 25.0,
+            "gpu_used_mib": 1275.0,
+            "gpu_free_mib": 47225.0,
+            "cpu_percent": 4.226190476190476,
+            "cpu_max_core_percent": 95.71428571428571,
+            "cpu_iowait_percent": 0.0,
+            "ram_used_percent": 6.2627742112580815
+          },
+          "resources_after": {
+            "timestamp": "2026-10-25T16:33:58.472758+08:00",
+            "gpu_util": 18.0,
+            "gpu_used_mib": 1427.0,
+            "gpu_free_mib": 47073.0,
+            "cpu_percent": 4.361111111111111,
+            "cpu_max_core_percent": 98.0,
+            "cpu_iowait_percent": 0.0,
+            "ram_used_percent": 6.244747286359997
+          }
+        },
+        {
+          "efficiency": {
+            "pure_infer_time": 0.2385880947113037,
+            "pure_fps": 1789.6953346170872,
+            "pure_ms_per_img": 0.5587543201669876,
+            "e2e_time": 1.4418163299560547,
+            "e2e_fps": 296.15422653245616,
+            "total_samples": 427
+          },
+          "resources_before": {
+            "timestamp": "2026-10-25T16:33:58.515842+08:00",
+            "gpu_util": 18.0,
+            "gpu_used_mib": 1427.0,
+            "gpu_free_mib": 47073.0,
+            "cpu_percent": 4.424778761061947,
+            "cpu_max_core_percent": 40.0,
+            "cpu_iowait_percent": 0.0,
+            "ram_used_percent": 6.2508324014041605
+          },
+          "resources_after": {
+            "timestamp": "2026-10-25T16:34:00.006175+08:00",
+            "gpu_util": 19.0,
+            "gpu_used_mib": 1427.0,
+            "gpu_free_mib": 47073.0,
+            "cpu_percent": 4.157303370786517,
+            "cpu_max_core_percent": 97.29729729729729,
+            "cpu_iowait_percent": 0.0,
+            "ram_used_percent": 6.250600935566641
+          }
+        },
+        {
+          "efficiency": {
+            "pure_infer_time": 0.23875808715820312,
+            "pure_fps": 1788.421096358785,
+            "pure_ms_per_img": 0.5591524289419277,
+            "e2e_time": 1.5104827880859375,
+            "e2e_fps": 282.6910729258215,
+            "total_samples": 427
+          },
+          "resources_before": {
+            "timestamp": "2026-10-25T16:34:00.055279+08:00",
+            "gpu_util": 19.0,
+            "gpu_used_mib": 1427.0,
+            "gpu_free_mib": 47073.0,
+            "cpu_percent": 4.273504273504273,
+            "cpu_max_core_percent": 50.0,
+            "cpu_iowait_percent": 0.0,
+            "ram_used_percent": 6.2426062273629785
+          },
+          "resources_after": {
+            "timestamp": "2026-10-25T16:34:01.613033+08:00",
+            "gpu_util": 19.0,
+            "gpu_used_mib": 1427.0,
+            "gpu_free_mib": 47073.0,
+            "cpu_percent": 4.27578834847675,
+            "cpu_max_core_percent": 96.7741935483871,
+            "cpu_iowait_percent": 0.0,
+            "ram_used_percent": 6.2390794189439935
+          }
+        }
+      ]
+    },
+    {
+      "name": "DropMom",
+      "arm": "misaligned_only",
+      "seed": 45,
+      "checkpoint": "weights/ac_focal_pairing_dropmom_control_window01/fdm_misaligned_only_s45/model_best.pth",
+      "checkpoint_sha256": "972e22fd907bf094ef18aaf3c3d293964a06c2f8182fd467a3aa0067872a709c",
+      "parameters": 27834267,
+      "MACs": 4464041856.0,
+      "FLOPs": 8928083712,
+      "pure_fps_median": 2058.4038727651377,
+      "e2e_fps_median": 304.29960610248065,
+      "runs": [
+        {
+          "efficiency": {
+            "pure_infer_time": 0.20527386665344238,
+            "pure_fps": 2080.1478871194604,
+            "pure_ms_per_img": 0.4807350507106379,
+            "e2e_time": 1.5021507740020752,
+            "e2e_fps": 284.2590819710952,
+            "total_samples": 427
+          },
+          "resources_before": {
+            "timestamp": "2026-10-25T16:34:02.293322+08:00",
+            "gpu_util": 100.0,
+            "gpu_used_mib": 1201.0,
+            "gpu_free_mib": 47299.0,
+            "cpu_percent": 4.166666666666667,
+            "cpu_max_core_percent": 92.7536231884058,
+            "cpu_iowait_percent": 0.0,
+            "ram_used_percent": 6.277298692562172
+          },
+          "resources_after": {
+            "timestamp": "2026-10-25T16:34:03.841079+08:00",
+            "gpu_util": 16.0,
+            "gpu_used_mib": 1205.0,
+            "gpu_free_mib": 47295.0,
+            "cpu_percent": 4.281098546042003,
+            "cpu_max_core_percent": 98.06451612903226,
+            "cpu_iowait_percent": 0.0,
+            "ram_used_percent": 6.268499945133454
+          }
+        },
+        {
+          "efficiency": {
+            "pure_infer_time": 0.2074422836303711,
+            "pure_fps": 2058.4038727651377,
+            "pure_ms_per_img": 0.48581331060976835,
+            "e2e_time": 1.4032223224639893,
+            "e2e_fps": 304.29960610248065,
+            "total_samples": 427
+          },
+          "resources_before": {
+            "timestamp": "2026-10-25T16:34:03.885529+08:00",
+            "gpu_util": 16.0,
+            "gpu_used_mib": 1205.0,
+            "gpu_free_mib": 47295.0,
+            "cpu_percent": 4.545454545454546,
+            "cpu_max_core_percent": 50.0,
+            "cpu_iowait_percent": 0.0,
+            "ram_used_percent": 6.255010968891939
+          },
+          "resources_after": {
+            "timestamp": "2026-10-25T16:34:05.334793+08:00",
+            "gpu_util": 12.0,
+            "gpu_used_mib": 1205.0,
+            "gpu_free_mib": 47295.0,
+            "cpu_percent": 4.46685878962536,
+            "cpu_max_core_percent": 97.24137931034483,
+            "cpu_iowait_percent": 0.0,
+            "ram_used_percent": 6.257898200654632
+          }
+        },
+        {
+          "efficiency": {
+            "pure_infer_time": 0.2074427604675293,
+            "pure_fps": 2058.3991412264186,
+            "pure_ms_per_img": 0.4858144273244246,
+            "e2e_time": 1.3982939720153809,
+            "e2e_fps": 305.3721238492925,
+            "total_samples": 427
+          },
+          "resources_before": {
+            "timestamp": "2026-10-25T16:34:05.382405+08:00",
+            "gpu_util": 12.0,
+            "gpu_used_mib": 1205.0,
+            "gpu_free_mib": 47295.0,
+            "cpu_percent": 4.504504504504505,
+            "cpu_max_core_percent": 60.0,
+            "cpu_iowait_percent": 0.0,
+            "ram_used_percent": 6.246044713291344
+          },
+          "resources_after": {
+            "timestamp": "2026-10-25T16:34:06.826893+08:00",
+            "gpu_util": 16.0,
+            "gpu_used_mib": 1205.0,
+            "gpu_free_mib": 47295.0,
+            "cpu_percent": 4.298903635314484,
+            "cpu_max_core_percent": 97.91666666666667,
+            "cpu_iowait_percent": 0.0,
+            "ram_used_percent": 6.232972984677964
+          }
+        }
+      ]
+    }
+  ],
+  "flops_convention": "2 FLOP/MAC all module conv/linear plus3 functional Mom rotated conv; excludes LN/GELU/pointwise/padding/memory; not uncorrected thop",
+  "scope": "host-load-dependent computational efficiency; never classification+1.5pp"
+}

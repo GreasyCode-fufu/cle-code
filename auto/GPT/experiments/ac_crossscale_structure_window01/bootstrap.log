@@ -1,0 +1,285 @@
+[main f1c8b52] research: freeze retained-moment crossscale correlation, spatial correspondence and faithful bilinear controls
+ 34 files changed, 77117 insertions(+)
+ create mode 100644 experiments/ac_crossscale_structure_window01/MODULE_DIFFERENCES_ZH.md
+ create mode 100644 experiments/ac_crossscale_structure_window01/MODULE_PROTOCOL_ZH.md
+ create mode 100644 experiments/ac_crossscale_structure_window01/audit_module_structure.py
+ create mode 100644 experiments/ac_crossscale_structure_window01/baseline_reference.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/baseline_selection.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/bootstrap.log
+ create mode 100644 experiments/ac_crossscale_structure_window01/bootstrap_identity.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/bootstrap_module_structure.py
+ create mode 100644 experiments/ac_crossscale_structure_window01/build_crossscale_study.py
+ create mode 100644 experiments/ac_crossscale_structure_window01/check_module_sources.py
+ create mode 100644 experiments/ac_crossscale_structure_window01/config.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/continuous_runtime_sampler.py
+ create mode 100644 experiments/ac_crossscale_structure_window01/jobs.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/library_cle.py
+ create mode 100644 experiments/ac_crossscale_structure_window01/manifest.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/postprocessing_revision_v2.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/preflight_impl.py
+ create mode 100644 experiments/ac_crossscale_structure_window01/run_crossscale_manager.py
+ create mode 100644 experiments/ac_crossscale_structure_window01/run_module_structure.py
+ create mode 100644 experiments/ac_crossscale_structure_window01/shared_snapshot_manifest.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/upstream/BCNN.py
+ create mode 100644 experiments/ac_crossscale_structure_window01/upstream/HBP_LICENSE
+ create mode 100644 experiments/ac_crossscale_structure_window01/upstream/HBP_ft_all.prototxt
+ create mode 100644 experiments/ac_crossscale_structure_window01/upstream/HBP_l2_normalize_layer.cpp
+ create mode 100644 experiments/ac_crossscale_structure_window01/upstream/HBP_provenance.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/upstream/HBP_signed_sqrt_layer.cpp
+ create mode 100644 experiments/ac_crossscale_structure_window01/upstream/MPNCOV.py
+ create mode 100644 experiments/ac_crossscale_structure_window01/upstream/provenance.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/upstream/refinement_protocol.md
+ create mode 100644 experiments/ac_crossscale_structure_window01/upstream/retained_moment_protocol.md
+ create mode 100644 experiments/ac_crossscale_structure_window01/working_reference.json
+ create mode 100644 models/optimize/ac_crossscale_structure_window01/__init__.py
+ create mode 100644 models/optimize/ac_crossscale_structure_window01/c4_moment_stem.py
+ create mode 100644 models/optimize/ac_crossscale_structure_window01/library_cle.py
+[main f53f263] test: verify cross-scale correlation NumPy gradients and faithful BCNN operator with paired public initialization
+ 2 files changed, 99 insertions(+)
+ create mode 100644 experiments/ac_crossscale_structure_window01/module_source_audit.json
+/data/cle/auto/GPT/experiments/ac_crossscale_structure_window01/run_module_structure.py:146: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:838.)
+  grads.append(dict(step=step,loss=float(loss),gradient_norms=g))
+[main df8e174] test: validate cross-scale CUDA AMP gradients, nondegenerate train-val scales and six full frozen reference probability reconstructions
+ 2 files changed, 246 insertions(+)
+ create mode 100644 experiments/ac_crossscale_structure_window01/preflight.json
+[main 62be72a] perf: measure single and concurrent throughput for distinct library and orientation kernels
+ 26 files changed, 187 insertions(+)
+ create mode 100644 experiments/ac_crossscale_structure_window01/direct_control_finisher.log
+ create mode 100644 experiments/ac_crossscale_structure_window01/direct_control_finisher_identity.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/profile/mom_bilinear/bench_1_0.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/profile/mom_bilinear/bench_2_0.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/profile/mom_bilinear/bench_2_0.log
+ create mode 100644 experiments/ac_crossscale_structure_window01/profile/mom_bilinear/bench_2_1.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/profile/mom_bilinear/bench_2_1.log
+ create mode 100644 experiments/ac_crossscale_structure_window01/profile/mom_bilinear/bench_4_0.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/profile/mom_bilinear/bench_4_0.log
+ create mode 100644 experiments/ac_crossscale_structure_window01/profile/mom_bilinear/bench_4_1.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/profile/mom_bilinear/bench_4_1.log
+ create mode 100644 experiments/ac_crossscale_structure_window01/profile/mom_bilinear/bench_4_2.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/profile/mom_bilinear/bench_4_2.log
+ create mode 100644 experiments/ac_crossscale_structure_window01/profile/mom_bilinear/bench_4_3.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/profile/mom_bilinear/bench_4_3.log
+ create mode 100644 experiments/ac_crossscale_structure_window01/profile/mom_bilinear/gate_2.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/profile/mom_bilinear/gate_4.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/profile/mom_bilinear/measurements.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/profile/mom_bilinear/ready_2_0.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/profile/mom_bilinear/ready_2_1.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/profile/mom_bilinear/ready_4_0.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/profile/mom_bilinear/ready_4_1.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/profile/mom_bilinear/ready_4_2.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/profile/mom_bilinear/ready_4_3.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/profile/selected.json
+launch crossscale_mom_corr_s45 929166
+[main 800f063] results: preserve completed module training crossscale_mom_corr_s45
+ 22 files changed, 1304 insertions(+)
+ create mode 100644 experiments/ac_crossscale_structure_window01/NEURAL_START_RECEIPT.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/RESEARCH_LEDGER_ZH.md
+ create mode 100644 experiments/ac_crossscale_structure_window01/STRUCTURE_AND_USE_ZH.md
+ create mode 100644 experiments/ac_crossscale_structure_window01/continuous_runtime_process_io.jsonl
+ create mode 100644 experiments/ac_crossscale_structure_window01/continuous_runtime_resources.csv
+ create mode 100644 experiments/ac_crossscale_structure_window01/document_crossscale_start.py
+ create mode 100644 experiments/ac_crossscale_structure_window01/io_resources.jsonl
+ create mode 100644 experiments/ac_crossscale_structure_window01/logs/crossscale_mom_corr_s45.log
+ create mode 100644 experiments/ac_crossscale_structure_window01/manager_entry_identity_v2.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/manager_identity.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/pipeline.lock
+ create mode 100644 experiments/ac_crossscale_structure_window01/predict_module_model.py
+ create mode 100644 experiments/ac_crossscale_structure_window01/resources.csv
+ create mode 100644 experiments/ac_crossscale_structure_window01/runs/crossscale_mom_corr_s45/complete.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/runs/crossscale_mom_corr_s45/run_meta.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/runs/crossscale_mom_corr_s45/train_log.csv
+ create mode 100644 experiments/ac_crossscale_structure_window01/runs/crossscale_mom_corr_s45/validation_complete.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/runs/crossscale_mom_corr_s45/validation_predictions.csv
+ create mode 100644 experiments/ac_crossscale_structure_window01/runtime_sampler.log
+ create mode 100644 experiments/ac_crossscale_structure_window01/runtime_sampler_identity_v2.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/status.json
+launch crossscale_mom_corr_s46 930739
+[main 14152cf] results: preserve completed module training crossscale_mom_corr_s46
+ 16 files changed, 1055 insertions(+), 10 deletions(-)
+ create mode 100644 experiments/ac_crossscale_structure_window01/check_prediction_cli.py
+ create mode 100644 experiments/ac_crossscale_structure_window01/logs/crossscale_mom_corr_s46.log
+ create mode 100644 experiments/ac_crossscale_structure_window01/runs/crossscale_mom_corr_s46/complete.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/runs/crossscale_mom_corr_s46/run_meta.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/runs/crossscale_mom_corr_s46/train_log.csv
+ create mode 100644 experiments/ac_crossscale_structure_window01/runs/crossscale_mom_corr_s46/validation_complete.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/runs/crossscale_mom_corr_s46/validation_predictions.csv
+ create mode 100644 experiments/ac_crossscale_structure_window01/usage_smoke.log
+ create mode 100644 experiments/ac_crossscale_structure_window01/usage_smoke/cli_prediction.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/usage_smoke/independent_cli_audit.json
+launch crossscale_mom_corr_s47 932631
+[main a0030b8] results: preserve completed module training crossscale_mom_corr_s47
+ 11 files changed, 905 insertions(+), 6 deletions(-)
+ create mode 100644 experiments/ac_crossscale_structure_window01/runs/crossscale_mom_corr_s47/complete.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/runs/crossscale_mom_corr_s47/validation_complete.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/runs/crossscale_mom_corr_s47/validation_predictions.csv
+[main cdf2543] research: freeze all3 val-selected mom_corr checkpoints before adaptive test feedback
+ 2 files changed, 78 insertions(+)
+ create mode 100644 experiments/ac_crossscale_structure_window01/evaluations/mom_corr/registration.json
+[main 335d8b4] results: retain independently reconstructed single/C4 test feedback for mom_corr all3 seeds
+ 16 files changed, 4026 insertions(+)
+ create mode 100644 experiments/ac_crossscale_structure_window01/evaluations/mom_corr/group_audit.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/evaluations/mom_corr/s45/independent_audit.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/evaluations/mom_corr/s45/test_c4_predictions.csv
+ create mode 100644 experiments/ac_crossscale_structure_window01/evaluations/mom_corr/s45/test_single_predictions.csv
+ create mode 100644 experiments/ac_crossscale_structure_window01/evaluations/mom_corr/s45/test_views.npy
+ create mode 100644 experiments/ac_crossscale_structure_window01/evaluations/mom_corr/s46/independent_audit.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/evaluations/mom_corr/s46/test_c4_predictions.csv
+ create mode 100644 experiments/ac_crossscale_structure_window01/evaluations/mom_corr/s46/test_single_predictions.csv
+ create mode 100644 experiments/ac_crossscale_structure_window01/evaluations/mom_corr/s46/test_views.npy
+ create mode 100644 experiments/ac_crossscale_structure_window01/evaluations/mom_corr/s47/independent_audit.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/evaluations/mom_corr/s47/test_c4_predictions.csv
+ create mode 100644 experiments/ac_crossscale_structure_window01/evaluations/mom_corr/s47/test_single_predictions.csv
+ create mode 100644 experiments/ac_crossscale_structure_window01/evaluations/mom_corr/s47/test_views.npy
+[main 6b9d175] analysis: record every paired module mechanism, budget control and negative result
+ 7 files changed, 1053 insertions(+)
+ create mode 100644 experiments/ac_crossscale_structure_window01/MECHANISM_REPORT_ZH.md
+ create mode 100644 experiments/ac_crossscale_structure_window01/MODULE_ROUND_REPORT_ZH.md
+ create mode 100644 experiments/ac_crossscale_structure_window01/mechanism_comparisons.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/round_results.json
+launch crossscale_corr_only_s45 934155
+[main 37a68f4] results: preserve completed module training crossscale_corr_only_s45
+ 13 files changed, 931 insertions(+), 12 deletions(-)
+ create mode 100644 experiments/ac_crossscale_structure_window01/logs/crossscale_corr_only_s45.log
+ create mode 100644 experiments/ac_crossscale_structure_window01/runs/crossscale_corr_only_s45/complete.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/runs/crossscale_corr_only_s45/run_meta.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/runs/crossscale_corr_only_s45/train_log.csv
+ create mode 100644 experiments/ac_crossscale_structure_window01/runs/crossscale_corr_only_s45/validation_complete.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/runs/crossscale_corr_only_s45/validation_predictions.csv
+ create mode 100644 experiments/ac_crossscale_structure_window01/start_export.log
+launch crossscale_corr_only_s46 935355
+[main 3679842] results: preserve completed module training crossscale_corr_only_s46
+ 12 files changed, 933 insertions(+), 12 deletions(-)
+ create mode 100644 experiments/ac_crossscale_structure_window01/logs/crossscale_corr_only_s46.log
+ create mode 100644 experiments/ac_crossscale_structure_window01/runs/crossscale_corr_only_s46/complete.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/runs/crossscale_corr_only_s46/run_meta.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/runs/crossscale_corr_only_s46/train_log.csv
+ create mode 100644 experiments/ac_crossscale_structure_window01/runs/crossscale_corr_only_s46/validation_complete.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/runs/crossscale_corr_only_s46/validation_predictions.csv
+launch crossscale_corr_only_s47 936610
+[main ddc88bd] results: preserve completed module training crossscale_corr_only_s47
+ 12 files changed, 927 insertions(+), 11 deletions(-)
+ create mode 100644 experiments/ac_crossscale_structure_window01/logs/crossscale_corr_only_s47.log
+ create mode 100644 experiments/ac_crossscale_structure_window01/runs/crossscale_corr_only_s47/complete.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/runs/crossscale_corr_only_s47/run_meta.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/runs/crossscale_corr_only_s47/train_log.csv
+ create mode 100644 experiments/ac_crossscale_structure_window01/runs/crossscale_corr_only_s47/validation_complete.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/runs/crossscale_corr_only_s47/validation_predictions.csv
+[main 10a3e1e] research: freeze all3 val-selected corr_only checkpoints before adaptive test feedback
+ 4 files changed, 83 insertions(+)
+ create mode 100644 experiments/ac_crossscale_structure_window01/evaluations/corr_only/registration.json
+[main 580af66] results: retain independently reconstructed single/C4 test feedback for corr_only all3 seeds
+ 16 files changed, 4024 insertions(+)
+ create mode 100644 experiments/ac_crossscale_structure_window01/evaluations/corr_only/group_audit.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/evaluations/corr_only/s45/independent_audit.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/evaluations/corr_only/s45/test_c4_predictions.csv
+ create mode 100644 experiments/ac_crossscale_structure_window01/evaluations/corr_only/s45/test_single_predictions.csv
+ create mode 100644 experiments/ac_crossscale_structure_window01/evaluations/corr_only/s45/test_views.npy
+ create mode 100644 experiments/ac_crossscale_structure_window01/evaluations/corr_only/s46/independent_audit.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/evaluations/corr_only/s46/test_c4_predictions.csv
+ create mode 100644 experiments/ac_crossscale_structure_window01/evaluations/corr_only/s46/test_single_predictions.csv
+ create mode 100644 experiments/ac_crossscale_structure_window01/evaluations/corr_only/s46/test_views.npy
+ create mode 100644 experiments/ac_crossscale_structure_window01/evaluations/corr_only/s47/independent_audit.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/evaluations/corr_only/s47/test_c4_predictions.csv
+ create mode 100644 experiments/ac_crossscale_structure_window01/evaluations/corr_only/s47/test_single_predictions.csv
+ create mode 100644 experiments/ac_crossscale_structure_window01/evaluations/corr_only/s47/test_views.npy
+[main 090c3e3] analysis: record every paired module mechanism, budget control and negative result
+ 7 files changed, 542 insertions(+), 1 deletion(-)
+launch crossscale_mom_shuffle_s45 937759
+[main 855025f] results: preserve completed module training crossscale_mom_shuffle_s45
+ 12 files changed, 973 insertions(+), 13 deletions(-)
+ create mode 100644 experiments/ac_crossscale_structure_window01/logs/crossscale_mom_shuffle_s45.log
+ create mode 100644 experiments/ac_crossscale_structure_window01/runs/crossscale_mom_shuffle_s45/complete.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/runs/crossscale_mom_shuffle_s45/run_meta.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/runs/crossscale_mom_shuffle_s45/train_log.csv
+ create mode 100644 experiments/ac_crossscale_structure_window01/runs/crossscale_mom_shuffle_s45/validation_complete.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/runs/crossscale_mom_shuffle_s45/validation_predictions.csv
+launch crossscale_mom_shuffle_s46 938665
+[main 019c4c3] results: preserve completed module training crossscale_mom_shuffle_s46
+ 12 files changed, 974 insertions(+), 10 deletions(-)
+ create mode 100644 experiments/ac_crossscale_structure_window01/logs/crossscale_mom_shuffle_s46.log
+ create mode 100644 experiments/ac_crossscale_structure_window01/runs/crossscale_mom_shuffle_s46/complete.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/runs/crossscale_mom_shuffle_s46/run_meta.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/runs/crossscale_mom_shuffle_s46/train_log.csv
+ create mode 100644 experiments/ac_crossscale_structure_window01/runs/crossscale_mom_shuffle_s46/validation_complete.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/runs/crossscale_mom_shuffle_s46/validation_predictions.csv
+launch crossscale_mom_shuffle_s47 940016
+[main a30e940] results: preserve completed module training crossscale_mom_shuffle_s47
+ 12 files changed, 977 insertions(+), 11 deletions(-)
+ create mode 100644 experiments/ac_crossscale_structure_window01/logs/crossscale_mom_shuffle_s47.log
+ create mode 100644 experiments/ac_crossscale_structure_window01/runs/crossscale_mom_shuffle_s47/complete.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/runs/crossscale_mom_shuffle_s47/run_meta.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/runs/crossscale_mom_shuffle_s47/train_log.csv
+ create mode 100644 experiments/ac_crossscale_structure_window01/runs/crossscale_mom_shuffle_s47/validation_complete.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/runs/crossscale_mom_shuffle_s47/validation_predictions.csv
+[main 65b4f50] research: freeze all3 val-selected mom_shuffle checkpoints before adaptive test feedback
+ 2 files changed, 81 insertions(+)
+ create mode 100644 experiments/ac_crossscale_structure_window01/evaluations/mom_shuffle/registration.json
+[main b940167] results: retain independently reconstructed single/C4 test feedback for mom_shuffle all3 seeds
+ 16 files changed, 4026 insertions(+)
+ create mode 100644 experiments/ac_crossscale_structure_window01/evaluations/mom_shuffle/group_audit.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/evaluations/mom_shuffle/s45/independent_audit.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/evaluations/mom_shuffle/s45/test_c4_predictions.csv
+ create mode 100644 experiments/ac_crossscale_structure_window01/evaluations/mom_shuffle/s45/test_single_predictions.csv
+ create mode 100644 experiments/ac_crossscale_structure_window01/evaluations/mom_shuffle/s45/test_views.npy
+ create mode 100644 experiments/ac_crossscale_structure_window01/evaluations/mom_shuffle/s46/independent_audit.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/evaluations/mom_shuffle/s46/test_c4_predictions.csv
+ create mode 100644 experiments/ac_crossscale_structure_window01/evaluations/mom_shuffle/s46/test_single_predictions.csv
+ create mode 100644 experiments/ac_crossscale_structure_window01/evaluations/mom_shuffle/s46/test_views.npy
+ create mode 100644 experiments/ac_crossscale_structure_window01/evaluations/mom_shuffle/s47/independent_audit.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/evaluations/mom_shuffle/s47/test_c4_predictions.csv
+ create mode 100644 experiments/ac_crossscale_structure_window01/evaluations/mom_shuffle/s47/test_single_predictions.csv
+ create mode 100644 experiments/ac_crossscale_structure_window01/evaluations/mom_shuffle/s47/test_views.npy
+[main 1886d48] analysis: record every paired module mechanism, budget control and negative result
+ 7 files changed, 544 insertions(+), 1 deletion(-)
+launch crossscale_mom_bilinear_s45 941347
+[main f42bd5f] results: preserve completed module training crossscale_mom_bilinear_s45
+ 12 files changed, 971 insertions(+), 11 deletions(-)
+ create mode 100644 experiments/ac_crossscale_structure_window01/logs/crossscale_mom_bilinear_s45.log
+ create mode 100644 experiments/ac_crossscale_structure_window01/runs/crossscale_mom_bilinear_s45/complete.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/runs/crossscale_mom_bilinear_s45/run_meta.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/runs/crossscale_mom_bilinear_s45/train_log.csv
+ create mode 100644 experiments/ac_crossscale_structure_window01/runs/crossscale_mom_bilinear_s45/validation_complete.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/runs/crossscale_mom_bilinear_s45/validation_predictions.csv
+launch crossscale_mom_bilinear_s46 942247
+[main 74be4ae] results: preserve completed module training crossscale_mom_bilinear_s46
+ 12 files changed, 975 insertions(+), 11 deletions(-)
+ create mode 100644 experiments/ac_crossscale_structure_window01/logs/crossscale_mom_bilinear_s46.log
+ create mode 100644 experiments/ac_crossscale_structure_window01/runs/crossscale_mom_bilinear_s46/complete.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/runs/crossscale_mom_bilinear_s46/run_meta.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/runs/crossscale_mom_bilinear_s46/train_log.csv
+ create mode 100644 experiments/ac_crossscale_structure_window01/runs/crossscale_mom_bilinear_s46/validation_complete.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/runs/crossscale_mom_bilinear_s46/validation_predictions.csv
+launch crossscale_mom_bilinear_s47 943221
+[main 20c79c0] results: preserve completed module training crossscale_mom_bilinear_s47
+ 12 files changed, 973 insertions(+), 11 deletions(-)
+ create mode 100644 experiments/ac_crossscale_structure_window01/logs/crossscale_mom_bilinear_s47.log
+ create mode 100644 experiments/ac_crossscale_structure_window01/runs/crossscale_mom_bilinear_s47/complete.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/runs/crossscale_mom_bilinear_s47/run_meta.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/runs/crossscale_mom_bilinear_s47/train_log.csv
+ create mode 100644 experiments/ac_crossscale_structure_window01/runs/crossscale_mom_bilinear_s47/validation_complete.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/runs/crossscale_mom_bilinear_s47/validation_predictions.csv
+[main 0dd01cc] research: freeze all3 val-selected mom_bilinear checkpoints before adaptive test feedback
+ 2 files changed, 81 insertions(+)
+ create mode 100644 experiments/ac_crossscale_structure_window01/evaluations/mom_bilinear/registration.json
+[main 23d35d3] results: retain independently reconstructed single/C4 test feedback for mom_bilinear all3 seeds
+ 16 files changed, 4026 insertions(+)
+ create mode 100644 experiments/ac_crossscale_structure_window01/evaluations/mom_bilinear/group_audit.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/evaluations/mom_bilinear/s45/independent_audit.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/evaluations/mom_bilinear/s45/test_c4_predictions.csv
+ create mode 100644 experiments/ac_crossscale_structure_window01/evaluations/mom_bilinear/s45/test_single_predictions.csv
+ create mode 100644 experiments/ac_crossscale_structure_window01/evaluations/mom_bilinear/s45/test_views.npy
+ create mode 100644 experiments/ac_crossscale_structure_window01/evaluations/mom_bilinear/s46/independent_audit.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/evaluations/mom_bilinear/s46/test_c4_predictions.csv
+ create mode 100644 experiments/ac_crossscale_structure_window01/evaluations/mom_bilinear/s46/test_single_predictions.csv
+ create mode 100644 experiments/ac_crossscale_structure_window01/evaluations/mom_bilinear/s46/test_views.npy
+ create mode 100644 experiments/ac_crossscale_structure_window01/evaluations/mom_bilinear/s47/independent_audit.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/evaluations/mom_bilinear/s47/test_c4_predictions.csv
+ create mode 100644 experiments/ac_crossscale_structure_window01/evaluations/mom_bilinear/s47/test_single_predictions.csv
+ create mode 100644 experiments/ac_crossscale_structure_window01/evaluations/mom_bilinear/s47/test_views.npy
+[main 5f76b18] analysis: record every paired module mechanism, budget control and negative result
+ 7 files changed, 546 insertions(+), 1 deletion(-)
+[main 013aea0] results: audit complete faithful-module and orientation round; retain every seed and negative result
+ 9 files changed, 39 insertions(+), 23 deletions(-)
+ create mode 100644 experiments/ac_crossscale_structure_window01/independent_audit.json
+ create mode 100644 experiments/ac_crossscale_structure_window01/runtime_sampler_complete_v2.json

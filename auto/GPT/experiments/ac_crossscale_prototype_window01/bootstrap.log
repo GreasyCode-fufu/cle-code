@@ -1,0 +1,33 @@
+[main d3da53a] research: freeze bounded cross-scale correlation CPU prototype and faithful original operator references
+ 15 files changed, 1085 insertions(+)
+ create mode 100644 experiments/ac_crossscale_prototype_window01/PROTO_PROTOCOL_ZH.md
+ create mode 100644 experiments/ac_crossscale_prototype_window01/bootstrap.log
+ create mode 100644 experiments/ac_crossscale_prototype_window01/bootstrap_proto.py
+ create mode 100644 experiments/ac_crossscale_prototype_window01/check_crossscale.py
+ create mode 100644 experiments/ac_crossscale_prototype_window01/config.json
+ create mode 100644 experiments/ac_crossscale_prototype_window01/crossscale_readout.py
+ create mode 100644 experiments/ac_crossscale_prototype_window01/identity.json
+ create mode 100644 experiments/ac_crossscale_prototype_window01/launch.json
+ create mode 100644 experiments/ac_crossscale_prototype_window01/upstream/BCNN.py
+ create mode 100644 experiments/ac_crossscale_prototype_window01/upstream/LICENSE_BCNN
+ create mode 100644 experiments/ac_crossscale_prototype_window01/upstream/LICENSE_MPNCOV
+ create mode 100644 experiments/ac_crossscale_prototype_window01/upstream/MPNCOV.py
+ create mode 100644 experiments/ac_crossscale_prototype_window01/upstream/provenance.json
+ create mode 100644 experiments/ac_crossscale_prototype_window01/upstream/shared104c_note.json
+ create mode 100644 experiments/ac_crossscale_prototype_window01/upstream/shared104c_source.txt
+Traceback (most recent call last):
+  File "/data/cle/auto/GPT/experiments/ac_crossscale_prototype_window01/check_crossscale.py", line 44, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/data/cle/auto/GPT/experiments/ac_crossscale_prototype_window01/check_crossscale.py", line 35, in main
+    from models.optimize.ac_moment_refinement_window01.library_cle import LibraryNet
+ModuleNotFoundError: No module named 'models'
+Traceback (most recent call last):
+  File "/data/cle/auto/GPT/experiments/ac_crossscale_prototype_window01/bootstrap_proto.py", line 38, in <module>
+    try:main()
+        ^^^^^^
+  File "/data/cle/auto/GPT/experiments/ac_crossscale_prototype_window01/bootstrap_proto.py", line 33, in main
+    subprocess.run(['/home/login/miniconda3/envs/sunfuxiang/bin/python',str(S/'check_crossscale.py')],cwd=R,env=env,stdin=subprocess.DEVNULL,check=True)
+  File "/home/login/miniconda3/envs/sunfuxiang/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/home/login/miniconda3/envs/sunfuxiang/bin/python', '/data/cle/auto/GPT/experiments/ac_crossscale_prototype_window01/check_crossscale.py']' returned non-zero exit status 1.

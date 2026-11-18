@@ -1,0 +1,270 @@
+<unknown>:850: SyntaxWarning: invalid escape sequence '\*'
+<unknown>:49: SyntaxWarning: invalid escape sequence '\i'
+<unknown>:100: SyntaxWarning: invalid escape sequence '\i'
+<unknown>:58: SyntaxWarning: invalid escape sequence '\m'
+<unknown>:118: SyntaxWarning: invalid escape sequence '\m'
+[main 0c6c084] research: preregister new CLE window baseline, relational depth mechanism and paired controls
+ 31 files changed, 104819 insertions(+)
+ create mode 100644 experiments/ac_structure_20261024_window01/MODULE_REVIEW_ZH.md
+ create mode 100644 experiments/ac_structure_20261024_window01/PROTOCOL.md
+ create mode 100644 experiments/ac_structure_20261024_window01/audit_window01.py
+ create mode 100644 experiments/ac_structure_20261024_window01/bootstrap.lock
+ create mode 100644 experiments/ac_structure_20261024_window01/bootstrap.log
+ create mode 100644 experiments/ac_structure_20261024_window01/bootstrap.py
+ create mode 100644 experiments/ac_structure_20261024_window01/bootstrap_status.json
+ create mode 100644 experiments/ac_structure_20261024_window01/config.json
+ create mode 100644 experiments/ac_structure_20261024_window01/data_boundary_audit.json
+ create mode 100644 experiments/ac_structure_20261024_window01/jobs.json
+ create mode 100644 experiments/ac_structure_20261024_window01/launch.json
+ create mode 100644 experiments/ac_structure_20261024_window01/manifest.json
+ create mode 100644 experiments/ac_structure_20261024_window01/module_inventory.json
+ create mode 100644 experiments/ac_structure_20261024_window01/module_inventory_summary.json
+ create mode 100644 experiments/ac_structure_20261024_window01/references/s45/complete.json
+ create mode 100644 experiments/ac_structure_20261024_window01/references/s45/run_meta.json
+ create mode 100644 experiments/ac_structure_20261024_window01/references/s45/train_log.csv
+ create mode 100644 experiments/ac_structure_20261024_window01/references/s45/validation_complete.json
+ create mode 100644 experiments/ac_structure_20261024_window01/references/s45/validation_predictions.csv
+ create mode 100644 experiments/ac_structure_20261024_window01/references/s46/complete.json
+ create mode 100644 experiments/ac_structure_20261024_window01/references/s46/run_meta.json
+ create mode 100644 experiments/ac_structure_20261024_window01/references/s46/train_log.csv
+ create mode 100644 experiments/ac_structure_20261024_window01/references/s46/validation_complete.json
+ create mode 100644 experiments/ac_structure_20261024_window01/references/s46/validation_predictions.csv
+ create mode 100644 experiments/ac_structure_20261024_window01/references/s47/complete.json
+ create mode 100644 experiments/ac_structure_20261024_window01/references/s47/run_meta.json
+ create mode 100644 experiments/ac_structure_20261024_window01/references/s47/train_log.csv
+ create mode 100644 experiments/ac_structure_20261024_window01/references/s47/validation_complete.json
+ create mode 100644 experiments/ac_structure_20261024_window01/references/s47/validation_predictions.csv
+ create mode 100644 experiments/ac_structure_20261024_window01/run_window01.py
+ create mode 100644 models/optimize/cle_ac_window01.py
+[main 859e056] test: pass real-image numerical, loader-boundary and baseline reuse preflight
+ 3 files changed, 101 insertions(+), 2 deletions(-)
+ create mode 100644 experiments/ac_structure_20261024_window01/preflight.json
+[{"arm": "baseline", "parameters": 21631107, "counted_flops": 12247128576, "peak_gpu_mib": 1882.9248046875, "finite_two_updates": true}, {"arm": "relational", "parameters": 21816486, "counted_flops": 12304046592, "peak_gpu_mib": 2081.24169921875, "finite_two_updates": true}, {"arm": "no_neighbor", "parameters": 21816486, "counted_flops": 12304046592, "peak_gpu_mib": 2243.9736328125, "finite_two_updates": true}, {"arm": "no_depth", "parameters": 21816486, "counted_flops": 12304046592, "peak_gpu_mib": 2246.37060546875, "finite_two_updates": true}, {"arm": "final_only", "parameters": 21816486, "counted_flops": 12304046592, "peak_gpu_mib": 2412.83544921875, "finite_two_updates": true}, {"arm": "official4", "parameters": 21634563, "counted_flops": 12247135488, "peak_gpu_mib": 2595.5380859375, "finite_two_updates": true}, {"arm": "convnext", "parameters": 87569539, "counted_flops": 30707417088, "peak_gpu_mib": 5183.4921875, "finite_two_updates": true}]
+[main 56c5570] perf: measure single and concurrent CLE training throughput before scheduling
+ 29 files changed, 200 insertions(+), 2 deletions(-)
+ create mode 100644 experiments/ac_structure_20261024_window01/profile/bench_relational_100.json
+ create mode 100644 experiments/ac_structure_20261024_window01/profile/bench_relational_200.json
+ create mode 100644 experiments/ac_structure_20261024_window01/profile/bench_relational_201.json
+ create mode 100644 experiments/ac_structure_20261024_window01/profile/bench_relational_400.json
+ create mode 100644 experiments/ac_structure_20261024_window01/profile/bench_relational_401.json
+ create mode 100644 experiments/ac_structure_20261024_window01/profile/bench_relational_402.json
+ create mode 100644 experiments/ac_structure_20261024_window01/profile/bench_relational_403.json
+ create mode 100644 experiments/ac_structure_20261024_window01/profile/gate_1.json
+ create mode 100644 experiments/ac_structure_20261024_window01/profile/gate_2.json
+ create mode 100644 experiments/ac_structure_20261024_window01/profile/gate_4.json
+ create mode 100644 experiments/ac_structure_20261024_window01/profile/profile_1_0.log
+ create mode 100644 experiments/ac_structure_20261024_window01/profile/profile_2_0.log
+ create mode 100644 experiments/ac_structure_20261024_window01/profile/profile_2_1.log
+ create mode 100644 experiments/ac_structure_20261024_window01/profile/profile_4_0.log
+ create mode 100644 experiments/ac_structure_20261024_window01/profile/profile_4_1.log
+ create mode 100644 experiments/ac_structure_20261024_window01/profile/profile_4_2.log
+ create mode 100644 experiments/ac_structure_20261024_window01/profile/profile_4_3.log
+ create mode 100644 experiments/ac_structure_20261024_window01/profile/ready_1_100.json
+ create mode 100644 experiments/ac_structure_20261024_window01/profile/ready_2_200.json
+ create mode 100644 experiments/ac_structure_20261024_window01/profile/ready_2_201.json
+ create mode 100644 experiments/ac_structure_20261024_window01/profile/ready_4_400.json
+ create mode 100644 experiments/ac_structure_20261024_window01/profile/ready_4_401.json
+ create mode 100644 experiments/ac_structure_20261024_window01/profile/ready_4_402.json
+ create mode 100644 experiments/ac_structure_20261024_window01/profile/ready_4_403.json
+ create mode 100644 experiments/ac_structure_20261024_window01/profile/resource_samples.csv
+ create mode 100644 experiments/ac_structure_20261024_window01/profile/selected.json
+ create mode 100644 experiments/ac_structure_20261024_window01/profile/throughput_profile.json
+[launch] window01_relational_s45 791093
+[launch] window01_relational_s46 791188
+[launch] window01_relational_s47 791204
+[launch] window01_no_neighbor_s45 791959
+[main 04ce4f5] results: retain new CLE window completed jobs window01_relational_s45
+ 19 files changed, 1057 insertions(+), 2 deletions(-)
+ create mode 100644 experiments/ac_structure_20261024_window01/logs/window01_no_neighbor_s45.log
+ create mode 100644 experiments/ac_structure_20261024_window01/logs/window01_relational_s45.log
+ create mode 100644 experiments/ac_structure_20261024_window01/logs/window01_relational_s46.log
+ create mode 100644 experiments/ac_structure_20261024_window01/logs/window01_relational_s47.log
+ create mode 100644 experiments/ac_structure_20261024_window01/pipeline.lock
+ create mode 100644 experiments/ac_structure_20261024_window01/pipeline_pid.json
+ create mode 100644 experiments/ac_structure_20261024_window01/resource_samples.csv
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_relational_s45/complete.json
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_relational_s45/run_meta.json
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_relational_s45/train_log.csv
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_relational_s45/validation_complete.json
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_relational_s45/validation_predictions.csv
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_relational_s46/run_meta.json
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_relational_s46/train_log.csv
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_relational_s47/run_meta.json
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_relational_s47/train_log.csv
+ create mode 100644 experiments/ac_structure_20261024_window01/status.json
+[launch] window01_no_neighbor_s46 792195
+[main 7f9e0ce] results: retain new CLE window completed jobs window01_relational_s46
+ 14 files changed, 677 insertions(+), 13 deletions(-)
+ create mode 100644 experiments/ac_structure_20261024_window01/logs/window01_no_neighbor_s46.log
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_no_neighbor_s45/run_meta.json
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_no_neighbor_s45/train_log.csv
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_relational_s46/complete.json
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_relational_s46/validation_complete.json
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_relational_s46/validation_predictions.csv
+[launch] window01_no_neighbor_s47 792245
+[main 0bf2255] results: retain new CLE window completed jobs window01_relational_s47
+ 12 files changed, 542 insertions(+), 14 deletions(-)
+ create mode 100644 experiments/ac_structure_20261024_window01/logs/window01_no_neighbor_s47.log
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_no_neighbor_s46/run_meta.json
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_relational_s47/complete.json
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_relational_s47/validation_complete.json
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_relational_s47/validation_predictions.csv
+[launch] window01_no_depth_s45 793022
+[main 241fd41] results: retain new CLE window completed jobs window01_no_neighbor_s45
+ 18 files changed, 1040 insertions(+), 15 deletions(-)
+ create mode 100644 experiments/ac_structure_20261024_window01/REPRODUCE_AND_USE_ZH.md
+ create mode 100644 experiments/ac_structure_20261024_window01/inference_smoke_cpu.json
+ create mode 100644 experiments/ac_structure_20261024_window01/inference_smoke_cuda.json
+ create mode 100644 experiments/ac_structure_20261024_window01/logs/window01_no_depth_s45.log
+ create mode 100644 experiments/ac_structure_20261024_window01/predict_window01.py
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_no_neighbor_s45/complete.json
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_no_neighbor_s45/validation_complete.json
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_no_neighbor_s45/validation_predictions.csv
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_no_neighbor_s46/train_log.csv
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_no_neighbor_s47/run_meta.json
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_no_neighbor_s47/train_log.csv
+[launch] window01_no_depth_s46 793835
+[main 261d848] results: retain new CLE window completed jobs window01_no_neighbor_s46
+ 18 files changed, 850 insertions(+), 14 deletions(-)
+ create mode 100644 experiments/ac_structure_20261024_window01/RESEARCH_LEDGER.md
+ create mode 100644 experiments/ac_structure_20261024_window01/START_REPORT_ZH.md
+ create mode 100644 experiments/ac_structure_20261024_window01/delivery_snapshot.json
+ create mode 100644 experiments/ac_structure_20261024_window01/logs/window01_no_depth_s46.log
+ create mode 100644 experiments/ac_structure_20261024_window01/monitor.json
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_no_depth_s45/run_meta.json
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_no_depth_s45/train_log.csv
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_no_neighbor_s46/complete.json
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_no_neighbor_s46/validation_complete.json
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_no_neighbor_s46/validation_predictions.csv
+[launch] window01_no_depth_s47 793894
+[main c97ebdd] results: retain new CLE window completed jobs window01_no_neighbor_s47
+ 12 files changed, 547 insertions(+), 14 deletions(-)
+ create mode 100644 experiments/ac_structure_20261024_window01/logs/window01_no_depth_s47.log
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_no_depth_s46/run_meta.json
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_no_neighbor_s47/complete.json
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_no_neighbor_s47/validation_complete.json
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_no_neighbor_s47/validation_predictions.csv
+[launch] window01_final_only_s45 794677
+[main e79c5a5] results: retain new CLE window completed jobs window01_no_depth_s45
+ 14 files changed, 911 insertions(+), 14 deletions(-)
+ create mode 100644 experiments/ac_structure_20261024_window01/logs/window01_final_only_s45.log
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_no_depth_s45/complete.json
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_no_depth_s45/validation_complete.json
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_no_depth_s45/validation_predictions.csv
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_no_depth_s46/train_log.csv
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_no_depth_s47/run_meta.json
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_no_depth_s47/train_log.csv
+[launch] window01_final_only_s46 795002
+[main dc6565b] results: retain new CLE window completed jobs window01_no_depth_s46
+ 14 files changed, 663 insertions(+), 13 deletions(-)
+ create mode 100644 experiments/ac_structure_20261024_window01/logs/window01_final_only_s46.log
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_final_only_s45/run_meta.json
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_final_only_s45/train_log.csv
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_no_depth_s46/complete.json
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_no_depth_s46/validation_complete.json
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_no_depth_s46/validation_predictions.csv
+[launch] window01_final_only_s47 795054
+[main 08b2603] results: retain new CLE window completed jobs window01_no_depth_s47
+ 12 files changed, 543 insertions(+), 14 deletions(-)
+ create mode 100644 experiments/ac_structure_20261024_window01/logs/window01_final_only_s47.log
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_final_only_s46/run_meta.json
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_no_depth_s47/complete.json
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_no_depth_s47/validation_complete.json
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_no_depth_s47/validation_predictions.csv
+[launch] window01_official4_s45 795624
+[main 8590edc] results: retain new CLE window completed jobs window01_final_only_s45
+ 17 files changed, 5557 insertions(+), 14 deletions(-)
+ create mode 100644 experiments/ac_structure_20261024_window01/development_diagnostics/allowed_image_features.csv
+ create mode 100644 experiments/ac_structure_20261024_window01/development_diagnostics/summary.json
+ create mode 100644 experiments/ac_structure_20261024_window01/development_diagnostics/validation_error_evidence.csv
+ create mode 100644 experiments/ac_structure_20261024_window01/logs/window01_official4_s45.log
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_final_only_s45/complete.json
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_final_only_s45/validation_complete.json
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_final_only_s45/validation_predictions.csv
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_final_only_s46/train_log.csv
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_final_only_s47/run_meta.json
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_final_only_s47/train_log.csv
+[launch] window01_official4_s46 795838
+[main 81a13e3] results: retain new CLE window completed jobs window01_final_only_s46
+ 14 files changed, 664 insertions(+), 13 deletions(-)
+ create mode 100644 experiments/ac_structure_20261024_window01/logs/window01_official4_s46.log
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_final_only_s46/complete.json
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_final_only_s46/validation_complete.json
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_final_only_s46/validation_predictions.csv
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_official4_s45/run_meta.json
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_official4_s45/train_log.csv
+[launch] window01_official4_s47 795897
+[main 6c8815d] results: retain new CLE window completed jobs window01_final_only_s47
+ 12 files changed, 543 insertions(+), 14 deletions(-)
+ create mode 100644 experiments/ac_structure_20261024_window01/logs/window01_official4_s47.log
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_final_only_s47/complete.json
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_final_only_s47/validation_complete.json
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_final_only_s47/validation_predictions.csv
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_official4_s46/run_meta.json
+[launch] window01_convnext_s45 796375
+[main 4c1346a] results: retain new CLE window completed jobs window01_official4_s45
+ 14 files changed, 911 insertions(+), 14 deletions(-)
+ create mode 100644 experiments/ac_structure_20261024_window01/logs/window01_convnext_s45.log
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_official4_s45/complete.json
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_official4_s45/validation_complete.json
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_official4_s45/validation_predictions.csv
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_official4_s46/train_log.csv
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_official4_s47/run_meta.json
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_official4_s47/train_log.csv
+[launch] window01_convnext_s46 796562
+[main deef331] results: retain new CLE window completed jobs window01_official4_s46
+ 14 files changed, 640 insertions(+), 13 deletions(-)
+ create mode 100644 experiments/ac_structure_20261024_window01/logs/window01_convnext_s46.log
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_convnext_s45/run_meta.json
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_convnext_s45/train_log.csv
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_official4_s46/complete.json
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_official4_s46/validation_complete.json
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_official4_s46/validation_predictions.csv
+[launch] window01_convnext_s47 796613
+[main fc44e2c] results: retain new CLE window completed jobs window01_official4_s47
+ 12 files changed, 544 insertions(+), 15 deletions(-)
+ create mode 100644 experiments/ac_structure_20261024_window01/logs/window01_convnext_s47.log
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_convnext_s46/run_meta.json
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_official4_s47/complete.json
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_official4_s47/validation_complete.json
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_official4_s47/validation_predictions.csv
+[main ba47f4e] results: retain new CLE window completed jobs window01_convnext_s45
+ 15 files changed, 1294 insertions(+), 15 deletions(-)
+ create mode 100644 experiments/ac_structure_20261024_window01/development_diagnostics.py
+ create mode 100644 experiments/ac_structure_20261024_window01/development_diagnostics/full_rgb_channel_audit.json
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_convnext_s45/complete.json
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_convnext_s45/validation_complete.json
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_convnext_s45/validation_predictions.csv
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_convnext_s46/train_log.csv
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_convnext_s47/run_meta.json
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_convnext_s47/train_log.csv
+[main 4839b7c] results: retain new CLE window completed jobs window01_convnext_s47
+ 13 files changed, 1055 insertions(+), 14 deletions(-)
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_convnext_s46/complete.json
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_convnext_s46/validation_complete.json
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_convnext_s46/validation_predictions.csv
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_convnext_s47/complete.json
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_convnext_s47/validation_complete.json
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_convnext_s47/validation_predictions.csv
+[main 9fe01a9] results: retain new CLE window completed jobs window01_convnext_s46
+ 2 files changed, 10 insertions(+), 6 deletions(-)
+{"baseline": {"macro_f1": 0.9827838861568007, "accuracy": 0.9859484777517564, "malignant_recall": 0.9831223628691982, "patient_equal_accuracy": 0.9827139566501267, "seed_macro_f1": [0.9852333295608263, 0.97497595089378, 0.9881423780157957], "parameters": 21631107}, "relational": {"macro_f1": 0.9843778835179114, "accuracy": 0.9875097580015613, "malignant_recall": 0.9873417721518987, "patient_equal_accuracy": 0.9857220418697507, "seed_macro_f1": [0.9883153158915968, 0.9824729738373952, 0.9823453608247422], "parameters": 21816486}, "no_neighbor": {"macro_f1": 0.9839611778147361, "accuracy": 0.9867291178766587, "malignant_recall": 0.9789029535864979, "patient_equal_accuracy": 0.9832816103649437, "seed_macro_f1": [0.9851217141522907, 0.9833809096459589, 0.9833809096459589], "parameters": 21816486}, "no_depth": {"macro_f1": 0.9829421202929339, "accuracy": 0.9859484777517564, "malignant_recall": 0.9746835443037973, "patient_equal_accuracy": 0.9860678673178672, "seed_macro_f1": [0.9883153158915968, 0.9803849385708715, 0.9801261064163337], "parameters": 21816486}, "final_only": {"macro_f1": 0.9846445280077649, "accuracy": 0.9875097580015613, "malignant_recall": 0.9831223628691982, "patient_equal_accuracy": 0.9871158933658933, "seed_macro_f1": [0.9883153158915968, 0.9803849385708715, 0.9852333295608263], "parameters": 21816486}, "official4": {"macro_f1": 0.9845444497468848, "accuracy": 0.9875097580015613, "malignant_recall": 0.9704641350210971, "patient_equal_accuracy": 0.9825702075702075, "seed_macro_f1": [0.9881423780157957, 0.9822135670236936, 0.9832774042011652], "parameters": 21634563}, "convnext": {"macro_f1": 0.9796415888394483, "accuracy": 0.983606557377049, "malignant_recall": 0.9873417721518987, "patient_equal_accuracy": 0.9714744130967535, "seed_macro_f1": [0.9769549401795664, 0.9823453608247422, 0.979624465514036], "parameters": 87569539}}
+[main 1b95ce3] results: independently audit first new-window CLE round, preserve all outcomes
+ 19 files changed, 6930 insertions(+), 22 deletions(-)
+ create mode 100644 experiments/ac_structure_20261024_window01/ROUND1_REPORT_ZH.md
+ create mode 100644 experiments/ac_structure_20261024_window01/independent_audit.json
+ create mode 100644 experiments/ac_structure_20261024_window01/paired_comparisons.json
+ create mode 100644 experiments/ac_structure_20261024_window01/round1_results.json
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_final_only_s45/diagnostic_off_predictions.csv
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_final_only_s46/diagnostic_off_predictions.csv
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_final_only_s47/diagnostic_off_predictions.csv
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_no_depth_s45/diagnostic_off_predictions.csv
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_no_depth_s46/diagnostic_off_predictions.csv
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_no_depth_s47/diagnostic_off_predictions.csv
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_no_neighbor_s45/diagnostic_off_predictions.csv
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_no_neighbor_s46/diagnostic_off_predictions.csv
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_no_neighbor_s47/diagnostic_off_predictions.csv
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_relational_s45/diagnostic_off_predictions.csv
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_relational_s46/diagnostic_off_predictions.csv
+ create mode 100644 experiments/ac_structure_20261024_window01/runs/window01_relational_s47/diagnostic_off_predictions.csv
+ create mode 100644 experiments/ac_structure_20261024_window01/validation_error_evidence.csv

@@ -1,0 +1,67 @@
+[main f619f66] analysis: freeze complete24-model learning-curve audit inputs after18-model field round
+ 53 files changed, 2656 insertions(+)
+ create mode 100644 experiments/ac_field_final_report_window01/.gitignore
+ create mode 100644 experiments/ac_field_final_report_window01/config.json
+ create mode 100644 experiments/ac_field_final_report_window01/inputs/B0/s45/complete.json
+ create mode 100644 experiments/ac_field_final_report_window01/inputs/B0/s45/train_log.csv
+ create mode 100644 experiments/ac_field_final_report_window01/inputs/B0/s46/complete.json
+ create mode 100644 experiments/ac_field_final_report_window01/inputs/B0/s46/train_log.csv
+ create mode 100644 experiments/ac_field_final_report_window01/inputs/B0/s47/complete.json
+ create mode 100644 experiments/ac_field_final_report_window01/inputs/B0/s47/train_log.csv
+ create mode 100644 experiments/ac_field_final_report_window01/inputs/W0/s45/complete.json
+ create mode 100644 experiments/ac_field_final_report_window01/inputs/W0/s45/train_log.csv
+ create mode 100644 experiments/ac_field_final_report_window01/inputs/W0/s46/complete.json
+ create mode 100644 experiments/ac_field_final_report_window01/inputs/W0/s46/train_log.csv
+ create mode 100644 experiments/ac_field_final_report_window01/inputs/W0/s47/complete.json
+ create mode 100644 experiments/ac_field_final_report_window01/inputs/W0/s47/train_log.csv
+ create mode 100644 experiments/ac_field_final_report_window01/inputs/field_pool/s45/complete.json
+ create mode 100644 experiments/ac_field_final_report_window01/inputs/field_pool/s45/train_log.csv
+ create mode 100644 experiments/ac_field_final_report_window01/inputs/field_pool/s46/complete.json
+ create mode 100644 experiments/ac_field_final_report_window01/inputs/field_pool/s46/train_log.csv
+ create mode 100644 experiments/ac_field_final_report_window01/inputs/field_pool/s47/complete.json
+ create mode 100644 experiments/ac_field_final_report_window01/inputs/field_pool/s47/train_log.csv
+ create mode 100644 experiments/ac_field_final_report_window01/inputs/fov_residual/s45/complete.json
+ create mode 100644 experiments/ac_field_final_report_window01/inputs/fov_residual/s45/train_log.csv
+ create mode 100644 experiments/ac_field_final_report_window01/inputs/fov_residual/s46/complete.json
+ create mode 100644 experiments/ac_field_final_report_window01/inputs/fov_residual/s46/train_log.csv
+ create mode 100644 experiments/ac_field_final_report_window01/inputs/fov_residual/s47/complete.json
+ create mode 100644 experiments/ac_field_final_report_window01/inputs/fov_residual/s47/train_log.csv
+ create mode 100644 experiments/ac_field_final_report_window01/inputs/no_field/s45/complete.json
+ create mode 100644 experiments/ac_field_final_report_window01/inputs/no_field/s45/train_log.csv
+ create mode 100644 experiments/ac_field_final_report_window01/inputs/no_field/s46/complete.json
+ create mode 100644 experiments/ac_field_final_report_window01/inputs/no_field/s46/train_log.csv
+ create mode 100644 experiments/ac_field_final_report_window01/inputs/no_field/s47/complete.json
+ create mode 100644 experiments/ac_field_final_report_window01/inputs/no_field/s47/train_log.csv
+ create mode 100644 experiments/ac_field_final_report_window01/inputs/no_local_norm/s45/complete.json
+ create mode 100644 experiments/ac_field_final_report_window01/inputs/no_local_norm/s45/train_log.csv
+ create mode 100644 experiments/ac_field_final_report_window01/inputs/no_local_norm/s46/complete.json
+ create mode 100644 experiments/ac_field_final_report_window01/inputs/no_local_norm/s46/train_log.csv
+ create mode 100644 experiments/ac_field_final_report_window01/inputs/no_local_norm/s47/complete.json
+ create mode 100644 experiments/ac_field_final_report_window01/inputs/no_local_norm/s47/train_log.csv
+ create mode 100644 experiments/ac_field_final_report_window01/inputs/no_pool/s45/complete.json
+ create mode 100644 experiments/ac_field_final_report_window01/inputs/no_pool/s45/train_log.csv
+ create mode 100644 experiments/ac_field_final_report_window01/inputs/no_pool/s46/complete.json
+ create mode 100644 experiments/ac_field_final_report_window01/inputs/no_pool/s46/train_log.csv
+ create mode 100644 experiments/ac_field_final_report_window01/inputs/no_pool/s47/complete.json
+ create mode 100644 experiments/ac_field_final_report_window01/inputs/no_pool/s47/train_log.csv
+ create mode 100644 experiments/ac_field_final_report_window01/inputs/reference/s45/complete.json
+ create mode 100644 experiments/ac_field_final_report_window01/inputs/reference/s45/train_log.csv
+ create mode 100644 experiments/ac_field_final_report_window01/inputs/reference/s46/complete.json
+ create mode 100644 experiments/ac_field_final_report_window01/inputs/reference/s46/train_log.csv
+ create mode 100644 experiments/ac_field_final_report_window01/inputs/reference/s47/complete.json
+ create mode 100644 experiments/ac_field_final_report_window01/inputs/reference/s47/train_log.csv
+ create mode 100644 experiments/ac_field_final_report_window01/launch.json
+ create mode 100644 experiments/ac_field_final_report_window01/report.log
+ create mode 100644 experiments/ac_field_final_report_window01/report_field_final.py
+[main b9b9bd8] results: preserve full field-round curves, best-epoch audit and complete negative mechanisms
+ 10 files changed, 7356 insertions(+)
+ create mode 100644 experiments/ac_field_final_report_window01/FIELD_COMPLETE_REPORT_ZH.md
+ create mode 100644 experiments/ac_field_final_report_window01/curve_audit.json
+ create mode 100644 experiments/ac_field_final_report_window01/figures/training_loss_curves.pdf
+ create mode 100644 experiments/ac_field_final_report_window01/figures/training_loss_curves.png
+ create mode 100644 experiments/ac_field_final_report_window01/figures/training_loss_curves.svg
+ create mode 100644 experiments/ac_field_final_report_window01/figures/validation_curves.pdf
+ create mode 100644 experiments/ac_field_final_report_window01/figures/validation_curves.png
+ create mode 100644 experiments/ac_field_final_report_window01/figures/validation_curves.svg
+ create mode 100644 experiments/ac_field_final_report_window01/learning_curve_summary.json
+{"path": "experiments/ac_field_final_report_window01/exports/field_complete_evidence.tar.gz", "sha256": "8d37eec8ee013dc47424f41109915b0e91331513006b1ef6fb20c449f9920d98", "bytes": 5601249, "files": 350}

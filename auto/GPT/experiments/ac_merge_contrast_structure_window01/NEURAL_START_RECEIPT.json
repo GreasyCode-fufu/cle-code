@@ -1,0 +1,34 @@
+{
+  "created_at": "2026-10-25T06:21:16.367957+08:00",
+  "source_config_sha256": "1fdd3b28feff6181e6096897011ce96b58744a3e94b31fb37ab08bfb501c7355",
+  "CPU_audit_sha256": "0daa398e9922c949198f1bb4b22e17ec1352f364888a20a0e1ca0ff5c553a356",
+  "CUDA_audit_sha256": "fb32c0f5a43e39d95c9c4d5f77a000a7855a8b8cb6627c86784288e2ea9eefa4",
+  "comparison_preregistration_sha256": "d12013bfd11be7ecd6daa8999bef5139c9ca13ad188ac39bfefa30d5657dd21f",
+  "models": 15,
+  "completed": 0,
+  "verified_live_workers": [
+    {
+      "job": "merge_mom_only_s45",
+      "pid": 1020402,
+      "epochs": 1,
+      "actual_train_count": 2077,
+      "index_set_sha256": "e8fe76bbcf6d8faf8dcb6f38a148341ffe81d10ac0cdc3e4dc38e9f8ccafd691",
+      "samples_per_second": 226.92237365858367
+    }
+  ],
+  "profile_policy": {
+    "slots_by_arm": {
+      "mom_only": 1,
+      "mom_local": 1,
+      "local_only": 1,
+      "mom_mean": 1,
+      "mom_global": 1
+    },
+    "rule": "smallest within97percent of measured best; active-kernel GPU samples, not interpreter startup;6GiB reserve"
+  },
+  "mean_recent_GPU": 72.75,
+  "recent_resource_rows": 8,
+  "real_training_started": true,
+  "three_seed_effectiveness_not_established": true,
+  "overall_research_complete": false
+}

@@ -1,0 +1,83 @@
+{
+  "passed": true,
+  "timestamp": "2026-10-24T11:21:13.033380+08:00",
+  "variants": [
+    {
+      "variant": "frozen_head",
+      "parameters": 21631107,
+      "trainable_parameters": 2307,
+      "counted_flops_224": 12247128576,
+      "amp_batch32_peak_bytes": 224147968,
+      "nonzero_gradient_counts_first_two_steps": [
+        2,
+        2
+      ]
+    },
+    {
+      "variant": "full_finetune",
+      "parameters": 21631107,
+      "trainable_parameters": 21631107,
+      "counted_flops_224": 12247128576,
+      "amp_batch32_peak_bytes": 1989103104,
+      "nonzero_gradient_counts_first_two_steps": [
+        176,
+        176
+      ]
+    },
+    {
+      "variant": "lora_qv",
+      "parameters": 21778563,
+      "trainable_parameters": 149763,
+      "counted_flops_224": 12322920960,
+      "amp_batch32_peak_bytes": 734635520,
+      "nonzero_gradient_counts_first_two_steps": [
+        10,
+        18
+      ]
+    },
+    {
+      "variant": "local_adapter",
+      "parameters": 21782211,
+      "trainable_parameters": 153411,
+      "counted_flops_224": 12323510784,
+      "amp_batch32_peak_bytes": 500134400,
+      "nonzero_gradient_counts_first_two_steps": [
+        10,
+        26
+      ]
+    },
+    {
+      "variant": "cle_cls_context",
+      "parameters": 21781347,
+      "trainable_parameters": 152547,
+      "counted_flops_224": 12285467136,
+      "amp_batch32_peak_bytes": 496896512,
+      "nonzero_gradient_counts_first_two_steps": [
+        10,
+        34
+      ]
+    },
+    {
+      "variant": "cle_mean_context",
+      "parameters": 21781347,
+      "trainable_parameters": 152547,
+      "counted_flops_224": 12285467136,
+      "amp_batch32_peak_bytes": 495454720,
+      "nonzero_gradient_counts_first_two_steps": [
+        10,
+        34
+      ]
+    }
+  ],
+  "checks": [
+    "source/runtime/cache SHA and effective train/val indices",
+    "paired pretrained encoder and head, exact epoch0 AMP outputs",
+    "LoRA forward/backward independent algebra",
+    "local reshape/depthwise convolution via independent unfold and input gradient",
+    "two real-image AMP steps finite and lower/context gradients enabled after output projection learns",
+    "frozen source tensors unchanged; modifier-off equals source encoder plus fitted head",
+    "PEFT trainable parameter ratio <1.03 and counted total FLOP ratio <1.01",
+    "actual batch32 peak memory safe for two workers"
+  ],
+  "flops_note": "Conv/Linear plus attention QK/AV, 2/MAC; excludes activation/normalization/softmax/data movement."
+}

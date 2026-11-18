@@ -1,0 +1,452 @@
+[main 2f72c1d] audit: freeze C4 CSV-aware postprocessing revision2 and new coordinator; trained sources and jobs unchanged
+ 3 files changed, 10 insertions(+)
+ create mode 100644 experiments/ac_module_structure_window01/bootstrap_identity_v3.json
+ create mode 100644 experiments/ac_module_structure_window01/bootstrap_v3.log
+ create mode 100644 experiments/ac_module_structure_window01/launch_v3.json
+[main f2474c4] perf: measure single and concurrent throughput for distinct library and orientation kernels
+ 158 files changed, 1163 insertions(+), 18 deletions(-)
+ create mode 100644 experiments/ac_module_structure_window01/profile/c4_aug/bench_1_0.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/c4_aug/bench_1_0.log
+ create mode 100644 experiments/ac_module_structure_window01/profile/c4_aug/bench_2_0.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/c4_aug/bench_2_0.log
+ create mode 100644 experiments/ac_module_structure_window01/profile/c4_aug/bench_2_1.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/c4_aug/bench_2_1.log
+ create mode 100644 experiments/ac_module_structure_window01/profile/c4_aug/bench_4_0.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/c4_aug/bench_4_0.log
+ create mode 100644 experiments/ac_module_structure_window01/profile/c4_aug/bench_4_1.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/c4_aug/bench_4_1.log
+ create mode 100644 experiments/ac_module_structure_window01/profile/c4_aug/bench_4_2.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/c4_aug/bench_4_2.log
+ create mode 100644 experiments/ac_module_structure_window01/profile/c4_aug/bench_4_3.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/c4_aug/bench_4_3.log
+ create mode 100644 experiments/ac_module_structure_window01/profile/c4_aug/gate_1.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/c4_aug/gate_2.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/c4_aug/gate_4.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/c4_aug/measurements.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/c4_aug/ready_1_0.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/c4_aug/ready_2_0.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/c4_aug/ready_2_1.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/c4_aug/ready_4_0.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/c4_aug/ready_4_1.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/c4_aug/ready_4_2.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/c4_aug/ready_4_3.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/c4_aug/resources.csv
+ create mode 100644 experiments/ac_module_structure_window01/profile/c4_moments/bench_1_0.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/c4_moments/bench_1_0.log
+ create mode 100644 experiments/ac_module_structure_window01/profile/c4_moments/bench_2_0.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/c4_moments/bench_2_0.log
+ create mode 100644 experiments/ac_module_structure_window01/profile/c4_moments/bench_2_1.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/c4_moments/bench_2_1.log
+ create mode 100644 experiments/ac_module_structure_window01/profile/c4_moments/bench_4_0.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/c4_moments/bench_4_0.log
+ create mode 100644 experiments/ac_module_structure_window01/profile/c4_moments/bench_4_1.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/c4_moments/bench_4_1.log
+ create mode 100644 experiments/ac_module_structure_window01/profile/c4_moments/bench_4_2.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/c4_moments/bench_4_2.log
+ create mode 100644 experiments/ac_module_structure_window01/profile/c4_moments/bench_4_3.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/c4_moments/bench_4_3.log
+ create mode 100644 experiments/ac_module_structure_window01/profile/c4_moments/gate_1.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/c4_moments/gate_2.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/c4_moments/gate_4.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/c4_moments/measurements.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/c4_moments/ready_1_0.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/c4_moments/ready_2_0.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/c4_moments/ready_2_1.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/c4_moments/ready_4_0.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/c4_moments/ready_4_1.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/c4_moments/ready_4_2.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/c4_moments/ready_4_3.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/c4_moments/resources.csv
+ create mode 100644 experiments/ac_module_structure_window01/profile/eca/bench_1_0.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/eca/bench_1_0.log
+ create mode 100644 experiments/ac_module_structure_window01/profile/eca/bench_2_0.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/eca/bench_2_0.log
+ create mode 100644 experiments/ac_module_structure_window01/profile/eca/bench_2_1.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/eca/bench_2_1.log
+ create mode 100644 experiments/ac_module_structure_window01/profile/eca/bench_4_0.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/eca/bench_4_0.log
+ create mode 100644 experiments/ac_module_structure_window01/profile/eca/bench_4_1.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/eca/bench_4_1.log
+ create mode 100644 experiments/ac_module_structure_window01/profile/eca/bench_4_2.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/eca/bench_4_2.log
+ create mode 100644 experiments/ac_module_structure_window01/profile/eca/bench_4_3.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/eca/bench_4_3.log
+ create mode 100644 experiments/ac_module_structure_window01/profile/eca/gate_1.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/eca/gate_2.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/eca/gate_4.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/eca/measurements.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/eca/ready_1_0.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/eca/ready_2_0.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/eca/ready_2_1.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/eca/ready_4_0.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/eca/ready_4_1.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/eca/ready_4_2.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/eca/ready_4_3.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/eca/resources.csv
+ create mode 100644 experiments/ac_module_structure_window01/profile/ema/bench_1_0.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/ema/bench_1_0.log
+ create mode 100644 experiments/ac_module_structure_window01/profile/ema/bench_2_0.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/ema/bench_2_0.log
+ create mode 100644 experiments/ac_module_structure_window01/profile/ema/bench_2_1.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/ema/bench_2_1.log
+ create mode 100644 experiments/ac_module_structure_window01/profile/ema/bench_4_0.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/ema/bench_4_0.log
+ create mode 100644 experiments/ac_module_structure_window01/profile/ema/bench_4_1.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/ema/bench_4_1.log
+ create mode 100644 experiments/ac_module_structure_window01/profile/ema/bench_4_2.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/ema/bench_4_2.log
+ create mode 100644 experiments/ac_module_structure_window01/profile/ema/bench_4_3.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/ema/bench_4_3.log
+ create mode 100644 experiments/ac_module_structure_window01/profile/ema/gate_1.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/ema/gate_2.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/ema/gate_4.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/ema/measurements.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/ema/ready_1_0.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/ema/ready_2_0.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/ema/ready_2_1.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/ema/ready_4_0.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/ema/ready_4_1.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/ema/ready_4_2.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/ema/ready_4_3.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/ema/resources.csv
+ create mode 100644 experiments/ac_module_structure_window01/profile/selected.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/simam/bench_1_0.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/simam/bench_1_0.log
+ create mode 100644 experiments/ac_module_structure_window01/profile/simam/bench_2_0.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/simam/bench_2_0.log
+ create mode 100644 experiments/ac_module_structure_window01/profile/simam/bench_2_1.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/simam/bench_2_1.log
+ create mode 100644 experiments/ac_module_structure_window01/profile/simam/bench_4_0.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/simam/bench_4_0.log
+ create mode 100644 experiments/ac_module_structure_window01/profile/simam/bench_4_1.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/simam/bench_4_1.log
+ create mode 100644 experiments/ac_module_structure_window01/profile/simam/bench_4_2.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/simam/bench_4_2.log
+ create mode 100644 experiments/ac_module_structure_window01/profile/simam/bench_4_3.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/simam/bench_4_3.log
+ create mode 100644 experiments/ac_module_structure_window01/profile/simam/gate_1.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/simam/gate_2.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/simam/gate_4.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/simam/measurements.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/simam/ready_1_0.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/simam/ready_2_0.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/simam/ready_2_1.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/simam/ready_4_0.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/simam/ready_4_1.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/simam/ready_4_2.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/simam/ready_4_3.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/simam/resources.csv
+ create mode 100644 experiments/ac_module_structure_window01/profile/wtconv/bench_1_0.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/wtconv/bench_1_0.log
+ create mode 100644 experiments/ac_module_structure_window01/profile/wtconv/bench_2_0.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/wtconv/bench_2_0.log
+ create mode 100644 experiments/ac_module_structure_window01/profile/wtconv/bench_2_1.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/wtconv/bench_2_1.log
+ create mode 100644 experiments/ac_module_structure_window01/profile/wtconv/bench_4_0.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/wtconv/bench_4_0.log
+ create mode 100644 experiments/ac_module_structure_window01/profile/wtconv/bench_4_1.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/wtconv/bench_4_1.log
+ create mode 100644 experiments/ac_module_structure_window01/profile/wtconv/bench_4_2.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/wtconv/bench_4_2.log
+ create mode 100644 experiments/ac_module_structure_window01/profile/wtconv/bench_4_3.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/wtconv/bench_4_3.log
+ create mode 100644 experiments/ac_module_structure_window01/profile/wtconv/gate_1.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/wtconv/gate_2.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/wtconv/gate_4.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/wtconv/measurements.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/wtconv/ready_1_0.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/wtconv/ready_2_0.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/wtconv/ready_2_1.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/wtconv/ready_4_0.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/wtconv/ready_4_1.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/wtconv/ready_4_2.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/wtconv/ready_4_3.json
+ create mode 100644 experiments/ac_module_structure_window01/profile/wtconv/resources.csv
+launch module_wtconv_s45 890212
+[main 0784321] results: preserve completed module training module_wtconv_s45
+ 12 files changed, 1002 insertions(+)
+ create mode 100644 experiments/ac_module_structure_window01/io_resources.jsonl
+ create mode 100644 experiments/ac_module_structure_window01/logs/module_wtconv_s45.log
+ create mode 100644 experiments/ac_module_structure_window01/manager_entry_identity_v2.json
+ create mode 100644 experiments/ac_module_structure_window01/manager_identity.json
+ create mode 100644 experiments/ac_module_structure_window01/resources.csv
+ create mode 100644 experiments/ac_module_structure_window01/runs/module_wtconv_s45/complete.json
+ create mode 100644 experiments/ac_module_structure_window01/runs/module_wtconv_s45/run_meta.json
+ create mode 100644 experiments/ac_module_structure_window01/runs/module_wtconv_s45/train_log.csv
+ create mode 100644 experiments/ac_module_structure_window01/runs/module_wtconv_s45/validation_complete.json
+ create mode 100644 experiments/ac_module_structure_window01/runs/module_wtconv_s45/validation_predictions.csv
+ create mode 100644 experiments/ac_module_structure_window01/status.json
+launch module_wtconv_s46 891248
+[main 9dd4b4f] results: preserve completed module training module_wtconv_s46
+ 8 files changed, 547 insertions(+), 8 deletions(-)
+ create mode 100644 experiments/ac_module_structure_window01/runs/module_wtconv_s46/complete.json
+ create mode 100644 experiments/ac_module_structure_window01/runs/module_wtconv_s46/validation_complete.json
+ create mode 100644 experiments/ac_module_structure_window01/runs/module_wtconv_s46/validation_predictions.csv
+launch module_wtconv_s47 893333
+[main a5f3478] results: preserve completed module training module_wtconv_s47
+ 10 files changed, 819 insertions(+), 10 deletions(-)
+ create mode 100644 experiments/ac_module_structure_window01/logs/module_wtconv_s47.log
+ create mode 100644 experiments/ac_module_structure_window01/runs/module_wtconv_s47/complete.json
+ create mode 100644 experiments/ac_module_structure_window01/runs/module_wtconv_s47/run_meta.json
+ create mode 100644 experiments/ac_module_structure_window01/runs/module_wtconv_s47/train_log.csv
+ create mode 100644 experiments/ac_module_structure_window01/runs/module_wtconv_s47/validation_complete.json
+ create mode 100644 experiments/ac_module_structure_window01/runs/module_wtconv_s47/validation_predictions.csv
+[main 3447998] research: freeze all3 val-selected wtconv checkpoints before adaptive test feedback
+ 2 files changed, 84 insertions(+)
+ create mode 100644 experiments/ac_module_structure_window01/evaluations/wtconv/registration.json
+[main 923943f] results: retain independently reconstructed single/C4 test feedback for wtconv all3 seeds
+ 14 files changed, 4018 insertions(+)
+ create mode 100644 experiments/ac_module_structure_window01/evaluations/wtconv/group_audit.json
+ create mode 100644 experiments/ac_module_structure_window01/evaluations/wtconv/s45/independent_audit.json
+ create mode 100644 experiments/ac_module_structure_window01/evaluations/wtconv/s45/test_c4_predictions.csv
+ create mode 100644 experiments/ac_module_structure_window01/evaluations/wtconv/s45/test_single_predictions.csv
+ create mode 100644 experiments/ac_module_structure_window01/evaluations/wtconv/s45/test_views.npy
+ create mode 100644 experiments/ac_module_structure_window01/evaluations/wtconv/s46/independent_audit.json
+ create mode 100644 experiments/ac_module_structure_window01/evaluations/wtconv/s46/test_c4_predictions.csv
+ create mode 100644 experiments/ac_module_structure_window01/evaluations/wtconv/s46/test_single_predictions.csv
+ create mode 100644 experiments/ac_module_structure_window01/evaluations/wtconv/s46/test_views.npy
+ create mode 100644 experiments/ac_module_structure_window01/evaluations/wtconv/s47/independent_audit.json
+ create mode 100644 experiments/ac_module_structure_window01/evaluations/wtconv/s47/test_c4_predictions.csv
+ create mode 100644 experiments/ac_module_structure_window01/evaluations/wtconv/s47/test_single_predictions.csv
+ create mode 100644 experiments/ac_module_structure_window01/evaluations/wtconv/s47/test_views.npy
+[main 44adc32] analysis: record every paired module mechanism, budget control and negative result
+ 3 files changed, 414 insertions(+), 2 deletions(-)
+launch module_simam_s45 894216
+[main fe42342] results: preserve completed module training module_simam_s45
+ 8 files changed, 646 insertions(+), 7 deletions(-)
+ create mode 100644 experiments/ac_module_structure_window01/runs/module_simam_s45/complete.json
+ create mode 100644 experiments/ac_module_structure_window01/runs/module_simam_s45/validation_complete.json
+ create mode 100644 experiments/ac_module_structure_window01/runs/module_simam_s45/validation_predictions.csv
+launch module_simam_s46 895107
+[main d9afd5a] results: preserve completed module training module_simam_s46
+ 13 files changed, 912 insertions(+), 11 deletions(-)
+ create mode 100644 experiments/ac_module_structure_window01/FIRST_COMPONENT_RESULT_ZH.md
+ create mode 100644 experiments/ac_module_structure_window01/component_decisions/wtconv_round01.json
+ create mode 100644 experiments/ac_module_structure_window01/logs/module_simam_s46.log
+ create mode 100644 experiments/ac_module_structure_window01/record_first_component_decision.py
+ create mode 100644 experiments/ac_module_structure_window01/runs/module_simam_s46/complete.json
+ create mode 100644 experiments/ac_module_structure_window01/runs/module_simam_s46/run_meta.json
+ create mode 100644 experiments/ac_module_structure_window01/runs/module_simam_s46/train_log.csv
+ create mode 100644 experiments/ac_module_structure_window01/runs/module_simam_s46/validation_complete.json
+ create mode 100644 experiments/ac_module_structure_window01/runs/module_simam_s46/validation_predictions.csv
+launch module_simam_s47 895890
+[main 59d10bb] results: preserve completed module training module_simam_s47
+ 8 files changed, 731 insertions(+), 6 deletions(-)
+ create mode 100644 experiments/ac_module_structure_window01/runs/module_simam_s47/complete.json
+ create mode 100644 experiments/ac_module_structure_window01/runs/module_simam_s47/validation_complete.json
+ create mode 100644 experiments/ac_module_structure_window01/runs/module_simam_s47/validation_predictions.csv
+[main c91926c] research: freeze all3 val-selected simam checkpoints before adaptive test feedback
+ 2 files changed, 81 insertions(+)
+ create mode 100644 experiments/ac_module_structure_window01/evaluations/simam/registration.json
+[main ab46a1b] results: retain independently reconstructed single/C4 test feedback for simam all3 seeds
+ 14 files changed, 4018 insertions(+)
+ create mode 100644 experiments/ac_module_structure_window01/evaluations/simam/group_audit.json
+ create mode 100644 experiments/ac_module_structure_window01/evaluations/simam/s45/independent_audit.json
+ create mode 100644 experiments/ac_module_structure_window01/evaluations/simam/s45/test_c4_predictions.csv
+ create mode 100644 experiments/ac_module_structure_window01/evaluations/simam/s45/test_single_predictions.csv
+ create mode 100644 experiments/ac_module_structure_window01/evaluations/simam/s45/test_views.npy
+ create mode 100644 experiments/ac_module_structure_window01/evaluations/simam/s46/independent_audit.json
+ create mode 100644 experiments/ac_module_structure_window01/evaluations/simam/s46/test_c4_predictions.csv
+ create mode 100644 experiments/ac_module_structure_window01/evaluations/simam/s46/test_single_predictions.csv
+ create mode 100644 experiments/ac_module_structure_window01/evaluations/simam/s46/test_views.npy
+ create mode 100644 experiments/ac_module_structure_window01/evaluations/simam/s47/independent_audit.json
+ create mode 100644 experiments/ac_module_structure_window01/evaluations/simam/s47/test_c4_predictions.csv
+ create mode 100644 experiments/ac_module_structure_window01/evaluations/simam/s47/test_single_predictions.csv
+ create mode 100644 experiments/ac_module_structure_window01/evaluations/simam/s47/test_views.npy
+[main bb43bb8] analysis: record every paired module mechanism, budget control and negative result
+ 3 files changed, 412 insertions(+), 1 deletion(-)
+launch module_eca_s45 896790
+[main f3834e7] results: preserve completed module training module_eca_s45
+ 10 files changed, 802 insertions(+), 12 deletions(-)
+ create mode 100644 experiments/ac_module_structure_window01/logs/module_eca_s45.log
+ create mode 100644 experiments/ac_module_structure_window01/runs/module_eca_s45/complete.json
+ create mode 100644 experiments/ac_module_structure_window01/runs/module_eca_s45/run_meta.json
+ create mode 100644 experiments/ac_module_structure_window01/runs/module_eca_s45/train_log.csv
+ create mode 100644 experiments/ac_module_structure_window01/runs/module_eca_s45/validation_complete.json
+ create mode 100644 experiments/ac_module_structure_window01/runs/module_eca_s45/validation_predictions.csv
+launch module_eca_s46 897514
+[main 2d7a865] results: preserve completed module training module_eca_s46
+ 16 files changed, 907 insertions(+), 10 deletions(-)
+ create mode 100644 experiments/ac_module_structure_window01/continuous_runtime_process_io.jsonl
+ create mode 100644 experiments/ac_module_structure_window01/continuous_runtime_resources.csv
+ create mode 100644 experiments/ac_module_structure_window01/continuous_runtime_sampler.py
+ create mode 100644 experiments/ac_module_structure_window01/logs/module_eca_s46.log
+ create mode 100644 experiments/ac_module_structure_window01/runs/module_eca_s46/complete.json
+ create mode 100644 experiments/ac_module_structure_window01/runs/module_eca_s46/run_meta.json
+ create mode 100644 experiments/ac_module_structure_window01/runs/module_eca_s46/train_log.csv
+ create mode 100644 experiments/ac_module_structure_window01/runs/module_eca_s46/validation_complete.json
+ create mode 100644 experiments/ac_module_structure_window01/runs/module_eca_s46/validation_predictions.csv
+ create mode 100644 experiments/ac_module_structure_window01/runtime_sampler.log
+ create mode 100644 experiments/ac_module_structure_window01/runtime_sampler_identity.json
+ create mode 100644 experiments/ac_module_structure_window01/runtime_sampler_launch.json
+launch module_eca_s47 898312
+[main 94ec5d1] results: preserve completed module training module_eca_s47
+ 12 files changed, 936 insertions(+), 10 deletions(-)
+ create mode 100644 experiments/ac_module_structure_window01/logs/module_eca_s47.log
+ create mode 100644 experiments/ac_module_structure_window01/runs/module_eca_s47/complete.json
+ create mode 100644 experiments/ac_module_structure_window01/runs/module_eca_s47/run_meta.json
+ create mode 100644 experiments/ac_module_structure_window01/runs/module_eca_s47/train_log.csv
+ create mode 100644 experiments/ac_module_structure_window01/runs/module_eca_s47/validation_complete.json
+ create mode 100644 experiments/ac_module_structure_window01/runs/module_eca_s47/validation_predictions.csv
+[main 87756f9] research: freeze all3 val-selected eca checkpoints before adaptive test feedback
+ 4 files changed, 86 insertions(+)
+ create mode 100644 experiments/ac_module_structure_window01/evaluations/eca/registration.json
+[main f9ca74e] results: retain independently reconstructed single/C4 test feedback for eca all3 seeds
+ 16 files changed, 4024 insertions(+)
+ create mode 100644 experiments/ac_module_structure_window01/evaluations/eca/group_audit.json
+ create mode 100644 experiments/ac_module_structure_window01/evaluations/eca/s45/independent_audit.json
+ create mode 100644 experiments/ac_module_structure_window01/evaluations/eca/s45/test_c4_predictions.csv
+ create mode 100644 experiments/ac_module_structure_window01/evaluations/eca/s45/test_single_predictions.csv
+ create mode 100644 experiments/ac_module_structure_window01/evaluations/eca/s45/test_views.npy
+ create mode 100644 experiments/ac_module_structure_window01/evaluations/eca/s46/independent_audit.json
+ create mode 100644 experiments/ac_module_structure_window01/evaluations/eca/s46/test_c4_predictions.csv
+ create mode 100644 experiments/ac_module_structure_window01/evaluations/eca/s46/test_single_predictions.csv
+ create mode 100644 experiments/ac_module_structure_window01/evaluations/eca/s46/test_views.npy
+ create mode 100644 experiments/ac_module_structure_window01/evaluations/eca/s47/independent_audit.json
+ create mode 100644 experiments/ac_module_structure_window01/evaluations/eca/s47/test_c4_predictions.csv
+ create mode 100644 experiments/ac_module_structure_window01/evaluations/eca/s47/test_single_predictions.csv
+ create mode 100644 experiments/ac_module_structure_window01/evaluations/eca/s47/test_views.npy
+[main 994a49f] analysis: record every paired module mechanism, budget control and negative result
+ 5 files changed, 416 insertions(+), 1 deletion(-)
+launch module_ema_s45 899303
+[main a1f04b3] results: preserve completed module training module_ema_s45
+ 12 files changed, 937 insertions(+), 13 deletions(-)
+ create mode 100644 experiments/ac_module_structure_window01/logs/module_ema_s45.log
+ create mode 100644 experiments/ac_module_structure_window01/runs/module_ema_s45/complete.json
+ create mode 100644 experiments/ac_module_structure_window01/runs/module_ema_s45/run_meta.json
+ create mode 100644 experiments/ac_module_structure_window01/runs/module_ema_s45/train_log.csv
+ create mode 100644 experiments/ac_module_structure_window01/runs/module_ema_s45/validation_complete.json
+ create mode 100644 experiments/ac_module_structure_window01/runs/module_ema_s45/validation_predictions.csv
+launch module_ema_s46 901042
+[main 7ae1104] results: preserve completed module training module_ema_s46
+ 12 files changed, 945 insertions(+), 13 deletions(-)
+ create mode 100644 experiments/ac_module_structure_window01/logs/module_ema_s46.log
+ create mode 100644 experiments/ac_module_structure_window01/runs/module_ema_s46/complete.json
+ create mode 100644 experiments/ac_module_structure_window01/runs/module_ema_s46/run_meta.json
+ create mode 100644 experiments/ac_module_structure_window01/runs/module_ema_s46/train_log.csv
+ create mode 100644 experiments/ac_module_structure_window01/runs/module_ema_s46/validation_complete.json
+ create mode 100644 experiments/ac_module_structure_window01/runs/module_ema_s46/validation_predictions.csv
+launch module_ema_s47 901888
+[main 20c0e7e] results: preserve completed module training module_ema_s47
+ 12 files changed, 942 insertions(+), 12 deletions(-)
+ create mode 100644 experiments/ac_module_structure_window01/logs/module_ema_s47.log
+ create mode 100644 experiments/ac_module_structure_window01/runs/module_ema_s47/complete.json
+ create mode 100644 experiments/ac_module_structure_window01/runs/module_ema_s47/run_meta.json
+ create mode 100644 experiments/ac_module_structure_window01/runs/module_ema_s47/train_log.csv
+ create mode 100644 experiments/ac_module_structure_window01/runs/module_ema_s47/validation_complete.json
+ create mode 100644 experiments/ac_module_structure_window01/runs/module_ema_s47/validation_predictions.csv
+[main 1f24195] research: freeze all3 val-selected ema checkpoints before adaptive test feedback
+ 4 files changed, 86 insertions(+)
+ create mode 100644 experiments/ac_module_structure_window01/evaluations/ema/registration.json
+[main 4bdcc05] results: retain independently reconstructed single/C4 test feedback for ema all3 seeds
+ 16 files changed, 4024 insertions(+)
+ create mode 100644 experiments/ac_module_structure_window01/evaluations/ema/group_audit.json
+ create mode 100644 experiments/ac_module_structure_window01/evaluations/ema/s45/independent_audit.json
+ create mode 100644 experiments/ac_module_structure_window01/evaluations/ema/s45/test_c4_predictions.csv
+ create mode 100644 experiments/ac_module_structure_window01/evaluations/ema/s45/test_single_predictions.csv
+ create mode 100644 experiments/ac_module_structure_window01/evaluations/ema/s45/test_views.npy
+ create mode 100644 experiments/ac_module_structure_window01/evaluations/ema/s46/independent_audit.json
+ create mode 100644 experiments/ac_module_structure_window01/evaluations/ema/s46/test_c4_predictions.csv
+ create mode 100644 experiments/ac_module_structure_window01/evaluations/ema/s46/test_single_predictions.csv
+ create mode 100644 experiments/ac_module_structure_window01/evaluations/ema/s46/test_views.npy
+ create mode 100644 experiments/ac_module_structure_window01/evaluations/ema/s47/independent_audit.json
+ create mode 100644 experiments/ac_module_structure_window01/evaluations/ema/s47/test_c4_predictions.csv
+ create mode 100644 experiments/ac_module_structure_window01/evaluations/ema/s47/test_single_predictions.csv
+ create mode 100644 experiments/ac_module_structure_window01/evaluations/ema/s47/test_views.npy
+[main c1c8be2] analysis: record every paired module mechanism, budget control and negative result
+ 5 files changed, 416 insertions(+), 1 deletion(-)
+launch module_c4_moments_s45 902964
+[main 3878652] results: preserve completed module training module_c4_moments_s45
+ 10 files changed, 837 insertions(+), 6 deletions(-)
+ create mode 100644 experiments/ac_module_structure_window01/runs/module_c4_moments_s45/complete.json
+ create mode 100644 experiments/ac_module_structure_window01/runs/module_c4_moments_s45/validation_complete.json
+ create mode 100644 experiments/ac_module_structure_window01/runs/module_c4_moments_s45/validation_predictions.csv
+launch module_c4_moments_s46 904242
+[main 94c3499] results: preserve completed module training module_c4_moments_s46
+ 12 files changed, 969 insertions(+), 10 deletions(-)
+ create mode 100644 experiments/ac_module_structure_window01/logs/module_c4_moments_s46.log
+ create mode 100644 experiments/ac_module_structure_window01/runs/module_c4_moments_s46/complete.json
+ create mode 100644 experiments/ac_module_structure_window01/runs/module_c4_moments_s46/run_meta.json
+ create mode 100644 experiments/ac_module_structure_window01/runs/module_c4_moments_s46/train_log.csv
+ create mode 100644 experiments/ac_module_structure_window01/runs/module_c4_moments_s46/validation_complete.json
+ create mode 100644 experiments/ac_module_structure_window01/runs/module_c4_moments_s46/validation_predictions.csv
+launch module_c4_moments_s47 905328
+[main 8b82f92] results: preserve completed module training module_c4_moments_s47
+ 12 files changed, 975 insertions(+), 11 deletions(-)
+ create mode 100644 experiments/ac_module_structure_window01/logs/module_c4_moments_s47.log
+ create mode 100644 experiments/ac_module_structure_window01/runs/module_c4_moments_s47/complete.json
+ create mode 100644 experiments/ac_module_structure_window01/runs/module_c4_moments_s47/run_meta.json
+ create mode 100644 experiments/ac_module_structure_window01/runs/module_c4_moments_s47/train_log.csv
+ create mode 100644 experiments/ac_module_structure_window01/runs/module_c4_moments_s47/validation_complete.json
+ create mode 100644 experiments/ac_module_structure_window01/runs/module_c4_moments_s47/validation_predictions.csv
+[main ca2a92b] research: freeze all3 val-selected c4_moments checkpoints before adaptive test feedback
+ 2 files changed, 84 insertions(+)
+ create mode 100644 experiments/ac_module_structure_window01/evaluations/c4_moments/registration.json
+[main b0bb7a2] results: retain independently reconstructed single/C4 test feedback for c4_moments all3 seeds
+ 16 files changed, 4026 insertions(+)
+ create mode 100644 experiments/ac_module_structure_window01/evaluations/c4_moments/group_audit.json
+ create mode 100644 experiments/ac_module_structure_window01/evaluations/c4_moments/s45/independent_audit.json
+ create mode 100644 experiments/ac_module_structure_window01/evaluations/c4_moments/s45/test_c4_predictions.csv
+ create mode 100644 experiments/ac_module_structure_window01/evaluations/c4_moments/s45/test_single_predictions.csv
+ create mode 100644 experiments/ac_module_structure_window01/evaluations/c4_moments/s45/test_views.npy
+ create mode 100644 experiments/ac_module_structure_window01/evaluations/c4_moments/s46/independent_audit.json
+ create mode 100644 experiments/ac_module_structure_window01/evaluations/c4_moments/s46/test_c4_predictions.csv
+ create mode 100644 experiments/ac_module_structure_window01/evaluations/c4_moments/s46/test_single_predictions.csv
+ create mode 100644 experiments/ac_module_structure_window01/evaluations/c4_moments/s46/test_views.npy
+ create mode 100644 experiments/ac_module_structure_window01/evaluations/c4_moments/s47/independent_audit.json
+ create mode 100644 experiments/ac_module_structure_window01/evaluations/c4_moments/s47/test_c4_predictions.csv
+ create mode 100644 experiments/ac_module_structure_window01/evaluations/c4_moments/s47/test_single_predictions.csv
+ create mode 100644 experiments/ac_module_structure_window01/evaluations/c4_moments/s47/test_views.npy
+[main 0d31a8e] analysis: record every paired module mechanism, budget control and negative result
+ 5 files changed, 418 insertions(+), 1 deletion(-)
+launch module_c4_aug_s45 906460
+[main 09cd35d] results: preserve completed module training module_c4_aug_s45
+ 12 files changed, 925 insertions(+), 13 deletions(-)
+ create mode 100644 experiments/ac_module_structure_window01/logs/module_c4_aug_s45.log
+ create mode 100644 experiments/ac_module_structure_window01/runs/module_c4_aug_s45/complete.json
+ create mode 100644 experiments/ac_module_structure_window01/runs/module_c4_aug_s45/run_meta.json
+ create mode 100644 experiments/ac_module_structure_window01/runs/module_c4_aug_s45/train_log.csv
+ create mode 100644 experiments/ac_module_structure_window01/runs/module_c4_aug_s45/validation_complete.json
+ create mode 100644 experiments/ac_module_structure_window01/runs/module_c4_aug_s45/validation_predictions.csv
+launch module_c4_aug_s46 907276
+[main 8e1b080] results: preserve completed module training module_c4_aug_s46
+ 12 files changed, 926 insertions(+), 10 deletions(-)
+ create mode 100644 experiments/ac_module_structure_window01/logs/module_c4_aug_s46.log
+ create mode 100644 experiments/ac_module_structure_window01/runs/module_c4_aug_s46/complete.json
+ create mode 100644 experiments/ac_module_structure_window01/runs/module_c4_aug_s46/run_meta.json
+ create mode 100644 experiments/ac_module_structure_window01/runs/module_c4_aug_s46/train_log.csv
+ create mode 100644 experiments/ac_module_structure_window01/runs/module_c4_aug_s46/validation_complete.json
+ create mode 100644 experiments/ac_module_structure_window01/runs/module_c4_aug_s46/validation_predictions.csv
+launch module_c4_aug_s47 908101
+[main 080d358] results: preserve completed module training module_c4_aug_s47
+ 12 files changed, 931 insertions(+), 13 deletions(-)
+ create mode 100644 experiments/ac_module_structure_window01/logs/module_c4_aug_s47.log
+ create mode 100644 experiments/ac_module_structure_window01/runs/module_c4_aug_s47/complete.json
+ create mode 100644 experiments/ac_module_structure_window01/runs/module_c4_aug_s47/run_meta.json
+ create mode 100644 experiments/ac_module_structure_window01/runs/module_c4_aug_s47/train_log.csv
+ create mode 100644 experiments/ac_module_structure_window01/runs/module_c4_aug_s47/validation_complete.json
+ create mode 100644 experiments/ac_module_structure_window01/runs/module_c4_aug_s47/validation_predictions.csv
+[main f50c8b2] research: freeze all3 val-selected c4_aug checkpoints before adaptive test feedback
+ 2 files changed, 84 insertions(+)
+ create mode 100644 experiments/ac_module_structure_window01/evaluations/c4_aug/registration.json
+[main a003c0f] results: retain independently reconstructed single/C4 test feedback for c4_aug all3 seeds
+ 16 files changed, 4026 insertions(+)
+ create mode 100644 experiments/ac_module_structure_window01/evaluations/c4_aug/group_audit.json
+ create mode 100644 experiments/ac_module_structure_window01/evaluations/c4_aug/s45/independent_audit.json
+ create mode 100644 experiments/ac_module_structure_window01/evaluations/c4_aug/s45/test_c4_predictions.csv
+ create mode 100644 experiments/ac_module_structure_window01/evaluations/c4_aug/s45/test_single_predictions.csv
+ create mode 100644 experiments/ac_module_structure_window01/evaluations/c4_aug/s45/test_views.npy
+ create mode 100644 experiments/ac_module_structure_window01/evaluations/c4_aug/s46/independent_audit.json
+ create mode 100644 experiments/ac_module_structure_window01/evaluations/c4_aug/s46/test_c4_predictions.csv
+ create mode 100644 experiments/ac_module_structure_window01/evaluations/c4_aug/s46/test_single_predictions.csv
+ create mode 100644 experiments/ac_module_structure_window01/evaluations/c4_aug/s46/test_views.npy
+ create mode 100644 experiments/ac_module_structure_window01/evaluations/c4_aug/s47/independent_audit.json
+ create mode 100644 experiments/ac_module_structure_window01/evaluations/c4_aug/s47/test_c4_predictions.csv
+ create mode 100644 experiments/ac_module_structure_window01/evaluations/c4_aug/s47/test_single_predictions.csv
+ create mode 100644 experiments/ac_module_structure_window01/evaluations/c4_aug/s47/test_views.npy
+[main dd9a263] analysis: record every paired module mechanism, budget control and negative result
+ 5 files changed, 464 insertions(+), 1 deletion(-)
+[main 349ebcf] results: audit complete faithful-module and orientation round; retain every seed and negative result
+ 9 files changed, 42 insertions(+), 23 deletions(-)
+ create mode 100644 experiments/ac_module_structure_window01/independent_audit.json
+ create mode 100644 experiments/ac_module_structure_window01/runtime_sampler_complete.json

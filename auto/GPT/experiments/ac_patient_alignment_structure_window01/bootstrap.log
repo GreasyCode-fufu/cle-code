@@ -1,0 +1,327 @@
+[main 1b489f9] research: freeze retained-moment cross-patient alignment drop-one matureSupCon and within-patient controls
+ 38 files changed, 76333 insertions(+)
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/.gitignore
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/MODULE_DIFFERENCES_ZH.md
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/MODULE_PROTOCOL_ZH.md
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/audit_module_structure.py
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/baseline_reference.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/baseline_selection.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/bootstrap.log
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/bootstrap_identity.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/bootstrap_module_structure.py
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/build_patient_study.py
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/check_module_sources.py
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/compare_patient_controls.py
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/comparison_preregistration.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/config.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/construction_receipt.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/continuous_runtime_sampler.py
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/finish_direct_controls.py
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/jobs.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/library_cle.py
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/manifest.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/objective_engine.py
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/objective_impl.py
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/postprocessing_revision_v2.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/predict_module_model.py
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/preflight_impl.py
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/run_module_structure.py
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/run_patient_manager.py
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/shared_snapshot_manifest.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/upstream/LICENSE
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/upstream/isolated_engine_changes.diff
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/upstream/losses.py
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/upstream/prototype_protocol.md
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/upstream/provenance.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/working_reference.json
+ create mode 100644 models/optimize/ac_patient_alignment_window01/__init__.py
+ create mode 100644 models/optimize/ac_patient_alignment_window01/c4_moment_stem.py
+ create mode 100644 models/optimize/ac_patient_alignment_window01/library_cle.py
+ create mode 100644 models/optimize/ac_patient_alignment_window01/patient_alignment.py
+[main e5eb87e] test: verify patient objective public pairing projector gradients CPU loss and isolated engine change scope
+ 2 files changed, 104 insertions(+)
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/module_source_audit.json
+[main 34dcc97] test: validate CUDA patient objective gradients public pairing six427 probability reconstructions and strict train metadata whitelist
+ 2 files changed, 187 insertions(+)
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/preflight.json
+[main 8633403] perf: measure single and concurrent throughput for distinct library and orientation kernels
+ 93 files changed, 696 insertions(+)
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/cross_only/bench_1_0.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/cross_only/bench_1_0.log
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/cross_only/bench_2_0.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/cross_only/bench_2_0.log
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/cross_only/bench_2_1.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/cross_only/bench_2_1.log
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/cross_only/bench_4_0.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/cross_only/bench_4_0.log
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/cross_only/bench_4_1.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/cross_only/bench_4_1.log
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/cross_only/bench_4_2.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/cross_only/bench_4_2.log
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/cross_only/bench_4_3.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/cross_only/bench_4_3.log
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/cross_only/gate_1.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/cross_only/gate_2.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/cross_only/gate_4.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/cross_only/measurements.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/cross_only/ready_1_0.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/cross_only/ready_2_0.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/cross_only/ready_2_1.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/cross_only/ready_4_0.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/cross_only/ready_4_1.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/cross_only/ready_4_2.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/cross_only/ready_4_3.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/cross_only/resources.csv
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/mom_cross/bench_1_0.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/mom_cross/bench_1_0.log
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/mom_cross/bench_2_0.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/mom_cross/bench_2_0.log
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/mom_cross/bench_2_1.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/mom_cross/bench_2_1.log
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/mom_cross/gate_1.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/mom_cross/gate_2.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/mom_cross/measurements.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/mom_cross/ready_1_0.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/mom_cross/ready_2_0.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/mom_cross/ready_2_1.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/mom_cross/resources.csv
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/mom_supcon/bench_1_0.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/mom_supcon/bench_1_0.log
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/mom_supcon/bench_2_0.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/mom_supcon/bench_2_0.log
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/mom_supcon/bench_2_1.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/mom_supcon/bench_2_1.log
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/mom_supcon/bench_4_0.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/mom_supcon/bench_4_0.log
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/mom_supcon/bench_4_1.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/mom_supcon/bench_4_1.log
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/mom_supcon/bench_4_2.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/mom_supcon/bench_4_2.log
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/mom_supcon/bench_4_3.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/mom_supcon/bench_4_3.log
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/mom_supcon/gate_1.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/mom_supcon/gate_2.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/mom_supcon/gate_4.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/mom_supcon/measurements.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/mom_supcon/ready_1_0.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/mom_supcon/ready_2_0.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/mom_supcon/ready_2_1.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/mom_supcon/ready_4_0.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/mom_supcon/ready_4_1.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/mom_supcon/ready_4_2.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/mom_supcon/ready_4_3.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/mom_supcon/resources.csv
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/mom_within/bench_1_0.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/mom_within/bench_1_0.log
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/mom_within/bench_2_0.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/mom_within/bench_2_0.log
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/mom_within/bench_2_1.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/mom_within/bench_2_1.log
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/mom_within/bench_4_0.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/mom_within/bench_4_0.log
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/mom_within/bench_4_1.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/mom_within/bench_4_1.log
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/mom_within/bench_4_2.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/mom_within/bench_4_2.log
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/mom_within/bench_4_3.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/mom_within/bench_4_3.log
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/mom_within/gate_1.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/mom_within/gate_2.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/mom_within/gate_4.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/mom_within/measurements.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/mom_within/ready_1_0.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/mom_within/ready_2_0.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/mom_within/ready_2_1.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/mom_within/ready_4_0.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/mom_within/ready_4_1.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/mom_within/ready_4_2.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/mom_within/ready_4_3.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/mom_within/resources.csv
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/profile/selected.json
+launch patient_mom_cross_s45 978674
+[main 29dfbc3] results: preserve completed module training patient_mom_cross_s45
+ 11 files changed, 666 insertions(+), 6 deletions(-)
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/runs/patient_mom_cross_s45/complete.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/runs/patient_mom_cross_s45/validation_complete.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/runs/patient_mom_cross_s45/validation_predictions.csv
+launch patient_mom_cross_s46 980224
+[main 6bbf569] results: preserve completed module training patient_mom_cross_s46
+ 10 files changed, 676 insertions(+), 6 deletions(-)
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/runs/patient_mom_cross_s46/complete.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/runs/patient_mom_cross_s46/validation_complete.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/runs/patient_mom_cross_s46/validation_predictions.csv
+launch patient_mom_cross_s47 981659
+[main d171f2d] results: preserve completed module training patient_mom_cross_s47
+ 12 files changed, 645 insertions(+), 6 deletions(-)
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/objective_logging_finisher.log
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/objective_logging_finisher_identity.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/runs/patient_mom_cross_s47/complete.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/runs/patient_mom_cross_s47/validation_complete.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/runs/patient_mom_cross_s47/validation_predictions.csv
+[main 2c49157] research: freeze all3 val-selected mom_cross checkpoints before adaptive test feedback
+ 4 files changed, 82 insertions(+)
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/evaluations/mom_cross/registration.json
+[main 04a83ad] results: retain independently reconstructed single/C4 test feedback for mom_cross all3 seeds
+ 16 files changed, 4026 insertions(+)
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/evaluations/mom_cross/group_audit.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/evaluations/mom_cross/s45/independent_audit.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/evaluations/mom_cross/s45/test_c4_predictions.csv
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/evaluations/mom_cross/s45/test_single_predictions.csv
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/evaluations/mom_cross/s45/test_views.npy
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/evaluations/mom_cross/s46/independent_audit.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/evaluations/mom_cross/s46/test_c4_predictions.csv
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/evaluations/mom_cross/s46/test_single_predictions.csv
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/evaluations/mom_cross/s46/test_views.npy
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/evaluations/mom_cross/s47/independent_audit.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/evaluations/mom_cross/s47/test_c4_predictions.csv
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/evaluations/mom_cross/s47/test_single_predictions.csv
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/evaluations/mom_cross/s47/test_views.npy
+[main 8e524fc] analysis: record every paired module mechanism, budget control and negative result
+ 7 files changed, 1058 insertions(+)
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/MECHANISM_REPORT_ZH.md
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/MODULE_ROUND_REPORT_ZH.md
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/mechanism_comparisons.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/round_results.json
+launch patient_cross_only_s45 983070
+launch patient_cross_only_s46 983071
+[main bafd020] results: preserve completed module training patient_cross_only_s45,patient_cross_only_s46
+ 18 files changed, 1820 insertions(+), 12 deletions(-)
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/logs/patient_cross_only_s45.log
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/logs/patient_cross_only_s46.log
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/runs/patient_cross_only_s45/complete.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/runs/patient_cross_only_s45/run_meta.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/runs/patient_cross_only_s45/train_log.csv
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/runs/patient_cross_only_s45/validation_complete.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/runs/patient_cross_only_s45/validation_predictions.csv
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/runs/patient_cross_only_s46/complete.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/runs/patient_cross_only_s46/run_meta.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/runs/patient_cross_only_s46/train_log.csv
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/runs/patient_cross_only_s46/validation_complete.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/runs/patient_cross_only_s46/validation_predictions.csv
+launch patient_cross_only_s47 984749
+[main 203994b] results: preserve completed module training patient_cross_only_s47
+ 12 files changed, 942 insertions(+), 16 deletions(-)
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/logs/patient_cross_only_s47.log
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/runs/patient_cross_only_s47/complete.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/runs/patient_cross_only_s47/run_meta.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/runs/patient_cross_only_s47/train_log.csv
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/runs/patient_cross_only_s47/validation_complete.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/runs/patient_cross_only_s47/validation_predictions.csv
+[main 6ddca35] research: freeze all3 val-selected cross_only checkpoints before adaptive test feedback
+ 2 files changed, 81 insertions(+)
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/evaluations/cross_only/registration.json
+[main ceba436] results: retain independently reconstructed single/C4 test feedback for cross_only all3 seeds
+ 16 files changed, 4024 insertions(+)
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/evaluations/cross_only/group_audit.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/evaluations/cross_only/s45/independent_audit.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/evaluations/cross_only/s45/test_c4_predictions.csv
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/evaluations/cross_only/s45/test_single_predictions.csv
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/evaluations/cross_only/s45/test_views.npy
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/evaluations/cross_only/s46/independent_audit.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/evaluations/cross_only/s46/test_c4_predictions.csv
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/evaluations/cross_only/s46/test_single_predictions.csv
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/evaluations/cross_only/s46/test_views.npy
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/evaluations/cross_only/s47/independent_audit.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/evaluations/cross_only/s47/test_c4_predictions.csv
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/evaluations/cross_only/s47/test_single_predictions.csv
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/evaluations/cross_only/s47/test_views.npy
+[main 9713249] analysis: record every paired module mechanism, budget control and negative result
+ 7 files changed, 542 insertions(+), 1 deletion(-)
+launch patient_mom_supcon_s45 985734
+[main bfa9a0b] results: preserve completed module training patient_mom_supcon_s45
+ 12 files changed, 976 insertions(+), 12 deletions(-)
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/logs/patient_mom_supcon_s45.log
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/runs/patient_mom_supcon_s45/complete.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/runs/patient_mom_supcon_s45/run_meta.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/runs/patient_mom_supcon_s45/train_log.csv
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/runs/patient_mom_supcon_s45/validation_complete.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/runs/patient_mom_supcon_s45/validation_predictions.csv
+launch patient_mom_supcon_s46 986766
+[main c7d9d8d] results: preserve completed module training patient_mom_supcon_s46
+ 12 files changed, 980 insertions(+), 12 deletions(-)
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/logs/patient_mom_supcon_s46.log
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/runs/patient_mom_supcon_s46/complete.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/runs/patient_mom_supcon_s46/run_meta.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/runs/patient_mom_supcon_s46/train_log.csv
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/runs/patient_mom_supcon_s46/validation_complete.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/runs/patient_mom_supcon_s46/validation_predictions.csv
+launch patient_mom_supcon_s47 988009
+[main d4b441d] results: preserve completed module training patient_mom_supcon_s47
+ 12 files changed, 982 insertions(+), 12 deletions(-)
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/logs/patient_mom_supcon_s47.log
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/runs/patient_mom_supcon_s47/complete.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/runs/patient_mom_supcon_s47/run_meta.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/runs/patient_mom_supcon_s47/train_log.csv
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/runs/patient_mom_supcon_s47/validation_complete.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/runs/patient_mom_supcon_s47/validation_predictions.csv
+[main 44e07f8] research: freeze all3 val-selected mom_supcon checkpoints before adaptive test feedback
+ 2 files changed, 81 insertions(+)
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/evaluations/mom_supcon/registration.json
+[main 8f23599] results: retain independently reconstructed single/C4 test feedback for mom_supcon all3 seeds
+ 16 files changed, 4024 insertions(+)
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/evaluations/mom_supcon/group_audit.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/evaluations/mom_supcon/s45/independent_audit.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/evaluations/mom_supcon/s45/test_c4_predictions.csv
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/evaluations/mom_supcon/s45/test_single_predictions.csv
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/evaluations/mom_supcon/s45/test_views.npy
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/evaluations/mom_supcon/s46/independent_audit.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/evaluations/mom_supcon/s46/test_c4_predictions.csv
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/evaluations/mom_supcon/s46/test_single_predictions.csv
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/evaluations/mom_supcon/s46/test_views.npy
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/evaluations/mom_supcon/s47/independent_audit.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/evaluations/mom_supcon/s47/test_c4_predictions.csv
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/evaluations/mom_supcon/s47/test_single_predictions.csv
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/evaluations/mom_supcon/s47/test_views.npy
+[main 1ccacae] analysis: record every paired module mechanism, budget control and negative result
+ 7 files changed, 544 insertions(+), 1 deletion(-)
+launch patient_mom_within_s45 989300
+[main 7ef46e2] results: preserve completed module training patient_mom_within_s45
+ 12 files changed, 976 insertions(+), 12 deletions(-)
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/logs/patient_mom_within_s45.log
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/runs/patient_mom_within_s45/complete.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/runs/patient_mom_within_s45/run_meta.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/runs/patient_mom_within_s45/train_log.csv
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/runs/patient_mom_within_s45/validation_complete.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/runs/patient_mom_within_s45/validation_predictions.csv
+launch patient_mom_within_s46 990295
+[main 47034f5] results: preserve completed module training patient_mom_within_s46
+ 12 files changed, 980 insertions(+), 12 deletions(-)
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/logs/patient_mom_within_s46.log
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/runs/patient_mom_within_s46/complete.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/runs/patient_mom_within_s46/run_meta.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/runs/patient_mom_within_s46/train_log.csv
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/runs/patient_mom_within_s46/validation_complete.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/runs/patient_mom_within_s46/validation_predictions.csv
+launch patient_mom_within_s47 991216
+[main c449f44] results: preserve completed module training patient_mom_within_s47
+ 12 files changed, 978 insertions(+), 10 deletions(-)
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/logs/patient_mom_within_s47.log
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/runs/patient_mom_within_s47/complete.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/runs/patient_mom_within_s47/run_meta.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/runs/patient_mom_within_s47/train_log.csv
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/runs/patient_mom_within_s47/validation_complete.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/runs/patient_mom_within_s47/validation_predictions.csv
+[main 8899a3a] research: freeze all3 val-selected mom_within checkpoints before adaptive test feedback
+ 2 files changed, 81 insertions(+)
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/evaluations/mom_within/registration.json
+[main 97dcaad] results: retain independently reconstructed single/C4 test feedback for mom_within all3 seeds
+ 16 files changed, 4024 insertions(+)
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/evaluations/mom_within/group_audit.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/evaluations/mom_within/s45/independent_audit.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/evaluations/mom_within/s45/test_c4_predictions.csv
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/evaluations/mom_within/s45/test_single_predictions.csv
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/evaluations/mom_within/s45/test_views.npy
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/evaluations/mom_within/s46/independent_audit.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/evaluations/mom_within/s46/test_c4_predictions.csv
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/evaluations/mom_within/s46/test_single_predictions.csv
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/evaluations/mom_within/s46/test_views.npy
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/evaluations/mom_within/s47/independent_audit.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/evaluations/mom_within/s47/test_c4_predictions.csv
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/evaluations/mom_within/s47/test_single_predictions.csv
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/evaluations/mom_within/s47/test_views.npy
+[main 02e6eda] analysis: record every paired module mechanism, budget control and negative result
+ 7 files changed, 546 insertions(+), 1 deletion(-)
+[main 95b04ba] results: audit complete faithful-module and orientation round; retain every seed and negative result
+ 9 files changed, 41 insertions(+), 23 deletions(-)
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/independent_audit.json
+ create mode 100644 experiments/ac_patient_alignment_structure_window01/runtime_sampler_complete_v2.json

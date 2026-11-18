@@ -1,0 +1,45 @@
+{
+  "arm": "mom_focalcontrast",
+  "seed": 45,
+  "checkpoint": "weights/ac_midstage_focal_structure_window01/mfc_mom_focalcontrast_s45/model_best.pth",
+  "checkpoint_sha256": "79a9165a6e4863804ca1c7ef5df37584886904c86420bc5b440a28467ddf9a22",
+  "source_config_sha256": "39fe542f23915dd7032b59f1244c5851e634e05e842945e98b918c0e10b946e0",
+  "image_sha256": "da7a87a8135abccd61c3fb53e444fe94b652601ca88405904a5c397afb7f4760",
+  "views": "single",
+  "predicted_class": 0,
+  "probabilities": [
+    0.9403464794158936,
+    0.04989740997552872,
+    0.009756064042448997
+  ],
+  "class_ids": [
+    0,
+    1,
+    2
+  ],
+  "malignant_class_id": 1,
+  "scope": "Research model prediction; no independent clinical validation claimed",
+  "numerical_backend": {
+    "policy": "native CUDA convolutions, cuDNN explicitly disabled; original AMP FP16 retained",
+    "forward_records": [
+      {
+        "input_shape": [
+          1,
+          3,
+          224,
+          224
+        ],
+        "cudnn_flags": {
+          "enabled": false,
+          "benchmark": false,
+          "deterministic": true,
+          "allow_tf32": false
+        }
+      }
+    ],
+    "wrapper_source_sha256": "06c2fabebe4e6d6ff8cebbf97bf80e5a70002c4cb939a3c829463a01738e82f6",
+    "frozen_prediction_source_sha256": "82b58a5f6ea185a0907684605db949c3376a331f45070382a8d6c47e310841e0",
+    "posthoc_usage_numerics_repair": true,
+    "throughput_not_equated_to_training_profile": true
+  }
+}

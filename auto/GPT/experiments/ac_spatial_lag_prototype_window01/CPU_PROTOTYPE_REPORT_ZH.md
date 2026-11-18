@@ -1,0 +1,9 @@
+# 空间间隔关联CPU原型核验
+
+无CLE图像的CPU原型已通过。两个间隔为1和3，保留原CNNMom和原池化/分类路径，新增1536→3零投影4611参数；成熟ACF、错序、重复间隔和去Mom对照见协议。NumPy逐对公式/零padding FFT分子oracle、成熟一维ACF公式、双精度梯度、退化/矩形输入、反射/90度描述性质及21个三seed公开起点已通过。
+
+这只证明实现和数学描述，不证明CLE效用、新颖、整网等变或临床结构。CPU本阶段训练/val/test图均0，尚未开始新正式训练；有效原Mom和固定B0权重直接复用，正式仍须真实CUDA batch32、六完整427val概率重建和吞吐检查。整体研究active。
+
+冻结config SHA256: cdb43ff307e8ae8ffdc3be4d00e68fab3b151fa84d8414660a22fd3d3d414a6b
+
+CPU证明SHA256: 553f22f8ec5368d143a9a6b67c8ff1c0b6d89632c2bdc78b6b7b669440a48b57

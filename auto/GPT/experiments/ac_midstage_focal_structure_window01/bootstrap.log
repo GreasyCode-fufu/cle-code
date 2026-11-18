@@ -1,0 +1,418 @@
+[main e68f798] test: verify formal midstage focal CPU two updates exact initializations optimizer groups true Mom removal and budgets
+ 4 files changed, 273 insertions(+)
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/bootstrap.log
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/bootstrap_identity.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/bootstrap_launch_identity.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/module_source_audit.json
+[main a317ca2] test: verify midstage focal contrast controls CUDA AMP two-step chain-rule gradients pairing and all6 frozen full427 probability reconstructions
+ 2 files changed, 272 insertions(+)
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/preflight.json
+[main 834d104] perf: measure single and concurrent throughput for distinct library and orientation kernels
+ 136 files changed, 1090 insertions(+)
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/document_midstage_focal_start.py
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/focalcontrast_only/bench_1_0.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/focalcontrast_only/bench_1_0.log
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/focalcontrast_only/bench_2_0.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/focalcontrast_only/bench_2_0.log
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/focalcontrast_only/bench_2_1.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/focalcontrast_only/bench_2_1.log
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/focalcontrast_only/bench_4_0.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/focalcontrast_only/bench_4_0.log
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/focalcontrast_only/bench_4_1.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/focalcontrast_only/bench_4_1.log
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/focalcontrast_only/bench_4_2.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/focalcontrast_only/bench_4_2.log
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/focalcontrast_only/bench_4_3.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/focalcontrast_only/bench_4_3.log
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/focalcontrast_only/gate_1.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/focalcontrast_only/gate_2.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/focalcontrast_only/gate_4.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/focalcontrast_only/measurements.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/focalcontrast_only/ready_1_0.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/focalcontrast_only/ready_2_0.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/focalcontrast_only/ready_2_1.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/focalcontrast_only/ready_4_0.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/focalcontrast_only/ready_4_1.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/focalcontrast_only/ready_4_2.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/focalcontrast_only/ready_4_3.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/focalcontrast_only/resources.csv
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_additive/bench_1_0.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_additive/bench_1_0.log
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_additive/bench_2_0.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_additive/bench_2_0.log
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_additive/bench_2_1.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_additive/bench_2_1.log
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_additive/bench_4_0.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_additive/bench_4_0.log
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_additive/bench_4_1.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_additive/bench_4_1.log
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_additive/bench_4_2.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_additive/bench_4_2.log
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_additive/bench_4_3.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_additive/bench_4_3.log
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_additive/gate_1.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_additive/gate_2.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_additive/gate_4.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_additive/measurements.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_additive/ready_1_0.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_additive/ready_2_0.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_additive/ready_2_1.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_additive/ready_4_0.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_additive/ready_4_1.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_additive/ready_4_2.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_additive/ready_4_3.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_additive/resources.csv
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_focalcontrast/bench_1_0.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_focalcontrast/bench_1_0.log
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_focalcontrast/bench_2_0.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_focalcontrast/bench_2_0.log
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_focalcontrast/bench_2_1.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_focalcontrast/bench_2_1.log
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_focalcontrast/bench_4_0.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_focalcontrast/bench_4_0.log
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_focalcontrast/bench_4_1.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_focalcontrast/bench_4_1.log
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_focalcontrast/bench_4_2.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_focalcontrast/bench_4_2.log
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_focalcontrast/bench_4_3.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_focalcontrast/bench_4_3.log
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_focalcontrast/gate_1.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_focalcontrast/gate_2.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_focalcontrast/gate_4.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_focalcontrast/measurements.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_focalcontrast/ready_1_0.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_focalcontrast/ready_2_0.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_focalcontrast/ready_2_1.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_focalcontrast/ready_4_0.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_focalcontrast/ready_4_1.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_focalcontrast/ready_4_2.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_focalcontrast/ready_4_3.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_focalcontrast/resources.csv
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_focalraw/bench_1_0.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_focalraw/bench_1_0.log
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_focalraw/bench_2_0.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_focalraw/bench_2_0.log
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_focalraw/bench_2_1.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_focalraw/bench_2_1.log
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_focalraw/bench_4_0.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_focalraw/bench_4_0.log
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_focalraw/bench_4_1.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_focalraw/bench_4_1.log
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_focalraw/bench_4_2.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_focalraw/bench_4_2.log
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_focalraw/bench_4_3.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_focalraw/bench_4_3.log
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_focalraw/gate_1.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_focalraw/gate_2.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_focalraw/gate_4.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_focalraw/measurements.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_focalraw/ready_1_0.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_focalraw/ready_2_0.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_focalraw/ready_2_1.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_focalraw/ready_4_0.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_focalraw/ready_4_1.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_focalraw/ready_4_2.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_focalraw/ready_4_3.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_focalraw/resources.csv
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_misaligned/bench_1_0.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_misaligned/bench_1_0.log
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_misaligned/bench_2_0.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_misaligned/bench_2_0.log
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_misaligned/bench_2_1.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_misaligned/bench_2_1.log
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_misaligned/bench_4_0.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_misaligned/bench_4_0.log
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_misaligned/bench_4_1.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_misaligned/bench_4_1.log
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_misaligned/bench_4_2.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_misaligned/bench_4_2.log
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_misaligned/bench_4_3.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_misaligned/bench_4_3.log
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_misaligned/gate_1.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_misaligned/gate_2.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_misaligned/gate_4.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_misaligned/measurements.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_misaligned/ready_1_0.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_misaligned/ready_2_0.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_misaligned/ready_2_1.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_misaligned/ready_4_0.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_misaligned/ready_4_1.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_misaligned/ready_4_2.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_misaligned/ready_4_3.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/mom_misaligned/resources.csv
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/profile/selected.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/start_supplement_helpers.py
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/supplement_launcher.log
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/supplement_launcher_launch_identity.json
+launch mfc_mom_focalcontrast_s45 1169782
+[main 12112a4] results: preserve completed module training mfc_mom_focalcontrast_s45
+ 11 files changed, 905 insertions(+), 8 deletions(-)
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/runs/mfc_mom_focalcontrast_s45/complete.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/runs/mfc_mom_focalcontrast_s45/validation_complete.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/runs/mfc_mom_focalcontrast_s45/validation_predictions.csv
+launch mfc_mom_focalcontrast_s46 1171092
+[main 2298fcd] results: preserve completed module training mfc_mom_focalcontrast_s46
+ 21 files changed, 1105 insertions(+), 10 deletions(-)
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/finalize_first_usage.py
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/logs/mfc_mom_focalcontrast_s46.log
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/runs/mfc_mom_focalcontrast_s46/complete.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/runs/mfc_mom_focalcontrast_s46/run_meta.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/runs/mfc_mom_focalcontrast_s46/train_log.csv
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/runs/mfc_mom_focalcontrast_s46/validation_complete.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/runs/mfc_mom_focalcontrast_s46/validation_predictions.csv
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/usage_export.log
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/usage_export_failure.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/usage_export_identity.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/usage_export_launch_identity.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/usage_smoke/cli_prediction.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/usage_smoke/numerics_diagnostic.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/usage_smoke_failure.json
+launch mfc_mom_focalcontrast_s47 1172516
+[main 3010025] results: preserve completed module training mfc_mom_focalcontrast_s47
+ 13 files changed, 1018 insertions(+), 10 deletions(-)
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/logs/mfc_mom_focalcontrast_s47.log
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/runs/mfc_mom_focalcontrast_s47/complete.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/runs/mfc_mom_focalcontrast_s47/run_meta.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/runs/mfc_mom_focalcontrast_s47/train_log.csv
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/runs/mfc_mom_focalcontrast_s47/validation_complete.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/runs/mfc_mom_focalcontrast_s47/validation_predictions.csv
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/usage_smoke/native_kernel_diagnostic.json
+[main 290d6fc] research: freeze all3 val-selected mom_focalcontrast checkpoints before adaptive test feedback
+ 2 files changed, 79 insertions(+)
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/evaluations/mom_focalcontrast/registration.json
+[main 61dd18c] results: retain independently reconstructed single/C4 test feedback for mom_focalcontrast all3 seeds
+ 16 files changed, 4026 insertions(+)
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/evaluations/mom_focalcontrast/group_audit.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/evaluations/mom_focalcontrast/s45/independent_audit.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/evaluations/mom_focalcontrast/s45/test_c4_predictions.csv
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/evaluations/mom_focalcontrast/s45/test_single_predictions.csv
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/evaluations/mom_focalcontrast/s45/test_views.npy
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/evaluations/mom_focalcontrast/s46/independent_audit.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/evaluations/mom_focalcontrast/s46/test_c4_predictions.csv
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/evaluations/mom_focalcontrast/s46/test_single_predictions.csv
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/evaluations/mom_focalcontrast/s46/test_views.npy
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/evaluations/mom_focalcontrast/s47/independent_audit.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/evaluations/mom_focalcontrast/s47/test_c4_predictions.csv
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/evaluations/mom_focalcontrast/s47/test_single_predictions.csv
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/evaluations/mom_focalcontrast/s47/test_views.npy
+[main 3cd9547] analysis: record every paired module mechanism, budget control and negative result
+ 7 files changed, 1069 insertions(+)
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/MECHANISM_REPORT_ZH.md
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/MODULE_ROUND_REPORT_ZH.md
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/mechanism_comparisons.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/round_results.json
+launch mfc_focalcontrast_only_s45 1173856
+[main 24606ea9] results: preserve completed module training mfc_focalcontrast_only_s45
+ 12 files changed, 924 insertions(+), 12 deletions(-)
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/logs/mfc_focalcontrast_only_s45.log
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/runs/mfc_focalcontrast_only_s45/complete.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/runs/mfc_focalcontrast_only_s45/run_meta.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/runs/mfc_focalcontrast_only_s45/train_log.csv
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/runs/mfc_focalcontrast_only_s45/validation_complete.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/runs/mfc_focalcontrast_only_s45/validation_predictions.csv
+launch mfc_focalcontrast_only_s46 1174921
+[main 2605a5c7] results: preserve completed module training mfc_focalcontrast_only_s46
+ 17 files changed, 1079 insertions(+), 9 deletions(-)
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/check_prediction_cli_v2.py
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/finalize_first_usage_v2.py
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/launch_usage_repair_v2.py
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/logs/mfc_focalcontrast_only_s46.log
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/predict_module_stable.py
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/runs/mfc_focalcontrast_only_s46/complete.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/runs/mfc_focalcontrast_only_s46/run_meta.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/runs/mfc_focalcontrast_only_s46/train_log.csv
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/runs/mfc_focalcontrast_only_s46/validation_complete.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/runs/mfc_focalcontrast_only_s46/validation_predictions.csv
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/verify_usage_resolution_v2.py
+launch mfc_focalcontrast_only_s47 1176288
+[main 6c6af2f3] results: preserve completed module training mfc_focalcontrast_only_s47
+ 32 files changed, 1286 insertions(+), 16 deletions(-)
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/NUMERICAL_USAGE_CORRECTION_ZH.md
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/check_prediction_cli_v2_launch_identity.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/finalize_first_usage_v2_launch_identity.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/logs/mfc_focalcontrast_only_s47.log
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/runs/mfc_focalcontrast_only_s47/complete.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/runs/mfc_focalcontrast_only_s47/run_meta.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/runs/mfc_focalcontrast_only_s47/train_log.csv
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/runs/mfc_focalcontrast_only_s47/validation_complete.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/runs/mfc_focalcontrast_only_s47/validation_predictions.csv
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/usage_export_identity_v2.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/usage_export_v2.log
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/usage_repair_helpers_launched_v2.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/usage_repair_launcher_launch_identity_v2.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/usage_repair_launcher_v2.log
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/usage_repair_registration_v2.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/usage_smoke/STRUCTURE_AND_USE_ZH_before_backend_correction.md
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/usage_smoke/USAGE_VERIFICATION_ZH.md
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/usage_smoke/actual_weight_hash.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/usage_smoke/cli_resolution_v2.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/usage_smoke/default_cli_prediction_v1.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/usage_smoke/independent_cli_audit.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/usage_smoke/local_usage_verification.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/usage_smoke/usage_document_correction_v2.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/usage_smoke_v2.log
+[main 4cf03964] research: freeze all3 val-selected focalcontrast_only checkpoints before adaptive test feedback
+ 2 files changed, 96 insertions(+)
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/evaluations/focalcontrast_only/registration.json
+[main b5d1bc43] results: retain independently reconstructed single/C4 test feedback for focalcontrast_only all3 seeds
+ 16 files changed, 4024 insertions(+)
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/evaluations/focalcontrast_only/group_audit.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/evaluations/focalcontrast_only/s45/independent_audit.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/evaluations/focalcontrast_only/s45/test_c4_predictions.csv
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/evaluations/focalcontrast_only/s45/test_single_predictions.csv
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/evaluations/focalcontrast_only/s45/test_views.npy
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/evaluations/focalcontrast_only/s46/independent_audit.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/evaluations/focalcontrast_only/s46/test_c4_predictions.csv
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/evaluations/focalcontrast_only/s46/test_single_predictions.csv
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/evaluations/focalcontrast_only/s46/test_views.npy
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/evaluations/focalcontrast_only/s47/independent_audit.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/evaluations/focalcontrast_only/s47/test_c4_predictions.csv
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/evaluations/focalcontrast_only/s47/test_single_predictions.csv
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/evaluations/focalcontrast_only/s47/test_views.npy
+[main f7fbf328] analysis: record every paired module mechanism, budget control and negative result
+ 7 files changed, 542 insertions(+), 1 deletion(-)
+launch mfc_mom_focalraw_s45 1178006
+[main 3a5ff4af] results: preserve completed module training mfc_mom_focalraw_s45
+ 12 files changed, 965 insertions(+), 13 deletions(-)
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/logs/mfc_mom_focalraw_s45.log
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/runs/mfc_mom_focalraw_s45/complete.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/runs/mfc_mom_focalraw_s45/run_meta.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/runs/mfc_mom_focalraw_s45/train_log.csv
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/runs/mfc_mom_focalraw_s45/validation_complete.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/runs/mfc_mom_focalraw_s45/validation_predictions.csv
+launch mfc_mom_focalraw_s46 1179275
+[main a205131a] results: preserve completed module training mfc_mom_focalraw_s46
+ 12 files changed, 970 insertions(+), 12 deletions(-)
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/logs/mfc_mom_focalraw_s46.log
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/runs/mfc_mom_focalraw_s46/complete.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/runs/mfc_mom_focalraw_s46/run_meta.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/runs/mfc_mom_focalraw_s46/train_log.csv
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/runs/mfc_mom_focalraw_s46/validation_complete.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/runs/mfc_mom_focalraw_s46/validation_predictions.csv
+launch mfc_mom_focalraw_s47 1180294
+[main e1dd81e3] results: preserve completed module training mfc_mom_focalraw_s47
+ 12 files changed, 967 insertions(+), 11 deletions(-)
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/logs/mfc_mom_focalraw_s47.log
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/runs/mfc_mom_focalraw_s47/complete.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/runs/mfc_mom_focalraw_s47/run_meta.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/runs/mfc_mom_focalraw_s47/train_log.csv
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/runs/mfc_mom_focalraw_s47/validation_complete.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/runs/mfc_mom_focalraw_s47/validation_predictions.csv
+[main da986f6b] research: freeze all3 val-selected mom_focalraw checkpoints before adaptive test feedback
+ 2 files changed, 78 insertions(+)
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/evaluations/mom_focalraw/registration.json
+[main 7d626342] results: retain independently reconstructed single/C4 test feedback for mom_focalraw all3 seeds
+ 16 files changed, 4026 insertions(+)
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/evaluations/mom_focalraw/group_audit.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/evaluations/mom_focalraw/s45/independent_audit.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/evaluations/mom_focalraw/s45/test_c4_predictions.csv
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/evaluations/mom_focalraw/s45/test_single_predictions.csv
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/evaluations/mom_focalraw/s45/test_views.npy
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/evaluations/mom_focalraw/s46/independent_audit.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/evaluations/mom_focalraw/s46/test_c4_predictions.csv
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/evaluations/mom_focalraw/s46/test_single_predictions.csv
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/evaluations/mom_focalraw/s46/test_views.npy
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/evaluations/mom_focalraw/s47/independent_audit.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/evaluations/mom_focalraw/s47/test_c4_predictions.csv
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/evaluations/mom_focalraw/s47/test_single_predictions.csv
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/evaluations/mom_focalraw/s47/test_views.npy
+[main f3d6de1a] analysis: record every paired module mechanism, budget control and negative result
+ 7 files changed, 544 insertions(+), 1 deletion(-)
+launch mfc_mom_misaligned_s45 1181463
+[main ec2f9fd6] results: preserve completed module training mfc_mom_misaligned_s45
+ 12 files changed, 965 insertions(+), 11 deletions(-)
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/logs/mfc_mom_misaligned_s45.log
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/runs/mfc_mom_misaligned_s45/complete.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/runs/mfc_mom_misaligned_s45/run_meta.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/runs/mfc_mom_misaligned_s45/train_log.csv
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/runs/mfc_mom_misaligned_s45/validation_complete.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/runs/mfc_mom_misaligned_s45/validation_predictions.csv
+launch mfc_mom_misaligned_s46 1182484
+[main db930f30] results: preserve completed module training mfc_mom_misaligned_s46
+ 12 files changed, 970 insertions(+), 12 deletions(-)
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/logs/mfc_mom_misaligned_s46.log
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/runs/mfc_mom_misaligned_s46/complete.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/runs/mfc_mom_misaligned_s46/run_meta.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/runs/mfc_mom_misaligned_s46/train_log.csv
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/runs/mfc_mom_misaligned_s46/validation_complete.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/runs/mfc_mom_misaligned_s46/validation_predictions.csv
+launch mfc_mom_misaligned_s47 1183398
+[main 576225d4] results: preserve completed module training mfc_mom_misaligned_s47
+ 12 files changed, 968 insertions(+), 10 deletions(-)
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/logs/mfc_mom_misaligned_s47.log
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/runs/mfc_mom_misaligned_s47/complete.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/runs/mfc_mom_misaligned_s47/run_meta.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/runs/mfc_mom_misaligned_s47/train_log.csv
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/runs/mfc_mom_misaligned_s47/validation_complete.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/runs/mfc_mom_misaligned_s47/validation_predictions.csv
+[main a23ed749] research: freeze all3 val-selected mom_misaligned checkpoints before adaptive test feedback
+ 2 files changed, 78 insertions(+)
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/evaluations/mom_misaligned/registration.json
+[main fafd2fd9] results: retain independently reconstructed single/C4 test feedback for mom_misaligned all3 seeds
+ 16 files changed, 4026 insertions(+)
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/evaluations/mom_misaligned/group_audit.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/evaluations/mom_misaligned/s45/independent_audit.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/evaluations/mom_misaligned/s45/test_c4_predictions.csv
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/evaluations/mom_misaligned/s45/test_single_predictions.csv
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/evaluations/mom_misaligned/s45/test_views.npy
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/evaluations/mom_misaligned/s46/independent_audit.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/evaluations/mom_misaligned/s46/test_c4_predictions.csv
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/evaluations/mom_misaligned/s46/test_single_predictions.csv
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/evaluations/mom_misaligned/s46/test_views.npy
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/evaluations/mom_misaligned/s47/independent_audit.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/evaluations/mom_misaligned/s47/test_c4_predictions.csv
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/evaluations/mom_misaligned/s47/test_single_predictions.csv
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/evaluations/mom_misaligned/s47/test_views.npy
+[main 7d73db5b] analysis: record every paired module mechanism, budget control and negative result
+ 7 files changed, 546 insertions(+), 1 deletion(-)
+launch mfc_mom_additive_s45 1184665
+[main 36b1d483] results: preserve completed module training mfc_mom_additive_s45
+ 12 files changed, 964 insertions(+), 12 deletions(-)
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/logs/mfc_mom_additive_s45.log
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/runs/mfc_mom_additive_s45/complete.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/runs/mfc_mom_additive_s45/run_meta.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/runs/mfc_mom_additive_s45/train_log.csv
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/runs/mfc_mom_additive_s45/validation_complete.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/runs/mfc_mom_additive_s45/validation_predictions.csv
+launch mfc_mom_additive_s46 1185590
+[main b05fd801] results: preserve completed module training mfc_mom_additive_s46
+ 12 files changed, 966 insertions(+), 10 deletions(-)
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/logs/mfc_mom_additive_s46.log
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/runs/mfc_mom_additive_s46/complete.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/runs/mfc_mom_additive_s46/run_meta.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/runs/mfc_mom_additive_s46/train_log.csv
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/runs/mfc_mom_additive_s46/validation_complete.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/runs/mfc_mom_additive_s46/validation_predictions.csv
+launch mfc_mom_additive_s47 1186609
+[main dc88cd10] results: preserve completed module training mfc_mom_additive_s47
+ 12 files changed, 969 insertions(+), 11 deletions(-)
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/logs/mfc_mom_additive_s47.log
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/runs/mfc_mom_additive_s47/complete.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/runs/mfc_mom_additive_s47/run_meta.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/runs/mfc_mom_additive_s47/train_log.csv
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/runs/mfc_mom_additive_s47/validation_complete.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/runs/mfc_mom_additive_s47/validation_predictions.csv
+[main 41f75f1f] research: freeze all3 val-selected mom_additive checkpoints before adaptive test feedback
+ 2 files changed, 78 insertions(+)
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/evaluations/mom_additive/registration.json
+[main c5e0203d] results: retain independently reconstructed single/C4 test feedback for mom_additive all3 seeds
+ 16 files changed, 4026 insertions(+)
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/evaluations/mom_additive/group_audit.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/evaluations/mom_additive/s45/independent_audit.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/evaluations/mom_additive/s45/test_c4_predictions.csv
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/evaluations/mom_additive/s45/test_single_predictions.csv
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/evaluations/mom_additive/s45/test_views.npy
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/evaluations/mom_additive/s46/independent_audit.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/evaluations/mom_additive/s46/test_c4_predictions.csv
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/evaluations/mom_additive/s46/test_single_predictions.csv
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/evaluations/mom_additive/s46/test_views.npy
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/evaluations/mom_additive/s47/independent_audit.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/evaluations/mom_additive/s47/test_c4_predictions.csv
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/evaluations/mom_additive/s47/test_single_predictions.csv
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/evaluations/mom_additive/s47/test_views.npy
+[main 7d507b06] analysis: record every paired module mechanism, budget control and negative result
+ 7 files changed, 548 insertions(+), 1 deletion(-)
+[main 97325333] results: audit complete faithful-module and orientation round; retain every seed and negative result
+ 9 files changed, 39 insertions(+), 23 deletions(-)
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/independent_audit.json
+ create mode 100644 experiments/ac_midstage_focal_structure_window01/runtime_sampler_complete_v2.json

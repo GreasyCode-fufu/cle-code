@@ -1,0 +1,294 @@
+cache448 128 2504
+cache448 256 2504
+cache448 384 2504
+cache448 512 2504
+cache448 640 2504
+cache448 768 2504
+cache448 896 2504
+cache448 1024 2504
+cache448 1152 2504
+cache448 1280 2504
+cache448 1408 2504
+cache448 1536 2504
+cache448 1664 2504
+cache448 1792 2504
+cache448 1920 2504
+cache448 2048 2504
+cache448 2176 2504
+cache448 2304 2504
+cache448 2432 2504
+cache448 2504 2504
+[main 51aa741] research: freeze equal-budget qualification of four mature CLE backbones after DINO round
+ 36 files changed, 107068 insertions(+)
+ create mode 100644 experiments/ac_qualification_20261024_window01/.gitignore
+ create mode 100644 experiments/ac_qualification_20261024_window01/QUALIFICATION_PROTOCOL.md
+ create mode 100644 experiments/ac_qualification_20261024_window01/asset_source_snapshot/QUALIFICATION_PROTOCOL.md
+ create mode 100644 experiments/ac_qualification_20261024_window01/asset_source_snapshot/audit_qualification.py
+ create mode 100644 experiments/ac_qualification_20261024_window01/asset_source_snapshot/bootstrap_qualification.py
+ create mode 100644 experiments/ac_qualification_20261024_window01/asset_source_snapshot/qualification_model.py
+ create mode 100644 experiments/ac_qualification_20261024_window01/asset_source_snapshot/run_qualification.py
+ create mode 100644 experiments/ac_qualification_20261024_window01/audit_partial_methods.py
+ create mode 100644 experiments/ac_qualification_20261024_window01/audit_qualification.py
+ create mode 100644 experiments/ac_qualification_20261024_window01/bootstrap.log
+ create mode 100644 experiments/ac_qualification_20261024_window01/bootstrap_qualification.py
+ create mode 100644 experiments/ac_qualification_20261024_window01/bootstrap_status.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/cache448_meta.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/config.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/jobs.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/launch.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/manifest.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/pretrained_manifest.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/qualification_model.py
+ create mode 100644 experiments/ac_qualification_20261024_window01/references/convnext_base_A_s45/complete.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/references/convnext_base_A_s45/run_meta.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/references/convnext_base_A_s45/train_log.csv
+ create mode 100644 experiments/ac_qualification_20261024_window01/references/convnext_base_A_s45/validation_complete.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/references/convnext_base_A_s45/validation_predictions.csv
+ create mode 100644 experiments/ac_qualification_20261024_window01/references/convnext_base_A_s46/complete.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/references/convnext_base_A_s46/run_meta.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/references/convnext_base_A_s46/train_log.csv
+ create mode 100644 experiments/ac_qualification_20261024_window01/references/convnext_base_A_s46/validation_complete.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/references/convnext_base_A_s46/validation_predictions.csv
+ create mode 100644 experiments/ac_qualification_20261024_window01/references/convnext_base_A_s47/complete.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/references/convnext_base_A_s47/run_meta.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/references/convnext_base_A_s47/train_log.csv
+ create mode 100644 experiments/ac_qualification_20261024_window01/references/convnext_base_A_s47/validation_complete.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/references/convnext_base_A_s47/validation_predictions.csv
+ create mode 100644 experiments/ac_qualification_20261024_window01/references_official/fasternet.py
+ create mode 100644 experiments/ac_qualification_20261024_window01/run_qualification.py
+[main 0ba043f] test: validate mature backbone initialization, caches, finite AMP and exact Base224 reuse
+ 4 files changed, 212 insertions(+), 2 deletions(-)
+ create mode 100644 experiments/ac_qualification_20261024_window01/preflight.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/references_official/partialconv2d.py
+[{"arm": "convnext_tiny_A", "family": "convnext_tiny", "recipe": "A", "parameters": 27822435, "counted_flops": 8909531136, "peak_gpu_mib": 2307.8017578125, "finite_real_two_updates": true}, {"arm": "convnext_tiny_B", "family": "convnext_tiny", "recipe": "B", "parameters": 27822435, "counted_flops": 26183102976, "peak_gpu_mib": 6012.921875, "finite_real_two_updates": true}, {"arm": "efficientnet_v2_s_A", "family": "efficientnet_v2_s", "recipe": "A", "parameters": 20181331, "counted_flops": 5697239424, "peak_gpu_mib": 2714.02392578125, "finite_real_two_updates": true}, {"arm": "efficientnet_v2_s_B", "family": "efficientnet_v2_s", "recipe": "B", "parameters": 20181331, "counted_flops": 16728681984, "peak_gpu_mib": 7352.18408203125, "finite_real_two_updates": true}, {"arm": "swin_t_A", "family": "swin_t", "recipe": "A", "parameters": 27521661, "counted_flops": 8979601920, "peak_gpu_mib": 2581.14111328125, "finite_real_two_updates": true}, {"arm": "swin_t_B", "family": "swin_t", "recipe": "B", "parameters": 27521661, "counted_flops": 28597871616, "peak_gpu_mib": 7185.111328125, "finite_real_two_updates": true}, {"arm": "convnext_base_A", "family": "convnext_base", "recipe": "A", "parameters": 87569539, "counted_flops": 30707417088, "peak_gpu_mib": 5182.86669921875, "finite_real_two_updates": true}, {"arm": "convnext_base_B", "family": "convnext_base", "recipe": "B", "parameters": 87569539, "counted_flops": 90242193408, "peak_gpu_mib": 12801.31884765625, "finite_real_two_updates": true}]
+[main e0c1438] perf: measure real high-resolution single and concurrent baseline qualification throughput
+ 32 files changed, 318 insertions(+), 6 deletions(-)
+ create mode 100644 experiments/ac_qualification_20261024_window01/partial_method_equation_audit.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/profile/bench_1_0.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/profile/bench_1_0.log
+ create mode 100644 experiments/ac_qualification_20261024_window01/profile/bench_2_0.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/profile/bench_2_0.log
+ create mode 100644 experiments/ac_qualification_20261024_window01/profile/bench_2_1.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/profile/bench_2_1.log
+ create mode 100644 experiments/ac_qualification_20261024_window01/profile/bench_4_0.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/profile/bench_4_0.log
+ create mode 100644 experiments/ac_qualification_20261024_window01/profile/bench_4_1.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/profile/bench_4_1.log
+ create mode 100644 experiments/ac_qualification_20261024_window01/profile/bench_4_2.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/profile/bench_4_2.log
+ create mode 100644 experiments/ac_qualification_20261024_window01/profile/bench_4_3.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/profile/bench_4_3.log
+ create mode 100644 experiments/ac_qualification_20261024_window01/profile/gate_1.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/profile/gate_2.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/profile/gate_4.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/profile/measurements.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/profile/ready_1_0.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/profile/ready_2_0.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/profile/ready_2_1.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/profile/ready_4_0.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/profile/ready_4_1.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/profile/ready_4_2.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/profile/ready_4_3.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/profile/resources.csv
+ create mode 100644 experiments/ac_qualification_20261024_window01/profile/selected.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/references_official/PartialConv_LICENSE
+launch qualification_convnext_tiny_A_s45 800912
+launch qualification_convnext_tiny_A_s46 800913
+launch qualification_convnext_tiny_A_s47 800914
+launch qualification_convnext_tiny_B_s45 800915
+launch qualification_convnext_tiny_B_s46 802440
+[main 02fa127] results: preserve mature CLE qualification qualification_convnext_tiny_A_s45
+ 33 files changed, 2575 insertions(+), 2 deletions(-)
+ create mode 100644 experiments/ac_qualification_20261024_window01/QUALIFICATION_README_ZH.md
+ create mode 100644 experiments/ac_qualification_20261024_window01/RESEARCH_LEDGER.md
+ create mode 100644 experiments/ac_qualification_20261024_window01/io_process_resources.jsonl
+ create mode 100644 experiments/ac_qualification_20261024_window01/logs/qualification_convnext_tiny_A_s45.log
+ create mode 100644 experiments/ac_qualification_20261024_window01/logs/qualification_convnext_tiny_A_s46.log
+ create mode 100644 experiments/ac_qualification_20261024_window01/logs/qualification_convnext_tiny_A_s47.log
+ create mode 100644 experiments/ac_qualification_20261024_window01/logs/qualification_convnext_tiny_B_s45.log
+ create mode 100644 experiments/ac_qualification_20261024_window01/logs/qualification_convnext_tiny_B_s46.log
+ create mode 100644 experiments/ac_qualification_20261024_window01/pipeline_pid.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/resource_observer.log
+ create mode 100644 experiments/ac_qualification_20261024_window01/resource_observer.py
+ create mode 100644 experiments/ac_qualification_20261024_window01/resource_observer_pid.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/resources.csv
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_convnext_tiny_A_s45/complete.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_convnext_tiny_A_s45/run_meta.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_convnext_tiny_A_s45/train_log.csv
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_convnext_tiny_A_s45/validation_complete.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_convnext_tiny_A_s45/validation_predictions.csv
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_convnext_tiny_A_s46/complete.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_convnext_tiny_A_s46/run_meta.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_convnext_tiny_A_s46/train_log.csv
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_convnext_tiny_A_s46/validation_complete.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_convnext_tiny_A_s46/validation_predictions.csv
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_convnext_tiny_A_s47/complete.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_convnext_tiny_A_s47/run_meta.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_convnext_tiny_A_s47/train_log.csv
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_convnext_tiny_A_s47/validation_complete.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_convnext_tiny_A_s47/validation_predictions.csv
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_convnext_tiny_B_s45/run_meta.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_convnext_tiny_B_s45/train_log.csv
+ create mode 100644 experiments/ac_qualification_20261024_window01/status.json
+launch qualification_convnext_tiny_B_s47 802476
+launch qualification_efficientnet_v2_s_A_s45 802477
+[main 379a04d] results: preserve mature CLE qualification qualification_convnext_tiny_A_s46,qualification_convnext_tiny_A_s47
+ 4 files changed, 49 insertions(+), 14 deletions(-)
+ create mode 100644 experiments/ac_qualification_20261024_window01/logs/qualification_convnext_tiny_B_s47.log
+ create mode 100644 experiments/ac_qualification_20261024_window01/logs/qualification_efficientnet_v2_s_A_s45.log
+launch qualification_efficientnet_v2_s_A_s46 804949
+[main 402c3eb] results: preserve mature CLE qualification qualification_efficientnet_v2_s_A_s45
+ 19 files changed, 1354 insertions(+), 8 deletions(-)
+ create mode 100644 experiments/ac_qualification_20261024_window01/logs/qualification_efficientnet_v2_s_A_s46.log
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_convnext_tiny_B_s46/run_meta.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_convnext_tiny_B_s46/train_log.csv
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_convnext_tiny_B_s47/run_meta.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_convnext_tiny_B_s47/train_log.csv
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_efficientnet_v2_s_A_s45/complete.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_efficientnet_v2_s_A_s45/run_meta.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_efficientnet_v2_s_A_s45/train_log.csv
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_efficientnet_v2_s_A_s45/validation_complete.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_efficientnet_v2_s_A_s45/validation_predictions.csv
+launch qualification_efficientnet_v2_s_A_s47 805416
+[main b57cae2] results: preserve mature CLE qualification qualification_convnext_tiny_B_s45
+ 17 files changed, 864 insertions(+), 12 deletions(-)
+ create mode 100644 experiments/ac_qualification_20261024_window01/logs/qualification_efficientnet_v2_s_A_s47.log
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_convnext_tiny_B_s45/complete.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_convnext_tiny_B_s45/validation_complete.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_convnext_tiny_B_s45/validation_predictions.csv
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_efficientnet_v2_s_A_s46/run_meta.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_efficientnet_v2_s_A_s46/train_log.csv
+launch qualification_efficientnet_v2_s_B_s45 806473
+[main 8a6f36e] results: preserve mature CLE qualification qualification_efficientnet_v2_s_A_s46
+ 17 files changed, 1048 insertions(+), 14 deletions(-)
+ create mode 100644 experiments/ac_qualification_20261024_window01/logs/qualification_efficientnet_v2_s_B_s45.log
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_efficientnet_v2_s_A_s46/complete.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_efficientnet_v2_s_A_s46/validation_complete.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_efficientnet_v2_s_A_s46/validation_predictions.csv
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_efficientnet_v2_s_A_s47/run_meta.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_efficientnet_v2_s_A_s47/train_log.csv
+launch qualification_efficientnet_v2_s_B_s46 807227
+[main ca65791] results: preserve mature CLE qualification qualification_convnext_tiny_B_s46
+ 21 files changed, 1377 insertions(+), 13 deletions(-)
+ create mode 100644 experiments/ac_qualification_20261024_window01/logs/qualification_efficientnet_v2_s_B_s46.log
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_convnext_tiny_B_s46/complete.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_convnext_tiny_B_s46/validation_complete.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_convnext_tiny_B_s46/validation_predictions.csv
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_convnext_tiny_B_s47/complete.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_convnext_tiny_B_s47/validation_complete.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_convnext_tiny_B_s47/validation_predictions.csv
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_efficientnet_v2_s_A_s47/complete.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_efficientnet_v2_s_B_s45/run_meta.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_efficientnet_v2_s_B_s45/train_log.csv
+launch qualification_efficientnet_v2_s_B_s47 807263
+[main 6fc91e6] results: preserve mature CLE qualification qualification_convnext_tiny_B_s47
+ 6 files changed, 482 insertions(+), 7 deletions(-)
+ create mode 100644 experiments/ac_qualification_20261024_window01/logs/qualification_efficientnet_v2_s_B_s47.log
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_efficientnet_v2_s_A_s47/validation_complete.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_efficientnet_v2_s_A_s47/validation_predictions.csv
+launch qualification_swin_t_A_s45 807296
+[main f88ae12] results: preserve mature CLE qualification qualification_efficientnet_v2_s_A_s47
+ 4 files changed, 22 insertions(+), 15 deletions(-)
+ create mode 100644 experiments/ac_qualification_20261024_window01/logs/qualification_swin_t_A_s45.log
+launch qualification_swin_t_A_s46 808928
+[main 46ba80a] results: preserve mature CLE qualification qualification_swin_t_A_s45
+ 19 files changed, 1491 insertions(+), 15 deletions(-)
+ create mode 100644 experiments/ac_qualification_20261024_window01/logs/qualification_swin_t_A_s46.log
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_efficientnet_v2_s_B_s46/run_meta.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_efficientnet_v2_s_B_s46/train_log.csv
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_efficientnet_v2_s_B_s47/run_meta.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_efficientnet_v2_s_B_s47/train_log.csv
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_swin_t_A_s45/complete.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_swin_t_A_s45/run_meta.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_swin_t_A_s45/train_log.csv
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_swin_t_A_s45/validation_complete.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_swin_t_A_s45/validation_predictions.csv
+launch qualification_swin_t_A_s47 809880
+[main 94e6aff] results: preserve mature CLE qualification qualification_efficientnet_v2_s_B_s45
+ 17 files changed, 1090 insertions(+), 9 deletions(-)
+ create mode 100644 experiments/ac_qualification_20261024_window01/logs/qualification_swin_t_A_s47.log
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_efficientnet_v2_s_B_s45/complete.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_efficientnet_v2_s_B_s45/validation_complete.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_efficientnet_v2_s_B_s45/validation_predictions.csv
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_swin_t_A_s46/run_meta.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_swin_t_A_s46/train_log.csv
+launch qualification_swin_t_B_s45 810896
+launch qualification_swin_t_B_s46 810897
+[main 9cef74e] results: preserve mature CLE qualification qualification_efficientnet_v2_s_B_s46,qualification_efficientnet_v2_s_B_s47
+ 21 files changed, 1368 insertions(+), 13 deletions(-)
+ create mode 100644 experiments/ac_qualification_20261024_window01/logs/qualification_swin_t_B_s45.log
+ create mode 100644 experiments/ac_qualification_20261024_window01/logs/qualification_swin_t_B_s46.log
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_efficientnet_v2_s_B_s46/complete.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_efficientnet_v2_s_B_s46/validation_complete.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_efficientnet_v2_s_B_s46/validation_predictions.csv
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_efficientnet_v2_s_B_s47/complete.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_efficientnet_v2_s_B_s47/validation_complete.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_efficientnet_v2_s_B_s47/validation_predictions.csv
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_swin_t_A_s47/run_meta.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_swin_t_A_s47/train_log.csv
+launch qualification_swin_t_B_s47 811012
+[main 540ecc4] results: preserve mature CLE qualification qualification_swin_t_A_s46
+ 14 files changed, 596 insertions(+), 17 deletions(-)
+ create mode 100644 experiments/ac_qualification_20261024_window01/logs/qualification_swin_t_B_s47.log
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_swin_t_A_s46/complete.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_swin_t_A_s46/validation_complete.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_swin_t_A_s46/validation_predictions.csv
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_swin_t_B_s45/run_meta.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_swin_t_B_s46/run_meta.json
+[main 77d76d9] results: preserve mature CLE qualification qualification_swin_t_A_s47
+ 16 files changed, 1055 insertions(+), 14 deletions(-)
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_swin_t_A_s47/complete.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_swin_t_A_s47/validation_complete.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_swin_t_A_s47/validation_predictions.csv
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_swin_t_B_s45/train_log.csv
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_swin_t_B_s46/train_log.csv
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_swin_t_B_s47/run_meta.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_swin_t_B_s47/train_log.csv
+launch qualification_convnext_base_B_s45 815842
+[main ef6e351] results: preserve mature CLE qualification qualification_swin_t_B_s45,qualification_swin_t_B_s46
+ 20 files changed, 2960 insertions(+), 11 deletions(-)
+ create mode 100644 experiments/ac_qualification_20261024_window01/logs/qualification_convnext_base_B_s45.log
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_swin_t_B_s45/complete.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_swin_t_B_s45/validation_complete.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_swin_t_B_s45/validation_predictions.csv
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_swin_t_B_s46/complete.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_swin_t_B_s46/validation_complete.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_swin_t_B_s46/validation_predictions.csv
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_swin_t_B_s47/complete.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_swin_t_B_s47/validation_complete.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_swin_t_B_s47/validation_predictions.csv
+launch qualification_convnext_base_B_s46 815881
+[main f132c31] results: preserve mature CLE qualification qualification_swin_t_B_s47
+ 4 files changed, 21 insertions(+), 11 deletions(-)
+ create mode 100644 experiments/ac_qualification_20261024_window01/logs/qualification_convnext_base_B_s46.log
+[main 07f6282] results: preserve mature CLE qualification qualification_convnext_base_B_s45
+ 16 files changed, 2750 insertions(+), 13 deletions(-)
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_convnext_base_B_s45/complete.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_convnext_base_B_s45/run_meta.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_convnext_base_B_s45/train_log.csv
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_convnext_base_B_s45/validation_complete.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_convnext_base_B_s45/validation_predictions.csv
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_convnext_base_B_s46/complete.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_convnext_base_B_s46/run_meta.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_convnext_base_B_s46/train_log.csv
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_convnext_base_B_s46/validation_complete.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_convnext_base_B_s46/validation_predictions.csv
+[main 63f5ee6] results: preserve mature CLE qualification qualification_convnext_base_B_s46
+ 2 files changed, 14 insertions(+), 6 deletions(-)
+launch qualification_convnext_base_B_s47 823602
+[main fc57625] results: preserve mature CLE qualification qualification_convnext_base_B_s47
+ 10 files changed, 1340 insertions(+), 11 deletions(-)
+ create mode 100644 experiments/ac_qualification_20261024_window01/logs/qualification_convnext_base_B_s47.log
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_convnext_base_B_s47/complete.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_convnext_base_B_s47/run_meta.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_convnext_base_B_s47/train_log.csv
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_convnext_base_B_s47/validation_complete.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/runs/qualification_convnext_base_B_s47/validation_predictions.csv
+{"summary": {"convnext_tiny_A": {"family": "convnext_tiny", "recipe": "A", "arm": "convnext_tiny_A", "seed_macro_f1": [0.9792401228964766, 0.9845252649064217, 0.9793266613851568], "parameters": 27822435, "counted_flops": 8909531136, "checkpoints": [{"seed": 45, "checkpoint": "weights/ac_qualification_20261024_window01/qualification_convnext_tiny_A_s45/model_best.pth", "checkpoint_sha256": "4e85d8b1374952836ffb999a7eecb079eaaec58f689e64e412182ba4063c5004"}, {"seed": 46, "checkpoint": "weights/ac_qualification_20261024_window01/qualification_convnext_tiny_A_s46/model_best.pth", "checkpoint_sha256": "5479eb65ce3654f27c1637e949c85a0bb3f82fb7e951f256cbad71975bb9ed8b"}, {"seed": 47, "checkpoint": "weights/ac_qualification_20261024_window01/qualification_convnext_tiny_A_s47/model_best.pth", "checkpoint_sha256": "c52377f3ee4c17156032b02013e503e06df9963ca1f3b0e50cf6ded75bb02851"}], "macro_f1": 0.981030683062685, "accuracy": 0.9851678376268541, "malignant_recall": 0.9620253164556963, "patient_equal_accuracy": 0.9672356193189526, "qualified": true}, "convnext_tiny_B": {"family": "convnext_tiny", "recipe": "B", "arm": "convnext_tiny_B", "seed_macro_f1": [0.9848797089984668, 0.9789240227880033, 0.9739038739038738], "parameters": 27822435, "counted_flops": 26183102976, "checkpoints": [{"seed": 45, "checkpoint": "weights/ac_qualification_20261024_window01/qualification_convnext_tiny_B_s45/model_best.pth", "checkpoint_sha256": "7a4a0665a5cb24df6803602cad67a2986c6d3e3ee4f46d8c9603b839804e5a0a"}, {"seed": 46, "checkpoint": "weights/ac_qualification_20261024_window01/qualification_convnext_tiny_B_s46/model_best.pth", "checkpoint_sha256": "f4ef176795a80f2e15453f2ff45b9440d23f1b3e8fe32da909fc1395c6dcc3cf"}, {"seed": 47, "checkpoint": "weights/ac_qualification_20261024_window01/qualification_convnext_tiny_B_s47/model_best.pth", "checkpoint_sha256": "95f77977ee1cbf479045cc73cc51e2acecd79c44b643fcca8fd7096eb1f68fa1"}], "macro_f1": 0.9792358685634479, "accuracy": 0.983606557377049, "malignant_recall": 0.949367088607595, "patient_equal_accuracy": 0.9606303418803418, "qualified": true}, "efficientnet_v2_s_A": {"family": "efficientnet_v2_s", "recipe": "A", "arm": "efficientnet_v2_s_A", "seed_macro_f1": [0.9613164567959558, 0.9679813029506281, 0.9670126503670767], "parameters": 20181331, "counted_flops": 5697239424, "checkpoints": [{"seed": 45, "checkpoint": "weights/ac_qualification_20261024_window01/qualification_efficientnet_v2_s_A_s45/model_best.pth", "checkpoint_sha256": "9ca1f17b9a04574e9c6e7a16d71741df33490a1b18d65432231a88b6cdbf6753"}, {"seed": 46, "checkpoint": "weights/ac_qualification_20261024_window01/qualification_efficientnet_v2_s_A_s46/model_best.pth", "checkpoint_sha256": "6946662611652978234b50cb6ee1daf245beb1619bfb912dddc58241eb4aa6d8"}, {"seed": 47, "checkpoint": "weights/ac_qualification_20261024_window01/qualification_efficientnet_v2_s_A_s47/model_best.pth", "checkpoint_sha256": "3660683d69789ed27843f4e62f3b2c0028c7547de0817f5533bd0d6933960507"}], "macro_f1": 0.9654368033712202, "accuracy": 0.9726775956284154, "malignant_recall": 0.9324894514767932, "patient_equal_accuracy": 0.9616222041481178, "qualified": false}, "efficientnet_v2_s_B": {"family": "efficientnet_v2_s", "recipe": "B", "arm": "efficientnet_v2_s_B", "seed_macro_f1": [0.9650550547591794, 0.9651930894308943, 0.9644396327999843], "parameters": 20181331, "counted_flops": 16728681984, "checkpoints": [{"seed": 45, "checkpoint": "weights/ac_qualification_20261024_window01/qualification_efficientnet_v2_s_B_s45/model_best.pth", "checkpoint_sha256": "99c35ccd587a468f04346b1817b4e508dcd2a7306b14abf13e5efd5e1d90d9b9"}, {"seed": 46, "checkpoint": "weights/ac_qualification_20261024_window01/qualification_efficientnet_v2_s_B_s46/model_best.pth", "checkpoint_sha256": "9857fd14c0ae678852194fdcb19219fe2ee9806cb000af0e06381f2db8196aa8"}, {"seed": 47, "checkpoint": "weights/ac_qualification_20261024_window01/qualification_efficientnet_v2_s_B_s47/model_best.pth", "checkpoint_sha256": "da075d37b3b6e345c652e7d888f37a22a4ef3fe474808454b282469eca741e35"}], "macro_f1": 0.9648959256633528, "accuracy": 0.9718969555035128, "malignant_recall": 0.940928270042194, "patient_equal_accuracy": 0.9547102359159095, "qualified": false}, "swin_t_A": {"family": "swin_t", "recipe": "A", "arm": "swin_t_A", "seed_macro_f1": [0.9768141299615601, 0.9797464440321583, 0.9801261064163337], "parameters": 27521661, "counted_flops": 8979601920, "checkpoints": [{"seed": 45, "checkpoint": "weights/ac_qualification_20261024_window01/qualification_swin_t_A_s45/model_best.pth", "checkpoint_sha256": "cd59eaf4b17c2fc3af7ba3226d4c336b0b40b7a9a0c330c423f8de70b1b306a0"}, {"seed": 46, "checkpoint": "weights/ac_qualification_20261024_window01/qualification_swin_t_A_s46/model_best.pth", "checkpoint_sha256": "178397d9462bba824a8f26951ceb3d4a1dccce05605e2ea4697c993d3b13c1ed"}, {"seed": 47, "checkpoint": "weights/ac_qualification_20261024_window01/qualification_swin_t_A_s47/model_best.pth", "checkpoint_sha256": "252f018da901930f2ff913e3dbd24a45cf2a7cd3d54cc073f36f392d60fa0cc1"}], "macro_f1": 0.9788955601366841, "accuracy": 0.9828259172521467, "malignant_recall": 0.940928270042194, "patient_equal_accuracy": 0.9736850756081527, "qualified": true}, "swin_t_B": {"family": "swin_t", "recipe": "B", "arm": "swin_t_B", "seed_macro_f1": [0.9769549401795664, 0.9769549401795664, 0.9790090016142713], "parameters": 27521661, "counted_flops": 28597871616, "checkpoints": [{"seed": 45, "checkpoint": "weights/ac_qualification_20261024_window01/qualification_swin_t_B_s45/model_best.pth", "checkpoint_sha256": "33c6297784688c39718649d88bdd6991570565fade646b8ac3367af55c1386ef"}, {"seed": 46, "checkpoint": "weights/ac_qualification_20261024_window01/qualification_swin_t_B_s46/model_best.pth", "checkpoint_sha256": "78a244b98787f6a642f92692fdc281118feecb9b5976d92578dcd0b82e54bdcd"}, {"seed": 47, "checkpoint": "weights/ac_qualification_20261024_window01/qualification_swin_t_B_s47/model_best.pth", "checkpoint_sha256": "76912e4a8c7c4a470c2795627a1adcb20bda691ff284010dbd2696f82ca49dad"}], "macro_f1": 0.977639627324468, "accuracy": 0.9820452771272444, "malignant_recall": 0.9789029535864979, "patient_equal_accuracy": 0.9661695857788329, "qualified": true}, "convnext_base_A": {"family": "convnext_base", "recipe": "A", "arm": "convnext_base_A", "seed_macro_f1": [0.9769549401795664, 0.9823453608247422, 0.979624465514036], "parameters": 87569539, "counted_flops": 30707417088, "checkpoints": [{"seed": 45, "checkpoint": "weights/ac_structure_20261024_window01/window01_convnext_s45/model_best.pth", "checkpoint_sha256": "45673b2fc6a41974c2a5e47740bce019cccd7be1ed82d1bf203bb3bb28b9cb12"}, {"seed": 46, "checkpoint": "weights/ac_structure_20261024_window01/window01_convnext_s46/model_best.pth", "checkpoint_sha256": "d5b12c45e61b3b18f3efe031f850cdd0ffd21fa6c76d9ff64555f74d5f333e78"}, {"seed": 47, "checkpoint": "weights/ac_structure_20261024_window01/window01_convnext_s47/model_best.pth", "checkpoint_sha256": "b5b9ff6727dc1d5270c447de023a04c2b3542e47984fff04ac0918bbd8976241"}], "macro_f1": 0.9796415888394483, "accuracy": 0.983606557377049, "malignant_recall": 0.9873417721518987, "patient_equal_accuracy": 0.9714744130967535, "qualified": true}, "convnext_base_B": {"family": "convnext_base", "recipe": "B", "arm": "convnext_base_B", "seed_macro_f1": [0.9761032618175475, 0.9820774463631606, 0.9760383003351806], "parameters": 87569539, "counted_flops": 90242193408, "checkpoints": [{"seed": 45, "checkpoint": "weights/ac_qualification_20261024_window01/qualification_convnext_base_B_s45/model_best.pth", "checkpoint_sha256": "87dab4d1c6ea0504a46098e62dd6a8f73460a93c8d8ee9bda35f92f35ab7c3c5"}, {"seed": 46, "checkpoint": "weights/ac_qualification_20261024_window01/qualification_convnext_base_B_s46/model_best.pth", "checkpoint_sha256": "cf41a455acff0abd7ed4aa33093bd3d8c49fa52a73231de711f6d60ea995371f"}, {"seed": 47, "checkpoint": "weights/ac_qualification_20261024_window01/qualification_convnext_base_B_s47/model_best.pth", "checkpoint_sha256": "eedb90f1e27f05df8cac10b5af2500fd3ac3c0251984253b4217c2331549c073"}], "macro_f1": 0.9780730028386295, "accuracy": 0.9828259172521467, "malignant_recall": 0.9451476793248945, "patient_equal_accuracy": 0.9671369347651398, "qualified": true}}, "selected": {"family": "convnext_tiny", "recipe": "A", "arm": "convnext_tiny_A", "seed_macro_f1": [0.9792401228964766, 0.9845252649064217, 0.9793266613851568], "parameters": 27822435, "counted_flops": 8909531136, "checkpoints": [{"seed": 45, "checkpoint": "weights/ac_qualification_20261024_window01/qualification_convnext_tiny_A_s45/model_best.pth", "checkpoint_sha256": "4e85d8b1374952836ffb999a7eecb079eaaec58f689e64e412182ba4063c5004"}, {"seed": 46, "checkpoint": "weights/ac_qualification_20261024_window01/qualification_convnext_tiny_A_s46/model_best.pth", "checkpoint_sha256": "5479eb65ce3654f27c1637e949c85a0bb3f82fb7e951f256cbad71975bb9ed8b"}, {"seed": 47, "checkpoint": "weights/ac_qualification_20261024_window01/qualification_convnext_tiny_A_s47/model_best.pth", "checkpoint_sha256": "c52377f3ee4c17156032b02013e503e06df9963ca1f3b0e50cf6ded75bb02851"}], "macro_f1": 0.981030683062685, "accuracy": 0.9851678376268541, "malignant_recall": 0.9620253164556963, "patient_equal_accuracy": 0.9672356193189526, "qualified": true}}
+[main c32c090] results: independently audit all mature backbone qualification and freeze eligible baseline
+ 8 files changed, 1790 insertions(+), 23 deletions(-)
+ create mode 100644 experiments/ac_qualification_20261024_window01/QUALIFICATION_REPORT_ZH.md
+ create mode 100644 experiments/ac_qualification_20261024_window01/independent_audit.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/qualification_results.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/selected_baseline.json
+ create mode 100644 experiments/ac_qualification_20261024_window01/validation_errors.csv

@@ -1,0 +1,27 @@
+{
+  "passed": true,
+  "timestamp": "2026-10-24T10:47:43.700766+08:00",
+  "encoders": {
+    "resnet": {
+      "state_sha256": "7b3eaa83424acbb5a672a023d04151f76f2b667a5bd80e5c9ef75f743e11308b",
+      "parameters": 21286211,
+      "feature_parameters": 21284672
+    },
+    "dino": {
+      "state_sha256": "ca7db13742aec1d5a198f1c3fe92985d6cfa9db43a5e84634f007eee72eeb3ee",
+      "parameters": 21628800,
+      "feature_parameters": 21628800
+    }
+  },
+  "checks": [
+    "public weight hashes and strict all-key DINO inference loading",
+    "declared positional interpolation independently reproduced",
+    "token shape and CLS forward agreement",
+    "all frozen model states unchanged by complete FP32 inference",
+    "only original-train indices and original three-way patient splits, complete coverage",
+    "copied six OOF references locked",
+    "deterministic subset features reproduced",
+    "fit-only transforms and independent ridge closed form",
+    "zero neural training"
+  ]
+}

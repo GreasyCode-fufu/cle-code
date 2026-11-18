@@ -1,0 +1,17 @@
+Traceback (most recent call last):
+  File "/data/cle/auto/GPT/experiments/ac_moment_refinement_window01/continuous_runtime_sampler.py", line 72, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/data/cle/auto/GPT/experiments/ac_moment_refinement_window01/continuous_runtime_sampler.py", line 30, in main
+    status=read(S/'status.json');manager=read(S/'manager_entry_identity_v2.json');manager_alive=process(manager['pid'],'run_moment_manager.py') is not None
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/data/cle/auto/GPT/experiments/ac_moment_refinement_window01/continuous_runtime_sampler.py", line 5, in read
+    def read(p):return json.loads(p.read_text())
+                                  ^^^^^^^^^^^^^
+  File "/home/login/miniconda3/envs/sunfuxiang/lib/python3.12/pathlib.py", line 1028, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/login/miniconda3/envs/sunfuxiang/lib/python3.12/pathlib.py", line 1014, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/data/cle/auto/GPT/experiments/ac_moment_refinement_window01/status.json'

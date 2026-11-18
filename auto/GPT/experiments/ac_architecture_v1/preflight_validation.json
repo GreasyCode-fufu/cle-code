@@ -1,0 +1,41 @@
+{
+  "passed": true,
+  "timestamp": "2026-10-24T16:06:55.988684+08:00",
+  "budgets": [
+    {
+      "variant": "conv_control",
+      "parameters": 21332803,
+      "modifier_parameters": 46592,
+      "counted_flops": 7344377088,
+      "peak_gpu_mib": 713.63037109375
+    },
+    {
+      "variant": "ls_reference",
+      "parameters": 21380643,
+      "modifier_parameters": 94432,
+      "counted_flops": 7362678784,
+      "peak_gpu_mib": 979.58203125
+    },
+    {
+      "variant": "cle_context",
+      "parameters": 21331019,
+      "modifier_parameters": 44808,
+      "counted_flops": 7342300928,
+      "peak_gpu_mib": 904.427734375
+    },
+    {
+      "variant": "cle_no_contrast",
+      "parameters": 21331019,
+      "modifier_parameters": 44808,
+      "counted_flops": 7342300928,
+      "peak_gpu_mib": 908.04833984375
+    }
+  ],
+  "checks": [
+    "same frozen AC cohort,427val/576test lists",
+    "paired source backbone and head initial states",
+    "disabled modifier equals ordinary network AMP logits",
+    "realbatch32 finite AMP branch gradients and updates",
+    "parameter/FLOP/peak-memory budgets; no strict equal compute claim"
+  ]
+}

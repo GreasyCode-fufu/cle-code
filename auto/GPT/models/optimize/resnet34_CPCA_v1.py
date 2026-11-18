@@ -1,0 +1,405 @@
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+import math
+import einops
+
+# =============================================================================
+#  DEGConv —— Direction-guided Edge Gated Convolution（方向引导边缘门控卷积）
+#  对原始代码两处必要修正：HoG 逐 cell 循环→向量化 one-hot（逐 bit 等价）；
+#  cropped_angle 的 .view→.reshape（非连续会报错）。
+#  限制：内部 2x2 patch + 8x8 cell，仅能放 stem/layer1/layer2。
+# =============================================================================
+
+class DirectionalStripEdgeConv(nn.Module):
+    def __init__(self, in_channels, hidden_channels, out_channels, kernel_size=3, bias=True):
+        super().__init__()
+        self.channel_reduction = nn.Conv2d(in_channels, hidden_channels, kernel_size=1, bias=bias)
+        self.horizontal_strip_conv = nn.Conv2d(hidden_channels, hidden_channels,
+                                               kernel_size=(1, kernel_size), stride=1,
+                                               padding=(0, kernel_size // 2), groups=hidden_channels)
+        self.vertical_strip_conv = nn.Conv2d(hidden_channels, hidden_channels,
+                                             kernel_size=(kernel_size, 1), stride=1,
+                                             padding=(kernel_size // 2, 0), groups=hidden_channels)
+        self.channel_fusion = nn.Conv2d(hidden_channels * 2, out_channels, kernel_size=1, bias=True)
+
+    def forward(self, feature_map):
+        reduced = self.channel_reduction(feature_map)
+        h = self.horizontal_strip_conv(reduced)
+        v = self.vertical_strip_conv(reduced)
+        return self.channel_fusion(torch.cat([h, v], dim=1))
+
+
+def split_image_to_local_patches(feature_map):
+    return einops.rearrange(feature_map, 'b c (num_h h) (num_w w) -> (num_h num_w b) c h w',
+                            num_h=2, num_w=2)
+
+
+def merge_local_patches_to_image(patch_feature):
+    return einops.rearrange(patch_feature, '(num_h num_w b) c h w -> b c (num_h h) (num_w w)',
+                            num_h=2, num_w=2)
+
+
+class HoGDirectionGuidedEdgeGateConv(nn.Module):
+    def __init__(self, channels, num_orientation_bins=8, cell_size=(8, 8)):
+        super().__init__()
+        self.num_orientation_bins = num_orientation_bins
+        self.cell_size = cell_size
+        self.direction_embedding_encoder = nn.Sequential(
+            nn.Conv2d(num_orientation_bins, channels, kernel_size=1),
+            nn.Conv2d(channels, channels, kernel_size=3, padding=1, groups=channels, bias=False),
+            nn.GroupNorm(channels // 8, channels),
+            nn.ReLU(inplace=True),
+            nn.AdaptiveAvgPool2d((1, 1)))
+        self.edge_gate_generator = nn.Sequential(
+            DirectionalStripEdgeConv(channels, channels // 2, channels),
+            nn.GroupNorm(channels // 8, channels))
+        self.feature_projection = nn.Sequential(
+            nn.Conv2d(channels, channels, kernel_size=1, stride=1),
+            nn.GroupNorm(channels // 8, channels))
+        self.post_edge_fusion = nn.Sequential(
+            DirectionalStripEdgeConv(channels, channels // 2, channels, kernel_size=3),
+            nn.GroupNorm(channels // 8, channels))
+        self.gate_activation = nn.Sigmoid()
+        self.register_buffer('sobel_x', torch.tensor([[-1, 0, 1], [-2, 0, 2], [-1, 0, 1]],
+                                                     dtype=torch.float32).view(1, 1, 3, 3))
+        self.register_buffer('sobel_y', torch.tensor([[-1, -2, -1], [0, 0, 0], [1, 2, 1]],
+                                                     dtype=torch.float32).view(1, 1, 3, 3))
+
+    def forward(self, input_feature):
+        residual_feature = input_feature
+        local_patch_features = split_image_to_local_patches(input_feature)
+        hog_direction_prior = self.compute_hog_direction_prior(local_patch_features)
+        direction_embedding = self.direction_embedding_encoder(hog_direction_prior)
+        gate_weight = self.gate_activation(
+            self.edge_gate_generator(local_patch_features + direction_embedding))
+        projected_feature = self.feature_projection(local_patch_features)
+        gated_edge_feature = gate_weight * projected_feature
+        restored_feature = merge_local_patches_to_image(gated_edge_feature)
+        restored_feature = restored_feature + residual_feature
+        return self.post_edge_fusion(restored_feature)
+
+    def compute_hog_direction_prior(self, patch_feature):
+        grayscale_feature = patch_feature.mean(dim=1, keepdim=True)
+        batch_size, _, height, width = grayscale_feature.shape
+        gradient_x = F.conv2d(grayscale_feature.float(), self.sobel_x, padding=1)
+        gradient_y = F.conv2d(grayscale_feature.float(), self.sobel_y, padding=1)
+        gradient_angle = torch.abs(torch.atan2(gradient_y, gradient_x))
+        cell_height, cell_width = self.cell_size
+        num_cells_h = int(height / cell_height)
+        num_cells_w = int(width / cell_width)
+        cropped_angle = gradient_angle[:, :, :num_cells_h * cell_height, :num_cells_w * cell_width]
+        cell_angle_values = cropped_angle.reshape(batch_size, num_cells_h, num_cells_w, -1)
+        bin_width = math.pi / self.num_orientation_bins
+        orientation_bin_indices = torch.clamp(
+            (cell_angle_values / bin_width).floor().long(), 0, self.num_orientation_bins - 1)
+        orientation_histograms = F.one_hot(
+            orientation_bin_indices, self.num_orientation_bins).sum(dim=-2).float()
+        orientation_histograms = orientation_histograms / (cell_height * cell_width)
+        bin_center_start = math.pi / (2 * self.num_orientation_bins)
+        orientation_bin_centers = torch.linspace(
+            bin_center_start, math.pi - bin_center_start, self.num_orientation_bins,
+            device=patch_feature.device)
+        orientation_bin_centers = orientation_bin_centers.repeat(
+            batch_size, num_cells_h, num_cells_w, 1)
+        hog_direction_prior = orientation_bin_centers * orientation_histograms
+        return hog_direction_prior.permute(0, 3, 1, 2)
+
+
+class DEGConvResidual(nn.Module):
+    """即插即用封装：零初始化门控残差。gamma=0 时初始 output==input。"""
+    def __init__(self, channels: int, num_orientation_bins: int = 8) -> None:
+        super().__init__()
+        self.degconv = HoGDirectionGuidedEdgeGateConv(channels, num_orientation_bins=num_orientation_bins)
+        self.gamma = nn.Parameter(torch.zeros(1, channels, 1, 1))
+
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
+        return x + self.gamma * self.degconv(x)
+
+
+# =============================================================================
+#  CPCA —— Channel Prior Convolutional Attention（替换原 CBAM 空间注意力）
+#  通道注意力(avg+max) + 多尺度条带深度卷积空间注意力。任意尺寸可跑。
+#  注: 此版 self.conv 在 forward 中复用三次（与所给代码一致）；若想用三个独立
+#      卷积，把下方 self.conv 拆成 self.conv_gp / self.conv_sa / self.conv_out。
+# =============================================================================
+
+class CPCAChannelAttention(nn.Module):
+    def __init__(self, input_channels, internal_neurons):
+        super(CPCAChannelAttention, self).__init__()
+        self.fc1 = nn.Conv2d(input_channels, internal_neurons, kernel_size=1, stride=1, bias=True)
+        self.fc2 = nn.Conv2d(internal_neurons, input_channels, kernel_size=1, stride=1, bias=True)
+        self.input_channels = input_channels
+
+    def forward(self, inputs):
+        x1 = F.adaptive_avg_pool2d(inputs, output_size=(1, 1))
+        x1 = self.fc1(x1)
+        x1 = F.relu(x1, inplace=True)
+        x1 = self.fc2(x1)
+        x1 = torch.sigmoid(x1)
+        x2 = F.adaptive_max_pool2d(inputs, output_size=(1, 1))
+        x2 = self.fc1(x2)
+        x2 = F.relu(x2, inplace=True)
+        x2 = self.fc2(x2)
+        x2 = torch.sigmoid(x2)
+        x = x1 + x2
+        x = x.view(-1, self.input_channels, 1, 1)
+        return inputs * x
+
+
+class CPCA(nn.Module):
+    """改进版 CPCA：
+       改进1) global perceptron / 空间注意力 / 输出 用三个独立 1x1 卷积（原版复用一个，
+              会压低容量）；shared_conv=True 可退回原版做消融。
+       改进2) 条带核尺寸可配，并在 ResNet 中按 stage 分辨率自适应，避免大核在小特征图上
+              几乎全是 padding 的浪费。
+    """
+    def __init__(self, channels, channelAttention_reduce=4,
+                 kernel_sizes=(7, 11, 21), shared_conv=False):
+        super().__init__()
+        self.ca = CPCAChannelAttention(input_channels=channels,
+                                       internal_neurons=channels // channelAttention_reduce)
+        self.dconv5_5 = nn.Conv2d(channels, channels, kernel_size=5, padding=2, groups=channels)
+        # 多尺度条带分支（每个尺度一对 1xk / kx1 深度卷积）
+        self.strip_branches = nn.ModuleList()
+        for k in kernel_sizes:
+            self.strip_branches.append(nn.ModuleList([
+                nn.Conv2d(channels, channels, kernel_size=(1, k), padding=(0, k // 2), groups=channels),
+                nn.Conv2d(channels, channels, kernel_size=(k, 1), padding=(k // 2, 0), groups=channels),
+            ]))
+        # 三个独立 1x1 卷积（shared_conv=True 时退回为同一个，复现原版）
+        self.shared_conv = shared_conv
+        if shared_conv:
+            self.conv = nn.Conv2d(channels, channels, kernel_size=1, padding=0)
+            self.conv_gp = self.conv_sa = self.conv_out = self.conv
+        else:
+            self.conv_gp = nn.Conv2d(channels, channels, kernel_size=1, padding=0)
+            self.conv_sa = nn.Conv2d(channels, channels, kernel_size=1, padding=0)
+            self.conv_out = nn.Conv2d(channels, channels, kernel_size=1, padding=0)
+        self.act = nn.GELU()
+
+    def forward(self, inputs):
+        #   Global Perceptron
+        inputs = self.conv_gp(inputs)
+        inputs = self.act(inputs)
+        inputs = self.ca(inputs)
+        x_init = self.dconv5_5(inputs)
+        x = x_init
+        for h_conv, v_conv in self.strip_branches:
+            x = x + v_conv(h_conv(x_init))
+        spatial_att = self.conv_sa(x)
+        out = spatial_att * inputs
+        out = self.conv_out(out)
+        return out
+
+
+class CPCAResidual(nn.Module):
+    """即插即用封装：零初始化门控残差。gamma=0 时初始 output==input（保护预训练）。"""
+    def __init__(self, channels: int, channelAttention_reduce: int = 4,
+                 kernel_sizes=(7, 11, 21), shared_conv: bool = False) -> None:
+        super().__init__()
+        self.cpca = CPCA(channels, channelAttention_reduce=channelAttention_reduce,
+                         kernel_sizes=kernel_sizes, shared_conv=shared_conv)
+        self.gamma = nn.Parameter(torch.zeros(1, channels, 1, 1))
+
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
+        return x + self.gamma * self.cpca(x)
+
+
+# =============================================================================
+#  ResNet：DEGConv(stem/1/2) + CPCA(任意 stage，默认 3/4)
+# =============================================================================
+
+class BasicBlock(nn.Module):
+    expansion = 1
+
+    def __init__(self, in_channel, out_channel, stride=1, downsample=None, **kwargs):
+        super(BasicBlock, self).__init__()
+        self.conv1 = nn.Conv2d(in_channel, out_channel, kernel_size=3, stride=stride, padding=1, bias=False)
+        self.bn1 = nn.BatchNorm2d(out_channel)
+        self.relu = nn.ReLU()
+        self.conv2 = nn.Conv2d(out_channel, out_channel, kernel_size=3, stride=1, padding=1, bias=False)
+        self.bn2 = nn.BatchNorm2d(out_channel)
+        self.downsample = downsample
+
+    def forward(self, x):
+        identity = x
+        if self.downsample is not None:
+            identity = self.downsample(x)
+        out = self.conv1(x); out = self.bn1(out); out = self.relu(out)
+        out = self.conv2(out); out = self.bn2(out)
+        out += identity
+        out = self.relu(out)
+        return out
+
+
+class Bottleneck(nn.Module):
+    expansion = 4
+
+    def __init__(self, in_channel, out_channel, stride=1, downsample=None, groups=1, width_per_group=64):
+        super(Bottleneck, self).__init__()
+        width = int(out_channel * (width_per_group / 64.)) * groups
+        self.conv1 = nn.Conv2d(in_channel, width, kernel_size=1, stride=1, bias=False)
+        self.bn1 = nn.BatchNorm2d(width)
+        self.conv2 = nn.Conv2d(width, width, groups=groups, kernel_size=3, stride=stride, bias=False, padding=1)
+        self.bn2 = nn.BatchNorm2d(width)
+        self.conv3 = nn.Conv2d(width, out_channel*self.expansion, kernel_size=1, stride=1, bias=False)
+        self.bn3 = nn.BatchNorm2d(out_channel*self.expansion)
+        self.relu = nn.ReLU(inplace=True)
+        self.downsample = downsample
+
+    def forward(self, x):
+        identity = x
+        if self.downsample is not None:
+            identity = self.downsample(x)
+        out = self.conv1(x); out = self.bn1(out); out = self.relu(out)
+        out = self.conv2(out); out = self.bn2(out); out = self.relu(out)
+        out = self.conv3(out); out = self.bn3(out)
+        out += identity
+        out = self.relu(out)
+        return out
+
+
+class ResNet(nn.Module):
+
+    def __init__(self, block, blocks_num, num_classes=1000, include_top=True,
+                 groups=1, width_per_group=64,
+                 use_degconv=True, degconv_positions=("1", "2"),
+                 use_cpca=True, cpca_positions=("3", "4"),
+                 cpca_shared_conv=False, cpca_adaptive_kernels=True,
+                 cpca_kernel_sizes=(7, 11, 21)):
+        super(ResNet, self).__init__()
+        self.include_top = include_top
+        self.in_channel = 64
+        self.groups = groups
+        self.width_per_group = width_per_group
+
+        allowed = {"stem", "1", "2"}
+        bad = [p for p in degconv_positions if p not in allowed]
+        if use_degconv and bad:
+            raise ValueError(f"DEGConv 仅支持位置 {sorted(allowed)}（layer3/4 特征图过小会崩）；非法位置: {bad}")
+
+        self.conv1 = nn.Conv2d(3, self.in_channel, kernel_size=7, stride=2, padding=3, bias=False)
+        self.bn1 = nn.BatchNorm2d(self.in_channel)
+        self.relu = nn.ReLU(inplace=True)
+        self.maxpool = nn.MaxPool2d(kernel_size=3, stride=2, padding=1)
+
+        self.layer1 = self._make_layer(block, 64, blocks_num[0])
+        self.layer2 = self._make_layer(block, 128, blocks_num[1], stride=2)
+        self.layer3 = self._make_layer(block, 256, blocks_num[2], stride=2)
+        self.layer4 = self._make_layer(block, 512, blocks_num[3], stride=2)
+
+        # ---- DEGConv（仅 stem/layer1/layer2）----
+        self.use_degconv = use_degconv
+        deg_channels = {"stem": 64 * block.expansion, "1": 64 * block.expansion, "2": 128 * block.expansion}
+        self.degconv = nn.ModuleDict()
+        for p in ("stem", "1", "2"):
+            self.degconv[p] = DEGConvResidual(deg_channels[p]) if (use_degconv and p in degconv_positions) else nn.Identity()
+
+        # ---- CPCA 注意力（任意 stage；核尺寸按分辨率自适应）----
+        self.use_cpca = use_cpca
+        cpca_channels = {"stem": 64 * block.expansion, "1": 64 * block.expansion,
+                         "2": 128 * block.expansion, "3": 256 * block.expansion, "4": 512 * block.expansion}
+        # 各 stage 在 224 输入下的特征边长，用于把条带核裁到 <= 特征图，避免大核全是 padding
+        cpca_feat_size = {"stem": 56, "1": 56, "2": 28, "3": 14, "4": 7}
+        self.cpca = nn.ModuleDict()
+        for p in ("stem", "1", "2", "3", "4"):
+            if use_cpca and p in cpca_positions:
+                if cpca_adaptive_kernels:
+                    S = cpca_feat_size[p]
+                    ks = tuple(k for k in cpca_kernel_sizes if k <= S) or (min(cpca_kernel_sizes),)
+                else:
+                    ks = cpca_kernel_sizes
+                self.cpca[p] = CPCAResidual(cpca_channels[p], kernel_sizes=ks,
+                                            shared_conv=cpca_shared_conv)
+            else:
+                self.cpca[p] = nn.Identity()
+        # ------------------------------------------
+
+        if self.include_top:
+            self.avgpool = nn.AdaptiveAvgPool2d((1, 1))
+            self.fc = nn.Linear(512 * block.expansion, num_classes)
+
+        for m in self.modules():
+            if isinstance(m, nn.Conv2d) and m.weight.requires_grad:
+                nn.init.kaiming_normal_(m.weight, mode='fan_out', nonlinearity='relu')
+        # gamma 是 Parameter，保持 0 → 初始等价于原始 ResNet。
+
+    def _make_layer(self, block, channel, block_num, stride=1):
+        downsample = None
+        if stride != 1 or self.in_channel != channel * block.expansion:
+            downsample = nn.Sequential(
+                nn.Conv2d(self.in_channel, channel * block.expansion, kernel_size=1, stride=stride, bias=False),
+                nn.BatchNorm2d(channel * block.expansion))
+        layers = [block(self.in_channel, channel, downsample=downsample, stride=stride,
+                        groups=self.groups, width_per_group=self.width_per_group)]
+        self.in_channel = channel * block.expansion
+        for _ in range(1, block_num):
+            layers.append(block(self.in_channel, channel,
+                                groups=self.groups, width_per_group=self.width_per_group))
+        return nn.Sequential(*layers)
+
+    def forward(self, x):
+        x = self.conv1(x); x = self.bn1(x); x = self.relu(x); x = self.maxpool(x)
+        x = self.degconv["stem"](x); x = self.cpca["stem"](x)
+        x = self.layer1(x); x = self.degconv["1"](x); x = self.cpca["1"](x)
+        x = self.layer2(x); x = self.degconv["2"](x); x = self.cpca["2"](x)
+        x = self.layer3(x); x = self.cpca["3"](x)
+        x = self.layer4(x); x = self.cpca["4"](x)
+        if self.include_top:
+            x = self.avgpool(x)
+            x = torch.flatten(x, 1)
+            x = self.fc(x)
+        return x
+
+
+def resnet34(num_classes=1000, include_top=True,
+             use_degconv=True, degconv_positions=("1", "2"),
+             use_cpca=True, cpca_positions=("3", "4"),
+             cpca_shared_conv=False, cpca_adaptive_kernels=True,
+             cpca_kernel_sizes=(7, 11, 21)):
+    return ResNet(BasicBlock, [3, 4, 6, 3], num_classes=num_classes, include_top=include_top,
+                  use_degconv=use_degconv, degconv_positions=degconv_positions,
+                  use_cpca=use_cpca, cpca_positions=cpca_positions,
+                  cpca_shared_conv=cpca_shared_conv, cpca_adaptive_kernels=cpca_adaptive_kernels,
+                  cpca_kernel_sizes=cpca_kernel_sizes)
+
+
+def resnet34_base(num_classes=1000, include_top=True):
+    """基线臂：与原始 ResNet34 逐字节一致。"""
+    return resnet34(num_classes=num_classes, include_top=include_top, use_degconv=False, use_cpca=False)
+
+
+def resnet34_degconv(num_classes=1000, include_top=True):
+    """仅 DEGConv：layer1+layer2。"""
+    return resnet34(num_classes=num_classes, include_top=include_top, use_degconv=True, use_cpca=False)
+
+
+def resnet34_cpca(num_classes=1000, include_top=True):
+    """仅 CPCA：layer3+layer4。"""
+    return resnet34(num_classes=num_classes, include_top=include_top, use_degconv=False, use_cpca=True)
+
+
+def resnet34_degconv_cpca(num_classes=1000, include_top=True):
+    """组合臂（改进版 CPCA：独立卷积 + 自适应核）：DEGConv 浅层 + CPCA 深层。"""
+    return resnet34(num_classes=num_classes, include_top=include_top,
+                    use_degconv=True, degconv_positions=("1", "2"),
+                    use_cpca=True, cpca_positions=("3", "4"))
+
+
+def resnet34_degconv_cpca_orig(num_classes=1000, include_top=True):
+    """消融对照：CPCA 用原版行为（共享一个 1x1 卷积 + 固定 7/11/21 核），其余同上。
+       与 resnet34_degconv_cpca 对比即可看出'独立卷积+自适应核'两处改进是否有用。"""
+    return resnet34(num_classes=num_classes, include_top=include_top,
+                    use_degconv=True, degconv_positions=("1", "2"),
+                    use_cpca=True, cpca_positions=("3", "4"),
+                    cpca_shared_conv=True, cpca_adaptive_kernels=False)
+
+
+if __name__ == "__main__":
+    x = torch.randn(2, 3, 224, 224)
+    base = resnet34_base(num_classes=3)
+    combo = resnet34_degconv_cpca(num_classes=3)
+    print("base  out:", tuple(base(x).shape), "| params %.3fM" % (sum(p.numel() for p in base.parameters())/1e6))
+    combo.train(); print("degconv+cpca train out:", tuple(combo(x).shape))
+    combo.eval();  print("degconv+cpca eval  out:", tuple(combo(x).shape), "| params %.3fM" % (sum(p.numel() for p in combo.parameters())/1e6))

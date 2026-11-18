@@ -1,0 +1,1 @@
+官方B-CNN/MPNCOV许可原文补充存档。原upstream代码和config冻结保持不变；目录名复制脚本未匹配LICENSE_BCNN命名，本补充不改变任何模型/训练/数值源码。许可SHA在comparison_preregistration.json锁定。

@@ -1,0 +1,30 @@
+{
+  "created_at": "2026-10-25T10:42:11.328107+08:00",
+  "source_config_sha256": "fd59cdac79dfcaa274e2e2232f58c7c22463e2eb674a19468b59e35ed44557d5",
+  "CPU_audit_sha256": "3d9fd4cfe6fc7f15a618ee76362820e9f150d29894fb44129aab3dbd330c7c90",
+  "CUDA_audit_sha256": "177ad87567fc412d8775fee7283e90b8b6f1d616c52839f6aa0fb997bafdff26",
+  "models": 15,
+  "verified_live_workers": [
+    {
+      "job": "lag_mom_lag_s45",
+      "pid": 1101592,
+      "epochs": 3,
+      "index_sha256": "e8fe76bbcf6d8faf8dcb6f38a148341ffe81d10ac0cdc3e4dc38e9f8ccafd691"
+    }
+  ],
+  "profile_policy": {
+    "slots_by_arm": {
+      "mom_lag": 1,
+      "lag_only": 1,
+      "mom_permuted": 1,
+      "mom_duplicate": 1,
+      "mom_acf": 1
+    },
+    "rule": "smallest within97percent of measured best; active-kernel GPU samples, not interpreter startup;6GiB reserve"
+  },
+  "startup_resource_rows": 7,
+  "startup_mean_gpu_util": 55.0,
+  "real_training_started": true,
+  "three_seed_effectiveness_not_established": true,
+  "overall_research_complete": false
+}

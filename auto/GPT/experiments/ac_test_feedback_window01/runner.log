@@ -1,0 +1,41 @@
+[main 0b0cf6e] research: freeze user-authorized per-method test-feedback inference and independent audit
+ 10 files changed, 1640 insertions(+)
+ create mode 100644 experiments/ac_test_feedback_window01/.gitignore
+ create mode 100644 experiments/ac_test_feedback_window01/TEST_FEEDBACK_PROTOCOL.md
+ create mode 100644 experiments/ac_test_feedback_window01/audit_test_feedback.py
+ create mode 100644 experiments/ac_test_feedback_window01/bootstrap.log
+ create mode 100644 experiments/ac_test_feedback_window01/bootstrap_test_feedback.py
+ create mode 100644 experiments/ac_test_feedback_window01/cache_audit.json
+ create mode 100644 experiments/ac_test_feedback_window01/config.json
+ create mode 100644 experiments/ac_test_feedback_window01/run_test_feedback.py
+ create mode 100644 experiments/ac_test_feedback_window01/runner.log
+ create mode 100644 experiments/ac_test_feedback_window01/runner_identity.json
+[main c05b74e] research: register complete paired methods and val-selected weight hashes before test feedback
+ 15 files changed, 712 insertions(+)
+ create mode 100644 experiments/ac_test_feedback_window01/methods/dino_baseline.json
+ create mode 100644 experiments/ac_test_feedback_window01/methods/qualification_convnext_base_A.json
+ create mode 100644 experiments/ac_test_feedback_window01/methods/qualification_convnext_tiny_A.json
+ create mode 100644 experiments/ac_test_feedback_window01/methods/qualification_convnext_tiny_B.json
+ create mode 100644 experiments/ac_test_feedback_window01/methods/qualification_efficientnet_v2_s_A.json
+ create mode 100644 experiments/ac_test_feedback_window01/methods/qualification_efficientnet_v2_s_B.json
+ create mode 100644 experiments/ac_test_feedback_window01/methods/qualification_swin_t_A.json
+ create mode 100644 experiments/ac_test_feedback_window01/methods/qualification_swin_t_B.json
+ create mode 100644 experiments/ac_test_feedback_window01/methods/round1_convnext.json
+ create mode 100644 experiments/ac_test_feedback_window01/methods/round1_final_only.json
+ create mode 100644 experiments/ac_test_feedback_window01/methods/round1_no_depth.json
+ create mode 100644 experiments/ac_test_feedback_window01/methods/round1_no_neighbor.json
+ create mode 100644 experiments/ac_test_feedback_window01/methods/round1_official4.json
+ create mode 100644 experiments/ac_test_feedback_window01/methods/round1_relational.json
+evaluate/audit dino_baseline 45
+Traceback (most recent call last):
+  File "/data/cle/auto/GPT/experiments/ac_test_feedback_window01/run_test_feedback.py", line 302, in <module>
+    run(args.watch)
+  File "/data/cle/auto/GPT/experiments/ac_test_feedback_window01/run_test_feedback.py", line 288, in run
+    print('evaluate/audit',group['method'],u['seed'],flush=True);run_unit(group,u)
+                                                                 ^^^^^^^^^^^^^^^^^
+  File "/data/cle/auto/GPT/experiments/ac_test_feedback_window01/run_test_feedback.py", line 182, in run_unit
+    while resources()['gpu_free_mib']<8500:time.sleep(10)
+          ^^^^^^^^^^^
+  File "/data/cle/auto/GPT/experiments/ac_test_feedback_window01/run_test_feedback.py", line 170, in resources
+    import psutil
+ModuleNotFoundError: No module named 'psutil'

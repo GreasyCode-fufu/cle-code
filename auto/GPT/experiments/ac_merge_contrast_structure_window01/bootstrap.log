@@ -1,0 +1,349 @@
+[main 45b38c5] research: preregister retained-moment Swin384 transfer and first-merge local mean global matched controls
+ 36 files changed, 86150 insertions(+)
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/MODULE_DIFFERENCES_ZH.md
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/MODULE_PROTOCOL_ZH.md
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/audit_module_structure.py
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/baseline_reference.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/baseline_selection.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/bootstrap.log
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/bootstrap_identity.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/bootstrap_module_structure.py
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/build_merge_study.py
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/check_module_sources.py
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/compare_merge_controls.py
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/comparison_preregistration.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/config.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/continuous_runtime_sampler.py
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/finish_direct_controls.py
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/independent_probability_auditor.py
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/jobs.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/library_cle.py
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/manifest.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/parent_reference.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/postprocessing_revision_v2.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/predict_module_model.py
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/preflight_impl.py
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/run_merge_manager.py
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/run_module_structure.py
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/shared_snapshot_manifest.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/upstream/LICENSE_MICROSOFT
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/upstream/LICENSE_TORCHVISION
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/upstream/official_microsoft_swin.py
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/upstream/provenance.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/upstream/runtime_torchvision_swin.py
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/working_reference.json
+ create mode 100644 models/optimize/ac_merge_contrast_window01/__init__.py
+ create mode 100644 models/optimize/ac_merge_contrast_window01/c4_moment_stem.py
+ create mode 100644 models/optimize/ac_merge_contrast_window01/library_cle.py
+ create mode 100644 models/optimize/ac_merge_contrast_window01/merge_contrast.py
+[main 33305f4] test: verify all5 Swin merge arms public initialization original weights RNG gradients true moment removal and384 budgets
+ 2 files changed, 108 insertions(+)
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/module_source_audit.json
+[main 431b9c8] test: verify Swin384 fullbatch CUDA pairing two updates moment merge gradients and all6 parent B0 full427 reconstructions
+ 2 files changed, 217 insertions(+)
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/preflight.json
+[main 10de18f] perf: measure single and concurrent throughput for distinct library and orientation kernels
+ 69 files changed, 598 insertions(+)
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/check_prediction_cli.py
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/document_merge_start.py
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/profile/local_only/bench_1_0.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/profile/local_only/bench_1_0.log
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/profile/local_only/bench_2_0.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/profile/local_only/bench_2_0.log
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/profile/local_only/bench_2_1.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/profile/local_only/bench_2_1.log
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/profile/local_only/gate_1.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/profile/local_only/gate_2.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/profile/local_only/measurements.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/profile/local_only/ready_1_0.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/profile/local_only/ready_2_0.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/profile/local_only/ready_2_1.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/profile/local_only/resources.csv
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/profile/mom_global/bench_1_0.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/profile/mom_global/bench_1_0.log
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/profile/mom_global/bench_2_0.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/profile/mom_global/bench_2_0.log
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/profile/mom_global/bench_2_1.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/profile/mom_global/bench_2_1.log
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/profile/mom_global/gate_1.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/profile/mom_global/gate_2.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/profile/mom_global/measurements.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/profile/mom_global/ready_1_0.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/profile/mom_global/ready_2_0.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/profile/mom_global/ready_2_1.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/profile/mom_global/resources.csv
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/profile/mom_local/bench_1_0.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/profile/mom_local/bench_1_0.log
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/profile/mom_local/bench_2_0.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/profile/mom_local/bench_2_0.log
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/profile/mom_local/bench_2_1.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/profile/mom_local/bench_2_1.log
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/profile/mom_local/gate_1.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/profile/mom_local/gate_2.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/profile/mom_local/measurements.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/profile/mom_local/ready_1_0.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/profile/mom_local/ready_2_0.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/profile/mom_local/ready_2_1.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/profile/mom_local/resources.csv
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/profile/mom_mean/bench_1_0.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/profile/mom_mean/bench_1_0.log
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/profile/mom_mean/bench_2_0.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/profile/mom_mean/bench_2_0.log
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/profile/mom_mean/bench_2_1.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/profile/mom_mean/bench_2_1.log
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/profile/mom_mean/gate_1.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/profile/mom_mean/gate_2.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/profile/mom_mean/measurements.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/profile/mom_mean/ready_1_0.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/profile/mom_mean/ready_2_0.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/profile/mom_mean/ready_2_1.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/profile/mom_mean/resources.csv
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/profile/mom_only/bench_1_0.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/profile/mom_only/bench_1_0.log
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/profile/mom_only/bench_2_0.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/profile/mom_only/bench_2_0.log
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/profile/mom_only/bench_2_1.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/profile/mom_only/bench_2_1.log
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/profile/mom_only/gate_1.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/profile/mom_only/gate_2.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/profile/mom_only/measurements.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/profile/mom_only/ready_1_0.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/profile/mom_only/ready_2_0.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/profile/mom_only/ready_2_1.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/profile/mom_only/resources.csv
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/profile/selected.json
+launch merge_mom_only_s45 1020402
+[main 7a41796] results: preserve completed module training merge_mom_only_s45
+ 13 files changed, 1704 insertions(+), 6 deletions(-)
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/exports/export_receipt.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/exports/merge_contrast_start_evidence.tar.gz
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/runs/merge_mom_only_s45/complete.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/runs/merge_mom_only_s45/validation_complete.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/runs/merge_mom_only_s45/validation_predictions.csv
+launch merge_mom_only_s46 1024599
+[main c359c42] results: preserve completed module training merge_mom_only_s46
+ 11 files changed, 1688 insertions(+), 6 deletions(-)
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/runs/merge_mom_only_s46/complete.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/runs/merge_mom_only_s46/validation_complete.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/runs/merge_mom_only_s46/validation_predictions.csv
+launch merge_mom_only_s47 1028509
+[main 33af39e] results: preserve completed module training merge_mom_only_s47
+ 12 files changed, 1760 insertions(+), 13 deletions(-)
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/logs/merge_mom_only_s47.log
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/runs/merge_mom_only_s47/complete.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/runs/merge_mom_only_s47/run_meta.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/runs/merge_mom_only_s47/train_log.csv
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/runs/merge_mom_only_s47/validation_complete.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/runs/merge_mom_only_s47/validation_predictions.csv
+[main c4e131e] research: freeze all3 val-selected mom_only checkpoints before adaptive test feedback
+ 2 files changed, 83 insertions(+)
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/evaluations/mom_only/registration.json
+[main 15c770c] results: retain independently reconstructed single/C4 test feedback for mom_only all3 seeds
+ 16 files changed, 4044 insertions(+)
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/evaluations/mom_only/group_audit.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/evaluations/mom_only/s45/independent_audit.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/evaluations/mom_only/s45/test_c4_predictions.csv
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/evaluations/mom_only/s45/test_single_predictions.csv
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/evaluations/mom_only/s45/test_views.npy
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/evaluations/mom_only/s46/independent_audit.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/evaluations/mom_only/s46/test_c4_predictions.csv
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/evaluations/mom_only/s46/test_single_predictions.csv
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/evaluations/mom_only/s46/test_views.npy
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/evaluations/mom_only/s47/independent_audit.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/evaluations/mom_only/s47/test_c4_predictions.csv
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/evaluations/mom_only/s47/test_single_predictions.csv
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/evaluations/mom_only/s47/test_views.npy
+[main 334f229] analysis: record every paired module mechanism, budget control and negative result
+ 7 files changed, 1108 insertions(+)
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/MECHANISM_REPORT_ZH.md
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/MODULE_ROUND_REPORT_ZH.md
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/mechanism_comparisons.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/round_results.json
+launch merge_mom_local_s45 1032181
+[main 937260f] results: preserve completed module training merge_mom_local_s45
+ 11 files changed, 1281 insertions(+), 6 deletions(-)
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/mom_transfer_threshold_delivery_manifest.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/runs/merge_mom_local_s45/complete.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/runs/merge_mom_local_s45/validation_complete.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/runs/merge_mom_local_s45/validation_predictions.csv
+launch merge_mom_local_s46 1036329
+[main f1b649a] results: preserve completed module training merge_mom_local_s46
+ 12 files changed, 1765 insertions(+), 11 deletions(-)
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/logs/merge_mom_local_s46.log
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/runs/merge_mom_local_s46/complete.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/runs/merge_mom_local_s46/run_meta.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/runs/merge_mom_local_s46/train_log.csv
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/runs/merge_mom_local_s46/validation_complete.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/runs/merge_mom_local_s46/validation_predictions.csv
+launch merge_mom_local_s47 1039719
+[main 2091ffd] results: preserve completed module training merge_mom_local_s47
+ 12 files changed, 1767 insertions(+), 11 deletions(-)
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/logs/merge_mom_local_s47.log
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/runs/merge_mom_local_s47/complete.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/runs/merge_mom_local_s47/run_meta.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/runs/merge_mom_local_s47/train_log.csv
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/runs/merge_mom_local_s47/validation_complete.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/runs/merge_mom_local_s47/validation_predictions.csv
+[main f741334] research: freeze all3 val-selected mom_local checkpoints before adaptive test feedback
+ 2 files changed, 83 insertions(+)
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/evaluations/mom_local/registration.json
+[main 090572d] results: retain independently reconstructed single/C4 test feedback for mom_local all3 seeds
+ 16 files changed, 4044 insertions(+)
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/evaluations/mom_local/group_audit.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/evaluations/mom_local/s45/independent_audit.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/evaluations/mom_local/s45/test_c4_predictions.csv
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/evaluations/mom_local/s45/test_single_predictions.csv
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/evaluations/mom_local/s45/test_views.npy
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/evaluations/mom_local/s46/independent_audit.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/evaluations/mom_local/s46/test_c4_predictions.csv
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/evaluations/mom_local/s46/test_single_predictions.csv
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/evaluations/mom_local/s46/test_views.npy
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/evaluations/mom_local/s47/independent_audit.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/evaluations/mom_local/s47/test_c4_predictions.csv
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/evaluations/mom_local/s47/test_single_predictions.csv
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/evaluations/mom_local/s47/test_views.npy
+[main 0d33d29] analysis: record every paired module mechanism, budget control and negative result
+ 7 files changed, 502 insertions(+), 1 deletion(-)
+launch merge_local_only_s45 1043371
+[main 04022b5] results: preserve completed module training merge_local_only_s45
+ 11 files changed, 1050 insertions(+), 6 deletions(-)
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/mom_local_threshold_delivery_manifest.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/runs/merge_local_only_s45/complete.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/runs/merge_local_only_s45/validation_complete.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/runs/merge_local_only_s45/validation_predictions.csv
+launch merge_local_only_s46 1046907
+[main f47b4ca] results: preserve completed module training merge_local_only_s46
+ 12 files changed, 1612 insertions(+), 10 deletions(-)
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/logs/merge_local_only_s46.log
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/runs/merge_local_only_s46/complete.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/runs/merge_local_only_s46/run_meta.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/runs/merge_local_only_s46/train_log.csv
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/runs/merge_local_only_s46/validation_complete.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/runs/merge_local_only_s46/validation_predictions.csv
+launch merge_local_only_s47 1049694
+[main ecae2f6] results: preserve completed module training merge_local_only_s47
+ 12 files changed, 1614 insertions(+), 12 deletions(-)
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/logs/merge_local_only_s47.log
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/runs/merge_local_only_s47/complete.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/runs/merge_local_only_s47/run_meta.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/runs/merge_local_only_s47/train_log.csv
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/runs/merge_local_only_s47/validation_complete.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/runs/merge_local_only_s47/validation_predictions.csv
+[main afa5825] research: freeze all3 val-selected local_only checkpoints before adaptive test feedback
+ 2 files changed, 83 insertions(+)
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/evaluations/local_only/registration.json
+[main 0893b11] results: retain independently reconstructed single/C4 test feedback for local_only all3 seeds
+ 16 files changed, 4042 insertions(+)
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/evaluations/local_only/group_audit.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/evaluations/local_only/s45/independent_audit.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/evaluations/local_only/s45/test_c4_predictions.csv
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/evaluations/local_only/s45/test_single_predictions.csv
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/evaluations/local_only/s45/test_views.npy
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/evaluations/local_only/s46/independent_audit.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/evaluations/local_only/s46/test_c4_predictions.csv
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/evaluations/local_only/s46/test_single_predictions.csv
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/evaluations/local_only/s46/test_views.npy
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/evaluations/local_only/s47/independent_audit.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/evaluations/local_only/s47/test_c4_predictions.csv
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/evaluations/local_only/s47/test_single_predictions.csv
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/evaluations/local_only/s47/test_views.npy
+[main e63c329] analysis: record every paired module mechanism, budget control and negative result
+ 7 files changed, 502 insertions(+), 1 deletion(-)
+launch merge_mom_mean_s45 1052699
+[main e74b93f] results: preserve completed module training merge_mom_mean_s45
+ 12 files changed, 1742 insertions(+), 12 deletions(-)
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/logs/merge_mom_mean_s45.log
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/runs/merge_mom_mean_s45/complete.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/runs/merge_mom_mean_s45/run_meta.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/runs/merge_mom_mean_s45/train_log.csv
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/runs/merge_mom_mean_s45/validation_complete.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/runs/merge_mom_mean_s45/validation_predictions.csv
+launch merge_mom_mean_s46 1055844
+[main 14daa97] results: preserve completed module training merge_mom_mean_s46
+ 12 files changed, 1748 insertions(+), 12 deletions(-)
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/logs/merge_mom_mean_s46.log
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/runs/merge_mom_mean_s46/complete.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/runs/merge_mom_mean_s46/run_meta.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/runs/merge_mom_mean_s46/train_log.csv
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/runs/merge_mom_mean_s46/validation_complete.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/runs/merge_mom_mean_s46/validation_predictions.csv
+launch merge_mom_mean_s47 1059000
+[main 7ef0916] results: preserve completed module training merge_mom_mean_s47
+ 12 files changed, 1749 insertions(+), 13 deletions(-)
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/logs/merge_mom_mean_s47.log
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/runs/merge_mom_mean_s47/complete.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/runs/merge_mom_mean_s47/run_meta.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/runs/merge_mom_mean_s47/train_log.csv
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/runs/merge_mom_mean_s47/validation_complete.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/runs/merge_mom_mean_s47/validation_predictions.csv
+[main 31e56c5] research: freeze all3 val-selected mom_mean checkpoints before adaptive test feedback
+ 2 files changed, 83 insertions(+)
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/evaluations/mom_mean/registration.json
+[main 46916a3] results: retain independently reconstructed single/C4 test feedback for mom_mean all3 seeds
+ 16 files changed, 4044 insertions(+)
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/evaluations/mom_mean/group_audit.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/evaluations/mom_mean/s45/independent_audit.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/evaluations/mom_mean/s45/test_c4_predictions.csv
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/evaluations/mom_mean/s45/test_single_predictions.csv
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/evaluations/mom_mean/s45/test_views.npy
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/evaluations/mom_mean/s46/independent_audit.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/evaluations/mom_mean/s46/test_c4_predictions.csv
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/evaluations/mom_mean/s46/test_single_predictions.csv
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/evaluations/mom_mean/s46/test_views.npy
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/evaluations/mom_mean/s47/independent_audit.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/evaluations/mom_mean/s47/test_c4_predictions.csv
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/evaluations/mom_mean/s47/test_single_predictions.csv
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/evaluations/mom_mean/s47/test_views.npy
+[main 69c6c7a] analysis: record every paired module mechanism, budget control and negative result
+ 7 files changed, 506 insertions(+), 1 deletion(-)
+launch merge_mom_global_s45 1062387
+[main e1fff7a] results: preserve completed module training merge_mom_global_s45
+ 12 files changed, 1763 insertions(+), 13 deletions(-)
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/logs/merge_mom_global_s45.log
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/runs/merge_mom_global_s45/complete.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/runs/merge_mom_global_s45/run_meta.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/runs/merge_mom_global_s45/train_log.csv
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/runs/merge_mom_global_s45/validation_complete.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/runs/merge_mom_global_s45/validation_predictions.csv
+launch merge_mom_global_s46 1065590
+[main 0f69bae] results: preserve completed module training merge_mom_global_s46
+ 12 files changed, 1766 insertions(+), 12 deletions(-)
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/logs/merge_mom_global_s46.log
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/runs/merge_mom_global_s46/complete.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/runs/merge_mom_global_s46/run_meta.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/runs/merge_mom_global_s46/train_log.csv
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/runs/merge_mom_global_s46/validation_complete.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/runs/merge_mom_global_s46/validation_predictions.csv
+launch merge_mom_global_s47 1068813
+[main 696918f] results: preserve completed module training merge_mom_global_s47
+ 12 files changed, 1769 insertions(+), 13 deletions(-)
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/logs/merge_mom_global_s47.log
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/runs/merge_mom_global_s47/complete.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/runs/merge_mom_global_s47/run_meta.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/runs/merge_mom_global_s47/train_log.csv
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/runs/merge_mom_global_s47/validation_complete.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/runs/merge_mom_global_s47/validation_predictions.csv
+[main 8551170] research: freeze all3 val-selected mom_global checkpoints before adaptive test feedback
+ 4 files changed, 85 insertions(+)
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/evaluations/mom_global/registration.json
+[main b904099] results: retain independently reconstructed single/C4 test feedback for mom_global all3 seeds
+ 16 files changed, 4044 insertions(+)
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/evaluations/mom_global/group_audit.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/evaluations/mom_global/s45/independent_audit.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/evaluations/mom_global/s45/test_c4_predictions.csv
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/evaluations/mom_global/s45/test_single_predictions.csv
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/evaluations/mom_global/s45/test_views.npy
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/evaluations/mom_global/s46/independent_audit.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/evaluations/mom_global/s46/test_c4_predictions.csv
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/evaluations/mom_global/s46/test_single_predictions.csv
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/evaluations/mom_global/s46/test_views.npy
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/evaluations/mom_global/s47/independent_audit.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/evaluations/mom_global/s47/test_c4_predictions.csv
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/evaluations/mom_global/s47/test_single_predictions.csv
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/evaluations/mom_global/s47/test_views.npy
+[main 597ea3e] analysis: record every paired module mechanism, budget control and negative result
+ 7 files changed, 506 insertions(+), 1 deletion(-)
+[main b0b2632] results: audit complete faithful-module and orientation round; retain every seed and negative result
+ 9 files changed, 41 insertions(+), 23 deletions(-)
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/independent_audit.json
+ create mode 100644 experiments/ac_merge_contrast_structure_window01/runtime_sampler_complete_v2.json

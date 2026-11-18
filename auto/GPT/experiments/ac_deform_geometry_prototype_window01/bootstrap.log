@@ -1,0 +1,27 @@
+[main 32c8f11] research: preregister bounded affine sampling prototype and faithful shared-official geometry audit
+ 18 files changed, 2446 insertions(+)
+ create mode 100644 experiments/ac_deform_geometry_prototype_window01/.gitignore
+ create mode 100644 experiments/ac_deform_geometry_prototype_window01/PROTO_PROTOCOL_ZH.md
+ create mode 100644 experiments/ac_deform_geometry_prototype_window01/affine_geometry.py
+ create mode 100644 experiments/ac_deform_geometry_prototype_window01/bootstrap.log
+ create mode 100644 experiments/ac_deform_geometry_prototype_window01/bootstrap.py
+ create mode 100644 experiments/ac_deform_geometry_prototype_window01/check_geometry_cpu.py
+ create mode 100644 experiments/ac_deform_geometry_prototype_window01/config.json
+ create mode 100644 experiments/ac_deform_geometry_prototype_window01/identity.json
+ create mode 100644 experiments/ac_deform_geometry_prototype_window01/upstream/LDConv_README.md
+ create mode 100644 experiments/ac_deform_geometry_prototype_window01/upstream/LICENSE_FADC
+ create mode 100644 experiments/ac_deform_geometry_prototype_window01/upstream/LICENSE_TORCHVISION
+ create mode 100644 experiments/ac_deform_geometry_prototype_window01/upstream/official_fadc.py
+ create mode 100644 experiments/ac_deform_geometry_prototype_window01/upstream/official_ldconv.py
+ create mode 100644 experiments/ac_deform_geometry_prototype_window01/upstream/provenance.json
+ create mode 100644 experiments/ac_deform_geometry_prototype_window01/upstream/shared_akconv.py
+ create mode 100644 experiments/ac_deform_geometry_prototype_window01/upstream/shared_fadc.py
+ create mode 100644 experiments/ac_deform_geometry_prototype_window01/upstream/shared_ldconv.py
+ create mode 100644 experiments/ac_deform_geometry_prototype_window01/upstream/torchvision_deform_conv.py
+/home/login/miniconda3/envs/sunfuxiang/lib/python3.12/site-packages/torch/functional.py:505: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at /pytorch/aten/src/ATen/native/TensorShape.cpp:4382.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+{"passed": true, "official_deform_NumPy_output": true, "independent_grid_sample_output_and_three_gradients": true, "affine_double_gradcheck": true, "local_determinant_range": [0.4445576472165742, 2.249994993660121], "local_orientation_preserving_not_global_topology": true, "operators": [{"kind": "affine", "parameters": 134, "zero_output_exact": true, "RNG_preserved": true, "synthetic_two_updates_finite": true}, {"kind": "permuted_affine", "parameters": 134, "zero_output_exact": true, "RNG_preserved": true, "synthetic_two_updates_finite": true}, {"kind": "free", "parameters": 362, "zero_output_exact": true, "RNG_preserved": true, "synthetic_two_updates_finite": true}], "shared_LDConv_vs_official_output_input_gradient": true, "LDConv_actual_predictor_bias_nonzero": true, "LDConv_hook_parameter_gradient_unchanged": true, "LDConv_zero_offset_corner_weight_sum": 4, "LDConv_corner_interior_weight_sum": 1, "public_Mom_Tiny224_zero_logits_exact": true, "public_parameter_ids_and_RNG_preserved": true, "public_finite_backward": true, "public_parameters": 27861705, "neural_CLE_training": 0, "CLE_images": 0, "test_predictions": 0, "overall_research_complete": false}
+[main c0686d1] test: verify local affine sampling against NumPy and official DCN, shared LDConv boundary semantics and public initialization
+ 3 files changed, 77 insertions(+)
+ create mode 100644 experiments/ac_deform_geometry_prototype_window01/complete.json
+ create mode 100644 experiments/ac_deform_geometry_prototype_window01/numeric_preflight_cpu.json

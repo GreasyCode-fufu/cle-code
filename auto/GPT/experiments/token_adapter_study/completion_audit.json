@@ -1,0 +1,180 @@
+{
+  "passed": true,
+  "timestamp": "2026-10-24T11:47:47.674488+08:00",
+  "new_neural_trainings": 18,
+  "checks": [
+    "all source/cache/model hashes, run signatures and 60 epochs",
+    "inner best checkpoint agrees with log and full-val metrics",
+    "full train2386/val538 patient isolation, no test or grading",
+    "18 strict checkpoint reloads and full-val on/off inference reproduce predictions",
+    "pretrained source tensors remain exact except full fine-tuning, source drift recorded",
+    "all weights finite, trainable budgets match",
+    "per-block per-image context finite, bounded and reproduced",
+    "39-patient bootstrap, five family intervals and complete gate",
+    "all six scheme summaries and login ownership"
+  ],
+  "models": [
+    {
+      "job": "r10_frozen_head_s42",
+      "checkpoint_sha256": "707b778c744058a35a14c555c38b4f15d72d2db9255e717aeef46757e60d8518",
+      "source_rms_drift": 0.0,
+      "trainable_parameters": 2307,
+      "prediction_max_absolute_diff": 0.0,
+      "descriptor_relative_change": 0.0,
+      "adapter_off_disagreement": 0.0
+    },
+    {
+      "job": "r10_frozen_head_s43",
+      "checkpoint_sha256": "1ae44040a2c3a6369a18d1122d5c15d437b549b2d9a5e9a802dd8bbf287eafb4",
+      "source_rms_drift": 0.0,
+      "trainable_parameters": 2307,
+      "prediction_max_absolute_diff": 0.0,
+      "descriptor_relative_change": 0.0,
+      "adapter_off_disagreement": 0.0
+    },
+    {
+      "job": "r10_frozen_head_s44",
+      "checkpoint_sha256": "6cf128ee8a84c717cacd4b60cb2421d9c282ef890e0cdbb7b5a9b7df285cfcd9",
+      "source_rms_drift": 0.0,
+      "trainable_parameters": 2307,
+      "prediction_max_absolute_diff": 0.0,
+      "descriptor_relative_change": 0.0,
+      "adapter_off_disagreement": 0.0
+    },
+    {
+      "job": "r10_full_finetune_s42",
+      "checkpoint_sha256": "f86b877eec1557f72968d695ad0cfe47ed6fdbb926e9755489b509cc3c436829",
+      "source_rms_drift": 0.0003550779757996854,
+      "trainable_parameters": 21631107,
+      "prediction_max_absolute_diff": 0.0,
+      "descriptor_relative_change": 0.0,
+      "adapter_off_disagreement": 0.0
+    },
+    {
+      "job": "r10_full_finetune_s43",
+      "checkpoint_sha256": "a73b0bd2c709e7effd66e3189783b386d6b0d3e5989e90f13b53d164ea651532",
+      "source_rms_drift": 0.0001916161301937791,
+      "trainable_parameters": 21631107,
+      "prediction_max_absolute_diff": 0.0,
+      "descriptor_relative_change": 0.0,
+      "adapter_off_disagreement": 0.0
+    },
+    {
+      "job": "r10_full_finetune_s44",
+      "checkpoint_sha256": "f918c75047105d4382951af415779bd2afe1e5777f1b0657998b194fdc360d9b",
+      "source_rms_drift": 0.0003460272850841047,
+      "trainable_parameters": 21631107,
+      "prediction_max_absolute_diff": 0.0,
+      "descriptor_relative_change": 0.0,
+      "adapter_off_disagreement": 0.0
+    },
+    {
+      "job": "r10_lora_qv_s42",
+      "checkpoint_sha256": "bff70ade82cb56918321a0499a0bf6c9077636130b98016cf7fabba2cd8b3b14",
+      "source_rms_drift": 0.0,
+      "trainable_parameters": 149763,
+      "prediction_max_absolute_diff": 0.0,
+      "descriptor_relative_change": 0.9541512727737427,
+      "adapter_off_disagreement": 0.41821561338289964
+    },
+    {
+      "job": "r10_lora_qv_s43",
+      "checkpoint_sha256": "5a65a85c7a6e4de52ebe4a0566272f9285ccf10df1e233cd7430d87202e9f9a0",
+      "source_rms_drift": 0.0,
+      "trainable_parameters": 149763,
+      "prediction_max_absolute_diff": 0.0,
+      "descriptor_relative_change": 0.6611882448196411,
+      "adapter_off_disagreement": 0.31226765799256506
+    },
+    {
+      "job": "r10_lora_qv_s44",
+      "checkpoint_sha256": "24108e2caef386fc691757bae58aba43638e11af463154e908d62a6f38b9d393",
+      "source_rms_drift": 0.0,
+      "trainable_parameters": 149763,
+      "prediction_max_absolute_diff": 0.0,
+      "descriptor_relative_change": 0.7863667607307434,
+      "adapter_off_disagreement": 0.4628252788104089
+    },
+    {
+      "job": "r10_local_adapter_s42",
+      "checkpoint_sha256": "bf7a9453ef82b026c43e0e23a3fc53aac50f85685b107ea0fee5aa86b633791f",
+      "source_rms_drift": 0.0,
+      "trainable_parameters": 153411,
+      "prediction_max_absolute_diff": 0.0,
+      "descriptor_relative_change": 0.8398807048797607,
+      "adapter_off_disagreement": 0.2955390334572491
+    },
+    {
+      "job": "r10_local_adapter_s43",
+      "checkpoint_sha256": "88dd6ff27461428d864088c82c11811948dc3d5ca0f498e49d07d58046a32371",
+      "source_rms_drift": 0.0,
+      "trainable_parameters": 153411,
+      "prediction_max_absolute_diff": 0.0,
+      "descriptor_relative_change": 0.8458397388458252,
+      "adapter_off_disagreement": 0.1654275092936803
+    },
+    {
+      "job": "r10_local_adapter_s44",
+      "checkpoint_sha256": "686871f470451883543d6b1424ab9b9100967d114564029854774601b59fb7a1",
+      "source_rms_drift": 0.0,
+      "trainable_parameters": 153411,
+      "prediction_max_absolute_diff": 0.0,
+      "descriptor_relative_change": 0.8976024985313416,
+      "adapter_off_disagreement": 0.654275092936803
+    },
+    {
+      "job": "r10_cle_cls_context_s42",
+      "checkpoint_sha256": "0aaadc67ea3edbc586afc89d5710eff244e43488d866d61daa5c7f7e8fba77fe",
+      "source_rms_drift": 0.0,
+      "trainable_parameters": 152547,
+      "prediction_max_absolute_diff": 0.0,
+      "descriptor_relative_change": 0.7451308369636536,
+      "adapter_off_disagreement": 0.2732342007434944
+    },
+    {
+      "job": "r10_cle_cls_context_s43",
+      "checkpoint_sha256": "3f323e84bf429847f86b9f79610ff7c8457c95853492049b881d31e363cf56c7",
+      "source_rms_drift": 0.0,
+      "trainable_parameters": 152547,
+      "prediction_max_absolute_diff": 0.0,
+      "descriptor_relative_change": 0.8981592059135437,
+      "adapter_off_disagreement": 0.2211895910780669
+    },
+    {
+      "job": "r10_cle_cls_context_s44",
+      "checkpoint_sha256": "20e37a83d7f5fb18c0e20a54c0ef3e08a501e99b1be27fb38cb060249e1931b8",
+      "source_rms_drift": 0.0,
+      "trainable_parameters": 152547,
+      "prediction_max_absolute_diff": 0.0,
+      "descriptor_relative_change": 0.9600030183792114,
+      "adapter_off_disagreement": 0.5557620817843866
+    },
+    {
+      "job": "r10_cle_mean_context_s42",
+      "checkpoint_sha256": "9a1d9d02bc7b8e3a33d5cc13595998473c5c0d5171b2f782bfdfb8afef6eb1f0",
+      "source_rms_drift": 0.0,
+      "trainable_parameters": 152547,
+      "prediction_max_absolute_diff": 0.0,
+      "descriptor_relative_change": 0.7021881937980652,
+      "adapter_off_disagreement": 0.30111524163568776
+    },
+    {
+      "job": "r10_cle_mean_context_s43",
+      "checkpoint_sha256": "76f6e87c137c2ab2d72e0204689847d4876cbac84268c3b765b24c01e63f8f1b",
+      "source_rms_drift": 0.0,
+      "trainable_parameters": 152547,
+      "prediction_max_absolute_diff": 0.0,
+      "descriptor_relative_change": 0.86968594789505,
+      "adapter_off_disagreement": 0.29182156133828996
+    },
+    {
+      "job": "r10_cle_mean_context_s44",
+      "checkpoint_sha256": "7d6a461bd2d25f895c7efa95b244a9ede9c660bd25f7681645a8bc3c3bdbd932",
+      "source_rms_drift": 0.0,
+      "trainable_parameters": 152547,
+      "prediction_max_absolute_diff": 0.0,
+      "descriptor_relative_change": 0.8354645371437073,
+      "adapter_off_disagreement": 0.6561338289962825
+    }
+  ]
+}

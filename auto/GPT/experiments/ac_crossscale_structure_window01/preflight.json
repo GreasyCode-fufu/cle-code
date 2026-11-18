@@ -1,0 +1,240 @@
+{
+  "passed": true,
+  "budgets": [
+    {
+      "arm": "plain",
+      "parameters": 27822435,
+      "counted_flops": 8909531136,
+      "peak_gpu_mib": 2327.099609375,
+      "finite_two_updates": true
+    },
+    {
+      "arm": "mom_corr",
+      "parameters": 27860166,
+      "counted_flops": 9113673728,
+      "peak_gpu_mib": 2569.57568359375,
+      "finite_two_updates": true
+    },
+    {
+      "arm": "corr_only",
+      "parameters": 27841638,
+      "counted_flops": 8911364096,
+      "peak_gpu_mib": 2336.8642578125,
+      "finite_two_updates": true
+    },
+    {
+      "arm": "mom_shuffle",
+      "parameters": 27860166,
+      "counted_flops": 9113673728,
+      "peak_gpu_mib": 2569.576171875,
+      "finite_two_updates": true
+    },
+    {
+      "arm": "mom_bilinear",
+      "parameters": 27860166,
+      "counted_flops": 9113673728,
+      "peak_gpu_mib": 2569.576171875,
+      "finite_two_updates": true
+    }
+  ],
+  "readout_scale_and_gradient_diagnostics": [
+    {
+      "arm": "mom_corr",
+      "train_images": 32,
+      "val_images": 32,
+      "test_images": 0,
+      "initial_train_descriptor": {
+        "descriptor_l2": 15.611696243286133,
+        "descriptor_rms": 0.9757623672485352,
+        "descriptor_max_abs": 2.772336721420288
+      },
+      "initial_val_descriptor": {
+        "descriptor_l2": 15.511007308959961,
+        "descriptor_rms": 0.9694655537605286,
+        "descriptor_max_abs": 2.8080668449401855
+      },
+      "two_update_gradient_norms": [
+        {
+          "step": 0,
+          "loss": 1.034576416015625,
+          "gradient_norms": {
+            "low.weight": 0.0,
+            "high.weight": 0.0,
+            "classifier.weight": 2.507887601852417,
+            "classifier.bias": 0.14683081209659576
+          }
+        },
+        {
+          "step": 1,
+          "loss": 0.958740234375,
+          "gradient_norms": {
+            "low.weight": 0.009667414240539074,
+            "high.weight": 0.031026268377900124,
+            "classifier.weight": 2.30401611328125,
+            "classifier.bias": 0.10954608768224716
+          }
+        }
+      ],
+      "post_two_update_val_residual_rms": 0.016224194318056107,
+      "scale": 16,
+      "scale_policy": "fixed sqrt256 dimension, not selected using metric scores"
+    },
+    {
+      "arm": "corr_only",
+      "train_images": 32,
+      "val_images": 32,
+      "test_images": 0,
+      "initial_train_descriptor": {
+        "descriptor_l2": 15.611696243286133,
+        "descriptor_rms": 0.9757623672485352,
+        "descriptor_max_abs": 2.772336721420288
+      },
+      "initial_val_descriptor": {
+        "descriptor_l2": 15.511007308959961,
+        "descriptor_rms": 0.9694655537605286,
+        "descriptor_max_abs": 2.8080668449401855
+      },
+      "two_update_gradient_norms": [
+        {
+          "step": 0,
+          "loss": 1.034576416015625,
+          "gradient_norms": {
+            "low.weight": 0.0,
+            "high.weight": 0.0,
+            "classifier.weight": 2.507887601852417,
+            "classifier.bias": 0.14683081209659576
+          }
+        },
+        {
+          "step": 1,
+          "loss": 0.9605255126953125,
+          "gradient_norms": {
+            "low.weight": 0.009683213196694851,
+            "high.weight": 0.031023530289530754,
+            "classifier.weight": 2.307638168334961,
+            "classifier.bias": 0.10960283130407333
+          }
+        }
+      ],
+      "post_two_update_val_residual_rms": 0.016244933009147644,
+      "scale": 16,
+      "scale_policy": "fixed sqrt256 dimension, not selected using metric scores"
+    },
+    {
+      "arm": "mom_shuffle",
+      "train_images": 32,
+      "val_images": 32,
+      "test_images": 0,
+      "initial_train_descriptor": {
+        "descriptor_l2": 14.505742073059082,
+        "descriptor_rms": 0.9068489670753479,
+        "descriptor_max_abs": 3.0665009021759033
+      },
+      "initial_val_descriptor": {
+        "descriptor_l2": 14.470565795898438,
+        "descriptor_rms": 0.9045590758323669,
+        "descriptor_max_abs": 3.242036819458008
+      },
+      "two_update_gradient_norms": [
+        {
+          "step": 0,
+          "loss": 1.034576416015625,
+          "gradient_norms": {
+            "low.weight": 0.0,
+            "high.weight": 0.0,
+            "classifier.weight": 2.0326027870178223,
+            "classifier.bias": 0.14683081209659576
+          }
+        },
+        {
+          "step": 1,
+          "loss": 0.959869384765625,
+          "gradient_norms": {
+            "low.weight": 0.015124811790883541,
+            "high.weight": 0.0295276902616024,
+            "classifier.weight": 2.175585985183716,
+            "classifier.bias": 0.11196994036436081
+          }
+        }
+      ],
+      "post_two_update_val_residual_rms": 0.0063588558696210384,
+      "scale": 16,
+      "scale_policy": "fixed sqrt256 dimension, not selected using metric scores"
+    },
+    {
+      "arm": "mom_bilinear",
+      "train_images": 32,
+      "val_images": 32,
+      "test_images": 0,
+      "initial_train_descriptor": {
+        "descriptor_l2": 16.0,
+        "descriptor_rms": 1.0,
+        "descriptor_max_abs": 3.0333657264709473
+      },
+      "initial_val_descriptor": {
+        "descriptor_l2": 16.0,
+        "descriptor_rms": 1.0,
+        "descriptor_max_abs": 2.732861042022705
+      },
+      "two_update_gradient_norms": [
+        {
+          "step": 0,
+          "loss": 1.034576416015625,
+          "gradient_norms": {
+            "low.weight": 0.0,
+            "high.weight": 0.0,
+            "classifier.weight": 3.0779428482055664,
+            "classifier.bias": 0.14683081209659576
+          }
+        },
+        {
+          "step": 1,
+          "loss": 0.958160400390625,
+          "gradient_norms": {
+            "low.weight": 0.020395394414663315,
+            "high.weight": 0.049037858843803406,
+            "classifier.weight": 2.5047965049743652,
+            "classifier.bias": 0.10775462538003922
+          }
+        }
+      ],
+      "post_two_update_val_residual_rms": 0.024203265085816383,
+      "scale": 16,
+      "scale_policy": "fixed sqrt256 dimension, not selected using metric scores"
+    }
+  ],
+  "reproduced_baselines": [
+    {
+      "kind": "plain",
+      "seed": 45,
+      "full427_max_probability_error": 0.0
+    },
+    {
+      "kind": "plain",
+      "seed": 46,
+      "full427_max_probability_error": 0.0
+    },
+    {
+      "kind": "plain",
+      "seed": 47,
+      "full427_max_probability_error": 0.0
+    },
+    {
+      "kind": "moments",
+      "seed": 45,
+      "full427_max_probability_error": 0.0
+    },
+    {
+      "kind": "moments",
+      "seed": 46,
+      "full427_max_probability_error": 0.0
+    },
+    {
+      "kind": "moments",
+      "seed": 47,
+      "full427_max_probability_error": 0.0
+    }
+  ],
+  "test_denied": true,
+  "flops_convention": "2FLOP/MAC, Conv/Linear/functional3C4/convolution+bmm; excludes pointwise/norm/pooling"
+}

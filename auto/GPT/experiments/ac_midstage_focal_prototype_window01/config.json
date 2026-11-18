@@ -1,0 +1,43 @@
+{
+  "identity": "ac_midstage_focal_prototype_window01",
+  "thread": "01a16d4e-48fe-7e22-8c4a-c6de0f4d6f76",
+  "sources": {
+    "models/optimize/ac_midstage_focal_prototype_window01/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "models/optimize/ac_midstage_focal_prototype_window01/c4_moment_stem.py": "8cd90f0659a7a852fa16c7a848bca0c416f24913c3548ee6e6141792cf429fdd",
+    "models/optimize/ac_midstage_focal_prototype_window01/midstage_focal.py": "ba62eaaa8e5689b0082aa297c5cfaa6ceed0e099323fa8e8b30a86e96a3ddce4",
+    "experiments/ac_midstage_focal_prototype_window01/check_cpu.py": "c8504a0a9232b39e6ae700c9a592e4670e44197a8e16c7120bd44d9979f544d8",
+    "experiments/ac_midstage_focal_prototype_window01/register_cpu.py": "bf0dafee651cdf9003d2f45c4649c487735650ceed7d5d4010c366d926f5bbb9",
+    "experiments/ac_midstage_focal_prototype_window01/PROTOCOL_ZH.md": "baa47189b5a2da2cd5c0fb6fac1ba7cc2a0994e51a6ecaa65039306bab99e68b",
+    "experiments/ac_midstage_focal_prototype_window01/references/LICENSE_FocalNet": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383",
+    "experiments/ac_midstage_focal_prototype_window01/references/REFERENCES.json": "7cd0f75c4427323258a683a3f545b46f98d1d0ee6aee099f732ff2e4f7621ec8",
+    "experiments/ac_midstage_focal_prototype_window01/references/official_focalnet.py": "ea8e5a6df720771ba8bf67087b43ee115e90a414f1fc4deb6930c7f4ad66da4e"
+  },
+  "locked": {
+    "experiments/ac_salience_contrast_structure_window01/config.json": "3bd06d2c1d8481d2b1cd6bdfee3c7d96d051b83854e3d3c7dcf7089c479cc7e3",
+    "experiments/ac_salience_contrast_structure_window01/independent_audit.json": "a6bc53e2817b7129360e07f9abc7099712f49a15988920c5a9c1a10deb3c6002",
+    "experiments/ac_salience_contrast_structure_window01/direct_control_comparisons.json": "11bb10df9ccc5bc2f717c04e12ed1f4df39d7fb9edec250b569eeffa6ba3c4e5",
+    "experiments/ac_salience_contrast_structure_window01/bootstrap_complete.json": "fb71849e13e81e56c6527517996ef2409339bc23811e1e7266301e8b2a9d1ca9",
+    "experiments/ac_salience_contrast_structure_window01/COMBINATION_TARGET_CLARIFICATION_ZH.md": "6074c11ef9459ff385d1fa2effb6196309bbe25949b84bdd65568269da4caf28",
+    "experiments/ac_salience_contrast_structure_window01/SALIENCE_RETENTION_DECISION_ZH.md": "e76b513bb5c54d257a597f4a0f90b0a66a864110ed8b0870d6798c7ee45e9204",
+    "experiments/ac_salience_contrast_final_report_window01/local_complete_evidence_audit.json": "6d384a031a0be626248ea70929670aa3835da344200d96faa587de624b85ae28",
+    "experiments/ac_dataset_v1/dataset_config.json": "7ed4a82396abd4f4f7761cfb132f3ae97e5d61979136b702fa8cb76b56e3b509",
+    "experiments/ac_dataset_v1/dataset_manifest.json": "b136e3a48ff1b6442957797b4d98228dfc7cedc9abae4f456052dcfcf4f69de8",
+    "experiments/ac_dataset_v1/independent_dataset_audit.json": "5c07df0c774b85e5910310357b273cd90c8f6e6a8d0bed9c42554717be6a4361",
+    "experiments/ac_qualification_20261024_window01/config.json": "0967996bd587a783df09a2ab04d1094b00e078e205ffaeb2e0f906d7294f5dbe",
+    "experiments/ac_qualification_20261024_window01/pretrained_manifest.json": "0004921bc0e040e1a6b3cadf4d0bff16345c978b516c12242270dab24ea8c003"
+  },
+  "arms": [
+    "mom_focalcontrast",
+    "focalcontrast_only",
+    "mom_focalraw",
+    "mom_misaligned",
+    "mom_additive"
+  ],
+  "stage": "CPU prototype only; no CLE images or training",
+  "before_numeric_audit": true,
+  "extra_parameters": 11832,
+  "gradient_rule": "zero up firstpositive; down/f/h/DW firstzero secondpositive; retainedMom separately checked",
+  "target": "2-3 complementary network designs combined versus fixedB0 >1.5pp; no single-design gate",
+  "scope": "mature Focal operator adapted to midstage centered feature modulation; no novelty or gain guarantee",
+  "overall_research_complete": false
+}

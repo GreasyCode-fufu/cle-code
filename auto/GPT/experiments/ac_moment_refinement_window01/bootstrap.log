@@ -1,0 +1,340 @@
+[main 5311437] research: freeze paired moment-mechanism ablations and two complementary refinements on unchanged B0
+ 24 files changed, 75340 insertions(+)
+ create mode 100644 experiments/ac_moment_refinement_window01/MODULE_DIFFERENCES_ZH.md
+ create mode 100644 experiments/ac_moment_refinement_window01/MODULE_PROTOCOL_ZH.md
+ create mode 100644 experiments/ac_moment_refinement_window01/audit_module_structure.py
+ create mode 100644 experiments/ac_moment_refinement_window01/baseline_reference.json
+ create mode 100644 experiments/ac_moment_refinement_window01/baseline_selection.json
+ create mode 100644 experiments/ac_moment_refinement_window01/bootstrap.log
+ create mode 100644 experiments/ac_moment_refinement_window01/bootstrap_identity.json
+ create mode 100644 experiments/ac_moment_refinement_window01/bootstrap_module_structure.py
+ create mode 100644 experiments/ac_moment_refinement_window01/check_module_sources.py
+ create mode 100644 experiments/ac_moment_refinement_window01/config.json
+ create mode 100644 experiments/ac_moment_refinement_window01/continuous_runtime_sampler.py
+ create mode 100644 experiments/ac_moment_refinement_window01/jobs.json
+ create mode 100644 experiments/ac_moment_refinement_window01/launch.json
+ create mode 100644 experiments/ac_moment_refinement_window01/manifest.json
+ create mode 100644 experiments/ac_moment_refinement_window01/postprocessing_revision_v2.json
+ create mode 100644 experiments/ac_moment_refinement_window01/run_module_structure.py
+ create mode 100644 experiments/ac_moment_refinement_window01/run_moment_manager.py
+ create mode 100644 experiments/ac_moment_refinement_window01/shared_snapshot_manifest.json
+ create mode 100644 experiments/ac_moment_refinement_window01/upstream/parent_protocol.md
+ create mode 100644 experiments/ac_moment_refinement_window01/working_reference.json
+ create mode 100644 models/optimize/ac_moment_refinement_window01/__init__.py
+ create mode 100644 models/optimize/ac_moment_refinement_window01/c4_moment_stem.py
+ create mode 100644 models/optimize/ac_moment_refinement_window01/library_cle.py
+ create mode 100644 models/optimize/ac_moment_refinement_window01/shared_attention.py
+[main 6f9ae0e] test: verify refinement initialization, equal-budget moment controls, finite CPU gradients and augmentation RNG
+ 2 files changed, 132 insertions(+)
+ create mode 100644 experiments/ac_moment_refinement_window01/module_source_audit.json
+[main 2f4cb80] test: pass actual refinement CUDA AMP, matched initialization and six full baseline/working-model probability reproductions
+ 2 files changed, 78 insertions(+)
+ create mode 100644 experiments/ac_moment_refinement_window01/preflight.json
+[main 6d0e313] perf: measure single and concurrent throughput for distinct library and orientation kernels
+ 106 files changed, 776 insertions(+)
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/aug_moments/bench_1_0.json
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/aug_moments/bench_1_0.log
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/aug_moments/bench_2_0.json
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/aug_moments/bench_2_0.log
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/aug_moments/bench_2_1.json
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/aug_moments/bench_2_1.log
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/aug_moments/bench_4_0.json
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/aug_moments/bench_4_0.log
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/aug_moments/bench_4_1.json
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/aug_moments/bench_4_1.log
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/aug_moments/bench_4_2.json
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/aug_moments/bench_4_2.log
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/aug_moments/bench_4_3.json
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/aug_moments/bench_4_3.log
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/aug_moments/gate_1.json
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/aug_moments/gate_2.json
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/aug_moments/gate_4.json
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/aug_moments/measurements.json
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/aug_moments/ready_1_0.json
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/aug_moments/ready_2_0.json
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/aug_moments/ready_2_1.json
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/aug_moments/ready_4_0.json
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/aug_moments/ready_4_1.json
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/aug_moments/ready_4_2.json
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/aug_moments/ready_4_3.json
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/aug_moments/resources.csv
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/mean_only/bench_1_0.json
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/mean_only/bench_1_0.log
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/mean_only/bench_2_0.json
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/mean_only/bench_2_0.log
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/mean_only/bench_2_1.json
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/mean_only/bench_2_1.log
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/mean_only/bench_4_0.json
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/mean_only/bench_4_0.log
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/mean_only/bench_4_1.json
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/mean_only/bench_4_1.log
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/mean_only/bench_4_2.json
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/mean_only/bench_4_2.log
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/mean_only/bench_4_3.json
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/mean_only/bench_4_3.log
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/mean_only/gate_1.json
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/mean_only/gate_2.json
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/mean_only/gate_4.json
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/mean_only/measurements.json
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/mean_only/ready_1_0.json
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/mean_only/ready_2_0.json
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/mean_only/ready_2_1.json
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/mean_only/ready_4_0.json
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/mean_only/ready_4_1.json
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/mean_only/ready_4_2.json
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/mean_only/ready_4_3.json
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/mean_only/resources.csv
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/moments_eca/bench_1_0.json
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/moments_eca/bench_1_0.log
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/moments_eca/bench_2_0.json
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/moments_eca/bench_2_0.log
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/moments_eca/bench_2_1.json
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/moments_eca/bench_2_1.log
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/moments_eca/bench_4_0.json
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/moments_eca/bench_4_0.log
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/moments_eca/bench_4_1.json
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/moments_eca/bench_4_1.log
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/moments_eca/bench_4_2.json
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/moments_eca/bench_4_2.log
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/moments_eca/bench_4_3.json
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/moments_eca/bench_4_3.log
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/moments_eca/gate_1.json
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/moments_eca/gate_2.json
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/moments_eca/gate_4.json
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/moments_eca/measurements.json
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/moments_eca/ready_1_0.json
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/moments_eca/ready_2_0.json
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/moments_eca/ready_2_1.json
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/moments_eca/ready_4_0.json
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/moments_eca/ready_4_1.json
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/moments_eca/ready_4_2.json
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/moments_eca/ready_4_3.json
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/moments_eca/resources.csv
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/random_moments/bench_1_0.json
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/random_moments/bench_1_0.log
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/random_moments/bench_2_0.json
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/random_moments/bench_2_0.log
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/random_moments/bench_2_1.json
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/random_moments/bench_2_1.log
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/random_moments/bench_4_0.json
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/random_moments/bench_4_0.log
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/random_moments/bench_4_1.json
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/random_moments/bench_4_1.log
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/random_moments/bench_4_2.json
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/random_moments/bench_4_2.log
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/random_moments/bench_4_3.json
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/random_moments/bench_4_3.log
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/random_moments/gate_1.json
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/random_moments/gate_2.json
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/random_moments/gate_4.json
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/random_moments/measurements.json
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/random_moments/ready_1_0.json
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/random_moments/ready_2_0.json
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/random_moments/ready_2_1.json
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/random_moments/ready_4_0.json
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/random_moments/ready_4_1.json
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/random_moments/ready_4_2.json
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/random_moments/ready_4_3.json
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/random_moments/resources.csv
+ create mode 100644 experiments/ac_moment_refinement_window01/profile/selected.json
+launch momentrefine_mean_only_s45 911562
+[main 7c5c995] results: preserve completed module training momentrefine_mean_only_s45
+ 15 files changed, 951 insertions(+)
+ create mode 100644 experiments/ac_moment_refinement_window01/io_resources.jsonl
+ create mode 100644 experiments/ac_moment_refinement_window01/logs/momentrefine_mean_only_s45.log
+ create mode 100644 experiments/ac_moment_refinement_window01/manager_entry_identity_v2.json
+ create mode 100644 experiments/ac_moment_refinement_window01/manager_identity.json
+ create mode 100644 experiments/ac_moment_refinement_window01/pipeline.lock
+ create mode 100644 experiments/ac_moment_refinement_window01/resources.csv
+ create mode 100644 experiments/ac_moment_refinement_window01/runs/momentrefine_mean_only_s45/complete.json
+ create mode 100644 experiments/ac_moment_refinement_window01/runs/momentrefine_mean_only_s45/run_meta.json
+ create mode 100644 experiments/ac_moment_refinement_window01/runs/momentrefine_mean_only_s45/train_log.csv
+ create mode 100644 experiments/ac_moment_refinement_window01/runs/momentrefine_mean_only_s45/validation_complete.json
+ create mode 100644 experiments/ac_moment_refinement_window01/runs/momentrefine_mean_only_s45/validation_predictions.csv
+ create mode 100644 experiments/ac_moment_refinement_window01/runtime_sampler.log
+ create mode 100644 experiments/ac_moment_refinement_window01/runtime_sampler_identity.json
+ create mode 100644 experiments/ac_moment_refinement_window01/status.json
+launch momentrefine_mean_only_s46 912300
+[main 583bda5] results: preserve completed module training momentrefine_mean_only_s46
+ 10 files changed, 812 insertions(+), 12 deletions(-)
+ create mode 100644 experiments/ac_moment_refinement_window01/logs/momentrefine_mean_only_s46.log
+ create mode 100644 experiments/ac_moment_refinement_window01/runs/momentrefine_mean_only_s46/complete.json
+ create mode 100644 experiments/ac_moment_refinement_window01/runs/momentrefine_mean_only_s46/run_meta.json
+ create mode 100644 experiments/ac_moment_refinement_window01/runs/momentrefine_mean_only_s46/train_log.csv
+ create mode 100644 experiments/ac_moment_refinement_window01/runs/momentrefine_mean_only_s46/validation_complete.json
+ create mode 100644 experiments/ac_moment_refinement_window01/runs/momentrefine_mean_only_s46/validation_predictions.csv
+launch momentrefine_mean_only_s47 913023
+[main e5b2119] results: preserve completed module training momentrefine_mean_only_s47
+ 10 files changed, 802 insertions(+), 12 deletions(-)
+ create mode 100644 experiments/ac_moment_refinement_window01/logs/momentrefine_mean_only_s47.log
+ create mode 100644 experiments/ac_moment_refinement_window01/runs/momentrefine_mean_only_s47/complete.json
+ create mode 100644 experiments/ac_moment_refinement_window01/runs/momentrefine_mean_only_s47/run_meta.json
+ create mode 100644 experiments/ac_moment_refinement_window01/runs/momentrefine_mean_only_s47/train_log.csv
+ create mode 100644 experiments/ac_moment_refinement_window01/runs/momentrefine_mean_only_s47/validation_complete.json
+ create mode 100644 experiments/ac_moment_refinement_window01/runs/momentrefine_mean_only_s47/validation_predictions.csv
+[main 82b6b63] research: freeze all3 val-selected mean_only checkpoints before adaptive test feedback
+ 2 files changed, 73 insertions(+)
+ create mode 100644 experiments/ac_moment_refinement_window01/evaluations/mean_only/registration.json
+[main 40e95a6] results: retain independently reconstructed single/C4 test feedback for mean_only all3 seeds
+ 14 files changed, 4018 insertions(+)
+ create mode 100644 experiments/ac_moment_refinement_window01/evaluations/mean_only/group_audit.json
+ create mode 100644 experiments/ac_moment_refinement_window01/evaluations/mean_only/s45/independent_audit.json
+ create mode 100644 experiments/ac_moment_refinement_window01/evaluations/mean_only/s45/test_c4_predictions.csv
+ create mode 100644 experiments/ac_moment_refinement_window01/evaluations/mean_only/s45/test_single_predictions.csv
+ create mode 100644 experiments/ac_moment_refinement_window01/evaluations/mean_only/s45/test_views.npy
+ create mode 100644 experiments/ac_moment_refinement_window01/evaluations/mean_only/s46/independent_audit.json
+ create mode 100644 experiments/ac_moment_refinement_window01/evaluations/mean_only/s46/test_c4_predictions.csv
+ create mode 100644 experiments/ac_moment_refinement_window01/evaluations/mean_only/s46/test_single_predictions.csv
+ create mode 100644 experiments/ac_moment_refinement_window01/evaluations/mean_only/s46/test_views.npy
+ create mode 100644 experiments/ac_moment_refinement_window01/evaluations/mean_only/s47/independent_audit.json
+ create mode 100644 experiments/ac_moment_refinement_window01/evaluations/mean_only/s47/test_c4_predictions.csv
+ create mode 100644 experiments/ac_moment_refinement_window01/evaluations/mean_only/s47/test_single_predictions.csv
+ create mode 100644 experiments/ac_moment_refinement_window01/evaluations/mean_only/s47/test_views.npy
+[main 39a038d] analysis: record every paired module mechanism, budget control and negative result
+ 5 files changed, 1051 insertions(+)
+ create mode 100644 experiments/ac_moment_refinement_window01/MECHANISM_REPORT_ZH.md
+ create mode 100644 experiments/ac_moment_refinement_window01/MODULE_ROUND_REPORT_ZH.md
+ create mode 100644 experiments/ac_moment_refinement_window01/mechanism_comparisons.json
+ create mode 100644 experiments/ac_moment_refinement_window01/round_results.json
+launch momentrefine_random_moments_s45 913924
+[main 577c49a] results: preserve completed module training momentrefine_random_moments_s45
+ 10 files changed, 806 insertions(+), 12 deletions(-)
+ create mode 100644 experiments/ac_moment_refinement_window01/logs/momentrefine_random_moments_s45.log
+ create mode 100644 experiments/ac_moment_refinement_window01/runs/momentrefine_random_moments_s45/complete.json
+ create mode 100644 experiments/ac_moment_refinement_window01/runs/momentrefine_random_moments_s45/run_meta.json
+ create mode 100644 experiments/ac_moment_refinement_window01/runs/momentrefine_random_moments_s45/train_log.csv
+ create mode 100644 experiments/ac_moment_refinement_window01/runs/momentrefine_random_moments_s45/validation_complete.json
+ create mode 100644 experiments/ac_moment_refinement_window01/runs/momentrefine_random_moments_s45/validation_predictions.csv
+launch momentrefine_random_moments_s46 914995
+[main 30abc8f] results: preserve completed module training momentrefine_random_moments_s46
+ 10 files changed, 805 insertions(+), 11 deletions(-)
+ create mode 100644 experiments/ac_moment_refinement_window01/logs/momentrefine_random_moments_s46.log
+ create mode 100644 experiments/ac_moment_refinement_window01/runs/momentrefine_random_moments_s46/complete.json
+ create mode 100644 experiments/ac_moment_refinement_window01/runs/momentrefine_random_moments_s46/run_meta.json
+ create mode 100644 experiments/ac_moment_refinement_window01/runs/momentrefine_random_moments_s46/train_log.csv
+ create mode 100644 experiments/ac_moment_refinement_window01/runs/momentrefine_random_moments_s46/validation_complete.json
+ create mode 100644 experiments/ac_moment_refinement_window01/runs/momentrefine_random_moments_s46/validation_predictions.csv
+launch momentrefine_random_moments_s47 915870
+[main f88ae49] results: preserve completed module training momentrefine_random_moments_s47
+ 10 files changed, 805 insertions(+), 9 deletions(-)
+ create mode 100644 experiments/ac_moment_refinement_window01/logs/momentrefine_random_moments_s47.log
+ create mode 100644 experiments/ac_moment_refinement_window01/runs/momentrefine_random_moments_s47/complete.json
+ create mode 100644 experiments/ac_moment_refinement_window01/runs/momentrefine_random_moments_s47/run_meta.json
+ create mode 100644 experiments/ac_moment_refinement_window01/runs/momentrefine_random_moments_s47/train_log.csv
+ create mode 100644 experiments/ac_moment_refinement_window01/runs/momentrefine_random_moments_s47/validation_complete.json
+ create mode 100644 experiments/ac_moment_refinement_window01/runs/momentrefine_random_moments_s47/validation_predictions.csv
+[main 6d10d74] research: freeze all3 val-selected random_moments checkpoints before adaptive test feedback
+ 2 files changed, 73 insertions(+)
+ create mode 100644 experiments/ac_moment_refinement_window01/evaluations/random_moments/registration.json
+[main 984a98a] results: retain independently reconstructed single/C4 test feedback for random_moments all3 seeds
+ 14 files changed, 4018 insertions(+)
+ create mode 100644 experiments/ac_moment_refinement_window01/evaluations/random_moments/group_audit.json
+ create mode 100644 experiments/ac_moment_refinement_window01/evaluations/random_moments/s45/independent_audit.json
+ create mode 100644 experiments/ac_moment_refinement_window01/evaluations/random_moments/s45/test_c4_predictions.csv
+ create mode 100644 experiments/ac_moment_refinement_window01/evaluations/random_moments/s45/test_single_predictions.csv
+ create mode 100644 experiments/ac_moment_refinement_window01/evaluations/random_moments/s45/test_views.npy
+ create mode 100644 experiments/ac_moment_refinement_window01/evaluations/random_moments/s46/independent_audit.json
+ create mode 100644 experiments/ac_moment_refinement_window01/evaluations/random_moments/s46/test_c4_predictions.csv
+ create mode 100644 experiments/ac_moment_refinement_window01/evaluations/random_moments/s46/test_single_predictions.csv
+ create mode 100644 experiments/ac_moment_refinement_window01/evaluations/random_moments/s46/test_views.npy
+ create mode 100644 experiments/ac_moment_refinement_window01/evaluations/random_moments/s47/independent_audit.json
+ create mode 100644 experiments/ac_moment_refinement_window01/evaluations/random_moments/s47/test_c4_predictions.csv
+ create mode 100644 experiments/ac_moment_refinement_window01/evaluations/random_moments/s47/test_single_predictions.csv
+ create mode 100644 experiments/ac_moment_refinement_window01/evaluations/random_moments/s47/test_views.npy
+[main cc2fbc2] analysis: record every paired module mechanism, budget control and negative result
+ 5 files changed, 538 insertions(+), 1 deletion(-)
+launch momentrefine_moments_eca_s45 916937
+[main bea04fa] results: preserve completed module training momentrefine_moments_eca_s45
+ 10 files changed, 810 insertions(+), 8 deletions(-)
+ create mode 100644 experiments/ac_moment_refinement_window01/runs/momentrefine_moments_eca_s45/complete.json
+ create mode 100644 experiments/ac_moment_refinement_window01/runs/momentrefine_moments_eca_s45/validation_complete.json
+ create mode 100644 experiments/ac_moment_refinement_window01/runs/momentrefine_moments_eca_s45/validation_predictions.csv
+launch momentrefine_moments_eca_s46 918010
+[main 43a3471] results: preserve completed module training momentrefine_moments_eca_s46
+ 12 files changed, 955 insertions(+), 12 deletions(-)
+ create mode 100644 experiments/ac_moment_refinement_window01/logs/momentrefine_moments_eca_s46.log
+ create mode 100644 experiments/ac_moment_refinement_window01/runs/momentrefine_moments_eca_s46/complete.json
+ create mode 100644 experiments/ac_moment_refinement_window01/runs/momentrefine_moments_eca_s46/run_meta.json
+ create mode 100644 experiments/ac_moment_refinement_window01/runs/momentrefine_moments_eca_s46/train_log.csv
+ create mode 100644 experiments/ac_moment_refinement_window01/runs/momentrefine_moments_eca_s46/validation_complete.json
+ create mode 100644 experiments/ac_moment_refinement_window01/runs/momentrefine_moments_eca_s46/validation_predictions.csv
+launch momentrefine_moments_eca_s47 918910
+[main cf62c39] results: preserve completed module training momentrefine_moments_eca_s47
+ 12 files changed, 958 insertions(+), 12 deletions(-)
+ create mode 100644 experiments/ac_moment_refinement_window01/logs/momentrefine_moments_eca_s47.log
+ create mode 100644 experiments/ac_moment_refinement_window01/runs/momentrefine_moments_eca_s47/complete.json
+ create mode 100644 experiments/ac_moment_refinement_window01/runs/momentrefine_moments_eca_s47/run_meta.json
+ create mode 100644 experiments/ac_moment_refinement_window01/runs/momentrefine_moments_eca_s47/train_log.csv
+ create mode 100644 experiments/ac_moment_refinement_window01/runs/momentrefine_moments_eca_s47/validation_complete.json
+ create mode 100644 experiments/ac_moment_refinement_window01/runs/momentrefine_moments_eca_s47/validation_predictions.csv
+[main 7cb522c] research: freeze all3 val-selected moments_eca checkpoints before adaptive test feedback
+ 2 files changed, 73 insertions(+)
+ create mode 100644 experiments/ac_moment_refinement_window01/evaluations/moments_eca/registration.json
+[main fddb5a1] results: retain independently reconstructed single/C4 test feedback for moments_eca all3 seeds
+ 16 files changed, 4026 insertions(+)
+ create mode 100644 experiments/ac_moment_refinement_window01/evaluations/moments_eca/group_audit.json
+ create mode 100644 experiments/ac_moment_refinement_window01/evaluations/moments_eca/s45/independent_audit.json
+ create mode 100644 experiments/ac_moment_refinement_window01/evaluations/moments_eca/s45/test_c4_predictions.csv
+ create mode 100644 experiments/ac_moment_refinement_window01/evaluations/moments_eca/s45/test_single_predictions.csv
+ create mode 100644 experiments/ac_moment_refinement_window01/evaluations/moments_eca/s45/test_views.npy
+ create mode 100644 experiments/ac_moment_refinement_window01/evaluations/moments_eca/s46/independent_audit.json
+ create mode 100644 experiments/ac_moment_refinement_window01/evaluations/moments_eca/s46/test_c4_predictions.csv
+ create mode 100644 experiments/ac_moment_refinement_window01/evaluations/moments_eca/s46/test_single_predictions.csv
+ create mode 100644 experiments/ac_moment_refinement_window01/evaluations/moments_eca/s46/test_views.npy
+ create mode 100644 experiments/ac_moment_refinement_window01/evaluations/moments_eca/s47/independent_audit.json
+ create mode 100644 experiments/ac_moment_refinement_window01/evaluations/moments_eca/s47/test_c4_predictions.csv
+ create mode 100644 experiments/ac_moment_refinement_window01/evaluations/moments_eca/s47/test_single_predictions.csv
+ create mode 100644 experiments/ac_moment_refinement_window01/evaluations/moments_eca/s47/test_views.npy
+[main 2b16fac] analysis: record every paired module mechanism, budget control and negative result
+ 7 files changed, 544 insertions(+), 1 deletion(-)
+launch momentrefine_aug_moments_s45 920263
+[main 2487873] results: preserve completed module training momentrefine_aug_moments_s45
+ 12 files changed, 951 insertions(+), 13 deletions(-)
+ create mode 100644 experiments/ac_moment_refinement_window01/logs/momentrefine_aug_moments_s45.log
+ create mode 100644 experiments/ac_moment_refinement_window01/runs/momentrefine_aug_moments_s45/complete.json
+ create mode 100644 experiments/ac_moment_refinement_window01/runs/momentrefine_aug_moments_s45/run_meta.json
+ create mode 100644 experiments/ac_moment_refinement_window01/runs/momentrefine_aug_moments_s45/train_log.csv
+ create mode 100644 experiments/ac_moment_refinement_window01/runs/momentrefine_aug_moments_s45/validation_complete.json
+ create mode 100644 experiments/ac_moment_refinement_window01/runs/momentrefine_aug_moments_s45/validation_predictions.csv
+launch momentrefine_aug_moments_s46 921150
+[main 8afac4b] results: preserve completed module training momentrefine_aug_moments_s46
+ 12 files changed, 956 insertions(+), 12 deletions(-)
+ create mode 100644 experiments/ac_moment_refinement_window01/logs/momentrefine_aug_moments_s46.log
+ create mode 100644 experiments/ac_moment_refinement_window01/runs/momentrefine_aug_moments_s46/complete.json
+ create mode 100644 experiments/ac_moment_refinement_window01/runs/momentrefine_aug_moments_s46/run_meta.json
+ create mode 100644 experiments/ac_moment_refinement_window01/runs/momentrefine_aug_moments_s46/train_log.csv
+ create mode 100644 experiments/ac_moment_refinement_window01/runs/momentrefine_aug_moments_s46/validation_complete.json
+ create mode 100644 experiments/ac_moment_refinement_window01/runs/momentrefine_aug_moments_s46/validation_predictions.csv
+launch momentrefine_aug_moments_s47 922098
+[main bf79d8c] results: preserve completed module training momentrefine_aug_moments_s47
+ 12 files changed, 955 insertions(+), 13 deletions(-)
+ create mode 100644 experiments/ac_moment_refinement_window01/logs/momentrefine_aug_moments_s47.log
+ create mode 100644 experiments/ac_moment_refinement_window01/runs/momentrefine_aug_moments_s47/complete.json
+ create mode 100644 experiments/ac_moment_refinement_window01/runs/momentrefine_aug_moments_s47/run_meta.json
+ create mode 100644 experiments/ac_moment_refinement_window01/runs/momentrefine_aug_moments_s47/train_log.csv
+ create mode 100644 experiments/ac_moment_refinement_window01/runs/momentrefine_aug_moments_s47/validation_complete.json
+ create mode 100644 experiments/ac_moment_refinement_window01/runs/momentrefine_aug_moments_s47/validation_predictions.csv
+[main b303fb3] research: freeze all3 val-selected aug_moments checkpoints before adaptive test feedback
+ 2 files changed, 73 insertions(+)
+ create mode 100644 experiments/ac_moment_refinement_window01/evaluations/aug_moments/registration.json
+[main 3a7d8b2] results: retain independently reconstructed single/C4 test feedback for aug_moments all3 seeds
+ 16 files changed, 4026 insertions(+)
+ create mode 100644 experiments/ac_moment_refinement_window01/evaluations/aug_moments/group_audit.json
+ create mode 100644 experiments/ac_moment_refinement_window01/evaluations/aug_moments/s45/independent_audit.json
+ create mode 100644 experiments/ac_moment_refinement_window01/evaluations/aug_moments/s45/test_c4_predictions.csv
+ create mode 100644 experiments/ac_moment_refinement_window01/evaluations/aug_moments/s45/test_single_predictions.csv
+ create mode 100644 experiments/ac_moment_refinement_window01/evaluations/aug_moments/s45/test_views.npy
+ create mode 100644 experiments/ac_moment_refinement_window01/evaluations/aug_moments/s46/independent_audit.json
+ create mode 100644 experiments/ac_moment_refinement_window01/evaluations/aug_moments/s46/test_c4_predictions.csv
+ create mode 100644 experiments/ac_moment_refinement_window01/evaluations/aug_moments/s46/test_single_predictions.csv
+ create mode 100644 experiments/ac_moment_refinement_window01/evaluations/aug_moments/s46/test_views.npy
+ create mode 100644 experiments/ac_moment_refinement_window01/evaluations/aug_moments/s47/independent_audit.json
+ create mode 100644 experiments/ac_moment_refinement_window01/evaluations/aug_moments/s47/test_c4_predictions.csv
+ create mode 100644 experiments/ac_moment_refinement_window01/evaluations/aug_moments/s47/test_single_predictions.csv
+ create mode 100644 experiments/ac_moment_refinement_window01/evaluations/aug_moments/s47/test_views.npy
+[main f534e39] analysis: record every paired module mechanism, budget control and negative result
+ 7 files changed, 546 insertions(+), 1 deletion(-)
+[main e9c5354] results: audit complete faithful-module and orientation round; retain every seed and negative result
+ 9 files changed, 39 insertions(+), 23 deletions(-)
+ create mode 100644 experiments/ac_moment_refinement_window01/independent_audit.json
+ create mode 100644 experiments/ac_moment_refinement_window01/runtime_sampler_complete_v2.json

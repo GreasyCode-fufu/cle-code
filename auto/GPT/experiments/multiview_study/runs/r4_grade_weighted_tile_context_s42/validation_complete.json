@@ -1,0 +1,98 @@
+{
+  "signature": "a5ab81a44ea250d7ab1f097c07941f32ec3b061c599119477de0101fb51f862c",
+  "job_id": "r4_grade_weighted_tile_context_s42",
+  "recipe": "grade_weighted",
+  "variant": "tile_context",
+  "seed": 42,
+  "n": 538,
+  "checkpoint_sha256": "246ee074ead7d72a8c98ba968c092dfe10cb786ee80ed3373203686d8193a18c",
+  "completed_at": "2026-10-24T08:00:38.454475+08:00",
+  "parameters": 21434883,
+  "modifier_parameters": 148672,
+  "diagnostics": {
+    "note": "Off uses the same fitted global encoder at matched preprocessing, not a retrained ablation.",
+    "local_share": {
+      "mean": 0.10230633228684889,
+      "quantiles": [
+        0.08668181300163269,
+        0.09782101400196552,
+        0.10163480415940285,
+        0.10637925378978252,
+        0.1220054030418396
+      ]
+    },
+    "local_attention_entropy": {
+      "mean": 1.1834561678556705,
+      "quantiles": [
+        0.3279445171356201,
+        1.0831180214881897,
+        1.24492609500885,
+        1.3460192680358887,
+        1.3862829208374023
+      ]
+    },
+    "descriptor_shift": {
+      "mean": 0.046408991078364915,
+      "quantiles": [
+        0.013936917297542095,
+        0.034438700415194035,
+        0.04375467635691166,
+        0.05549243465065956,
+        0.11785255372524261
+      ]
+    },
+    "off_same_checkpoint_metrics": {
+      "macro_f1": 0.8778698288932207,
+      "accuracy": 0.879182156133829,
+      "class_f1": [
+        0.875,
+        0.7894736842105263,
+        0.9691358024691358
+      ],
+      "confusion_matrix": [
+        [
+          196,
+          28,
+          1
+        ],
+        [
+          27,
+          120,
+          9
+        ],
+        [
+          0,
+          0,
+          157
+        ]
+      ],
+      "auroc": 0.9681254859175078
+    },
+    "off_prediction_disagreement": 0.00929368029739777
+  },
+  "macro_f1": 0.8755441313362106,
+  "accuracy": 0.8773234200743495,
+  "class_f1": [
+    0.875,
+    0.7854785478547854,
+    0.9661538461538461
+  ],
+  "confusion_matrix": [
+    [
+      196,
+      28,
+      1
+    ],
+    [
+      27,
+      119,
+      10
+    ],
+    [
+      0,
+      0,
+      157
+    ]
+  ],
+  "auroc": 0.968325956060133
+}

@@ -1,0 +1,55 @@
+{
+  "identity": "ac_channel_covariance_prototype_window01",
+  "created_at": "2026-10-25T11:29:19.922178+08:00",
+  "sources": {
+    "experiments/ac_channel_covariance_prototype_window01/PROTOCOL_ZH.md": "ea3825ae30d99626e9f13577a314bb9ded0681b23eb40c5750a3e11c94038599",
+    "experiments/ac_channel_covariance_prototype_window01/check_cpu.py": "ff9b1b34ff4828163608245ba952f62577fe555822d4eb9129db3e5e5cead7ec",
+    "experiments/ac_channel_covariance_prototype_window01/references/LICENSE_MPNCOV": "d4dbaf28f7c7af485978a3cd47fc642b6cfe2c6022812253cb20e5972f1b09bf",
+    "experiments/ac_channel_covariance_prototype_window01/references/LICENSE_MPNCOV.metadata.json": "12004a8419fcd823088bcef34daaddb94414bb70255498a437e8284ed0937153",
+    "experiments/ac_channel_covariance_prototype_window01/references/official_MPNCOV.py": "80a08bf0eca7ebdcff929298fb0bfa8000af983c1471f7f5fd0f6043e59e0aab",
+    "experiments/ac_channel_covariance_prototype_window01/references/official_MPNCOV.py.metadata.json": "546fb16092bc3dbff3f136a286a4fd370511bc3a04271fdefeeda65aff7d2a88",
+    "models/optimize/ac_channel_covariance_prototype_window01/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "models/optimize/ac_channel_covariance_prototype_window01/c4_moment_stem.py": "8cd90f0659a7a852fa16c7a848bca0c416f24913c3548ee6e6141792cf429fdd",
+    "models/optimize/ac_channel_covariance_prototype_window01/channel_covariance.py": "cd1d25d31e4afec8a060c1df26f05e71ac8b74108d03d4d0cca26160d973b29d"
+  },
+  "locked": {
+    "models/optimize/ac_module_window01/c4_moment_stem.py": "8cd90f0659a7a852fa16c7a848bca0c416f24913c3548ee6e6141792cf429fdd",
+    "experiments/ac_dataset_v1/dataset_config.json": "7ed4a82396abd4f4f7761cfb132f3ae97e5d61979136b702fa8cb76b56e3b509",
+    "experiments/ac_dataset_v1/dataset_manifest.json": "b136e3a48ff1b6442957797b4d98228dfc7cedc9abae4f456052dcfcf4f69de8",
+    "experiments/ac_dataset_v1/independent_dataset_audit.json": "5c07df0c774b85e5910310357b273cd90c8f6e6a8d0bed9c42554717be6a4361",
+    "experiments/ac_qualification_20261024_window01/pretrained_manifest.json": "0004921bc0e040e1a6b3cadf4d0bff16345c978b516c12242270dab24ea8c003",
+    "experiments/ac_qualification_20261024_window01/qualification_model.py": "61235ce72fa36d20dd12e7f39a839453587c3daf29bd87000af1e5f0d6f55e28",
+    "experiments/ac_qualification_20261024_window01/run_qualification.py": "989108463118a19e4837774bd21ba156383b62adc54332d5a738fef0ecd0df9c",
+    "experiments/ac_spatial_lag_structure_window01/config.json": "fd59cdac79dfcaa274e2e2232f58c7c22463e2eb674a19468b59e35ed44557d5",
+    "experiments/ac_spatial_lag_structure_window01/independent_audit.json": "a6bc53e2817b7129360e07f9abc7099712f49a15988920c5a9c1a10deb3c6002",
+    "experiments/ac_spatial_lag_structure_window01/direct_control_comparisons.json": "cebdfe83a8bafecdfcf0e1332a5ba03411f5599223b590eab7c37eecf5df8c11",
+    "experiments/ac_spatial_lag_final_report_window01/final_receipt.json": "4975b40a021ad1477d6f62678f54a179fa3c3c3b7d0bbd1adb8aa3fa6ed7415c",
+    "experiments/ac_spatial_lag_final_report_window01/LAG_RETENTION_DECISION_ZH.md": "2498d49a52b56619a0644ae2ef976eed527e7676017180a82f7c4ae64f94405c",
+    "models/optimize/ac_crossscale_structure_window01/library_cle.py": "63fcee5c7e882ceba3aac305f509b574afb99f2eb590582bf2933e2203df1386"
+  },
+  "arms": [
+    "mom_covsqrt",
+    "covsqrt_only",
+    "mom_rawcov",
+    "mom_diag",
+    "mom_channelperm"
+  ],
+  "rank": 16,
+  "iterations": 5,
+  "ridge": 0.0001,
+  "CPU_only": true,
+  "CLE_images": 0,
+  "CLE_training": 0,
+  "public_synthetic_forward_shape": [
+    1,
+    3,
+    224,
+    224
+  ],
+  "priors": [
+    "https://www.peihuali.org/iSQRT-COV/index.html",
+    "https://github.com/jiangtaoxie/fast-MPN-COV/blob/master/src/representation/MPNCOV.py"
+  ],
+  "innovation_confirmed": false,
+  "overall_research_complete": false
+}

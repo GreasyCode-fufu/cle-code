@@ -1,0 +1,51 @@
+{
+  "version": 3,
+  "authorized_at": "2026-10-25T15:39:26.312035+08:00",
+  "human_clarification": "最终性能提升1.5个点不限宏F1；明确指evaluate.py测试程序中的指标。",
+  "primary_reported_metrics": [
+    "macro_f1",
+    "overall_accuracy",
+    "auc_roc_macro"
+  ],
+  "target_absolute_delta": 0.015,
+  "target_units": "absolute percentage points; not relative percent",
+  "target_interpretation": "At least one relevant proportional classification metric from evaluate.py at least +1.5pp versus unchanged fixed B0; report all metrics, seeds, conditional uncertainty, tradeoffs and cumulative controls.",
+  "paired_seeds": [
+    45,
+    46,
+    47
+  ],
+  "checkpoint_selection_unchanged": "original earliest maximum validation macroF1; no posthoc test-selected epoch",
+  "retrospective_scope_expansion": true,
+  "existing_test_role": "authorized adaptive internal development; conditional CI unadjusted for model/metric selection",
+  "C4_separate_from_network_design": true,
+  "network_design_target": "original 2-3 complementary network designs with cumulative/drop-one/mature controls; no new per-component1.5 gate",
+  "decision": "re-audit existing complete evidence across all metrics before excluding prior candidates or launching additional formal training",
+  "overall_status": "active",
+  "metric_authority": "/home/login/data/cle/auto/GPT/evaluate.py",
+  "evaluate_sha256": "e5213828f81e04baf2aa025c35dfa3a1b585efbdcf8a7cfbd9033510592b0ee7",
+  "supplementary_reported_metrics": [
+    "weighted_f1",
+    "balanced_accuracy",
+    "macro_precision",
+    "macro_recall",
+    "macro_sensitivity",
+    "macro_specificity",
+    "weighted_precision",
+    "weighted_recall",
+    "auc_pr_macro",
+    "kappa",
+    "mcc",
+    "per_class.sensitivity",
+    "per_class.specificity",
+    "per_class.precision",
+    "per_class.f1",
+    "per_class.npv",
+    "per_class.auroc",
+    "per_class.auc_pr"
+  ],
+  "patient_equal_accuracy": "supplementary historical diagnostic only; absent from evaluate.py; not eligible as final performance metric",
+  "cost_metrics": "Params/MACs/FLOPs/FPS separate; not classification performance target",
+  "coefficient_metrics": "Kappa/MCC report coefficient delta, not automatically percentage-point target",
+  "updated_at": "2026-10-25T15:50:30.911052+08:00"
+}

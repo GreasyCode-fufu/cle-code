@@ -1,0 +1,18 @@
+[main 1b07740] research: register low-cost C4 orientation-moment stem hypothesis and CPU mathematical checks
+ 8 files changed, 238 insertions(+)
+ create mode 100644 experiments/ac_c4_moment_prototype_window01/.gitignore
+ create mode 100644 experiments/ac_c4_moment_prototype_window01/C4_MOMENT_PROTOTYPE_PROTOCOL_ZH.md
+ create mode 100644 experiments/ac_c4_moment_prototype_window01/bootstrap.log
+ create mode 100644 experiments/ac_c4_moment_prototype_window01/bootstrap_c4_moment_cpu.py
+ create mode 100644 experiments/ac_c4_moment_prototype_window01/c4_moment_stem.py
+ create mode 100644 experiments/ac_c4_moment_prototype_window01/check_c4_moment_stem.py
+ create mode 100644 experiments/ac_c4_moment_prototype_window01/config.json
+ create mode 100644 experiments/ac_c4_moment_prototype_window01/launch.json
+/data/cle/auto/GPT/experiments/ac_c4_moment_prototype_window01/check_c4_moment_stem.py:36: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:838.)
+  assert float((tm-torch.rot90(rm,1,(-2,-1))).abs().max())>1e-5
+{"passed": true, "integration": [{"kind": "plain", "parameters": 27521661, "new_parameters": 0, "counted_flops224": 8979601920, "zero_init_logits_exact": true, "operator_path": null}, {"kind": "moments", "parameters": 27540189, "new_parameters": 18528, "counted_flops224": 9181911552, "zero_init_logits_exact": true, "operator_path": "0.0.0"}, {"kind": "mean_only", "parameters": 27540189, "new_parameters": 18528, "counted_flops224": 9181911552, "zero_init_logits_exact": true, "operator_path": "0.0.0"}, {"kind": "random_moments", "parameters": 27540189, "new_parameters": 18528, "counted_flops224": 9181911552, "zero_init_logits_exact": true, "operator_path": "0.0.0"}, {"kind": "group_mean", "parameters": 27521661, "new_parameters": 0, "counted_flops224": 9066306048, "zero_init_logits_exact": false, "operator_path": "0.0.0"}]}
+[main 4556e02] test: retain C4 stem mathematical preflight result or exact numeric failure
+ 3 files changed, 93 insertions(+)
+ create mode 100644 experiments/ac_c4_moment_prototype_window01/cpu_exit.json
+ create mode 100644 experiments/ac_c4_moment_prototype_window01/numeric_preflight_cpu.json

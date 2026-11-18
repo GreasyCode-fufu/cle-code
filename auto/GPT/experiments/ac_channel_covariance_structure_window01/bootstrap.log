@@ -1,0 +1,432 @@
+[main 1feea54] research: preregister retained CNN moment plus same-layer covariance power readout with true drop-Mom raw covariance diagonal and joint-pairing controls
+ 32 files changed, 84421 insertions(+)
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/.gitignore
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/MODULE_DIFFERENCES_ZH.md
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/MODULE_PROTOCOL_ZH.md
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/audit_module_structure.py
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/baseline_reference.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/baseline_selection.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/bootstrap.log
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/bootstrap_identity.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/bootstrap_module_structure.py
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/build_covariance_study.py
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/check_module_sources.py
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/check_prediction_cli.py
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/compare_covariance_controls.py
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/comparison_preregistration.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/config.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/continuous_runtime_sampler.py
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/finish_direct_controls.py
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/independent_probability_auditor.py
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/jobs.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/library_cle.py
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/manifest.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/postprocessing_revision_v2.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/predict_module_model.py
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/preflight_impl.py
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/run_covariance_manager.py
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/run_module_structure.py
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/shared_snapshot_manifest.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/working_reference.json
+ create mode 100644 models/optimize/ac_channel_covariance_window01/__init__.py
+ create mode 100644 models/optimize/ac_channel_covariance_window01/c4_moment_stem.py
+ create mode 100644 models/optimize/ac_channel_covariance_window01/channel_covariance.py
+ create mode 100644 models/optimize/ac_channel_covariance_window01/library_cle.py
+[main 6f6c603] test: verify formal channel covariance controls CPU public pairing true removal gradients budgets and exact prototype copy
+ 2 files changed, 128 insertions(+)
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/module_source_audit.json
+[main 3086c5d] test: verify channel covariance controls CUDA AMP two-step chain-rule gradients pairing and all6 frozen full427 probability reconstructions
+ 2 files changed, 209 insertions(+)
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/preflight.json
+[main beb9025] perf: measure single and concurrent throughput for distinct library and orientation kernels
+ 132 files changed, 983 insertions(+)
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/covsqrt_only/bench_1_0.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/covsqrt_only/bench_1_0.log
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/covsqrt_only/bench_2_0.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/covsqrt_only/bench_2_0.log
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/covsqrt_only/bench_2_1.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/covsqrt_only/bench_2_1.log
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/covsqrt_only/bench_4_0.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/covsqrt_only/bench_4_0.log
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/covsqrt_only/bench_4_1.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/covsqrt_only/bench_4_1.log
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/covsqrt_only/bench_4_2.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/covsqrt_only/bench_4_2.log
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/covsqrt_only/bench_4_3.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/covsqrt_only/bench_4_3.log
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/covsqrt_only/gate_1.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/covsqrt_only/gate_2.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/covsqrt_only/gate_4.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/covsqrt_only/measurements.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/covsqrt_only/ready_1_0.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/covsqrt_only/ready_2_0.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/covsqrt_only/ready_2_1.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/covsqrt_only/ready_4_0.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/covsqrt_only/ready_4_1.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/covsqrt_only/ready_4_2.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/covsqrt_only/ready_4_3.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/covsqrt_only/resources.csv
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_channelperm/bench_1_0.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_channelperm/bench_1_0.log
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_channelperm/bench_2_0.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_channelperm/bench_2_0.log
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_channelperm/bench_2_1.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_channelperm/bench_2_1.log
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_channelperm/bench_4_0.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_channelperm/bench_4_0.log
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_channelperm/bench_4_1.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_channelperm/bench_4_1.log
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_channelperm/bench_4_2.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_channelperm/bench_4_2.log
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_channelperm/bench_4_3.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_channelperm/bench_4_3.log
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_channelperm/gate_1.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_channelperm/gate_2.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_channelperm/gate_4.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_channelperm/measurements.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_channelperm/ready_1_0.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_channelperm/ready_2_0.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_channelperm/ready_2_1.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_channelperm/ready_4_0.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_channelperm/ready_4_1.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_channelperm/ready_4_2.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_channelperm/ready_4_3.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_channelperm/resources.csv
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_covsqrt/bench_1_0.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_covsqrt/bench_1_0.log
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_covsqrt/bench_2_0.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_covsqrt/bench_2_0.log
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_covsqrt/bench_2_1.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_covsqrt/bench_2_1.log
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_covsqrt/bench_4_0.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_covsqrt/bench_4_0.log
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_covsqrt/bench_4_1.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_covsqrt/bench_4_1.log
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_covsqrt/bench_4_2.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_covsqrt/bench_4_2.log
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_covsqrt/bench_4_3.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_covsqrt/bench_4_3.log
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_covsqrt/gate_1.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_covsqrt/gate_2.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_covsqrt/gate_4.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_covsqrt/measurements.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_covsqrt/ready_1_0.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_covsqrt/ready_2_0.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_covsqrt/ready_2_1.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_covsqrt/ready_4_0.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_covsqrt/ready_4_1.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_covsqrt/ready_4_2.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_covsqrt/ready_4_3.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_covsqrt/resources.csv
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_diag/bench_1_0.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_diag/bench_1_0.log
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_diag/bench_2_0.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_diag/bench_2_0.log
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_diag/bench_2_1.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_diag/bench_2_1.log
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_diag/bench_4_0.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_diag/bench_4_0.log
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_diag/bench_4_1.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_diag/bench_4_1.log
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_diag/bench_4_2.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_diag/bench_4_2.log
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_diag/bench_4_3.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_diag/bench_4_3.log
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_diag/gate_1.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_diag/gate_2.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_diag/gate_4.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_diag/measurements.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_diag/ready_1_0.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_diag/ready_2_0.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_diag/ready_2_1.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_diag/ready_4_0.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_diag/ready_4_1.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_diag/ready_4_2.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_diag/ready_4_3.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_diag/resources.csv
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_rawcov/bench_1_0.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_rawcov/bench_1_0.log
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_rawcov/bench_2_0.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_rawcov/bench_2_0.log
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_rawcov/bench_2_1.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_rawcov/bench_2_1.log
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_rawcov/bench_4_0.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_rawcov/bench_4_0.log
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_rawcov/bench_4_1.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_rawcov/bench_4_1.log
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_rawcov/bench_4_2.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_rawcov/bench_4_2.log
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_rawcov/bench_4_3.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_rawcov/bench_4_3.log
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_rawcov/gate_1.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_rawcov/gate_2.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_rawcov/gate_4.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_rawcov/measurements.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_rawcov/ready_1_0.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_rawcov/ready_2_0.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_rawcov/ready_2_1.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_rawcov/ready_4_0.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_rawcov/ready_4_1.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_rawcov/ready_4_2.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_rawcov/ready_4_3.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/mom_rawcov/resources.csv
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/profile/selected.json
+launch cov_mom_covsqrt_s45 1122854
+[main b771f42] results: preserve completed module training cov_mom_covsqrt_s45
+ 18 files changed, 1142 insertions(+)
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/continuous_runtime_process_io.jsonl
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/continuous_runtime_resources.csv
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/direct_control_finisher.log
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/direct_control_finisher_identity.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/io_resources.jsonl
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/logs/cov_mom_covsqrt_s45.log
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/manager_entry_identity_v2.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/manager_identity.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/resources.csv
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/runs/cov_mom_covsqrt_s45/complete.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/runs/cov_mom_covsqrt_s45/run_meta.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/runs/cov_mom_covsqrt_s45/train_log.csv
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/runs/cov_mom_covsqrt_s45/validation_complete.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/runs/cov_mom_covsqrt_s45/validation_predictions.csv
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/runtime_sampler.log
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/runtime_sampler_identity_v2.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/status.json
+launch cov_mom_covsqrt_s46 1123810
+[main d9be0ed] results: preserve completed module training cov_mom_covsqrt_s46
+ 12 files changed, 986 insertions(+), 9 deletions(-)
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/logs/cov_mom_covsqrt_s46.log
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/runs/cov_mom_covsqrt_s46/complete.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/runs/cov_mom_covsqrt_s46/run_meta.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/runs/cov_mom_covsqrt_s46/train_log.csv
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/runs/cov_mom_covsqrt_s46/validation_complete.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/runs/cov_mom_covsqrt_s46/validation_predictions.csv
+launch cov_mom_covsqrt_s47 1124756
+[main 81510fa] results: preserve completed module training cov_mom_covsqrt_s47
+ 12 files changed, 976 insertions(+), 10 deletions(-)
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/logs/cov_mom_covsqrt_s47.log
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/runs/cov_mom_covsqrt_s47/complete.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/runs/cov_mom_covsqrt_s47/run_meta.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/runs/cov_mom_covsqrt_s47/train_log.csv
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/runs/cov_mom_covsqrt_s47/validation_complete.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/runs/cov_mom_covsqrt_s47/validation_predictions.csv
+[main 3ca083d] research: freeze all3 val-selected mom_covsqrt checkpoints before adaptive test feedback
+ 2 files changed, 78 insertions(+)
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/evaluations/mom_covsqrt/registration.json
+[main 4d69616] results: retain independently reconstructed single/C4 test feedback for mom_covsqrt all3 seeds
+ 16 files changed, 4026 insertions(+)
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/evaluations/mom_covsqrt/group_audit.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/evaluations/mom_covsqrt/s45/independent_audit.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/evaluations/mom_covsqrt/s45/test_c4_predictions.csv
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/evaluations/mom_covsqrt/s45/test_single_predictions.csv
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/evaluations/mom_covsqrt/s45/test_views.npy
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/evaluations/mom_covsqrt/s46/independent_audit.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/evaluations/mom_covsqrt/s46/test_c4_predictions.csv
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/evaluations/mom_covsqrt/s46/test_single_predictions.csv
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/evaluations/mom_covsqrt/s46/test_views.npy
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/evaluations/mom_covsqrt/s47/independent_audit.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/evaluations/mom_covsqrt/s47/test_c4_predictions.csv
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/evaluations/mom_covsqrt/s47/test_single_predictions.csv
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/evaluations/mom_covsqrt/s47/test_views.npy
+[main 53293a0] analysis: record every paired module mechanism, budget control and negative result
+ 7 files changed, 1067 insertions(+)
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/MECHANISM_REPORT_ZH.md
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/MODULE_ROUND_REPORT_ZH.md
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/mechanism_comparisons.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/round_results.json
+launch cov_covsqrt_only_s45 1125929
+[main 2e72f11] results: preserve completed module training cov_covsqrt_only_s45
+ 12 files changed, 925 insertions(+), 13 deletions(-)
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/logs/cov_covsqrt_only_s45.log
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/runs/cov_covsqrt_only_s45/complete.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/runs/cov_covsqrt_only_s45/run_meta.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/runs/cov_covsqrt_only_s45/train_log.csv
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/runs/cov_covsqrt_only_s45/validation_complete.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/runs/cov_covsqrt_only_s45/validation_predictions.csv
+launch cov_covsqrt_only_s46 1126725
+[main 9911172] results: preserve completed module training cov_covsqrt_only_s46
+ 12 files changed, 927 insertions(+), 11 deletions(-)
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/logs/cov_covsqrt_only_s46.log
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/runs/cov_covsqrt_only_s46/complete.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/runs/cov_covsqrt_only_s46/run_meta.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/runs/cov_covsqrt_only_s46/train_log.csv
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/runs/cov_covsqrt_only_s46/validation_complete.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/runs/cov_covsqrt_only_s46/validation_predictions.csv
+launch cov_covsqrt_only_s47 1127517
+[main 4bbe2e2] results: preserve completed module training cov_covsqrt_only_s47
+ 12 files changed, 923 insertions(+), 11 deletions(-)
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/logs/cov_covsqrt_only_s47.log
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/runs/cov_covsqrt_only_s47/complete.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/runs/cov_covsqrt_only_s47/run_meta.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/runs/cov_covsqrt_only_s47/train_log.csv
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/runs/cov_covsqrt_only_s47/validation_complete.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/runs/cov_covsqrt_only_s47/validation_predictions.csv
+[main e767995] research: freeze all3 val-selected covsqrt_only checkpoints before adaptive test feedback
+ 2 files changed, 78 insertions(+)
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/evaluations/covsqrt_only/registration.json
+[main f8c7fcd] results: retain independently reconstructed single/C4 test feedback for covsqrt_only all3 seeds
+ 16 files changed, 4024 insertions(+)
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/evaluations/covsqrt_only/group_audit.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/evaluations/covsqrt_only/s45/independent_audit.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/evaluations/covsqrt_only/s45/test_c4_predictions.csv
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/evaluations/covsqrt_only/s45/test_single_predictions.csv
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/evaluations/covsqrt_only/s45/test_views.npy
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/evaluations/covsqrt_only/s46/independent_audit.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/evaluations/covsqrt_only/s46/test_c4_predictions.csv
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/evaluations/covsqrt_only/s46/test_single_predictions.csv
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/evaluations/covsqrt_only/s46/test_views.npy
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/evaluations/covsqrt_only/s47/independent_audit.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/evaluations/covsqrt_only/s47/test_c4_predictions.csv
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/evaluations/covsqrt_only/s47/test_single_predictions.csv
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/evaluations/covsqrt_only/s47/test_views.npy
+[main a51cdaa] analysis: record every paired module mechanism, budget control and negative result
+ 7 files changed, 542 insertions(+), 1 deletion(-)
+launch cov_mom_rawcov_s45 1128509
+[main aa1516c] results: preserve completed module training cov_mom_rawcov_s45
+ 12 files changed, 965 insertions(+), 13 deletions(-)
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/logs/cov_mom_rawcov_s45.log
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/runs/cov_mom_rawcov_s45/complete.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/runs/cov_mom_rawcov_s45/run_meta.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/runs/cov_mom_rawcov_s45/train_log.csv
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/runs/cov_mom_rawcov_s45/validation_complete.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/runs/cov_mom_rawcov_s45/validation_predictions.csv
+launch cov_mom_rawcov_s46 1129915
+[main b84580b] results: preserve completed module training cov_mom_rawcov_s46
+ 12 files changed, 968 insertions(+), 12 deletions(-)
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/logs/cov_mom_rawcov_s46.log
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/runs/cov_mom_rawcov_s46/complete.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/runs/cov_mom_rawcov_s46/run_meta.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/runs/cov_mom_rawcov_s46/train_log.csv
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/runs/cov_mom_rawcov_s46/validation_complete.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/runs/cov_mom_rawcov_s46/validation_predictions.csv
+launch cov_mom_rawcov_s47 1130826
+[main aacecca] results: preserve completed module training cov_mom_rawcov_s47
+ 12 files changed, 969 insertions(+), 13 deletions(-)
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/logs/cov_mom_rawcov_s47.log
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/runs/cov_mom_rawcov_s47/complete.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/runs/cov_mom_rawcov_s47/run_meta.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/runs/cov_mom_rawcov_s47/train_log.csv
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/runs/cov_mom_rawcov_s47/validation_complete.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/runs/cov_mom_rawcov_s47/validation_predictions.csv
+[main 139b0d7] research: freeze all3 val-selected mom_rawcov checkpoints before adaptive test feedback
+ 2 files changed, 78 insertions(+)
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/evaluations/mom_rawcov/registration.json
+[main 5f7d579] results: retain independently reconstructed single/C4 test feedback for mom_rawcov all3 seeds
+ 16 files changed, 4026 insertions(+)
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/evaluations/mom_rawcov/group_audit.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/evaluations/mom_rawcov/s45/independent_audit.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/evaluations/mom_rawcov/s45/test_c4_predictions.csv
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/evaluations/mom_rawcov/s45/test_single_predictions.csv
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/evaluations/mom_rawcov/s45/test_views.npy
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/evaluations/mom_rawcov/s46/independent_audit.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/evaluations/mom_rawcov/s46/test_c4_predictions.csv
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/evaluations/mom_rawcov/s46/test_single_predictions.csv
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/evaluations/mom_rawcov/s46/test_views.npy
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/evaluations/mom_rawcov/s47/independent_audit.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/evaluations/mom_rawcov/s47/test_c4_predictions.csv
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/evaluations/mom_rawcov/s47/test_single_predictions.csv
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/evaluations/mom_rawcov/s47/test_views.npy
+[main 24f9284] analysis: record every paired module mechanism, budget control and negative result
+ 7 files changed, 544 insertions(+), 1 deletion(-)
+launch cov_mom_diag_s45 1131955
+[main cc1ad1a] results: preserve completed module training cov_mom_diag_s45
+ 12 files changed, 965 insertions(+), 11 deletions(-)
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/logs/cov_mom_diag_s45.log
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/runs/cov_mom_diag_s45/complete.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/runs/cov_mom_diag_s45/run_meta.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/runs/cov_mom_diag_s45/train_log.csv
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/runs/cov_mom_diag_s45/validation_complete.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/runs/cov_mom_diag_s45/validation_predictions.csv
+launch cov_mom_diag_s46 1132890
+[main 4b5481b] results: preserve completed module training cov_mom_diag_s46
+ 12 files changed, 968 insertions(+), 10 deletions(-)
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/logs/cov_mom_diag_s46.log
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/runs/cov_mom_diag_s46/complete.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/runs/cov_mom_diag_s46/run_meta.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/runs/cov_mom_diag_s46/train_log.csv
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/runs/cov_mom_diag_s46/validation_complete.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/runs/cov_mom_diag_s46/validation_predictions.csv
+launch cov_mom_diag_s47 1133809
+[main cf98b3c] results: preserve completed module training cov_mom_diag_s47
+ 12 files changed, 974 insertions(+), 12 deletions(-)
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/logs/cov_mom_diag_s47.log
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/runs/cov_mom_diag_s47/complete.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/runs/cov_mom_diag_s47/run_meta.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/runs/cov_mom_diag_s47/train_log.csv
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/runs/cov_mom_diag_s47/validation_complete.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/runs/cov_mom_diag_s47/validation_predictions.csv
+[main 995202c] research: freeze all3 val-selected mom_diag checkpoints before adaptive test feedback
+ 2 files changed, 78 insertions(+)
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/evaluations/mom_diag/registration.json
+[main 61a0931] results: retain independently reconstructed single/C4 test feedback for mom_diag all3 seeds
+ 16 files changed, 4026 insertions(+)
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/evaluations/mom_diag/group_audit.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/evaluations/mom_diag/s45/independent_audit.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/evaluations/mom_diag/s45/test_c4_predictions.csv
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/evaluations/mom_diag/s45/test_single_predictions.csv
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/evaluations/mom_diag/s45/test_views.npy
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/evaluations/mom_diag/s46/independent_audit.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/evaluations/mom_diag/s46/test_c4_predictions.csv
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/evaluations/mom_diag/s46/test_single_predictions.csv
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/evaluations/mom_diag/s46/test_views.npy
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/evaluations/mom_diag/s47/independent_audit.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/evaluations/mom_diag/s47/test_c4_predictions.csv
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/evaluations/mom_diag/s47/test_single_predictions.csv
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/evaluations/mom_diag/s47/test_views.npy
+[main 456639a] analysis: record every paired module mechanism, budget control and negative result
+ 7 files changed, 546 insertions(+), 1 deletion(-)
+launch cov_mom_channelperm_s45 1134980
+[main f475992] results: preserve completed module training cov_mom_channelperm_s45
+ 17 files changed, 1088 insertions(+), 12 deletions(-)
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/document_covariance_start.py
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/logs/cov_mom_channelperm_s45.log
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/runs/cov_mom_channelperm_s45/complete.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/runs/cov_mom_channelperm_s45/run_meta.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/runs/cov_mom_channelperm_s45/train_log.csv
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/runs/cov_mom_channelperm_s45/validation_complete.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/runs/cov_mom_channelperm_s45/validation_predictions.csv
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/start_supplement_helpers.py
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/start_supplement_helpers_launch_identity.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/supplement_launcher.log
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/supplement_launcher_failure.json
+launch cov_mom_channelperm_s46 1136295
+[main aa6cb6a] results: preserve completed module training cov_mom_channelperm_s46
+ 15 files changed, 922 insertions(+), 9 deletions(-)
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/runs/cov_mom_channelperm_s46/complete.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/runs/cov_mom_channelperm_s46/validation_complete.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/runs/cov_mom_channelperm_s46/validation_predictions.csv
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/usage_smoke/USAGE_VERIFICATION_ZH.md
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/usage_smoke/actual_weight_hash.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/usage_smoke/local_usage_verification.json
+launch cov_mom_channelperm_s47 1138627
+[main 11a5271] results: preserve completed module training cov_mom_channelperm_s47
+ 12 files changed, 971 insertions(+), 9 deletions(-)
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/logs/cov_mom_channelperm_s47.log
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/runs/cov_mom_channelperm_s47/complete.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/runs/cov_mom_channelperm_s47/run_meta.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/runs/cov_mom_channelperm_s47/train_log.csv
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/runs/cov_mom_channelperm_s47/validation_complete.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/runs/cov_mom_channelperm_s47/validation_predictions.csv
+[main 5f35170] research: freeze all3 val-selected mom_channelperm checkpoints before adaptive test feedback
+ 2 files changed, 78 insertions(+)
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/evaluations/mom_channelperm/registration.json
+[main 318db79] results: retain independently reconstructed single/C4 test feedback for mom_channelperm all3 seeds
+ 16 files changed, 4026 insertions(+)
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/evaluations/mom_channelperm/group_audit.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/evaluations/mom_channelperm/s45/independent_audit.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/evaluations/mom_channelperm/s45/test_c4_predictions.csv
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/evaluations/mom_channelperm/s45/test_single_predictions.csv
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/evaluations/mom_channelperm/s45/test_views.npy
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/evaluations/mom_channelperm/s46/independent_audit.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/evaluations/mom_channelperm/s46/test_c4_predictions.csv
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/evaluations/mom_channelperm/s46/test_single_predictions.csv
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/evaluations/mom_channelperm/s46/test_views.npy
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/evaluations/mom_channelperm/s47/independent_audit.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/evaluations/mom_channelperm/s47/test_c4_predictions.csv
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/evaluations/mom_channelperm/s47/test_single_predictions.csv
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/evaluations/mom_channelperm/s47/test_views.npy
+[main 77c2782] analysis: record every paired module mechanism, budget control and negative result
+ 7 files changed, 548 insertions(+), 1 deletion(-)
+[main 7b14447] results: audit complete faithful-module and orientation round; retain every seed and negative result
+ 9 files changed, 39 insertions(+), 23 deletions(-)
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/independent_audit.json
+ create mode 100644 experiments/ac_channel_covariance_structure_window01/runtime_sampler_complete_v2.json

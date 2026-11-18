@@ -1,0 +1,138 @@
+[main 010c1432] research: register exactly matched drop-Mom control for posthoc selected fixed-permutation Focal network; reuse all historical weights
+ 31 files changed, 58036 insertions(+)
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/.gitignore
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/MODULE_PROTOCOL_ZH.md
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/audit_module_structure.py
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/baseline_reference.json
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/baseline_selection.json
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/bootstrap.log
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/bootstrap_identity.json
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/bootstrap_module_structure.py
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/build_dropmom_study.py
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/check_module_sources.py
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/check_prediction_cli.py
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/comparison_preregistration.json
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/config.json
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/continuous_runtime_sampler.py
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/independent_probability_auditor.py
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/jobs.json
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/launch_receipt.json
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/library_cle.py
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/manifest.json
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/metric_scope_policy_v4.json
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/postprocessing_revision_v2.json
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/predict_module_model.py
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/run_dropmom_manager.py
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/run_module_structure.py
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/selected_reference.json
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/shared_snapshot_manifest.json
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/working_reference.json
+ create mode 100644 models/optimize/ac_focal_pairing_dropmom_control_window01/__init__.py
+ create mode 100644 models/optimize/ac_focal_pairing_dropmom_control_window01/c4_moment_stem.py
+ create mode 100644 models/optimize/ac_focal_pairing_dropmom_control_window01/library_cle.py
+ create mode 100644 models/optimize/ac_focal_pairing_dropmom_control_window01/midstage_focal.py
+[main 1a71721e] test: verify formal midstage focal CPU two updates exact initializations optimizer groups true Mom removal and budgets
+ 3 files changed, 202 insertions(+)
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/matched_initialization_cpu.json
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/module_source_audit.json
+[main 4c26d1e2] test: verify matched drop-Mom control CUDA AMP two-step chain-rule gradients pairing and all9 frozen full427 probability reconstructions
+ 2 files changed, 159 insertions(+)
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/preflight.json
+{"arm": "mom_misaligned", "seed": 45, "checkpoint": "weights/ac_midstage_focal_structure_window01/mfc_mom_misaligned_s45/model_best.pth", "checkpoint_sha256": "1fa9b8ee82d05ebf1ced3b341487c48b0655e8658ace75d939d1c27cdaf6d5fd", "source_config_sha256": "1fbbf22a250c195195216c588ec113246fc6e05092f2ddb0717621cc25f8e781", "image_sha256": "da7a87a8135abccd61c3fb53e444fe94b652601ca88405904a5c397afb7f4760", "views": "single", "backend": "preregistered nativeCUDA cudnnDisabled AMPfp16 physicalB1", "predicted_class": 0, "probabilities": [0.9971663355827332, 0.0027520316652953625, 8.165610779542476e-05], "class_ids": [0, 1, 2], "malignant_class_id": 1, "scope": "Research model prediction; no independent clinical validation claimed"}
+[main 3baf11d7] test: verify original selected fixed-misaligned model actual-weight native B1 usage on first fixed val case
+ 3 files changed, 42 insertions(+)
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/usage_smoke/cli_prediction.json
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/usage_smoke/independent_cli_audit.json
+[main 0f5cca8e] perf: measure single and concurrent throughput for distinct library and orientation kernels
+ 28 files changed, 204 insertions(+)
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/profile/misaligned_only/bench_1_0.json
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/profile/misaligned_only/bench_1_0.log
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/profile/misaligned_only/bench_2_0.json
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/profile/misaligned_only/bench_2_0.log
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/profile/misaligned_only/bench_2_1.json
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/profile/misaligned_only/bench_2_1.log
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/profile/misaligned_only/bench_4_0.json
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/profile/misaligned_only/bench_4_0.log
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/profile/misaligned_only/bench_4_1.json
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/profile/misaligned_only/bench_4_1.log
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/profile/misaligned_only/bench_4_2.json
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/profile/misaligned_only/bench_4_2.log
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/profile/misaligned_only/bench_4_3.json
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/profile/misaligned_only/bench_4_3.log
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/profile/misaligned_only/gate_1.json
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/profile/misaligned_only/gate_2.json
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/profile/misaligned_only/gate_4.json
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/profile/misaligned_only/measurements.json
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/profile/misaligned_only/ready_1_0.json
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/profile/misaligned_only/ready_2_0.json
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/profile/misaligned_only/ready_2_1.json
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/profile/misaligned_only/ready_4_0.json
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/profile/misaligned_only/ready_4_1.json
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/profile/misaligned_only/ready_4_2.json
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/profile/misaligned_only/ready_4_3.json
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/profile/misaligned_only/resources.csv
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/profile/selected.json
+launch fdm_misaligned_only_s45 1221015
+[main c1d70433] results: preserve completed module training fdm_misaligned_only_s45
+ 16 files changed, 981 insertions(+)
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/continuous_runtime_process_io.jsonl
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/continuous_runtime_resources.csv
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/io_resources.jsonl
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/logs/fdm_misaligned_only_s45.log
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/manager_entry_identity_v2.json
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/manager_identity.json
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/resources.csv
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/runs/fdm_misaligned_only_s45/complete.json
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/runs/fdm_misaligned_only_s45/run_meta.json
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/runs/fdm_misaligned_only_s45/train_log.csv
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/runs/fdm_misaligned_only_s45/validation_complete.json
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/runs/fdm_misaligned_only_s45/validation_predictions.csv
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/runtime_sampler.log
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/runtime_sampler_identity_v2.json
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/status.json
+launch fdm_misaligned_only_s46 1222193
+[main 2125b37a] results: preserve completed module training fdm_misaligned_only_s46
+ 12 files changed, 937 insertions(+), 12 deletions(-)
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/logs/fdm_misaligned_only_s46.log
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/runs/fdm_misaligned_only_s46/complete.json
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/runs/fdm_misaligned_only_s46/run_meta.json
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/runs/fdm_misaligned_only_s46/train_log.csv
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/runs/fdm_misaligned_only_s46/validation_complete.json
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/runs/fdm_misaligned_only_s46/validation_predictions.csv
+launch fdm_misaligned_only_s47 1223160
+[main c265842c] results: preserve completed module training fdm_misaligned_only_s47
+ 12 files changed, 925 insertions(+), 11 deletions(-)
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/logs/fdm_misaligned_only_s47.log
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/runs/fdm_misaligned_only_s47/complete.json
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/runs/fdm_misaligned_only_s47/run_meta.json
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/runs/fdm_misaligned_only_s47/train_log.csv
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/runs/fdm_misaligned_only_s47/validation_complete.json
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/runs/fdm_misaligned_only_s47/validation_predictions.csv
+[main 121d8f2c] research: freeze all3 val-selected misaligned_only checkpoints before adaptive test feedback
+ 2 files changed, 76 insertions(+)
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/evaluations/misaligned_only/registration.json
+[main 5709d103] results: retain independently reconstructed single/C4 test feedback for misaligned_only all3 seeds
+ 16 files changed, 4026 insertions(+)
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/evaluations/misaligned_only/group_audit.json
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/evaluations/misaligned_only/s45/independent_audit.json
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/evaluations/misaligned_only/s45/test_c4_predictions.csv
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/evaluations/misaligned_only/s45/test_single_predictions.csv
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/evaluations/misaligned_only/s45/test_views.npy
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/evaluations/misaligned_only/s46/independent_audit.json
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/evaluations/misaligned_only/s46/test_c4_predictions.csv
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/evaluations/misaligned_only/s46/test_single_predictions.csv
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/evaluations/misaligned_only/s46/test_views.npy
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/evaluations/misaligned_only/s47/independent_audit.json
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/evaluations/misaligned_only/s47/test_c4_predictions.csv
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/evaluations/misaligned_only/s47/test_single_predictions.csv
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/evaluations/misaligned_only/s47/test_views.npy
+[main 5e12de66] analysis: record every paired module mechanism, budget control and negative result
+ 7 files changed, 1046 insertions(+)
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/MECHANISM_REPORT_ZH.md
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/MODULE_ROUND_REPORT_ZH.md
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/mechanism_comparisons.json
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/round_results.json
+[main 94d448ab] results: audit complete faithful-module and orientation round; retain every seed and negative result
+ 9 files changed, 43 insertions(+), 23 deletions(-)
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/independent_audit.json
+ create mode 100644 experiments/ac_focal_pairing_dropmom_control_window01/runtime_sampler_complete_v2.json

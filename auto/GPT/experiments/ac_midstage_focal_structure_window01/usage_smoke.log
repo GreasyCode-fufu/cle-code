@@ -1,0 +1,12 @@
+{"arm": "mom_focalcontrast", "seed": 45, "checkpoint": "weights/ac_midstage_focal_structure_window01/mfc_mom_focalcontrast_s45/model_best.pth", "checkpoint_sha256": "79a9165a6e4863804ca1c7ef5df37584886904c86420bc5b440a28467ddf9a22", "source_config_sha256": "39fe542f23915dd7032b59f1244c5851e634e05e842945e98b918c0e10b946e0", "image_sha256": "da7a87a8135abccd61c3fb53e444fe94b652601ca88405904a5c397afb7f4760", "views": "single", "predicted_class": 0, "probabilities": [0.9402891397476196, 0.04995530843734741, 0.009755468927323818], "class_ids": [0, 1, 2], "malignant_class_id": 1, "scope": "Research model prediction; no independent clinical validation claimed"}
+Traceback (most recent call last):
+  File "<string>", line 2, in <module>
+  File "<frozen runpy>", line 286, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/data/cle/auto/GPT/experiments/ac_midstage_focal_structure_window01/check_prediction_cli.py", line 23, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/data/cle/auto/GPT/experiments/ac_midstage_focal_structure_window01/check_prediction_cli.py", line 14, in main
+    assert error<1e-4 and int(target.argmax())==actual['predicted_class']
+AssertionError

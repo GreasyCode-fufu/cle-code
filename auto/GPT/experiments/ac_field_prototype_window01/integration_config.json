@@ -1,0 +1,27 @@
+{
+  "scope": "synthetic224 CPU integration of all four families, no CLE classifier fitting/val scores/test access",
+  "source_sha256": {
+    "field_model.py": "8aa05fb776b995cd5e680db7b59008c32b9a92ba7ef5629c9048ae5d5560f6c1",
+    "check_field_model_cpu.py": "86fe2ae45ba0cee3ee2ef79b9a137d58fdd911371b108a851fd73ad83cb80cf1",
+    "FIELD_INTEGRATION_PROTOCOL.md": "4a21f3bef93969720ae830794526aac91e5f4022b2d2d7134cd3ae9b19f303a5",
+    "field_ops_v2.py": "323307ade184824c20bbd60d1c961297e99e0f439644aa75723f36648171d3d4"
+  },
+  "prerequisite_sha256": "274c31a8d95029eb8a2668228cfe92c6098b9589e1e1c5446bc427a5032a5929",
+  "qualification_config_sha256": "0967996bd587a783df09a2ab04d1094b00e078e205ffaeb2e0f906d7294f5dbe",
+  "families": [
+    "convnext_tiny",
+    "efficientnet_v2_s",
+    "swin_t",
+    "convnext_base"
+  ],
+  "variants": [
+    "plain",
+    "fov_residual",
+    "no_field",
+    "no_local_norm",
+    "no_pool",
+    "field_pool",
+    "reference"
+  ],
+  "future_requirement": "actual selected baseline must first be frozen; real images CUDA AMP and exact baseline probabilities still required"
+}

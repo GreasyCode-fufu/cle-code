@@ -1,0 +1,385 @@
+[main 1ad131e] test: verify formal spatial lag controls CPU public pairing true removal gradients budgets and exact prototype copy
+ 4 files changed, 92 insertions(+)
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/bootstrap.log
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/bootstrap_identity.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/bootstrap_launcher_identity.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/module_source_audit.json
+[main d33c54c] test: verify spatial lag controls CUDA AMP gradients pairing and all6 frozen full427 probability reconstructions
+ 2 files changed, 192 insertions(+)
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/preflight.json
+[main 380c29f] perf: measure single and concurrent throughput for distinct library and orientation kernels
+ 136 files changed, 1087 insertions(+)
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/document_lag_start.py
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/lag_only/bench_1_0.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/lag_only/bench_1_0.log
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/lag_only/bench_2_0.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/lag_only/bench_2_0.log
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/lag_only/bench_2_1.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/lag_only/bench_2_1.log
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/lag_only/bench_4_0.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/lag_only/bench_4_0.log
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/lag_only/bench_4_1.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/lag_only/bench_4_1.log
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/lag_only/bench_4_2.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/lag_only/bench_4_2.log
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/lag_only/bench_4_3.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/lag_only/bench_4_3.log
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/lag_only/gate_1.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/lag_only/gate_2.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/lag_only/gate_4.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/lag_only/measurements.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/lag_only/ready_1_0.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/lag_only/ready_2_0.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/lag_only/ready_2_1.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/lag_only/ready_4_0.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/lag_only/ready_4_1.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/lag_only/ready_4_2.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/lag_only/ready_4_3.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/lag_only/resources.csv
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_acf/bench_1_0.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_acf/bench_1_0.log
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_acf/bench_2_0.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_acf/bench_2_0.log
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_acf/bench_2_1.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_acf/bench_2_1.log
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_acf/bench_4_0.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_acf/bench_4_0.log
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_acf/bench_4_1.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_acf/bench_4_1.log
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_acf/bench_4_2.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_acf/bench_4_2.log
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_acf/bench_4_3.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_acf/bench_4_3.log
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_acf/gate_1.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_acf/gate_2.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_acf/gate_4.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_acf/measurements.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_acf/ready_1_0.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_acf/ready_2_0.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_acf/ready_2_1.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_acf/ready_4_0.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_acf/ready_4_1.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_acf/ready_4_2.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_acf/ready_4_3.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_acf/resources.csv
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_duplicate/bench_1_0.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_duplicate/bench_1_0.log
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_duplicate/bench_2_0.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_duplicate/bench_2_0.log
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_duplicate/bench_2_1.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_duplicate/bench_2_1.log
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_duplicate/bench_4_0.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_duplicate/bench_4_0.log
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_duplicate/bench_4_1.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_duplicate/bench_4_1.log
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_duplicate/bench_4_2.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_duplicate/bench_4_2.log
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_duplicate/bench_4_3.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_duplicate/bench_4_3.log
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_duplicate/gate_1.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_duplicate/gate_2.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_duplicate/gate_4.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_duplicate/measurements.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_duplicate/ready_1_0.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_duplicate/ready_2_0.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_duplicate/ready_2_1.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_duplicate/ready_4_0.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_duplicate/ready_4_1.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_duplicate/ready_4_2.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_duplicate/ready_4_3.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_duplicate/resources.csv
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_lag/bench_1_0.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_lag/bench_1_0.log
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_lag/bench_2_0.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_lag/bench_2_0.log
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_lag/bench_2_1.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_lag/bench_2_1.log
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_lag/bench_4_0.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_lag/bench_4_0.log
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_lag/bench_4_1.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_lag/bench_4_1.log
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_lag/bench_4_2.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_lag/bench_4_2.log
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_lag/bench_4_3.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_lag/bench_4_3.log
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_lag/gate_1.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_lag/gate_2.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_lag/gate_4.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_lag/measurements.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_lag/ready_1_0.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_lag/ready_2_0.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_lag/ready_2_1.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_lag/ready_4_0.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_lag/ready_4_1.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_lag/ready_4_2.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_lag/ready_4_3.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_lag/resources.csv
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_permuted/bench_1_0.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_permuted/bench_1_0.log
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_permuted/bench_2_0.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_permuted/bench_2_0.log
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_permuted/bench_2_1.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_permuted/bench_2_1.log
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_permuted/bench_4_0.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_permuted/bench_4_0.log
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_permuted/bench_4_1.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_permuted/bench_4_1.log
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_permuted/bench_4_2.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_permuted/bench_4_2.log
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_permuted/bench_4_3.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_permuted/bench_4_3.log
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_permuted/gate_1.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_permuted/gate_2.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_permuted/gate_4.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_permuted/measurements.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_permuted/ready_1_0.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_permuted/ready_2_0.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_permuted/ready_2_1.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_permuted/ready_4_0.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_permuted/ready_4_1.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_permuted/ready_4_2.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_permuted/ready_4_3.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/mom_permuted/resources.csv
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/profile/selected.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/start_supplement_helpers.py
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/supplement_launcher.log
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/supplement_launcher_identity.json
+launch lag_mom_lag_s45 1101592
+[main 84a68a0] results: preserve completed module training lag_mom_lag_s45
+ 11 files changed, 903 insertions(+), 6 deletions(-)
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/runs/lag_mom_lag_s45/complete.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/runs/lag_mom_lag_s45/validation_complete.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/runs/lag_mom_lag_s45/validation_predictions.csv
+launch lag_mom_lag_s46 1102992
+[main 7ef8fc1] results: preserve completed module training lag_mom_lag_s46
+ 13 files changed, 934 insertions(+), 6 deletions(-)
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/USAGE_VERIFICATION_ZH.md
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/runs/lag_mom_lag_s46/complete.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/runs/lag_mom_lag_s46/validation_complete.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/runs/lag_mom_lag_s46/validation_predictions.csv
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/usage_smoke/local_usage_verification.json
+launch lag_mom_lag_s47 1104868
+[main 3c92797] results: preserve completed module training lag_mom_lag_s47
+ 12 files changed, 974 insertions(+), 9 deletions(-)
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/logs/lag_mom_lag_s47.log
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/runs/lag_mom_lag_s47/complete.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/runs/lag_mom_lag_s47/run_meta.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/runs/lag_mom_lag_s47/train_log.csv
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/runs/lag_mom_lag_s47/validation_complete.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/runs/lag_mom_lag_s47/validation_predictions.csv
+[main ff23bb0] research: freeze all3 val-selected mom_lag checkpoints before adaptive test feedback
+ 4 files changed, 80 insertions(+)
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/evaluations/mom_lag/registration.json
+[main 5d9e0b6] results: retain independently reconstructed single/C4 test feedback for mom_lag all3 seeds
+ 16 files changed, 4026 insertions(+)
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/evaluations/mom_lag/group_audit.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/evaluations/mom_lag/s45/independent_audit.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/evaluations/mom_lag/s45/test_c4_predictions.csv
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/evaluations/mom_lag/s45/test_single_predictions.csv
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/evaluations/mom_lag/s45/test_views.npy
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/evaluations/mom_lag/s46/independent_audit.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/evaluations/mom_lag/s46/test_c4_predictions.csv
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/evaluations/mom_lag/s46/test_single_predictions.csv
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/evaluations/mom_lag/s46/test_views.npy
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/evaluations/mom_lag/s47/independent_audit.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/evaluations/mom_lag/s47/test_c4_predictions.csv
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/evaluations/mom_lag/s47/test_single_predictions.csv
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/evaluations/mom_lag/s47/test_views.npy
+[main 219a91a] analysis: record every paired module mechanism, budget control and negative result
+ 7 files changed, 1067 insertions(+)
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/MECHANISM_REPORT_ZH.md
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/MODULE_ROUND_REPORT_ZH.md
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/mechanism_comparisons.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/round_results.json
+launch lag_lag_only_s45 1106127
+[main 6dcff62] results: preserve completed module training lag_lag_only_s45
+ 12 files changed, 924 insertions(+), 12 deletions(-)
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/logs/lag_lag_only_s45.log
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/runs/lag_lag_only_s45/complete.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/runs/lag_lag_only_s45/run_meta.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/runs/lag_lag_only_s45/train_log.csv
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/runs/lag_lag_only_s45/validation_complete.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/runs/lag_lag_only_s45/validation_predictions.csv
+launch lag_lag_only_s46 1107063
+[main 72b9449] results: preserve completed module training lag_lag_only_s46
+ 12 files changed, 924 insertions(+), 10 deletions(-)
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/logs/lag_lag_only_s46.log
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/runs/lag_lag_only_s46/complete.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/runs/lag_lag_only_s46/run_meta.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/runs/lag_lag_only_s46/train_log.csv
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/runs/lag_lag_only_s46/validation_complete.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/runs/lag_lag_only_s46/validation_predictions.csv
+launch lag_lag_only_s47 1107851
+[main 29eaa84] results: preserve completed module training lag_lag_only_s47
+ 12 files changed, 924 insertions(+), 10 deletions(-)
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/logs/lag_lag_only_s47.log
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/runs/lag_lag_only_s47/complete.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/runs/lag_lag_only_s47/run_meta.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/runs/lag_lag_only_s47/train_log.csv
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/runs/lag_lag_only_s47/validation_complete.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/runs/lag_lag_only_s47/validation_predictions.csv
+[main d6a2f89] research: freeze all3 val-selected lag_only checkpoints before adaptive test feedback
+ 2 files changed, 78 insertions(+)
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/evaluations/lag_only/registration.json
+[main 2c80fc4] results: retain independently reconstructed single/C4 test feedback for lag_only all3 seeds
+ 16 files changed, 4024 insertions(+)
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/evaluations/lag_only/group_audit.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/evaluations/lag_only/s45/independent_audit.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/evaluations/lag_only/s45/test_c4_predictions.csv
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/evaluations/lag_only/s45/test_single_predictions.csv
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/evaluations/lag_only/s45/test_views.npy
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/evaluations/lag_only/s46/independent_audit.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/evaluations/lag_only/s46/test_c4_predictions.csv
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/evaluations/lag_only/s46/test_single_predictions.csv
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/evaluations/lag_only/s46/test_views.npy
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/evaluations/lag_only/s47/independent_audit.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/evaluations/lag_only/s47/test_c4_predictions.csv
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/evaluations/lag_only/s47/test_single_predictions.csv
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/evaluations/lag_only/s47/test_views.npy
+[main 1e05bf1] analysis: record every paired module mechanism, budget control and negative result
+ 7 files changed, 542 insertions(+), 1 deletion(-)
+launch lag_mom_permuted_s45 1108936
+[main c504c36] results: preserve completed module training lag_mom_permuted_s45
+ 12 files changed, 968 insertions(+), 12 deletions(-)
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/logs/lag_mom_permuted_s45.log
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/runs/lag_mom_permuted_s45/complete.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/runs/lag_mom_permuted_s45/run_meta.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/runs/lag_mom_permuted_s45/train_log.csv
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/runs/lag_mom_permuted_s45/validation_complete.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/runs/lag_mom_permuted_s45/validation_predictions.csv
+launch lag_mom_permuted_s46 1109871
+[main ea7fd5d] results: preserve completed module training lag_mom_permuted_s46
+ 12 files changed, 971 insertions(+), 11 deletions(-)
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/logs/lag_mom_permuted_s46.log
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/runs/lag_mom_permuted_s46/complete.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/runs/lag_mom_permuted_s46/run_meta.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/runs/lag_mom_permuted_s46/train_log.csv
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/runs/lag_mom_permuted_s46/validation_complete.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/runs/lag_mom_permuted_s46/validation_predictions.csv
+launch lag_mom_permuted_s47 1110866
+[main 1578051] results: preserve completed module training lag_mom_permuted_s47
+ 12 files changed, 973 insertions(+), 11 deletions(-)
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/logs/lag_mom_permuted_s47.log
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/runs/lag_mom_permuted_s47/complete.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/runs/lag_mom_permuted_s47/run_meta.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/runs/lag_mom_permuted_s47/train_log.csv
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/runs/lag_mom_permuted_s47/validation_complete.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/runs/lag_mom_permuted_s47/validation_predictions.csv
+[main d5645b1] research: freeze all3 val-selected mom_permuted checkpoints before adaptive test feedback
+ 2 files changed, 78 insertions(+)
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/evaluations/mom_permuted/registration.json
+[main 6a64452] results: retain independently reconstructed single/C4 test feedback for mom_permuted all3 seeds
+ 16 files changed, 4024 insertions(+)
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/evaluations/mom_permuted/group_audit.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/evaluations/mom_permuted/s45/independent_audit.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/evaluations/mom_permuted/s45/test_c4_predictions.csv
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/evaluations/mom_permuted/s45/test_single_predictions.csv
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/evaluations/mom_permuted/s45/test_views.npy
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/evaluations/mom_permuted/s46/independent_audit.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/evaluations/mom_permuted/s46/test_c4_predictions.csv
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/evaluations/mom_permuted/s46/test_single_predictions.csv
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/evaluations/mom_permuted/s46/test_views.npy
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/evaluations/mom_permuted/s47/independent_audit.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/evaluations/mom_permuted/s47/test_c4_predictions.csv
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/evaluations/mom_permuted/s47/test_single_predictions.csv
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/evaluations/mom_permuted/s47/test_views.npy
+[main 00c2ee9] analysis: record every paired module mechanism, budget control and negative result
+ 7 files changed, 544 insertions(+), 1 deletion(-)
+launch lag_mom_duplicate_s45 1112024
+[main fba3b56] results: preserve completed module training lag_mom_duplicate_s45
+ 12 files changed, 969 insertions(+), 13 deletions(-)
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/logs/lag_mom_duplicate_s45.log
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/runs/lag_mom_duplicate_s45/complete.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/runs/lag_mom_duplicate_s45/run_meta.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/runs/lag_mom_duplicate_s45/train_log.csv
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/runs/lag_mom_duplicate_s45/validation_complete.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/runs/lag_mom_duplicate_s45/validation_predictions.csv
+launch lag_mom_duplicate_s46 1113026
+[main b267162] results: preserve completed module training lag_mom_duplicate_s46
+ 12 files changed, 971 insertions(+), 11 deletions(-)
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/logs/lag_mom_duplicate_s46.log
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/runs/lag_mom_duplicate_s46/complete.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/runs/lag_mom_duplicate_s46/run_meta.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/runs/lag_mom_duplicate_s46/train_log.csv
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/runs/lag_mom_duplicate_s46/validation_complete.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/runs/lag_mom_duplicate_s46/validation_predictions.csv
+launch lag_mom_duplicate_s47 1113949
+[main 6733d32] results: preserve completed module training lag_mom_duplicate_s47
+ 12 files changed, 970 insertions(+), 10 deletions(-)
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/logs/lag_mom_duplicate_s47.log
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/runs/lag_mom_duplicate_s47/complete.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/runs/lag_mom_duplicate_s47/run_meta.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/runs/lag_mom_duplicate_s47/train_log.csv
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/runs/lag_mom_duplicate_s47/validation_complete.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/runs/lag_mom_duplicate_s47/validation_predictions.csv
+[main 869c712] research: freeze all3 val-selected mom_duplicate checkpoints before adaptive test feedback
+ 2 files changed, 78 insertions(+)
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/evaluations/mom_duplicate/registration.json
+[main d931aba] results: retain independently reconstructed single/C4 test feedback for mom_duplicate all3 seeds
+ 16 files changed, 4026 insertions(+)
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/evaluations/mom_duplicate/group_audit.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/evaluations/mom_duplicate/s45/independent_audit.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/evaluations/mom_duplicate/s45/test_c4_predictions.csv
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/evaluations/mom_duplicate/s45/test_single_predictions.csv
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/evaluations/mom_duplicate/s45/test_views.npy
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/evaluations/mom_duplicate/s46/independent_audit.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/evaluations/mom_duplicate/s46/test_c4_predictions.csv
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/evaluations/mom_duplicate/s46/test_single_predictions.csv
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/evaluations/mom_duplicate/s46/test_views.npy
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/evaluations/mom_duplicate/s47/independent_audit.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/evaluations/mom_duplicate/s47/test_c4_predictions.csv
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/evaluations/mom_duplicate/s47/test_single_predictions.csv
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/evaluations/mom_duplicate/s47/test_views.npy
+[main 147b9b3] analysis: record every paired module mechanism, budget control and negative result
+ 7 files changed, 546 insertions(+), 1 deletion(-)
+launch lag_mom_acf_s45 1115158
+[main 44839c7] results: preserve completed module training lag_mom_acf_s45
+ 12 files changed, 962 insertions(+), 10 deletions(-)
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/logs/lag_mom_acf_s45.log
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/runs/lag_mom_acf_s45/complete.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/runs/lag_mom_acf_s45/run_meta.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/runs/lag_mom_acf_s45/train_log.csv
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/runs/lag_mom_acf_s45/validation_complete.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/runs/lag_mom_acf_s45/validation_predictions.csv
+launch lag_mom_acf_s46 1116158
+[main 33a6de4] results: preserve completed module training lag_mom_acf_s46
+ 12 files changed, 966 insertions(+), 10 deletions(-)
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/logs/lag_mom_acf_s46.log
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/runs/lag_mom_acf_s46/complete.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/runs/lag_mom_acf_s46/run_meta.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/runs/lag_mom_acf_s46/train_log.csv
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/runs/lag_mom_acf_s46/validation_complete.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/runs/lag_mom_acf_s46/validation_predictions.csv
+launch lag_mom_acf_s47 1117071
+[main 3767533] results: preserve completed module training lag_mom_acf_s47
+ 12 files changed, 970 insertions(+), 10 deletions(-)
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/logs/lag_mom_acf_s47.log
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/runs/lag_mom_acf_s47/complete.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/runs/lag_mom_acf_s47/run_meta.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/runs/lag_mom_acf_s47/train_log.csv
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/runs/lag_mom_acf_s47/validation_complete.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/runs/lag_mom_acf_s47/validation_predictions.csv
+[main 9f38161] research: freeze all3 val-selected mom_acf checkpoints before adaptive test feedback
+ 2 files changed, 78 insertions(+)
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/evaluations/mom_acf/registration.json
+[main a3ef835] results: retain independently reconstructed single/C4 test feedback for mom_acf all3 seeds
+ 16 files changed, 4025 insertions(+)
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/evaluations/mom_acf/group_audit.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/evaluations/mom_acf/s45/independent_audit.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/evaluations/mom_acf/s45/test_c4_predictions.csv
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/evaluations/mom_acf/s45/test_single_predictions.csv
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/evaluations/mom_acf/s45/test_views.npy
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/evaluations/mom_acf/s46/independent_audit.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/evaluations/mom_acf/s46/test_c4_predictions.csv
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/evaluations/mom_acf/s46/test_single_predictions.csv
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/evaluations/mom_acf/s46/test_views.npy
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/evaluations/mom_acf/s47/independent_audit.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/evaluations/mom_acf/s47/test_c4_predictions.csv
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/evaluations/mom_acf/s47/test_single_predictions.csv
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/evaluations/mom_acf/s47/test_views.npy
+[main d43a95a] analysis: record every paired module mechanism, budget control and negative result
+ 7 files changed, 547 insertions(+), 1 deletion(-)
+[main 367edda] results: audit complete faithful-module and orientation round; retain every seed and negative result
+ 9 files changed, 41 insertions(+), 23 deletions(-)
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/independent_audit.json
+ create mode 100644 experiments/ac_spatial_lag_structure_window01/runtime_sampler_complete_v2.json

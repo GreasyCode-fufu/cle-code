@@ -1,0 +1,1200 @@
+{
+  "summary": {
+    "baseline": {
+      "macro_f1": 0.9827838861568007,
+      "accuracy": 0.9859484777517564,
+      "malignant_recall": 0.9831223628691982,
+      "patient_equal_accuracy": 0.9827139566501267,
+      "seed_macro_f1": [
+        0.9852333295608263,
+        0.97497595089378,
+        0.9881423780157957
+      ],
+      "parameters": 21631107
+    },
+    "relational": {
+      "macro_f1": 0.9843778835179114,
+      "accuracy": 0.9875097580015613,
+      "malignant_recall": 0.9873417721518987,
+      "patient_equal_accuracy": 0.9857220418697507,
+      "seed_macro_f1": [
+        0.9883153158915968,
+        0.9824729738373952,
+        0.9823453608247422
+      ],
+      "parameters": 21816486
+    },
+    "no_neighbor": {
+      "macro_f1": 0.9839611778147361,
+      "accuracy": 0.9867291178766587,
+      "malignant_recall": 0.9789029535864979,
+      "patient_equal_accuracy": 0.9832816103649437,
+      "seed_macro_f1": [
+        0.9851217141522907,
+        0.9833809096459589,
+        0.9833809096459589
+      ],
+      "parameters": 21816486
+    },
+    "no_depth": {
+      "macro_f1": 0.9829421202929339,
+      "accuracy": 0.9859484777517564,
+      "malignant_recall": 0.9746835443037973,
+      "patient_equal_accuracy": 0.9860678673178672,
+      "seed_macro_f1": [
+        0.9883153158915968,
+        0.9803849385708715,
+        0.9801261064163337
+      ],
+      "parameters": 21816486
+    },
+    "final_only": {
+      "macro_f1": 0.9846445280077649,
+      "accuracy": 0.9875097580015613,
+      "malignant_recall": 0.9831223628691982,
+      "patient_equal_accuracy": 0.9871158933658933,
+      "seed_macro_f1": [
+        0.9883153158915968,
+        0.9803849385708715,
+        0.9852333295608263
+      ],
+      "parameters": 21816486
+    },
+    "official4": {
+      "macro_f1": 0.9845444497468848,
+      "accuracy": 0.9875097580015613,
+      "malignant_recall": 0.9704641350210971,
+      "patient_equal_accuracy": 0.9825702075702075,
+      "seed_macro_f1": [
+        0.9881423780157957,
+        0.9822135670236936,
+        0.9832774042011652
+      ],
+      "parameters": 21634563
+    },
+    "convnext": {
+      "macro_f1": 0.9796415888394483,
+      "accuracy": 0.983606557377049,
+      "malignant_recall": 0.9873417721518987,
+      "patient_equal_accuracy": 0.9714744130967535,
+      "seed_macro_f1": [
+        0.9769549401795664,
+        0.9823453608247422,
+        0.979624465514036
+      ],
+      "parameters": 87569539
+    }
+  },
+  "units": [
+    {
+      "arm": "relational",
+      "seed": 45,
+      "checkpoint": "weights/ac_structure_20261024_window01/window01_relational_s45/model_best.pth",
+      "checkpoint_sha256": "0034f637b412b34144c7986a45182f472e5888996b12753c8285fec613f2e409",
+      "prediction_sha256": "f8efa32f352b8caf1feb666c02482989b8fcc7866cbe79b2113669d8f30098a6",
+      "parameters": 21816486,
+      "best_epoch": 5,
+      "finite_weights": true,
+      "strict_reload": true,
+      "max_probability_error": 0.0,
+      "state_unchanged": true,
+      "metrics": {
+        "macro_f1": 0.9883153158915968,
+        "accuracy": 0.990632318501171,
+        "malignant_recall": 1.0,
+        "patient_equal_accuracy": 0.9900005087505088,
+        "confusion_matrix": [
+          [
+            191,
+            4,
+            0
+          ],
+          [
+            0,
+            79,
+            0
+          ],
+          [
+            0,
+            0,
+            153
+          ]
+        ]
+      },
+      "seconds": 246.19714259999455,
+      "diagnostic": {
+        "off_metrics": {
+          "macro_f1": 0.9883153158915968,
+          "accuracy": 0.990632318501171,
+          "malignant_recall": 1.0,
+          "patient_equal_accuracy": 0.9900005087505088,
+          "confusion_matrix": [
+            [
+              191,
+              4,
+              0
+            ],
+            [
+              0,
+              79,
+              0
+            ],
+            [
+              0,
+              0,
+              153
+            ]
+          ]
+        },
+        "prediction_changed_fraction": 0.0,
+        "max_probability_difference": 0.11224186420440674
+      }
+    },
+    {
+      "arm": "relational",
+      "seed": 46,
+      "checkpoint": "weights/ac_structure_20261024_window01/window01_relational_s46/model_best.pth",
+      "checkpoint_sha256": "8fcc8158e41db600df5bfff25740c04608179f4317d5a36badedc26afeee6218",
+      "prediction_sha256": "98d4c631f5ed605a840b171dada486952f6c1f78e5ee2baf8cd366feccf57d63",
+      "parameters": 21816486,
+      "best_epoch": 6,
+      "finite_weights": true,
+      "strict_reload": true,
+      "max_probability_error": 0.0,
+      "state_unchanged": true,
+      "metrics": {
+        "macro_f1": 0.9824729738373952,
+        "accuracy": 0.9859484777517564,
+        "malignant_recall": 0.9873417721518988,
+        "patient_equal_accuracy": 0.9777599715099714,
+        "confusion_matrix": [
+          [
+            190,
+            5,
+            0
+          ],
+          [
+            1,
+            78,
+            0
+          ],
+          [
+            0,
+            0,
+            153
+          ]
+        ]
+      },
+      "seconds": 291.62688610097393,
+      "diagnostic": {
+        "off_metrics": {
+          "macro_f1": 0.9824729738373952,
+          "accuracy": 0.9859484777517564,
+          "malignant_recall": 0.9873417721518988,
+          "patient_equal_accuracy": 0.9777599715099714,
+          "confusion_matrix": [
+            [
+              190,
+              5,
+              0
+            ],
+            [
+              1,
+              78,
+              0
+            ],
+            [
+              0,
+              0,
+              153
+            ]
+          ]
+        },
+        "prediction_changed_fraction": 0.0,
+        "max_probability_difference": 0.1285712718963623
+      }
+    },
+    {
+      "arm": "relational",
+      "seed": 47,
+      "checkpoint": "weights/ac_structure_20261024_window01/window01_relational_s47/model_best.pth",
+      "checkpoint_sha256": "b5faf420ac0b13769ce084aa440dcd7855c5c69cc50fa950326557647b4b478c",
+      "prediction_sha256": "8a70099097457b51b3b491ee08e8cb11677234b87cc036ab04ce76c9146230fa",
+      "parameters": 21816486,
+      "best_epoch": 3,
+      "finite_weights": true,
+      "strict_reload": true,
+      "max_probability_error": 0.0,
+      "state_unchanged": true,
+      "metrics": {
+        "macro_f1": 0.9823453608247422,
+        "accuracy": 0.9859484777517564,
+        "malignant_recall": 0.9746835443037974,
+        "patient_equal_accuracy": 0.9894056453487715,
+        "confusion_matrix": [
+          [
+            191,
+            4,
+            0
+          ],
+          [
+            2,
+            77,
+            0
+          ],
+          [
+            0,
+            0,
+            153
+          ]
+        ]
+      },
+      "seconds": 293.5405151259911,
+      "diagnostic": {
+        "off_metrics": {
+          "macro_f1": 0.9823453608247422,
+          "accuracy": 0.9859484777517564,
+          "malignant_recall": 0.9746835443037974,
+          "patient_equal_accuracy": 0.9894056453487715,
+          "confusion_matrix": [
+            [
+              191,
+              4,
+              0
+            ],
+            [
+              2,
+              77,
+              0
+            ],
+            [
+              0,
+              0,
+              153
+            ]
+          ]
+        },
+        "prediction_changed_fraction": 0.0,
+        "max_probability_difference": 0.06747633218765259
+      }
+    },
+    {
+      "arm": "no_neighbor",
+      "seed": 45,
+      "checkpoint": "weights/ac_structure_20261024_window01/window01_no_neighbor_s45/model_best.pth",
+      "checkpoint_sha256": "000be936c7b5450aebf6ccd6d1631828044a80be718147c801140c48cfeda691",
+      "prediction_sha256": "8292cc8991c66f5eda8a870289a7d7f7fd16d897f96320b37c317bde6ec3c565",
+      "parameters": 21816486,
+      "best_epoch": 17,
+      "finite_weights": true,
+      "strict_reload": true,
+      "max_probability_error": 0.0,
+      "state_unchanged": true,
+      "metrics": {
+        "macro_f1": 0.9851217141522907,
+        "accuracy": 0.9882903981264637,
+        "malignant_recall": 0.9620253164556962,
+        "patient_equal_accuracy": 0.9847476597476598,
+        "confusion_matrix": [
+          [
+            193,
+            2,
+            0
+          ],
+          [
+            3,
+            76,
+            0
+          ],
+          [
+            0,
+            0,
+            153
+          ]
+        ]
+      },
+      "seconds": 287.54661654299707,
+      "diagnostic": {
+        "off_metrics": {
+          "macro_f1": 0.9851217141522907,
+          "accuracy": 0.9882903981264637,
+          "malignant_recall": 0.9620253164556962,
+          "patient_equal_accuracy": 0.9847476597476598,
+          "confusion_matrix": [
+            [
+              193,
+              2,
+              0
+            ],
+            [
+              3,
+              76,
+              0
+            ],
+            [
+              0,
+              0,
+              153
+            ]
+          ]
+        },
+        "prediction_changed_fraction": 0.0,
+        "max_probability_difference": 0.09946322441101074
+      }
+    },
+    {
+      "arm": "no_neighbor",
+      "seed": 46,
+      "checkpoint": "weights/ac_structure_20261024_window01/window01_no_neighbor_s46/model_best.pth",
+      "checkpoint_sha256": "cc39673254ac6866ed3846640fe5de37e1cb8e9c18c8089b06c6f13c1115932b",
+      "prediction_sha256": "7e73fd8aecefa6a735b26bd912457ae282ddab8a533d28912d83fafff28cef25",
+      "parameters": 21816486,
+      "best_epoch": 35,
+      "finite_weights": true,
+      "strict_reload": true,
+      "max_probability_error": 0.0,
+      "state_unchanged": true,
+      "metrics": {
+        "macro_f1": 0.9833809096459589,
+        "accuracy": 0.9859484777517564,
+        "malignant_recall": 0.9873417721518988,
+        "patient_equal_accuracy": 0.9803851241351241,
+        "confusion_matrix": [
+          [
+            190,
+            4,
+            1
+          ],
+          [
+            1,
+            78,
+            0
+          ],
+          [
+            0,
+            0,
+            153
+          ]
+        ]
+      },
+      "seconds": 286.7030267350201,
+      "diagnostic": {
+        "off_metrics": {
+          "macro_f1": 0.9833809096459589,
+          "accuracy": 0.9859484777517564,
+          "malignant_recall": 0.9873417721518988,
+          "patient_equal_accuracy": 0.9803851241351241,
+          "confusion_matrix": [
+            [
+              190,
+              4,
+              1
+            ],
+            [
+              1,
+              78,
+              0
+            ],
+            [
+              0,
+              0,
+              153
+            ]
+          ]
+        },
+        "prediction_changed_fraction": 0.0,
+        "max_probability_difference": 0.07433545589447021
+      }
+    },
+    {
+      "arm": "no_neighbor",
+      "seed": 47,
+      "checkpoint": "weights/ac_structure_20261024_window01/window01_no_neighbor_s47/model_best.pth",
+      "checkpoint_sha256": "6e9a12f18ca087b8a8a229c35f8b8f712b026e3caed5262ae02089341480034d",
+      "prediction_sha256": "5b483a2fd5df63563bcd1ed1b249e09975648433f932d1eacab44ef5c0236387",
+      "parameters": 21816486,
+      "best_epoch": 22,
+      "finite_weights": true,
+      "strict_reload": true,
+      "max_probability_error": 0.0,
+      "state_unchanged": true,
+      "metrics": {
+        "macro_f1": 0.9833809096459589,
+        "accuracy": 0.9859484777517564,
+        "malignant_recall": 0.9873417721518988,
+        "patient_equal_accuracy": 0.9847120472120472,
+        "confusion_matrix": [
+          [
+            190,
+            4,
+            1
+          ],
+          [
+            1,
+            78,
+            0
+          ],
+          [
+            0,
+            0,
+            153
+          ]
+        ]
+      },
+      "seconds": 287.47784635500284,
+      "diagnostic": {
+        "off_metrics": {
+          "macro_f1": 0.9833809096459589,
+          "accuracy": 0.9859484777517564,
+          "malignant_recall": 0.9873417721518988,
+          "patient_equal_accuracy": 0.9847120472120472,
+          "confusion_matrix": [
+            [
+              190,
+              4,
+              1
+            ],
+            [
+              1,
+              78,
+              0
+            ],
+            [
+              0,
+              0,
+              153
+            ]
+          ]
+        },
+        "prediction_changed_fraction": 0.0,
+        "max_probability_difference": 0.02045285701751709
+      }
+    },
+    {
+      "arm": "no_depth",
+      "seed": 45,
+      "checkpoint": "weights/ac_structure_20261024_window01/window01_no_depth_s45/model_best.pth",
+      "checkpoint_sha256": "2df9483c8b7592312f87e7b2d66c1fa6ab52e89446147a6878479b1cfc590340",
+      "prediction_sha256": "1f8801f66d57d73c1e9dc44d6158dd3595bf8d410acc0e81b1efd13becec0d33",
+      "parameters": 21816486,
+      "best_epoch": 29,
+      "finite_weights": true,
+      "strict_reload": true,
+      "max_probability_error": 0.0,
+      "state_unchanged": true,
+      "metrics": {
+        "macro_f1": 0.9883153158915968,
+        "accuracy": 0.990632318501171,
+        "malignant_recall": 1.0,
+        "patient_equal_accuracy": 0.9939077126577127,
+        "confusion_matrix": [
+          [
+            191,
+            4,
+            0
+          ],
+          [
+            0,
+            79,
+            0
+          ],
+          [
+            0,
+            0,
+            153
+          ]
+        ]
+      },
+      "seconds": 287.59291821101215,
+      "diagnostic": {
+        "off_metrics": {
+          "macro_f1": 0.9883153158915968,
+          "accuracy": 0.990632318501171,
+          "malignant_recall": 1.0,
+          "patient_equal_accuracy": 0.9939077126577127,
+          "confusion_matrix": [
+            [
+              191,
+              4,
+              0
+            ],
+            [
+              0,
+              79,
+              0
+            ],
+            [
+              0,
+              0,
+              153
+            ]
+          ]
+        },
+        "prediction_changed_fraction": 0.0,
+        "max_probability_difference": 0.32784661650657654
+      }
+    },
+    {
+      "arm": "no_depth",
+      "seed": 46,
+      "checkpoint": "weights/ac_structure_20261024_window01/window01_no_depth_s46/model_best.pth",
+      "checkpoint_sha256": "da10a6ea4fdc5a26a61e284e3f703052167a07ec1a9df590a3737e3010814bb1",
+      "prediction_sha256": "8bd61648bfbbfe6a8ba687f3a34bd72c6c526ec8070b66ecf701c9a089e3d606",
+      "parameters": 21816486,
+      "best_epoch": 46,
+      "finite_weights": true,
+      "strict_reload": true,
+      "max_probability_error": 0.0,
+      "state_unchanged": true,
+      "metrics": {
+        "macro_f1": 0.9803849385708715,
+        "accuracy": 0.9836065573770492,
+        "malignant_recall": 0.9746835443037974,
+        "patient_equal_accuracy": 0.981506919006919,
+        "confusion_matrix": [
+          [
+            190,
+            4,
+            1
+          ],
+          [
+            2,
+            77,
+            0
+          ],
+          [
+            0,
+            0,
+            153
+          ]
+        ]
+      },
+      "seconds": 286.3958355130162,
+      "diagnostic": {
+        "off_metrics": {
+          "macro_f1": 0.9803849385708715,
+          "accuracy": 0.9836065573770492,
+          "malignant_recall": 0.9746835443037974,
+          "patient_equal_accuracy": 0.981506919006919,
+          "confusion_matrix": [
+            [
+              190,
+              4,
+              1
+            ],
+            [
+              2,
+              77,
+              0
+            ],
+            [
+              0,
+              0,
+              153
+            ]
+          ]
+        },
+        "prediction_changed_fraction": 0.0,
+        "max_probability_difference": 0.23884572088718414
+      }
+    },
+    {
+      "arm": "no_depth",
+      "seed": 47,
+      "checkpoint": "weights/ac_structure_20261024_window01/window01_no_depth_s47/model_best.pth",
+      "checkpoint_sha256": "fa7f2809bbc37689befce4ccef1a719a40323a0a8b22e4c2bc46e7d5139ee726",
+      "prediction_sha256": "a762a48058aefa2f0d584d9913425526acd1177c414fb625d97a242335d30301",
+      "parameters": 21816486,
+      "best_epoch": 22,
+      "finite_weights": true,
+      "strict_reload": true,
+      "max_probability_error": 0.0,
+      "state_unchanged": true,
+      "metrics": {
+        "macro_f1": 0.9801261064163337,
+        "accuracy": 0.9836065573770492,
+        "malignant_recall": 0.9493670886075949,
+        "patient_equal_accuracy": 0.9827889702889703,
+        "confusion_matrix": [
+          [
+            192,
+            2,
+            1
+          ],
+          [
+            4,
+            75,
+            0
+          ],
+          [
+            0,
+            0,
+            153
+          ]
+        ]
+      },
+      "seconds": 287.49933006599895,
+      "diagnostic": {
+        "off_metrics": {
+          "macro_f1": 0.9801261064163337,
+          "accuracy": 0.9836065573770492,
+          "malignant_recall": 0.9493670886075949,
+          "patient_equal_accuracy": 0.9827889702889703,
+          "confusion_matrix": [
+            [
+              192,
+              2,
+              1
+            ],
+            [
+              4,
+              75,
+              0
+            ],
+            [
+              0,
+              0,
+              153
+            ]
+          ]
+        },
+        "prediction_changed_fraction": 0.0,
+        "max_probability_difference": 0.046477317810058594
+      }
+    },
+    {
+      "arm": "final_only",
+      "seed": 45,
+      "checkpoint": "weights/ac_structure_20261024_window01/window01_final_only_s45/model_best.pth",
+      "checkpoint_sha256": "dd6be4a1badbbea9fb1a40704dae9989c039f0799a3b68c4b0bc9cc0876fc560",
+      "prediction_sha256": "90c17b80d0b3973012efa74c89fb20969f24f222e610f36f8077690bdb4779ee",
+      "parameters": 21816486,
+      "best_epoch": 15,
+      "finite_weights": true,
+      "strict_reload": true,
+      "max_probability_error": 0.0,
+      "state_unchanged": true,
+      "metrics": {
+        "macro_f1": 0.9883153158915968,
+        "accuracy": 0.990632318501171,
+        "malignant_recall": 1.0,
+        "patient_equal_accuracy": 0.9887184574684574,
+        "confusion_matrix": [
+          [
+            191,
+            4,
+            0
+          ],
+          [
+            0,
+            79,
+            0
+          ],
+          [
+            0,
+            0,
+            153
+          ]
+        ]
+      },
+      "seconds": 285.9502675139811,
+      "diagnostic": {
+        "off_metrics": {
+          "macro_f1": 0.9883153158915968,
+          "accuracy": 0.990632318501171,
+          "malignant_recall": 1.0,
+          "patient_equal_accuracy": 0.9887184574684574,
+          "confusion_matrix": [
+            [
+              191,
+              4,
+              0
+            ],
+            [
+              0,
+              79,
+              0
+            ],
+            [
+              0,
+              0,
+              153
+            ]
+          ]
+        },
+        "prediction_changed_fraction": 0.0,
+        "max_probability_difference": 0.18137246370315552
+      }
+    },
+    {
+      "arm": "final_only",
+      "seed": 46,
+      "checkpoint": "weights/ac_structure_20261024_window01/window01_final_only_s46/model_best.pth",
+      "checkpoint_sha256": "af29aac1b7cf9c747bf434659b4f983d1cd357890e335b0086a7a26f272adb91",
+      "prediction_sha256": "85614f864156694862b59a828e46fe105f581c0aa0156a6eb32c5b79d48c28ad",
+      "parameters": 21816486,
+      "best_epoch": 45,
+      "finite_weights": true,
+      "strict_reload": true,
+      "max_probability_error": 0.0,
+      "state_unchanged": true,
+      "metrics": {
+        "macro_f1": 0.9803849385708715,
+        "accuracy": 0.9836065573770492,
+        "malignant_recall": 0.9746835443037974,
+        "patient_equal_accuracy": 0.981506919006919,
+        "confusion_matrix": [
+          [
+            190,
+            4,
+            1
+          ],
+          [
+            2,
+            77,
+            0
+          ],
+          [
+            0,
+            0,
+            153
+          ]
+        ]
+      },
+      "seconds": 286.5347732829978,
+      "diagnostic": {
+        "off_metrics": {
+          "macro_f1": 0.9803849385708715,
+          "accuracy": 0.9836065573770492,
+          "malignant_recall": 0.9746835443037974,
+          "patient_equal_accuracy": 0.981506919006919,
+          "confusion_matrix": [
+            [
+              190,
+              4,
+              1
+            ],
+            [
+              2,
+              77,
+              0
+            ],
+            [
+              0,
+              0,
+              153
+            ]
+          ]
+        },
+        "prediction_changed_fraction": 0.0,
+        "max_probability_difference": 0.22102104127407074
+      }
+    },
+    {
+      "arm": "final_only",
+      "seed": 47,
+      "checkpoint": "weights/ac_structure_20261024_window01/window01_final_only_s47/model_best.pth",
+      "checkpoint_sha256": "88473336a020fc7531a6dbad17935fe9c438ae2def7653d17a7600bffa2166dd",
+      "prediction_sha256": "abeaf472f35a6fb2b7eadc5a1ebfc999329593555e412d9594d9f312c177cff1",
+      "parameters": 21816486,
+      "best_epoch": 41,
+      "finite_weights": true,
+      "strict_reload": true,
+      "max_probability_error": 0.0,
+      "state_unchanged": true,
+      "metrics": {
+        "macro_f1": 0.9852333295608263,
+        "accuracy": 0.9882903981264637,
+        "malignant_recall": 0.9746835443037974,
+        "patient_equal_accuracy": 0.9911223036223037,
+        "confusion_matrix": [
+          [
+            192,
+            3,
+            0
+          ],
+          [
+            2,
+            77,
+            0
+          ],
+          [
+            0,
+            0,
+            153
+          ]
+        ]
+      },
+      "seconds": 286.5043379130075,
+      "diagnostic": {
+        "off_metrics": {
+          "macro_f1": 0.9852333295608263,
+          "accuracy": 0.9882903981264637,
+          "malignant_recall": 0.9746835443037974,
+          "patient_equal_accuracy": 0.9911223036223037,
+          "confusion_matrix": [
+            [
+              192,
+              3,
+              0
+            ],
+            [
+              2,
+              77,
+              0
+            ],
+            [
+              0,
+              0,
+              153
+            ]
+          ]
+        },
+        "prediction_changed_fraction": 0.0,
+        "max_probability_difference": 0.11552083492279053
+      }
+    },
+    {
+      "arm": "official4",
+      "seed": 45,
+      "checkpoint": "weights/ac_structure_20261024_window01/window01_official4_s45/model_best.pth",
+      "checkpoint_sha256": "9a63092acba89099c39b74109dcc17912dd205bb6dade552822c901ddbafa54d",
+      "prediction_sha256": "9a9bd413ee1f7c5bd9aea883d8427a88e6cd480f3bacc6f7176c0f180c0fbdd1",
+      "parameters": 21634563,
+      "best_epoch": 25,
+      "finite_weights": true,
+      "strict_reload": true,
+      "max_probability_error": 0.0,
+      "state_unchanged": true,
+      "metrics": {
+        "macro_f1": 0.9881423780157957,
+        "accuracy": 0.990632318501171,
+        "malignant_recall": 0.9746835443037974,
+        "patient_equal_accuracy": 0.9923433048433048,
+        "confusion_matrix": [
+          [
+            193,
+            2,
+            0
+          ],
+          [
+            2,
+            77,
+            0
+          ],
+          [
+            0,
+            0,
+            153
+          ]
+        ]
+      },
+      "seconds": 281.7837184339878,
+      "diagnostic": null
+    },
+    {
+      "arm": "official4",
+      "seed": 46,
+      "checkpoint": "weights/ac_structure_20261024_window01/window01_official4_s46/model_best.pth",
+      "checkpoint_sha256": "aebd44efc5784526b92c4fd0cf50f1e088e6aa10dddad57afdd7ebb2e66f5574",
+      "prediction_sha256": "2e434b658b7b1350f0599205963d52eeb5b84682f868dcb5105df757fb0e1616",
+      "parameters": 21634563,
+      "best_epoch": 16,
+      "finite_weights": true,
+      "strict_reload": true,
+      "max_probability_error": 0.0,
+      "state_unchanged": true,
+      "metrics": {
+        "macro_f1": 0.9822135670236936,
+        "accuracy": 0.9859484777517564,
+        "malignant_recall": 0.9620253164556962,
+        "patient_equal_accuracy": 0.9726393976393976,
+        "confusion_matrix": [
+          [
+            192,
+            3,
+            0
+          ],
+          [
+            3,
+            76,
+            0
+          ],
+          [
+            0,
+            0,
+            153
+          ]
+        ]
+      },
+      "seconds": 280.85737740498735,
+      "diagnostic": null
+    },
+    {
+      "arm": "official4",
+      "seed": 47,
+      "checkpoint": "weights/ac_structure_20261024_window01/window01_official4_s47/model_best.pth",
+      "checkpoint_sha256": "5e0e4b97b9be60063e5f8798099190047d6f2ad6e7f626af66754d497fa28077",
+      "prediction_sha256": "da7cab12c33f1d2fe667d58c62703ad03c19c5b6a17c221dba36e6f8325ace28",
+      "parameters": 21634563,
+      "best_epoch": 38,
+      "finite_weights": true,
+      "strict_reload": true,
+      "max_probability_error": 0.0,
+      "state_unchanged": true,
+      "metrics": {
+        "macro_f1": 0.9832774042011652,
+        "accuracy": 0.9859484777517564,
+        "malignant_recall": 0.9746835443037974,
+        "patient_equal_accuracy": 0.9827279202279201,
+        "confusion_matrix": [
+          [
+            191,
+            3,
+            1
+          ],
+          [
+            2,
+            77,
+            0
+          ],
+          [
+            0,
+            0,
+            153
+          ]
+        ]
+      },
+      "seconds": 281.04713367598015,
+      "diagnostic": null
+    },
+    {
+      "arm": "convnext",
+      "seed": 45,
+      "checkpoint": "weights/ac_structure_20261024_window01/window01_convnext_s45/model_best.pth",
+      "checkpoint_sha256": "45673b2fc6a41974c2a5e47740bce019cccd7be1ed82d1bf203bb3bb28b9cb12",
+      "prediction_sha256": "8472ddbcbfd6fb7506d25acce39ad96ac91f616b03df69795af473ef0e08b2e1",
+      "parameters": 87569539,
+      "best_epoch": 4,
+      "finite_weights": true,
+      "strict_reload": true,
+      "max_probability_error": 0.0,
+      "state_unchanged": true,
+      "metrics": {
+        "macro_f1": 0.9769549401795664,
+        "accuracy": 0.9812646370023419,
+        "malignant_recall": 1.0,
+        "patient_equal_accuracy": 0.963138481888482,
+        "confusion_matrix": [
+          [
+            187,
+            8,
+            0
+          ],
+          [
+            0,
+            79,
+            0
+          ],
+          [
+            0,
+            0,
+            153
+          ]
+        ]
+      },
+      "seconds": 791.0628622730146,
+      "diagnostic": null
+    },
+    {
+      "arm": "convnext",
+      "seed": 46,
+      "checkpoint": "weights/ac_structure_20261024_window01/window01_convnext_s46/model_best.pth",
+      "checkpoint_sha256": "d5b12c45e61b3b18f3efe031f850cdd0ffd21fa6c76d9ff64555f74d5f333e78",
+      "prediction_sha256": "352912b55ae7421358fddb2c49afbd4fc1b461d8a70a49d18b54cf19e6ec42e8",
+      "parameters": 87569539,
+      "best_epoch": 29,
+      "finite_weights": true,
+      "strict_reload": true,
+      "max_probability_error": 0.0,
+      "state_unchanged": true,
+      "metrics": {
+        "macro_f1": 0.9823453608247422,
+        "accuracy": 0.9859484777517564,
+        "malignant_recall": 0.9746835443037974,
+        "patient_equal_accuracy": 0.9763252950752951,
+        "confusion_matrix": [
+          [
+            191,
+            4,
+            0
+          ],
+          [
+            2,
+            77,
+            0
+          ],
+          [
+            0,
+            0,
+            153
+          ]
+        ]
+      },
+      "seconds": 780.4112553810119,
+      "diagnostic": null
+    },
+    {
+      "arm": "convnext",
+      "seed": 47,
+      "checkpoint": "weights/ac_structure_20261024_window01/window01_convnext_s47/model_best.pth",
+      "checkpoint_sha256": "b5b9ff6727dc1d5270c447de023a04c2b3542e47984fff04ac0918bbd8976241",
+      "prediction_sha256": "26cc1c4244e0336a68a3b6034925215b2c28cb1b243dabc64a725edc5d5845bf",
+      "parameters": 87569539,
+      "best_epoch": 2,
+      "finite_weights": true,
+      "strict_reload": true,
+      "max_probability_error": 0.0,
+      "state_unchanged": true,
+      "metrics": {
+        "macro_f1": 0.979624465514036,
+        "accuracy": 0.9836065573770492,
+        "malignant_recall": 0.9873417721518988,
+        "patient_equal_accuracy": 0.9749594623264836,
+        "confusion_matrix": [
+          [
+            189,
+            6,
+            0
+          ],
+          [
+            1,
+            78,
+            0
+          ],
+          [
+            0,
+            0,
+            153
+          ]
+        ]
+      },
+      "seconds": 775.7276558569865,
+      "diagnostic": null
+    },
+    {
+      "arm": "baseline",
+      "seed": 45,
+      "checkpoint": "weights/ac_backbone_recipe/acbackbone_dino_full_s45/model_best.pth",
+      "checkpoint_sha256": "439a9c08765ada39e11962f0763591a31d1b144d31081d88d744f520a2a4b4f7",
+      "prediction_sha256": "9fb32ddaf6ba25726ef24a645d8f6894fa32f558911f375c2120e5ea3ed3d7ff",
+      "parameters": 21631107,
+      "best_epoch": 0,
+      "finite_weights": true,
+      "strict_reload": true,
+      "max_probability_error": 0.0,
+      "state_unchanged": true,
+      "metrics": {
+        "macro_f1": 0.9852333295608263,
+        "accuracy": 0.9882903981264637,
+        "malignant_recall": 0.9746835443037974,
+        "patient_equal_accuracy": 0.9837428774928774,
+        "confusion_matrix": [
+          [
+            192,
+            3,
+            0
+          ],
+          [
+            2,
+            77,
+            0
+          ],
+          [
+            0,
+            0,
+            153
+          ]
+        ]
+      },
+      "seconds": 323.79,
+      "diagnostic": null
+    },
+    {
+      "arm": "baseline",
+      "seed": 46,
+      "checkpoint": "weights/ac_backbone_recipe/acbackbone_dino_full_s46/model_best.pth",
+      "checkpoint_sha256": "945375089e5bd0a4701202277f121b8dab541905285cde07f06fae01ebd96529",
+      "prediction_sha256": "f8cfd3f6f96678874c6009491966209411e670a8765c28b8d903a24a445515f5",
+      "parameters": 21631107,
+      "best_epoch": 43,
+      "finite_weights": true,
+      "strict_reload": true,
+      "max_probability_error": 0.0,
+      "state_unchanged": true,
+      "metrics": {
+        "macro_f1": 0.97497595089378,
+        "accuracy": 0.9789227166276346,
+        "malignant_recall": 1.0,
+        "patient_equal_accuracy": 0.9700715606300713,
+        "confusion_matrix": [
+          [
+            186,
+            8,
+            1
+          ],
+          [
+            0,
+            79,
+            0
+          ],
+          [
+            0,
+            0,
+            153
+          ]
+        ]
+      },
+      "seconds": 326.32,
+      "diagnostic": null
+    },
+    {
+      "arm": "baseline",
+      "seed": 47,
+      "checkpoint": "weights/ac_backbone_recipe/acbackbone_dino_full_s47/model_best.pth",
+      "checkpoint_sha256": "b0e4bc2ff78baf9a7f23d69dfaeb2c884e7124dfe617e65b9f6f6ea10efc5feb",
+      "prediction_sha256": "9efa96a5b2d16df9a76161ea978a626a06ef4563dffaa823be5a238cfdb6ede9",
+      "parameters": 21631107,
+      "best_epoch": 35,
+      "finite_weights": true,
+      "strict_reload": true,
+      "max_probability_error": 0.0,
+      "state_unchanged": true,
+      "metrics": {
+        "macro_f1": 0.9881423780157957,
+        "accuracy": 0.990632318501171,
+        "malignant_recall": 0.9746835443037974,
+        "patient_equal_accuracy": 0.9943274318274319,
+        "confusion_matrix": [
+          [
+            193,
+            2,
+            0
+          ],
+          [
+            2,
+            77,
+            0
+          ],
+          [
+            0,
+            0,
+            153
+          ]
+        ]
+      },
+      "seconds": 326.31,
+      "diagnostic": null
+    }
+  ]
+}

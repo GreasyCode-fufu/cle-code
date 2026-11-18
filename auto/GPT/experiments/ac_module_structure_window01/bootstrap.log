@@ -1,0 +1,56 @@
+[main da9115c] research: preregister four faithful shared-module mechanisms and two orientation controls on frozen B0
+ 34 files changed, 94150 insertions(+)
+ create mode 100644 experiments/ac_module_structure_window01/MODULE_DIFFERENCES_ZH.md
+ create mode 100644 experiments/ac_module_structure_window01/MODULE_PROTOCOL_ZH.md
+ create mode 100644 experiments/ac_module_structure_window01/audit_module_structure.py
+ create mode 100644 experiments/ac_module_structure_window01/baseline_reference.json
+ create mode 100644 experiments/ac_module_structure_window01/baseline_selection.json
+ create mode 100644 experiments/ac_module_structure_window01/bootstrap.log
+ create mode 100644 experiments/ac_module_structure_window01/bootstrap_identity.json
+ create mode 100644 experiments/ac_module_structure_window01/bootstrap_module_structure.py
+ create mode 100644 experiments/ac_module_structure_window01/check_module_sources.py
+ create mode 100644 experiments/ac_module_structure_window01/config.json
+ create mode 100644 experiments/ac_module_structure_window01/jobs.json
+ create mode 100644 experiments/ac_module_structure_window01/launch.json
+ create mode 100644 experiments/ac_module_structure_window01/manifest.json
+ create mode 100644 experiments/ac_module_structure_window01/run_module_structure.py
+ create mode 100644 experiments/ac_module_structure_window01/shared_snapshot_manifest.json
+ create mode 100644 experiments/ac_module_structure_window01/upstream/official/LICENSE_eca
+ create mode 100644 experiments/ac_module_structure_window01/upstream/official/LICENSE_wtconv
+ create mode 100644 experiments/ac_module_structure_window01/upstream/official/eca.py
+ create mode 100644 experiments/ac_module_structure_window01/upstream/official/ema.py
+ create mode 100644 experiments/ac_module_structure_window01/upstream/official/license_lookup.json
+ create mode 100644 experiments/ac_module_structure_window01/upstream/official/provenance.json
+ create mode 100644 experiments/ac_module_structure_window01/upstream/official/simam.py
+ create mode 100644 experiments/ac_module_structure_window01/upstream/official/wavelet.py
+ create mode 100644 experiments/ac_module_structure_window01/upstream/official/wtconv.py
+ create mode 100644 experiments/ac_module_structure_window01/upstream/shared/eca.py
+ create mode 100644 experiments/ac_module_structure_window01/upstream/shared/ema.py
+ create mode 100644 experiments/ac_module_structure_window01/upstream/shared/simam.py
+ create mode 100644 experiments/ac_module_structure_window01/upstream/shared/wtconv.py
+ create mode 100644 models/optimize/ac_module_window01/__init__.py
+ create mode 100644 models/optimize/ac_module_window01/c4_moment_stem.py
+ create mode 100644 models/optimize/ac_module_window01/haar_wavelet.py
+ create mode 100644 models/optimize/ac_module_window01/library_cle.py
+ create mode 100644 models/optimize/ac_module_window01/shared_attention.py
+ create mode 100644 models/optimize/ac_module_window01/wtconv_reference.py
+Traceback (most recent call last):
+  File "/data/cle/auto/GPT/experiments/ac_module_structure_window01/check_module_sources.py", line 77, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/data/cle/auto/GPT/experiments/ac_module_structure_window01/check_module_sources.py", line 26, in main
+    assert torch.equal(official(x),shared(x));assert shared.conv[0].kernel_size==(5,);checks.append('ECA adaptive k5 explicit official k5 parity; official default3 not silently equated')
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError
+Traceback (most recent call last):
+  File "/data/cle/auto/GPT/experiments/ac_module_structure_window01/bootstrap_module_structure.py", line 34, in <module>
+    try:main()
+        ^^^^^^
+  File "/data/cle/auto/GPT/experiments/ac_module_structure_window01/bootstrap_module_structure.py", line 15, in main
+    if not (S/'module_source_audit.json').exists():call(S/'check_module_sources.py',cpu=True)
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/cle/auto/GPT/experiments/ac_module_structure_window01/bootstrap_module_structure.py", line 10, in call
+    subprocess.run([m.PY,*map(str,args)],cwd=R,env=env,stdin=subprocess.DEVNULL,check=True)
+  File "/home/login/miniconda3/envs/sunfuxiang/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/home/login/miniconda3/envs/sunfuxiang/bin/python', '/data/cle/auto/GPT/experiments/ac_module_structure_window01/check_module_sources.py']' returned non-zero exit status 1.

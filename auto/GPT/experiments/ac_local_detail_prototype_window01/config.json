@@ -1,0 +1,42 @@
+{
+  "identity": "ac_local_detail_prototype_window01",
+  "thread": "01a171be-ebee-7a13-b05e-97fdb6b75587",
+  "sources": {
+    "models/optimize/ac_local_detail_prototype_window01/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "models/optimize/ac_local_detail_prototype_window01/c4_moment_stem.py": "8cd90f0659a7a852fa16c7a848bca0c416f24913c3548ee6e6141792cf429fdd",
+    "models/optimize/ac_local_detail_prototype_window01/local_detail.py": "d85dc21a98f095005216a59e39497b196f47794585a8e8eca30f365992fe4ec9",
+    "experiments/ac_local_detail_prototype_window01/check_cpu.py": "31931274b6fc2c4e69a087d08a1fc084c9301aac6760542cc783f860730957fe",
+    "experiments/ac_local_detail_prototype_window01/register_cpu.py": "f11fef444ef2bc40427129ac523f62f63781b4b15c116b902cadd07ebcb5777e",
+    "experiments/ac_local_detail_prototype_window01/PROTOCOL_ZH.md": "5028c6ab6b5f52c0eb30d1bddbeccd800da066b4f4415e21c212c0c980b6d222",
+    "experiments/ac_local_detail_prototype_window01/references/LICENSE.md": "6227e247338b7ebac3dcfc05e6f86fbb16811ba56c77f96877f8c6ac9e53c20a",
+    "experiments/ac_local_detail_prototype_window01/references/official_blurpool.py": "126e1379b39afa0ae88936810039b84e73ab3e1a7b59c9cbc7f340ee18843467",
+    "experiments/ac_local_detail_prototype_window01/references/source_manifest.json": "9dab8d2747a85ec020667508a5f38a32f3eb6e94863fd3b6d2db222d716882fd"
+  },
+  "locked": {
+    "experiments/ac_midstage_focal_structure_window01/config.json": "39fe542f23915dd7032b59f1244c5851e634e05e842945e98b918c0e10b946e0",
+    "experiments/ac_midstage_focal_structure_window01/independent_audit.json": "a6bc53e2817b7129360e07f9abc7099712f49a15988920c5a9c1a10deb3c6002",
+    "experiments/ac_midstage_focal_structure_window01/direct_control_comparisons.json": "07ebb0e16c44d869739e83429086ce616a503dbd71818d40e8f7656c9829c44a",
+    "experiments/ac_midstage_focal_structure_window01/bootstrap_complete.json": "fb71849e13e81e56c6527517996ef2409339bc23811e1e7266301e8b2a9d1ca9",
+    "experiments/ac_midstage_focal_structure_window01/MIDSTAGE_FOCAL_RETENTION_DECISION_ZH.md": "69a5158b2f27fe1b5f22fa3b0572204dfbf8fb0432cc0bb0f43f6e5f5a60a354",
+    "experiments/ac_midstage_focal_final_report_window01/local_complete_evidence_audit.json": "fd7e805acd6c336f904fc9d164df746853f54d5e4fdb8f2687ad50abe37b880f",
+    "experiments/ac_dataset_v1/dataset_config.json": "7ed4a82396abd4f4f7761cfb132f3ae97e5d61979136b702fa8cb76b56e3b509",
+    "experiments/ac_dataset_v1/dataset_manifest.json": "b136e3a48ff1b6442957797b4d98228dfc7cedc9abae4f456052dcfcf4f69de8",
+    "experiments/ac_dataset_v1/independent_dataset_audit.json": "5c07df0c774b85e5910310357b273cd90c8f6e6a8d0bed9c42554717be6a4361",
+    "experiments/ac_qualification_20261024_window01/config.json": "0967996bd587a783df09a2ab04d1094b00e078e205ffaeb2e0f906d7294f5dbe",
+    "experiments/ac_qualification_20261024_window01/pretrained_manifest.json": "0004921bc0e040e1a6b3cadf4d0bff16345c978b516c12242270dab24ea8c003"
+  },
+  "arms": [
+    "mom_detailcontrast",
+    "detailcontrast_only",
+    "mom_detailrawgate",
+    "mom_misaligned",
+    "mom_highpass"
+  ],
+  "stage": "CPU prototype only; no CLE images or training",
+  "before_numeric_audit": true,
+  "extra_parameters": 9216,
+  "gradient_rule": "up only firstpositive secondpositive; fixed filter no learned upstream; retainedMom separately checked",
+  "target": "2-3 complementary network designs combined versus fixedB0 >1.5pp; no single-design gate",
+  "scope": "mature binomial lowpass reference with firststage normalized highpass local intensity contrast; no novelty/gain guarantee",
+  "overall_research_complete": false
+}

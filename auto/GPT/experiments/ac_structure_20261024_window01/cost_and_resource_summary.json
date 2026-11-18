@@ -1,0 +1,91 @@
+{
+  "cost": {
+    "relational": {
+      "parameters": 21816486,
+      "counted_flops": 12304046592,
+      "seed_loop_wall_seconds": [
+        246.19714259999455,
+        291.62688610097393,
+        293.5405151259911
+      ],
+      "median_train_samples_per_second": 449.3721388844027,
+      "median_loader_wait_seconds": 0.040063829568680376,
+      "median_train_compute_seconds": 4.582223906574654,
+      "max_training_peak_mib": 1914.09912109375
+    },
+    "no_neighbor": {
+      "parameters": 21816486,
+      "counted_flops": 12304046592,
+      "seed_loop_wall_seconds": [
+        287.54661654299707,
+        286.7030267350201,
+        287.47784635500284
+      ],
+      "median_train_samples_per_second": 455.0436928805199,
+      "median_loader_wait_seconds": 0.03887684506480582,
+      "median_train_compute_seconds": 4.523541603019112,
+      "max_training_peak_mib": 1909.1162109375
+    },
+    "no_depth": {
+      "parameters": 21816486,
+      "counted_flops": 12304046592,
+      "seed_loop_wall_seconds": [
+        287.59291821101215,
+        286.3958355130162,
+        287.49933006599895
+      ],
+      "median_train_samples_per_second": 456.0821176343574,
+      "median_loader_wait_seconds": 0.037925707845715806,
+      "median_train_compute_seconds": 4.5147864944447065,
+      "max_training_peak_mib": 1912.99755859375
+    },
+    "final_only": {
+      "parameters": 21816486,
+      "counted_flops": 12304046592,
+      "seed_loop_wall_seconds": [
+        285.9502675139811,
+        286.5347732829978,
+        286.5043379130075
+      ],
+      "median_train_samples_per_second": 457.3137386348214,
+      "median_loader_wait_seconds": 0.03713899642752949,
+      "median_train_compute_seconds": 4.502582070490462,
+      "max_training_peak_mib": 1903.99755859375
+    },
+    "official4": {
+      "parameters": 21634563,
+      "counted_flops": 12247135488,
+      "seed_loop_wall_seconds": [
+        281.7837184339878,
+        280.85737740498735,
+        281.04713367598015
+      ],
+      "median_train_samples_per_second": 465.8349440588023,
+      "median_loader_wait_seconds": 0.03769858359009959,
+      "median_train_compute_seconds": 4.418519151004148,
+      "max_training_peak_mib": 1919.7041015625
+    },
+    "convnext": {
+      "parameters": 87569539,
+      "counted_flops": 30707417088,
+      "seed_loop_wall_seconds": [
+        791.0628622730146,
+        780.4112553810119,
+        775.7276558569865
+      ],
+      "median_train_samples_per_second": 164.97620102925163,
+      "median_loader_wait_seconds": 0.03987817450251896,
+      "median_train_compute_seconds": 12.547868860012386,
+      "max_training_peak_mib": 5179.3203125
+    }
+  },
+  "resources": {
+    "samples": 1119,
+    "mean_gpu_util": 99.54423592493298,
+    "mean_cpu_percent": 17.134526255481106,
+    "max_gpu_used_mib": 18441.0,
+    "mean_iowait_percent": 0.002626042783526092,
+    "scope": "All recorded round1 queue samples, including launch/refill transitions; preparation and audit windows not in this CSV.",
+    "budget_warning": "Per-job loop wall time includes validation and concurrency contention, excludes process setup/audit; do not sum as actual GPU hours."
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "signature": "5f9d764ef69136b3c6c53a9dfb848fc4baf023d4ae4bd6db5f0b6688ad21deee",
+  "job_id": "r10_lora_qv_s44",
+  "variant": "lora_qv",
+  "recipe": "full_unweighted",
+  "seed": 44,
+  "n": 538,
+  "checkpoint_sha256": "24108e2caef386fc691757bae58aba43638e11af463154e908d62a6f38b9d393",
+  "completed_at": "2026-10-24T11:33:24.187603+08:00",
+  "parameters": 21778563,
+  "trainable_parameters": 149763,
+  "budget": {
+    "variant": "lora_qv",
+    "parameters": 21778563,
+    "trainable_parameters": 149763,
+    "counted_flops_224": 12322920960,
+    "amp_batch32_peak_bytes": 734635520,
+    "nonzero_gradient_counts_first_two_steps": [
+      10,
+      18
+    ]
+  },
+  "diagnostics": {
+    "descriptor_relative_change_mean": 0.7863667607307434,
+    "descriptor_relative_change_quantiles": [
+      0.5452672243118286,
+      0.7512900680303574,
+      0.791662186384201,
+      0.824785977602005,
+      0.930432140827179
+    ],
+    "off_prediction_disagreement": 0.4628252788104089,
+    "off_same_checkpoint_metrics": {
+      "macro_f1": 0.49671944846198546,
+      "accuracy": 0.5278810408921933,
+      "class_f1": [
+        0.30711610486891383,
+        0.5488958990536278,
+        0.6341463414634146
+      ],
+      "confusion_matrix": [
+        [
+          41,
+          73,
+          111
+        ],
+        [
+          1,
+          87,
+          68
+        ],
+        [
+          0,
+          1,
+          156
+        ]
+      ],
+      "auroc": 0.9127149922877544
+    },
+    "probability_mean_absolute_change": 0.2873912751674652,
+    "note": "Same-checkpoint diagnostic, not retrained ablation, ROI truth or a noise diagnosis."
+  },
+  "macro_f1": 0.871315699804072,
+  "accuracy": 0.8717472118959108,
+  "class_f1": [
+    0.8615384615384616,
+    0.7774086378737541,
+    0.975
+  ],
+  "confusion_matrix": [
+    [
+      196,
+      27,
+      2
+    ],
+    [
+      34,
+      117,
+      5
+    ],
+    [
+      0,
+      1,
+      156
+    ]
+  ],
+  "auroc": 0.9614920178340315
+}

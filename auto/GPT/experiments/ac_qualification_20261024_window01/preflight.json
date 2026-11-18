@@ -1,0 +1,89 @@
+{
+  "passed": true,
+  "timestamp": "2026-10-24T18:44:11.362767+08:00",
+  "budgets": [
+    {
+      "arm": "convnext_tiny_A",
+      "family": "convnext_tiny",
+      "recipe": "A",
+      "parameters": 27822435,
+      "counted_flops": 8909531136,
+      "peak_gpu_mib": 2307.8017578125,
+      "finite_real_two_updates": true
+    },
+    {
+      "arm": "convnext_tiny_B",
+      "family": "convnext_tiny",
+      "recipe": "B",
+      "parameters": 27822435,
+      "counted_flops": 26183102976,
+      "peak_gpu_mib": 6012.921875,
+      "finite_real_two_updates": true
+    },
+    {
+      "arm": "efficientnet_v2_s_A",
+      "family": "efficientnet_v2_s",
+      "recipe": "A",
+      "parameters": 20181331,
+      "counted_flops": 5697239424,
+      "peak_gpu_mib": 2714.02392578125,
+      "finite_real_two_updates": true
+    },
+    {
+      "arm": "efficientnet_v2_s_B",
+      "family": "efficientnet_v2_s",
+      "recipe": "B",
+      "parameters": 20181331,
+      "counted_flops": 16728681984,
+      "peak_gpu_mib": 7352.18408203125,
+      "finite_real_two_updates": true
+    },
+    {
+      "arm": "swin_t_A",
+      "family": "swin_t",
+      "recipe": "A",
+      "parameters": 27521661,
+      "counted_flops": 8979601920,
+      "peak_gpu_mib": 2581.14111328125,
+      "finite_real_two_updates": true
+    },
+    {
+      "arm": "swin_t_B",
+      "family": "swin_t",
+      "recipe": "B",
+      "parameters": 27521661,
+      "counted_flops": 28597871616,
+      "peak_gpu_mib": 7185.111328125,
+      "finite_real_two_updates": true
+    },
+    {
+      "arm": "convnext_base_A",
+      "family": "convnext_base",
+      "recipe": "A",
+      "parameters": 87569539,
+      "counted_flops": 30707417088,
+      "peak_gpu_mib": 5182.86669921875,
+      "finite_real_two_updates": true
+    },
+    {
+      "arm": "convnext_base_B",
+      "family": "convnext_base",
+      "recipe": "B",
+      "parameters": 87569539,
+      "counted_flops": 90242193408,
+      "peak_gpu_mib": 12801.31884765625,
+      "finite_real_two_updates": true
+    }
+  ],
+  "checks": [
+    "official pretrained strict load/full SHA",
+    "paired224/384 encoder and head initial states",
+    "two finite real AMP updates",
+    "exact optimizer coverage/lr",
+    "old224 transform equality",
+    "new train/val-only448 cache SHA/raw-image SHA",
+    "test access rejection for both caches",
+    "all three ConvNeXtBase224 full427 probability reproduction"
+  ],
+  "flops_excludes": "norm, activation, pooling, softmax, bias, indexing and memory; explicit Swin QKV/project plus attention"
+}

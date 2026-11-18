@@ -1,0 +1,266 @@
+{
+  "passed": true,
+  "budgets": [
+    {
+      "arm": "plain",
+      "parameters": 27822435,
+      "counted_flops": 8909531136,
+      "peak_gpu_mib": 2308.912109375,
+      "finite_two_updates": true
+    },
+    {
+      "arm": "mom_only",
+      "parameters": 27840963,
+      "counted_flops": 9111840768,
+      "peak_gpu_mib": 2540.9990234375,
+      "finite_two_updates": true
+    },
+    {
+      "arm": "mom_focalcontrast",
+      "parameters": 27852795,
+      "counted_flops": 9130393344,
+      "peak_gpu_mib": 2608.4306640625,
+      "finite_two_updates": true
+    },
+    {
+      "arm": "focalcontrast_only",
+      "parameters": 27834267,
+      "counted_flops": 8928083712,
+      "peak_gpu_mib": 2377.349609375,
+      "finite_two_updates": true
+    },
+    {
+      "arm": "mom_focalraw",
+      "parameters": 27852795,
+      "counted_flops": 9130393344,
+      "peak_gpu_mib": 2608.4306640625,
+      "finite_two_updates": true
+    },
+    {
+      "arm": "mom_misaligned",
+      "parameters": 27852795,
+      "counted_flops": 9130393344,
+      "peak_gpu_mib": 2608.43701171875,
+      "finite_two_updates": true
+    },
+    {
+      "arm": "mom_additive",
+      "parameters": 27852795,
+      "counted_flops": 9130393344,
+      "peak_gpu_mib": 2606.3740234375,
+      "finite_two_updates": true
+    }
+  ],
+  "descriptor_diagnostics": [
+    {
+      "arm": "mom_focalcontrast",
+      "gradients": [
+        {
+          "step": 0,
+          "CE_loss": 1.034576416015625,
+          "zero_up_gradient_norm": 0.4722820222377777,
+          "upstream_gradient_norms": {
+            "down.weight": 0.0,
+            "core.f.weight": 0.0,
+            "core.h.weight": 0.0,
+            "core.layers.0.weight": 0.0,
+            "core.layers.1.weight": 0.0
+          },
+          "retained_moment_gradient_norm": 0.5790783762931824,
+          "expected_upstream_first_zero_second_positive": true
+        },
+        {
+          "step": 1,
+          "CE_loss": 0.9622802734375,
+          "zero_up_gradient_norm": 0.4740248918533325,
+          "upstream_gradient_norms": {
+            "down.weight": 0.01827322691679001,
+            "core.f.weight": 0.007748979609459639,
+            "core.h.weight": 0.0010156446369364858,
+            "core.layers.0.weight": 0.001661064918152988,
+            "core.layers.1.weight": 0.0019413307309150696
+          },
+          "retained_moment_gradient_norm": 0.49022364616394043,
+          "expected_upstream_first_zero_second_positive": true
+        }
+      ],
+      "actual_train_images": 32,
+      "test_images": 0
+    },
+    {
+      "arm": "focalcontrast_only",
+      "gradients": [
+        {
+          "step": 0,
+          "CE_loss": 1.034576416015625,
+          "zero_up_gradient_norm": 0.4722820222377777,
+          "upstream_gradient_norms": {
+            "down.weight": 0.0,
+            "core.f.weight": 0.0,
+            "core.h.weight": 0.0,
+            "core.layers.0.weight": 0.0,
+            "core.layers.1.weight": 0.0
+          },
+          "retained_moment_gradient_norm": null,
+          "expected_upstream_first_zero_second_positive": true
+        },
+        {
+          "step": 1,
+          "CE_loss": 0.9639434814453125,
+          "zero_up_gradient_norm": 0.4749901592731476,
+          "upstream_gradient_norms": {
+            "down.weight": 0.018442777916789055,
+            "core.f.weight": 0.007808102760463953,
+            "core.h.weight": 0.0010234282817691565,
+            "core.layers.0.weight": 0.001671131351031363,
+            "core.layers.1.weight": 0.0019523004302754998
+          },
+          "retained_moment_gradient_norm": null,
+          "expected_upstream_first_zero_second_positive": true
+        }
+      ],
+      "actual_train_images": 32,
+      "test_images": 0
+    },
+    {
+      "arm": "mom_focalraw",
+      "gradients": [
+        {
+          "step": 0,
+          "CE_loss": 1.034576416015625,
+          "zero_up_gradient_norm": 1.2156797647476196,
+          "upstream_gradient_norms": {
+            "down.weight": 0.0,
+            "core.f.weight": 0.0,
+            "core.h.weight": 0.0,
+            "core.layers.0.weight": 0.0,
+            "core.layers.1.weight": 0.0
+          },
+          "retained_moment_gradient_norm": 0.5790783762931824,
+          "expected_upstream_first_zero_second_positive": true
+        },
+        {
+          "step": 1,
+          "CE_loss": 0.9608306884765625,
+          "zero_up_gradient_norm": 1.1220424175262451,
+          "upstream_gradient_norms": {
+            "down.weight": 0.06256642937660217,
+            "core.f.weight": 0.02460509166121483,
+            "core.h.weight": 0.005548507906496525,
+            "core.layers.0.weight": 0.00995452981442213,
+            "core.layers.1.weight": 0.006461738143116236
+          },
+          "retained_moment_gradient_norm": 0.4896966516971588,
+          "expected_upstream_first_zero_second_positive": true
+        }
+      ],
+      "actual_train_images": 32,
+      "test_images": 0
+    },
+    {
+      "arm": "mom_misaligned",
+      "gradients": [
+        {
+          "step": 0,
+          "CE_loss": 1.034576416015625,
+          "zero_up_gradient_norm": 0.21564804017543793,
+          "upstream_gradient_norms": {
+            "down.weight": 0.0,
+            "core.f.weight": 0.0,
+            "core.h.weight": 0.0,
+            "core.layers.0.weight": 0.0,
+            "core.layers.1.weight": 0.0
+          },
+          "retained_moment_gradient_norm": 0.5790783762931824,
+          "expected_upstream_first_zero_second_positive": true
+        },
+        {
+          "step": 1,
+          "CE_loss": 0.9628753662109375,
+          "zero_up_gradient_norm": 0.20071552693843842,
+          "upstream_gradient_norms": {
+            "down.weight": 0.006166000384837389,
+            "core.f.weight": 0.002493711654096842,
+            "core.h.weight": 0.00032924555125646293,
+            "core.layers.0.weight": 0.00040327946771867573,
+            "core.layers.1.weight": 0.0002014105411944911
+          },
+          "retained_moment_gradient_norm": 0.4915813207626343,
+          "expected_upstream_first_zero_second_positive": true
+        }
+      ],
+      "actual_train_images": 32,
+      "test_images": 0
+    },
+    {
+      "arm": "mom_additive",
+      "gradients": [
+        {
+          "step": 0,
+          "CE_loss": 1.034576416015625,
+          "zero_up_gradient_norm": 3.0743000507354736,
+          "upstream_gradient_norms": {
+            "down.weight": 0.0,
+            "core.f.weight": 0.0,
+            "core.h.weight": 0.0,
+            "core.layers.0.weight": 0.0,
+            "core.layers.1.weight": 0.0
+          },
+          "retained_moment_gradient_norm": 0.5790783762931824,
+          "expected_upstream_first_zero_second_positive": true
+        },
+        {
+          "step": 1,
+          "CE_loss": 0.9561309814453125,
+          "zero_up_gradient_norm": 2.9054172039031982,
+          "upstream_gradient_norms": {
+            "down.weight": 0.009517863392829895,
+            "core.f.weight": 0.004289710894227028,
+            "core.h.weight": 1.5072209862410091e-05,
+            "core.layers.0.weight": 1.4302178897196427e-05,
+            "core.layers.1.weight": 7.758769243082497e-06
+          },
+          "retained_moment_gradient_norm": 0.4853054881095886,
+          "expected_upstream_first_zero_second_positive": true
+        }
+      ],
+      "actual_train_images": 32,
+      "test_images": 0
+    }
+  ],
+  "reproduced_baselines": [
+    {
+      "kind": "plain",
+      "seed": 45,
+      "full427_max_probability_error": 0.0
+    },
+    {
+      "kind": "plain",
+      "seed": 46,
+      "full427_max_probability_error": 0.0
+    },
+    {
+      "kind": "plain",
+      "seed": 47,
+      "full427_max_probability_error": 0.0
+    },
+    {
+      "kind": "mom_only",
+      "seed": 45,
+      "full427_max_probability_error": 0.0
+    },
+    {
+      "kind": "mom_only",
+      "seed": 46,
+      "full427_max_probability_error": 0.0
+    },
+    {
+      "kind": "mom_only",
+      "seed": 47,
+      "full427_max_probability_error": 0.0
+    }
+  ],
+  "test_denied": true,
+  "objective": "original CE only; patient auxiliary targets not retained as confirmed increments",
+  "flops_convention": "2FLOP/MAC includes3 functional rotated convolutions,all new1x1 and depthwiseConv; excludes LN/GELU/centering/elementwise-gating/replicate-padding/memory, actual throughput separately measured"
+}

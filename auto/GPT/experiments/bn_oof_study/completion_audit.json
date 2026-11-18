@@ -1,0 +1,402 @@
+{
+  "passed": true,
+  "timestamp": "2026-10-24T10:11:10.021851+08:00",
+  "new_models": 15,
+  "reused_models": 15,
+  "checks": [
+    "immutable source and copied baseline hashes",
+    "30 checkpoints with signed provenance and finite states",
+    "30 x 60 epochs and correct best inner selection",
+    "paired original folds unchanged, only train indices, three-way patient isolation",
+    "frozen BN buffers exactly equal pretrained initialization",
+    "outer indices, probabilities, independent F1/confusion and prediction SHA",
+    "2386 OOF rows per algorithm/seed, three predictions per image/algorithm",
+    "independently recomputed 185-patient paired bootstrap",
+    "login ownership"
+  ],
+  "jobs": [
+    {
+      "variant": "bn_train",
+      "seed": 42,
+      "fold": 0,
+      "fit": 1681,
+      "inner": 230,
+      "outer": 475,
+      "checkpoint_sha256": "6f8ab4e3ef84e76f49a92358baf7564f5547e76cffd6fa5a855336d022e068ac",
+      "best_inner_epoch": 28,
+      "outer_f1": 0.8697511053586968
+    },
+    {
+      "variant": "bn_frozen",
+      "seed": 42,
+      "fold": 0,
+      "fit": 1681,
+      "inner": 230,
+      "outer": 475,
+      "checkpoint_sha256": "a36d65b437cd8ef76b6a100685c71efacd50fabff46ba2f14490946e97228c70",
+      "best_inner_epoch": 22,
+      "outer_f1": 0.8886448397587011
+    },
+    {
+      "variant": "bn_train",
+      "seed": 42,
+      "fold": 1,
+      "fit": 1692,
+      "inner": 217,
+      "outer": 477,
+      "checkpoint_sha256": "df682fe2197df144751f65ea42a97193b01bc188d1996c254e7a468468386143",
+      "best_inner_epoch": 57,
+      "outer_f1": 0.8928209554091907
+    },
+    {
+      "variant": "bn_frozen",
+      "seed": 42,
+      "fold": 1,
+      "fit": 1692,
+      "inner": 217,
+      "outer": 477,
+      "checkpoint_sha256": "13c9253a342f3f296a1c4eab685c27da4c0127c8cf21fcde2865e10405823418",
+      "best_inner_epoch": 27,
+      "outer_f1": 0.8817290003784759
+    },
+    {
+      "variant": "bn_train",
+      "seed": 42,
+      "fold": 2,
+      "fit": 1727,
+      "inner": 185,
+      "outer": 474,
+      "checkpoint_sha256": "c743b028b0f005f3f8618c0d82c128e220b197fb7b5ff7b34e7544fd0e81c12c",
+      "best_inner_epoch": 22,
+      "outer_f1": 0.8482373386239138
+    },
+    {
+      "variant": "bn_frozen",
+      "seed": 42,
+      "fold": 2,
+      "fit": 1727,
+      "inner": 185,
+      "outer": 474,
+      "checkpoint_sha256": "d909d460245476d3e1fecb5da15f89145603cb84877a490bac6658b796f3169f",
+      "best_inner_epoch": 46,
+      "outer_f1": 0.8940487803051224
+    },
+    {
+      "variant": "bn_train",
+      "seed": 42,
+      "fold": 3,
+      "fit": 1693,
+      "inner": 217,
+      "outer": 476,
+      "checkpoint_sha256": "389d90a6a3fc4bba3df6ca96a479c289f0582456f2c327032320dc1b3072247a",
+      "best_inner_epoch": 27,
+      "outer_f1": 0.8219737086584913
+    },
+    {
+      "variant": "bn_frozen",
+      "seed": 42,
+      "fold": 3,
+      "fit": 1693,
+      "inner": 217,
+      "outer": 476,
+      "checkpoint_sha256": "ed170c41518dda8c1dc78b62e6e705a9f8555210a15a52561a3e5b91dee3a824",
+      "best_inner_epoch": 19,
+      "outer_f1": 0.8071544900993081
+    },
+    {
+      "variant": "bn_train",
+      "seed": 42,
+      "fold": 4,
+      "fit": 1675,
+      "inner": 227,
+      "outer": 484,
+      "checkpoint_sha256": "f7742452f7d5ba015abe3e9e6717180a2080027be322387a55f658b59c035a9f",
+      "best_inner_epoch": 13,
+      "outer_f1": 0.8411579092021925
+    },
+    {
+      "variant": "bn_frozen",
+      "seed": 42,
+      "fold": 4,
+      "fit": 1675,
+      "inner": 227,
+      "outer": 484,
+      "checkpoint_sha256": "ff248ee6e967dc55c625efb0e569e92cb69870eede2bfe2085a7d7fe7c88eebd",
+      "best_inner_epoch": 28,
+      "outer_f1": 0.8345262570141766
+    },
+    {
+      "variant": "bn_train",
+      "seed": 43,
+      "fold": 0,
+      "fit": 1693,
+      "inner": 218,
+      "outer": 475,
+      "checkpoint_sha256": "e02b893d3eb7c56017f042cc42d31156ed6bb2a299ccc382433993daaa7d1de9",
+      "best_inner_epoch": 40,
+      "outer_f1": 0.870670129561729
+    },
+    {
+      "variant": "bn_frozen",
+      "seed": 43,
+      "fold": 0,
+      "fit": 1693,
+      "inner": 218,
+      "outer": 475,
+      "checkpoint_sha256": "a8f3101a50ae31a6d0a9aab424f31d7b3b0c799713d269c557e001be3f1a0aad",
+      "best_inner_epoch": 45,
+      "outer_f1": 0.8913691689874579
+    },
+    {
+      "variant": "bn_train",
+      "seed": 43,
+      "fold": 1,
+      "fit": 1724,
+      "inner": 187,
+      "outer": 475,
+      "checkpoint_sha256": "6da98202567ef453ddab3b51f366bc94e403de90619212e417a290e58eb79cf0",
+      "best_inner_epoch": 9,
+      "outer_f1": 0.8759610122087335
+    },
+    {
+      "variant": "bn_frozen",
+      "seed": 43,
+      "fold": 1,
+      "fit": 1724,
+      "inner": 187,
+      "outer": 475,
+      "checkpoint_sha256": "8a76583aacac192cfa174896ee03db5d5db5d9e22c68dd5d475c510e18a415e3",
+      "best_inner_epoch": 38,
+      "outer_f1": 0.8907766249877943
+    },
+    {
+      "variant": "bn_train",
+      "seed": 43,
+      "fold": 2,
+      "fit": 1723,
+      "inner": 186,
+      "outer": 477,
+      "checkpoint_sha256": "bfe6b236ca358715036e0526b5a82033a9c0e1b5fbaa6f5d1586188968732188",
+      "best_inner_epoch": 38,
+      "outer_f1": 0.8909071977035614
+    },
+    {
+      "variant": "bn_frozen",
+      "seed": 43,
+      "fold": 2,
+      "fit": 1723,
+      "inner": 186,
+      "outer": 477,
+      "checkpoint_sha256": "cf4fda93610ad7756ab6db1e07ffd36d8f2d3c88fd67475460f2f02fb42497d6",
+      "best_inner_epoch": 18,
+      "outer_f1": 0.9203075957313245
+    },
+    {
+      "variant": "bn_train",
+      "seed": 43,
+      "fold": 3,
+      "fit": 1691,
+      "inner": 220,
+      "outer": 475,
+      "checkpoint_sha256": "d4046d4ad7fb576a849a58fa2a1872c2759679fbbd387e8460cbcfb135167c4e",
+      "best_inner_epoch": 52,
+      "outer_f1": 0.828490156286363
+    },
+    {
+      "variant": "bn_frozen",
+      "seed": 43,
+      "fold": 3,
+      "fit": 1691,
+      "inner": 220,
+      "outer": 475,
+      "checkpoint_sha256": "dbf13c4128550a71b8123b1a327c0db2efa4e05ed729528035e1f93c9d2509d5",
+      "best_inner_epoch": 39,
+      "outer_f1": 0.8328838396954109
+    },
+    {
+      "variant": "bn_train",
+      "seed": 43,
+      "fold": 4,
+      "fit": 1680,
+      "inner": 222,
+      "outer": 484,
+      "checkpoint_sha256": "d47070bb4c72934bcbecfc1c7008af994587bc564aed2098f2fae97b2f2a214b",
+      "best_inner_epoch": 29,
+      "outer_f1": 0.8540533619480293
+    },
+    {
+      "variant": "bn_frozen",
+      "seed": 43,
+      "fold": 4,
+      "fit": 1680,
+      "inner": 222,
+      "outer": 484,
+      "checkpoint_sha256": "69595ceb627c6d9c6beeded56373552c65a1788d8e427109c065eb81b86a750d",
+      "best_inner_epoch": 22,
+      "outer_f1": 0.873046699229716
+    },
+    {
+      "variant": "bn_train",
+      "seed": 44,
+      "fold": 0,
+      "fit": 1686,
+      "inner": 222,
+      "outer": 478,
+      "checkpoint_sha256": "6a8d6f3a77556cdcb0cde5d91a6364232bd6d588797334b86acebbc39df20002",
+      "best_inner_epoch": 30,
+      "outer_f1": 0.8341126475077615
+    },
+    {
+      "variant": "bn_frozen",
+      "seed": 44,
+      "fold": 0,
+      "fit": 1686,
+      "inner": 222,
+      "outer": 478,
+      "checkpoint_sha256": "1ab45be7e5d153ad6f8369e633c3cb548d757b97550127d50ee0461a1daa4bee",
+      "best_inner_epoch": 16,
+      "outer_f1": 0.8392274889102301
+    },
+    {
+      "variant": "bn_train",
+      "seed": 44,
+      "fold": 1,
+      "fit": 1725,
+      "inner": 187,
+      "outer": 474,
+      "checkpoint_sha256": "30c01b637d40c3493772a812254cddde91572dc0c5c6911d4bf7335672ae2c5e",
+      "best_inner_epoch": 23,
+      "outer_f1": 0.9008944007408145
+    },
+    {
+      "variant": "bn_frozen",
+      "seed": 44,
+      "fold": 1,
+      "fit": 1725,
+      "inner": 187,
+      "outer": 474,
+      "checkpoint_sha256": "1cbe7097e56a2cd904bbec5cce326b6344ec9414b5a55e485b31bd203adbbf03",
+      "best_inner_epoch": 38,
+      "outer_f1": 0.8834208885860316
+    },
+    {
+      "variant": "bn_train",
+      "seed": 44,
+      "fold": 2,
+      "fit": 1725,
+      "inner": 186,
+      "outer": 475,
+      "checkpoint_sha256": "77ce8ef7936e622e5942a2210df189967051d9341568bce877b5a9c3e39cd123",
+      "best_inner_epoch": 6,
+      "outer_f1": 0.849969084741231
+    },
+    {
+      "variant": "bn_frozen",
+      "seed": 44,
+      "fold": 2,
+      "fit": 1725,
+      "inner": 186,
+      "outer": 475,
+      "checkpoint_sha256": "404fc6cca480c39fc0d3c8a5f75aeed7ddc61f5050c8eb23d673e4adaf17e3c2",
+      "best_inner_epoch": 48,
+      "outer_f1": 0.8883990234431828
+    },
+    {
+      "variant": "bn_train",
+      "seed": 44,
+      "fold": 3,
+      "fit": 1683,
+      "inner": 219,
+      "outer": 484,
+      "checkpoint_sha256": "117f547ba464531b1bc09d0d13ea2bf96cd723fa8d38506a6bcf86f59c03fd6d",
+      "best_inner_epoch": 32,
+      "outer_f1": 0.8401953754306078
+    },
+    {
+      "variant": "bn_frozen",
+      "seed": 44,
+      "fold": 3,
+      "fit": 1683,
+      "inner": 219,
+      "outer": 484,
+      "checkpoint_sha256": "f5c3488cb71158a6f4d43f3a769b900a8a32ae47cc389f75f0712196e3915790",
+      "best_inner_epoch": 10,
+      "outer_f1": 0.8371465284572112
+    },
+    {
+      "variant": "bn_train",
+      "seed": 44,
+      "fold": 4,
+      "fit": 1690,
+      "inner": 221,
+      "outer": 475,
+      "checkpoint_sha256": "8a52a8d99951ca9f6406bf0264f797018c7e3f8d27243a53f8d0b36c207e69cd",
+      "best_inner_epoch": 55,
+      "outer_f1": 0.8642981880068404
+    },
+    {
+      "variant": "bn_frozen",
+      "seed": 44,
+      "fold": 4,
+      "fit": 1690,
+      "inner": 221,
+      "outer": 475,
+      "checkpoint_sha256": "1ecf789704f3b02d7948240f73f02c0bfd6aee865e3d29b3cce709ba4d0a5a6a",
+      "best_inner_epoch": 35,
+      "outer_f1": 0.8616889547325007
+    }
+  ],
+  "comparison": {
+    "seed_deltas": [
+      0.008100004652686787,
+      0.018325004393418998,
+      0.004686579459580065
+    ],
+    "mean_delta": 0.010370529501895284,
+    "patient_cluster95": [
+      -0.005300387210399598,
+      0.0262967095498221
+    ],
+    "patient_groups": 185,
+    "resamples": 20000,
+    "strong_diagnostic_signal": false
+  },
+  "metrics": [
+    {
+      "variant": "bn_train",
+      "seed": 42,
+      "macro_f1": 0.8547362245828611,
+      "malignant_recall": 0.7216312056737588
+    },
+    {
+      "variant": "bn_frozen",
+      "seed": 42,
+      "macro_f1": 0.8628362292355479,
+      "malignant_recall": 0.6719858156028369
+    },
+    {
+      "variant": "bn_train",
+      "seed": 43,
+      "macro_f1": 0.8644749229367353,
+      "malignant_recall": 0.6950354609929078
+    },
+    {
+      "variant": "bn_frozen",
+      "seed": 43,
+      "macro_f1": 0.8827999273301543,
+      "malignant_recall": 0.7393617021276596
+    },
+    {
+      "variant": "bn_train",
+      "seed": 44,
+      "macro_f1": 0.8579239124603432,
+      "malignant_recall": 0.6684397163120568
+    },
+    {
+      "variant": "bn_frozen",
+      "seed": 44,
+      "macro_f1": 0.8626104919199232,
+      "malignant_recall": 0.6737588652482269
+    }
+  ]
+}

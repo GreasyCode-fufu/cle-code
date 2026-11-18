@@ -1,0 +1,41 @@
+{
+  "identity": "ac_salience_contrast_prototype_window01",
+  "thread": "01a16d4e-48fe-7e22-8c4a-c6de0f4d6f76",
+  "sources": {
+    "models/optimize/ac_salience_contrast_prototype_window01/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "models/optimize/ac_salience_contrast_prototype_window01/c4_moment_stem.py": "8cd90f0659a7a852fa16c7a848bca0c416f24913c3548ee6e6141792cf429fdd",
+    "models/optimize/ac_salience_contrast_prototype_window01/salience_contrast.py": "5f20298c0a953a58536823cb7f83f86dc7eb60b8e63f5004ac4f99c438dd6b14",
+    "experiments/ac_salience_contrast_prototype_window01/check_cpu.py": "8cab73ecaeed5c221125ce8dbe27bac43e18595e7e68fd3cc8868aefb647ccb5",
+    "experiments/ac_salience_contrast_prototype_window01/PROTOCOL_ZH.md": "6ea4e08c9c34d99383c36109fa388b4e012cbb2b07125be388adfb21f742e990",
+    "experiments/ac_salience_contrast_prototype_window01/register_cpu.py": "ee93df8fa34a7fa7be9e1dfef110de891796e4637a1a25b5a5e6f5701ecba0ff",
+    "experiments/ac_salience_contrast_prototype_window01/references/LICENSE_AttentionDeepMIL": "f652daf79344b562c725c684b2dea90b3ce2670d7db269619d0ce6e209ac9baa",
+    "experiments/ac_salience_contrast_prototype_window01/references/official_model.py": "21775302071de4e811ae70330c06fae31a3029e85c6be0c5b1aaab4a08789df4"
+  },
+  "locked": {
+    "experiments/ac_channel_covariance_structure_window01/config.json": "39784a3ff65fd551a94c6b99602dece33520ac2cc008ff0626a05a23c17caa8f",
+    "experiments/ac_channel_covariance_structure_window01/independent_audit.json": "a6bc53e2817b7129360e07f9abc7099712f49a15988920c5a9c1a10deb3c6002",
+    "experiments/ac_channel_covariance_structure_window01/direct_control_comparisons.json": "7aef8263c536e472a7d53a87a0a9b64dbaba564f79824d3d3277c9c3399b314b",
+    "experiments/ac_channel_covariance_structure_window01/bootstrap_complete.json": "fb71849e13e81e56c6527517996ef2409339bc23811e1e7266301e8b2a9d1ca9",
+    "experiments/ac_dataset_v1/dataset_config.json": "7ed4a82396abd4f4f7761cfb132f3ae97e5d61979136b702fa8cb76b56e3b509",
+    "experiments/ac_dataset_v1/dataset_manifest.json": "b136e3a48ff1b6442957797b4d98228dfc7cedc9abae4f456052dcfcf4f69de8",
+    "experiments/ac_dataset_v1/independent_dataset_audit.json": "5c07df0c774b85e5910310357b273cd90c8f6e6a8d0bed9c42554717be6a4361",
+    "experiments/ac_qualification_20261024_window01/config.json": "0967996bd587a783df09a2ab04d1094b00e078e205ffaeb2e0f906d7294f5dbe",
+    "experiments/ac_qualification_20261024_window01/pretrained_manifest.json": "0004921bc0e040e1a6b3cadf4d0bff16345c978b516c12242270dab24ea8c003"
+  },
+  "arms": [
+    "mom_salience",
+    "salience_only",
+    "mom_weightedmean",
+    "mom_misaligned",
+    "mom_ungated"
+  ],
+  "stage": "CPU prototype only; no CLE images or training",
+  "before_numeric_audit": true,
+  "extra_parameters": {
+    "gated": 26931,
+    "ungated": 14627
+  },
+  "gradient_rule": "classifier first positive; all attention upstream first zero second positive",
+  "scope": "mature attention operator adapted with LN, GAP contrast and retained classifier residual; no novelty or gain guarantee",
+  "overall_research_complete": false
+}

@@ -1,0 +1,142 @@
+[
+  {
+    "name": "100. (CVPR 2025)Mona.py",
+    "sha256": "291df5572503ea5a03e7641c6a894d626fd33664c73cf7e442db34e44fc453f4",
+    "classes": [
+      "MonaOp",
+      "Mona"
+    ],
+    "imports": [
+      "import torch",
+      "import torch.nn as nn",
+      "import torch.nn.functional as F",
+      "from typing import Optional",
+      "from mmcv.cnn import ConvModule, build_norm_layer",
+      "from mmengine.model import BaseModule",
+      "from mmengine.model import constant_init",
+      "from mmengine.model.weight_init import trunc_normal_init, normal_init"
+    ]
+  },
+  {
+    "name": "102. (CVPR2025 ) GBConv卷积模块.py",
+    "sha256": "113c780a4488a4e122b93e67ab64ea50ca4d84cd7a48f0e50bcf5adf0a5a7eff",
+    "classes": [
+      "BottConv",
+      "GBConv"
+    ],
+    "imports": [
+      "import torch",
+      "import torch.nn as nn"
+    ]
+  },
+  {
+    "name": "12. (Arxiv 2024) WTFD.py",
+    "sha256": "4c0b6f7226caec0ad3ad8ae632fd1bee0be5bde7fde21e1708c49360d20c89b1",
+    "classes": [
+      "WTFD",
+      "WTFDown"
+    ],
+    "imports": [
+      "import torch",
+      "import torch.nn as nn",
+      "from pytorch_wavelets import DWTForward"
+    ]
+  },
+  {
+    "name": "122.  (CVPR2025) LSConv.py",
+    "sha256": "fef6051c921d6a05db76b5fc13f605abb51c31569193c3ff4be83d95e7149356",
+    "classes": [
+      "Conv2d_BN",
+      "LKP",
+      "SKA",
+      "LSConv"
+    ],
+    "imports": [
+      "import torch",
+      "import torch.nn as nn",
+      "import torch.nn.functional as F"
+    ]
+  },
+  {
+    "name": "122a.  (CVPR2025) DCLSConv.py",
+    "sha256": "f49c9c1927a26126d78d1eae1288d17aad6243ab8aaa7daeb82c8316bfc6bd9b",
+    "classes": [
+      "Conv2d_BN",
+      "MultiScaleLKP",
+      "SKA",
+      "SEBlock",
+      "DCLSConv"
+    ],
+    "imports": [
+      "import torch",
+      "import torch.nn as nn",
+      "import torch.nn.functional as F"
+    ]
+  },
+  {
+    "name": "125. (CVPR 2025) FDConv.py",
+    "sha256": "e11bbc2d7e2db5c41657d2de3787f78c89e272d46abcc97113e3169e06d7b67c",
+    "classes": [
+      "StarReLU",
+      "KernelSpatialModulation_Global",
+      "KernelSpatialModulation_Local",
+      "FrequencyBandModulation",
+      "FDConv"
+    ],
+    "imports": [
+      "import torch",
+      "import torch.nn as nn",
+      "import torch.nn.functional as F",
+      "from torch.utils.checkpoint import checkpoint",
+      "from torch import Tensor",
+      "import torch.nn.functional as F",
+      "import math",
+      "import torch",
+      "import torch.nn as nn",
+      "import torch.nn.functional as F"
+    ]
+  },
+  {
+    "name": "12a. WTFD下采样.py",
+    "sha256": "0cc48e9ed2a44adc12e53d1564a5d0e0e5be150b2d9a8f8ae0bb0ce0356f53e5",
+    "classes": [
+      "WTFDown"
+    ],
+    "imports": [
+      "import torch",
+      "import torch.nn as nn",
+      "from pytorch_wavelets import DWTForward"
+    ]
+  },
+  {
+    "name": "16. (CVPR2024)IDC大核分解卷积.py",
+    "sha256": "c0c206fbafb15de1a74c5bceb0a7bc032e6e8375b471cd222adec2f4ec2a0cd6",
+    "classes": [
+      "InceptionDWConv2d",
+      "ConvMlp",
+      "InceptionNeXtBlock"
+    ],
+    "imports": [
+      "import torch",
+      "import torch.nn as nn",
+      "from timm.layers import to_2tuple",
+      "from timm.models.layers import DropPath"
+    ]
+  },
+  {
+    "name": "61.（ECCV2024）WTConv小波卷积模块.py",
+    "sha256": "cc7c49bb4199a388fcf6a2eae0ab3fb9101a76991fb4a60c302062bd9ddfe916",
+    "classes": [
+      "WTConv2d",
+      "_ScaleModule"
+    ],
+    "imports": [
+      "import torch",
+      "import torch.nn as nn",
+      "import torch.nn.functional as F",
+      "from functools import partial",
+      "import pywt",
+      "import pywt.data"
+    ]
+  }
+]

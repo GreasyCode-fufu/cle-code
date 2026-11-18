@@ -1,0 +1,75 @@
+{
+  "passed": true,
+  "budgets": [
+    {
+      "arm": "plain",
+      "parameters": 27822435,
+      "counted_flops": 8909531136,
+      "peak_gpu_mib": 2308.91259765625,
+      "finite_two_updates": true
+    },
+    {
+      "arm": "mean_only",
+      "parameters": 27840963,
+      "counted_flops": 9111840768,
+      "peak_gpu_mib": 2358.37451171875,
+      "finite_two_updates": true
+    },
+    {
+      "arm": "random_moments",
+      "parameters": 27840963,
+      "counted_flops": 9111840768,
+      "peak_gpu_mib": 2540.99951171875,
+      "finite_two_updates": true
+    },
+    {
+      "arm": "moments_eca",
+      "parameters": 27840968,
+      "counted_flops": 9111848448,
+      "peak_gpu_mib": 2541.09521484375,
+      "finite_two_updates": true
+    },
+    {
+      "arm": "aug_moments",
+      "parameters": 27840963,
+      "counted_flops": 9111840768,
+      "peak_gpu_mib": 2540.99951171875,
+      "finite_two_updates": true
+    }
+  ],
+  "reproduced_baselines": [
+    {
+      "kind": "plain",
+      "seed": 45,
+      "full427_max_probability_error": 0.0
+    },
+    {
+      "kind": "plain",
+      "seed": 46,
+      "full427_max_probability_error": 0.0
+    },
+    {
+      "kind": "plain",
+      "seed": 47,
+      "full427_max_probability_error": 0.0
+    },
+    {
+      "kind": "moments",
+      "seed": 45,
+      "full427_max_probability_error": 0.0
+    },
+    {
+      "kind": "moments",
+      "seed": 46,
+      "full427_max_probability_error": 0.0
+    },
+    {
+      "kind": "moments",
+      "seed": 47,
+      "full427_max_probability_error": 0.0
+    }
+  ],
+  "test_denied": true,
+  "checks": "paired public/ECA initialization exact, all new paths finite AMP and gradients, optimizer coverage, six full427 baseline reproductions",
+  "flops_convention": "same2FLOP/MAC as parent, including functional C4 and Conv1d; excludes pointwise/norm/pooling"
+}

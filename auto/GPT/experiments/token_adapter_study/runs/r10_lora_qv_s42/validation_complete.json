@@ -1,0 +1,88 @@
+{
+  "signature": "a85db97ab83c86930fb0342ed09d0859147200e1820377ec5749828f608fd38c",
+  "job_id": "r10_lora_qv_s42",
+  "variant": "lora_qv",
+  "recipe": "full_unweighted",
+  "seed": 42,
+  "n": 538,
+  "checkpoint_sha256": "bff70ade82cb56918321a0499a0bf6c9077636130b98016cf7fabba2cd8b3b14",
+  "completed_at": "2026-10-24T11:31:21.415587+08:00",
+  "parameters": 21778563,
+  "trainable_parameters": 149763,
+  "budget": {
+    "variant": "lora_qv",
+    "parameters": 21778563,
+    "trainable_parameters": 149763,
+    "counted_flops_224": 12322920960,
+    "amp_batch32_peak_bytes": 734635520,
+    "nonzero_gradient_counts_first_two_steps": [
+      10,
+      18
+    ]
+  },
+  "diagnostics": {
+    "descriptor_relative_change_mean": 0.9541512727737427,
+    "descriptor_relative_change_quantiles": [
+      0.710449755191803,
+      0.9102958142757416,
+      0.9536161720752716,
+      1.0074557065963745,
+      1.1335992813110352
+    ],
+    "off_prediction_disagreement": 0.41821561338289964,
+    "off_same_checkpoint_metrics": {
+      "macro_f1": 0.5452746711027979,
+      "accuracy": 0.5892193308550185,
+      "class_f1": [
+        0.7538461538461538,
+        0.561122244488978,
+        0.32085561497326204
+      ],
+      "confusion_matrix": [
+        [
+          147,
+          78,
+          0
+        ],
+        [
+          16,
+          140,
+          0
+        ],
+        [
+          2,
+          125,
+          30
+        ]
+      ],
+      "auroc": 0.8835582490723758
+    },
+    "probability_mean_absolute_change": 0.2900232672691345,
+    "note": "Same-checkpoint diagnostic, not retrained ablation, ROI truth or a noise diagnosis."
+  },
+  "macro_f1": 0.8789728635502568,
+  "accuracy": 0.8810408921933085,
+  "class_f1": [
+    0.8736616702355461,
+    0.7820069204152249,
+    0.98125
+  ],
+  "confusion_matrix": [
+    [
+      204,
+      20,
+      1
+    ],
+    [
+      38,
+      113,
+      5
+    ],
+    [
+      0,
+      0,
+      157
+    ]
+  ],
+  "auroc": 0.9666217158966225
+}

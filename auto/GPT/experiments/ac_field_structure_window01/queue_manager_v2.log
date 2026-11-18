@@ -1,0 +1,305 @@
+adopt existing field_fov_residual_s45 828604
+adopt existing field_fov_residual_s46 828796
+[main b57ef7a] results: retain completed field training field_fov_residual_s45
+ 11 files changed, 1740 insertions(+), 1 deletion(-)
+ create mode 100644 experiments/ac_field_structure_window01/runs/field_fov_residual_s45/complete.json
+ create mode 100644 experiments/ac_field_structure_window01/runs/field_fov_residual_s45/validation_complete.json
+ create mode 100644 experiments/ac_field_structure_window01/runs/field_fov_residual_s45/validation_predictions.csv
+[main 79c151d] results: retain completed field training field_fov_residual_s46
+ 10 files changed, 552 insertions(+), 7 deletions(-)
+ create mode 100644 experiments/ac_field_structure_window01/runs/field_fov_residual_s46/complete.json
+ create mode 100644 experiments/ac_field_structure_window01/runs/field_fov_residual_s46/validation_complete.json
+ create mode 100644 experiments/ac_field_structure_window01/runs/field_fov_residual_s46/validation_predictions.csv
+launch measured admission field_fov_residual_s47 836510 slots 1
+[main e47963e] research: lock full paired fov_residual val-selected checkpoints before test feedback
+ 12 files changed, 1846 insertions(+), 6 deletions(-)
+ create mode 100644 experiments/ac_field_structure_window01/evaluations/fov_residual/registration.json
+ create mode 100644 experiments/ac_field_structure_window01/logs/field_fov_residual_s47.log
+ create mode 100644 experiments/ac_field_structure_window01/runs/field_fov_residual_s47/complete.json
+ create mode 100644 experiments/ac_field_structure_window01/runs/field_fov_residual_s47/run_meta.json
+ create mode 100644 experiments/ac_field_structure_window01/runs/field_fov_residual_s47/train_log.csv
+ create mode 100644 experiments/ac_field_structure_window01/runs/field_fov_residual_s47/validation_complete.json
+ create mode 100644 experiments/ac_field_structure_window01/runs/field_fov_residual_s47/validation_predictions.csv
+[main 3cc2d2c] results: independently audit all3 seeds and retain complete fov_residual test feedback
+ 10 files changed, 2252 insertions(+)
+ create mode 100644 experiments/ac_field_structure_window01/evaluations/fov_residual/group_audit.json
+ create mode 100644 experiments/ac_field_structure_window01/evaluations/fov_residual/s45/independent_audit.json
+ create mode 100644 experiments/ac_field_structure_window01/evaluations/fov_residual/s45/test_predictions.csv
+ create mode 100644 experiments/ac_field_structure_window01/evaluations/fov_residual/s46/independent_audit.json
+ create mode 100644 experiments/ac_field_structure_window01/evaluations/fov_residual/s46/test_predictions.csv
+ create mode 100644 experiments/ac_field_structure_window01/evaluations/fov_residual/s47/independent_audit.json
+ create mode 100644 experiments/ac_field_structure_window01/evaluations/fov_residual/s47/test_predictions.csv
+[main 3fe51f3] analysis: preserve every paired mechanism/control test result and uncertainty
+ 3 files changed, 618 insertions(+)
+ create mode 100644 experiments/ac_field_structure_window01/FIELD_ROUND_REPORT_ZH.md
+ create mode 100644 experiments/ac_field_structure_window01/round_results.json
+[main 10ab465] results: retain completed field training field_fov_residual_s47
+ 3 files changed, 6 insertions(+), 1 deletion(-)
+[main c3a7b98] perf: select field_pool admission from actual single/concurrent throughput
+ 30 files changed, 296 insertions(+)
+ create mode 100644 experiments/ac_field_structure_window01/runtime_profiles/field_pool/bench_1_0.json
+ create mode 100644 experiments/ac_field_structure_window01/runtime_profiles/field_pool/bench_1_0.log
+ create mode 100644 experiments/ac_field_structure_window01/runtime_profiles/field_pool/bench_2_0.json
+ create mode 100644 experiments/ac_field_structure_window01/runtime_profiles/field_pool/bench_2_0.log
+ create mode 100644 experiments/ac_field_structure_window01/runtime_profiles/field_pool/bench_2_1.json
+ create mode 100644 experiments/ac_field_structure_window01/runtime_profiles/field_pool/bench_2_1.log
+ create mode 100644 experiments/ac_field_structure_window01/runtime_profiles/field_pool/bench_4_0.json
+ create mode 100644 experiments/ac_field_structure_window01/runtime_profiles/field_pool/bench_4_0.log
+ create mode 100644 experiments/ac_field_structure_window01/runtime_profiles/field_pool/bench_4_1.json
+ create mode 100644 experiments/ac_field_structure_window01/runtime_profiles/field_pool/bench_4_1.log
+ create mode 100644 experiments/ac_field_structure_window01/runtime_profiles/field_pool/bench_4_2.json
+ create mode 100644 experiments/ac_field_structure_window01/runtime_profiles/field_pool/bench_4_2.log
+ create mode 100644 experiments/ac_field_structure_window01/runtime_profiles/field_pool/bench_4_3.json
+ create mode 100644 experiments/ac_field_structure_window01/runtime_profiles/field_pool/bench_4_3.log
+ create mode 100644 experiments/ac_field_structure_window01/runtime_profiles/field_pool/gate_1.json
+ create mode 100644 experiments/ac_field_structure_window01/runtime_profiles/field_pool/gate_2.json
+ create mode 100644 experiments/ac_field_structure_window01/runtime_profiles/field_pool/gate_4.json
+ create mode 100644 experiments/ac_field_structure_window01/runtime_profiles/field_pool/measurements.json
+ create mode 100644 experiments/ac_field_structure_window01/runtime_profiles/field_pool/ready_1_0.json
+ create mode 100644 experiments/ac_field_structure_window01/runtime_profiles/field_pool/ready_2_0.json
+ create mode 100644 experiments/ac_field_structure_window01/runtime_profiles/field_pool/ready_2_1.json
+ create mode 100644 experiments/ac_field_structure_window01/runtime_profiles/field_pool/ready_4_0.json
+ create mode 100644 experiments/ac_field_structure_window01/runtime_profiles/field_pool/ready_4_1.json
+ create mode 100644 experiments/ac_field_structure_window01/runtime_profiles/field_pool/ready_4_2.json
+ create mode 100644 experiments/ac_field_structure_window01/runtime_profiles/field_pool/ready_4_3.json
+ create mode 100644 experiments/ac_field_structure_window01/runtime_profiles/field_pool/resources.csv
+ create mode 100644 experiments/ac_field_structure_window01/runtime_profiles/field_pool/selected.json
+launch measured admission field_field_pool_s45 840996 slots 1
+[main 9e0d210] results: retain completed field training field_field_pool_s45
+ 11 files changed, 1423 insertions(+), 5 deletions(-)
+ create mode 100644 experiments/ac_field_structure_window01/logs/field_field_pool_s45.log
+ create mode 100644 experiments/ac_field_structure_window01/runs/field_field_pool_s45/complete.json
+ create mode 100644 experiments/ac_field_structure_window01/runs/field_field_pool_s45/run_meta.json
+ create mode 100644 experiments/ac_field_structure_window01/runs/field_field_pool_s45/train_log.csv
+ create mode 100644 experiments/ac_field_structure_window01/runs/field_field_pool_s45/validation_complete.json
+ create mode 100644 experiments/ac_field_structure_window01/runs/field_field_pool_s45/validation_predictions.csv
+launch measured admission field_field_pool_s46 843248 slots 1
+[main 8118769] results: retain completed field training field_field_pool_s46
+ 13 files changed, 1518 insertions(+), 5 deletions(-)
+ create mode 100644 experiments/ac_field_structure_window01/audit_runtime_scope.py
+ create mode 100644 experiments/ac_field_structure_window01/logs/field_field_pool_s46.log
+ create mode 100644 experiments/ac_field_structure_window01/runs/field_field_pool_s46/complete.json
+ create mode 100644 experiments/ac_field_structure_window01/runs/field_field_pool_s46/run_meta.json
+ create mode 100644 experiments/ac_field_structure_window01/runs/field_field_pool_s46/train_log.csv
+ create mode 100644 experiments/ac_field_structure_window01/runs/field_field_pool_s46/validation_complete.json
+ create mode 100644 experiments/ac_field_structure_window01/runs/field_field_pool_s46/validation_predictions.csv
+ create mode 100644 experiments/ac_field_structure_window01/runtime_scope_audit.json
+launch measured admission field_field_pool_s47 845253 slots 1
+[main a05b8f9] research: lock full paired field_pool val-selected checkpoints before test feedback
+ 12 files changed, 1454 insertions(+), 5 deletions(-)
+ create mode 100644 experiments/ac_field_structure_window01/evaluations/field_pool/registration.json
+ create mode 100644 experiments/ac_field_structure_window01/logs/field_field_pool_s47.log
+ create mode 100644 experiments/ac_field_structure_window01/runs/field_field_pool_s47/complete.json
+ create mode 100644 experiments/ac_field_structure_window01/runs/field_field_pool_s47/run_meta.json
+ create mode 100644 experiments/ac_field_structure_window01/runs/field_field_pool_s47/train_log.csv
+ create mode 100644 experiments/ac_field_structure_window01/runs/field_field_pool_s47/validation_complete.json
+ create mode 100644 experiments/ac_field_structure_window01/runs/field_field_pool_s47/validation_predictions.csv
+[main 4237897] results: independently audit all3 seeds and retain complete field_pool test feedback
+ 10 files changed, 2155 insertions(+)
+ create mode 100644 experiments/ac_field_structure_window01/evaluations/field_pool/group_audit.json
+ create mode 100644 experiments/ac_field_structure_window01/evaluations/field_pool/s45/independent_audit.json
+ create mode 100644 experiments/ac_field_structure_window01/evaluations/field_pool/s45/test_predictions.csv
+ create mode 100644 experiments/ac_field_structure_window01/evaluations/field_pool/s46/independent_audit.json
+ create mode 100644 experiments/ac_field_structure_window01/evaluations/field_pool/s46/test_predictions.csv
+ create mode 100644 experiments/ac_field_structure_window01/evaluations/field_pool/s47/independent_audit.json
+ create mode 100644 experiments/ac_field_structure_window01/evaluations/field_pool/s47/test_predictions.csv
+[main f681b51] analysis: preserve every paired mechanism/control test result and uncertainty
+ 4 files changed, 287 insertions(+), 1 deletion(-)
+[main 8514ba2] results: retain completed field training field_field_pool_s47
+ 4 files changed, 5 insertions(+), 1 deletion(-)
+[main ca6cfb8] perf: select reference admission from actual single/concurrent throughput
+ 30 files changed, 293 insertions(+)
+ create mode 100644 experiments/ac_field_structure_window01/runtime_profiles/reference/bench_1_0.json
+ create mode 100644 experiments/ac_field_structure_window01/runtime_profiles/reference/bench_1_0.log
+ create mode 100644 experiments/ac_field_structure_window01/runtime_profiles/reference/bench_2_0.json
+ create mode 100644 experiments/ac_field_structure_window01/runtime_profiles/reference/bench_2_0.log
+ create mode 100644 experiments/ac_field_structure_window01/runtime_profiles/reference/bench_2_1.json
+ create mode 100644 experiments/ac_field_structure_window01/runtime_profiles/reference/bench_2_1.log
+ create mode 100644 experiments/ac_field_structure_window01/runtime_profiles/reference/bench_4_0.json
+ create mode 100644 experiments/ac_field_structure_window01/runtime_profiles/reference/bench_4_0.log
+ create mode 100644 experiments/ac_field_structure_window01/runtime_profiles/reference/bench_4_1.json
+ create mode 100644 experiments/ac_field_structure_window01/runtime_profiles/reference/bench_4_1.log
+ create mode 100644 experiments/ac_field_structure_window01/runtime_profiles/reference/bench_4_2.json
+ create mode 100644 experiments/ac_field_structure_window01/runtime_profiles/reference/bench_4_2.log
+ create mode 100644 experiments/ac_field_structure_window01/runtime_profiles/reference/bench_4_3.json
+ create mode 100644 experiments/ac_field_structure_window01/runtime_profiles/reference/bench_4_3.log
+ create mode 100644 experiments/ac_field_structure_window01/runtime_profiles/reference/gate_1.json
+ create mode 100644 experiments/ac_field_structure_window01/runtime_profiles/reference/gate_2.json
+ create mode 100644 experiments/ac_field_structure_window01/runtime_profiles/reference/gate_4.json
+ create mode 100644 experiments/ac_field_structure_window01/runtime_profiles/reference/measurements.json
+ create mode 100644 experiments/ac_field_structure_window01/runtime_profiles/reference/ready_1_0.json
+ create mode 100644 experiments/ac_field_structure_window01/runtime_profiles/reference/ready_2_0.json
+ create mode 100644 experiments/ac_field_structure_window01/runtime_profiles/reference/ready_2_1.json
+ create mode 100644 experiments/ac_field_structure_window01/runtime_profiles/reference/ready_4_0.json
+ create mode 100644 experiments/ac_field_structure_window01/runtime_profiles/reference/ready_4_1.json
+ create mode 100644 experiments/ac_field_structure_window01/runtime_profiles/reference/ready_4_2.json
+ create mode 100644 experiments/ac_field_structure_window01/runtime_profiles/reference/ready_4_3.json
+ create mode 100644 experiments/ac_field_structure_window01/runtime_profiles/reference/resources.csv
+ create mode 100644 experiments/ac_field_structure_window01/runtime_profiles/reference/selected.json
+launch measured admission field_reference_s45 847328 slots 1
+[main 29dcb50] results: retain completed field training field_reference_s45
+ 11 files changed, 1430 insertions(+), 5 deletions(-)
+ create mode 100644 experiments/ac_field_structure_window01/logs/field_reference_s45.log
+ create mode 100644 experiments/ac_field_structure_window01/runs/field_reference_s45/complete.json
+ create mode 100644 experiments/ac_field_structure_window01/runs/field_reference_s45/run_meta.json
+ create mode 100644 experiments/ac_field_structure_window01/runs/field_reference_s45/train_log.csv
+ create mode 100644 experiments/ac_field_structure_window01/runs/field_reference_s45/validation_complete.json
+ create mode 100644 experiments/ac_field_structure_window01/runs/field_reference_s45/validation_predictions.csv
+launch measured admission field_reference_s46 849654 slots 1
+[main b12d68f] results: retain completed field training field_reference_s46
+ 11 files changed, 1388 insertions(+), 5 deletions(-)
+ create mode 100644 experiments/ac_field_structure_window01/logs/field_reference_s46.log
+ create mode 100644 experiments/ac_field_structure_window01/runs/field_reference_s46/complete.json
+ create mode 100644 experiments/ac_field_structure_window01/runs/field_reference_s46/run_meta.json
+ create mode 100644 experiments/ac_field_structure_window01/runs/field_reference_s46/train_log.csv
+ create mode 100644 experiments/ac_field_structure_window01/runs/field_reference_s46/validation_complete.json
+ create mode 100644 experiments/ac_field_structure_window01/runs/field_reference_s46/validation_predictions.csv
+launch measured admission field_reference_s47 851680 slots 1
+[main f93386b] research: lock full paired reference val-selected checkpoints before test feedback
+ 12 files changed, 1442 insertions(+), 5 deletions(-)
+ create mode 100644 experiments/ac_field_structure_window01/evaluations/reference/registration.json
+ create mode 100644 experiments/ac_field_structure_window01/logs/field_reference_s47.log
+ create mode 100644 experiments/ac_field_structure_window01/runs/field_reference_s47/complete.json
+ create mode 100644 experiments/ac_field_structure_window01/runs/field_reference_s47/run_meta.json
+ create mode 100644 experiments/ac_field_structure_window01/runs/field_reference_s47/train_log.csv
+ create mode 100644 experiments/ac_field_structure_window01/runs/field_reference_s47/validation_complete.json
+ create mode 100644 experiments/ac_field_structure_window01/runs/field_reference_s47/validation_predictions.csv
+[main 079b52f] results: independently audit all3 seeds and retain complete reference test feedback
+ 10 files changed, 2156 insertions(+)
+ create mode 100644 experiments/ac_field_structure_window01/evaluations/reference/group_audit.json
+ create mode 100644 experiments/ac_field_structure_window01/evaluations/reference/s45/independent_audit.json
+ create mode 100644 experiments/ac_field_structure_window01/evaluations/reference/s45/test_predictions.csv
+ create mode 100644 experiments/ac_field_structure_window01/evaluations/reference/s46/independent_audit.json
+ create mode 100644 experiments/ac_field_structure_window01/evaluations/reference/s46/test_predictions.csv
+ create mode 100644 experiments/ac_field_structure_window01/evaluations/reference/s47/independent_audit.json
+ create mode 100644 experiments/ac_field_structure_window01/evaluations/reference/s47/test_predictions.csv
+[main 3e161f2] analysis: preserve every paired mechanism/control test result and uncertainty
+ 4 files changed, 287 insertions(+), 1 deletion(-)
+[main b73798d] results: retain completed field training field_reference_s47
+ 4 files changed, 5 insertions(+), 1 deletion(-)
+launch measured admission field_no_field_s45 853663 slots 1
+[main e81ddb4] results: retain completed field training field_no_field_s45
+ 11 files changed, 1775 insertions(+), 5 deletions(-)
+ create mode 100644 experiments/ac_field_structure_window01/logs/field_no_field_s45.log
+ create mode 100644 experiments/ac_field_structure_window01/runs/field_no_field_s45/complete.json
+ create mode 100644 experiments/ac_field_structure_window01/runs/field_no_field_s45/run_meta.json
+ create mode 100644 experiments/ac_field_structure_window01/runs/field_no_field_s45/train_log.csv
+ create mode 100644 experiments/ac_field_structure_window01/runs/field_no_field_s45/validation_complete.json
+ create mode 100644 experiments/ac_field_structure_window01/runs/field_no_field_s45/validation_predictions.csv
+launch measured admission field_no_field_s46 856663 slots 1
+[main 587a5bd] results: retain completed field training field_no_field_s46
+ 11 files changed, 1781 insertions(+), 5 deletions(-)
+ create mode 100644 experiments/ac_field_structure_window01/logs/field_no_field_s46.log
+ create mode 100644 experiments/ac_field_structure_window01/runs/field_no_field_s46/complete.json
+ create mode 100644 experiments/ac_field_structure_window01/runs/field_no_field_s46/run_meta.json
+ create mode 100644 experiments/ac_field_structure_window01/runs/field_no_field_s46/train_log.csv
+ create mode 100644 experiments/ac_field_structure_window01/runs/field_no_field_s46/validation_complete.json
+ create mode 100644 experiments/ac_field_structure_window01/runs/field_no_field_s46/validation_predictions.csv
+launch measured admission field_no_field_s47 860021 slots 1
+[main 67e0bdd] research: lock full paired no_field val-selected checkpoints before test feedback
+ 12 files changed, 1843 insertions(+), 5 deletions(-)
+ create mode 100644 experiments/ac_field_structure_window01/evaluations/no_field/registration.json
+ create mode 100644 experiments/ac_field_structure_window01/logs/field_no_field_s47.log
+ create mode 100644 experiments/ac_field_structure_window01/runs/field_no_field_s47/complete.json
+ create mode 100644 experiments/ac_field_structure_window01/runs/field_no_field_s47/run_meta.json
+ create mode 100644 experiments/ac_field_structure_window01/runs/field_no_field_s47/train_log.csv
+ create mode 100644 experiments/ac_field_structure_window01/runs/field_no_field_s47/validation_complete.json
+ create mode 100644 experiments/ac_field_structure_window01/runs/field_no_field_s47/validation_predictions.csv
+[main 21a7548] results: independently audit all3 seeds and retain complete no_field test feedback
+ 10 files changed, 2250 insertions(+)
+ create mode 100644 experiments/ac_field_structure_window01/evaluations/no_field/group_audit.json
+ create mode 100644 experiments/ac_field_structure_window01/evaluations/no_field/s45/independent_audit.json
+ create mode 100644 experiments/ac_field_structure_window01/evaluations/no_field/s45/test_predictions.csv
+ create mode 100644 experiments/ac_field_structure_window01/evaluations/no_field/s46/independent_audit.json
+ create mode 100644 experiments/ac_field_structure_window01/evaluations/no_field/s46/test_predictions.csv
+ create mode 100644 experiments/ac_field_structure_window01/evaluations/no_field/s47/independent_audit.json
+ create mode 100644 experiments/ac_field_structure_window01/evaluations/no_field/s47/test_predictions.csv
+[main 4b9055a] analysis: preserve every paired mechanism/control test result and uncertainty
+ 3 files changed, 331 insertions(+), 1 deletion(-)
+[main cd4d90f] results: retain completed field training field_no_field_s47
+ 5 files changed, 6 insertions(+), 1 deletion(-)
+launch measured admission field_no_local_norm_s45 863866 slots 1
+[main 2ddcfca] results: retain completed field training field_no_local_norm_s45
+ 11 files changed, 1794 insertions(+), 5 deletions(-)
+ create mode 100644 experiments/ac_field_structure_window01/logs/field_no_local_norm_s45.log
+ create mode 100644 experiments/ac_field_structure_window01/runs/field_no_local_norm_s45/complete.json
+ create mode 100644 experiments/ac_field_structure_window01/runs/field_no_local_norm_s45/run_meta.json
+ create mode 100644 experiments/ac_field_structure_window01/runs/field_no_local_norm_s45/train_log.csv
+ create mode 100644 experiments/ac_field_structure_window01/runs/field_no_local_norm_s45/validation_complete.json
+ create mode 100644 experiments/ac_field_structure_window01/runs/field_no_local_norm_s45/validation_predictions.csv
+launch measured admission field_no_local_norm_s46 867342 slots 1
+[main 3ea7066] results: retain completed field training field_no_local_norm_s46
+ 11 files changed, 1801 insertions(+), 5 deletions(-)
+ create mode 100644 experiments/ac_field_structure_window01/logs/field_no_local_norm_s46.log
+ create mode 100644 experiments/ac_field_structure_window01/runs/field_no_local_norm_s46/complete.json
+ create mode 100644 experiments/ac_field_structure_window01/runs/field_no_local_norm_s46/run_meta.json
+ create mode 100644 experiments/ac_field_structure_window01/runs/field_no_local_norm_s46/train_log.csv
+ create mode 100644 experiments/ac_field_structure_window01/runs/field_no_local_norm_s46/validation_complete.json
+ create mode 100644 experiments/ac_field_structure_window01/runs/field_no_local_norm_s46/validation_predictions.csv
+launch measured admission field_no_local_norm_s47 869956 slots 1
+[main 5297b25] research: lock full paired no_local_norm val-selected checkpoints before test feedback
+ 12 files changed, 1854 insertions(+), 5 deletions(-)
+ create mode 100644 experiments/ac_field_structure_window01/evaluations/no_local_norm/registration.json
+ create mode 100644 experiments/ac_field_structure_window01/logs/field_no_local_norm_s47.log
+ create mode 100644 experiments/ac_field_structure_window01/runs/field_no_local_norm_s47/complete.json
+ create mode 100644 experiments/ac_field_structure_window01/runs/field_no_local_norm_s47/run_meta.json
+ create mode 100644 experiments/ac_field_structure_window01/runs/field_no_local_norm_s47/train_log.csv
+ create mode 100644 experiments/ac_field_structure_window01/runs/field_no_local_norm_s47/validation_complete.json
+ create mode 100644 experiments/ac_field_structure_window01/runs/field_no_local_norm_s47/validation_predictions.csv
+[main 1e68dab] results: independently audit all3 seeds and retain complete no_local_norm test feedback
+ 10 files changed, 2249 insertions(+)
+ create mode 100644 experiments/ac_field_structure_window01/evaluations/no_local_norm/group_audit.json
+ create mode 100644 experiments/ac_field_structure_window01/evaluations/no_local_norm/s45/independent_audit.json
+ create mode 100644 experiments/ac_field_structure_window01/evaluations/no_local_norm/s45/test_predictions.csv
+ create mode 100644 experiments/ac_field_structure_window01/evaluations/no_local_norm/s46/independent_audit.json
+ create mode 100644 experiments/ac_field_structure_window01/evaluations/no_local_norm/s46/test_predictions.csv
+ create mode 100644 experiments/ac_field_structure_window01/evaluations/no_local_norm/s47/independent_audit.json
+ create mode 100644 experiments/ac_field_structure_window01/evaluations/no_local_norm/s47/test_predictions.csv
+[main dbaefa7] analysis: preserve every paired mechanism/control test result and uncertainty
+ 5 files changed, 333 insertions(+), 1 deletion(-)
+[main 381c2e0] results: retain completed field training field_no_local_norm_s47
+ 3 files changed, 4 insertions(+), 1 deletion(-)
+launch measured admission field_no_pool_s45 873611 slots 1
+[main 916c58f] results: retain completed field training field_no_pool_s45
+ 11 files changed, 1777 insertions(+), 5 deletions(-)
+ create mode 100644 experiments/ac_field_structure_window01/logs/field_no_pool_s45.log
+ create mode 100644 experiments/ac_field_structure_window01/runs/field_no_pool_s45/complete.json
+ create mode 100644 experiments/ac_field_structure_window01/runs/field_no_pool_s45/run_meta.json
+ create mode 100644 experiments/ac_field_structure_window01/runs/field_no_pool_s45/train_log.csv
+ create mode 100644 experiments/ac_field_structure_window01/runs/field_no_pool_s45/validation_complete.json
+ create mode 100644 experiments/ac_field_structure_window01/runs/field_no_pool_s45/validation_predictions.csv
+launch measured admission field_no_pool_s46 879339 slots 1
+[main 33190fe] results: retain completed field training field_no_pool_s46
+ 11 files changed, 1779 insertions(+), 5 deletions(-)
+ create mode 100644 experiments/ac_field_structure_window01/logs/field_no_pool_s46.log
+ create mode 100644 experiments/ac_field_structure_window01/runs/field_no_pool_s46/complete.json
+ create mode 100644 experiments/ac_field_structure_window01/runs/field_no_pool_s46/run_meta.json
+ create mode 100644 experiments/ac_field_structure_window01/runs/field_no_pool_s46/train_log.csv
+ create mode 100644 experiments/ac_field_structure_window01/runs/field_no_pool_s46/validation_complete.json
+ create mode 100644 experiments/ac_field_structure_window01/runs/field_no_pool_s46/validation_predictions.csv
+launch measured admission field_no_pool_s47 883248 slots 1
+[main 9ceaa80] research: lock full paired no_pool val-selected checkpoints before test feedback
+ 12 files changed, 1834 insertions(+), 5 deletions(-)
+ create mode 100644 experiments/ac_field_structure_window01/evaluations/no_pool/registration.json
+ create mode 100644 experiments/ac_field_structure_window01/logs/field_no_pool_s47.log
+ create mode 100644 experiments/ac_field_structure_window01/runs/field_no_pool_s47/complete.json
+ create mode 100644 experiments/ac_field_structure_window01/runs/field_no_pool_s47/run_meta.json
+ create mode 100644 experiments/ac_field_structure_window01/runs/field_no_pool_s47/train_log.csv
+ create mode 100644 experiments/ac_field_structure_window01/runs/field_no_pool_s47/validation_complete.json
+ create mode 100644 experiments/ac_field_structure_window01/runs/field_no_pool_s47/validation_predictions.csv
+[main 314ec5a] results: independently audit all3 seeds and retain complete no_pool test feedback
+ 10 files changed, 2244 insertions(+)
+ create mode 100644 experiments/ac_field_structure_window01/evaluations/no_pool/group_audit.json
+ create mode 100644 experiments/ac_field_structure_window01/evaluations/no_pool/s45/independent_audit.json
+ create mode 100644 experiments/ac_field_structure_window01/evaluations/no_pool/s45/test_predictions.csv
+ create mode 100644 experiments/ac_field_structure_window01/evaluations/no_pool/s46/independent_audit.json
+ create mode 100644 experiments/ac_field_structure_window01/evaluations/no_pool/s46/test_predictions.csv
+ create mode 100644 experiments/ac_field_structure_window01/evaluations/no_pool/s47/independent_audit.json
+ create mode 100644 experiments/ac_field_structure_window01/evaluations/no_pool/s47/test_predictions.csv
+[main 2099e4c] analysis: preserve every paired mechanism/control test result and uncertainty
+ 5 files changed, 330 insertions(+), 1 deletion(-)
+[main 711b320] results: retain completed field training field_no_pool_s47
+ 3 files changed, 4 insertions(+), 1 deletion(-)
+[main 9739d1a] results: finish formal field round under measured-throughput admission and retain every outcome
+ 7 files changed, 99 insertions(+), 79 deletions(-)
+ create mode 100644 experiments/ac_field_structure_window01/independent_audit.json

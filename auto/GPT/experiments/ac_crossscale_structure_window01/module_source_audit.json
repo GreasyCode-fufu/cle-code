@@ -1,0 +1,63 @@
+{
+  "passed": true,
+  "budgets": [
+    {
+      "arm": "plain",
+      "parameters": 27822435,
+      "counted_flops": 8909531136,
+      "initial_public_logits_exact": true,
+      "RNG_preserved": true,
+      "finite_backward": true
+    },
+    {
+      "arm": "moments",
+      "parameters": 27840963,
+      "counted_flops": 9111840768,
+      "initial_public_logits_exact": true,
+      "RNG_preserved": true,
+      "finite_backward": true
+    },
+    {
+      "arm": "mom_corr",
+      "parameters": 27860166,
+      "counted_flops": 9113673728,
+      "initial_public_logits_exact": true,
+      "RNG_preserved": true,
+      "finite_backward": true
+    },
+    {
+      "arm": "corr_only",
+      "parameters": 27841638,
+      "counted_flops": 8911364096,
+      "initial_public_logits_exact": true,
+      "RNG_preserved": true,
+      "finite_backward": true
+    },
+    {
+      "arm": "mom_shuffle",
+      "parameters": 27860166,
+      "counted_flops": 9113673728,
+      "initial_public_logits_exact": true,
+      "RNG_preserved": true,
+      "finite_backward": true
+    },
+    {
+      "arm": "mom_bilinear",
+      "parameters": 27860166,
+      "counted_flops": 9113673728,
+      "initial_public_logits_exact": true,
+      "RNG_preserved": true,
+      "finite_backward": true
+    }
+  ],
+  "NumPy_centered_correlation": true,
+  "bilinear_official_operator_and_gradient_exact": true,
+  "joint_permutation_and_shift_checks": true,
+  "double_gradcheck": true,
+  "constant_gradient_finite": true,
+  "CPU_initialization_and_parameter_pairing": true,
+  "train_val_transform_exact": true,
+  "network_training": 0,
+  "test_images": 0,
+  "scope": "numerical checks only, CLE effectiveness unknown"
+}

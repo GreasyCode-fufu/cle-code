@@ -1,0 +1,53 @@
+{
+  "passed": true,
+  "timestamp": "2026-10-24T05:54:55.000159+08:00",
+  "budget": [
+    {
+      "variant": "dilated_control",
+      "parameters": 21286211,
+      "extra_parameters": 0,
+      "conv_matmul_flops": 11180018688
+    },
+    {
+      "variant": "fixed_dual",
+      "parameters": 21293379,
+      "extra_parameters": 7168,
+      "conv_matmul_flops": 12464524288
+    },
+    {
+      "variant": "sk_dual",
+      "parameters": 21392771,
+      "extra_parameters": 106560,
+      "conv_matmul_flops": 12464720896
+    },
+    {
+      "variant": "cle_contrast",
+      "parameters": 21392771,
+      "extra_parameters": 106560,
+      "conv_matmul_flops": 12464720896
+    },
+    {
+      "variant": "cle_no_dilation",
+      "parameters": 21392771,
+      "extra_parameters": 106560,
+      "conv_matmul_flops": 12464720896
+    },
+    {
+      "variant": "static_dual",
+      "parameters": 21294403,
+      "extra_parameters": 8192,
+      "conv_matmul_flops": 12464524288
+    }
+  ],
+  "checks": [
+    "functional high path matches independent Conv2d reference forward and gradients",
+    "paired original backbone and head",
+    "disabled module equals original backbone exactly",
+    "finite real-training-image AMP backward",
+    "shared convolution and separate high BatchNorm gradients",
+    "nonzero final-router gradient at initial 0.5 routing",
+    "14x14 high versus 7x7 low",
+    "identical full/SK parameter count and matched counted convolution/matmul FLOPs"
+  ],
+  "budget_limit": "Counted FLOPs omit some pooling, normalization and elementwise costs; no zero-inference-cost claim."
+}

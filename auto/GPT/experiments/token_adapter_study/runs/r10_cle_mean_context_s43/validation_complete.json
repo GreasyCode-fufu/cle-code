@@ -1,0 +1,88 @@
+{
+  "signature": "23e0bfa1365a85af6a84834d7c50ac1941ec9078ca642bfc80998cf331c4c1d8",
+  "job_id": "r10_cle_mean_context_s43",
+  "variant": "cle_mean_context",
+  "recipe": "full_unweighted",
+  "seed": 43,
+  "n": 538,
+  "checkpoint_sha256": "76f6e87c137c2ab2d72e0204689847d4876cbac84268c3b765b24c01e63f8f1b",
+  "completed_at": "2026-10-24T11:41:38.610738+08:00",
+  "parameters": 21781347,
+  "trainable_parameters": 152547,
+  "budget": {
+    "variant": "cle_mean_context",
+    "parameters": 21781347,
+    "trainable_parameters": 152547,
+    "counted_flops_224": 12285467136,
+    "amp_batch32_peak_bytes": 495454720,
+    "nonzero_gradient_counts_first_two_steps": [
+      10,
+      34
+    ]
+  },
+  "diagnostics": {
+    "descriptor_relative_change_mean": 0.86968594789505,
+    "descriptor_relative_change_quantiles": [
+      0.5720680356025696,
+      0.7764658331871033,
+      0.8548935949802399,
+      0.9670099765062332,
+      1.1205886602401733
+    ],
+    "off_prediction_disagreement": 0.29182156133828996,
+    "off_same_checkpoint_metrics": {
+      "macro_f1": 0.6888054251434533,
+      "accuracy": 0.7044609665427509,
+      "class_f1": [
+        0.8,
+        0.6619718309859155,
+        0.6044444444444445
+      ],
+      "confusion_matrix": [
+        [
+          170,
+          55,
+          0
+        ],
+        [
+          15,
+          141,
+          0
+        ],
+        [
+          15,
+          74,
+          68
+        ]
+      ],
+      "auroc": 0.934331199567826
+    },
+    "probability_mean_absolute_change": 0.21497340500354767,
+    "note": "Same-checkpoint diagnostic, not retrained ablation, ROI truth or a noise diagnosis."
+  },
+  "macro_f1": 0.8716636765390501,
+  "accuracy": 0.8736059479553904,
+  "class_f1": [
+    0.8688172043010752,
+    0.7713310580204779,
+    0.9748427672955975
+  ],
+  "confusion_matrix": [
+    [
+      202,
+      22,
+      1
+    ],
+    [
+      38,
+      113,
+      5
+    ],
+    [
+      0,
+      2,
+      155
+    ]
+  ],
+  "auroc": 0.9669490334100468
+}

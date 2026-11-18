@@ -1,0 +1,66 @@
+{
+  "passed": true,
+  "timestamp": "2026-10-24T23:37:18.847368+08:00",
+  "budgets": [
+    {
+      "arm": "plain",
+      "parameters": 27822435,
+      "fixed_filter_buffer_elements": 0,
+      "counted_flops": 8909531136,
+      "peak_gpu_mib": 2308.912109375,
+      "finite_two_updates": true
+    },
+    {
+      "arm": "wtconv",
+      "parameters": 28053411,
+      "fixed_filter_buffer_elements": 18432,
+      "counted_flops": 8942363136,
+      "peak_gpu_mib": 2395.01806640625,
+      "finite_two_updates": true
+    },
+    {
+      "arm": "simam",
+      "parameters": 27822435,
+      "fixed_filter_buffer_elements": 0,
+      "counted_flops": 8909531136,
+      "peak_gpu_mib": 2345.615234375,
+      "finite_two_updates": true
+    },
+    {
+      "arm": "eca",
+      "parameters": 27822440,
+      "fixed_filter_buffer_elements": 0,
+      "counted_flops": 8909538816,
+      "peak_gpu_mib": 2308.5390625,
+      "finite_two_updates": true
+    },
+    {
+      "arm": "ema",
+      "parameters": 27823923,
+      "fixed_filter_buffer_elements": 0,
+      "counted_flops": 8926347264,
+      "peak_gpu_mib": 2352.4013671875,
+      "finite_two_updates": true
+    },
+    {
+      "arm": "c4_moments",
+      "parameters": 27840963,
+      "fixed_filter_buffer_elements": 0,
+      "counted_flops": 9111840768,
+      "peak_gpu_mib": 2540.9990234375,
+      "finite_two_updates": true
+    },
+    {
+      "arm": "c4_aug",
+      "parameters": 27822435,
+      "fixed_filter_buffer_elements": 0,
+      "counted_flops": 8909531136,
+      "peak_gpu_mib": 2308.537109375,
+      "finite_two_updates": true
+    }
+  ],
+  "whole_cache_checksum": true,
+  "baseline_all3_full427_probabilities_reproduced": true,
+  "test_denied": true,
+  "flops_convention": "2FLOP/MAC; convolution, linear, extra WT DWT/IWT, ECA Conv1d, EMA matmul, C4 functional convolution; excludes norms/activations/pools/elementwise/softmax/data"
+}

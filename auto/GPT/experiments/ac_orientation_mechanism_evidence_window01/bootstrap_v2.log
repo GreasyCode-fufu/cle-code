@@ -1,0 +1,83 @@
+[main 733c604] research: freeze val-only orientation disagreement, rescue-harm and patient uncertainty diagnostics
+ 60 files changed, 16974 insertions(+)
+ create mode 100644 experiments/ac_orientation_mechanism_evidence_window01/ORIENTATION_MECHANISM_PROTOCOL_ZH.md
+ create mode 100644 experiments/ac_orientation_mechanism_evidence_window01/analyze_orientation_evidence.py
+ create mode 100644 experiments/ac_orientation_mechanism_evidence_window01/audit_orientation_evidence.py
+ create mode 100644 experiments/ac_orientation_mechanism_evidence_window01/bootstrap.log
+ create mode 100644 experiments/ac_orientation_mechanism_evidence_window01/bootstrap_attempt_v1.log
+ create mode 100644 experiments/ac_orientation_mechanism_evidence_window01/bootstrap_orientation_evidence.py
+ create mode 100644 experiments/ac_orientation_mechanism_evidence_window01/bootstrap_source_v1.py.txt
+ create mode 100644 experiments/ac_orientation_mechanism_evidence_window01/bootstrap_v2.log
+ create mode 100644 experiments/ac_orientation_mechanism_evidence_window01/config.json
+ create mode 100644 experiments/ac_orientation_mechanism_evidence_window01/identity.json
+ create mode 100644 experiments/ac_orientation_mechanism_evidence_window01/inputs/B0/s45/orientation_complete.json
+ create mode 100644 experiments/ac_orientation_mechanism_evidence_window01/inputs/B0/s45/original_validation_predictions.csv
+ create mode 100644 experiments/ac_orientation_mechanism_evidence_window01/inputs/B0/s45/training_complete.json
+ create mode 100644 experiments/ac_orientation_mechanism_evidence_window01/inputs/B0/s45/val_predictions.csv
+ create mode 100644 experiments/ac_orientation_mechanism_evidence_window01/inputs/B0/s45/val_views.npy
+ create mode 100644 experiments/ac_orientation_mechanism_evidence_window01/inputs/B0/s46/orientation_complete.json
+ create mode 100644 experiments/ac_orientation_mechanism_evidence_window01/inputs/B0/s46/original_validation_predictions.csv
+ create mode 100644 experiments/ac_orientation_mechanism_evidence_window01/inputs/B0/s46/training_complete.json
+ create mode 100644 experiments/ac_orientation_mechanism_evidence_window01/inputs/B0/s46/val_predictions.csv
+ create mode 100644 experiments/ac_orientation_mechanism_evidence_window01/inputs/B0/s46/val_views.npy
+ create mode 100644 experiments/ac_orientation_mechanism_evidence_window01/inputs/B0/s47/orientation_complete.json
+ create mode 100644 experiments/ac_orientation_mechanism_evidence_window01/inputs/B0/s47/original_validation_predictions.csv
+ create mode 100644 experiments/ac_orientation_mechanism_evidence_window01/inputs/B0/s47/training_complete.json
+ create mode 100644 experiments/ac_orientation_mechanism_evidence_window01/inputs/B0/s47/val_predictions.csv
+ create mode 100644 experiments/ac_orientation_mechanism_evidence_window01/inputs/B0/s47/val_views.npy
+ create mode 100644 experiments/ac_orientation_mechanism_evidence_window01/inputs/DINO/s45/orientation_complete.json
+ create mode 100644 experiments/ac_orientation_mechanism_evidence_window01/inputs/DINO/s45/original_validation_predictions.csv
+ create mode 100644 experiments/ac_orientation_mechanism_evidence_window01/inputs/DINO/s45/training_complete.json
+ create mode 100644 experiments/ac_orientation_mechanism_evidence_window01/inputs/DINO/s45/val_predictions.csv
+ create mode 100644 experiments/ac_orientation_mechanism_evidence_window01/inputs/DINO/s45/val_views.npy
+ create mode 100644 experiments/ac_orientation_mechanism_evidence_window01/inputs/DINO/s46/orientation_complete.json
+ create mode 100644 experiments/ac_orientation_mechanism_evidence_window01/inputs/DINO/s46/original_validation_predictions.csv
+ create mode 100644 experiments/ac_orientation_mechanism_evidence_window01/inputs/DINO/s46/training_complete.json
+ create mode 100644 experiments/ac_orientation_mechanism_evidence_window01/inputs/DINO/s46/val_predictions.csv
+ create mode 100644 experiments/ac_orientation_mechanism_evidence_window01/inputs/DINO/s46/val_views.npy
+ create mode 100644 experiments/ac_orientation_mechanism_evidence_window01/inputs/DINO/s47/orientation_complete.json
+ create mode 100644 experiments/ac_orientation_mechanism_evidence_window01/inputs/DINO/s47/original_validation_predictions.csv
+ create mode 100644 experiments/ac_orientation_mechanism_evidence_window01/inputs/DINO/s47/training_complete.json
+ create mode 100644 experiments/ac_orientation_mechanism_evidence_window01/inputs/DINO/s47/val_predictions.csv
+ create mode 100644 experiments/ac_orientation_mechanism_evidence_window01/inputs/DINO/s47/val_views.npy
+ create mode 100644 experiments/ac_orientation_mechanism_evidence_window01/inputs/Swin/s45/orientation_complete.json
+ create mode 100644 experiments/ac_orientation_mechanism_evidence_window01/inputs/Swin/s45/original_validation_predictions.csv
+ create mode 100644 experiments/ac_orientation_mechanism_evidence_window01/inputs/Swin/s45/training_complete.json
+ create mode 100644 experiments/ac_orientation_mechanism_evidence_window01/inputs/Swin/s45/val_predictions.csv
+ create mode 100644 experiments/ac_orientation_mechanism_evidence_window01/inputs/Swin/s45/val_views.npy
+ create mode 100644 experiments/ac_orientation_mechanism_evidence_window01/inputs/Swin/s46/orientation_complete.json
+ create mode 100644 experiments/ac_orientation_mechanism_evidence_window01/inputs/Swin/s46/original_validation_predictions.csv
+ create mode 100644 experiments/ac_orientation_mechanism_evidence_window01/inputs/Swin/s46/training_complete.json
+ create mode 100644 experiments/ac_orientation_mechanism_evidence_window01/inputs/Swin/s46/val_predictions.csv
+ create mode 100644 experiments/ac_orientation_mechanism_evidence_window01/inputs/Swin/s46/val_views.npy
+ create mode 100644 experiments/ac_orientation_mechanism_evidence_window01/inputs/Swin/s47/orientation_complete.json
+ create mode 100644 experiments/ac_orientation_mechanism_evidence_window01/inputs/Swin/s47/original_validation_predictions.csv
+ create mode 100644 experiments/ac_orientation_mechanism_evidence_window01/inputs/Swin/s47/training_complete.json
+ create mode 100644 experiments/ac_orientation_mechanism_evidence_window01/inputs/Swin/s47/val_predictions.csv
+ create mode 100644 experiments/ac_orientation_mechanism_evidence_window01/inputs/Swin/s47/val_views.npy
+ create mode 100644 experiments/ac_orientation_mechanism_evidence_window01/jobs.json
+ create mode 100644 experiments/ac_orientation_mechanism_evidence_window01/launch.json
+ create mode 100644 experiments/ac_orientation_mechanism_evidence_window01/launch_v2.json
+ create mode 100644 experiments/ac_orientation_mechanism_evidence_window01/preconfig_helper_fix.json
+ create mode 100644 experiments/ac_orientation_mechanism_evidence_window01/val_manifest.json
+Traceback (most recent call last):
+  File "/data/cle/auto/GPT/experiments/ac_orientation_mechanism_evidence_window01/analyze_orientation_evidence.py", line 70, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/data/cle/auto/GPT/experiments/ac_orientation_mechanism_evidence_window01/analyze_orientation_evidence.py", line 45, in main
+    root=S/'inputs'/family/f's{seed}';views=np.load(root/'val_views.npy');rows,p=predictions(root/'val_predictions.csv');base,bp=predictions(root/'original_validation_predictions.csv')
+                                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/cle/auto/GPT/experiments/ac_orientation_mechanism_evidence_window01/analyze_orientation_evidence.py", line 24, in predictions
+    rows=list(csv.DictReader(p.open()));return rows,np.array([[float(r[f'p{k}']) for k in range(3)] for r in rows])
+                                                                     ~^^^^^^^^^
+KeyError: 'p0'
+Traceback (most recent call last):
+  File "/data/cle/auto/GPT/experiments/ac_orientation_mechanism_evidence_window01/bootstrap_orientation_evidence.py", line 41, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/data/cle/auto/GPT/experiments/ac_orientation_mechanism_evidence_window01/bootstrap_orientation_evidence.py", line 37, in main
+    for name in ['analyze_orientation_evidence.py','audit_orientation_evidence.py']:subprocess.run([PY,str(S/name)],cwd=R,stdin=subprocess.DEVNULL,check=True)
+                                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/login/miniconda3/envs/sunfuxiang/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/home/login/miniconda3/envs/sunfuxiang/bin/python', '/data/cle/auto/GPT/experiments/ac_orientation_mechanism_evidence_window01/analyze_orientation_evidence.py']' returned non-zero exit status 1.

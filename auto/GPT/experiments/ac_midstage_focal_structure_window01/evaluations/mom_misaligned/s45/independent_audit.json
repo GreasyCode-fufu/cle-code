@@ -1,0 +1,91 @@
+{
+  "passed": true,
+  "seed": 45,
+  "arm": "mom_misaligned",
+  "checkpoint_sha256": "1fa9b8ee82d05ebf1ced3b341487c48b0655e8658ace75d939d1c27cdaf6d5fd",
+  "prediction_files": {
+    "test_views.npy": "e2e43916e400fef0911b9015c57b071560f208653ad6ca2cddb4302589e48122",
+    "test_single_predictions.csv": "5012d8a55878594b54b7c69e42c4e886ed68faad2e390779dc0ef7a1e1876f39",
+    "test_c4_predictions.csv": "755bd0e29944d92a018f37259decb5f22ff0fa0f9630aedd5bb86f143e0f4074"
+  },
+  "val_max_probability_error": 0.0,
+  "test_max_probability_error": 0.0,
+  "test_images": 576,
+  "test_patients": 41,
+  "state_unchanged": true,
+  "state_sha256": "b478cad2c46860cec6cc76d774d267ea32bdd4b445faf988d23a054ba71103a9",
+  "val_metrics": {
+    "macro_f1": 0.9761032618175475,
+    "accuracy": 0.9812646370023419,
+    "malignant_recall": 0.9367088607594937,
+    "patient_equal_accuracy": 0.971913449798065,
+    "confusion_matrix": [
+      [
+        192,
+        3,
+        0
+      ],
+      [
+        5,
+        74,
+        0
+      ],
+      [
+        0,
+        0,
+        153
+      ]
+    ]
+  },
+  "single_metrics": {
+    "macro_f1": 0.9546720352331906,
+    "accuracy": 0.9548611111111112,
+    "malignant_recall": 0.9261363636363636,
+    "patient_equal_accuracy": 0.9393835585301086,
+    "confusion_matrix": [
+      [
+        199,
+        8,
+        1
+      ],
+      [
+        10,
+        163,
+        3
+      ],
+      [
+        4,
+        0,
+        188
+      ]
+    ]
+  },
+  "c4_metrics": {
+    "macro_f1": 0.9667373104535121,
+    "accuracy": 0.9670138888888888,
+    "malignant_recall": 0.9375,
+    "patient_equal_accuracy": 0.9567154394630529,
+    "confusion_matrix": [
+      [
+        202,
+        6,
+        0
+      ],
+      [
+        9,
+        165,
+        2
+      ],
+      [
+        2,
+        0,
+        190
+      ]
+    ]
+  },
+  "parameters": 27852795,
+  "single_counted_flops": 9130393344,
+  "c4_counted_flops": 36521573376,
+  "seconds": 2.2914551960129756,
+  "independent_generalization_confirmation": false
+}

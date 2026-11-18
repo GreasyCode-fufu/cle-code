@@ -1,0 +1,7 @@
+# 来源、接口和边界
+
+channel_covariance.py和c4_moment_stem.py逐字复制已通过无CLE图像CPU原型；原Mom SHA 8cd90f0659a7a852fa16c7a848bca0c416f24913c3548ee6e6141792cf429fdd。保留GAP/learnednorm/head及全部原参数对象。新增biasless768→16投影12288参数，136→3零分类器411，共12699；真去Mom移18528。零分类器导致上游首步梯度0，第二步才非零。
+
+成熟iSQRT-COV概念及官方Covpool/Sqrtm受限AST数值/对称梯度oracle在原型已通过，MIT原字节与Gitblob保存于原型references。无BN/ReLU的投影、ridge/floor、Frobenius向量、LN和保留GAP零残差是明确适配，不声称官方整网复现或创新。5次迭代是近似；ridge只使迭代输入SPD，floor/向量化/LN后不再SPD或黎曼网络。空间排列描述不变不等于整CNN等变/定位/临床拓扑/稳健保证。
+
+同层联合通道统计不同于旧CROSS(stage3/4跨层相关)，保留旧阴性。diag只有16有效坐标，不能称与136满协方差等有效容量；channelperm保留单通道边缘并改变联合配对。原CNNMom继续保留，LAG全轮阴性不重训。所有冻结历史source/config/checkpoint及共享库保持。全部test为自适应内部开发，条件区间不校正选择偏差，不保证提点、SCI新颖或录用。

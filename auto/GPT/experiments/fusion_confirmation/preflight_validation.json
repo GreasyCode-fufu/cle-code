@@ -1,0 +1,45 @@
+{
+  "passed": true,
+  "timestamp": "2026-10-24T12:49:31.149407+08:00",
+  "new_neural_trainings": 45,
+  "source_budgets": [
+    {
+      "arm": "resnet_bn_train",
+      "parameters": 21286211,
+      "trainable_parameters": 21286211,
+      "counted_flops_224": 7326501888,
+      "learning_rates": [
+        0.0001
+      ]
+    },
+    {
+      "arm": "resnet_bn_frozen",
+      "parameters": 21286211,
+      "trainable_parameters": 21286211,
+      "counted_flops_224": 7326501888,
+      "learning_rates": [
+        0.0001
+      ]
+    },
+    {
+      "arm": "dino_full",
+      "parameters": 21631107,
+      "trainable_parameters": 21631107,
+      "counted_flops_224": 12247128576,
+      "learning_rates": [
+        1e-05,
+        0.0001
+      ]
+    }
+  ],
+  "checks": [
+    "new45/46/47 frozen folds,all45jobs paired and train-only",
+    "three-way patient isolation and2386outercoverage per source/seed",
+    "pretrained/source/runtime/full-cache hashes",
+    "CNN paired initialization and eval outputs exact",
+    "real batch32 finite AMP updates with original source optimizers",
+    "frozen36BNbuffers unchanged and affine gradients nonzero; ordinaryBN counters update",
+    "DINO original learning rates/clipping and parameter coverage",
+    "unchanged audited R12 temperature/mixing helper; no additional tuning"
+  ]
+}

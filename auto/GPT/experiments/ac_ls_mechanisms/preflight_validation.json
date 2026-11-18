@@ -1,0 +1,49 @@
+{
+  "passed": true,
+  "timestamp": "2026-10-24T16:26:29.061867+08:00",
+  "budgets": [
+    {
+      "arm": "plain",
+      "parameters": 21286211,
+      "modifier_parameters": 0,
+      "counted_flops": 7326501888,
+      "peak_gpu_mib": 700.3095703125
+    },
+    {
+      "arm": "conv_ls_budget",
+      "parameters": 21378883,
+      "modifier_parameters": 92672,
+      "counted_flops": 7362252288,
+      "peak_gpu_mib": 880.4501953125
+    },
+    {
+      "arm": "ls_signed",
+      "parameters": 21380643,
+      "modifier_parameters": 94432,
+      "counted_flops": 7362678784,
+      "peak_gpu_mib": 984.59521484375
+    },
+    {
+      "arm": "ls_positive",
+      "parameters": 21380643,
+      "modifier_parameters": 94432,
+      "counted_flops": 7362678784,
+      "peak_gpu_mib": 991.66748046875
+    },
+    {
+      "arm": "ls_global",
+      "parameters": 21380643,
+      "modifier_parameters": 94432,
+      "counted_flops": 7362678784,
+      "peak_gpu_mib": 984.73974609375
+    }
+  ],
+  "checks": [
+    "paired backbone/head and branch initial states",
+    "disabled branch equals plain AMP logits",
+    "signed LS equals immutable round1 reference AMP output",
+    "positive/global kernel laws",
+    "real batch32 finite AMP gradients/updates",
+    "parameter/FLOP/peak memory budgets"
+  ]
+}

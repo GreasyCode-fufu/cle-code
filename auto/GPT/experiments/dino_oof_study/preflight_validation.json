@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "timestamp": "2026-10-24T11:52:05.496819+08:00",
+  "new_neural_trainings": 15,
+  "reused_cnn_models": 30,
+  "reused_dino_ridge_oof": 3,
+  "trainable_parameters": 21631107,
+  "checks": [
+    "exact15 original inner/outer patient splits, only original train indices",
+    "2386 outer predictions per seed, patient-disjoint three sets",
+    "30 reused checkpoint signatures/SHA/60ep/outer metrics and 3 frozen-DINO OOF hashes",
+    "full input cache SHA with loader-restricted scope",
+    "unchanged round10 source/optimizer kernel and paired initialization",
+    "encoder/head learning rates and exact optimizer coverage",
+    "real batch32 finite AMP update with gradient clipping and source/head gradients"
+  ],
+  "gradient_norm_before_clip": 236.21713256835938
+}

@@ -1,0 +1,44 @@
+{
+  "passed": true,
+  "timestamp": "2026-10-24T16:50:51.248535+08:00",
+  "budgets": [
+    {
+      "arm": "cnn_low_lr",
+      "parameters": 21286211,
+      "trainable_parameters": 21286211,
+      "counted_flops": 7326501888,
+      "peak_gpu_mib": 700.30908203125,
+      "source_tensors_changed_after_step": 216,
+      "source_parameters_changed_after_step": 108,
+      "gradient_norm_before_clip": 18.786733627319336
+    },
+    {
+      "arm": "dino_frozen",
+      "parameters": 21631107,
+      "trainable_parameters": 2307,
+      "counted_flops": 12247128576,
+      "peak_gpu_mib": 387.64697265625,
+      "source_tensors_changed_after_step": 0,
+      "source_parameters_changed_after_step": 0,
+      "gradient_norm_before_clip": 31.107799530029297
+    },
+    {
+      "arm": "dino_full",
+      "parameters": 21631107,
+      "trainable_parameters": 21631107,
+      "counted_flops": 12247128576,
+      "peak_gpu_mib": 1721.85400390625,
+      "source_tensors_changed_after_step": 174,
+      "source_parameters_changed_after_step": 174,
+      "gradient_norm_before_clip": 220.16676330566406
+    }
+  ],
+  "checks": [
+    "CNN split state/AMP exactness",
+    "paired frozen/full DINO initial source/head",
+    "exact optimizer coverage/lr/trainable counts",
+    "real batch32 finite AMP/clip update",
+    "frozen source unchanged/trainable source updated",
+    "parameter/FLOP/peak memory"
+  ]
+}

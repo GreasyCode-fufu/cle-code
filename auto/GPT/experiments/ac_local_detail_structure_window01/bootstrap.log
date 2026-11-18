@@ -1,0 +1,437 @@
+[main fbf182c5] research: preregister retained CNN moment plus local detail contrast with true drop-Mom rawgate highpass and gate-detail spatial pairing controls
+ 34 files changed, 84476 insertions(+)
+ create mode 100644 experiments/ac_local_detail_structure_window01/.gitignore
+ create mode 100644 experiments/ac_local_detail_structure_window01/MODULE_DIFFERENCES_ZH.md
+ create mode 100644 experiments/ac_local_detail_structure_window01/MODULE_PROTOCOL_ZH.md
+ create mode 100644 experiments/ac_local_detail_structure_window01/audit_module_structure.py
+ create mode 100644 experiments/ac_local_detail_structure_window01/baseline_reference.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/baseline_selection.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/bootstrap.lock
+ create mode 100644 experiments/ac_local_detail_structure_window01/bootstrap.log
+ create mode 100644 experiments/ac_local_detail_structure_window01/bootstrap_identity.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/bootstrap_module_structure.py
+ create mode 100644 experiments/ac_local_detail_structure_window01/build_local_detail_study.py
+ create mode 100644 experiments/ac_local_detail_structure_window01/check_module_sources.py
+ create mode 100644 experiments/ac_local_detail_structure_window01/check_prediction_cli.py
+ create mode 100644 experiments/ac_local_detail_structure_window01/compare_local_detail_controls.py
+ create mode 100644 experiments/ac_local_detail_structure_window01/comparison_preregistration.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/config.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/continuous_runtime_sampler.py
+ create mode 100644 experiments/ac_local_detail_structure_window01/finish_direct_controls.py
+ create mode 100644 experiments/ac_local_detail_structure_window01/independent_probability_auditor.py
+ create mode 100644 experiments/ac_local_detail_structure_window01/jobs.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/launch_registration.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/library_cle.py
+ create mode 100644 experiments/ac_local_detail_structure_window01/manifest.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/postprocessing_revision_v2.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/predict_module_model.py
+ create mode 100644 experiments/ac_local_detail_structure_window01/preflight_impl.py
+ create mode 100644 experiments/ac_local_detail_structure_window01/run_local_detail_manager.py
+ create mode 100644 experiments/ac_local_detail_structure_window01/run_module_structure.py
+ create mode 100644 experiments/ac_local_detail_structure_window01/shared_snapshot_manifest.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/working_reference.json
+ create mode 100644 models/optimize/ac_local_detail_window01/__init__.py
+ create mode 100644 models/optimize/ac_local_detail_window01/c4_moment_stem.py
+ create mode 100644 models/optimize/ac_local_detail_window01/library_cle.py
+ create mode 100644 models/optimize/ac_local_detail_window01/local_detail.py
+[main 5a997704] test: verify formal local detail CPU two updates exact initializations optimizer groups true Mom removal and budgets
+ 2 files changed, 248 insertions(+)
+ create mode 100644 experiments/ac_local_detail_structure_window01/module_source_audit.json
+[main b2d5b611] test: verify local detail contrast controls CUDA AMP two finite updates fixedfilter accounting gate-detail pairing and all6 frozen full427 probability reconstructions
+ 2 files changed, 229 insertions(+)
+ create mode 100644 experiments/ac_local_detail_structure_window01/preflight.json
+[main ac61e3ae] perf: measure single and concurrent throughput for distinct library and orientation kernels
+ 138 files changed, 1053 insertions(+)
+ create mode 100644 experiments/ac_local_detail_structure_window01/STRUCTURE_AND_USE_ZH.md
+ create mode 100644 experiments/ac_local_detail_structure_window01/ancillary_launch_registration.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/detailcontrast_only/bench_1_0.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/detailcontrast_only/bench_1_0.log
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/detailcontrast_only/bench_2_0.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/detailcontrast_only/bench_2_0.log
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/detailcontrast_only/bench_2_1.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/detailcontrast_only/bench_2_1.log
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/detailcontrast_only/bench_4_0.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/detailcontrast_only/bench_4_0.log
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/detailcontrast_only/bench_4_1.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/detailcontrast_only/bench_4_1.log
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/detailcontrast_only/bench_4_2.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/detailcontrast_only/bench_4_2.log
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/detailcontrast_only/bench_4_3.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/detailcontrast_only/bench_4_3.log
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/detailcontrast_only/gate_1.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/detailcontrast_only/gate_2.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/detailcontrast_only/gate_4.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/detailcontrast_only/measurements.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/detailcontrast_only/ready_1_0.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/detailcontrast_only/ready_2_0.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/detailcontrast_only/ready_2_1.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/detailcontrast_only/ready_4_0.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/detailcontrast_only/ready_4_1.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/detailcontrast_only/ready_4_2.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/detailcontrast_only/ready_4_3.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/detailcontrast_only/resources.csv
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_detailcontrast/bench_1_0.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_detailcontrast/bench_1_0.log
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_detailcontrast/bench_2_0.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_detailcontrast/bench_2_0.log
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_detailcontrast/bench_2_1.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_detailcontrast/bench_2_1.log
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_detailcontrast/bench_4_0.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_detailcontrast/bench_4_0.log
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_detailcontrast/bench_4_1.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_detailcontrast/bench_4_1.log
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_detailcontrast/bench_4_2.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_detailcontrast/bench_4_2.log
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_detailcontrast/bench_4_3.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_detailcontrast/bench_4_3.log
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_detailcontrast/gate_1.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_detailcontrast/gate_2.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_detailcontrast/gate_4.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_detailcontrast/measurements.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_detailcontrast/ready_1_0.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_detailcontrast/ready_2_0.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_detailcontrast/ready_2_1.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_detailcontrast/ready_4_0.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_detailcontrast/ready_4_1.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_detailcontrast/ready_4_2.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_detailcontrast/ready_4_3.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_detailcontrast/resources.csv
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_detailrawgate/bench_1_0.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_detailrawgate/bench_1_0.log
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_detailrawgate/bench_2_0.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_detailrawgate/bench_2_0.log
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_detailrawgate/bench_2_1.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_detailrawgate/bench_2_1.log
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_detailrawgate/bench_4_0.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_detailrawgate/bench_4_0.log
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_detailrawgate/bench_4_1.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_detailrawgate/bench_4_1.log
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_detailrawgate/bench_4_2.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_detailrawgate/bench_4_2.log
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_detailrawgate/bench_4_3.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_detailrawgate/bench_4_3.log
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_detailrawgate/gate_1.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_detailrawgate/gate_2.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_detailrawgate/gate_4.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_detailrawgate/measurements.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_detailrawgate/ready_1_0.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_detailrawgate/ready_2_0.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_detailrawgate/ready_2_1.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_detailrawgate/ready_4_0.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_detailrawgate/ready_4_1.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_detailrawgate/ready_4_2.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_detailrawgate/ready_4_3.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_detailrawgate/resources.csv
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_highpass/bench_1_0.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_highpass/bench_1_0.log
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_highpass/bench_2_0.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_highpass/bench_2_0.log
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_highpass/bench_2_1.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_highpass/bench_2_1.log
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_highpass/bench_4_0.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_highpass/bench_4_0.log
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_highpass/bench_4_1.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_highpass/bench_4_1.log
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_highpass/bench_4_2.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_highpass/bench_4_2.log
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_highpass/bench_4_3.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_highpass/bench_4_3.log
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_highpass/gate_1.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_highpass/gate_2.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_highpass/gate_4.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_highpass/measurements.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_highpass/ready_1_0.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_highpass/ready_2_0.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_highpass/ready_2_1.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_highpass/ready_4_0.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_highpass/ready_4_1.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_highpass/ready_4_2.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_highpass/ready_4_3.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_highpass/resources.csv
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_misaligned/bench_1_0.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_misaligned/bench_1_0.log
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_misaligned/bench_2_0.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_misaligned/bench_2_0.log
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_misaligned/bench_2_1.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_misaligned/bench_2_1.log
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_misaligned/bench_4_0.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_misaligned/bench_4_0.log
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_misaligned/bench_4_1.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_misaligned/bench_4_1.log
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_misaligned/bench_4_2.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_misaligned/bench_4_2.log
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_misaligned/bench_4_3.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_misaligned/bench_4_3.log
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_misaligned/gate_1.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_misaligned/gate_2.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_misaligned/gate_4.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_misaligned/measurements.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_misaligned/ready_1_0.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_misaligned/ready_2_0.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_misaligned/ready_2_1.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_misaligned/ready_4_0.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_misaligned/ready_4_1.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_misaligned/ready_4_2.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_misaligned/ready_4_3.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/mom_misaligned/resources.csv
+ create mode 100644 experiments/ac_local_detail_structure_window01/profile/selected.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/run_usage_check.py
+ create mode 100644 experiments/ac_local_detail_structure_window01/usage.log
+ create mode 100644 experiments/ac_local_detail_structure_window01/usage_check.lock
+ create mode 100644 experiments/ac_local_detail_structure_window01/usage_check_identity.json
+launch ldc_mom_detailcontrast_s45 1192854
+[main d5e1ef91] results: preserve completed module training ldc_mom_detailcontrast_s45
+ 18 files changed, 1176 insertions(+)
+ create mode 100644 experiments/ac_local_detail_structure_window01/continuous_runtime_process_io.jsonl
+ create mode 100644 experiments/ac_local_detail_structure_window01/continuous_runtime_resources.csv
+ create mode 100644 experiments/ac_local_detail_structure_window01/direct_control_finisher.log
+ create mode 100644 experiments/ac_local_detail_structure_window01/direct_control_finisher_identity.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/io_resources.jsonl
+ create mode 100644 experiments/ac_local_detail_structure_window01/logs/ldc_mom_detailcontrast_s45.log
+ create mode 100644 experiments/ac_local_detail_structure_window01/manager_entry_identity_v2.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/manager_identity.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/resources.csv
+ create mode 100644 experiments/ac_local_detail_structure_window01/runs/ldc_mom_detailcontrast_s45/complete.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/runs/ldc_mom_detailcontrast_s45/run_meta.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/runs/ldc_mom_detailcontrast_s45/train_log.csv
+ create mode 100644 experiments/ac_local_detail_structure_window01/runs/ldc_mom_detailcontrast_s45/validation_complete.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/runs/ldc_mom_detailcontrast_s45/validation_predictions.csv
+ create mode 100644 experiments/ac_local_detail_structure_window01/runtime_sampler.log
+ create mode 100644 experiments/ac_local_detail_structure_window01/runtime_sampler_identity_v2.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/status.json
+launch ldc_mom_detailcontrast_s46 1194294
+[main b39b72f2] results: preserve completed module training ldc_mom_detailcontrast_s46
+ 13 files changed, 947 insertions(+), 8 deletions(-)
+ create mode 100644 experiments/ac_local_detail_structure_window01/runs/ldc_mom_detailcontrast_s46/complete.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/runs/ldc_mom_detailcontrast_s46/validation_complete.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/runs/ldc_mom_detailcontrast_s46/validation_predictions.csv
+ create mode 100644 experiments/ac_local_detail_structure_window01/usage_check_complete.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/usage_smoke/weight_bytes_reaudit.json
+launch ldc_mom_detailcontrast_s47 1195955
+[main d9b7ffc1] results: preserve completed module training ldc_mom_detailcontrast_s47
+ 15 files changed, 1086 insertions(+), 13 deletions(-)
+ create mode 100644 experiments/ac_local_detail_structure_window01/local_startup_audit.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/logs/ldc_mom_detailcontrast_s47.log
+ create mode 100644 experiments/ac_local_detail_structure_window01/runs/ldc_mom_detailcontrast_s47/complete.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/runs/ldc_mom_detailcontrast_s47/run_meta.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/runs/ldc_mom_detailcontrast_s47/train_log.csv
+ create mode 100644 experiments/ac_local_detail_structure_window01/runs/ldc_mom_detailcontrast_s47/validation_complete.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/runs/ldc_mom_detailcontrast_s47/validation_predictions.csv
+ create mode 100644 experiments/ac_local_detail_structure_window01/usage_smoke/USAGE_VERIFICATION_ZH.md
+ create mode 100644 experiments/ac_local_detail_structure_window01/usage_smoke/local_usage_verification.json
+[main 077ce27c] research: freeze all3 val-selected mom_detailcontrast checkpoints before adaptive test feedback
+ 2 files changed, 81 insertions(+)
+ create mode 100644 experiments/ac_local_detail_structure_window01/evaluations/mom_detailcontrast/registration.json
+[main 68a970d7] results: retain independently reconstructed single/C4 test feedback for mom_detailcontrast all3 seeds
+ 16 files changed, 4028 insertions(+)
+ create mode 100644 experiments/ac_local_detail_structure_window01/evaluations/mom_detailcontrast/group_audit.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/evaluations/mom_detailcontrast/s45/independent_audit.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/evaluations/mom_detailcontrast/s45/test_c4_predictions.csv
+ create mode 100644 experiments/ac_local_detail_structure_window01/evaluations/mom_detailcontrast/s45/test_single_predictions.csv
+ create mode 100644 experiments/ac_local_detail_structure_window01/evaluations/mom_detailcontrast/s45/test_views.npy
+ create mode 100644 experiments/ac_local_detail_structure_window01/evaluations/mom_detailcontrast/s46/independent_audit.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/evaluations/mom_detailcontrast/s46/test_c4_predictions.csv
+ create mode 100644 experiments/ac_local_detail_structure_window01/evaluations/mom_detailcontrast/s46/test_single_predictions.csv
+ create mode 100644 experiments/ac_local_detail_structure_window01/evaluations/mom_detailcontrast/s46/test_views.npy
+ create mode 100644 experiments/ac_local_detail_structure_window01/evaluations/mom_detailcontrast/s47/independent_audit.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/evaluations/mom_detailcontrast/s47/test_c4_predictions.csv
+ create mode 100644 experiments/ac_local_detail_structure_window01/evaluations/mom_detailcontrast/s47/test_single_predictions.csv
+ create mode 100644 experiments/ac_local_detail_structure_window01/evaluations/mom_detailcontrast/s47/test_views.npy
+[main 78ef85d3] analysis: record every paired module mechanism, budget control and negative result
+ 7 files changed, 1067 insertions(+)
+ create mode 100644 experiments/ac_local_detail_structure_window01/MECHANISM_REPORT_ZH.md
+ create mode 100644 experiments/ac_local_detail_structure_window01/MODULE_ROUND_REPORT_ZH.md
+ create mode 100644 experiments/ac_local_detail_structure_window01/mechanism_comparisons.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/round_results.json
+launch ldc_detailcontrast_only_s45 1197609
+[main a9fa2640] results: preserve completed module training ldc_detailcontrast_only_s45
+ 12 files changed, 951 insertions(+), 13 deletions(-)
+ create mode 100644 experiments/ac_local_detail_structure_window01/logs/ldc_detailcontrast_only_s45.log
+ create mode 100644 experiments/ac_local_detail_structure_window01/runs/ldc_detailcontrast_only_s45/complete.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/runs/ldc_detailcontrast_only_s45/run_meta.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/runs/ldc_detailcontrast_only_s45/train_log.csv
+ create mode 100644 experiments/ac_local_detail_structure_window01/runs/ldc_detailcontrast_only_s45/validation_complete.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/runs/ldc_detailcontrast_only_s45/validation_predictions.csv
+launch ldc_detailcontrast_only_s46 1198514
+[main be5cae22] results: preserve completed module training ldc_detailcontrast_only_s46
+ 12 files changed, 951 insertions(+), 11 deletions(-)
+ create mode 100644 experiments/ac_local_detail_structure_window01/logs/ldc_detailcontrast_only_s46.log
+ create mode 100644 experiments/ac_local_detail_structure_window01/runs/ldc_detailcontrast_only_s46/complete.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/runs/ldc_detailcontrast_only_s46/run_meta.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/runs/ldc_detailcontrast_only_s46/train_log.csv
+ create mode 100644 experiments/ac_local_detail_structure_window01/runs/ldc_detailcontrast_only_s46/validation_complete.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/runs/ldc_detailcontrast_only_s46/validation_predictions.csv
+launch ldc_detailcontrast_only_s47 1199396
+[main 0f7675e8] results: preserve completed module training ldc_detailcontrast_only_s47
+ 12 files changed, 949 insertions(+), 11 deletions(-)
+ create mode 100644 experiments/ac_local_detail_structure_window01/logs/ldc_detailcontrast_only_s47.log
+ create mode 100644 experiments/ac_local_detail_structure_window01/runs/ldc_detailcontrast_only_s47/complete.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/runs/ldc_detailcontrast_only_s47/run_meta.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/runs/ldc_detailcontrast_only_s47/train_log.csv
+ create mode 100644 experiments/ac_local_detail_structure_window01/runs/ldc_detailcontrast_only_s47/validation_complete.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/runs/ldc_detailcontrast_only_s47/validation_predictions.csv
+[main d3d80ed5] research: freeze all3 val-selected detailcontrast_only checkpoints before adaptive test feedback
+ 4 files changed, 80 insertions(+)
+ create mode 100644 experiments/ac_local_detail_structure_window01/evaluations/detailcontrast_only/registration.json
+[main 4fef6070] results: retain independently reconstructed single/C4 test feedback for detailcontrast_only all3 seeds
+ 16 files changed, 4024 insertions(+)
+ create mode 100644 experiments/ac_local_detail_structure_window01/evaluations/detailcontrast_only/group_audit.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/evaluations/detailcontrast_only/s45/independent_audit.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/evaluations/detailcontrast_only/s45/test_c4_predictions.csv
+ create mode 100644 experiments/ac_local_detail_structure_window01/evaluations/detailcontrast_only/s45/test_single_predictions.csv
+ create mode 100644 experiments/ac_local_detail_structure_window01/evaluations/detailcontrast_only/s45/test_views.npy
+ create mode 100644 experiments/ac_local_detail_structure_window01/evaluations/detailcontrast_only/s46/independent_audit.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/evaluations/detailcontrast_only/s46/test_c4_predictions.csv
+ create mode 100644 experiments/ac_local_detail_structure_window01/evaluations/detailcontrast_only/s46/test_single_predictions.csv
+ create mode 100644 experiments/ac_local_detail_structure_window01/evaluations/detailcontrast_only/s46/test_views.npy
+ create mode 100644 experiments/ac_local_detail_structure_window01/evaluations/detailcontrast_only/s47/independent_audit.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/evaluations/detailcontrast_only/s47/test_c4_predictions.csv
+ create mode 100644 experiments/ac_local_detail_structure_window01/evaluations/detailcontrast_only/s47/test_single_predictions.csv
+ create mode 100644 experiments/ac_local_detail_structure_window01/evaluations/detailcontrast_only/s47/test_views.npy
+[main dbde9258] analysis: record every paired module mechanism, budget control and negative result
+ 7 files changed, 542 insertions(+), 1 deletion(-)
+launch ldc_mom_detailrawgate_s45 1200680
+[main 6aa8c9ea] results: preserve completed module training ldc_mom_detailrawgate_s45
+ 12 files changed, 993 insertions(+), 13 deletions(-)
+ create mode 100644 experiments/ac_local_detail_structure_window01/logs/ldc_mom_detailrawgate_s45.log
+ create mode 100644 experiments/ac_local_detail_structure_window01/runs/ldc_mom_detailrawgate_s45/complete.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/runs/ldc_mom_detailrawgate_s45/run_meta.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/runs/ldc_mom_detailrawgate_s45/train_log.csv
+ create mode 100644 experiments/ac_local_detail_structure_window01/runs/ldc_mom_detailrawgate_s45/validation_complete.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/runs/ldc_mom_detailrawgate_s45/validation_predictions.csv
+launch ldc_mom_detailrawgate_s46 1202270
+[main c981a757] results: preserve completed module training ldc_mom_detailrawgate_s46
+ 12 files changed, 993 insertions(+), 11 deletions(-)
+ create mode 100644 experiments/ac_local_detail_structure_window01/logs/ldc_mom_detailrawgate_s46.log
+ create mode 100644 experiments/ac_local_detail_structure_window01/runs/ldc_mom_detailrawgate_s46/complete.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/runs/ldc_mom_detailrawgate_s46/run_meta.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/runs/ldc_mom_detailrawgate_s46/train_log.csv
+ create mode 100644 experiments/ac_local_detail_structure_window01/runs/ldc_mom_detailrawgate_s46/validation_complete.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/runs/ldc_mom_detailrawgate_s46/validation_predictions.csv
+launch ldc_mom_detailrawgate_s47 1203271
+[main 8f5b6800] results: preserve completed module training ldc_mom_detailrawgate_s47
+ 12 files changed, 998 insertions(+), 12 deletions(-)
+ create mode 100644 experiments/ac_local_detail_structure_window01/logs/ldc_mom_detailrawgate_s47.log
+ create mode 100644 experiments/ac_local_detail_structure_window01/runs/ldc_mom_detailrawgate_s47/complete.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/runs/ldc_mom_detailrawgate_s47/run_meta.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/runs/ldc_mom_detailrawgate_s47/train_log.csv
+ create mode 100644 experiments/ac_local_detail_structure_window01/runs/ldc_mom_detailrawgate_s47/validation_complete.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/runs/ldc_mom_detailrawgate_s47/validation_predictions.csv
+[main 4a469f62] research: freeze all3 val-selected mom_detailrawgate checkpoints before adaptive test feedback
+ 4 files changed, 80 insertions(+)
+ create mode 100644 experiments/ac_local_detail_structure_window01/evaluations/mom_detailrawgate/registration.json
+[main 1ab668c7] results: retain independently reconstructed single/C4 test feedback for mom_detailrawgate all3 seeds
+ 16 files changed, 4026 insertions(+)
+ create mode 100644 experiments/ac_local_detail_structure_window01/evaluations/mom_detailrawgate/group_audit.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/evaluations/mom_detailrawgate/s45/independent_audit.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/evaluations/mom_detailrawgate/s45/test_c4_predictions.csv
+ create mode 100644 experiments/ac_local_detail_structure_window01/evaluations/mom_detailrawgate/s45/test_single_predictions.csv
+ create mode 100644 experiments/ac_local_detail_structure_window01/evaluations/mom_detailrawgate/s45/test_views.npy
+ create mode 100644 experiments/ac_local_detail_structure_window01/evaluations/mom_detailrawgate/s46/independent_audit.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/evaluations/mom_detailrawgate/s46/test_c4_predictions.csv
+ create mode 100644 experiments/ac_local_detail_structure_window01/evaluations/mom_detailrawgate/s46/test_single_predictions.csv
+ create mode 100644 experiments/ac_local_detail_structure_window01/evaluations/mom_detailrawgate/s46/test_views.npy
+ create mode 100644 experiments/ac_local_detail_structure_window01/evaluations/mom_detailrawgate/s47/independent_audit.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/evaluations/mom_detailrawgate/s47/test_c4_predictions.csv
+ create mode 100644 experiments/ac_local_detail_structure_window01/evaluations/mom_detailrawgate/s47/test_single_predictions.csv
+ create mode 100644 experiments/ac_local_detail_structure_window01/evaluations/mom_detailrawgate/s47/test_views.npy
+[main 8e51ecae] analysis: record every paired module mechanism, budget control and negative result
+ 7 files changed, 544 insertions(+), 1 deletion(-)
+launch ldc_mom_misaligned_s45 1204692
+[main 2e3c7176] results: preserve completed module training ldc_mom_misaligned_s45
+ 12 files changed, 1008 insertions(+), 12 deletions(-)
+ create mode 100644 experiments/ac_local_detail_structure_window01/logs/ldc_mom_misaligned_s45.log
+ create mode 100644 experiments/ac_local_detail_structure_window01/runs/ldc_mom_misaligned_s45/complete.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/runs/ldc_mom_misaligned_s45/run_meta.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/runs/ldc_mom_misaligned_s45/train_log.csv
+ create mode 100644 experiments/ac_local_detail_structure_window01/runs/ldc_mom_misaligned_s45/validation_complete.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/runs/ldc_mom_misaligned_s45/validation_predictions.csv
+launch ldc_mom_misaligned_s46 1205780
+[main eeb4702f] results: preserve completed module training ldc_mom_misaligned_s46
+ 12 files changed, 1011 insertions(+), 9 deletions(-)
+ create mode 100644 experiments/ac_local_detail_structure_window01/logs/ldc_mom_misaligned_s46.log
+ create mode 100644 experiments/ac_local_detail_structure_window01/runs/ldc_mom_misaligned_s46/complete.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/runs/ldc_mom_misaligned_s46/run_meta.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/runs/ldc_mom_misaligned_s46/train_log.csv
+ create mode 100644 experiments/ac_local_detail_structure_window01/runs/ldc_mom_misaligned_s46/validation_complete.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/runs/ldc_mom_misaligned_s46/validation_predictions.csv
+launch ldc_mom_misaligned_s47 1206919
+[main ea710a82] results: preserve completed module training ldc_mom_misaligned_s47
+ 12 files changed, 1014 insertions(+), 10 deletions(-)
+ create mode 100644 experiments/ac_local_detail_structure_window01/logs/ldc_mom_misaligned_s47.log
+ create mode 100644 experiments/ac_local_detail_structure_window01/runs/ldc_mom_misaligned_s47/complete.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/runs/ldc_mom_misaligned_s47/run_meta.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/runs/ldc_mom_misaligned_s47/train_log.csv
+ create mode 100644 experiments/ac_local_detail_structure_window01/runs/ldc_mom_misaligned_s47/validation_complete.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/runs/ldc_mom_misaligned_s47/validation_predictions.csv
+[main e88a92b2] research: freeze all3 val-selected mom_misaligned checkpoints before adaptive test feedback
+ 2 files changed, 78 insertions(+)
+ create mode 100644 experiments/ac_local_detail_structure_window01/evaluations/mom_misaligned/registration.json
+[main 2d5fc0d6] results: retain independently reconstructed single/C4 test feedback for mom_misaligned all3 seeds
+ 16 files changed, 4026 insertions(+)
+ create mode 100644 experiments/ac_local_detail_structure_window01/evaluations/mom_misaligned/group_audit.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/evaluations/mom_misaligned/s45/independent_audit.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/evaluations/mom_misaligned/s45/test_c4_predictions.csv
+ create mode 100644 experiments/ac_local_detail_structure_window01/evaluations/mom_misaligned/s45/test_single_predictions.csv
+ create mode 100644 experiments/ac_local_detail_structure_window01/evaluations/mom_misaligned/s45/test_views.npy
+ create mode 100644 experiments/ac_local_detail_structure_window01/evaluations/mom_misaligned/s46/independent_audit.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/evaluations/mom_misaligned/s46/test_c4_predictions.csv
+ create mode 100644 experiments/ac_local_detail_structure_window01/evaluations/mom_misaligned/s46/test_single_predictions.csv
+ create mode 100644 experiments/ac_local_detail_structure_window01/evaluations/mom_misaligned/s46/test_views.npy
+ create mode 100644 experiments/ac_local_detail_structure_window01/evaluations/mom_misaligned/s47/independent_audit.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/evaluations/mom_misaligned/s47/test_c4_predictions.csv
+ create mode 100644 experiments/ac_local_detail_structure_window01/evaluations/mom_misaligned/s47/test_single_predictions.csv
+ create mode 100644 experiments/ac_local_detail_structure_window01/evaluations/mom_misaligned/s47/test_views.npy
+[main 4ce3ac9f] analysis: record every paired module mechanism, budget control and negative result
+ 7 files changed, 546 insertions(+), 1 deletion(-)
+launch ldc_mom_highpass_s45 1208453
+[main 92822711] results: preserve completed module training ldc_mom_highpass_s45
+ 12 files changed, 975 insertions(+), 13 deletions(-)
+ create mode 100644 experiments/ac_local_detail_structure_window01/logs/ldc_mom_highpass_s45.log
+ create mode 100644 experiments/ac_local_detail_structure_window01/runs/ldc_mom_highpass_s45/complete.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/runs/ldc_mom_highpass_s45/run_meta.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/runs/ldc_mom_highpass_s45/train_log.csv
+ create mode 100644 experiments/ac_local_detail_structure_window01/runs/ldc_mom_highpass_s45/validation_complete.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/runs/ldc_mom_highpass_s45/validation_predictions.csv
+launch ldc_mom_highpass_s46 1209390
+[main 9c3900ab] results: preserve completed module training ldc_mom_highpass_s46
+ 12 files changed, 976 insertions(+), 11 deletions(-)
+ create mode 100644 experiments/ac_local_detail_structure_window01/logs/ldc_mom_highpass_s46.log
+ create mode 100644 experiments/ac_local_detail_structure_window01/runs/ldc_mom_highpass_s46/complete.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/runs/ldc_mom_highpass_s46/run_meta.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/runs/ldc_mom_highpass_s46/train_log.csv
+ create mode 100644 experiments/ac_local_detail_structure_window01/runs/ldc_mom_highpass_s46/validation_complete.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/runs/ldc_mom_highpass_s46/validation_predictions.csv
+launch ldc_mom_highpass_s47 1210433
+[main 5245c776] results: preserve completed module training ldc_mom_highpass_s47
+ 12 files changed, 975 insertions(+), 10 deletions(-)
+ create mode 100644 experiments/ac_local_detail_structure_window01/logs/ldc_mom_highpass_s47.log
+ create mode 100644 experiments/ac_local_detail_structure_window01/runs/ldc_mom_highpass_s47/complete.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/runs/ldc_mom_highpass_s47/run_meta.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/runs/ldc_mom_highpass_s47/train_log.csv
+ create mode 100644 experiments/ac_local_detail_structure_window01/runs/ldc_mom_highpass_s47/validation_complete.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/runs/ldc_mom_highpass_s47/validation_predictions.csv
+[main 81b61289] research: freeze all3 val-selected mom_highpass checkpoints before adaptive test feedback
+ 2 files changed, 78 insertions(+)
+ create mode 100644 experiments/ac_local_detail_structure_window01/evaluations/mom_highpass/registration.json
+[main 647019fb] results: retain independently reconstructed single/C4 test feedback for mom_highpass all3 seeds
+ 16 files changed, 4026 insertions(+)
+ create mode 100644 experiments/ac_local_detail_structure_window01/evaluations/mom_highpass/group_audit.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/evaluations/mom_highpass/s45/independent_audit.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/evaluations/mom_highpass/s45/test_c4_predictions.csv
+ create mode 100644 experiments/ac_local_detail_structure_window01/evaluations/mom_highpass/s45/test_single_predictions.csv
+ create mode 100644 experiments/ac_local_detail_structure_window01/evaluations/mom_highpass/s45/test_views.npy
+ create mode 100644 experiments/ac_local_detail_structure_window01/evaluations/mom_highpass/s46/independent_audit.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/evaluations/mom_highpass/s46/test_c4_predictions.csv
+ create mode 100644 experiments/ac_local_detail_structure_window01/evaluations/mom_highpass/s46/test_single_predictions.csv
+ create mode 100644 experiments/ac_local_detail_structure_window01/evaluations/mom_highpass/s46/test_views.npy
+ create mode 100644 experiments/ac_local_detail_structure_window01/evaluations/mom_highpass/s47/independent_audit.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/evaluations/mom_highpass/s47/test_c4_predictions.csv
+ create mode 100644 experiments/ac_local_detail_structure_window01/evaluations/mom_highpass/s47/test_single_predictions.csv
+ create mode 100644 experiments/ac_local_detail_structure_window01/evaluations/mom_highpass/s47/test_views.npy
+[main 5f36ee12] analysis: record every paired module mechanism, budget control and negative result
+ 7 files changed, 548 insertions(+), 1 deletion(-)
+[main e006b194] results: audit complete faithful-module and orientation round; retain every seed and negative result
+ 9 files changed, 41 insertions(+), 23 deletions(-)
+ create mode 100644 experiments/ac_local_detail_structure_window01/independent_audit.json
+ create mode 100644 experiments/ac_local_detail_structure_window01/runtime_sampler_complete_v2.json

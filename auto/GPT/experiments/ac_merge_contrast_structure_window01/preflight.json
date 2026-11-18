@@ -1,0 +1,214 @@
+{
+  "passed": true,
+  "budgets": [
+    {
+      "arm": "plain",
+      "parameters": 27521661,
+      "counted_flops": 28597871616,
+      "peak_gpu_mib": 7183.33740234375,
+      "finite_two_updates": true
+    },
+    {
+      "arm": "mom_only",
+      "parameters": 27540189,
+      "counted_flops": 29192414208,
+      "peak_gpu_mib": 7860.466796875,
+      "finite_two_updates": true
+    },
+    {
+      "arm": "mom_local",
+      "parameters": 27558813,
+      "counted_flops": 29277348864,
+      "peak_gpu_mib": 8011.4853515625,
+      "finite_two_updates": true
+    },
+    {
+      "arm": "local_only",
+      "parameters": 27540285,
+      "counted_flops": 28682806272,
+      "peak_gpu_mib": 7334.9130859375,
+      "finite_two_updates": true
+    },
+    {
+      "arm": "mom_mean",
+      "parameters": 27558813,
+      "counted_flops": 29277348864,
+      "peak_gpu_mib": 7876.59130859375,
+      "finite_two_updates": true
+    },
+    {
+      "arm": "mom_global",
+      "parameters": 27558813,
+      "counted_flops": 29277348864,
+      "peak_gpu_mib": 8011.05517578125,
+      "finite_two_updates": true
+    }
+  ],
+  "descriptor_diagnostics": [
+    {
+      "arm": "plain",
+      "gradients": [
+        {
+          "step": 0,
+          "CE_loss": 1.28369140625,
+          "new_projection_gradient_norms": {}
+        },
+        {
+          "step": 1,
+          "CE_loss": 1.204010009765625,
+          "new_projection_gradient_norms": {}
+        }
+      ],
+      "actual_train_images": 32,
+      "test_images": 0
+    },
+    {
+      "arm": "mom_only",
+      "gradients": [
+        {
+          "step": 0,
+          "CE_loss": 1.28369140625,
+          "new_projection_gradient_norms": {
+            "moment": 1.37992525100708
+          }
+        },
+        {
+          "step": 1,
+          "CE_loss": 1.1983184814453125,
+          "new_projection_gradient_norms": {
+            "moment": 1.2791345119476318
+          }
+        }
+      ],
+      "actual_train_images": 32,
+      "test_images": 0
+    },
+    {
+      "arm": "mom_local",
+      "gradients": [
+        {
+          "step": 0,
+          "CE_loss": 1.28369140625,
+          "new_projection_gradient_norms": {
+            "moment": 1.37992525100708,
+            "merge": 0.4042414724826813
+          }
+        },
+        {
+          "step": 1,
+          "CE_loss": 1.1948089599609375,
+          "new_projection_gradient_norms": {
+            "moment": 1.242011547088623,
+            "merge": 0.3670003116130829
+          }
+        }
+      ],
+      "actual_train_images": 32,
+      "test_images": 0
+    },
+    {
+      "arm": "local_only",
+      "gradients": [
+        {
+          "step": 0,
+          "CE_loss": 1.28369140625,
+          "new_projection_gradient_norms": {
+            "merge": 0.4042414724826813
+          }
+        },
+        {
+          "step": 1,
+          "CE_loss": 1.2001800537109375,
+          "new_projection_gradient_norms": {
+            "merge": 0.37741172313690186
+          }
+        }
+      ],
+      "actual_train_images": 32,
+      "test_images": 0
+    },
+    {
+      "arm": "mom_mean",
+      "gradients": [
+        {
+          "step": 0,
+          "CE_loss": 1.28369140625,
+          "new_projection_gradient_norms": {
+            "moment": 1.37992525100708,
+            "merge": 1.112357258796692
+          }
+        },
+        {
+          "step": 1,
+          "CE_loss": 1.19354248046875,
+          "new_projection_gradient_norms": {
+            "moment": 1.2307970523834229,
+            "merge": 1.0227118730545044
+          }
+        }
+      ],
+      "actual_train_images": 32,
+      "test_images": 0
+    },
+    {
+      "arm": "mom_global",
+      "gradients": [
+        {
+          "step": 0,
+          "CE_loss": 1.28369140625,
+          "new_projection_gradient_norms": {
+            "moment": 1.37992525100708,
+            "merge": 0.36162757873535156
+          }
+        },
+        {
+          "step": 1,
+          "CE_loss": 1.1948699951171875,
+          "new_projection_gradient_norms": {
+            "moment": 1.2348113059997559,
+            "merge": 0.3327706456184387
+          }
+        }
+      ],
+      "actual_train_images": 32,
+      "test_images": 0
+    }
+  ],
+  "reproduced_baselines": [
+    {
+      "kind": "parent_Swin_B",
+      "seed": 45,
+      "full427_max_probability_error": 0.0
+    },
+    {
+      "kind": "parent_Swin_B",
+      "seed": 46,
+      "full427_max_probability_error": 0.0
+    },
+    {
+      "kind": "parent_Swin_B",
+      "seed": 47,
+      "full427_max_probability_error": 0.0
+    },
+    {
+      "kind": "fixed_B0_A",
+      "seed": 45,
+      "full427_max_probability_error": 0.0
+    },
+    {
+      "kind": "fixed_B0_A",
+      "seed": 46,
+      "full427_max_probability_error": 0.0
+    },
+    {
+      "kind": "fixed_B0_A",
+      "seed": 47,
+      "full427_max_probability_error": 0.0
+    }
+  ],
+  "test_denied": true,
+  "objective": "original CE only",
+  "B_cache_original_images_not256_upsampling": true,
+  "cache_B_train2077_val427_test0": true,
+  "flops_convention": "2FLOP/MAC includes functional Swin attention,3 rotated stem convolutions and new merge linear; excludes LN/statistics/pointwise/memory, actual throughput separately measured"
+}

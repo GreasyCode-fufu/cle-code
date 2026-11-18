@@ -1,0 +1,75 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "bias": false,
+      "numpy_oracle": true,
+      "C4_mean_std_spatial_equivariance": true,
+      "zero_projection_exact": true,
+      "random_control_breaks_geometric_equivariance": true,
+      "flat_patch_std_gradient_finite": true
+    },
+    {
+      "bias": true,
+      "numpy_oracle": true,
+      "C4_mean_std_spatial_equivariance": true,
+      "zero_projection_exact": true,
+      "random_control_breaks_geometric_equivariance": true,
+      "flat_patch_std_gradient_finite": true
+    }
+  ],
+  "finite_difference_gradcheck": true,
+  "CPU_RNG_preserved": true,
+  "misaligned_grid_rejected": true,
+  "shared_rotated_filter_gradient": true,
+  "integration": [
+    {
+      "kind": "plain",
+      "parameters": 27521661,
+      "new_parameters": 0,
+      "counted_flops224": 8979601920,
+      "zero_init_logits_exact": true,
+      "operator_path": null
+    },
+    {
+      "kind": "moments",
+      "parameters": 27540189,
+      "new_parameters": 18528,
+      "counted_flops224": 9181911552,
+      "zero_init_logits_exact": true,
+      "operator_path": "0.0.0"
+    },
+    {
+      "kind": "mean_only",
+      "parameters": 27540189,
+      "new_parameters": 18528,
+      "counted_flops224": 9181911552,
+      "zero_init_logits_exact": true,
+      "operator_path": "0.0.0"
+    },
+    {
+      "kind": "random_moments",
+      "parameters": 27540189,
+      "new_parameters": 18528,
+      "counted_flops224": 9181911552,
+      "zero_init_logits_exact": true,
+      "operator_path": "0.0.0"
+    },
+    {
+      "kind": "group_mean",
+      "parameters": 27521661,
+      "new_parameters": 0,
+      "counted_flops224": 9066306048,
+      "zero_init_logits_exact": false,
+      "operator_path": "0.0.0"
+    }
+  ],
+  "scope": "CPU synthetic/operator and pretrained224 integration only; no CLE model training or performance evidence.",
+  "hypothesis": "Cheap pretrained-filter orientation moments may recover some orientation-ensemble robustness; unproven efficacy/novelty.",
+  "theorem_scope": "Only the mean/std auxiliary branch on aligned square stride4 grids is C4 spatial-equivariant; residual whole module and entire Swin are not claimed equivariant.",
+  "source_sha256": {
+    "c4_moment_stem.py": "8cd90f0659a7a852fa16c7a848bca0c416f24913c3548ee6e6141792cf429fdd",
+    "check_c4_moment_stem.py": "b8ac45ac3c7aabd064a1aea9198b4a1e6f9d67cbd6741eee70cdf8cd9b86e2f1",
+    "C4_MOMENT_PROTOTYPE_PROTOCOL_ZH.md": "26ede96fa28b8bdb4c483e87031824e979ba34a0dac2adc463b562392f6b6992"
+  }
+}

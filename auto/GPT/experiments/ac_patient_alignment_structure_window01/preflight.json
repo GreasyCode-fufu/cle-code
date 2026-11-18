@@ -1,0 +1,184 @@
+{
+  "passed": true,
+  "budgets": [
+    {
+      "arm": "plain",
+      "parameters": 27822435,
+      "training_only_projection_parameters": 0,
+      "counted_flops": 8909531136,
+      "peak_gpu_mib": 2309.005859375,
+      "finite_two_updates": true
+    },
+    {
+      "arm": "mom_cross",
+      "parameters": 27947459,
+      "training_only_projection_parameters": 106496,
+      "counted_flops": 9111840768,
+      "peak_gpu_mib": 2542.7177734375,
+      "finite_two_updates": true
+    },
+    {
+      "arm": "cross_only",
+      "parameters": 27928931,
+      "training_only_projection_parameters": 106496,
+      "counted_flops": 8909531136,
+      "peak_gpu_mib": 2310.255859375,
+      "finite_two_updates": true
+    },
+    {
+      "arm": "mom_supcon",
+      "parameters": 27947459,
+      "training_only_projection_parameters": 106496,
+      "counted_flops": 9111840768,
+      "peak_gpu_mib": 2542.7177734375,
+      "finite_two_updates": true
+    },
+    {
+      "arm": "mom_within",
+      "parameters": 27947459,
+      "training_only_projection_parameters": 106496,
+      "counted_flops": 9111840768,
+      "peak_gpu_mib": 2542.7177734375,
+      "finite_two_updates": true
+    }
+  ],
+  "objective_diagnostics": [
+    {
+      "arm": "mom_cross",
+      "gradients": [
+        {
+          "step": 0,
+          "loss": 1.2173478603363037,
+          "projection_gradient_norm": 0.4811192452907562,
+          "ce_loss": 1.034576416015625,
+          "contrastive_loss": 3.655428409576416,
+          "valid_anchor_fraction": 1.0,
+          "mean_positive_pairs": 11.0625
+        },
+        {
+          "step": 1,
+          "loss": 1.141784906387329,
+          "projection_gradient_norm": 0.3918032944202423,
+          "ce_loss": 0.9637451171875,
+          "contrastive_loss": 3.5607967376708984,
+          "valid_anchor_fraction": 1.0,
+          "mean_positive_pairs": 11.0625
+        }
+      ],
+      "actual_train_images": 32,
+      "test_images": 0
+    },
+    {
+      "arm": "cross_only",
+      "gradients": [
+        {
+          "step": 0,
+          "loss": 1.2173478603363037,
+          "projection_gradient_norm": 0.4811192452907562,
+          "ce_loss": 1.034576416015625,
+          "contrastive_loss": 3.655428409576416,
+          "valid_anchor_fraction": 1.0,
+          "mean_positive_pairs": 11.0625
+        },
+        {
+          "step": 1,
+          "loss": 1.1436269283294678,
+          "projection_gradient_norm": 0.3933783173561096,
+          "ce_loss": 0.96551513671875,
+          "contrastive_loss": 3.5622363090515137,
+          "valid_anchor_fraction": 1.0,
+          "mean_positive_pairs": 11.0625
+        }
+      ],
+      "actual_train_images": 32,
+      "test_images": 0
+    },
+    {
+      "arm": "mom_supcon",
+      "gradients": [
+        {
+          "step": 0,
+          "loss": 1.217549204826355,
+          "projection_gradient_norm": 0.4799157381057739,
+          "ce_loss": 1.034576416015625,
+          "contrastive_loss": 3.659454822540283,
+          "valid_anchor_fraction": 1.0,
+          "mean_positive_pairs": 11.1875
+        },
+        {
+          "step": 1,
+          "loss": 1.1418700218200684,
+          "projection_gradient_norm": 0.38973408937454224,
+          "ce_loss": 0.9636688232421875,
+          "contrastive_loss": 3.564023494720459,
+          "valid_anchor_fraction": 1.0,
+          "mean_positive_pairs": 11.1875
+        }
+      ],
+      "actual_train_images": 32,
+      "test_images": 0
+    },
+    {
+      "arm": "mom_within",
+      "gradients": [
+        {
+          "step": 0,
+          "loss": 1.047838568687439,
+          "projection_gradient_norm": 0.17057715356349945,
+          "ce_loss": 1.034576416015625,
+          "contrastive_loss": 0.2652431130409241,
+          "valid_anchor_fraction": 0.125,
+          "mean_positive_pairs": 0.125
+        },
+        {
+          "step": 1,
+          "loss": 0.9741359353065491,
+          "projection_gradient_norm": 0.1476958990097046,
+          "ce_loss": 0.96392822265625,
+          "contrastive_loss": 0.20415450632572174,
+          "valid_anchor_fraction": 0.125,
+          "mean_positive_pairs": 0.125
+        }
+      ],
+      "actual_train_images": 32,
+      "test_images": 0
+    }
+  ],
+  "reproduced_baselines": [
+    {
+      "kind": "plain",
+      "seed": 45,
+      "full427_max_probability_error": 0.0
+    },
+    {
+      "kind": "plain",
+      "seed": 46,
+      "full427_max_probability_error": 0.0
+    },
+    {
+      "kind": "plain",
+      "seed": 47,
+      "full427_max_probability_error": 0.0
+    },
+    {
+      "kind": "moments",
+      "seed": 45,
+      "full427_max_probability_error": 0.0
+    },
+    {
+      "kind": "moments",
+      "seed": 46,
+      "full427_max_probability_error": 0.0
+    },
+    {
+      "kind": "moments",
+      "seed": 47,
+      "full427_max_probability_error": 0.0
+    }
+  ],
+  "test_denied": true,
+  "auxiliary_weight": 0.05,
+  "temperature": 0.1,
+  "objective": "unweighted CE plus singleview contrastive; no change to2077 once-per-epoch sampling",
+  "flops_convention": "inference 2FLOP/MAC including functional C4, excludes normalization/pointwise/memory; training adds106496 projection weights and32x32 similarities, actual whole-objective throughput measured"
+}

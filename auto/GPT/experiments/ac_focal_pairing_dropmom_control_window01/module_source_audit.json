@@ -1,0 +1,142 @@
+{
+  "passed": true,
+  "budgets": [
+    {
+      "arm": "plain",
+      "parameters": 27822435,
+      "counted_flops": 8909531136,
+      "initial_logits_exact": true,
+      "RNG_preserved": true,
+      "original_parameter_ids_preserved": true,
+      "finite_backward": true,
+      "finite_two_updates": true,
+      "midstage_in_head_lr_group": false,
+      "gradient_records": [
+        {
+          "step": 0,
+          "CE": 1.1331534385681152,
+          "midstage_gradients": {},
+          "moment_gradient": null
+        },
+        {
+          "step": 1,
+          "CE": 1.0468440055847168,
+          "midstage_gradients": {},
+          "moment_gradient": null
+        }
+      ],
+      "drop_moment_removes_all18528_parameters": false
+    },
+    {
+      "arm": "mom_only",
+      "parameters": 27840963,
+      "counted_flops": 9111840768,
+      "initial_logits_exact": true,
+      "RNG_preserved": true,
+      "original_parameter_ids_preserved": true,
+      "finite_backward": true,
+      "finite_two_updates": true,
+      "midstage_in_head_lr_group": false,
+      "gradient_records": [
+        {
+          "step": 0,
+          "CE": 1.1331534385681152,
+          "midstage_gradients": {},
+          "moment_gradient": 0.6823983192443848
+        },
+        {
+          "step": 1,
+          "CE": 1.0428451299667358,
+          "midstage_gradients": {},
+          "moment_gradient": 0.6364074349403381
+        }
+      ],
+      "drop_moment_removes_all18528_parameters": false
+    },
+    {
+      "arm": "mom_misaligned",
+      "parameters": 27852795,
+      "counted_flops": 9130393344,
+      "initial_logits_exact": true,
+      "RNG_preserved": true,
+      "original_parameter_ids_preserved": true,
+      "finite_backward": true,
+      "finite_two_updates": true,
+      "midstage_in_head_lr_group": true,
+      "gradient_records": [
+        {
+          "step": 0,
+          "CE": 1.1331534385681152,
+          "midstage_gradients": {
+            "down.weight": 0.0,
+            "core.f.weight": 0.0,
+            "core.h.weight": 0.0,
+            "core.layers.0.weight": 0.0,
+            "core.layers.1.weight": 0.0,
+            "up.weight": 0.18778938055038452
+          },
+          "moment_gradient": 0.6823983192443848
+        },
+        {
+          "step": 1,
+          "CE": 1.04215669631958,
+          "midstage_gradients": {
+            "down.weight": 0.016928236931562424,
+            "core.f.weight": 0.006194992922246456,
+            "core.h.weight": 0.000573130149859935,
+            "core.layers.0.weight": 0.0006466891500167549,
+            "core.layers.1.weight": 0.0002925623266492039,
+            "up.weight": 0.18231157958507538
+          },
+          "moment_gradient": 0.6360704898834229
+        }
+      ],
+      "drop_moment_removes_all18528_parameters": false
+    },
+    {
+      "arm": "misaligned_only",
+      "parameters": 27834267,
+      "counted_flops": 8928083712,
+      "initial_logits_exact": true,
+      "RNG_preserved": true,
+      "original_parameter_ids_preserved": true,
+      "finite_backward": true,
+      "finite_two_updates": true,
+      "midstage_in_head_lr_group": true,
+      "gradient_records": [
+        {
+          "step": 0,
+          "CE": 1.1331534385681152,
+          "midstage_gradients": {
+            "down.weight": 0.0,
+            "core.f.weight": 0.0,
+            "core.h.weight": 0.0,
+            "core.layers.0.weight": 0.0,
+            "core.layers.1.weight": 0.0,
+            "up.weight": 0.18778938055038452
+          },
+          "moment_gradient": null
+        },
+        {
+          "step": 1,
+          "CE": 1.0461516380310059,
+          "midstage_gradients": {
+            "down.weight": 0.0170125775039196,
+            "core.f.weight": 0.006224599666893482,
+            "core.h.weight": 0.0005758441984653473,
+            "core.layers.0.weight": 0.0006489400402642787,
+            "core.layers.1.weight": 0.00029140818514861166,
+            "up.weight": 0.18243597447872162
+          },
+          "moment_gradient": null
+        }
+      ],
+      "drop_moment_removes_all18528_parameters": true
+    }
+  ],
+  "original_model_source_sha256": "ba62eaaa8e5689b0082aa297c5cfaa6ceed0e099323fa8e8b30a86e96a3ddce4",
+  "prototype_operator_byte_exact": true,
+  "new_CLE_training": 0,
+  "CLE_images": 0,
+  "test_images": 0
+}

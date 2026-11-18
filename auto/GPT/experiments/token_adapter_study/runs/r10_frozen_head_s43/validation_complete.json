@@ -1,0 +1,88 @@
+{
+  "signature": "1a8446b9912074d098c95b06ffa1da333fcf25247752c121a421ad367ee85474",
+  "job_id": "r10_frozen_head_s43",
+  "variant": "frozen_head",
+  "recipe": "full_unweighted",
+  "seed": 43,
+  "n": 538,
+  "checkpoint_sha256": "1ae44040a2c3a6369a18d1122d5c15d437b549b2d9a5e9a802dd8bbf287eafb4",
+  "completed_at": "2026-10-24T11:23:45.962910+08:00",
+  "parameters": 21631107,
+  "trainable_parameters": 2307,
+  "budget": {
+    "variant": "frozen_head",
+    "parameters": 21631107,
+    "trainable_parameters": 2307,
+    "counted_flops_224": 12247128576,
+    "amp_batch32_peak_bytes": 224147968,
+    "nonzero_gradient_counts_first_two_steps": [
+      2,
+      2
+    ]
+  },
+  "diagnostics": {
+    "descriptor_relative_change_mean": 0.0,
+    "descriptor_relative_change_quantiles": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "off_prediction_disagreement": 0.0,
+    "off_same_checkpoint_metrics": {
+      "macro_f1": 0.8675452124356818,
+      "accuracy": 0.8717472118959108,
+      "class_f1": [
+        0.8699360341151386,
+        0.7605633802816901,
+        0.9721362229102167
+      ],
+      "confusion_matrix": [
+        [
+          204,
+          20,
+          1
+        ],
+        [
+          40,
+          108,
+          8
+        ],
+        [
+          0,
+          0,
+          157
+        ]
+      ],
+      "auroc": 0.9601546540696363
+    },
+    "probability_mean_absolute_change": 0.0,
+    "note": "Same-checkpoint diagnostic, not retrained ablation, ROI truth or a noise diagnosis."
+  },
+  "macro_f1": 0.8675452124356818,
+  "accuracy": 0.8717472118959108,
+  "class_f1": [
+    0.8699360341151386,
+    0.7605633802816901,
+    0.9721362229102167
+  ],
+  "confusion_matrix": [
+    [
+      204,
+      20,
+      1
+    ],
+    [
+      40,
+      108,
+      8
+    ],
+    [
+      0,
+      0,
+      157
+    ]
+  ],
+  "auroc": 0.9601546540696363
+}

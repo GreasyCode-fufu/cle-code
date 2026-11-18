@@ -1,0 +1,87 @@
+{
+  "passed": true,
+  "timestamp": "2026-10-24T20:37:20.645320+08:00",
+  "budgets": [
+    {
+      "arm": "plain",
+      "parameters": 27521661,
+      "counted_flops": 28597871616,
+      "peak_gpu_mib": 7204.048828125,
+      "inference_peak_gpu_mib": 1275.07421875,
+      "finite_two_real_updates": true,
+      "active_gate_gradients": 0,
+      "gate_parameters": 0
+    },
+    {
+      "arm": "fov_residual",
+      "parameters": 27521675,
+      "counted_flops": 39869363712,
+      "peak_gpu_mib": 10422.681640625,
+      "inference_peak_gpu_mib": 1538.55615234375,
+      "finite_two_real_updates": true,
+      "active_gate_gradients": 14,
+      "gate_parameters": 14
+    },
+    {
+      "arm": "field_pool",
+      "parameters": 27521661,
+      "counted_flops": 28597871616,
+      "peak_gpu_mib": 7207.84033203125,
+      "inference_peak_gpu_mib": 1284.26171875,
+      "finite_two_real_updates": true,
+      "active_gate_gradients": 0,
+      "gate_parameters": 0
+    },
+    {
+      "arm": "reference",
+      "parameters": 27521661,
+      "counted_flops": 28598166528,
+      "peak_gpu_mib": 7248.04248046875,
+      "inference_peak_gpu_mib": 1538.54931640625,
+      "finite_two_real_updates": true,
+      "active_gate_gradients": 0,
+      "gate_parameters": 0
+    },
+    {
+      "arm": "no_field",
+      "parameters": 27521675,
+      "counted_flops": 39869363712,
+      "peak_gpu_mib": 10440.955078125,
+      "inference_peak_gpu_mib": 1556.55615234375,
+      "finite_two_real_updates": true,
+      "active_gate_gradients": 10,
+      "gate_parameters": 14
+    },
+    {
+      "arm": "no_local_norm",
+      "parameters": 27521675,
+      "counted_flops": 39869363712,
+      "peak_gpu_mib": 10423.99462890625,
+      "inference_peak_gpu_mib": 1706.205078125,
+      "finite_two_real_updates": true,
+      "active_gate_gradients": 14,
+      "gate_parameters": 14
+    },
+    {
+      "arm": "no_pool",
+      "parameters": 27521674,
+      "counted_flops": 39869363712,
+      "peak_gpu_mib": 10422.53271484375,
+      "inference_peak_gpu_mib": 1538.5556640625,
+      "finite_two_real_updates": true,
+      "active_gate_gradients": 13,
+      "gate_parameters": 13
+    }
+  ],
+  "checks": [
+    "same original pretrained/head states",
+    "batch32 CUDA AMP two finite updates",
+    "nonzero gates and encoder gradients",
+    "exact zero gate logits",
+    "full427 matched W0 checkpoint probabilities for all3 seeds",
+    "optimizer exact coverage/gate lr",
+    "fixed train/val source and RNG audit reuse",
+    "test rejection"
+  ],
+  "flops_excludes": "normalization/activation/softmax/pooling/elementwise and data movement; explicit functional convolution/attention included"
+}

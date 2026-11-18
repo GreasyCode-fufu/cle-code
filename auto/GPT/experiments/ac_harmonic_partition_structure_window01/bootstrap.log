@@ -1,0 +1,421 @@
+[main b1d0f2d] research: freeze C4 power shape plus true drop-Mom duplicate-information noncyclic and mature-amplitude controls
+ 38 files changed, 84911 insertions(+)
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/.gitignore
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/MODULE_DIFFERENCES_ZH.md
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/MODULE_PROTOCOL_ZH.md
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/audit_module_structure.py
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/baseline_reference.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/baseline_selection.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/bootstrap.log
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/bootstrap_identity.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/bootstrap_module_structure.py
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/build_harmonic_study.py
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/check_module_sources.py
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/compare_power_controls.py
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/comparison_preregistration.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/config.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/construction_receipt.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/continuous_runtime_sampler.py
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/finish_direct_controls.py
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/jobs.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/library_cle.py
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/manifest.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/postprocessing_revision_v2.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/predict_module_model.py
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/preflight_impl.py
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/run_module_structure.py
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/run_power_manager.py
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/shared_snapshot_manifest.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/upstream/LICENSE_HNET
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/upstream/official_hnet_README.md
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/upstream/official_hnet_lite.py
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/upstream/official_hnet_ops.py
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/upstream/prototype_protocol.md
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/upstream/prototype_runner_repair_receipt.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/upstream/provenance.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/working_reference.json
+ create mode 100644 models/optimize/ac_harmonic_partition_window01/__init__.py
+ create mode 100644 models/optimize/ac_harmonic_partition_window01/c4_moment_stem.py
+ create mode 100644 models/optimize/ac_harmonic_partition_window01/harmonic_partition.py
+ create mode 100644 models/optimize/ac_harmonic_partition_window01/library_cle.py
+[main 10d0038] test: verify all5 power-shape controls including true moment removal public pairing gradients and compute budgets
+ 2 files changed, 120 insertions(+)
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/module_source_audit.json
+[main 9538abe] test: verify power descriptors CUDA AMP gradients pairing and all6 frozen full427 probability reconstructions
+ 2 files changed, 172 insertions(+)
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/preflight.json
+[main 5d0068f] perf: measure single and concurrent throughput for distinct library and orientation kernels
+ 134 files changed, 1032 insertions(+)
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/document_power_start.py
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/document_start.log
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_duplicate/bench_1_0.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_duplicate/bench_1_0.log
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_duplicate/bench_2_0.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_duplicate/bench_2_0.log
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_duplicate/bench_2_1.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_duplicate/bench_2_1.log
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_duplicate/bench_4_0.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_duplicate/bench_4_0.log
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_duplicate/bench_4_1.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_duplicate/bench_4_1.log
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_duplicate/bench_4_2.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_duplicate/bench_4_2.log
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_duplicate/bench_4_3.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_duplicate/bench_4_3.log
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_duplicate/gate_1.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_duplicate/gate_2.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_duplicate/gate_4.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_duplicate/measurements.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_duplicate/ready_1_0.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_duplicate/ready_2_0.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_duplicate/ready_2_1.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_duplicate/ready_4_0.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_duplicate/ready_4_1.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_duplicate/ready_4_2.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_duplicate/ready_4_3.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_duplicate/resources.csv
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_permuted/bench_1_0.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_permuted/bench_1_0.log
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_permuted/bench_2_0.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_permuted/bench_2_0.log
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_permuted/bench_2_1.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_permuted/bench_2_1.log
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_permuted/bench_4_0.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_permuted/bench_4_0.log
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_permuted/bench_4_1.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_permuted/bench_4_1.log
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_permuted/bench_4_2.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_permuted/bench_4_2.log
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_permuted/bench_4_3.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_permuted/bench_4_3.log
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_permuted/gate_1.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_permuted/gate_2.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_permuted/gate_4.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_permuted/measurements.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_permuted/ready_1_0.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_permuted/ready_2_0.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_permuted/ready_2_1.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_permuted/ready_4_0.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_permuted/ready_4_1.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_permuted/ready_4_2.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_permuted/ready_4_3.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_permuted/resources.csv
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_rawh2/bench_1_0.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_rawh2/bench_1_0.log
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_rawh2/bench_2_0.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_rawh2/bench_2_0.log
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_rawh2/bench_2_1.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_rawh2/bench_2_1.log
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_rawh2/bench_4_0.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_rawh2/bench_4_0.log
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_rawh2/bench_4_1.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_rawh2/bench_4_1.log
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_rawh2/bench_4_2.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_rawh2/bench_4_2.log
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_rawh2/bench_4_3.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_rawh2/bench_4_3.log
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_rawh2/gate_1.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_rawh2/gate_2.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_rawh2/gate_4.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_rawh2/measurements.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_rawh2/ready_1_0.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_rawh2/ready_2_0.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_rawh2/ready_2_1.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_rawh2/ready_4_0.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_rawh2/ready_4_1.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_rawh2/ready_4_2.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_rawh2/ready_4_3.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_rawh2/resources.csv
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_shape/bench_1_0.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_shape/bench_1_0.log
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_shape/bench_2_0.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_shape/bench_2_0.log
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_shape/bench_2_1.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_shape/bench_2_1.log
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_shape/bench_4_0.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_shape/bench_4_0.log
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_shape/bench_4_1.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_shape/bench_4_1.log
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_shape/bench_4_2.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_shape/bench_4_2.log
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_shape/bench_4_3.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_shape/bench_4_3.log
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_shape/gate_1.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_shape/gate_2.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_shape/gate_4.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_shape/measurements.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_shape/ready_1_0.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_shape/ready_2_0.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_shape/ready_2_1.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_shape/ready_4_0.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_shape/ready_4_1.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_shape/ready_4_2.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_shape/ready_4_3.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/mom_shape/resources.csv
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/selected.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/shape_only/bench_1_0.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/shape_only/bench_1_0.log
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/shape_only/bench_2_0.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/shape_only/bench_2_0.log
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/shape_only/bench_2_1.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/shape_only/bench_2_1.log
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/shape_only/bench_4_0.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/shape_only/bench_4_0.log
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/shape_only/bench_4_1.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/shape_only/bench_4_1.log
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/shape_only/bench_4_2.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/shape_only/bench_4_2.log
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/shape_only/bench_4_3.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/shape_only/bench_4_3.log
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/shape_only/gate_1.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/shape_only/gate_2.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/shape_only/gate_4.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/shape_only/measurements.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/shape_only/ready_1_0.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/shape_only/ready_2_0.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/shape_only/ready_2_1.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/shape_only/ready_4_0.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/shape_only/ready_4_1.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/shape_only/ready_4_2.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/shape_only/ready_4_3.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/profile/shape_only/resources.csv
+launch power_mom_shape_s45 995967
+[main 4bbeba6] results: preserve completed module training power_mom_shape_s45
+ 13 files changed, 1014 insertions(+), 7 deletions(-)
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/check_prediction_cli.py
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/runs/power_mom_shape_s45/complete.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/runs/power_mom_shape_s45/validation_complete.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/runs/power_mom_shape_s45/validation_predictions.csv
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/usage_smoke.log
+launch power_mom_shape_s46 997639
+[main 4f89d34] results: preserve completed module training power_mom_shape_s46
+ 12 files changed, 981 insertions(+), 7 deletions(-)
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/USAGE_VERIFICATION_ZH.md
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/runs/power_mom_shape_s46/complete.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/runs/power_mom_shape_s46/validation_complete.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/runs/power_mom_shape_s46/validation_predictions.csv
+launch power_mom_shape_s47 999156
+[main fbb039b] results: preserve completed module training power_mom_shape_s47
+ 12 files changed, 1051 insertions(+), 11 deletions(-)
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/logs/power_mom_shape_s47.log
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/runs/power_mom_shape_s47/complete.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/runs/power_mom_shape_s47/run_meta.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/runs/power_mom_shape_s47/train_log.csv
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/runs/power_mom_shape_s47/validation_complete.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/runs/power_mom_shape_s47/validation_predictions.csv
+[main 5936af6] research: freeze all3 val-selected mom_shape checkpoints before adaptive test feedback
+ 2 files changed, 83 insertions(+)
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/evaluations/mom_shape/registration.json
+[main 426d469] results: retain independently reconstructed single/C4 test feedback for mom_shape all3 seeds
+ 16 files changed, 4028 insertions(+)
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/evaluations/mom_shape/group_audit.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/evaluations/mom_shape/s45/independent_audit.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/evaluations/mom_shape/s45/test_c4_predictions.csv
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/evaluations/mom_shape/s45/test_single_predictions.csv
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/evaluations/mom_shape/s45/test_views.npy
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/evaluations/mom_shape/s46/independent_audit.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/evaluations/mom_shape/s46/test_c4_predictions.csv
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/evaluations/mom_shape/s46/test_single_predictions.csv
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/evaluations/mom_shape/s46/test_views.npy
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/evaluations/mom_shape/s47/independent_audit.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/evaluations/mom_shape/s47/test_c4_predictions.csv
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/evaluations/mom_shape/s47/test_single_predictions.csv
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/evaluations/mom_shape/s47/test_views.npy
+[main 26ccb2a] analysis: record every paired module mechanism, budget control and negative result
+ 7 files changed, 1060 insertions(+)
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/MECHANISM_REPORT_ZH.md
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/MODULE_ROUND_REPORT_ZH.md
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/mechanism_comparisons.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/round_results.json
+launch power_shape_only_s45 1000586
+[main 686e9f0] results: preserve completed module training power_shape_only_s45
+ 12 files changed, 1003 insertions(+), 13 deletions(-)
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/logs/power_shape_only_s45.log
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/runs/power_shape_only_s45/complete.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/runs/power_shape_only_s45/run_meta.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/runs/power_shape_only_s45/train_log.csv
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/runs/power_shape_only_s45/validation_complete.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/runs/power_shape_only_s45/validation_predictions.csv
+launch power_shape_only_s46 1001921
+[main 17de1d5] results: preserve completed module training power_shape_only_s46
+ 12 files changed, 1003 insertions(+), 11 deletions(-)
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/logs/power_shape_only_s46.log
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/runs/power_shape_only_s46/complete.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/runs/power_shape_only_s46/run_meta.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/runs/power_shape_only_s46/train_log.csv
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/runs/power_shape_only_s46/validation_complete.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/runs/power_shape_only_s46/validation_predictions.csv
+launch power_shape_only_s47 1002895
+[main a531630] results: preserve completed module training power_shape_only_s47
+ 12 files changed, 1004 insertions(+), 10 deletions(-)
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/logs/power_shape_only_s47.log
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/runs/power_shape_only_s47/complete.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/runs/power_shape_only_s47/run_meta.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/runs/power_shape_only_s47/train_log.csv
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/runs/power_shape_only_s47/validation_complete.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/runs/power_shape_only_s47/validation_predictions.csv
+[main 9c62ad4] research: freeze all3 val-selected shape_only checkpoints before adaptive test feedback
+ 2 files changed, 83 insertions(+)
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/evaluations/shape_only/registration.json
+[main 1eb917d] results: retain independently reconstructed single/C4 test feedback for shape_only all3 seeds
+ 16 files changed, 4026 insertions(+)
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/evaluations/shape_only/group_audit.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/evaluations/shape_only/s45/independent_audit.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/evaluations/shape_only/s45/test_c4_predictions.csv
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/evaluations/shape_only/s45/test_single_predictions.csv
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/evaluations/shape_only/s45/test_views.npy
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/evaluations/shape_only/s46/independent_audit.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/evaluations/shape_only/s46/test_c4_predictions.csv
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/evaluations/shape_only/s46/test_single_predictions.csv
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/evaluations/shape_only/s46/test_views.npy
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/evaluations/shape_only/s47/independent_audit.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/evaluations/shape_only/s47/test_c4_predictions.csv
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/evaluations/shape_only/s47/test_single_predictions.csv
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/evaluations/shape_only/s47/test_views.npy
+[main d7c76d7] analysis: record every paired module mechanism, budget control and negative result
+ 7 files changed, 542 insertions(+), 1 deletion(-)
+launch power_mom_permuted_s45 1004190
+[main 6142a7a] results: preserve completed module training power_mom_permuted_s45
+ 12 files changed, 1048 insertions(+), 12 deletions(-)
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/logs/power_mom_permuted_s45.log
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/runs/power_mom_permuted_s45/complete.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/runs/power_mom_permuted_s45/run_meta.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/runs/power_mom_permuted_s45/train_log.csv
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/runs/power_mom_permuted_s45/validation_complete.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/runs/power_mom_permuted_s45/validation_predictions.csv
+launch power_mom_permuted_s46 1005416
+[main 49dc5d1] results: preserve completed module training power_mom_permuted_s46
+ 12 files changed, 1055 insertions(+), 13 deletions(-)
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/logs/power_mom_permuted_s46.log
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/runs/power_mom_permuted_s46/complete.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/runs/power_mom_permuted_s46/run_meta.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/runs/power_mom_permuted_s46/train_log.csv
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/runs/power_mom_permuted_s46/validation_complete.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/runs/power_mom_permuted_s46/validation_predictions.csv
+launch power_mom_permuted_s47 1006609
+[main 4c1b19a] results: preserve completed module training power_mom_permuted_s47
+ 12 files changed, 1057 insertions(+), 13 deletions(-)
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/logs/power_mom_permuted_s47.log
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/runs/power_mom_permuted_s47/complete.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/runs/power_mom_permuted_s47/run_meta.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/runs/power_mom_permuted_s47/train_log.csv
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/runs/power_mom_permuted_s47/validation_complete.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/runs/power_mom_permuted_s47/validation_predictions.csv
+[main 55ab182] research: freeze all3 val-selected mom_permuted checkpoints before adaptive test feedback
+ 2 files changed, 83 insertions(+)
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/evaluations/mom_permuted/registration.json
+[main b6a9f18] results: retain independently reconstructed single/C4 test feedback for mom_permuted all3 seeds
+ 16 files changed, 4026 insertions(+)
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/evaluations/mom_permuted/group_audit.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/evaluations/mom_permuted/s45/independent_audit.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/evaluations/mom_permuted/s45/test_c4_predictions.csv
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/evaluations/mom_permuted/s45/test_single_predictions.csv
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/evaluations/mom_permuted/s45/test_views.npy
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/evaluations/mom_permuted/s46/independent_audit.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/evaluations/mom_permuted/s46/test_c4_predictions.csv
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/evaluations/mom_permuted/s46/test_single_predictions.csv
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/evaluations/mom_permuted/s46/test_views.npy
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/evaluations/mom_permuted/s47/independent_audit.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/evaluations/mom_permuted/s47/test_c4_predictions.csv
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/evaluations/mom_permuted/s47/test_single_predictions.csv
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/evaluations/mom_permuted/s47/test_views.npy
+[main c0d2bce] analysis: record every paired module mechanism, budget control and negative result
+ 7 files changed, 544 insertions(+), 1 deletion(-)
+launch power_mom_duplicate_s45 1008008
+[main 161e482] results: preserve completed module training power_mom_duplicate_s45
+ 12 files changed, 1018 insertions(+), 12 deletions(-)
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/logs/power_mom_duplicate_s45.log
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/runs/power_mom_duplicate_s45/complete.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/runs/power_mom_duplicate_s45/run_meta.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/runs/power_mom_duplicate_s45/train_log.csv
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/runs/power_mom_duplicate_s45/validation_complete.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/runs/power_mom_duplicate_s45/validation_predictions.csv
+launch power_mom_duplicate_s46 1009378
+[main 82a6e8f] results: preserve completed module training power_mom_duplicate_s46
+ 12 files changed, 1024 insertions(+), 10 deletions(-)
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/logs/power_mom_duplicate_s46.log
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/runs/power_mom_duplicate_s46/complete.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/runs/power_mom_duplicate_s46/run_meta.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/runs/power_mom_duplicate_s46/train_log.csv
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/runs/power_mom_duplicate_s46/validation_complete.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/runs/power_mom_duplicate_s46/validation_predictions.csv
+launch power_mom_duplicate_s47 1010416
+[main 842645f] results: preserve completed module training power_mom_duplicate_s47
+ 12 files changed, 1024 insertions(+), 12 deletions(-)
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/logs/power_mom_duplicate_s47.log
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/runs/power_mom_duplicate_s47/complete.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/runs/power_mom_duplicate_s47/run_meta.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/runs/power_mom_duplicate_s47/train_log.csv
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/runs/power_mom_duplicate_s47/validation_complete.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/runs/power_mom_duplicate_s47/validation_predictions.csv
+[main 0fa2acf] research: freeze all3 val-selected mom_duplicate checkpoints before adaptive test feedback
+ 2 files changed, 83 insertions(+)
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/evaluations/mom_duplicate/registration.json
+[main fae69b2] results: retain independently reconstructed single/C4 test feedback for mom_duplicate all3 seeds
+ 16 files changed, 4026 insertions(+)
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/evaluations/mom_duplicate/group_audit.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/evaluations/mom_duplicate/s45/independent_audit.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/evaluations/mom_duplicate/s45/test_c4_predictions.csv
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/evaluations/mom_duplicate/s45/test_single_predictions.csv
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/evaluations/mom_duplicate/s45/test_views.npy
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/evaluations/mom_duplicate/s46/independent_audit.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/evaluations/mom_duplicate/s46/test_c4_predictions.csv
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/evaluations/mom_duplicate/s46/test_single_predictions.csv
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/evaluations/mom_duplicate/s46/test_views.npy
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/evaluations/mom_duplicate/s47/independent_audit.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/evaluations/mom_duplicate/s47/test_c4_predictions.csv
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/evaluations/mom_duplicate/s47/test_single_predictions.csv
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/evaluations/mom_duplicate/s47/test_views.npy
+[main 5964aa1] analysis: record every paired module mechanism, budget control and negative result
+ 7 files changed, 548 insertions(+), 1 deletion(-)
+launch power_mom_rawh2_s45 1012029
+[main d59caf2] results: preserve completed module training power_mom_rawh2_s45
+ 12 files changed, 1012 insertions(+), 12 deletions(-)
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/logs/power_mom_rawh2_s45.log
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/runs/power_mom_rawh2_s45/complete.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/runs/power_mom_rawh2_s45/run_meta.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/runs/power_mom_rawh2_s45/train_log.csv
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/runs/power_mom_rawh2_s45/validation_complete.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/runs/power_mom_rawh2_s45/validation_predictions.csv
+launch power_mom_rawh2_s46 1013634
+[main dcd3e1d] results: preserve completed module training power_mom_rawh2_s46
+ 12 files changed, 1014 insertions(+), 10 deletions(-)
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/logs/power_mom_rawh2_s46.log
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/runs/power_mom_rawh2_s46/complete.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/runs/power_mom_rawh2_s46/run_meta.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/runs/power_mom_rawh2_s46/train_log.csv
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/runs/power_mom_rawh2_s46/validation_complete.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/runs/power_mom_rawh2_s46/validation_predictions.csv
+launch power_mom_rawh2_s47 1014724
+[main fa4a407] results: preserve completed module training power_mom_rawh2_s47
+ 12 files changed, 1014 insertions(+), 10 deletions(-)
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/logs/power_mom_rawh2_s47.log
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/runs/power_mom_rawh2_s47/complete.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/runs/power_mom_rawh2_s47/run_meta.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/runs/power_mom_rawh2_s47/train_log.csv
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/runs/power_mom_rawh2_s47/validation_complete.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/runs/power_mom_rawh2_s47/validation_predictions.csv
+[main f3293a5] research: freeze all3 val-selected mom_rawh2 checkpoints before adaptive test feedback
+ 4 files changed, 85 insertions(+)
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/evaluations/mom_rawh2/registration.json
+[main f9a6147] results: retain independently reconstructed single/C4 test feedback for mom_rawh2 all3 seeds
+ 16 files changed, 4026 insertions(+)
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/evaluations/mom_rawh2/group_audit.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/evaluations/mom_rawh2/s45/independent_audit.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/evaluations/mom_rawh2/s45/test_c4_predictions.csv
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/evaluations/mom_rawh2/s45/test_single_predictions.csv
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/evaluations/mom_rawh2/s45/test_views.npy
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/evaluations/mom_rawh2/s46/independent_audit.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/evaluations/mom_rawh2/s46/test_c4_predictions.csv
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/evaluations/mom_rawh2/s46/test_single_predictions.csv
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/evaluations/mom_rawh2/s46/test_views.npy
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/evaluations/mom_rawh2/s47/independent_audit.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/evaluations/mom_rawh2/s47/test_c4_predictions.csv
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/evaluations/mom_rawh2/s47/test_single_predictions.csv
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/evaluations/mom_rawh2/s47/test_views.npy
+[main af6c438] analysis: record every paired module mechanism, budget control and negative result
+ 7 files changed, 548 insertions(+), 1 deletion(-)
+[main 14900ef] results: audit complete faithful-module and orientation round; retain every seed and negative result
+ 9 files changed, 39 insertions(+), 23 deletions(-)
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/independent_audit.json
+ create mode 100644 experiments/ac_harmonic_partition_structure_window01/runtime_sampler_complete_v2.json
