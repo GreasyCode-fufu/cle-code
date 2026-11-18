@@ -1,0 +1,46 @@
+{
+  "model": "swin_tiny_vanilla_patch4_window7_224",
+  "num_classes": 3,
+  "img_size": 224,
+  "seed": 44,
+  "norm_mean": [
+    0.485,
+    0.456,
+    0.406
+  ],
+  "norm_std": [
+    0.229,
+    0.224,
+    0.225
+  ],
+  "norm_source": "imagenet",
+  "selection_metric": "val_macro_f1",
+  "loss": "unweighted_cross_entropy",
+  "data_path_train": "/data/cle/auto/ZCode/Classification/datasets/covid_v1/train",
+  "data_path_val": "/data/cle/auto/ZCode/Classification/datasets/covid_v1/val",
+  "weights": "/data/cle/auto/ZCode/Classification/weights_covid_bk/swin_tiny_vanilla_patch4_window7_224_seed44/swin_tiny_vanilla_patch4_window7_224/model_best.pth",
+  "created_at": "2026-10-29 02:37:05",
+  "pretrained_load": {
+    "checkpoint": "/data/cle/sunfuxiang/classifyML/pth/swin_tiny_patch4_window7_224.pth",
+    "checkpoint_sha256": "9f71c168d837d1b99dd1dc29e14990a7a9e8bdc5f673d46b04fe36fe15590ad3",
+    "removed_classifier_keys": [
+      "head.bias",
+      "head.weight"
+    ],
+    "ignored_nonparameter_buffer_keys": [
+      "layers.0.blocks.1.attn_mask",
+      "layers.1.blocks.1.attn_mask",
+      "layers.2.blocks.1.attn_mask",
+      "layers.2.blocks.3.attn_mask",
+      "layers.2.blocks.5.attn_mask"
+    ],
+    "missing_keys": [
+      "head.bias",
+      "head.weight"
+    ],
+    "unexpected_keys": [],
+    "allowed_missing_segments": [],
+    "checkpoint_transform": null,
+    "all_trainable_backbone_parameters_loaded": true
+  }
+}

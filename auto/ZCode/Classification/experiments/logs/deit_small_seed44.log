@@ -1,0 +1,519 @@
+/home/login/miniconda3/envs/sunfuxiang/lib/python3.12/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+/home/login/miniconda3/envs/sunfuxiang/lib/python3.12/site-packages/timm/models/registry.py:4: FutureWarning: Importing from timm.models.registry is deprecated, please import via timm.models
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.models", FutureWarning)
+/data/cle/auto/ZCode/Classification/models/Deit.py:62: UserWarning: Overwriting deit_tiny_patch16_224 in registry with models.Deit.deit_tiny_patch16_224. This is because the name being registered conflicts with an existing name. Please check if this is not expected.
+  @register_model
+/data/cle/auto/ZCode/Classification/models/Deit.py:77: UserWarning: Overwriting deit_small_patch16_224 in registry with models.Deit.deit_small_patch16_224. This is because the name being registered conflicts with an existing name. Please check if this is not expected.
+  @register_model
+/data/cle/auto/ZCode/Classification/models/Deit.py:92: UserWarning: Overwriting deit_base_patch16_224 in registry with models.Deit.deit_base_patch16_224. This is because the name being registered conflicts with an existing name. Please check if this is not expected.
+  @register_model
+/data/cle/auto/ZCode/Classification/models/Deit.py:107: UserWarning: Overwriting deit_tiny_distilled_patch16_224 in registry with models.Deit.deit_tiny_distilled_patch16_224. This is because the name being registered conflicts with an existing name. Please check if this is not expected.
+  @register_model
+/data/cle/auto/ZCode/Classification/models/Deit.py:122: UserWarning: Overwriting deit_small_distilled_patch16_224 in registry with models.Deit.deit_small_distilled_patch16_224. This is because the name being registered conflicts with an existing name. Please check if this is not expected.
+  @register_model
+/data/cle/auto/ZCode/Classification/models/Deit.py:137: UserWarning: Overwriting deit_base_distilled_patch16_224 in registry with models.Deit.deit_base_distilled_patch16_224. This is because the name being registered conflicts with an existing name. Please check if this is not expected.
+  @register_model
+/data/cle/auto/ZCode/Classification/models/Deit.py:152: UserWarning: Overwriting deit_base_patch16_384 in registry with models.Deit.deit_base_patch16_384. This is because the name being registered conflicts with an existing name. Please check if this is not expected.
+  @register_model
+/data/cle/auto/ZCode/Classification/models/Deit.py:167: UserWarning: Overwriting deit_base_distilled_patch16_384 in registry with models.Deit.deit_base_distilled_patch16_384. This is because the name being registered conflicts with an existing name. Please check if this is not expected.
+  @register_model
+/data/cle/auto/ZCode/Classification/train_cle_fair.py:579: FutureWarning: `torch.cuda.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler('cuda', args...)` instead.
+  scaler = torch.cuda.amp.GradScaler()
+[seed] seed = 44 (set)
+2077 images for training.
+427 images were found in the val dataset.
+427 images for test.
+[norm] ImageNet 归一化(加载了预训练权重) MEAN=[0.485, 0.456, 0.406] STD=[0.229, 0.224, 0.225]
+[weights] strict load passed /data/cle/sunfuxiang/classifyML/pth/deit_small_patch16_224-cd65a155.pth | classifier_missing=2 ignored_buffers=0 unexpected=0
+[train] model=deit_small_patch16_224 num_classes=3 img=224 bs=32 epochs=300 | CE (label_smoothing=0.0) | select=val_macro_f1
+[out]   run_dir=./weights_cle_ac_v1/deit_small_patch16_224_seed44/deit_small_patch16_224
+train epoch 0 loss: 0.305, acc: 0.874:  10… [  , 
+Epoch 0: train_loss=0.305, train_acc=0.874, val_loss=0.117, val_acc=0.946, val_macroF1=0.9348, lr=0.000100, best_macroF1=0.9348 (epoch 0) *
+train epoch 1 loss: 0.121, acc: 0.951:  10… [  , 
+Epoch 1: train_loss=0.121, train_acc=0.951, val_loss=0.189, val_acc=0.913, val_macroF1=0.8719, lr=0.000100, best_macroF1=0.9348 (epoch 0)
+train epoch 2 loss: 0.124, acc: 0.954:  10… [  , 
+Epoch 2: train_loss=0.124, train_acc=0.954, val_loss=0.236, val_acc=0.918, val_macroF1=0.8792, lr=0.000100, best_macroF1=0.9348 (epoch 0)
+train epoch 3 loss: 0.076, acc: 0.971:  10… [  , 
+Epoch 3: train_loss=0.076, train_acc=0.971, val_loss=0.063, val_acc=0.979, val_macroF1=0.9741, lr=0.000100, best_macroF1=0.9741 (epoch 3) *
+train epoch 4 loss: 0.061, acc: 0.975:  10… [  , 
+Epoch 4: train_loss=0.061, train_acc=0.975, val_loss=0.087, val_acc=0.958, val_macroF1=0.9474, lr=0.000100, best_macroF1=0.9741 (epoch 3)
+train epoch 5 loss: 0.066, acc: 0.978:  10… [  , 
+Epoch 5: train_loss=0.066, train_acc=0.978, val_loss=0.057, val_acc=0.977, val_macroF1=0.9699, lr=0.000100, best_macroF1=0.9741 (epoch 3)
+train epoch 6 loss: 0.031, acc: 0.990:  10… [  , 
+Epoch 6: train_loss=0.031, train_acc=0.990, val_loss=0.069, val_acc=0.974, val_macroF1=0.9684, lr=0.000100, best_macroF1=0.9741 (epoch 3)
+train epoch 7 loss: 0.059, acc: 0.978:  10… [  , 
+Epoch 7: train_loss=0.059, train_acc=0.978, val_loss=0.079, val_acc=0.967, val_macroF1=0.9605, lr=0.000100, best_macroF1=0.9741 (epoch 3)
+train epoch 8 loss: 0.051, acc: 0.981:  10… [  , 
+Epoch 8: train_loss=0.051, train_acc=0.981, val_loss=0.103, val_acc=0.965, val_macroF1=0.9547, lr=0.000100, best_macroF1=0.9741 (epoch 3)
+train epoch 9 loss: 0.044, acc: 0.985:  10… [  , 
+Epoch 9: train_loss=0.044, train_acc=0.985, val_loss=0.068, val_acc=0.979, val_macroF1=0.9728, lr=0.000100, best_macroF1=0.9741 (epoch 3)
+train epoch 10 loss: 0.040, acc: 0.986:  10…   , 
+Epoch 10: train_loss=0.040, train_acc=0.986, val_loss=0.140, val_acc=0.953, val_macroF1=0.9451, lr=0.000100, best_macroF1=0.9741 (epoch 3)
+train epoch 11 loss: 0.051, acc: 0.985:  10…   , 
+Epoch 11: train_loss=0.051, train_acc=0.985, val_loss=0.109, val_acc=0.965, val_macroF1=0.9551, lr=0.000100, best_macroF1=0.9741 (epoch 3)
+train epoch 12 loss: 0.032, acc: 0.987:  10…   , 
+Epoch 12: train_loss=0.032, train_acc=0.987, val_loss=0.123, val_acc=0.963, val_macroF1=0.9503, lr=0.000100, best_macroF1=0.9741 (epoch 3)
+train epoch 13 loss: 0.053, acc: 0.980:  10…   , 
+Epoch 13: train_loss=0.053, train_acc=0.980, val_loss=0.209, val_acc=0.934, val_macroF1=0.9204, lr=0.000099, best_macroF1=0.9741 (epoch 3)
+train epoch 14 loss: 0.057, acc: 0.979:  10…   , 
+Epoch 14: train_loss=0.057, train_acc=0.979, val_loss=0.112, val_acc=0.956, val_macroF1=0.9430, lr=0.000099, best_macroF1=0.9741 (epoch 3)
+train epoch 15 loss: 0.034, acc: 0.989:  10…   , 
+Epoch 15: train_loss=0.034, train_acc=0.989, val_loss=0.100, val_acc=0.965, val_macroF1=0.9542, lr=0.000099, best_macroF1=0.9741 (epoch 3)
+train epoch 16 loss: 0.020, acc: 0.995:  10…   , 
+Epoch 16: train_loss=0.020, train_acc=0.995, val_loss=0.069, val_acc=0.974, val_macroF1=0.9686, lr=0.000099, best_macroF1=0.9741 (epoch 3)
+train epoch 17 loss: 0.021, acc: 0.992:  10…   , 
+Epoch 17: train_loss=0.021, train_acc=0.992, val_loss=0.116, val_acc=0.970, val_macroF1=0.9619, lr=0.000099, best_macroF1=0.9741 (epoch 3)
+train epoch 18 loss: 0.030, acc: 0.989:  10…   , 
+Epoch 18: train_loss=0.030, train_acc=0.989, val_loss=0.068, val_acc=0.981, val_macroF1=0.9760, lr=0.000099, best_macroF1=0.9760 (epoch 18) *
+train epoch 19 loss: 0.023, acc: 0.993:  10…   , 
+Epoch 19: train_loss=0.023, train_acc=0.993, val_loss=0.074, val_acc=0.977, val_macroF1=0.9708, lr=0.000099, best_macroF1=0.9760 (epoch 18)
+train epoch 20 loss: 0.013, acc: 0.995:  10…   , 
+Epoch 20: train_loss=0.013, train_acc=0.995, val_loss=0.091, val_acc=0.972, val_macroF1=0.9648, lr=0.000099, best_macroF1=0.9760 (epoch 18)
+train epoch 21 loss: 0.007, acc: 0.998:  10…   , 
+Epoch 21: train_loss=0.007, train_acc=0.998, val_loss=0.114, val_acc=0.963, val_macroF1=0.9531, lr=0.000099, best_macroF1=0.9760 (epoch 18)
+train epoch 22 loss: 0.023, acc: 0.991:  10…   , 
+Epoch 22: train_loss=0.023, train_acc=0.991, val_loss=0.122, val_acc=0.953, val_macroF1=0.9388, lr=0.000099, best_macroF1=0.9760 (epoch 18)
+train epoch 23 loss: 0.049, acc: 0.982:  10…   , 
+Epoch 23: train_loss=0.049, train_acc=0.982, val_loss=0.151, val_acc=0.939, val_macroF1=0.9185, lr=0.000098, best_macroF1=0.9760 (epoch 18)
+train epoch 24 loss: 0.032, acc: 0.990:  10…   , 
+Epoch 24: train_loss=0.032, train_acc=0.990, val_loss=0.105, val_acc=0.960, val_macroF1=0.9486, lr=0.000098, best_macroF1=0.9760 (epoch 18)
+train epoch 25 loss: 0.010, acc: 0.997:  10…   , 
+Epoch 25: train_loss=0.010, train_acc=0.997, val_loss=0.127, val_acc=0.965, val_macroF1=0.9559, lr=0.000098, best_macroF1=0.9760 (epoch 18)
+train epoch 26 loss: 0.027, acc: 0.990:  10…   , 
+Epoch 26: train_loss=0.027, train_acc=0.990, val_loss=0.223, val_acc=0.946, val_macroF1=0.9373, lr=0.000098, best_macroF1=0.9760 (epoch 18)
+train epoch 27 loss: 0.023, acc: 0.992:  10…   , 
+Epoch 27: train_loss=0.023, train_acc=0.992, val_loss=0.115, val_acc=0.965, val_macroF1=0.9572, lr=0.000098, best_macroF1=0.9760 (epoch 18)
+train epoch 28 loss: 0.009, acc: 0.997:  10…   , 
+Epoch 28: train_loss=0.009, train_acc=0.997, val_loss=0.105, val_acc=0.967, val_macroF1=0.9604, lr=0.000098, best_macroF1=0.9760 (epoch 18)
+train epoch 29 loss: 0.023, acc: 0.992:  10…   , 
+Epoch 29: train_loss=0.023, train_acc=0.992, val_loss=0.116, val_acc=0.965, val_macroF1=0.9554, lr=0.000098, best_macroF1=0.9760 (epoch 18)
+train epoch 30 loss: 0.018, acc: 0.995:  10…   , 
+Epoch 30: train_loss=0.018, train_acc=0.995, val_loss=0.114, val_acc=0.963, val_macroF1=0.9536, lr=0.000097, best_macroF1=0.9760 (epoch 18)
+train epoch 31 loss: 0.043, acc: 0.985:  10…   , 
+Epoch 31: train_loss=0.043, train_acc=0.985, val_loss=0.078, val_acc=0.977, val_macroF1=0.9699, lr=0.000097, best_macroF1=0.9760 (epoch 18)
+train epoch 32 loss: 0.018, acc: 0.993:  10…   , 
+Epoch 32: train_loss=0.018, train_acc=0.993, val_loss=0.130, val_acc=0.965, val_macroF1=0.9560, lr=0.000097, best_macroF1=0.9760 (epoch 18)
+train epoch 33 loss: 0.037, acc: 0.987:  10…   , 
+Epoch 33: train_loss=0.037, train_acc=0.987, val_loss=0.094, val_acc=0.972, val_macroF1=0.9647, lr=0.000097, best_macroF1=0.9760 (epoch 18)
+train epoch 34 loss: 0.008, acc: 0.998:  10…   , 
+Epoch 34: train_loss=0.008, train_acc=0.998, val_loss=0.088, val_acc=0.977, val_macroF1=0.9708, lr=0.000097, best_macroF1=0.9760 (epoch 18)
+train epoch 35 loss: 0.007, acc: 0.999:  10…   , 
+Epoch 35: train_loss=0.007, train_acc=0.999, val_loss=0.080, val_acc=0.974, val_macroF1=0.9681, lr=0.000096, best_macroF1=0.9760 (epoch 18)
+train epoch 36 loss: 0.001, acc: 1.000:  10…   , 
+Epoch 36: train_loss=0.001, train_acc=1.000, val_loss=0.095, val_acc=0.974, val_macroF1=0.9686, lr=0.000096, best_macroF1=0.9760 (epoch 18)
+train epoch 37 loss: 0.001, acc: 1.000:  10…   , 
+Epoch 37: train_loss=0.001, train_acc=1.000, val_loss=0.109, val_acc=0.972, val_macroF1=0.9660, lr=0.000096, best_macroF1=0.9760 (epoch 18)
+train epoch 38 loss: 0.000, acc: 1.000:  10…   , 
+Epoch 38: train_loss=0.000, train_acc=1.000, val_loss=0.110, val_acc=0.972, val_macroF1=0.9660, lr=0.000096, best_macroF1=0.9760 (epoch 18)
+train epoch 39 loss: 0.003, acc: 1.000:  10…   , 
+Epoch 39: train_loss=0.003, train_acc=1.000, val_loss=0.141, val_acc=0.965, val_macroF1=0.9574, lr=0.000096, best_macroF1=0.9760 (epoch 18)
+train epoch 40 loss: 0.033, acc: 0.986:  10…   , 
+Epoch 40: train_loss=0.033, train_acc=0.986, val_loss=0.086, val_acc=0.977, val_macroF1=0.9708, lr=0.000095, best_macroF1=0.9760 (epoch 18)
+train epoch 41 loss: 0.025, acc: 0.991:  10…   , 
+Epoch 41: train_loss=0.025, train_acc=0.991, val_loss=0.147, val_acc=0.960, val_macroF1=0.9523, lr=0.000095, best_macroF1=0.9760 (epoch 18)
+train epoch 42 loss: 0.010, acc: 0.997:  10…   , 
+Epoch 42: train_loss=0.010, train_acc=0.997, val_loss=0.158, val_acc=0.956, val_macroF1=0.9442, lr=0.000095, best_macroF1=0.9760 (epoch 18)
+train epoch 43 loss: 0.024, acc: 0.992:  10…   , 
+Epoch 43: train_loss=0.024, train_acc=0.992, val_loss=0.104, val_acc=0.970, val_macroF1=0.9619, lr=0.000095, best_macroF1=0.9760 (epoch 18)
+train epoch 44 loss: 0.017, acc: 0.994:  10…   , 
+Epoch 44: train_loss=0.017, train_acc=0.994, val_loss=0.076, val_acc=0.974, val_macroF1=0.9682, lr=0.000095, best_macroF1=0.9760 (epoch 18)
+train epoch 45 loss: 0.037, acc: 0.986:  10…   , 
+Epoch 45: train_loss=0.037, train_acc=0.986, val_loss=0.120, val_acc=0.953, val_macroF1=0.9432, lr=0.000094, best_macroF1=0.9760 (epoch 18)
+train epoch 46 loss: 0.039, acc: 0.988:  10…   , 
+Epoch 46: train_loss=0.039, train_acc=0.988, val_loss=0.141, val_acc=0.967, val_macroF1=0.9615, lr=0.000094, best_macroF1=0.9760 (epoch 18)
+train epoch 47 loss: 0.012, acc: 0.997:  10…   , 
+Epoch 47: train_loss=0.012, train_acc=0.997, val_loss=0.157, val_acc=0.960, val_macroF1=0.9484, lr=0.000094, best_macroF1=0.9760 (epoch 18)
+train epoch 48 loss: 0.017, acc: 0.994:  10…   , 
+Epoch 48: train_loss=0.017, train_acc=0.994, val_loss=0.144, val_acc=0.963, val_macroF1=0.9567, lr=0.000094, best_macroF1=0.9760 (epoch 18)
+
+[early stop] epoch 48: val_macro_f1 not improved for 30 epochs
+
+===========================================================
+             Training Summary (fair baseline)              
+===========================================================
+  Model:              deit_small_patch16_224
+  Best val macro-F1:  0.9760  (epoch 18)
+  Selection:          val macro-F1
+  Loss:               unweighted CrossEntropy
+  Training Time:      0:03:16
+  Weights:            ./weights_cle_ac_v1/deit_small_patch16_224_seed44/deit_small_patch16_224/model_best.pth
+  Run meta:           ./weights_cle_ac_v1/deit_small_patch16_224_seed44/deit_small_patch16_224/run_meta.json
+===========================================================
+
+===== [2026-10-26 14:36:57.644475] /home/login/miniconda3/envs/sunfuxiang/bin/python train_cle_fair.py --model deit_small_patch16_224 --num_classes 3 --img_size 224 --seed 44 --data-path-train ./datasets/cle_ac_v1/train --data-path-val ./datasets/cle_ac_v1/val --weights /home/login/data/cle/sunfuxiang/classifyML/pth/deit_small_patch16_224-cd65a155.pth --save-dir ./weights_cle_ac_v1/deit_small_patch16_224_seed44 --epochs 300
+[norm] source=run_meta.json(imagenet)  mean=[0.485, 0.456, 0.406] std=[0.229, 0.224, 0.225]  img_size=224
+[model] deit_small_patch16_224  weights=/data/cle/auto/ZCode/Classification/weights_cle_ac_v1/deit_small_patch16_224_seed44/deit_small_patch16_224/model_best.pth
+[complexity] MACs=4.25G FLOPs=8.50G Params=21.59M
+[data] test=427 张  Benign_lesions=195  Malignant_lesions=79  body_of_stomach_normal=153
+
+================================================================
+  评估结果 — deit_small_patch16_224  (test=427 张)
+================================================================
+  【主指标】
+  Macro-F1         : 0.9730   ← 主指标(类别不平衡首选)
+  Accuracy         : 0.9789
+  Macro-AUROC(OvR) : 0.9975
+----------------------------------------------------------------
+  【补充总体指标】
+  Weighted-F1      : 0.9789
+  Balanced Acc     : 0.9721
+  Macro-Sensitivity: 0.9721   (= 各类 Recall 均值)
+  Macro-Specificity: 0.9892
+  Macro-Precision  : 0.9739
+  AUC-PR (Macro)   : 0.9911
+  Cohen's Kappa    : 0.9665
+  MCC              : 0.9665
+----------------------------------------------------------------
+  【每类指标】 Sensitivity / Specificity / Precision / F1 / AUROC
+  Benign_lesions        : 0.979 / 0.983 / 0.979 / 0.979 / 0.997  (n=195)
+  Malignant_lesions     : 0.937 / 0.989 / 0.949 / 0.943 / 0.995  (n=79)
+  body_of_stomach_normal: 1.000 / 0.996 / 0.994 / 0.997 / 1.000  (n=153)
+----------------------------------------------------------------
+  【模型复杂度】(仅与架构+输入尺寸有关，与数据集无关)
+  MACs : 4.25G    FLOPs : 8.50G    Params : 21.59M
+  【推理效率】(受 GPU 负载影响，为参考量级)
+  Pure FPS : 931.3  (1.07 ms/张)    End-to-End FPS : 222.1
+----------------------------------------------------------------
+  【混淆矩阵】(行=真实, 列=预测)
+                  Benign_l  Malignan  body_of_
+  Benign_lesio         191         4         0
+  Malignant_le           4        74         1
+  body_of_stom           0         0       153
+================================================================
+
+[saved] /data/cle/auto/ZCode/Classification/weights_cle_ac_v1/deit_small_patch16_224_seed44/deit_small_patch16_224/eval_20261026_144022/  (results.json / predictions.csv / evaluation_report.md)
+
+===== [2026-10-26 14:40:17.678050] /home/login/miniconda3/envs/sunfuxiang/bin/python evaluate.py --model deit_small_patch16_224 --weights /data/cle/auto/ZCode/Classification/weights_cle_ac_v1/deit_small_patch16_224_seed44/deit_small_patch16_224/model_best.pth --data-path ./datasets/cle_ac_v1/val
+[norm] source=run_meta.json(imagenet)  mean=[0.485, 0.456, 0.406] std=[0.229, 0.224, 0.225]  img_size=224
+[model] deit_small_patch16_224  weights=/data/cle/auto/ZCode/Classification/weights_cle_ac_v1/deit_small_patch16_224_seed44/deit_small_patch16_224/model_best.pth
+[complexity] MACs=4.25G FLOPs=8.50G Params=21.59M
+[data] test=576 张  Benign_lesions=208  Malignant_lesions=176  body_of_stomach_normal=192
+
+================================================================
+  评估结果 — deit_small_patch16_224  (test=576 张)
+================================================================
+  【主指标】
+  Macro-F1         : 0.9369   ← 主指标(类别不平衡首选)
+  Accuracy         : 0.9375
+  Macro-AUROC(OvR) : 0.9912
+----------------------------------------------------------------
+  【补充总体指标】
+  Weighted-F1      : 0.9372
+  Balanced Acc     : 0.9357
+  Macro-Sensitivity: 0.9357   (= 各类 Recall 均值)
+  Macro-Specificity: 0.9683
+  Macro-Precision  : 0.9393
+  AUC-PR (Macro)   : 0.9847
+  Cohen's Kappa    : 0.9059
+  MCC              : 0.9064
+----------------------------------------------------------------
+  【每类指标】 Sensitivity / Specificity / Precision / F1 / AUROC
+  Benign_lesions        : 0.947 / 0.946 / 0.908 / 0.927 / 0.986  (n=208)
+  Malignant_lesions     : 0.881 / 0.980 / 0.951 / 0.914 / 0.989  (n=176)
+  body_of_stomach_normal: 0.979 / 0.979 / 0.959 / 0.969 / 0.998  (n=192)
+----------------------------------------------------------------
+  【模型复杂度】(仅与架构+输入尺寸有关，与数据集无关)
+  MACs : 4.25G    FLOPs : 8.50G    Params : 21.59M
+  【推理效率】(受 GPU 负载影响，为参考量级)
+  Pure FPS : 930.3  (1.07 ms/张)    End-to-End FPS : 231.5
+----------------------------------------------------------------
+  【混淆矩阵】(行=真实, 列=预测)
+                  Benign_l  Malignan  body_of_
+  Benign_lesio         197         7         4
+  Malignant_le          17       155         4
+  body_of_stom           3         1       188
+================================================================
+
+[saved] /data/cle/auto/ZCode/Classification/weights_cle_ac_v1/deit_small_patch16_224_seed44/deit_small_patch16_224/eval_20261026_144029/  (results.json / predictions.csv / evaluation_report.md)
+
+===== [2026-10-26 14:40:23.547838] /home/login/miniconda3/envs/sunfuxiang/bin/python evaluate.py --model deit_small_patch16_224 --weights /data/cle/auto/ZCode/Classification/weights_cle_ac_v1/deit_small_patch16_224_seed44/deit_small_patch16_224/model_best.pth --data-path ./datasets/cle_ac_v1/test
+/home/login/miniconda3/envs/sunfuxiang/lib/python3.12/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+/home/login/miniconda3/envs/sunfuxiang/lib/python3.12/site-packages/timm/models/registry.py:4: FutureWarning: Importing from timm.models.registry is deprecated, please import via timm.models
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.models", FutureWarning)
+/data/cle/auto/ZCode/Classification/models/Deit.py:62: UserWarning: Overwriting deit_tiny_patch16_224 in registry with models.Deit.deit_tiny_patch16_224. This is because the name being registered conflicts with an existing name. Please check if this is not expected.
+  @register_model
+/data/cle/auto/ZCode/Classification/models/Deit.py:77: UserWarning: Overwriting deit_small_patch16_224 in registry with models.Deit.deit_small_patch16_224. This is because the name being registered conflicts with an existing name. Please check if this is not expected.
+  @register_model
+/data/cle/auto/ZCode/Classification/models/Deit.py:92: UserWarning: Overwriting deit_base_patch16_224 in registry with models.Deit.deit_base_patch16_224. This is because the name being registered conflicts with an existing name. Please check if this is not expected.
+  @register_model
+/data/cle/auto/ZCode/Classification/models/Deit.py:107: UserWarning: Overwriting deit_tiny_distilled_patch16_224 in registry with models.Deit.deit_tiny_distilled_patch16_224. This is because the name being registered conflicts with an existing name. Please check if this is not expected.
+  @register_model
+/data/cle/auto/ZCode/Classification/models/Deit.py:122: UserWarning: Overwriting deit_small_distilled_patch16_224 in registry with models.Deit.deit_small_distilled_patch16_224. This is because the name being registered conflicts with an existing name. Please check if this is not expected.
+  @register_model
+/data/cle/auto/ZCode/Classification/models/Deit.py:137: UserWarning: Overwriting deit_base_distilled_patch16_224 in registry with models.Deit.deit_base_distilled_patch16_224. This is because the name being registered conflicts with an existing name. Please check if this is not expected.
+  @register_model
+/data/cle/auto/ZCode/Classification/models/Deit.py:152: UserWarning: Overwriting deit_base_patch16_384 in registry with models.Deit.deit_base_patch16_384. This is because the name being registered conflicts with an existing name. Please check if this is not expected.
+  @register_model
+/data/cle/auto/ZCode/Classification/models/Deit.py:167: UserWarning: Overwriting deit_base_distilled_patch16_384 in registry with models.Deit.deit_base_distilled_patch16_384. This is because the name being registered conflicts with an existing name. Please check if this is not expected.
+  @register_model
+/data/cle/auto/ZCode/Classification/train_cle_fair.py:579: FutureWarning: `torch.cuda.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler('cuda', args...)` instead.
+  scaler = torch.cuda.amp.GradScaler()
+[seed] seed = 44 (set)
+2770 images for training.
+593 images were found in the val dataset.
+593 images for test.
+[norm] ImageNet 归一化(加载了预训练权重) MEAN=[0.485, 0.456, 0.406] STD=[0.229, 0.224, 0.225]
+[weights] strict load passed /data/cle/sunfuxiang/classifyML/pth/deit_small_patch16_224-cd65a155.pth | classifier_missing=2 ignored_buffers=0 unexpected=0
+[train] model=deit_small_patch16_224 num_classes=3 img=224 bs=32 epochs=300 | CE (label_smoothing=0.0) | select=val_macro_f1
+[out]   run_dir=./weights_heelBone/deit_small_patch16_224_seed44/deit_small_patch16_224
+train epoch 0 loss: 0.873, acc: 0.563:  10… [  , 
+Epoch 0: train_loss=0.873, train_acc=0.563, val_loss=0.655, val_acc=0.690, val_macroF1=0.7012, lr=0.000100, best_macroF1=0.7012 (epoch 0) *
+train epoch 1 loss: 0.679, acc: 0.656:  10… [  , 
+Epoch 1: train_loss=0.679, train_acc=0.656, val_loss=0.544, val_acc=0.703, val_macroF1=0.6874, lr=0.000100, best_macroF1=0.7012 (epoch 0)
+train epoch 2 loss: 0.523, acc: 0.761:  10… [  , 
+Epoch 2: train_loss=0.523, train_acc=0.761, val_loss=0.575, val_acc=0.717, val_macroF1=0.6900, lr=0.000100, best_macroF1=0.7012 (epoch 0)
+train epoch 3 loss: 0.460, acc: 0.798:  10… [  , 
+Epoch 3: train_loss=0.460, train_acc=0.798, val_loss=0.539, val_acc=0.747, val_macroF1=0.7325, lr=0.000100, best_macroF1=0.7325 (epoch 3) *
+train epoch 4 loss: 0.451, acc: 0.795:  10… [  , 
+Epoch 4: train_loss=0.451, train_acc=0.795, val_loss=0.375, val_acc=0.852, val_macroF1=0.8577, lr=0.000100, best_macroF1=0.8577 (epoch 4) *
+train epoch 5 loss: 0.363, acc: 0.842:  10… [  , 
+Epoch 5: train_loss=0.363, train_acc=0.842, val_loss=0.347, val_acc=0.850, val_macroF1=0.8589, lr=0.000100, best_macroF1=0.8589 (epoch 5) *
+train epoch 6 loss: 0.371, acc: 0.843:  10… [  , 
+Epoch 6: train_loss=0.371, train_acc=0.843, val_loss=0.473, val_acc=0.774, val_macroF1=0.7674, lr=0.000100, best_macroF1=0.8589 (epoch 5)
+train epoch 7 loss: 0.349, acc: 0.851:  10… [  , 
+Epoch 7: train_loss=0.349, train_acc=0.851, val_loss=0.354, val_acc=0.853, val_macroF1=0.8627, lr=0.000100, best_macroF1=0.8627 (epoch 7) *
+train epoch 8 loss: 0.329, acc: 0.858:  10… [  , 
+Epoch 8: train_loss=0.329, train_acc=0.858, val_loss=0.431, val_acc=0.816, val_macroF1=0.8197, lr=0.000100, best_macroF1=0.8627 (epoch 7)
+train epoch 9 loss: 0.326, acc: 0.865:  10… [  , 
+Epoch 9: train_loss=0.326, train_acc=0.865, val_loss=0.338, val_acc=0.865, val_macroF1=0.8690, lr=0.000100, best_macroF1=0.8690 (epoch 9) *
+train epoch 10 loss: 0.329, acc: 0.861:  10…   , 
+Epoch 10: train_loss=0.329, train_acc=0.861, val_loss=0.277, val_acc=0.885, val_macroF1=0.8915, lr=0.000100, best_macroF1=0.8915 (epoch 10) *
+train epoch 11 loss: 0.308, acc: 0.879:  10…   , 
+Epoch 11: train_loss=0.308, train_acc=0.879, val_loss=0.345, val_acc=0.860, val_macroF1=0.8648, lr=0.000100, best_macroF1=0.8915 (epoch 10)
+train epoch 12 loss: 0.292, acc: 0.873:  10…   , 
+Epoch 12: train_loss=0.292, train_acc=0.873, val_loss=0.277, val_acc=0.895, val_macroF1=0.9024, lr=0.000100, best_macroF1=0.9024 (epoch 12) *
+train epoch 13 loss: 0.286, acc: 0.882:  10…   , 
+Epoch 13: train_loss=0.286, train_acc=0.882, val_loss=0.389, val_acc=0.836, val_macroF1=0.8415, lr=0.000099, best_macroF1=0.9024 (epoch 12)
+train epoch 14 loss: 0.296, acc: 0.877:  10…   , 
+Epoch 14: train_loss=0.296, train_acc=0.877, val_loss=0.286, val_acc=0.899, val_macroF1=0.9089, lr=0.000099, best_macroF1=0.9089 (epoch 14) *
+train epoch 15 loss: 0.283, acc: 0.883:  10…   , 
+Epoch 15: train_loss=0.283, train_acc=0.883, val_loss=0.298, val_acc=0.884, val_macroF1=0.8927, lr=0.000099, best_macroF1=0.9089 (epoch 14)
+train epoch 16 loss: 0.272, acc: 0.885:  10…   , 
+Epoch 16: train_loss=0.272, train_acc=0.885, val_loss=0.343, val_acc=0.872, val_macroF1=0.8803, lr=0.000099, best_macroF1=0.9089 (epoch 14)
+train epoch 17 loss: 0.269, acc: 0.891:  10…   , 
+Epoch 17: train_loss=0.269, train_acc=0.891, val_loss=0.363, val_acc=0.862, val_macroF1=0.8660, lr=0.000099, best_macroF1=0.9089 (epoch 14)
+train epoch 18 loss: 0.256, acc: 0.896:  10…   , 
+Epoch 18: train_loss=0.256, train_acc=0.896, val_loss=0.344, val_acc=0.845, val_macroF1=0.8535, lr=0.000099, best_macroF1=0.9089 (epoch 14)
+train epoch 19 loss: 0.266, acc: 0.887:  10…   , 
+Epoch 19: train_loss=0.266, train_acc=0.887, val_loss=0.285, val_acc=0.877, val_macroF1=0.8847, lr=0.000099, best_macroF1=0.9089 (epoch 14)
+train epoch 20 loss: 0.254, acc: 0.903:  10…   , 
+Epoch 20: train_loss=0.254, train_acc=0.903, val_loss=0.377, val_acc=0.853, val_macroF1=0.8580, lr=0.000099, best_macroF1=0.9089 (epoch 14)
+train epoch 21 loss: 0.222, acc: 0.909:  10…   , 
+Epoch 21: train_loss=0.222, train_acc=0.909, val_loss=0.312, val_acc=0.877, val_macroF1=0.8850, lr=0.000099, best_macroF1=0.9089 (epoch 14)
+train epoch 22 loss: 0.242, acc: 0.906:  10…   , 
+Epoch 22: train_loss=0.242, train_acc=0.906, val_loss=0.370, val_acc=0.853, val_macroF1=0.8603, lr=0.000099, best_macroF1=0.9089 (epoch 14)
+train epoch 23 loss: 0.242, acc: 0.892:  10…   , 
+Epoch 23: train_loss=0.242, train_acc=0.892, val_loss=0.314, val_acc=0.872, val_macroF1=0.8810, lr=0.000098, best_macroF1=0.9089 (epoch 14)
+train epoch 24 loss: 0.228, acc: 0.905:  10…   , 
+Epoch 24: train_loss=0.228, train_acc=0.905, val_loss=0.289, val_acc=0.882, val_macroF1=0.8894, lr=0.000098, best_macroF1=0.9089 (epoch 14)
+train epoch 25 loss: 0.220, acc: 0.915:  10…   , 
+Epoch 25: train_loss=0.220, train_acc=0.915, val_loss=0.256, val_acc=0.902, val_macroF1=0.9089, lr=0.000098, best_macroF1=0.9089 (epoch 14)
+train epoch 26 loss: 0.218, acc: 0.914:  10…   , 
+Epoch 26: train_loss=0.218, train_acc=0.914, val_loss=0.267, val_acc=0.885, val_macroF1=0.8936, lr=0.000098, best_macroF1=0.9089 (epoch 14)
+train epoch 27 loss: 0.220, acc: 0.912:  10…   , 
+Epoch 27: train_loss=0.220, train_acc=0.912, val_loss=0.400, val_acc=0.848, val_macroF1=0.8528, lr=0.000098, best_macroF1=0.9089 (epoch 14)
+train epoch 28 loss: 0.218, acc: 0.909:  10…   , 
+Epoch 28: train_loss=0.218, train_acc=0.909, val_loss=0.363, val_acc=0.862, val_macroF1=0.8686, lr=0.000098, best_macroF1=0.9089 (epoch 14)
+train epoch 29 loss: 0.210, acc: 0.912:  10…   , 
+Epoch 29: train_loss=0.210, train_acc=0.912, val_loss=0.331, val_acc=0.874, val_macroF1=0.8803, lr=0.000098, best_macroF1=0.9089 (epoch 14)
+train epoch 30 loss: 0.218, acc: 0.908:  10…   , 
+Epoch 30: train_loss=0.218, train_acc=0.908, val_loss=0.276, val_acc=0.884, val_macroF1=0.8934, lr=0.000097, best_macroF1=0.9089 (epoch 14)
+train epoch 31 loss: 0.219, acc: 0.905:  10…   , 
+Epoch 31: train_loss=0.219, train_acc=0.905, val_loss=0.299, val_acc=0.874, val_macroF1=0.8811, lr=0.000097, best_macroF1=0.9089 (epoch 14)
+train epoch 32 loss: 0.190, acc: 0.923:  10…   , 
+Epoch 32: train_loss=0.190, train_acc=0.923, val_loss=0.282, val_acc=0.895, val_macroF1=0.9038, lr=0.000097, best_macroF1=0.9089 (epoch 14)
+train epoch 33 loss: 0.195, acc: 0.922:  10…   , 
+Epoch 33: train_loss=0.195, train_acc=0.922, val_loss=0.261, val_acc=0.901, val_macroF1=0.9079, lr=0.000097, best_macroF1=0.9089 (epoch 14)
+train epoch 34 loss: 0.195, acc: 0.922:  10…   , 
+Epoch 34: train_loss=0.195, train_acc=0.922, val_loss=0.326, val_acc=0.874, val_macroF1=0.8857, lr=0.000097, best_macroF1=0.9089 (epoch 14)
+train epoch 35 loss: 0.211, acc: 0.915:  10…   , 
+Epoch 35: train_loss=0.211, train_acc=0.915, val_loss=0.328, val_acc=0.870, val_macroF1=0.8777, lr=0.000096, best_macroF1=0.9089 (epoch 14)
+train epoch 36 loss: 0.190, acc: 0.925:  10…   , 
+Epoch 36: train_loss=0.190, train_acc=0.925, val_loss=0.294, val_acc=0.882, val_macroF1=0.8915, lr=0.000096, best_macroF1=0.9089 (epoch 14)
+train epoch 37 loss: 0.187, acc: 0.926:  10…   , 
+Epoch 37: train_loss=0.187, train_acc=0.926, val_loss=0.321, val_acc=0.868, val_macroF1=0.8781, lr=0.000096, best_macroF1=0.9089 (epoch 14)
+train epoch 38 loss: 0.189, acc: 0.923:  10…   , 
+Epoch 38: train_loss=0.189, train_acc=0.923, val_loss=0.301, val_acc=0.880, val_macroF1=0.8881, lr=0.000096, best_macroF1=0.9089 (epoch 14)
+train epoch 39 loss: 0.164, acc: 0.932:  10…   , 
+Epoch 39: train_loss=0.164, train_acc=0.932, val_loss=0.328, val_acc=0.882, val_macroF1=0.8887, lr=0.000096, best_macroF1=0.9089 (epoch 14)
+train epoch 40 loss: 0.190, acc: 0.927:  10…   , 
+Epoch 40: train_loss=0.190, train_acc=0.927, val_loss=0.296, val_acc=0.877, val_macroF1=0.8867, lr=0.000095, best_macroF1=0.9089 (epoch 14)
+train epoch 41 loss: 0.197, acc: 0.919:  10…   , 
+Epoch 41: train_loss=0.197, train_acc=0.919, val_loss=0.269, val_acc=0.892, val_macroF1=0.9005, lr=0.000095, best_macroF1=0.9089 (epoch 14)
+train epoch 42 loss: 0.168, acc: 0.934:  10…   , 
+Epoch 42: train_loss=0.168, train_acc=0.934, val_loss=0.291, val_acc=0.904, val_macroF1=0.9080, lr=0.000095, best_macroF1=0.9089 (epoch 14)
+train epoch 43 loss: 0.164, acc: 0.931:  10…   , 
+Epoch 43: train_loss=0.164, train_acc=0.931, val_loss=0.332, val_acc=0.877, val_macroF1=0.8844, lr=0.000095, best_macroF1=0.9089 (epoch 14)
+train epoch 44 loss: 0.159, acc: 0.938:  10…   , 
+Epoch 44: train_loss=0.159, train_acc=0.938, val_loss=0.317, val_acc=0.889, val_macroF1=0.8953, lr=0.000095, best_macroF1=0.9089 (epoch 14)
+
+[early stop] epoch 44: val_macro_f1 not improved for 30 epochs
+
+===========================================================
+             Training Summary (fair baseline)              
+===========================================================
+  Model:              deit_small_patch16_224
+  Best val macro-F1:  0.9089  (epoch 14)
+  Selection:          val macro-F1
+  Loss:               unweighted CrossEntropy
+  Training Time:      0:03:36
+  Weights:            ./weights_heelBone/deit_small_patch16_224_seed44/deit_small_patch16_224/model_best.pth
+  Run meta:           ./weights_heelBone/deit_small_patch16_224_seed44/deit_small_patch16_224/run_meta.json
+===========================================================
+
+===== [2026-10-26 18:16:11.325941] /home/login/miniconda3/envs/sunfuxiang/bin/python train_cle_fair.py --model deit_small_patch16_224 --num_classes 3 --img_size 224 --seed 44 --data-path-train ./datasets/heelBone/train --data-path-val ./datasets/heelBone/val --weights /home/login/data/cle/sunfuxiang/classifyML/pth/deit_small_patch16_224-cd65a155.pth --save-dir ./weights_heelBone/deit_small_patch16_224_seed44 --epochs 300
+[norm] source=run_meta.json(imagenet)  mean=[0.485, 0.456, 0.406] std=[0.229, 0.224, 0.225]  img_size=224
+[model] deit_small_patch16_224  weights=/data/cle/auto/ZCode/Classification/weights_heelBone/deit_small_patch16_224_seed44/deit_small_patch16_224/model_best.pth
+[complexity] MACs=4.25G FLOPs=8.50G Params=21.59M
+[data] test=593 张  heelspur=197  normal=276  sever=120
+
+================================================================
+  评估结果 — deit_small_patch16_224  (test=593 张)
+================================================================
+  【主指标】
+  Macro-F1         : 0.7724   ← 主指标(类别不平衡首选)
+  Accuracy         : 0.7487
+  Macro-AUROC(OvR) : 0.9404
+----------------------------------------------------------------
+  【补充总体指标】
+  Weighted-F1      : 0.7440
+  Balanced Acc     : 0.7977
+  Macro-Sensitivity: 0.7977   (= 各类 Recall 均值)
+  Macro-Specificity: 0.8731
+  Macro-Precision  : 0.7957
+  AUC-PR (Macro)   : 0.9103
+  Cohen's Kappa    : 0.6177
+  MCC              : 0.6475
+----------------------------------------------------------------
+  【每类指标】 Sensitivity / Specificity / Precision / F1 / AUROC
+  heelspur              : 0.914 / 0.705 / 0.606 / 0.729 / 0.914  (n=197)
+  normal                : 0.554 / 0.946 / 0.900 / 0.686 / 0.915  (n=276)
+  sever                 : 0.925 / 0.968 / 0.881 / 0.902 / 0.993  (n=120)
+----------------------------------------------------------------
+  【模型复杂度】(仅与架构+输入尺寸有关，与数据集无关)
+  MACs : 4.25G    FLOPs : 8.50G    Params : 21.59M
+  【推理效率】(受 GPU 负载影响，为参考量级)
+  Pure FPS : 933.3  (1.07 ms/张)    End-to-End FPS : 275.4
+----------------------------------------------------------------
+  【混淆矩阵】(行=真实, 列=预测)
+                  heelspur    normal     sever
+  heelspur             180        12         5
+  normal               113       153        10
+  sever                  4         5       111
+================================================================
+
+[saved] /data/cle/auto/ZCode/Classification/weights_heelBone/deit_small_patch16_224_seed44/deit_small_patch16_224/eval_20261026_181956/  (results.json / predictions.csv / evaluation_report.md)
+
+===== [2026-10-26 18:19:51.639579] /home/login/miniconda3/envs/sunfuxiang/bin/python evaluate.py --model deit_small_patch16_224 --weights /data/cle/auto/ZCode/Classification/weights_heelBone/deit_small_patch16_224_seed44/deit_small_patch16_224/model_best.pth --data-path ./datasets/heelBone/val --class-names heelspur normal sever
+[norm] source=run_meta.json(imagenet)  mean=[0.485, 0.456, 0.406] std=[0.229, 0.224, 0.225]  img_size=224
+[model] deit_small_patch16_224  weights=/data/cle/auto/ZCode/Classification/weights_heelBone/deit_small_patch16_224_seed44/deit_small_patch16_224/model_best.pth
+[complexity] MACs=4.25G FLOPs=8.50G Params=21.59M
+[data] test=593 张  heelspur=197  normal=276  sever=120
+
+================================================================
+  评估结果 — deit_small_patch16_224  (test=593 张)
+================================================================
+  【主指标】
+  Macro-F1         : 0.7609   ← 主指标(类别不平衡首选)
+  Accuracy         : 0.7386
+  Macro-AUROC(OvR) : 0.9408
+----------------------------------------------------------------
+  【补充总体指标】
+  Weighted-F1      : 0.7293
+  Balanced Acc     : 0.7995
+  Macro-Sensitivity: 0.7995   (= 各类 Recall 均值)
+  Macro-Specificity: 0.8695
+  Macro-Precision  : 0.7786
+  AUC-PR (Macro)   : 0.9142
+  Cohen's Kappa    : 0.6057
+  MCC              : 0.6368
+----------------------------------------------------------------
+  【每类指标】 Sensitivity / Specificity / Precision / F1 / AUROC
+  heelspur              : 0.893 / 0.710 / 0.605 / 0.721 / 0.915  (n=197)
+  normal                : 0.522 / 0.950 / 0.900 / 0.661 / 0.913  (n=276)
+  sever                 : 0.983 / 0.949 / 0.831 / 0.901 / 0.995  (n=120)
+----------------------------------------------------------------
+  【模型复杂度】(仅与架构+输入尺寸有关，与数据集无关)
+  MACs : 4.25G    FLOPs : 8.50G    Params : 21.59M
+  【推理效率】(受 GPU 负载影响，为参考量级)
+  Pure FPS : 951.0  (1.05 ms/张)    End-to-End FPS : 276.7
+----------------------------------------------------------------
+  【混淆矩阵】(行=真实, 列=预测)
+                  heelspur    normal     sever
+  heelspur             176        14         7
+  normal               115       144        17
+  sever                  0         2       118
+================================================================
+
+[saved] /data/cle/auto/ZCode/Classification/weights_heelBone/deit_small_patch16_224_seed44/deit_small_patch16_224/eval_20261026_182002/  (results.json / predictions.csv / evaluation_report.md)
+
+===== [2026-10-26 18:19:57.437731] /home/login/miniconda3/envs/sunfuxiang/bin/python evaluate.py --model deit_small_patch16_224 --weights /data/cle/auto/ZCode/Classification/weights_heelBone/deit_small_patch16_224_seed44/deit_small_patch16_224/model_best.pth --data-path ./datasets/heelBone/test --class-names heelspur normal sever
+/home/login/miniconda3/envs/sunfuxiang/lib/python3.12/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+/home/login/miniconda3/envs/sunfuxiang/lib/python3.12/site-packages/timm/models/registry.py:4: FutureWarning: Importing from timm.models.registry is deprecated, please import via timm.models
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.models", FutureWarning)
+/data/cle/auto/ZCode/Classification/models/Deit.py:62: UserWarning: Overwriting deit_tiny_patch16_224 in registry with models.Deit.deit_tiny_patch16_224. This is because the name being registered conflicts with an existing name. Please check if this is not expected.
+  @register_model
+/data/cle/auto/ZCode/Classification/models/Deit.py:77: UserWarning: Overwriting deit_small_patch16_224 in registry with models.Deit.deit_small_patch16_224. This is because the name being registered conflicts with an existing name. Please check if this is not expected.
+  @register_model
+/data/cle/auto/ZCode/Classification/models/Deit.py:92: UserWarning: Overwriting deit_base_patch16_224 in registry with models.Deit.deit_base_patch16_224. This is because the name being registered conflicts with an existing name. Please check if this is not expected.
+  @register_model
+/data/cle/auto/ZCode/Classification/models/Deit.py:107: UserWarning: Overwriting deit_tiny_distilled_patch16_224 in registry with models.Deit.deit_tiny_distilled_patch16_224. This is because the name being registered conflicts with an existing name. Please check if this is not expected.
+  @register_model
+/data/cle/auto/ZCode/Classification/models/Deit.py:122: UserWarning: Overwriting deit_small_distilled_patch16_224 in registry with models.Deit.deit_small_distilled_patch16_224. This is because the name being registered conflicts with an existing name. Please check if this is not expected.
+  @register_model
+/data/cle/auto/ZCode/Classification/models/Deit.py:137: UserWarning: Overwriting deit_base_distilled_patch16_224 in registry with models.Deit.deit_base_distilled_patch16_224. This is because the name being registered conflicts with an existing name. Please check if this is not expected.
+  @register_model
+/data/cle/auto/ZCode/Classification/models/Deit.py:152: UserWarning: Overwriting deit_base_patch16_384 in registry with models.Deit.deit_base_patch16_384. This is because the name being registered conflicts with an existing name. Please check if this is not expected.
+  @register_model
+/data/cle/auto/ZCode/Classification/models/Deit.py:167: UserWarning: Overwriting deit_base_distilled_patch16_384 in registry with models.Deit.deit_base_distilled_patch16_384. This is because the name being registered conflicts with an existing name. Please check if this is not expected.
+  @register_model
+/data/cle/auto/ZCode/Classification/train_cle_fair.py:579: FutureWarning: `torch.cuda.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler('cuda', args...)` instead.
+  scaler = torch.cuda.amp.GradScaler()
+[seed] seed = 44 (set)
+45000 images for training.
+5000 images were found in the val dataset.
+5000 images for test.
+[norm] ImageNet 归一化(加载了预训练权重) MEAN=[0.485, 0.456, 0.406] STD=[0.229, 0.224, 0.225]
+[weights] strict load passed /data/cle/sunfuxiang/classifyML/pth/deit_small_patch16_224-cd65a155.pth | classifier_missing=2 ignored_buffers=0 unexpected=0
+[train] model=deit_small_patch16_224 num_classes=3 img=224 bs=32 epochs=50 | CE (label_smoothing=0.0) | select=val_macro_f1
+[out]   run_dir=./weights_cifar10/deit_small_patch16_224_seed44/deit_small_patch16_224
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:245: nll_loss_forward_reduce_cuda_kernel_2d: block: [0,0,0], thread: [0,0,0] Assertion `t >= 0 && t < n_classes` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:245: nll_loss_forward_reduce_cuda_kernel_2d: block: [0,0,0], thread: [1,0,0] Assertion `t >= 0 && t < n_classes` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:245: nll_loss_forward_reduce_cuda_kernel_2d: block: [0,0,0], thread: [3,0,0] Assertion `t >= 0 && t < n_classes` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:245: nll_loss_forward_reduce_cuda_kernel_2d: block: [0,0,0], thread: [5,0,0] Assertion `t >= 0 && t < n_classes` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:245: nll_loss_forward_reduce_cuda_kernel_2d: block: [0,0,0], thread: [6,0,0] Assertion `t >= 0 && t < n_classes` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:245: nll_loss_forward_reduce_cuda_kernel_2d: block: [0,0,0], thread: [9,0,0] Assertion `t >= 0 && t < n_classes` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:245: nll_loss_forward_reduce_cuda_kernel_2d: block: [0,0,0], thread: [10,0,0] Assertion `t >= 0 && t < n_classes` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:245: nll_loss_forward_reduce_cuda_kernel_2d: block: [0,0,0], thread: [12,0,0] Assertion `t >= 0 && t < n_classes` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:245: nll_loss_forward_reduce_cuda_kernel_2d: block: [0,0,0], thread: [13,0,0] Assertion `t >= 0 && t < n_classes` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:245: nll_loss_forward_reduce_cuda_kernel_2d: block: [0,0,0], thread: [15,0,0] Assertion `t >= 0 && t < n_classes` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:245: nll_loss_forward_reduce_cuda_kernel_2d: block: [0,0,0], thread: [17,0,0] Assertion `t >= 0 && t < n_classes` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:245: nll_loss_forward_reduce_cuda_kernel_2d: block: [0,0,0], thread: [18,0,0] Assertion `t >= 0 && t < n_classes` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:245: nll_loss_forward_reduce_cuda_kernel_2d: block: [0,0,0], thread: [19,0,0] Assertion `t >= 0 && t < n_classes` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:245: nll_loss_forward_reduce_cuda_kernel_2d: block: [0,0,0], thread: [21,0,0] Assertion `t >= 0 && t < n_classes` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:245: nll_loss_forward_reduce_cuda_kernel_2d: block: [0,0,0], thread: [23,0,0] Assertion `t >= 0 && t < n_classes` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:245: nll_loss_forward_reduce_cuda_kernel_2d: block: [0,0,0], thread: [24,0,0] Assertion `t >= 0 && t < n_classes` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:245: nll_loss_forward_reduce_cuda_kernel_2d: block: [0,0,0], thread: [28,0,0] Assertion `t >= 0 && t < n_classes` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:245: nll_loss_forward_reduce_cuda_kernel_2d: block: [0,0,0], thread: [29,0,0] Assertion `t >= 0 && t < n_classes` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:245: nll_loss_forward_reduce_cuda_kernel_2d: block: [0,0,0], thread: [30,0,0] Assertion `t >= 0 && t < n_classes` failed.
+train epoch 0 loss: 0.000, acc: 0.000   0% [ < , 
+Traceback (most recent call last):
+  File "/data/cle/auto/ZCode/Classification/train_cle_fair.py", line 679, in <module>
+    main(opt)
+  File "/data/cle/auto/ZCode/Classification/train_cle_fair.py", line 596, in main
+    train_loss, train_acc = train_one_epoch(model=model, optimizer=optimizer,
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/cle/auto/ZCode/Classification/train_cle_fair.py", line 424, in train_one_epoch
+    pred_classes = torch.max(pred, dim=1)[1]
+                   ^^^^^^^^^^^^^^^^^^^^^^
+torch.AcceleratorError: CUDA error: device-side assert triggered
+Search for `cudaErrorAssert' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.
+CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+For debugging consider passing CUDA_LAUNCH_BLOCKING=1
+Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+
+
+===== [2026-10-26 21:36:28.696608] /home/login/miniconda3/envs/sunfuxiang/bin/python train_cle_fair.py --model deit_small_patch16_224 --num_classes 3 --img_size 224 --seed 44 --data-path-train ./datasets/cifar10/train --data-path-val ./datasets/cifar10/val --weights /home/login/data/cle/sunfuxiang/classifyML/pth/deit_small_patch16_224-cd65a155.pth --save-dir ./weights_cifar10/deit_small_patch16_224_seed44 --epochs 50 --early-stop 10

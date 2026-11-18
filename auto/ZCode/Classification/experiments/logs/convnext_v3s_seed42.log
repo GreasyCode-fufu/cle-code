@@ -1,0 +1,80 @@
+/home/login/miniconda3/envs/sunfuxiang/lib/python3.12/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+/data/cle/auto/ZCode/Classification/train_cle_fair.py:836: FutureWarning: `torch.cuda.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler('cuda', args...)` instead.
+  scaler = torch.cuda.amp.GradScaler()
+[seed] seed = 42 (set)
+2077 images for training.
+427 images were found in the val dataset.
+427 images for test.
+[norm] ImageNet 归一化(加载了预训练权重) MEAN=[0.485, 0.456, 0.406] STD=[0.229, 0.224, 0.225]
+[weights] strict load passed /data/cle/sunfuxiang/classifyML/pth/convnext_tiny_1k_224_ema.pth | classifier_missing=97 ignored_buffers=0 unexpected=0
+[train] model=convnext_v3s num_classes=3 img=224 bs=32 epochs=300 | CE (label_smoothing=0.0) | select=val_macro_f1
+[out]   run_dir=./weights_cle_ac_v1_c/convnext_v3s_seed42/convnext_v3s
+train epoch 0 loss: 0.574, acc: 0.794:  10… [  , 
+Epoch 0: train_loss=0.574, train_acc=0.794, val_loss=0.148, val_acc=0.953, val_macroF1=0.9435, lr=0.000100, best_macroF1=0.9435 (epoch 0) *
+train epoch 1 loss: 0.105, acc: 0.961:  10… [  , 
+Epoch 1: train_loss=0.105, train_acc=0.961, val_loss=0.092, val_acc=0.965, val_macroF1=0.9531, lr=0.000100, best_macroF1=0.9531 (epoch 1) *
+train epoch 2 loss: 0.090, acc: 0.965:  10… [  , 
+Epoch 2: train_loss=0.090, train_acc=0.965, val_loss=0.092, val_acc=0.963, val_macroF1=0.9512, lr=0.000100, best_macroF1=0.9531 (epoch 1)
+train epoch 3 loss: 0.044, acc: 0.986:  10… [  , 
+Epoch 3: train_loss=0.044, train_acc=0.986, val_loss=0.055, val_acc=0.981, val_macroF1=0.9759, lr=0.000100, best_macroF1=0.9759 (epoch 3) *
+train epoch 4 loss: 0.059, acc: 0.978:  10… [  , 
+Epoch 4: train_loss=0.059, train_acc=0.978, val_loss=0.081, val_acc=0.967, val_macroF1=0.9572, lr=0.000100, best_macroF1=0.9759 (epoch 3)
+train epoch 5 loss: 0.022, acc: 0.993:  10… [  , 
+Epoch 5: train_loss=0.022, train_acc=0.993, val_loss=0.056, val_acc=0.984, val_macroF1=0.9788, lr=0.000100, best_macroF1=0.9788 (epoch 5) *
+train epoch 6 loss: 0.029, acc: 0.990:  10… [  , 
+Epoch 6: train_loss=0.029, train_acc=0.990, val_loss=0.125, val_acc=0.953, val_macroF1=0.9354, lr=0.000100, best_macroF1=0.9788 (epoch 5)
+train epoch 7 loss: 0.045, acc: 0.985:  10… [  , 
+Epoch 7: train_loss=0.045, train_acc=0.985, val_loss=0.071, val_acc=0.977, val_macroF1=0.9699, lr=0.000100, best_macroF1=0.9788 (epoch 5)
+train epoch 8 loss: 0.011, acc: 0.998:  10… [  , 
+Epoch 8: train_loss=0.011, train_acc=0.998, val_loss=0.069, val_acc=0.979, val_macroF1=0.9732, lr=0.000100, best_macroF1=0.9788 (epoch 5)
+train epoch 9 loss: 0.016, acc: 0.995:  10… [  , 
+Epoch 9: train_loss=0.016, train_acc=0.995, val_loss=0.041, val_acc=0.984, val_macroF1=0.9790, lr=0.000100, best_macroF1=0.9790 (epoch 9) *
+train epoch 10 loss: 0.017, acc: 0.992:  10…   , 
+Epoch 10: train_loss=0.017, train_acc=0.992, val_loss=0.124, val_acc=0.953, val_macroF1=0.9363, lr=0.000100, best_macroF1=0.9790 (epoch 9)
+train epoch 11 loss: 0.016, acc: 0.995:  10…   , 
+Epoch 11: train_loss=0.016, train_acc=0.995, val_loss=0.047, val_acc=0.981, val_macroF1=0.9761, lr=0.000100, best_macroF1=0.9790 (epoch 9)
+train epoch 12 loss: 0.009, acc: 0.997:  10…   , 
+Epoch 12: train_loss=0.009, train_acc=0.997, val_loss=0.070, val_acc=0.977, val_macroF1=0.9699, lr=0.000100, best_macroF1=0.9790 (epoch 9)
+train epoch 13 loss: 0.012, acc: 0.994:  10…   , 
+Epoch 13: train_loss=0.012, train_acc=0.994, val_loss=0.171, val_acc=0.951, val_macroF1=0.9326, lr=0.000099, best_macroF1=0.9790 (epoch 9)
+train epoch 14 loss: 0.016, acc: 0.994:  10…   , 
+Epoch 14: train_loss=0.016, train_acc=0.994, val_loss=0.075, val_acc=0.972, val_macroF1=0.9636, lr=0.000099, best_macroF1=0.9790 (epoch 9)
+train epoch 15 loss: 0.003, acc: 1.000:  10…   , 
+Epoch 15: train_loss=0.003, train_acc=1.000, val_loss=0.065, val_acc=0.979, val_macroF1=0.9732, lr=0.000099, best_macroF1=0.9790 (epoch 9)
+train epoch 16 loss: 0.004, acc: 0.999:  10…   , 
+Epoch 16: train_loss=0.004, train_acc=0.999, val_loss=0.062, val_acc=0.981, val_macroF1=0.9759, lr=0.000099, best_macroF1=0.9790 (epoch 9)
+train epoch 17 loss: 0.001, acc: 1.000:  10…   , 
+Epoch 17: train_loss=0.001, train_acc=1.000, val_loss=0.060, val_acc=0.981, val_macroF1=0.9759, lr=0.000099, best_macroF1=0.9790 (epoch 9)
+train epoch 18 loss: 0.001, acc: 1.000:  10…   , 
+Epoch 18: train_loss=0.001, train_acc=1.000, val_loss=0.070, val_acc=0.979, val_macroF1=0.9728, lr=0.000099, best_macroF1=0.9790 (epoch 9)
+train epoch 19 loss: 0.001, acc: 1.000:  10…   , 
+Epoch 19: train_loss=0.001, train_acc=1.000, val_loss=0.070, val_acc=0.977, val_macroF1=0.9701, lr=0.000099, best_macroF1=0.9790 (epoch 9)
+train epoch 20 loss: 0.000, acc: 1.000:  10…   , 
+Epoch 20: train_loss=0.000, train_acc=1.000, val_loss=0.086, val_acc=0.974, val_macroF1=0.9665, lr=0.000099, best_macroF1=0.9790 (epoch 9)
+train epoch 21 loss: 0.000, acc: 1.000:  10…   , 
+Epoch 21: train_loss=0.000, train_acc=1.000, val_loss=0.086, val_acc=0.974, val_macroF1=0.9668, lr=0.000099, best_macroF1=0.9790 (epoch 9)
+train epoch 22 loss: 0.000, acc: 1.000:  10…   , 
+Epoch 22: train_loss=0.000, train_acc=1.000, val_loss=0.076, val_acc=0.977, val_macroF1=0.9701, lr=0.000099, best_macroF1=0.9790 (epoch 9)
+train epoch 23 loss: 0.000, acc: 1.000:  10…   , 
+Epoch 23: train_loss=0.000, train_acc=1.000, val_loss=0.085, val_acc=0.974, val_macroF1=0.9668, lr=0.000098, best_macroF1=0.9790 (epoch 9)
+train epoch 24 loss: 0.000, acc: 1.000:  10…   , 
+Epoch 24: train_loss=0.000, train_acc=1.000, val_loss=0.093, val_acc=0.972, val_macroF1=0.9636, lr=0.000098, best_macroF1=0.9790 (epoch 9)
+train epoch 25 loss: 0.000, acc: 1.000:  10…   , 
+Epoch 25: train_loss=0.000, train_acc=1.000, val_loss=0.090, val_acc=0.974, val_macroF1=0.9673, lr=0.000098, best_macroF1=0.9790 (epoch 9)
+train epoch 26 loss: 0.000, acc: 1.000:  10…   , 
+Epoch 26: train_loss=0.000, train_acc=1.000, val_loss=0.149, val_acc=0.967, val_macroF1=0.9560, lr=0.000098, best_macroF1=0.9790 (epoch 9)
+train epoch 27 loss: 0.044, acc: 0.984:  10…   , 
+Epoch 27: train_loss=0.044, train_acc=0.984, val_loss=0.121, val_acc=0.960, val_macroF1=0.9521, lr=0.000098, best_macroF1=0.9790 (epoch 9)
+train epoch 28 loss: 0.020, acc: 0.993:  10…   , 
+Epoch 28: train_loss=0.020, train_acc=0.993, val_loss=0.053, val_acc=0.981, val_macroF1=0.9766, lr=0.000098, best_macroF1=0.9790 (epoch 9)
+train epoch 29 loss: 0.012, acc: 0.996:  10…   , 
+Epoch 29: train_loss=0.012, train_acc=0.996, val_loss=0.063, val_acc=0.977, val_macroF1=0.9699, lr=0.000098, best_macroF1=0.9790 (epoch 9)
+train epoch 30 loss: 0.023, acc: 0.992:  10…   , 
+Epoch 30: train_loss=0.023, train_acc=0.992, val_loss=0.130, val_acc=0.951, val_macroF1=0.9316, lr=0.000097, best_macroF1=0.9790 (epoch 9)
+train epoch 31 loss: 0.007, acc: 0.999:  10…   , 
+Epoch 31: train_loss=0.007, train_acc=0.999, val_loss=0.047, val_acc=0.988, val_macroF1=0.9850, lr=0.000097, best_macroF1=0.9850 (epoch 31) *
+WARNING: non-finite loss, ending training  tensor(nan, device='cuda:0', grad_fn=<NllLossBackward0>)
+train epoch 32 loss: nan, acc: 1.000:   62% [  , 
+
+===== [2026-11-08 00:47:25.894102] /home/login/miniconda3/envs/sunfuxiang/bin/python train_cle_fair.py --model convnext_v3s --num_classes 3 --img_size 224 --seed 42 --data-path-train ./datasets/cle_ac_v1/train --data-path-val ./datasets/cle_ac_v1/val --weights /home/login/data/cle/sunfuxiang/classifyML/pth/convnext_tiny_1k_224_ema.pth --save-dir ./weights_cle_ac_v1_c/convnext_v3s_seed42 --epochs 300 --early-stop 30 

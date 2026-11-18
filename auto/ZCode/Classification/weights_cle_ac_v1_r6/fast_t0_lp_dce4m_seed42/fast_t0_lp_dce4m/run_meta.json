@@ -1,0 +1,65 @@
+{
+  "norm_mean": [
+    0.485,
+    0.456,
+    0.406
+  ],
+  "norm_std": [
+    0.229,
+    0.224,
+    0.225
+  ],
+  "norm_source": "imagenet",
+  "model": "fast_t0_lp_dce4m",
+  "stage": "R6 DCE stage-2 refit",
+  "refit": {
+    "src_checkpoint": "/home/login/data/cle/sunfuxiang/classifyML/pth/fasternet_t0-epoch.281-val_acc1.71.9180.pth",
+    "src_sha256": "368085dd84ea4eab04928c76655cfeeea76c9aa7a73b8dca77af81bba6d57c40",
+    "taps": [
+      "s1",
+      "s2",
+      "s3",
+      "s4"
+    ],
+    "C_grid": [
+      {
+        "C": 0.0003,
+        "val_f1": 0.9477
+      },
+      {
+        "C": 0.001,
+        "val_f1": 0.9572
+      },
+      {
+        "C": 0.003,
+        "val_f1": 0.9643
+      },
+      {
+        "C": 0.01,
+        "val_f1": 0.9648
+      },
+      {
+        "C": 0.03,
+        "val_f1": 0.9619
+      },
+      {
+        "C": 0.1,
+        "val_f1": 0.9591
+      },
+      {
+        "C": 0.3,
+        "val_f1": 0.9559
+      },
+      {
+        "C": 1.0,
+        "val_f1": 0.9591
+      }
+    ],
+    "C_selected": 0.01,
+    "val_macro_f1": 0.9648,
+    "selection": "val Macro-F1 (ties -> stronger L2); test never read",
+    "n_train": 2077,
+    "n_val": 427,
+    "feature_dim": 600
+  }
+}

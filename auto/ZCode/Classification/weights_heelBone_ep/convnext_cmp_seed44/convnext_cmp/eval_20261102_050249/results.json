@@ -1,0 +1,105 @@
+{
+  "model": "convnext_cmp",
+  "weights": "/data/cle/auto/ZCode/Classification/weights_heelBone_ep/convnext_cmp_seed44/convnext_cmp/model_best.pth",
+  "test_dir": "./datasets/heelBone/val",
+  "img_size": 224,
+  "norm_mean": [
+    0.485,
+    0.456,
+    0.406
+  ],
+  "norm_std": [
+    0.229,
+    0.224,
+    0.225
+  ],
+  "norm_source": "run_meta.json(imagenet)",
+  "n_total": 593,
+  "class_names": [
+    "heelspur",
+    "normal",
+    "sever"
+  ],
+  "macro_f1": 0.8474216295378739,
+  "accuracy": 0.8431703204047217,
+  "auc_roc_macro": 0.9778906072850777,
+  "weighted_f1": 0.8413413815433907,
+  "balanced_accuracy": 0.8794477549719218,
+  "macro_sensitivity": 0.8794477549719218,
+  "macro_specificity": 0.9248350030024156,
+  "kappa": 0.7605663154330072,
+  "mcc": 0.7723549653321171,
+  "complexity": {
+    "macs": "4.46G",
+    "flops": "8.91G",
+    "params": "28.25M",
+    "params_raw": 28251075,
+    "macs_raw": 4455221760
+  },
+  "efficiency": {
+    "pure_infer_time": 0.6865577697753906,
+    "pure_fps": 863.72920984348,
+    "pure_ms_per_img": 1.1577702694357346,
+    "e2e_time": 2.1555588245391846,
+    "e2e_fps": 275.1026755796245,
+    "total_samples": 593
+  },
+  "per_class": {
+    "heelspur": {
+      "precision": 0.782608695652174,
+      "recall": 0.9137055837563451,
+      "sensitivity": 0.9137055837563451,
+      "specificity": 0.8737373737373737,
+      "f1": 0.8430913348946136,
+      "npv": 0.953168044077135,
+      "tp": 180,
+      "fp": 50,
+      "tn": 346,
+      "fn": 17,
+      "support": 197
+    },
+    "normal": {
+      "precision": 0.9615384615384616,
+      "recall": 0.7246376811594203,
+      "sensitivity": 0.7246376811594203,
+      "specificity": 0.9747634069400631,
+      "f1": 0.8264462809917356,
+      "npv": 0.8025974025974026,
+      "tp": 200,
+      "fp": 8,
+      "tn": 309,
+      "fn": 76,
+      "support": 276
+    },
+    "sever": {
+      "precision": 0.7741935483870968,
+      "recall": 1.0,
+      "sensitivity": 1.0,
+      "specificity": 0.9260042283298098,
+      "f1": 0.8727272727272727,
+      "npv": 1.0,
+      "tp": 120,
+      "fp": 35,
+      "tn": 438,
+      "fn": 0,
+      "support": 120
+    }
+  },
+  "confusion_matrix": [
+    [
+      180,
+      8,
+      9
+    ],
+    [
+      50,
+      200,
+      26
+    ],
+    [
+      0,
+      0,
+      120
+    ]
+  ]
+}

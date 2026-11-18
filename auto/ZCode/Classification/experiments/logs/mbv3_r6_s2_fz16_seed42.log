@@ -1,0 +1,198 @@
+/home/login/miniconda3/envs/sunfuxiang/lib/python3.12/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+/data/cle/auto/ZCode/Classification/train_cle_fair.py:1020: FutureWarning: `torch.cuda.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler('cuda', args...)` instead.
+  scaler = torch.cuda.amp.GradScaler()
+[seed] seed = 42 (set)
+2077 images for training.
+427 images were found in the val dataset.
+427 images for test.
+[norm] ImageNet 归一化(加载了预训练权重) MEAN=[0.485, 0.456, 0.406] STD=[0.229, 0.224, 0.225]
+[weights] strict load passed /data/cle/sunfuxiang/classifyML/pth/mobilenet_v3_large-8738ca79.pth | classifier_missing=8 ignored_buffers=0 unexpected=0
+[train] model=mbv3_r6_s2_fz16 num_classes=3 img=224 bs=32 epochs=300 | CE (label_smoothing=0.0) | select=val_macro_f1
+[out]   run_dir=./weights_cle_ac_v1_r6/mbv3_r6_s2_fz16_seed42/mbv3_r6_s2_fz16
+train epoch 0 loss: 0.396, acc: 0.848:  10… [  , 
+Epoch 0: train_loss=0.396, train_acc=0.848, val_loss=0.513, val_acc=0.785, val_macroF1=0.7732, lr=0.000100, best_macroF1=0.7732 (epoch 0) *
+train epoch 1 loss: 0.144, acc: 0.950:  10… [  , 
+Epoch 1: train_loss=0.144, train_acc=0.950, val_loss=0.170, val_acc=0.932, val_macroF1=0.9230, lr=0.000100, best_macroF1=0.9230 (epoch 1) *
+train epoch 2 loss: 0.113, acc: 0.958:  10… [  , 
+Epoch 2: train_loss=0.113, train_acc=0.958, val_loss=0.096, val_acc=0.958, val_macroF1=0.9476, lr=0.000100, best_macroF1=0.9476 (epoch 2) *
+train epoch 3 loss: 0.089, acc: 0.965:  10… [  , 
+Epoch 3: train_loss=0.089, train_acc=0.965, val_loss=0.164, val_acc=0.937, val_macroF1=0.9266, lr=0.000100, best_macroF1=0.9476 (epoch 2)
+train epoch 4 loss: 0.058, acc: 0.978:  10… [  , 
+Epoch 4: train_loss=0.058, train_acc=0.978, val_loss=0.062, val_acc=0.977, val_macroF1=0.9715, lr=0.000100, best_macroF1=0.9715 (epoch 4) *
+train epoch 5 loss: 0.053, acc: 0.982:  10… [  , 
+Epoch 5: train_loss=0.053, train_acc=0.982, val_loss=0.103, val_acc=0.960, val_macroF1=0.9509, lr=0.000100, best_macroF1=0.9715 (epoch 4)
+train epoch 6 loss: 0.040, acc: 0.986:  10… [  , 
+Epoch 6: train_loss=0.040, train_acc=0.986, val_loss=0.116, val_acc=0.948, val_macroF1=0.9318, lr=0.000100, best_macroF1=0.9715 (epoch 4)
+train epoch 7 loss: 0.026, acc: 0.992:  10… [  , 
+Epoch 7: train_loss=0.026, train_acc=0.992, val_loss=0.091, val_acc=0.958, val_macroF1=0.9474, lr=0.000100, best_macroF1=0.9715 (epoch 4)
+train epoch 8 loss: 0.025, acc: 0.993:  10… [  , 
+Epoch 8: train_loss=0.025, train_acc=0.993, val_loss=0.125, val_acc=0.948, val_macroF1=0.9327, lr=0.000100, best_macroF1=0.9715 (epoch 4)
+train epoch 9 loss: 0.022, acc: 0.994:  10… [  , 
+Epoch 9: train_loss=0.022, train_acc=0.994, val_loss=0.081, val_acc=0.960, val_macroF1=0.9475, lr=0.000100, best_macroF1=0.9715 (epoch 4)
+train epoch 10 loss: 0.031, acc: 0.990:  10…   , 
+Epoch 10: train_loss=0.031, train_acc=0.990, val_loss=0.076, val_acc=0.974, val_macroF1=0.9660, lr=0.000100, best_macroF1=0.9715 (epoch 4)
+train epoch 11 loss: 0.027, acc: 0.989:  10…   , 
+Epoch 11: train_loss=0.027, train_acc=0.989, val_loss=0.059, val_acc=0.979, val_macroF1=0.9747, lr=0.000100, best_macroF1=0.9747 (epoch 11) *
+train epoch 12 loss: 0.022, acc: 0.991:  10…   , 
+Epoch 12: train_loss=0.022, train_acc=0.991, val_loss=0.128, val_acc=0.956, val_macroF1=0.9412, lr=0.000100, best_macroF1=0.9747 (epoch 11)
+train epoch 13 loss: 0.030, acc: 0.990:  10…   , 
+Epoch 13: train_loss=0.030, train_acc=0.990, val_loss=0.087, val_acc=0.963, val_macroF1=0.9520, lr=0.000099, best_macroF1=0.9747 (epoch 11)
+train epoch 14 loss: 0.015, acc: 0.995:  10…   , 
+Epoch 14: train_loss=0.015, train_acc=0.995, val_loss=0.092, val_acc=0.972, val_macroF1=0.9662, lr=0.000099, best_macroF1=0.9747 (epoch 11)
+train epoch 15 loss: 0.025, acc: 0.993:  10…   , 
+Epoch 15: train_loss=0.025, train_acc=0.993, val_loss=0.122, val_acc=0.953, val_macroF1=0.9392, lr=0.000099, best_macroF1=0.9747 (epoch 11)
+train epoch 16 loss: 0.011, acc: 0.996:  10…   , 
+Epoch 16: train_loss=0.011, train_acc=0.996, val_loss=0.114, val_acc=0.958, val_macroF1=0.9462, lr=0.000099, best_macroF1=0.9747 (epoch 11)
+train epoch 17 loss: 0.014, acc: 0.995:  10…   , 
+Epoch 17: train_loss=0.014, train_acc=0.995, val_loss=0.098, val_acc=0.958, val_macroF1=0.9466, lr=0.000099, best_macroF1=0.9747 (epoch 11)
+train epoch 18 loss: 0.008, acc: 0.997:  10…   , 
+Epoch 18: train_loss=0.008, train_acc=0.997, val_loss=0.100, val_acc=0.963, val_macroF1=0.9522, lr=0.000099, best_macroF1=0.9747 (epoch 11)
+train epoch 19 loss: 0.010, acc: 0.996:  10…   , 
+Epoch 19: train_loss=0.010, train_acc=0.996, val_loss=0.138, val_acc=0.951, val_macroF1=0.9363, lr=0.000099, best_macroF1=0.9747 (epoch 11)
+train epoch 20 loss: 0.010, acc: 0.997:  10…   , 
+Epoch 20: train_loss=0.010, train_acc=0.997, val_loss=0.117, val_acc=0.965, val_macroF1=0.9545, lr=0.000099, best_macroF1=0.9747 (epoch 11)
+train epoch 21 loss: 0.014, acc: 0.996:  10…   , 
+Epoch 21: train_loss=0.014, train_acc=0.996, val_loss=0.128, val_acc=0.960, val_macroF1=0.9491, lr=0.000099, best_macroF1=0.9747 (epoch 11)
+train epoch 22 loss: 0.009, acc: 0.997:  10…   , 
+Epoch 22: train_loss=0.009, train_acc=0.997, val_loss=0.079, val_acc=0.974, val_macroF1=0.9678, lr=0.000099, best_macroF1=0.9747 (epoch 11)
+train epoch 23 loss: 0.012, acc: 0.996:  10…   , 
+Epoch 23: train_loss=0.012, train_acc=0.996, val_loss=0.096, val_acc=0.963, val_macroF1=0.9525, lr=0.000098, best_macroF1=0.9747 (epoch 11)
+train epoch 24 loss: 0.007, acc: 0.998:  10…   , 
+Epoch 24: train_loss=0.007, train_acc=0.998, val_loss=0.086, val_acc=0.970, val_macroF1=0.9622, lr=0.000098, best_macroF1=0.9747 (epoch 11)
+train epoch 25 loss: 0.013, acc: 0.995:  10…   , 
+Epoch 25: train_loss=0.013, train_acc=0.995, val_loss=0.126, val_acc=0.956, val_macroF1=0.9427, lr=0.000098, best_macroF1=0.9747 (epoch 11)
+train epoch 26 loss: 0.007, acc: 0.998:  10…   , 
+Epoch 26: train_loss=0.007, train_acc=0.998, val_loss=0.090, val_acc=0.970, val_macroF1=0.9613, lr=0.000098, best_macroF1=0.9747 (epoch 11)
+train epoch 27 loss: 0.003, acc: 1.000:  10…   , 
+Epoch 27: train_loss=0.003, train_acc=1.000, val_loss=0.115, val_acc=0.965, val_macroF1=0.9560, lr=0.000098, best_macroF1=0.9747 (epoch 11)
+train epoch 28 loss: 0.005, acc: 0.998:  10…   , 
+Epoch 28: train_loss=0.005, train_acc=0.998, val_loss=0.121, val_acc=0.963, val_macroF1=0.9526, lr=0.000098, best_macroF1=0.9747 (epoch 11)
+train epoch 29 loss: 0.006, acc: 0.998:  10…   , 
+Epoch 29: train_loss=0.006, train_acc=0.998, val_loss=0.119, val_acc=0.958, val_macroF1=0.9465, lr=0.000098, best_macroF1=0.9747 (epoch 11)
+train epoch 30 loss: 0.004, acc: 0.999:  10…   , 
+Epoch 30: train_loss=0.004, train_acc=0.999, val_loss=0.137, val_acc=0.956, val_macroF1=0.9445, lr=0.000097, best_macroF1=0.9747 (epoch 11)
+train epoch 31 loss: 0.010, acc: 0.996:  10…   , 
+Epoch 31: train_loss=0.010, train_acc=0.996, val_loss=0.131, val_acc=0.951, val_macroF1=0.9346, lr=0.000097, best_macroF1=0.9747 (epoch 11)
+train epoch 32 loss: 0.005, acc: 0.999:  10…   , 
+Epoch 32: train_loss=0.005, train_acc=0.999, val_loss=0.145, val_acc=0.951, val_macroF1=0.9367, lr=0.000097, best_macroF1=0.9747 (epoch 11)
+train epoch 33 loss: 0.006, acc: 0.998:  10…   , 
+Epoch 33: train_loss=0.006, train_acc=0.998, val_loss=0.096, val_acc=0.965, val_macroF1=0.9543, lr=0.000097, best_macroF1=0.9747 (epoch 11)
+train epoch 34 loss: 0.012, acc: 0.996:  10…   , 
+Epoch 34: train_loss=0.012, train_acc=0.996, val_loss=0.122, val_acc=0.965, val_macroF1=0.9582, lr=0.000097, best_macroF1=0.9747 (epoch 11)
+train epoch 35 loss: 0.008, acc: 0.996:  10…   , 
+Epoch 35: train_loss=0.008, train_acc=0.996, val_loss=0.179, val_acc=0.953, val_macroF1=0.9401, lr=0.000096, best_macroF1=0.9747 (epoch 11)
+train epoch 36 loss: 0.006, acc: 0.998:  10…   , 
+Epoch 36: train_loss=0.006, train_acc=0.998, val_loss=0.139, val_acc=0.960, val_macroF1=0.9484, lr=0.000096, best_macroF1=0.9747 (epoch 11)
+train epoch 37 loss: 0.006, acc: 0.998:  10…   , 
+Epoch 37: train_loss=0.006, train_acc=0.998, val_loss=0.177, val_acc=0.944, val_macroF1=0.9258, lr=0.000096, best_macroF1=0.9747 (epoch 11)
+train epoch 38 loss: 0.008, acc: 0.996:  10…   , 
+Epoch 38: train_loss=0.008, train_acc=0.996, val_loss=0.197, val_acc=0.939, val_macroF1=0.9212, lr=0.000096, best_macroF1=0.9747 (epoch 11)
+train epoch 39 loss: 0.007, acc: 0.997:  10…   , 
+Epoch 39: train_loss=0.007, train_acc=0.997, val_loss=0.133, val_acc=0.960, val_macroF1=0.9481, lr=0.000096, best_macroF1=0.9747 (epoch 11)
+train epoch 40 loss: 0.014, acc: 0.996:  10…   , 
+Epoch 40: train_loss=0.014, train_acc=0.996, val_loss=0.182, val_acc=0.944, val_macroF1=0.9252, lr=0.000095, best_macroF1=0.9747 (epoch 11)
+train epoch 41 loss: 0.011, acc: 0.996:  10…   , 
+Epoch 41: train_loss=0.011, train_acc=0.996, val_loss=0.169, val_acc=0.944, val_macroF1=0.9271, lr=0.000095, best_macroF1=0.9747 (epoch 11)
+
+[early stop] epoch 41: val_macro_f1 not improved for 30 epochs
+
+===========================================================
+             Training Summary (fair baseline)              
+===========================================================
+  Model:              mbv3_r6_s2_fz16
+  Best val macro-F1:  0.9747  (epoch 11)
+  Selection:          val macro-F1
+  Loss:               unweighted CrossEntropy
+  Training Time:      0:03:16
+  Weights:            ./weights_cle_ac_v1_r6/mbv3_r6_s2_fz16_seed42/mbv3_r6_s2_fz16/model_best.pth
+  Run meta:           ./weights_cle_ac_v1_r6/mbv3_r6_s2_fz16_seed42/mbv3_r6_s2_fz16/run_meta.json
+===========================================================
+
+===== [2026-11-08 23:41:59.567564] /home/login/miniconda3/envs/sunfuxiang/bin/python train_cle_fair.py --model mbv3_r6_s2_fz16 --num_classes 3 --img_size 224 --seed 42 --data-path-train ./datasets/cle_ac_v1/train --data-path-val ./datasets/cle_ac_v1/val --weights /home/login/data/cle/sunfuxiang/classifyML/pth/mobilenet_v3_large-8738ca79.pth --save-dir ./weights_cle_ac_v1_r6/mbv3_r6_s2_fz16_seed42 --epochs 300 --early-stop 30 
+[norm] source=run_meta.json(imagenet)  mean=[0.485, 0.456, 0.406] std=[0.229, 0.224, 0.225]  img_size=224
+[model] mbv3_r6_s2_fz16  weights=/data/cle/auto/ZCode/Classification/weights_cle_ac_v1_r6/mbv3_r6_s2_fz16_seed42/mbv3_r6_s2_fz16/model_best.pth
+[complexity] MACs=231.96M FLOPs=463.92M Params=3.25M
+[data] test=427 张  Benign_lesions=195  Malignant_lesions=79  body_of_stomach_normal=153
+
+================================================================
+  评估结果 — mbv3_r6_s2_fz16  (test=427 张)
+================================================================
+  【主指标】
+  Macro-F1         : 0.9718   ← 主指标(类别不平衡首选)
+  Accuracy         : 0.9766
+  Macro-AUROC(OvR) : 0.9984
+----------------------------------------------------------------
+  【补充总体指标】
+  Weighted-F1      : 0.9767
+  Balanced Acc     : 0.9779
+  Macro-Sensitivity: 0.9779   (= 各类 Recall 均值)
+  Macro-Specificity: 0.9892
+  Macro-Precision  : 0.9665
+  AUC-PR (Macro)   : 0.9951
+  Cohen's Kappa    : 0.9630
+  MCC              : 0.9632
+----------------------------------------------------------------
+  【每类指标】 Sensitivity / Specificity / Precision / F1 / AUROC
+  Benign_lesions        : 0.959 / 0.991 / 0.989 / 0.974 / 0.998  (n=195)
+  Malignant_lesions     : 0.975 / 0.980 / 0.917 / 0.945 / 0.997  (n=79)
+  body_of_stomach_normal: 1.000 / 0.996 / 0.994 / 0.997 / 1.000  (n=153)
+----------------------------------------------------------------
+  【模型复杂度】(仅与架构+输入尺寸有关，与数据集无关)
+  MACs : 231.96M    FLOPs : 463.92M    Params : 3.25M
+  【推理效率】(受 GPU 负载影响，为参考量级)
+  Pure FPS : 3353.0  (0.30 ms/张)    End-to-End FPS : 248.1
+----------------------------------------------------------------
+  【混淆矩阵】(行=真实, 列=预测)
+                  Benign_l  Malignan  body_of_
+  Benign_lesio         187         7         1
+  Malignant_le           2        77         0
+  body_of_stom           0         0       153
+================================================================
+
+[saved] /data/cle/auto/ZCode/Classification/weights_cle_ac_v1_r6/mbv3_r6_s2_fz16_seed42/mbv3_r6_s2_fz16/eval_20261108_234525/  (results.json / predictions.csv / evaluation_report.md)
+
+===== [2026-11-08 23:45:20.483066] /home/login/miniconda3/envs/sunfuxiang/bin/python evaluate.py --model mbv3_r6_s2_fz16 --weights /data/cle/auto/ZCode/Classification/weights_cle_ac_v1_r6/mbv3_r6_s2_fz16_seed42/mbv3_r6_s2_fz16/model_best.pth --data-path ./datasets/cle_ac_v1/val 
+[norm] source=run_meta.json(imagenet)  mean=[0.485, 0.456, 0.406] std=[0.229, 0.224, 0.225]  img_size=224
+[model] mbv3_r6_s2_fz16  weights=/data/cle/auto/ZCode/Classification/weights_cle_ac_v1_r6/mbv3_r6_s2_fz16_seed42/mbv3_r6_s2_fz16/model_best.pth
+[complexity] MACs=231.96M FLOPs=463.92M Params=3.25M
+[data] test=576 张  Benign_lesions=208  Malignant_lesions=176  body_of_stomach_normal=192
+
+================================================================
+  评估结果 — mbv3_r6_s2_fz16  (test=576 张)
+================================================================
+  【主指标】
+  Macro-F1         : 0.9584   ← 主指标(类别不平衡首选)
+  Accuracy         : 0.9583
+  Macro-AUROC(OvR) : 0.9946
+----------------------------------------------------------------
+  【补充总体指标】
+  Weighted-F1      : 0.9583
+  Balanced Acc     : 0.9578
+  Macro-Sensitivity: 0.9578   (= 各类 Recall 均值)
+  Macro-Specificity: 0.9788
+  Macro-Precision  : 0.9593
+  AUC-PR (Macro)   : 0.9896
+  Cohen's Kappa    : 0.9373
+  MCC              : 0.9374
+----------------------------------------------------------------
+  【每类指标】 Sensitivity / Specificity / Precision / F1 / AUROC
+  Benign_lesions        : 0.952 / 0.962 / 0.934 / 0.943 / 0.991  (n=208)
+  Malignant_lesions     : 0.932 / 0.985 / 0.965 / 0.948 / 0.993  (n=176)
+  body_of_stomach_normal: 0.990 / 0.990 / 0.979 / 0.984 / 0.999  (n=192)
+----------------------------------------------------------------
+  【模型复杂度】(仅与架构+输入尺寸有关，与数据集无关)
+  MACs : 231.96M    FLOPs : 463.92M    Params : 3.25M
+  【推理效率】(受 GPU 负载影响，为参考量级)
+  Pure FPS : 4562.4  (0.22 ms/张)    End-to-End FPS : 263.7
+----------------------------------------------------------------
+  【混淆矩阵】(行=真实, 列=预测)
+                  Benign_l  Malignan  body_of_
+  Benign_lesio         198         6         4
+  Malignant_le          12       164         0
+  body_of_stom           2         0       190
+================================================================
+
+[saved] /data/cle/auto/ZCode/Classification/weights_cle_ac_v1_r6/mbv3_r6_s2_fz16_seed42/mbv3_r6_s2_fz16/eval_20261108_234531/  (results.json / predictions.csv / evaluation_report.md)
+
+===== [2026-11-08 23:45:26.183611] /home/login/miniconda3/envs/sunfuxiang/bin/python evaluate.py --model mbv3_r6_s2_fz16 --weights /data/cle/auto/ZCode/Classification/weights_cle_ac_v1_r6/mbv3_r6_s2_fz16_seed42/mbv3_r6_s2_fz16/model_best.pth --data-path ./datasets/cle_ac_v1/test 

@@ -1,0 +1,105 @@
+{
+  "model": "mbv3_l2sp_a001",
+  "weights": "/data/cle/auto/ZCode/Classification/weights_cle_ac_v1_r6/mbv3_l2sp_a001_seed43/mbv3_l2sp_a001/model_best.pth",
+  "test_dir": "./datasets/cle_ac_v1/val",
+  "img_size": 224,
+  "norm_mean": [
+    0.485,
+    0.456,
+    0.406
+  ],
+  "norm_std": [
+    0.229,
+    0.224,
+    0.225
+  ],
+  "norm_source": "run_meta.json(imagenet)",
+  "n_total": 427,
+  "class_names": [
+    "Benign_lesions",
+    "Malignant_lesions",
+    "body_of_stomach_normal"
+  ],
+  "macro_f1": 0.9644271340473872,
+  "accuracy": 0.9718969555035128,
+  "auc_roc_macro": 0.9971136591717125,
+  "weighted_f1": 0.9718969555035128,
+  "balanced_accuracy": 0.9644271340473872,
+  "macro_sensitivity": 0.9644271340473872,
+  "macro_specificity": 0.985632183908046,
+  "kappa": 0.9553090166937045,
+  "mcc": 0.9553090166937045,
+  "complexity": {
+    "macs": "232.91M",
+    "flops": "465.83M",
+    "params": "4.21M",
+    "params_raw": 4205875,
+    "macs_raw": 232912832
+  },
+  "efficiency": {
+    "pure_infer_time": 0.247894287109375,
+    "pure_fps": 1722.508432845008,
+    "pure_ms_per_img": 0.5805486817549765,
+    "e2e_time": 5.305776596069336,
+    "e2e_fps": 80.47832249784759,
+    "total_samples": 427
+  },
+  "per_class": {
+    "Benign_lesions": {
+      "precision": 0.9692307692307692,
+      "recall": 0.9692307692307692,
+      "sensitivity": 0.9692307692307692,
+      "specificity": 0.9741379310344828,
+      "f1": 0.9692307692307692,
+      "npv": 0.9741379310344828,
+      "tp": 189,
+      "fp": 6,
+      "tn": 226,
+      "fn": 6,
+      "support": 195
+    },
+    "Malignant_lesions": {
+      "precision": 0.9240506329113924,
+      "recall": 0.9240506329113924,
+      "sensitivity": 0.9240506329113924,
+      "specificity": 0.9827586206896551,
+      "f1": 0.9240506329113924,
+      "npv": 0.9827586206896551,
+      "tp": 73,
+      "fp": 6,
+      "tn": 342,
+      "fn": 6,
+      "support": 79
+    },
+    "body_of_stomach_normal": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "sensitivity": 1.0,
+      "specificity": 1.0,
+      "f1": 1.0,
+      "npv": 1.0,
+      "tp": 153,
+      "fp": 0,
+      "tn": 274,
+      "fn": 0,
+      "support": 153
+    }
+  },
+  "confusion_matrix": [
+    [
+      189,
+      6,
+      0
+    ],
+    [
+      6,
+      73,
+      0
+    ],
+    [
+      0,
+      0,
+      153
+    ]
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "model": "iformer_s",
+  "num_classes": 3,
+  "img_size": 224,
+  "seed": 44,
+  "norm_mean": [
+    0.485,
+    0.456,
+    0.406
+  ],
+  "norm_std": [
+    0.229,
+    0.224,
+    0.225
+  ],
+  "norm_source": "imagenet",
+  "selection_metric": "val_macro_f1",
+  "loss": "unweighted_cross_entropy",
+  "data_path_train": "/data/cle/auto/ZCode/Classification/datasets/busi_v1/train",
+  "data_path_val": "/data/cle/auto/ZCode/Classification/datasets/busi_v1/val",
+  "weights": "/data/cle/auto/ZCode/Classification/weights_xd_busi_r6b/iformer_s_seed44/iformer_s/model_best.pth",
+  "created_at": "2026-11-10 10:04:17",
+  "pretrained_load": {
+    "checkpoint": "/data/cle/sunfuxiang/classifyML/pth/sota2026/iformer_s.pth",
+    "checkpoint_sha256": "7a72bfd57ec5ce980b414d5e4a8fe07ead6e017e7e6efe995d5534e86df12331",
+    "removed_classifier_keys": [
+      "classifier.classifier.bn.bias",
+      "classifier.classifier.bn.num_batches_tracked",
+      "classifier.classifier.bn.running_mean",
+      "classifier.classifier.bn.running_var",
+      "classifier.classifier.bn.weight",
+      "classifier.classifier.l.bias",
+      "classifier.classifier.l.weight"
+    ],
+    "ignored_nonparameter_buffer_keys": [],
+    "missing_keys": [
+      "classifier.classifier.bn.bias",
+      "classifier.classifier.bn.running_mean",
+      "classifier.classifier.bn.running_var",
+      "classifier.classifier.bn.weight",
+      "classifier.classifier.l.bias",
+      "classifier.classifier.l.weight"
+    ],
+    "unexpected_keys": [],
+    "allowed_missing_segments": [],
+    "checkpoint_transform": null,
+    "all_trainable_backbone_parameters_loaded": true
+  }
+}

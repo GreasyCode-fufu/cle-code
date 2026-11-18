@@ -1,0 +1,212 @@
+/home/login/miniconda3/envs/sunfuxiang/lib/python3.12/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+/data/cle/sunfuxiang/Classification/train_cle_fair.py:504: FutureWarning: `torch.cuda.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler('cuda', args...)` instead.
+  scaler = torch.cuda.amp.GradScaler()
+[seed] seed = 42 (set)
+2386 images for training.
+538 images were found in the val dataset.
+538 images for test.
+[norm] ImageNet 归一化(加载了预训练权重) MEAN=[0.485, 0.456, 0.406] STD=[0.229, 0.224, 0.225]
+[weights] strict load passed /data/cle/sunfuxiang/classifyML/pth/resnet34-333f7ec4.pth | classifier_missing=14 ignored_buffers=0 unexpected=0
+[train] model=resnet34_lib_msctx_l4 num_classes=3 img=224 bs=32 epochs=300 | CE (label_smoothing=0.0) | select=val_macro_f1
+[out]   run_dir=./weights/resnet34_lib_msctx_l4_seed42/resnet34_lib_msctx_l4
+train epoch 0 loss: 0.428, acc: 0.819:  10… [  , 
+Epoch 0: train_loss=0.428, train_acc=0.819, val_loss=0.330, val_acc=0.849, val_macroF1=0.8526, lr=0.000100, best_macroF1=0.8526 (epoch 0) *
+train epoch 1 loss: 0.273, acc: 0.887:  10… [  , 
+Epoch 1: train_loss=0.273, train_acc=0.887, val_loss=0.391, val_acc=0.836, val_macroF1=0.8156, lr=0.000100, best_macroF1=0.8526 (epoch 0)
+train epoch 2 loss: 0.236, acc: 0.900:  10… [  , 
+Epoch 2: train_loss=0.236, train_acc=0.900, val_loss=0.543, val_acc=0.827, val_macroF1=0.7988, lr=0.000100, best_macroF1=0.8526 (epoch 0)
+train epoch 3 loss: 0.204, acc: 0.921:  10… [  , 
+Epoch 3: train_loss=0.204, train_acc=0.921, val_loss=0.565, val_acc=0.822, val_macroF1=0.7910, lr=0.000100, best_macroF1=0.8526 (epoch 0)
+train epoch 4 loss: 0.178, acc: 0.935:  10… [  , 
+Epoch 4: train_loss=0.178, train_acc=0.935, val_loss=0.364, val_acc=0.872, val_macroF1=0.8682, lr=0.000100, best_macroF1=0.8682 (epoch 4) *
+train epoch 5 loss: 0.175, acc: 0.930:  10… [  , 
+Epoch 5: train_loss=0.175, train_acc=0.930, val_loss=0.381, val_acc=0.866, val_macroF1=0.8627, lr=0.000100, best_macroF1=0.8682 (epoch 4)
+train epoch 6 loss: 0.162, acc: 0.937:  10… [  , 
+Epoch 6: train_loss=0.162, train_acc=0.937, val_loss=0.417, val_acc=0.842, val_macroF1=0.8400, lr=0.000100, best_macroF1=0.8682 (epoch 4)
+train epoch 7 loss: 0.138, acc: 0.948:  10… [  , 
+Epoch 7: train_loss=0.138, train_acc=0.948, val_loss=0.361, val_acc=0.879, val_macroF1=0.8798, lr=0.000100, best_macroF1=0.8798 (epoch 7) *
+train epoch 8 loss: 0.122, acc: 0.956:  10… [  , 
+Epoch 8: train_loss=0.122, train_acc=0.956, val_loss=0.671, val_acc=0.783, val_macroF1=0.7494, lr=0.000100, best_macroF1=0.8798 (epoch 7)
+train epoch 9 loss: 0.137, acc: 0.947:  10… [  , 
+Epoch 9: train_loss=0.137, train_acc=0.947, val_loss=0.461, val_acc=0.857, val_macroF1=0.8490, lr=0.000100, best_macroF1=0.8798 (epoch 7)
+train epoch 10 loss: 0.123, acc: 0.951:  10…   , 
+Epoch 10: train_loss=0.123, train_acc=0.951, val_loss=0.426, val_acc=0.861, val_macroF1=0.8565, lr=0.000100, best_macroF1=0.8798 (epoch 7)
+train epoch 11 loss: 0.094, acc: 0.962:  10…   , 
+Epoch 11: train_loss=0.094, train_acc=0.962, val_loss=0.510, val_acc=0.844, val_macroF1=0.8295, lr=0.000100, best_macroF1=0.8798 (epoch 7)
+train epoch 12 loss: 0.091, acc: 0.964:  10…   , 
+Epoch 12: train_loss=0.091, train_acc=0.964, val_loss=0.498, val_acc=0.836, val_macroF1=0.8322, lr=0.000100, best_macroF1=0.8798 (epoch 7)
+train epoch 13 loss: 0.078, acc: 0.972:  10…   , 
+Epoch 13: train_loss=0.078, train_acc=0.972, val_loss=0.643, val_acc=0.809, val_macroF1=0.7808, lr=0.000099, best_macroF1=0.8798 (epoch 7)
+train epoch 14 loss: 0.088, acc: 0.964:  10…   , 
+Epoch 14: train_loss=0.088, train_acc=0.964, val_loss=0.464, val_acc=0.853, val_macroF1=0.8435, lr=0.000099, best_macroF1=0.8798 (epoch 7)
+train epoch 15 loss: 0.094, acc: 0.963:  10…   , 
+Epoch 15: train_loss=0.094, train_acc=0.963, val_loss=0.623, val_acc=0.783, val_macroF1=0.7364, lr=0.000099, best_macroF1=0.8798 (epoch 7)
+train epoch 16 loss: 0.078, acc: 0.973:  10…   , 
+Epoch 16: train_loss=0.078, train_acc=0.973, val_loss=0.633, val_acc=0.810, val_macroF1=0.7923, lr=0.000099, best_macroF1=0.8798 (epoch 7)
+train epoch 17 loss: 0.063, acc: 0.977:  10…   , 
+Epoch 17: train_loss=0.063, train_acc=0.977, val_loss=0.519, val_acc=0.846, val_macroF1=0.8386, lr=0.000099, best_macroF1=0.8798 (epoch 7)
+train epoch 18 loss: 0.063, acc: 0.978:  10…   , 
+Epoch 18: train_loss=0.063, train_acc=0.978, val_loss=0.408, val_acc=0.885, val_macroF1=0.8828, lr=0.000099, best_macroF1=0.8828 (epoch 18) *
+train epoch 19 loss: 0.063, acc: 0.979:  10…   , 
+Epoch 19: train_loss=0.063, train_acc=0.979, val_loss=0.432, val_acc=0.875, val_macroF1=0.8752, lr=0.000099, best_macroF1=0.8828 (epoch 18)
+train epoch 20 loss: 0.066, acc: 0.976:  10…   , 
+Epoch 20: train_loss=0.066, train_acc=0.976, val_loss=0.493, val_acc=0.868, val_macroF1=0.8691, lr=0.000099, best_macroF1=0.8828 (epoch 18)
+train epoch 21 loss: 0.052, acc: 0.984:  10…   , 
+Epoch 21: train_loss=0.052, train_acc=0.984, val_loss=0.745, val_acc=0.812, val_macroF1=0.7890, lr=0.000099, best_macroF1=0.8828 (epoch 18)
+train epoch 22 loss: 0.061, acc: 0.978:  10…   , 
+Epoch 22: train_loss=0.061, train_acc=0.978, val_loss=0.476, val_acc=0.844, val_macroF1=0.8359, lr=0.000099, best_macroF1=0.8828 (epoch 18)
+train epoch 23 loss: 0.061, acc: 0.978:  10…   , 
+Epoch 23: train_loss=0.061, train_acc=0.978, val_loss=0.577, val_acc=0.842, val_macroF1=0.8343, lr=0.000098, best_macroF1=0.8828 (epoch 18)
+train epoch 24 loss: 0.060, acc: 0.977:  10…   , 
+Epoch 24: train_loss=0.060, train_acc=0.977, val_loss=0.882, val_acc=0.807, val_macroF1=0.7853, lr=0.000098, best_macroF1=0.8828 (epoch 18)
+train epoch 25 loss: 0.045, acc: 0.984:  10…   , 
+Epoch 25: train_loss=0.045, train_acc=0.984, val_loss=0.560, val_acc=0.842, val_macroF1=0.8320, lr=0.000098, best_macroF1=0.8828 (epoch 18)
+train epoch 26 loss: 0.060, acc: 0.979:  10…   , 
+Epoch 26: train_loss=0.060, train_acc=0.979, val_loss=0.576, val_acc=0.857, val_macroF1=0.8468, lr=0.000098, best_macroF1=0.8828 (epoch 18)
+train epoch 27 loss: 0.047, acc: 0.985:  10…   , 
+Epoch 27: train_loss=0.047, train_acc=0.985, val_loss=0.511, val_acc=0.861, val_macroF1=0.8589, lr=0.000098, best_macroF1=0.8828 (epoch 18)
+train epoch 28 loss: 0.060, acc: 0.977:  10…   , 
+Epoch 28: train_loss=0.060, train_acc=0.977, val_loss=0.514, val_acc=0.879, val_macroF1=0.8762, lr=0.000098, best_macroF1=0.8828 (epoch 18)
+train epoch 29 loss: 0.055, acc: 0.980:  10…   , 
+Epoch 29: train_loss=0.055, train_acc=0.980, val_loss=0.706, val_acc=0.825, val_macroF1=0.8183, lr=0.000098, best_macroF1=0.8828 (epoch 18)
+train epoch 30 loss: 0.047, acc: 0.985:  10…   , 
+Epoch 30: train_loss=0.047, train_acc=0.985, val_loss=0.453, val_acc=0.859, val_macroF1=0.8594, lr=0.000097, best_macroF1=0.8828 (epoch 18)
+train epoch 31 loss: 0.043, acc: 0.986:  10…   , 
+Epoch 31: train_loss=0.043, train_acc=0.986, val_loss=0.522, val_acc=0.848, val_macroF1=0.8434, lr=0.000097, best_macroF1=0.8828 (epoch 18)
+train epoch 32 loss: 0.026, acc: 0.992:  10…   , 
+Epoch 32: train_loss=0.026, train_acc=0.992, val_loss=0.757, val_acc=0.816, val_macroF1=0.8005, lr=0.000097, best_macroF1=0.8828 (epoch 18)
+train epoch 33 loss: 0.055, acc: 0.977:  10…   , 
+Epoch 33: train_loss=0.055, train_acc=0.977, val_loss=0.483, val_acc=0.859, val_macroF1=0.8562, lr=0.000097, best_macroF1=0.8828 (epoch 18)
+train epoch 34 loss: 0.035, acc: 0.988:  10…   , 
+Epoch 34: train_loss=0.035, train_acc=0.988, val_loss=0.772, val_acc=0.803, val_macroF1=0.7729, lr=0.000097, best_macroF1=0.8828 (epoch 18)
+train epoch 35 loss: 0.038, acc: 0.986:  10…   , 
+Epoch 35: train_loss=0.038, train_acc=0.986, val_loss=1.184, val_acc=0.783, val_macroF1=0.7369, lr=0.000096, best_macroF1=0.8828 (epoch 18)
+train epoch 36 loss: 0.040, acc: 0.986:  10…   , 
+Epoch 36: train_loss=0.040, train_acc=0.986, val_loss=0.544, val_acc=0.868, val_macroF1=0.8698, lr=0.000096, best_macroF1=0.8828 (epoch 18)
+train epoch 37 loss: 0.049, acc: 0.983:  10…   , 
+Epoch 37: train_loss=0.049, train_acc=0.983, val_loss=0.604, val_acc=0.853, val_macroF1=0.8425, lr=0.000096, best_macroF1=0.8828 (epoch 18)
+train epoch 38 loss: 0.037, acc: 0.989:  10…   , 
+Epoch 38: train_loss=0.037, train_acc=0.989, val_loss=0.580, val_acc=0.857, val_macroF1=0.8594, lr=0.000096, best_macroF1=0.8828 (epoch 18)
+train epoch 39 loss: 0.052, acc: 0.979:  10…   , 
+Epoch 39: train_loss=0.052, train_acc=0.979, val_loss=0.877, val_acc=0.809, val_macroF1=0.7839, lr=0.000096, best_macroF1=0.8828 (epoch 18)
+train epoch 40 loss: 0.044, acc: 0.986:  10…   , 
+Epoch 40: train_loss=0.044, train_acc=0.986, val_loss=0.534, val_acc=0.872, val_macroF1=0.8673, lr=0.000095, best_macroF1=0.8828 (epoch 18)
+train epoch 41 loss: 0.049, acc: 0.984:  10…   , 
+Epoch 41: train_loss=0.049, train_acc=0.984, val_loss=0.579, val_acc=0.857, val_macroF1=0.8492, lr=0.000095, best_macroF1=0.8828 (epoch 18)
+train epoch 42 loss: 0.033, acc: 0.990:  10…   , 
+Epoch 42: train_loss=0.033, train_acc=0.990, val_loss=0.863, val_acc=0.807, val_macroF1=0.7890, lr=0.000095, best_macroF1=0.8828 (epoch 18)
+train epoch 43 loss: 0.029, acc: 0.990:  10…   , 
+Epoch 43: train_loss=0.029, train_acc=0.990, val_loss=0.677, val_acc=0.846, val_macroF1=0.8346, lr=0.000095, best_macroF1=0.8828 (epoch 18)
+train epoch 44 loss: 0.037, acc: 0.987:  10…   , 
+Epoch 44: train_loss=0.037, train_acc=0.987, val_loss=0.834, val_acc=0.840, val_macroF1=0.8265, lr=0.000095, best_macroF1=0.8828 (epoch 18)
+train epoch 45 loss: 0.023, acc: 0.993:  10…   , 
+Epoch 45: train_loss=0.023, train_acc=0.993, val_loss=0.612, val_acc=0.842, val_macroF1=0.8377, lr=0.000094, best_macroF1=0.8828 (epoch 18)
+train epoch 46 loss: 0.029, acc: 0.991:  10…   , 
+Epoch 46: train_loss=0.029, train_acc=0.991, val_loss=0.513, val_acc=0.872, val_macroF1=0.8694, lr=0.000094, best_macroF1=0.8828 (epoch 18)
+train epoch 47 loss: 0.048, acc: 0.984:  10…   , 
+Epoch 47: train_loss=0.048, train_acc=0.984, val_loss=0.676, val_acc=0.833, val_macroF1=0.8343, lr=0.000094, best_macroF1=0.8828 (epoch 18)
+train epoch 48 loss: 0.027, acc: 0.992:  10…   , 
+Epoch 48: train_loss=0.027, train_acc=0.992, val_loss=0.645, val_acc=0.851, val_macroF1=0.8423, lr=0.000094, best_macroF1=0.8828 (epoch 18)
+
+[early stop] epoch 48: val_macro_f1 not improved for 30 epochs
+
+===========================================================
+             Training Summary (fair baseline)              
+===========================================================
+  Model:              resnet34_lib_msctx_l4
+  Best val macro-F1:  0.8828  (epoch 18)
+  Selection:          val macro-F1
+  Loss:               unweighted CrossEntropy
+  Training Time:      0:04:05
+  Weights:            ./weights/resnet34_lib_msctx_l4_seed42/resnet34_lib_msctx_l4/model_best.pth
+  Run meta:           ./weights/resnet34_lib_msctx_l4_seed42/resnet34_lib_msctx_l4/run_meta.json
+===========================================================
+
+===== [2026-10-24 02:10:08.574617] /home/login/miniconda3/envs/sunfuxiang/bin/python train_cle_fair.py --model resnet34_lib_msctx_l4 --num_classes 3 --img_size 224 --seed 42 --data-path-train ./datasets/cle/train --data-path-val ./datasets/cle/val --weights /home/login/data/cle/sunfuxiang/classifyML/pth/resnet34-333f7ec4.pth --save-dir ./weights/resnet34_lib_msctx_l4_seed42 --epochs 300
+[norm] source=run_meta.json(imagenet)  mean=[0.485, 0.456, 0.406] std=[0.229, 0.224, 0.225]  img_size=224
+[model] resnet34_lib_msctx_l4  weights=/data/cle/sunfuxiang/Classification/weights/resnet34_lib_msctx_l4_seed42/resnet34_lib_msctx_l4/model_best.pth
+[complexity] MACs=3.69G FLOPs=7.37G Params=21.47M
+[data] test=538 张  Benign_lesions=225  Malignant_lesions=156  body_of_stomach_normal=157
+
+================================================================
+  评估结果 — resnet34_lib_msctx_l4  (test=538 张)
+================================================================
+  【主指标】
+  Macro-F1         : 0.8877   ← 主指标(类别不平衡首选)
+  Accuracy         : 0.8885
+  Macro-AUROC(OvR) : 0.9678
+----------------------------------------------------------------
+  【补充总体指标】
+  Weighted-F1      : 0.8870
+  Balanced Acc     : 0.8862
+  Macro-Sensitivity: 0.8862   (= 各类 Recall 均值)
+  Macro-Specificity: 0.9413
+  Macro-Precision  : 0.8910
+  AUC-PR (Macro)   : 0.9383
+  Cohen's Kappa    : 0.8293
+  MCC              : 0.8301
+----------------------------------------------------------------
+  【每类指标】 Sensitivity / Specificity / Precision / F1 / AUROC
+  Benign_lesions        : 0.902 / 0.895 / 0.860 / 0.881 / 0.961  (n=225)
+  Malignant_lesions     : 0.763 / 0.942 / 0.844 / 0.801 / 0.943  (n=156)
+  body_of_stomach_normal: 0.994 / 0.987 / 0.969 / 0.981 / 0.999  (n=157)
+----------------------------------------------------------------
+  【模型复杂度】(仅与架构+输入尺寸有关，与数据集无关)
+  MACs : 3.69G    FLOPs : 7.37G    Params : 21.47M
+  【推理效率】(受 GPU 负载影响，为参考量级)
+  Pure FPS : 2415.8  (0.41 ms/张)    End-to-End FPS : 6.0
+----------------------------------------------------------------
+  【混淆矩阵】(行=真实, 列=预测)
+                  Benign_l  Malignan  body_of_
+  Benign_lesio         203        21         1
+  Malignant_le          33       119         4
+  body_of_stom           0         1       156
+================================================================
+
+[saved] /data/cle/sunfuxiang/Classification/weights/resnet34_lib_msctx_l4_seed42/resnet34_lib_msctx_l4/eval_20261024_021551/  (results.json / predictions.csv / evaluation_report.md)
+
+===== [2026-10-24 02:14:18.365882] /home/login/miniconda3/envs/sunfuxiang/bin/python evaluate.py --model resnet34_lib_msctx_l4 --weights /data/cle/sunfuxiang/Classification/weights/resnet34_lib_msctx_l4_seed42/resnet34_lib_msctx_l4/model_best.pth --data-path ./datasets/cle/val
+[norm] source=run_meta.json(imagenet)  mean=[0.485, 0.456, 0.406] std=[0.229, 0.224, 0.225]  img_size=224
+[model] resnet34_lib_msctx_l4  weights=/data/cle/sunfuxiang/Classification/weights/resnet34_lib_msctx_l4_seed42/resnet34_lib_msctx_l4/model_best.pth
+[complexity] MACs=3.69G FLOPs=7.37G Params=21.47M
+[data] test=671 张  Benign_lesions=256  Malignant_lesions=210  body_of_stomach_normal=205
+
+================================================================
+  评估结果 — resnet34_lib_msctx_l4  (test=671 张)
+================================================================
+  【主指标】
+  Macro-F1         : 0.8945   ← 主指标(类别不平衡首选)
+  Accuracy         : 0.8927
+  Macro-AUROC(OvR) : 0.9736
+----------------------------------------------------------------
+  【补充总体指标】
+  Weighted-F1      : 0.8929
+  Balanced Acc     : 0.8945
+  Macro-Sensitivity: 0.8945   (= 各类 Recall 均值)
+  Macro-Specificity: 0.9456
+  Macro-Precision  : 0.8946
+  AUC-PR (Macro)   : 0.9514
+  Cohen's Kappa    : 0.8382
+  MCC              : 0.8383
+----------------------------------------------------------------
+  【每类指标】 Sensitivity / Specificity / Precision / F1 / AUROC
+  Benign_lesions        : 0.875 / 0.928 / 0.882 / 0.878 / 0.965  (n=256)
+  Malignant_lesions     : 0.852 / 0.924 / 0.836 / 0.844 / 0.959  (n=210)
+  body_of_stomach_normal: 0.956 / 0.985 / 0.966 / 0.961 / 0.997  (n=205)
+----------------------------------------------------------------
+  【模型复杂度】(仅与架构+输入尺寸有关，与数据集无关)
+  MACs : 3.69G    FLOPs : 7.37G    Params : 21.47M
+  【推理效率】(受 GPU 负载影响，为参考量级)
+  Pure FPS : 2441.9  (0.41 ms/张)    End-to-End FPS : 4.6
+----------------------------------------------------------------
+  【混淆矩阵】(行=真实, 列=预测)
+                  Benign_l  Malignan  body_of_
+  Benign_lesio         224        29         3
+  Malignant_le          27       179         4
+  body_of_stom           3         6       196
+================================================================
+
+[saved] /data/cle/sunfuxiang/Classification/weights/resnet34_lib_msctx_l4_seed42/resnet34_lib_msctx_l4/eval_20261024_021820/  (results.json / predictions.csv / evaluation_report.md)
+
+===== [2026-10-24 02:15:51.997074] /home/login/miniconda3/envs/sunfuxiang/bin/python evaluate.py --model resnet34_lib_msctx_l4 --weights /data/cle/sunfuxiang/Classification/weights/resnet34_lib_msctx_l4_seed42/resnet34_lib_msctx_l4/model_best.pth --data-path ./datasets/cle/test
