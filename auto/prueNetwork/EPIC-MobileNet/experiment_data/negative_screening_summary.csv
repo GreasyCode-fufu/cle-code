@@ -1,0 +1,15 @@
+candidate,registry,paired_reference,n_seeds,mean_F1,paired_dF1,verdict
+star2 cross-scale star head (StarNet CVPR'24),mbv3_r6_star2,mobilenet_v3_large,5,94.11,-0.04,rejected
+star3 (+/8),mbv3_r6_star3,mobilenet_v3_large,3,93.4,-0.68,rejected
+star1 same-scale,mbv3_r6_star1,mobilenet_v3_large,3,93.43,-0.65,rejected
+star2x expanded-space evidence,mbv3_r6_star2x,mobilenet_v3_large,5,93.09,-1.07,rejected
+mlp256 shrunk head,mbv3_r6_mlp256,mobilenet_v3_large,3,93.98,-0.1,rejected
+linear head (end-to-end),mbv3_r6_lin,mobilenet_v3_large,3,93.05,-1.03,rejected
+LSConv@/16 backbone (LSNet CVPR'25),mbv3_r6_s2_lsbb,mbv3_r6_star2,2,93.16,-1.71,rejected
+LSConv@/16 side path,mbv3_r6_s2_lsside,mbv3_r6_star2,2,93.97,-0.9,rejected
+IDC@/16 (InceptionNeXt CVPR'24),mbv3_r6_s2_idcbb,mbv3_r6_star2,2,93.78,-1.1,rejected
+/16 pretrained anchor λ=1,mbv3_r6_s2_anc1,mbv3_r6_star2,2,92.78,-2.09,rejected
+/16 pretrained anchor λ=0.3,mbv3_r6_s2_anc03,mbv3_r6_star2,2,93.77,-1.11,rejected
+MatchED-style edge prior (CVPR'26),mbv3_r6_s2_edge,mbv3_r6_star2,2,93.63,-1.24,rejected
+BN-adaptive freeze /2–/16 (stage 1),mbv3_r6_fz16bn,mobilenet_v3_large,5,92.67,-1.49,rejected
+BN-adaptive freeze + DCE4m,mbv3_fz16bn_dce4m,mobilenet_v3_large,5,93.82,-0.34,rejected

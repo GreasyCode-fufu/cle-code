@@ -1,0 +1,102 @@
+{
+  "model": "densenet121",
+  "weights": "/home/login/cle/sunfuxiang/classifyML/weights_fair/densenet121/densenet12142.pth",
+  "img_size": 224,
+  "norm_mean": [
+    0.2892360758089071,
+    0.2892360758089071,
+    0.2892360758089071
+  ],
+  "norm_std": [
+    0.2228318936230603,
+    0.2228318936230603,
+    0.2228318936230603
+  ],
+  "norm_source": "/home/login/cle/sunfuxiang/classifyML/weights_fair/densenet121/run_meta.json",
+  "class_names": [
+    "negative",
+    "positive"
+  ],
+  "best_threshold": 0.16000000000000003,
+  "youden_j": 0.6002331002331003,
+  "n_val": 684,
+  "n_test": 895,
+  "test_threshold_optimized": {
+    "accuracy": 0.8212290502793296,
+    "precision_macro": 0.7662408998491506,
+    "recall_macro": 0.8386339937434828,
+    "f1_macro": 0.7846176060066419,
+    "auroc": 0.9128084810566561,
+    "sensitivity": 0.8714285714285714,
+    "specificity": 0.8058394160583942,
+    "auroc_weighted": 0.9128084810566561,
+    "auc_pr": 0.7429398001562961,
+    "balanced_accuracy": 0.8386339937434828,
+    "kappa": 0.5763940245525809,
+    "mcc": 0.6005271657927775,
+    "precision_w": 0.8655540992952914,
+    "recall_w": 0.8212290502793296,
+    "f1_weighted": 0.8317461589321884,
+    "paper_f1": 0.8373515647931604,
+    "ppv": 0.5791139240506329,
+    "npv": 0.9533678756476683,
+    "confusion_matrix": [
+      [
+        552,
+        133
+      ],
+      [
+        27,
+        183
+      ]
+    ],
+    "tn": 552,
+    "fp": 133,
+    "fn": 27,
+    "tp": 183
+  },
+  "test_default_0.5": {
+    "accuracy": 0.8636871508379889,
+    "precision_macro": 0.8216517608047571,
+    "recall_macro": 0.7805179005908933,
+    "f1_macro": 0.7977603425794215,
+    "auroc": 0.9128084810566561,
+    "sensitivity": 0.6238095238095238,
+    "specificity": 0.9372262773722628,
+    "auroc_weighted": 0.9128084810566561,
+    "auc_pr": 0.7429398001562961,
+    "balanced_accuracy": 0.7805179005908933,
+    "kappa": 0.596489283074649,
+    "mcc": 0.600763103601793,
+    "precision_w": 0.8581541561718231,
+    "recall_w": 0.8636871508379889,
+    "f1_weighted": 0.8590426007454087,
+    "paper_f1": 0.7490547924672561,
+    "ppv": 0.7528735632183908,
+    "npv": 0.8904299583911235,
+    "confusion_matrix": [
+      [
+        642,
+        43
+      ],
+      [
+        79,
+        131
+      ]
+    ],
+    "tn": 642,
+    "fp": 43,
+    "fn": 79,
+    "tp": 131
+  },
+  "per_class_metrics": {
+    "negative": {
+      "auroc": 0.9128084810566562,
+      "aucpr": 0.9715899469416778
+    },
+    "positive": {
+      "auroc": 0.9128084810566561,
+      "aucpr": 0.7429398001562961
+    }
+  }
+}

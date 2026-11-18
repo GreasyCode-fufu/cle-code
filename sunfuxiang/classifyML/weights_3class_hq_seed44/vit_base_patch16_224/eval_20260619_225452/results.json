@@ -1,0 +1,105 @@
+{
+  "model": "vit_base_patch16_224",
+  "weights": "/home/login/cle/sunfuxiang/classifyML/weights_3class_hq_seed44/vit_base_patch16_224/vit_base_patch16_224_3class_hq_seed44_best.pth",
+  "test_dir": "/home/login/cle/sunfuxiang/datasets/3class/test",
+  "img_size": 224,
+  "norm_mean": [
+    0.485,
+    0.456,
+    0.406
+  ],
+  "norm_std": [
+    0.229,
+    0.224,
+    0.225
+  ],
+  "norm_source": "run_meta.json(imagenet)",
+  "n_total": 671,
+  "class_names": [
+    "Benign_lesions",
+    "Malignant_lesions",
+    "body_of_stomach_normal"
+  ],
+  "macro_f1": 0.8853194035051916,
+  "accuracy": 0.8837555886736215,
+  "auc_roc_macro": 0.9723374348560675,
+  "weighted_f1": 0.8840634239709807,
+  "balanced_accuracy": 0.883479723190089,
+  "macro_sensitivity": 0.883479723190089,
+  "macro_specificity": 0.9405527148019335,
+  "kappa": 0.8243891636524692,
+  "mcc": 0.8246594823508794,
+  "complexity": {
+    "macs": "16.86G",
+    "flops": "33.73G",
+    "params": "85.65M",
+    "params_raw": 85648899,
+    "macs_raw": 16862864640
+  },
+  "efficiency": {
+    "pure_infer_time": 0.7716758251190186,
+    "pure_fps": 869.5361162785022,
+    "pure_ms_per_img": 1.1500384875097145,
+    "e2e_time": 3.331447124481201,
+    "e2e_fps": 201.4139726454441,
+    "total_samples": 671
+  },
+  "per_class": {
+    "Benign_lesions": {
+      "precision": 0.8539325842696629,
+      "recall": 0.890625,
+      "sensitivity": 0.890625,
+      "specificity": 0.9060240963855422,
+      "f1": 0.8718929254302104,
+      "npv": 0.9306930693069307,
+      "tp": 228,
+      "fp": 39,
+      "tn": 376,
+      "fn": 28,
+      "support": 256
+    },
+    "Malignant_lesions": {
+      "precision": 0.8599033816425121,
+      "recall": 0.8476190476190476,
+      "sensitivity": 0.8476190476190476,
+      "specificity": 0.9370932754880694,
+      "f1": 0.8537170263788969,
+      "npv": 0.9310344827586207,
+      "tp": 178,
+      "fp": 29,
+      "tn": 432,
+      "fn": 32,
+      "support": 210
+    },
+    "body_of_stomach_normal": {
+      "precision": 0.949238578680203,
+      "recall": 0.9121951219512195,
+      "sensitivity": 0.9121951219512195,
+      "specificity": 0.9785407725321889,
+      "f1": 0.9303482587064676,
+      "npv": 0.9620253164556962,
+      "tp": 187,
+      "fp": 10,
+      "tn": 456,
+      "fn": 18,
+      "support": 205
+    }
+  },
+  "confusion_matrix": [
+    [
+      228,
+      20,
+      8
+    ],
+    [
+      30,
+      178,
+      2
+    ],
+    [
+      9,
+      9,
+      187
+    ]
+  ]
+}

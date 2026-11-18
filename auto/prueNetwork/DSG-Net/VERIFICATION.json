@@ -1,0 +1,35 @@
+{
+  "output_shape": [
+    1,
+    3
+  ],
+  "finite_output": true,
+  "parameters": 27861027,
+  "local_code_imported_only_from_copy": true,
+  "imported_local_modules": {
+    "models.optimize": "/data/cle/auto/Network/convnext_tiny_cle_oca_strip/models/optimize/__init__.py",
+    "models.Convnext": "/data/cle/auto/Network/convnext_tiny_cle_oca_strip/models/Convnext.py",
+    "models.optimize.convnext_cle_dsg": "/data/cle/auto/Network/convnext_tiny_cle_oca_strip/models/optimize/convnext_cle_dsg.py",
+    "model": "/data/cle/auto/Network/convnext_tiny_cle_oca_strip/model.py"
+  },
+  "checkpoint": {
+    "path": "/data/cle/sunfuxiang/classifyML/pth/convnext_tiny_1k_224_ema.pth",
+    "sha256": "14f3164e3ea6ac32ab3f574f528ce817696c9176fad4221e0a77a905a7360595",
+    "strict_identity_vs_baseline": true,
+    "missing_expected": [
+      "head.*",
+      "oca1/oca2.scale",
+      "stages.2.{2,5,8}.dose.*"
+    ],
+    "unexpected": 0
+  },
+  "logits": [
+    [
+      4.867440223693848,
+      5.595544815063477,
+      3.210336446762085
+    ]
+  ],
+  "device": "cpu",
+  "torch": "2.12.0+cu130"
+}

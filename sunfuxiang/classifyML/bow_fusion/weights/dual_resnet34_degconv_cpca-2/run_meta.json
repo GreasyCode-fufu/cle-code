@@ -1,0 +1,33 @@
+{
+  "model": "dual_resnet34_degconv_cpca",
+  "backbone": "resnet34_degconv_cpca",
+  "num_classes": 3,
+  "img_size": 224,
+  "seed": 42,
+  "norm_mean": [
+    0.485,
+    0.456,
+    0.406
+  ],
+  "norm_std": [
+    0.229,
+    0.224,
+    0.225
+  ],
+  "norm_source": "imagenet",
+  "selection_metric": "val_macro_f1",
+  "loss": "unweighted_cross_entropy",
+  "bow_dim": 768,
+  "bow_K": 256,
+  "bow_scales": [
+    16,
+    32,
+    64
+  ],
+  "align_bow": false,
+  "freeze_backbone": false,
+  "data_path_train": "/home/login/cle/sunfuxiang/datasets/3class_highquality/train",
+  "data_path_val": "/home/login/cle/sunfuxiang/datasets/3class_highquality/val",
+  "weights": "/home/login/cle/sunfuxiang/classifyML/bow_fusion/weights/dual_resnet34_degconv_cpca-2/model_best.pth",
+  "created_at": "2026-06-22 15:27:47"
+}

@@ -1,0 +1,6 @@
+model,params_M,macs_G_thop,fps_b1_idle
+# 口径: thop MACs@224; FPS=RTX4090独占 batch1 200次均值(2026-11-08); params含分类头(nc=3)
+baseline (convnext_tiny),27.82,4.45,848
++MSP (convnext_v2m),28.27,4.63,842
++MSP+DCH (convnext_v2c),28.27,4.63,835
++MSP+DCH+FGS (final) (convnext_v6f),28.27,4.63,820

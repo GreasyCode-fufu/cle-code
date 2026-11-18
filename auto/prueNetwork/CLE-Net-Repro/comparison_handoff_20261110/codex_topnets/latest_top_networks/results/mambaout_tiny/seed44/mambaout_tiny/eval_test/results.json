@@ -1,0 +1,105 @@
+{
+  "model": "mambaout_tiny",
+  "weights": "/home/login/data/cle/auto/prueNetwork/CLE-Net/latest_top_networks/results/mambaout_tiny/seed44/mambaout_tiny/model_best.pth",
+  "test_dir": "/home/login/data/cle/auto/ZCode/Classification/datasets/cle_ac_v1/test",
+  "img_size": 224,
+  "norm_mean": [
+    0.485,
+    0.456,
+    0.406
+  ],
+  "norm_std": [
+    0.229,
+    0.224,
+    0.225
+  ],
+  "norm_source": "run_meta.json(imagenet)",
+  "n_total": 576,
+  "class_names": [
+    "Benign_lesions",
+    "Malignant_lesions",
+    "body_of_stomach_normal"
+  ],
+  "macro_f1": 0.9512147951864264,
+  "accuracy": 0.9513888888888888,
+  "auc_roc_macro": 0.9936787367693448,
+  "weighted_f1": 0.9515246158272164,
+  "balanced_accuracy": 0.9505633255633256,
+  "macro_sensitivity": 0.9505633255633256,
+  "macro_specificity": 0.9755102657004832,
+  "kappa": 0.926871735345328,
+  "mcc": 0.927052763792475,
+  "complexity": {
+    "macs": "4.48G",
+    "flops": "8.96G",
+    "params": "24.25M",
+    "params_raw": 24247011,
+    "macs_raw": 4480466112
+  },
+  "efficiency": {
+    "pure_infer_time": 1.6105177402496338,
+    "pure_fps": 357.648963190383,
+    "pure_ms_per_img": 2.7960377434889474,
+    "e2e_time": 36.681206941604614,
+    "e2e_fps": 15.702863892046267,
+    "total_samples": 576
+  },
+  "per_class": {
+    "Benign_lesions": {
+      "precision": 0.9302325581395349,
+      "recall": 0.9615384615384616,
+      "sensitivity": 0.9615384615384616,
+      "specificity": 0.9592391304347826,
+      "f1": 0.9456264775413711,
+      "npv": 0.9778393351800554,
+      "tp": 200,
+      "fp": 15,
+      "tn": 353,
+      "fn": 8,
+      "support": 208
+    },
+    "Malignant_lesions": {
+      "precision": 0.9371428571428572,
+      "recall": 0.9318181818181818,
+      "sensitivity": 0.9318181818181818,
+      "specificity": 0.9725,
+      "f1": 0.9344729344729346,
+      "npv": 0.970074812967581,
+      "tp": 164,
+      "fp": 11,
+      "tn": 389,
+      "fn": 12,
+      "support": 176
+    },
+    "body_of_stomach_normal": {
+      "precision": 0.989247311827957,
+      "recall": 0.9583333333333334,
+      "sensitivity": 0.9583333333333334,
+      "specificity": 0.9947916666666666,
+      "f1": 0.9735449735449735,
+      "npv": 0.9794871794871794,
+      "tp": 184,
+      "fp": 2,
+      "tn": 382,
+      "fn": 8,
+      "support": 192
+    }
+  },
+  "confusion_matrix": [
+    [
+      200,
+      7,
+      1
+    ],
+    [
+      11,
+      164,
+      1
+    ],
+    [
+      4,
+      4,
+      184
+    ]
+  ]
+}

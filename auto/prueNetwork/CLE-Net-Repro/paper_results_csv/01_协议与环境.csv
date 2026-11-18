@@ -1,0 +1,10 @@
+﻿protocol_id,environment,torch,notes
+A_verified_reference,sunfuxiang,2.12.0+cu130,verified source/data/environment/initialization; 2026-11-09 paired reference
+A_historical_ablation,sunfuxiang (historical runner),historical version not separately frozen,post-fix batch; full CLE-Net exactly reproduced under reference environment; other variants not rerun this turn
+B_topnets_251,cle_topnets,2.5.1+cu124,compare within environment B; do not describe as identical environment to A
+B_zcode_r6b,cle_topnets (R6 script),2.5.1+cu124,separate Zcode batch; do not merge seeds with Codex runs
+L_historical_backbone,sunfuxiang (runner declaration),not independently pinned,legacy backbone runs; preserve run count and provenance
+L_cross_dataset,sunfuxiang (runner declaration),not independently pinned,independent training on each dataset; not direct external CLE deployment
+L_TCGA,source project historical environment,not independently pinned,six-class TCGA; recalculate sample SD; HSC variant separate from final model
+L_capacity,historical source project,not independently pinned,partially completed capacity scaling; do not imply complete coverage
+archive_only,see original run/source,unknown,"exploratory or superseded record, not automatically eligible for paper main tables"

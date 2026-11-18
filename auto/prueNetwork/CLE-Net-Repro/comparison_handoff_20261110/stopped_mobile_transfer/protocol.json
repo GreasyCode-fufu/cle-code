@@ -1,0 +1,28 @@
+{
+  "dataset": "/home/login/data/cle/auto/Network/CLE-Net/datasets/cle_ac_v1",
+  "pretrained": "/data/cle/sunfuxiang/classifyML/pth/mobilenet_v3_large-8738ca79.pth",
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "models": [
+    "mobilenet_v3_large",
+    "mobilenet_v3_large_cle"
+  ],
+  "epochs": 300,
+  "early_stop": 30,
+  "batch_size": 32,
+  "learning_rate": 0.0001,
+  "gate_learning_rate": 0.01,
+  "weight_decay": 0.05,
+  "gate_weight_decay": 0,
+  "img_size": 224,
+  "environment": "sunfuxiang",
+  "selection": "val_macro_f1",
+  "implementation": "EGB at features4..15 (stride8/16/32); SCG at features7..15 (stride16/32); inside depthwise conv before BN/activation; SE unchanged",
+  "classifier": "Both classifier.0 and classifier.3 reinitialized, matching historical fair loader",
+  "amp": "FFT float32; EGB attention cast back to activation dtype; zero gates and zero SCG final projection",
+  "source_reference": "/home/login/data/cle/auto/prueNetwork/CLE-Net-Repro",
+  "source_git": "f380dc1b285722f8a25e8a38c8039a827bb86fef"
+}

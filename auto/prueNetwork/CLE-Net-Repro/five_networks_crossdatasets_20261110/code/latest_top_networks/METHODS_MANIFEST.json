@@ -1,0 +1,61 @@
+{
+  "created_at": "2026-11-09 Asia/Shanghai",
+  "project_root": "/home/login/data/cle/auto/prueNetwork/CLE-Net",
+  "experiment_root": "latest_top_networks",
+  "dataset": "/home/login/data/cle/auto/ZCode/Classification/datasets/cle_ac_v1",
+  "selected": [
+    {
+      "registry": "thinkingvit_deit",
+      "paper": "ThinkingViT: Matryoshka Thinking Vision Transformer for Adaptive Inference",
+      "venue": "CVPR 2026 main conference",
+      "code": "https://github.com/ds-kiel/ThinkingViT",
+      "directory": "ThinkingViT_CVPR2026",
+      "pretrained": "NCPS/thinkingvit_deit-3h-6h-imagenet1k",
+      "notes": "threshold=0.0, full second stage; official complexity 5.85 GMACs"
+    },
+    {
+      "registry": "cpubone_b2",
+      "paper": "CPUBone: CPU-efficient Vision Backbone Architecture",
+      "venue": "CVPR Findings 2026",
+      "code": "https://github.com/altair199797/CPUBone",
+      "directory": "CPUBone_CVPR2026",
+      "pretrained": "timm:cpubone_b2_bfrobust.r224_in1k"
+    },
+    {
+      "registry": "mambavision_t",
+      "paper": "MambaVision: A Hybrid Mamba-Transformer Vision Backbone",
+      "venue": "CVPR 2025",
+      "code": "https://github.com/NVlabs/MambaVision",
+      "directory": "MambaVision_CVPR2025",
+      "pretrained": "nvidia/MambaVision-T-1K"
+    },
+    {
+      "registry": "mambaout_tiny",
+      "paper": "MambaOut: Do We Really Need Mamba for Vision?",
+      "venue": "CVPR 2025",
+      "code": "https://github.com/yuweihao/MambaOut",
+      "directory": "MambaOut_CVPR2025",
+      "pretrained": "official GitHub Release mambaout_tiny.pth",
+      "notes": "Despite its name, this selected model is a gated CNN without an SSM."
+    },
+    {
+      "registry": "transnext_tiny",
+      "paper": "TransNeXt: Robust Foveal Visual Perception for Vision Transformers",
+      "venue": "CVPR 2024",
+      "code": "https://github.com/DaiShiResearch/TransNeXt",
+      "directory": "TransNeXt_CVPR2024",
+      "pretrained": "DaiShiResearch/transnext-tiny-224-1k"
+    }
+  ],
+  "downloaded_reserve": [
+    {
+      "paper": "Efficiency Follows Global-Local Decoupling (ConvNeur)",
+      "venue": "CVPR 2026 main conference",
+      "directory": "ConvNeur_CVPR2026",
+      "reason_not_run": "Official repository had no usable public pretrained checkpoint link at audit time."
+    },
+    {"paper": "VMamba", "venue": "NeurIPS 2024", "directory": "VMamba_NeurIPS2024", "commit": "2ed52ead062a51a64521ed3871d52914bf532876"},
+    {"paper": "UniRepLKNet", "venue": "CVPR 2024", "directory": "UniRepLKNet_CVPR2024"}
+  ],
+  "isolation": "No ZCode lightweight-network code, result directory, checkpoint, or process was modified or included."
+}

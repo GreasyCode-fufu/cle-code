@@ -1,0 +1,38 @@
+section,config,n_seeds,Macro-F1,F1_std,Kappa,MCC,AUROC,sensM,dF1_vs_baseline,up_seeds
+exp1_ft_strategies,baseline MobileNetV3-L (full FT),5,94.16,0.56,91.22,91.29,99.1,90.0,0.0,0/5
+exp1_ft_strategies,LP-FT (Kumar'22),5,93.16,1.83,89.69,89.85,98.88,87.61,-1.0,2/5
+exp1_ft_strategies,"L2-SP α=0.01 (Li'18, official default)",5,92.82,1.42,89.21,89.43,99.21,85.91,-1.33,0/5
+exp1_ft_strategies,L2-SP α=0.1,5,91.96,1.74,87.9,88.19,99.09,84.77,-2.2,0/5
+exp1_ft_strategies,L2-SP (α val-selected per seed),5,91.96,1.74,87.9,88.19,99.09,84.77,-2.2,0/5
+exp1_ft_strategies,Surgical FT: block1 (/2–/4),5,89.08,0.36,83.65,83.93,98.34,79.2,-5.08,0/5
+exp1_ft_strategies,Surgical FT: block2 (/8),5,91.8,1.18,87.89,88.27,99.0,80.34,-2.35,0/5
+exp1_ft_strategies,Surgical FT: block3 (/16),5,93.25,1.09,89.9,90.02,99.1,87.27,-0.9,1/5
+exp1_ft_strategies,Surgical FT: block4 (/32),5,92.17,1.05,88.26,88.52,98.99,83.18,-1.99,0/5
+exp1_ft_strategies,Surgical FT: head only,5,85.93,1.59,79.08,79.59,97.48,74.32,-8.23,0/5
+exp1_ft_strategies,Surgical FT (block val-selected per seed),5,93.09,0.98,89.69,89.84,99.14,85.8,-1.06,1/5
+exp1_ft_strategies,cRT (Kang'20),5,94.19,0.39,91.26,91.36,99.13,89.2,0.03,1/5
+exp1_ft_strategies,τ-norm (Kang'20),5,94.06,0.63,91.06,91.14,99.05,89.89,-0.1,0/5
+exp1_ft_strategies,"EPIC ① only (freeze /2–/16, BN eval)",5,95.62,1.06,93.42,93.45,99.51,93.18,1.46,5/5
+exp1_ft_strategies,EPIC ①+②,5,96.05,0.3,94.05,94.06,99.49,96.25,1.9,5/5
+exp1_ft_strategies,EPIC ①+②+③ (full),5,96.51,0.4,94.73,94.73,99.57,96.7,2.35,5/5
+exp2_convnext_tiny_gate:①(gap 0.58),convnext_tiny baseline (full FT),5,94.76,0.84,92.16,92.22,99.4,91.7,0.0,0/5
+exp2_convnext_tiny_gate:①(gap 0.58),① fz3,5,94.25,0.21,91.38,91.39,99.22,91.25,-0.52,2/5
+exp2_convnext_tiny_gate:①(gap 0.58),"①+② (fz3, last-stage DCE)",5,94.64,0.4,92.01,92.02,99.44,91.14,-0.12,2/5
+exp2_convnext_tiny_gate:①(gap 0.58),"①+②+③ (fz3, 4-tap FOV DCE) = EPIC",5,95.17,0.21,92.79,92.8,99.63,92.16,0.41,4/5
+exp2_convnext_tiny_gate:①(gap 0.58),"② only (full-FT, last-stage DCE)",5,95.55,0.76,93.36,93.4,99.54,92.05,0.79,4/5
+exp2_convnext_tiny_gate:①(gap 0.58),"②+③ (full-FT, 4-tap FOV DCE)",5,95.8,0.82,93.73,93.76,99.6,92.73,1.04,5/5
+exp2_convnext_tiny_gate:①(gap 0.58),preserve-all LP arm + ②③,1,94.98,0.0,92.43,92.46,99.57,92.61,0.18,1/1
+exp2_starnet_s2_gate:preserve-all(gap -0.69),starnet_s2 baseline (full FT),5,93.47,0.74,90.22,90.33,99.13,87.73,0.0,0/5
+exp2_starnet_s2_gate:preserve-all(gap -0.69),① fz3,5,92.41,0.42,88.71,88.78,98.8,86.36,-1.06,1/5
+exp2_starnet_s2_gate:preserve-all(gap -0.69),"①+② (fz3, last-stage DCE)",5,93.02,0.87,89.65,89.71,98.82,86.7,-0.46,2/5
+exp2_starnet_s2_gate:preserve-all(gap -0.69),"①+②+③ (fz3, 4-tap FOV DCE) = EPIC",5,93.06,0.93,89.7,89.78,99.01,86.7,-0.42,3/5
+exp2_starnet_s2_gate:preserve-all(gap -0.69),"② only (full-FT, last-stage DCE)",5,93.38,0.42,90.12,90.19,99.15,87.73,-0.09,1/5
+exp2_starnet_s2_gate:preserve-all(gap -0.69),"②+③ (full-FT, 4-tap FOV DCE)",5,94.6,0.83,91.9,91.96,99.36,90.11,1.12,4/5
+exp2_starnet_s2_gate:preserve-all(gap -0.69),preserve-all LP arm + ②③,1,92.87,0.0,89.29,89.33,99.16,89.2,-1.63,0/1
+exp2_fast_t0_gate:preserve-all(gap -0.39),fast_t0 baseline (full FT),5,93.06,0.89,89.64,89.78,99.03,86.14,0.0,0/5
+exp2_fast_t0_gate:preserve-all(gap -0.39),① fz3,5,93.98,0.26,91.01,91.04,99.24,89.55,0.92,4/5
+exp2_fast_t0_gate:preserve-all(gap -0.39),"①+② (fz3, last-stage DCE)",5,93.68,0.68,90.54,90.57,99.24,89.09,0.62,3/5
+exp2_fast_t0_gate:preserve-all(gap -0.39),"①+②+③ (fz3, 4-tap FOV DCE) = EPIC",5,94.34,0.34,91.53,91.59,99.48,89.32,1.28,4/5
+exp2_fast_t0_gate:preserve-all(gap -0.39),"② only (full-FT, last-stage DCE)",5,92.87,1.23,89.37,89.56,99.09,84.77,-0.19,2/5
+exp2_fast_t0_gate:preserve-all(gap -0.39),"②+③ (full-FT, 4-tap FOV DCE)",5,93.54,0.69,90.37,90.5,99.33,86.14,0.47,4/5
+exp2_fast_t0_gate:preserve-all(gap -0.39),preserve-all LP arm + ②③,1,93.75,0.0,90.59,90.64,99.3,89.77,0.4,1/1

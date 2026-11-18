@@ -1,0 +1,102 @@
+{
+  "model": "vit_base_patch16_224",
+  "weights": "/home/login/cle/sunfuxiang/classifyML/weights_fair/vit_base_patch16_224-2/vit_base_patch16_22444.pth",
+  "img_size": 224,
+  "norm_mean": [
+    0.2892360758089071,
+    0.2892360758089071,
+    0.2892360758089071
+  ],
+  "norm_std": [
+    0.2228318936230603,
+    0.2228318936230603,
+    0.2228318936230603
+  ],
+  "norm_source": "/home/login/cle/sunfuxiang/classifyML/weights_fair/vit_base_patch16_224-2/run_meta.json",
+  "class_names": [
+    "negative",
+    "positive"
+  ],
+  "best_threshold": 0.29000000000000004,
+  "youden_j": 0.758158508158508,
+  "n_val": 684,
+  "n_test": 895,
+  "test_threshold_optimized": {
+    "accuracy": 0.8558659217877095,
+    "precision_macro": 0.8012824815150397,
+    "recall_macro": 0.874469933958985,
+    "f1_macro": 0.8233468845676585,
+    "auroc": 0.9365102537365312,
+    "sensitivity": 0.9095238095238095,
+    "specificity": 0.8394160583941606,
+    "auroc_weighted": 0.9365102537365312,
+    "auc_pr": 0.7958278382690885,
+    "balanced_accuracy": 0.874469933958985,
+    "kappa": 0.6511143008234495,
+    "mcc": 0.6717774362270171,
+    "precision_w": 0.8897709939024737,
+    "recall_w": 0.8558659217877095,
+    "f1_weighted": 0.8635722561289194,
+    "paper_f1": 0.8730647643702779,
+    "ppv": 0.6345514950166113,
+    "npv": 0.968013468013468,
+    "confusion_matrix": [
+      [
+        575,
+        110
+      ],
+      [
+        19,
+        191
+      ]
+    ],
+    "tn": 575,
+    "fp": 110,
+    "fn": 19,
+    "tp": 191
+  },
+  "test_default_0.5": {
+    "accuracy": 0.8748603351955307,
+    "precision_macro": 0.8228623323397913,
+    "recall_macro": 0.8373479318734793,
+    "f1_macro": 0.829669806832239,
+    "auroc": 0.9365102537365312,
+    "sensitivity": 0.7666666666666667,
+    "specificity": 0.908029197080292,
+    "auroc_weighted": 0.9365102537365312,
+    "auc_pr": 0.7958278382690885,
+    "balanced_accuracy": 0.8373479318734793,
+    "kappa": 0.6594530321046372,
+    "mcc": 0.6600513316240687,
+    "precision_w": 0.8781174807882839,
+    "recall_w": 0.8748603351955307,
+    "f1_weighted": 0.8762327156664331,
+    "paper_f1": 0.8313816600072953,
+    "ppv": 0.71875,
+    "npv": 0.9269746646795827,
+    "confusion_matrix": [
+      [
+        622,
+        63
+      ],
+      [
+        49,
+        161
+      ]
+    ],
+    "tn": 622,
+    "fp": 63,
+    "fn": 49,
+    "tp": 161
+  },
+  "per_class_metrics": {
+    "negative": {
+      "auroc": 0.936510253736531,
+      "aucpr": 0.9811132750627913
+    },
+    "positive": {
+      "auroc": 0.9365102537365312,
+      "aucpr": 0.7958278382690885
+    }
+  }
+}

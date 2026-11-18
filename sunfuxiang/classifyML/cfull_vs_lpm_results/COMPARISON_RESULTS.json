@@ -1,0 +1,685 @@
+{
+  "complete": true,
+  "updated_at": "2026-10-23T06:35:12.634622+08:00",
+  "selection": {
+    "at": "2026-10-23T06:13:41.832789+08:00",
+    "n_lpm": 2880,
+    "n_full": 3011,
+    "shared": 2847,
+    "added": 164,
+    "removed": 33,
+    "jaccard": 0.9352825229960579,
+    "threshold": ">=2 correct out of 3 OOF rounds",
+    "manifest_hashes": {
+      "RVC_LPM": "c8e5a8e7bb5602e66e26267919886312bea8ead0ea02132021c3d8f0663c8219",
+      "RVC_FULL": "70126d2246d837806c8978aac8dcd1afe0b6e13bfe6c9239316bbccac7dd140a"
+    },
+    "note": "Inner-split LPM is a selector-only diagnostic; primary downstream comparison uses historical LPM set vs new full-CUFIT set."
+  },
+  "summary": [
+    {
+      "arm": "RVC_LPM",
+      "n_seeds": 3,
+      "n_train": 2880,
+      "macro_f1_mean": 0.9093636119669987,
+      "macro_f1_std": 0.016208429562079518,
+      "accuracy_mean": 0.9085941381023348,
+      "accuracy_std": 0.015654198963327138,
+      "macro_auroc_mean": 0.9781249126577626,
+      "macro_auroc_std": 0.005485385582138911,
+      "macro_recall_mean": 0.9121493499161183,
+      "macro_recall_std": 0.015552142939027127,
+      "macro_precision_mean": 0.9085615577397169,
+      "macro_precision_std": 0.01591175875981818,
+      "weighted_f1_mean": 0.9082159924991036,
+      "weighted_f1_std": 0.015918928021029222,
+      "macro_specificity_mean": 0.9544187680497717,
+      "macro_specificity_std": 0.0076654435828446684,
+      "macro_auc_pr_mean": 0.9599931563157473,
+      "macro_auc_pr_std": 0.009511716115913404,
+      "kappa_mean": 0.8625606376141658,
+      "kappa_std": 0.023437289205174582,
+      "mcc_mean": 0.8635473819363416,
+      "mcc_std": 0.02298034623007043
+    },
+    {
+      "arm": "RVC_FULL",
+      "n_seeds": 3,
+      "n_train": 3011,
+      "macro_f1_mean": 0.8970033647631678,
+      "macro_f1_std": 0.0072299358693958355,
+      "accuracy_mean": 0.8956780923994039,
+      "accuracy_std": 0.007885994965915338,
+      "macro_auroc_mean": 0.9786581967067421,
+      "macro_auroc_std": 0.0013599369186624289,
+      "macro_recall_mean": 0.9006099577364822,
+      "macro_recall_std": 0.00560954796515649,
+      "macro_precision_mean": 0.8974393287018659,
+      "macro_precision_std": 0.005274298681404648,
+      "weighted_f1_mean": 0.8953145570594244,
+      "weighted_f1_std": 0.007735397212893236,
+      "macro_specificity_mean": 0.9481125517465266,
+      "macro_specificity_std": 0.003410088552389275,
+      "macro_auc_pr_mean": 0.9612401958370071,
+      "macro_auc_pr_std": 0.001983109001659857,
+      "kappa_mean": 0.8433241226930992,
+      "kappa_std": 0.011463900379273504,
+      "mcc_mean": 0.8453915318873376,
+      "mcc_std": 0.009562954042897465
+    }
+  ],
+  "per_seed": [
+    {
+      "arm": "RVC_LPM",
+      "seed": 42,
+      "n_train": 2880,
+      "macro_f1": 0.9104848068390788,
+      "accuracy": 0.9090909090909091,
+      "macro_auroc": 0.9775841108259056,
+      "macro_recall": 0.9107735675571041,
+      "macro_precision": 0.9103645928358572,
+      "weighted_f1": 0.9092658049576616,
+      "macro_specificity": 0.9540315227375386,
+      "macro_auc_pr": 0.9586020826847363,
+      "kappa": 0.862994303005148,
+      "mcc": 0.8630752957324023,
+      "train_seconds": 132.10511096800474,
+      "predictions": "/data/cle/sunfuxiang/CUFIT0613/experiment_cfull_oof_20261023/downstream/RVC_LPM/seed42/test_predictions.csv",
+      "sha256": "b6774921674929cb06014247bb682970b1964c28f99c553decd25a90492a4505"
+    },
+    {
+      "arm": "RVC_LPM",
+      "seed": 43,
+      "n_train": 2880,
+      "macro_f1": 0.9249823340596967,
+      "accuracy": 0.9239940387481371,
+      "macro_auroc": 0.9838606685501526,
+      "macro_recall": 0.9283436774099885,
+      "macro_precision": 0.9234949972538625,
+      "weighted_f1": 0.9235840309211502,
+      "macro_specificity": 0.9622704946567947,
+      "macro_auc_pr": 0.9701238099341628,
+      "kappa": 0.8857780848528543,
+      "mcc": 0.8867601341981529,
+      "train_seconds": 302.7259835530058,
+      "predictions": "/data/cle/sunfuxiang/CUFIT0613/experiment_cfull_oof_20261023/downstream/RVC_LPM/seed43/test_predictions.csv",
+      "sha256": "6c7a6813ab7d3f89c02e192b97cec2dbf19def7d6307337b1026cf1593bbffac"
+    },
+    {
+      "arm": "RVC_LPM",
+      "seed": 44,
+      "n_train": 2880,
+      "macro_f1": 0.8926236950022203,
+      "accuracy": 0.8926974664679582,
+      "macro_auroc": 0.9729299585972296,
+      "macro_recall": 0.8973308047812621,
+      "macro_precision": 0.8918250831294311,
+      "weighted_f1": 0.8917981416184988,
+      "macro_specificity": 0.9469542867549817,
+      "macro_auc_pr": 0.9512535763283426,
+      "kappa": 0.8389095249844951,
+      "mcc": 0.8408067158784697,
+      "train_seconds": 115.27741098499973,
+      "predictions": "/data/cle/sunfuxiang/CUFIT0613/experiment_cfull_oof_20261023/downstream/RVC_LPM/seed44/test_predictions.csv",
+      "sha256": "c7cecd93b33c36225334bdfcac0c541db55742312313370f4db9dd97fe01cec5"
+    },
+    {
+      "arm": "RVC_FULL",
+      "seed": 42,
+      "n_train": 3011,
+      "macro_f1": 0.8887410632585095,
+      "accuracy": 0.886736214605067,
+      "macro_auroc": 0.9772229144311441,
+      "macro_recall": 0.8941332147696478,
+      "macro_precision": 0.891422449108212,
+      "weighted_f1": 0.8864914798174499,
+      "macro_specificity": 0.944193849682102,
+      "macro_auc_pr": 0.9589996291045327,
+      "kappa": 0.8302910902489592,
+      "mcc": 0.8344601310337083,
+      "train_seconds": 119.62180218499998,
+      "predictions": "/data/cle/sunfuxiang/CUFIT0613/experiment_cfull_oof_20261023/downstream/RVC_FULL/seed42/test_predictions.csv",
+      "sha256": "cc01131bb16445fd2dd075b9ca3a5637b55f96a473f374d96c340494b9845f21"
+    },
+    {
+      "arm": "RVC_FULL",
+      "seed": 43,
+      "n_train": 3011,
+      "macro_f1": 0.9021702534457517,
+      "accuracy": 0.9016393442622951,
+      "macro_auroc": 0.9788241114497072,
+      "macro_recall": 0.9039250024196671,
+      "macro_precision": 0.9012639158795439,
+      "weighted_f1": 0.9009308159914592,
+      "macro_specificity": 0.9504058706407282,
+      "macro_auc_pr": 0.9627698895725088,
+      "kappa": 0.8518471435596696,
+      "mcc": 0.8522094329499764,
+      "train_seconds": 251.204097120004,
+      "predictions": "/data/cle/sunfuxiang/CUFIT0613/experiment_cfull_oof_20261023/downstream/RVC_FULL/seed43/test_predictions.csv",
+      "sha256": "e4306ceb275c51a3a76b5125fe9030baf9d6eb16ff062f78cbbac22822502097"
+    },
+    {
+      "arm": "RVC_FULL",
+      "seed": 44,
+      "n_train": 3011,
+      "macro_f1": 0.9000987775852419,
+      "accuracy": 0.8986587183308494,
+      "macro_auroc": 0.9799275642393752,
+      "macro_recall": 0.9037716560201315,
+      "macro_precision": 0.8996316211178419,
+      "weighted_f1": 0.898521375369364,
+      "macro_specificity": 0.9497379349167497,
+      "macro_auc_pr": 0.9619510688339797,
+      "kappa": 0.847834134270669,
+      "mcc": 0.8495050316783281,
+      "train_seconds": 275.91589902299893,
+      "predictions": "/data/cle/sunfuxiang/CUFIT0613/experiment_cfull_oof_20261023/downstream/RVC_FULL/seed44/test_predictions.csv",
+      "sha256": "6cf191be94559958318b247da63a043803586bf4f9674c05840a87fa2c0ebecd"
+    }
+  ],
+  "per_class": [
+    {
+      "arm": "RVC_LPM",
+      "seed": 42,
+      "class_name": "Benign_lesions",
+      "n": 256,
+      "recall": 0.890625,
+      "specificity": 0.9421686746987952,
+      "precision": 0.9047619047619048,
+      "f1": 0.8976377952755905,
+      "auroc": 0.9704819277108434,
+      "auc_pr": 0.9622797681642725
+    },
+    {
+      "arm": "RVC_LPM",
+      "seed": 42,
+      "class_name": "Malignant_lesions",
+      "n": 210,
+      "recall": 0.8904761904761904,
+      "specificity": 0.9370932754880694,
+      "precision": 0.8657407407407407,
+      "f1": 0.8779342723004695,
+      "auroc": 0.9689908067348414,
+      "auc_pr": 0.9266482743257611
+    },
+    {
+      "arm": "RVC_LPM",
+      "seed": 42,
+      "class_name": "body_of_stomach_normal",
+      "n": 205,
+      "recall": 0.9512195121951219,
+      "specificity": 0.9828326180257511,
+      "precision": 0.9605911330049262,
+      "f1": 0.9558823529411765,
+      "auroc": 0.9932795980320319,
+      "auc_pr": 0.9868782055641753
+    },
+    {
+      "arm": "RVC_LPM",
+      "seed": 43,
+      "class_name": "Benign_lesions",
+      "n": 256,
+      "recall": 0.87109375,
+      "specificity": 0.9710843373493976,
+      "precision": 0.948936170212766,
+      "f1": 0.9083503054989817,
+      "auroc": 0.9774661144578313,
+      "auc_pr": 0.9692498509408787
+    },
+    {
+      "arm": "RVC_LPM",
+      "seed": 43,
+      "class_name": "Malignant_lesions",
+      "n": 210,
+      "recall": 0.9285714285714286,
+      "specificity": 0.9457700650759219,
+      "precision": 0.8863636363636364,
+      "f1": 0.9069767441860465,
+      "auroc": 0.9763350893502737,
+      "auc_pr": 0.9460404834388814
+    },
+    {
+      "arm": "RVC_LPM",
+      "seed": 43,
+      "class_name": "body_of_stomach_normal",
+      "n": 205,
+      "recall": 0.9853658536585366,
+      "specificity": 0.9699570815450643,
+      "precision": 0.9351851851851852,
+      "f1": 0.9596199524940617,
+      "auroc": 0.9977808018423533,
+      "auc_pr": 0.9950810954227284
+    },
+    {
+      "arm": "RVC_LPM",
+      "seed": 44,
+      "class_name": "Benign_lesions",
+      "n": 256,
+      "recall": 0.83984375,
+      "specificity": 0.963855421686747,
+      "precision": 0.9347826086956522,
+      "f1": 0.8847736625514403,
+      "auroc": 0.9615681475903614,
+      "auc_pr": 0.9511941202523817
+    },
+    {
+      "arm": "RVC_LPM",
+      "seed": 44,
+      "class_name": "Malignant_lesions",
+      "n": 210,
+      "recall": 0.861904761904762,
+      "specificity": 0.9370932754880694,
+      "precision": 0.861904761904762,
+      "f1": 0.861904761904762,
+      "auroc": 0.962193988224357,
+      "auc_pr": 0.9147877133674325
+    },
+    {
+      "arm": "RVC_LPM",
+      "seed": 44,
+      "class_name": "body_of_stomach_normal",
+      "n": 205,
+      "recall": 0.9902439024390244,
+      "specificity": 0.9399141630901288,
+      "precision": 0.8787878787878788,
+      "f1": 0.9311926605504587,
+      "auroc": 0.9950277399769706,
+      "auc_pr": 0.9877788953652137
+    },
+    {
+      "arm": "RVC_FULL",
+      "seed": 42,
+      "class_name": "Benign_lesions",
+      "n": 256,
+      "recall": 0.79296875,
+      "specificity": 0.9710843373493976,
+      "precision": 0.9441860465116279,
+      "f1": 0.861995753715499,
+      "auroc": 0.9670086596385542,
+      "auc_pr": 0.9580249532605363
+    },
+    {
+      "arm": "RVC_FULL",
+      "seed": 42,
+      "class_name": "Malignant_lesions",
+      "n": 210,
+      "recall": 0.9333333333333333,
+      "specificity": 0.8915401301518439,
+      "precision": 0.7967479674796748,
+      "f1": 0.8596491228070176,
+      "auroc": 0.9695486003512035,
+      "auc_pr": 0.9304947213561755
+    },
+    {
+      "arm": "RVC_FULL",
+      "seed": 42,
+      "class_name": "body_of_stomach_normal",
+      "n": 205,
+      "recall": 0.9560975609756097,
+      "specificity": 0.9699570815450643,
+      "precision": 0.9333333333333333,
+      "f1": 0.944578313253012,
+      "auroc": 0.9951114833036743,
+      "auc_pr": 0.9884792126968862
+    },
+    {
+      "arm": "RVC_FULL",
+      "seed": 43,
+      "class_name": "Benign_lesions",
+      "n": 256,
+      "recall": 0.87890625,
+      "specificity": 0.9397590361445783,
+      "precision": 0.9,
+      "f1": 0.8893280632411067,
+      "auroc": 0.968429969879518,
+      "auc_pr": 0.9585355010158777
+    },
+    {
+      "arm": "RVC_FULL",
+      "seed": 43,
+      "class_name": "Malignant_lesions",
+      "n": 210,
+      "recall": 0.8523809523809524,
+      "specificity": 0.9479392624728851,
+      "precision": 0.8817733990147784,
+      "f1": 0.8668280871670703,
+      "auroc": 0.9710257204834212,
+      "auc_pr": 0.9365689515570582
+    },
+    {
+      "arm": "RVC_FULL",
+      "seed": 43,
+      "class_name": "body_of_stomach_normal",
+      "n": 205,
+      "recall": 0.9804878048780488,
+      "specificity": 0.9635193133047211,
+      "precision": 0.9220183486238532,
+      "f1": 0.950354609929078,
+      "auroc": 0.9970166439861824,
+      "auc_pr": 0.9932052161445901
+    },
+    {
+      "arm": "RVC_FULL",
+      "seed": 44,
+      "class_name": "Benign_lesions",
+      "n": 256,
+      "recall": 0.8359375,
+      "specificity": 0.963855421686747,
+      "precision": 0.9344978165938864,
+      "f1": 0.8824742268041237,
+      "auroc": 0.9733716114457832,
+      "auc_pr": 0.9625136063444806
+    },
+    {
+      "arm": "RVC_FULL",
+      "seed": 44,
+      "class_name": "Malignant_lesions",
+      "n": 210,
+      "recall": 0.9095238095238095,
+      "specificity": 0.9154013015184381,
+      "precision": 0.8304347826086956,
+      "f1": 0.8681818181818182,
+      "auroc": 0.9701167234789794,
+      "auc_pr": 0.931069056642602
+    },
+    {
+      "arm": "RVC_FULL",
+      "seed": 44,
+      "class_name": "body_of_stomach_normal",
+      "n": 205,
+      "recall": 0.9658536585365853,
+      "specificity": 0.9699570815450643,
+      "precision": 0.9339622641509434,
+      "f1": 0.9496402877697842,
+      "auroc": 0.9962943577933634,
+      "auc_pr": 0.9922705435148564
+    }
+  ],
+  "confusion_matrices": {
+    "RVC_LPM_seed42": [
+      [
+        228,
+        22,
+        6
+      ],
+      [
+        21,
+        187,
+        2
+      ],
+      [
+        3,
+        7,
+        195
+      ]
+    ],
+    "RVC_LPM_seed43": [
+      [
+        223,
+        23,
+        10
+      ],
+      [
+        11,
+        195,
+        4
+      ],
+      [
+        1,
+        2,
+        202
+      ]
+    ],
+    "RVC_LPM_seed44": [
+      [
+        215,
+        27,
+        14
+      ],
+      [
+        15,
+        181,
+        14
+      ],
+      [
+        0,
+        2,
+        203
+      ]
+    ],
+    "RVC_FULL_seed42": [
+      [
+        203,
+        42,
+        11
+      ],
+      [
+        11,
+        196,
+        3
+      ],
+      [
+        1,
+        8,
+        196
+      ]
+    ],
+    "RVC_FULL_seed43": [
+      [
+        225,
+        23,
+        8
+      ],
+      [
+        22,
+        179,
+        9
+      ],
+      [
+        3,
+        1,
+        201
+      ]
+    ],
+    "RVC_FULL_seed44": [
+      [
+        214,
+        35,
+        7
+      ],
+      [
+        12,
+        191,
+        7
+      ],
+      [
+        3,
+        4,
+        198
+      ]
+    ]
+  },
+  "fold_runs": [
+    {
+      "job": "seed42_fold0",
+      "at": "2026-10-23T01:01:08.157980+08:00",
+      "rows": 1210,
+      "best_epoch": 74,
+      "inner_val_only_for_selection": true,
+      "heldout_not_used_for_training_or_selection": true,
+      "manifest_sha256": "c039639a677ade0551b58742b47bb7b3f87c71e4c5de7fcc4cbfa0c324cb6396",
+      "predictions_sha256": "a9903ebc19dcddff20bb3e226fc53ad403c83e470d9caff15f685b19bdf446a9",
+      "checkpoint_sha256": "d092ee21943554aed57a58aa3b59a6f63a43ca987adeb1d29d18b58e1223f933",
+      "train_seconds": 1704.9989674360004
+    },
+    {
+      "job": "seed42_fold1",
+      "at": "2026-10-23T01:29:34.726039+08:00",
+      "rows": 983,
+      "best_epoch": 66,
+      "inner_val_only_for_selection": true,
+      "heldout_not_used_for_training_or_selection": true,
+      "manifest_sha256": "90cd94f2dca23098b90ae739b7f88e8a3ed860777bdb034473182a68612e48c3",
+      "predictions_sha256": "9a663a2cda0043e3ff4c2a22599e11b717753b006e21df9c89907d9cf36d9176",
+      "checkpoint_sha256": "6a2c232f5864f572099d2b9e63f4dea9ece607af6debe13ec33e747813561f5a",
+      "train_seconds": 1701.7233272060002
+    },
+    {
+      "job": "seed42_fold2",
+      "at": "2026-10-23T01:47:47.601895+08:00",
+      "rows": 868,
+      "best_epoch": 21,
+      "inner_val_only_for_selection": true,
+      "heldout_not_used_for_training_or_selection": true,
+      "manifest_sha256": "1d74430ede7279ab7b8585a83636864426c46343739d1132f7e768c59d0cab35",
+      "predictions_sha256": "b3c7e9295d68d7f0578458ffac5af213aa48d523fd63c4decd7b43362a02b908",
+      "checkpoint_sha256": "b3b4a2e3a644a3b9d6381871483c17f03bbb08a944bc5ff9f87fd6be71878763",
+      "train_seconds": 1084.592648406
+    },
+    {
+      "job": "seed42_fold3",
+      "at": "2026-10-23T02:13:21.170242+08:00",
+      "rows": 1032,
+      "best_epoch": 55,
+      "inner_val_only_for_selection": true,
+      "heldout_not_used_for_training_or_selection": true,
+      "manifest_sha256": "5f756bb532bab97d8a5bda59e4452caa048629c4c27b78c57c73a2785a00c1c6",
+      "predictions_sha256": "c95e470f92987581f05b9e0c61508e9db68d9bbd9da18b45b14043dd3a56c3e9",
+      "checkpoint_sha256": "caf602e9b70f47b5cf3c4f17035b3cb0fd7f6600d98bebaf13991acd8bd13ed5",
+      "train_seconds": 1522.863299433
+    },
+    {
+      "job": "seed42_fold4",
+      "at": "2026-10-23T02:26:32.934188+08:00",
+      "rows": 884,
+      "best_epoch": 1,
+      "inner_val_only_for_selection": true,
+      "heldout_not_used_for_training_or_selection": true,
+      "manifest_sha256": "85a821ff40a0dfd7c26f91c73d72a49bf600867d3b3a6d5b17b35104586e79c9",
+      "predictions_sha256": "43ceec9f978c29f8a321fe7dcdd2b61bff1deb9637cc1613dcf83fbebc96f568",
+      "checkpoint_sha256": "d342cf32a788e1cfedaa78ec4983c667d1b4ef9302520c2b72ad3646ad9c1263",
+      "train_seconds": 784.7003410049983
+    },
+    {
+      "job": "seed43_fold0",
+      "at": "2026-10-23T02:54:42.996509+08:00",
+      "rows": 1097,
+      "best_epoch": 68,
+      "inner_val_only_for_selection": true,
+      "heldout_not_used_for_training_or_selection": true,
+      "manifest_sha256": "2de4319b01966d32ee9b1ce46f078a4a901f3b82cd4d5e1fb618c49e2af7f978",
+      "predictions_sha256": "14a044b1554e8ec5212eca1b87dd8ac7564469f56564077bcd1ced414a5a566b",
+      "checkpoint_sha256": "e0d2765dbd3f813c8417167c370a841f9c71f9ad17a58f9ba2ce9a818d2c58f5",
+      "train_seconds": 1679.4108959530022
+    },
+    {
+      "job": "seed43_fold1",
+      "at": "2026-10-23T03:19:29.763321+08:00",
+      "rows": 1100,
+      "best_epoch": 53,
+      "inner_val_only_for_selection": true,
+      "heldout_not_used_for_training_or_selection": true,
+      "manifest_sha256": "ac0de4fd7ec85e4a98e7309de70a332388e5a2781f145955878ee5f90e345ab4",
+      "predictions_sha256": "9800446ec632dd4af911e70bd074706840dad00736bece952431de076e6245f9",
+      "checkpoint_sha256": "1a04fe862d0a3ba49fb2661523d87890f121498a3adc1b463819d31a38b5962e",
+      "train_seconds": 1471.0224258310009
+    },
+    {
+      "job": "seed43_fold2",
+      "at": "2026-10-23T03:32:55.161100+08:00",
+      "rows": 1002,
+      "best_epoch": 3,
+      "inner_val_only_for_selection": true,
+      "heldout_not_used_for_training_or_selection": true,
+      "manifest_sha256": "797bfac8adfe314ba3d4dcc978bd86d065e53736a03605f3c13cd8c25a3bf5d2",
+      "predictions_sha256": "7d7e2e1697671f347044d8d54d263221aed2023c0b7eb3659dc12d7b4fab0b1b",
+      "checkpoint_sha256": "bf101c68ccb392bf7569b0c96a36b5082fbe33e2516057978b6f1c5704da783c",
+      "train_seconds": 791.435971703002
+    },
+    {
+      "job": "seed43_fold3",
+      "at": "2026-10-23T03:58:25.668471+08:00",
+      "rows": 885,
+      "best_epoch": 50,
+      "inner_val_only_for_selection": true,
+      "heldout_not_used_for_training_or_selection": true,
+      "manifest_sha256": "a5e1a5cf511a7c7c0d775b28027cec2b2ac1bdd5df86f3b4272733ca4f92cd87",
+      "predictions_sha256": "e35b38d0450f99f6c3e885248ca4a3b6d9e7c0a5682e2064b2ca648a227bcfdd",
+      "checkpoint_sha256": "90c5194dbfb71800215c0b040e8310824d6c423fce1edc8351a4fdb0adfec859",
+      "train_seconds": 1511.975736591001
+    },
+    {
+      "job": "seed43_fold4",
+      "at": "2026-10-23T04:11:47.451017+08:00",
+      "rows": 893,
+      "best_epoch": 1,
+      "inner_val_only_for_selection": true,
+      "heldout_not_used_for_training_or_selection": true,
+      "manifest_sha256": "5a8dcb6ace63ea1d4aab0b1488a65cdcc44aad141fc276c89687f4b66aa5f4da",
+      "predictions_sha256": "c034b7eb586f793bd7ff5c1b0f5abea0a22e10e29fd1beae6e8d99ad179382af",
+      "checkpoint_sha256": "d2961bf9aa04cebe91ea2e547e3f73790354e54f88792175c21a623748b5a047",
+      "train_seconds": 783.6310666299978
+    },
+    {
+      "job": "seed44_fold0",
+      "at": "2026-10-23T04:34:54.835741+08:00",
+      "rows": 1082,
+      "best_epoch": 46,
+      "inner_val_only_for_selection": true,
+      "heldout_not_used_for_training_or_selection": true,
+      "manifest_sha256": "7bd6a4941abec843a9f76401d92d6995329c8ee038d42c95d82beb742fcaa4a5",
+      "predictions_sha256": "fce561037b51cf7519efb22daa15cb410e0152fdd40f6d391b37b458d15ba4b9",
+      "checkpoint_sha256": "78d56d8509af5020fd794b2eeff606b583e56d56d1ca12b2bc36d68d752bf753",
+      "train_seconds": 1375.687184747003
+    },
+    {
+      "job": "seed44_fold1",
+      "at": "2026-10-23T05:06:22.390060+08:00",
+      "rows": 933,
+      "best_epoch": 77,
+      "inner_val_only_for_selection": true,
+      "heldout_not_used_for_training_or_selection": true,
+      "manifest_sha256": "73804b2834f456f73c5d706df86c43bc03a28f0f8a9158668df0fd5c77e8b0b0",
+      "predictions_sha256": "0bd31cf00d84f5c121aff04218fd739bf14139cac0583632c207cceaf366a84f",
+      "checkpoint_sha256": "ca68f7044fe9be74176416a31eefb128a3347bb4db2e385e2d8628af711b8d63",
+      "train_seconds": 1883.354635331998
+    },
+    {
+      "job": "seed44_fold2",
+      "at": "2026-10-23T05:30:21.490522+08:00",
+      "rows": 1026,
+      "best_epoch": 48,
+      "inner_val_only_for_selection": true,
+      "heldout_not_used_for_training_or_selection": true,
+      "manifest_sha256": "6aa78ced8e67a002b175d68db9267a81ed82d81c2d2d705bb2987d30f4bc8d5e",
+      "predictions_sha256": "7fefc540b423d955957a2e5d59c03e6d63c37132c736d292280b043e9a7171d2",
+      "checkpoint_sha256": "45aa3a4c2c1e426d0503ba75448ba1045827d824a115afba503904efbb8cba10",
+      "train_seconds": 1432.1304299860058
+    },
+    {
+      "job": "seed44_fold3",
+      "at": "2026-10-23T05:51:29.861263+08:00",
+      "rows": 1065,
+      "best_epoch": 37,
+      "inner_val_only_for_selection": true,
+      "heldout_not_used_for_training_or_selection": true,
+      "manifest_sha256": "16451e14f9e880c1a1a5bb494ccd8e99eed6b580bf012658f5f434cb0a98818f",
+      "predictions_sha256": "b16070d11f444838876e3f23c4eb507f445e2aee07b454156419b92a522f1a85",
+      "checkpoint_sha256": "746c780261e14ad46b100fa3d380a34ec23c72593bc316f20cb0be57a68c65f6",
+      "train_seconds": 1260.367460569003
+    },
+    {
+      "job": "seed44_fold4",
+      "at": "2026-10-23T06:13:32.519749+08:00",
+      "rows": 871,
+      "best_epoch": 36,
+      "inner_val_only_for_selection": true,
+      "heldout_not_used_for_training_or_selection": true,
+      "manifest_sha256": "32264818a7ce91bf44f047fc5c2aba96a58be3f56746fea4dd66909fab979f3b",
+      "predictions_sha256": "20f6bc6790b279779491bb426695fb832511abb418f55a5261942e4ed61d034b",
+      "checkpoint_sha256": "732de82d24178a4cf047b6624fd2f6f7f0fd95adc9ed8b64e74b7c042fe66a4d",
+      "train_seconds": 1308.177213379
+    }
+  ]
+}

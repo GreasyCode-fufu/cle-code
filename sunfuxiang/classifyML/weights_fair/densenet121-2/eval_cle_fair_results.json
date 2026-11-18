@@ -1,0 +1,102 @@
+{
+  "model": "densenet121",
+  "weights": "/home/login/cle/sunfuxiang/classifyML/weights_fair/densenet121-2/densenet12144.pth",
+  "img_size": 224,
+  "norm_mean": [
+    0.2892360758089071,
+    0.2892360758089071,
+    0.2892360758089071
+  ],
+  "norm_std": [
+    0.2228318936230603,
+    0.2228318936230603,
+    0.2228318936230603
+  ],
+  "norm_source": "/home/login/cle/sunfuxiang/classifyML/weights_fair/densenet121-2/run_meta.json",
+  "class_names": [
+    "negative",
+    "positive"
+  ],
+  "best_threshold": 0.07,
+  "youden_j": 0.563228438228438,
+  "n_val": 684,
+  "n_test": 895,
+  "test_threshold_optimized": {
+    "accuracy": 0.7921787709497207,
+    "precision_macro": 0.7357065217391304,
+    "recall_macro": 0.8014946124435176,
+    "f1_macro": 0.7507187780772686,
+    "auroc": 0.8806465067778937,
+    "sensitivity": 0.819047619047619,
+    "specificity": 0.7839416058394161,
+    "auroc_weighted": 0.8806465067778937,
+    "auc_pr": 0.7016402711292815,
+    "balanced_accuracy": 0.8014946124435176,
+    "kappa": 0.5103103397558464,
+    "mcc": 0.5331575617850643,
+    "precision_w": 0.8408999271314063,
+    "recall_w": 0.7921787709497207,
+    "f1_weighted": 0.8046735633222405,
+    "paper_f1": 0.801110190587636,
+    "ppv": 0.5375,
+    "npv": 0.9339130434782609,
+    "confusion_matrix": [
+      [
+        537,
+        148
+      ],
+      [
+        38,
+        172
+      ]
+    ],
+    "tn": 537,
+    "fp": 148,
+    "fn": 38,
+    "tp": 172
+  },
+  "test_default_0.5": {
+    "accuracy": 0.8312849162011173,
+    "precision_macro": 0.7681010928961749,
+    "recall_macro": 0.7428397636426833,
+    "f1_macro": 0.7538436598964338,
+    "auroc": 0.8806465067778937,
+    "sensitivity": 0.5761904761904761,
+    "specificity": 0.9094890510948905,
+    "auroc_weighted": 0.8806465067778937,
+    "auc_pr": 0.7016402711292815,
+    "balanced_accuracy": 0.7428397636426833,
+    "kappa": 0.5083401546157345,
+    "mcc": 0.5103160041827111,
+    "precision_w": 0.824835149738987,
+    "recall_w": 0.8312849162011173,
+    "f1_weighted": 0.8271197490293515,
+    "paper_f1": 0.7054535198053721,
+    "ppv": 0.6612021857923497,
+    "npv": 0.875,
+    "confusion_matrix": [
+      [
+        623,
+        62
+      ],
+      [
+        89,
+        121
+      ]
+    ],
+    "tn": 623,
+    "fp": 62,
+    "fn": 89,
+    "tp": 121
+  },
+  "per_class_metrics": {
+    "negative": {
+      "auroc": 0.8806465067778937,
+      "aucpr": 0.9603630087996176
+    },
+    "positive": {
+      "auroc": 0.8806465067778937,
+      "aucpr": 0.7016402711292815
+    }
+  }
+}

@@ -1,0 +1,18 @@
+﻿实测项,数值,来源脚本,备注,original_csv_source
+Benign 亮度均值(0-1),0.274±0.071,analysis/img_stats.py,n=120,/home/login/data/cle/auto/Network/CLE-Net/experiments/sci_paper_data/11_image_analysis_cle.csv
+Benign 暗区占比(<0.08),0.279±0.060,analysis/img_stats.py,四角100%纯黑(圆形FOV),/home/login/data/cle/auto/Network/CLE-Net/experiments/sci_paper_data/11_image_analysis_cle.csv
+Benign 梯度能量,0.0293,analysis/img_stats.py,"纹理型,无大尺度结构",/home/login/data/cle/auto/Network/CLE-Net/experiments/sci_paper_data/11_image_analysis_cle.csv
+Benign FOV内 band1 纹理能量份额,0.0252±0.0081,analysis/fov_spectrum.py,n=150; M>N 差≈1.4σ,/home/login/data/cle/auto/Network/CLE-Net/experiments/sci_paper_data/11_image_analysis_cle.csv
+Malignant 亮度均值(0-1),0.234±0.058,analysis/img_stats.py,n=120,/home/login/data/cle/auto/Network/CLE-Net/experiments/sci_paper_data/11_image_analysis_cle.csv
+Malignant 暗区占比(<0.08),0.301±0.071,analysis/img_stats.py,四角100%纯黑(圆形FOV),/home/login/data/cle/auto/Network/CLE-Net/experiments/sci_paper_data/11_image_analysis_cle.csv
+Malignant 梯度能量,0.0264,analysis/img_stats.py,"纹理型,无大尺度结构",/home/login/data/cle/auto/Network/CLE-Net/experiments/sci_paper_data/11_image_analysis_cle.csv
+Malignant FOV内 band1 纹理能量份额,0.0298±0.0094,analysis/fov_spectrum.py,n=150; M>N 差≈1.4σ,/home/login/data/cle/auto/Network/CLE-Net/experiments/sci_paper_data/11_image_analysis_cle.csv
+Normal 亮度均值(0-1),0.248±0.062,analysis/img_stats.py,n=120,/home/login/data/cle/auto/Network/CLE-Net/experiments/sci_paper_data/11_image_analysis_cle.csv
+Normal 暗区占比(<0.08),0.344±0.073,analysis/img_stats.py,四角100%纯黑(圆形FOV),/home/login/data/cle/auto/Network/CLE-Net/experiments/sci_paper_data/11_image_analysis_cle.csv
+Normal 梯度能量,0.0270,analysis/img_stats.py,"纹理型,无大尺度结构",/home/login/data/cle/auto/Network/CLE-Net/experiments/sci_paper_data/11_image_analysis_cle.csv
+Normal FOV内 band1 纹理能量份额,0.0200±0.0060,analysis/fov_spectrum.py,n=150; M>N 差≈1.4σ,/home/login/data/cle/auto/Network/CLE-Net/experiments/sci_paper_data/11_image_analysis_cle.csv
+图像尺寸范围(px),"788~812(近方形), rgb_dup_rate=1.0(三通道100%重复,本质灰度)",analysis/img_stats.py,,/home/login/data/cle/auto/Network/CLE-Net/experiments/sci_paper_data/11_image_analysis_cle.csv
+7×7 特征网格视野污染,"有效token 33.5/49, 纯黑 4.9/49, 部分污染 26.2/49(53.5%)",analysis/probe_fov_mask.py,576 test 图,/home/login/data/cle/auto/Network/CLE-Net/experiments/sci_paper_data/11_image_analysis_cle.csv
+亚型级准确率(3种子汇总),"B/atrophy 94.9%, B/IM 100%, M/cancer 97.2%, M/dysplasia 95.5%, M/atrophy(混合) 88.3%, N 97.6%",analysis/subtype_error.py,错误几乎只在 Correa 相邻级(跨级 N↔M 仅 0.3%),/home/login/data/cle/auto/Network/CLE-Net/experiments/sci_paper_data/11_image_analysis_cle.csv
+证据空间分布,GAP 0.958-0.960 > 最好单token 0.914 > max-confidence 池化 0.919-0.955; token F1 与视野有效质量相关 0.89-0.92,analysis/probe_token_evidence.py,判别为分布式全局纹理统计,/home/login/data/cle/auto/Network/CLE-Net/experiments/sci_paper_data/11_image_analysis_cle.csv
+序数头否证(冻结特征),linear 0.9559 > multiproto 0.947 > rank1 0.911 > ordinal_axis 0.891 > CLM 0.844,analysis/head_ablation.py,强制一维序结构损失 4.5-11pp,/home/login/data/cle/auto/Network/CLE-Net/experiments/sci_paper_data/11_image_analysis_cle.csv
