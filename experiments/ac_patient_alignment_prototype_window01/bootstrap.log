@@ -13,3 +13,7 @@
  create mode 100644 experiments/ac_patient_alignment_prototype_window01/upstream/losses.py
  create mode 100644 experiments/ac_patient_alignment_prototype_window01/upstream/provenance.json
 {"passed": true, "official_singleview_SupCon_loss_and_gradient": true, "NumPy_three_masks_and_losses": true, "double_gradcheck": true, "mixed_label_patient_mask": true, "renaming_and_permutation_invariance": true, "empty_and_singleton_finite": true, "constant_features_finite": true, "public_Tiny_Mom_initial_logits_and_RNG_exact": true, "public_finite_backward_and_projection_gradient": true, "original_parameter_ids_preserved": true, "projector_parameters": 106496, "full_training_parameters": 27947459, "synthetic_two_updates_finite": true, "loss_modes": [{"mode": "all", "value": 8.510889291392992, "valid_anchor_fraction": 1.0, "mean_positive_pairs": 2.0}, {"mode": "cross", "value": 7.0899669818755156, "valid_anchor_fraction": 1.0, "mean_positive_pairs": 1.3333333730697632}, {"mode": "within", "value": 7.1794383543839, "valid_anchor_fraction": 0.6666666865348816, "mean_positive_pairs": 0.6666666865348816}], "CLE_images": 0, "CLE_neural_training": 0, "test_predictions": 0, "overall_research_complete": false}
+[main cfcadb8] test: verify patient-masked loss NumPy officialSupCon gradients degenerate cases and public initialization
+ 3 files changed, 63 insertions(+)
+ create mode 100644 experiments/ac_patient_alignment_prototype_window01/complete.json
+ create mode 100644 experiments/ac_patient_alignment_prototype_window01/numeric_preflight_cpu.json
