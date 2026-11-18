@@ -1,0 +1,132 @@
+{
+  "max_hours": 8.75,
+  "experiments": [
+    {
+      "name": "E01_GramMTRD_75_25",
+      "components": [
+        "gram",
+        "mtrd"
+      ],
+      "alloc": {
+        "gram": 0.75,
+        "mtrd": 0.25
+      },
+      "fixed": {
+        "gram": 0.0323743788,
+        "mtrd": 0.0256157314
+      }
+    },
+    {
+      "name": "E02_GramSoftFG_70_30",
+      "components": [
+        "gram",
+        "foreground"
+      ],
+      "alloc": {
+        "gram": 0.7,
+        "foreground": 0.3
+      }
+    },
+    {
+      "name": "E03_GramAT_80_20",
+      "components": [
+        "gram",
+        "attention"
+      ],
+      "alloc": {
+        "gram": 0.8,
+        "attention": 0.2
+      }
+    },
+    {
+      "name": "E04_GramAdvP5_80_20",
+      "components": [
+        "gram",
+        "adv_p5"
+      ],
+      "alloc": {
+        "gram": 0.8,
+        "adv_p5": 0.2
+      },
+      "gan": true
+    },
+    {
+      "name": "E05_GramDecoupledCB_60_25_15",
+      "components": [
+        "gram",
+        "foreground_cb",
+        "background"
+      ],
+      "alloc": {
+        "gram": 0.6,
+        "foreground_cb": 0.25,
+        "background": 0.15
+      }
+    },
+    {
+      "name": "E06_GramResponseKD_70_30",
+      "components": [
+        "gram",
+        "response"
+      ],
+      "alloc": {
+        "gram": 0.7,
+        "response": 0.3
+      }
+    },
+    {
+      "name": "E07_GramAdvP4P5_80_20",
+      "components": [
+        "gram",
+        "adv_p4",
+        "adv_p5"
+      ],
+      "alloc": {
+        "gram": 0.8,
+        "adv_p4": 0.1,
+        "adv_p5": 0.1
+      },
+      "gan": true
+    }
+  ],
+  "fallbacks": [
+    {
+      "name": "F01_GramKD_2p5Percent",
+      "components": [
+        "gram"
+      ],
+      "alloc": {
+        "gram": 0.5
+      },
+      "fixed": {
+        "gram": 0.0215829192
+      },
+      "fallback": true
+    },
+    {
+      "name": "F02_GramKD_10Percent",
+      "components": [
+        "gram"
+      ],
+      "alloc": {
+        "gram": 2.0
+      },
+      "fixed": {
+        "gram": 0.0863316768
+      },
+      "fallback": true
+    },
+    {
+      "name": "F03_GramKD_P3P4",
+      "components": [
+        "gram"
+      ],
+      "alloc": {
+        "gram": 1.0
+      },
+      "layers": "1,1,0",
+      "fallback": true
+    }
+  ],
+  "final_main_method": "Gram RelKD"
+}

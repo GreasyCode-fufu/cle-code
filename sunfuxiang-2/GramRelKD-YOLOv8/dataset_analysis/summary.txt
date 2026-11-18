@@ -1,0 +1,331 @@
+========================================================================================
+HONG KONG WALL-DEFECT DATASET -- CLASS-CONDITIONED ANALYSIS (why is `moisture` hard?)
+========================================================================================
+Dataset root : /data/cle/sunfuxiang-2/datasets/hongkongScale
+Output dir   : /data/cle/sunfuxiang-2/ultralytics-main/dataset_analysis
+Splits       : ['train', 'val', 'test']
+Classes      : {0: 'spalling', 1: 'crack', 2: 'moisture'}
+Total images : 5525   Total instances: 16809
+Image size   : uniform H=768 x W=1024 (verified).
+Letterbox    : imgsz=640, scaleup=False. All images share one size (H=768,W=1024) -> letterbox ratio r=0.625000 (scaleup=False); new_unpad=(640,480) padded to 640x640.
+Border tol   : a box 'touches' a border if its edge is within 2.0px of the image edge.
+Definitions  : brightness=mean(luma); brightness_std=std(luma); contrast=(p95-p5)/255 of luma; aspect=max(w,h)/min(w,h).
+
+YOLOv8 baseline (test set):
+  spalling : P=0.885 R=0.807 mAP50=0.834 mAP50-95=0.538
+  crack    : P=0.771 R=0.689 mAP50=0.716 mAP50-95=0.432
+  moisture : P=0.661 R=0.574 mAP50=0.549 mAP50-95=0.316   <-- worst on every metric
+
+========================================================================================
+SECTION 1 -- CLASS DISTRIBUTION
+========================================================================================
+  scope    class  images_total  images_with_class  instance_count  avg_per_image_with_class  avg_per_image_total  instance_share  image_share
+overall spalling          5525               1117            2078                  1.860340             0.376109        0.123624     0.202172
+overall    crack          5525               5105           13722                  2.687953             2.483620        0.816348     0.923982
+overall moisture          5525                492            1009                  2.050813             0.182624        0.060027     0.089050
+
+Imbalance (instance count, max/min across classes):
+  scope  imbalance_ratio_inst max_class min_class  inst_spalling  inst_crack  inst_moisture
+  train             13.430693     crack  moisture           1267        8139            606
+    val             14.914573     crack  moisture            386        2968            199
+   test             12.818627     crack  moisture            425        2615            204
+overall             13.599604     crack  moisture           2078       13722           1009
+
+========================================================================================
+SECTION 2 -- BBOX GEOMETRY (overall, per class)
+========================================================================================
+
+-- width --
+   class       mean        std        p1        p5       p10       p25        p50        p75        p90        p95         p99
+spalling 252.249010 230.290805 14.368775 37.647059 51.598616 86.809689 167.307958 335.391003 583.152941 776.603460 1023.045536
+   crack 197.674586 245.256825  8.858131 15.280277 21.038062 40.747405  94.339100 241.826990 557.176471 821.569550 1023.778547
+moisture 208.993302 206.208276 13.508651 27.858824 42.917647 72.858131 138.629758 262.643599 472.226990 639.911419 1020.199862
+
+-- height --
+   class       mean        std        p1        p5       p10       p25        p50        p75        p90        p95        p99
+spalling 217.499848 174.576163 12.904712 30.613825 47.491244 86.986175 167.336406 301.216590 482.698618 595.564977 767.778802
+   crack 224.696778 219.865441 12.212350 23.447005 34.064516 63.041475 133.382488 314.101382 631.498618 753.179724 767.778802
+moisture 196.312378 179.491093 15.041475 23.225806 37.117051 72.110599 134.488479 248.184332 460.711521 609.047005 766.195023
+
+-- area --
+   class         mean           std         p1          p5         p10         p25          p50          p75           p90           p95           p99
+spalling 72282.555531  99426.569825 177.544440 1640.776592 2773.798555 8280.924210 31123.563408 89870.609794 205463.514053 281460.335433 476067.222298
+   crack 67865.954533 135596.935948 238.819797  647.406133 1132.221058 3212.366686 12525.112178 56468.922743 205244.947619 390371.498860 682114.068557
+moisture 57714.173601 101434.684999 212.683329  986.030048 2118.789941 6865.990783 20501.618739 54130.498493 162780.005779 252520.134071 564581.466181
+
+-- norm_area --
+   class     mean      std       p1       p5      p10      p25      p50      p75      p90      p95      p99
+spalling 0.091912 0.126427 0.000226 0.002086 0.003527 0.010530 0.039576 0.114276 0.261260 0.357895 0.605351
+   crack 0.086296 0.172420 0.000304 0.000823 0.001440 0.004085 0.015927 0.071804 0.260982 0.496383 0.867353
+moisture 0.073387 0.128981 0.000270 0.001254 0.002694 0.008731 0.026069 0.068830 0.206985 0.321096 0.717902
+
+-- shortest_side --
+   class       mean        std        p1        p5       p10       p25        p50        p75        p90        p95        p99
+spalling 162.447938 125.689921 11.983360 27.837788 37.647059 71.225806 127.114187 221.593737 334.394464 419.049932 590.760553
+   crack 126.334543 157.125956  8.415225 13.508651 18.159170 32.110727  63.926267 145.895684 329.563134 502.115555 755.170507
+moisture 138.134752 129.290742 11.806726 21.013825 31.852535 57.953917 102.532872 159.483871 304.280184 426.651903 649.247889
+
+-- longest_side --
+   class       mean        std        p1        p5       p10        p25        p50        p75        p90        p95         p99
+spalling 307.300919 240.468905 17.956961 52.375820 69.568657 113.217993 239.584775 436.051728 691.067128 776.603460 1023.045536
+   crack 296.036821 264.137888 23.072021 40.195303 55.157636  94.009217 191.004098 428.460829 754.064516 821.569550 1023.778547
+moisture 267.170928 223.109940 17.289460 40.835986 62.347979 103.299539 199.307958 350.117647 597.651753 762.071889 1020.199862
+
+-- aspect_ratio --
+   class     mean      std       p1       p5      p10      p25      p50      p75      p90      p95       p99
+spalling 2.060200 1.215670 1.007171 1.042621 1.094172 1.267588 1.675365 2.414022 3.483849 4.412948  6.439249
+   crack 3.499046 2.755625 1.016291 1.093960 1.194604 1.572837 2.616501 4.429107 6.930583 9.121559 13.537297
+moisture 2.255773 1.516540 1.014861 1.058473 1.109661 1.317903 1.741503 2.659506 3.871171 4.976832  8.248881
+
+Threshold fractions (overall, per class):
+   class  shortest_lt8  shortest_lt16  shortest_lt32  area_lt_32sq  area_32_to_96sq  area_ge_96sq  aspect_ge3  aspect_ge5  aspect_ge10
+spalling      0.007218       0.015399       0.068335      0.033686         0.233397      0.732916    0.157363    0.032724     0.001925
+   crack      0.008672       0.074479       0.248433      0.086503         0.360589      0.552908    0.431278    0.201355     0.037822
+moisture      0.000991       0.026759       0.101090      0.054509         0.262636      0.682854    0.193261    0.049554     0.004955
+
+========================================================================================
+SECTION 3 -- RESIZE -> 640 (overall, per class)
+========================================================================================
+
+-- resized width @640 --
+   class       mean        std       p10        p50        p90
+spalling 157.655631 143.931753 32.249135 104.567474 364.470588
+   crack 123.546616 153.285516 13.148789  58.961938 348.235294
+moisture 130.620814 128.880173 26.823529  86.643599 295.141869
+
+-- resized height @640 --
+   class       mean        std       p10        p50        p90
+spalling 135.937405 109.110102 29.682028 104.585253 301.686636
+   crack 140.435486 137.415901 21.290323  83.364055 394.686636
+moisture 122.695236 112.181933 23.198157  84.055300 287.944700
+
+-- resized shortest_side @640 --
+   class       mean       std       p10       p50        p90
+spalling 101.529961 78.556201 23.529412 79.446367 208.996540
+   crack  78.959089 98.203722 11.349481 39.953917 205.976959
+moisture  86.334220 80.806713 19.907834 64.083045 190.175115
+
+-- resized area @640 --
+   class         mean          std         p10          p50          p90
+spalling 28235.373254 38838.503838 1083.515061 12157.641956 80259.185177
+   crack 26510.138489 52967.553105  442.273851  4892.621944 80173.807663
+moisture 22544.599063 39622.923828  827.652321  8008.444820 63585.939757
+
+Fraction of boxes that become tiny after letterbox -> 640:
+   class  rs_short<4px  rs_short<8px  rs_short<16px  rs_short<32px
+spalling      0.003369      0.011068       0.045236       0.162656
+   crack      0.001968      0.043142       0.181023       0.421440
+moisture      0.000000      0.012884       0.070367       0.214073
+
+========================================================================================
+SECTION 4 -- CO-OCCURRENCE (image level)
+========================================================================================
+  scope  n_images  P_crack_given_moisture  P_spalling_given_moisture  P_moisture_given_crack  P_moisture_given_spalling
+  train    3315.0                0.735974                   0.389439                0.073091                   0.174556
+    val    1105.0                0.788235                   0.435294                0.063749                   0.175355
+   test    1105.0                0.682692                   0.375000                0.070788                   0.169565
+overall    5525.0                0.733740                   0.394309                0.070715                   0.173679
+
+Moisture image partitions:
+  scope               partition  count     frac
+  train           only_moisture   42.0 0.012670
+  train      moisture_and_crack  143.0 0.043137
+  train   moisture_and_spalling   38.0 0.011463
+  train moisture_crack_spalling   80.0 0.024133
+  train            moisture_any  303.0 0.091403
+    val           only_moisture    8.0 0.007240
+    val      moisture_and_crack   40.0 0.036199
+    val   moisture_and_spalling   10.0 0.009050
+    val moisture_crack_spalling   27.0 0.024434
+    val            moisture_any   85.0 0.076923
+   test           only_moisture   20.0 0.018100
+   test      moisture_and_crack   45.0 0.040724
+   test   moisture_and_spalling   13.0 0.011765
+   test moisture_crack_spalling   26.0 0.023529
+   test            moisture_any  104.0 0.094118
+overall           only_moisture   70.0 0.012670
+overall      moisture_and_crack  228.0 0.041267
+overall   moisture_and_spalling   61.0 0.011041
+overall moisture_crack_spalling  133.0 0.024072
+overall            moisture_any  492.0 0.089050
+
+========================================================================================
+SECTION 5 -- BORDER ANALYSIS (overall)
+========================================================================================
+   class  touch_left  touch_right  touch_top  touch_bottom  touch_any
+spalling    0.102021     0.108277   0.110202      0.115977   0.357555
+   crack    0.072220     0.084827   0.119662      0.144148   0.346232
+moisture    0.095144     0.122894   0.105055      0.116947   0.360753
+
+Min distance to any border (px), overall:
+   class      mean  p10       p50        p90
+spalling 93.641567  0.0 60.608295 252.723588
+   crack 92.143058  0.0 50.654378 254.221205
+moisture 87.372873  0.0 39.594470 248.374863
+
+========================================================================================
+SECTION 6 -- IMAGE CONDITIONS (overall, grouped by class presence)
+========================================================================================
+
+-- brightness --
+   class       mean       std        p10        p50        p90
+spalling 144.813164 28.687054 112.821156 142.303488 180.429115
+   crack 149.964618 24.670850 117.998376 150.970623 179.126926
+moisture 139.108797 28.896193 107.304550 135.195744 170.893948
+
+-- brightness_std --
+   class      mean       std       p10       p50       p90
+spalling 48.098887 14.836266 28.251991 48.335617 67.587800
+   crack 40.866157 15.554622 21.650646 40.140791 60.770481
+moisture 53.897180 13.203817 37.953317 52.417809 72.220992
+
+-- contrast --
+   class     mean      std      p10      p50      p90
+spalling 0.593379 0.170299 0.349020 0.607843 0.807843
+   crack 0.501028 0.181625 0.254902 0.509804 0.729412
+moisture 0.648852 0.140864 0.462745 0.643137 0.830980
+
+-- R_mean --
+   class       mean       std        p10        p50        p90
+spalling 152.288485 30.648194 116.968241 148.828957 195.137497
+   crack 156.011302 25.682634 122.478056 156.714984 188.247740
+moisture 143.664891 29.324006 110.518535 141.622120 177.066306
+
+-- G_mean --
+   class       mean       std        p10        p50        p90
+spalling 142.712183 28.769912 110.744487 140.705294 178.855984
+   crack 148.757781 25.124464 116.444223 149.693582 178.496296
+moisture 137.821504 29.140900 106.426050 134.811104 170.014700
+
+-- B_mean --
+   class       mean       std        p10        p50        p90
+spalling 135.988946 29.285891  99.694332 135.186033 172.954425
+   crack 140.334090 25.456690 107.598342 141.365918 171.151941
+moisture 133.723387 30.125709  98.540035 130.877726 170.749559
+
+========================================================================================
+SECTION 7 -- TRAIN/VAL/TEST DISTRIBUTION SHIFT
+========================================================================================
+   class        metric split    n         mean          p50  ks_stat_vs_train  ks_pval_vs_train  norm_shift_vs_train
+spalling          area train 1267 72390.354122 30534.836477               NaN               NaN                  NaN
+spalling          area   val  386 70086.878895 33726.066111          0.031933          0.911860             0.022763
+spalling          area  test  425 73955.379922 31081.656690          0.024456          0.988230             0.015466
+spalling shortest_side train 1267   162.340482   127.114187               NaN               NaN                  NaN
+spalling shortest_side   val  386   160.120259   125.048905          0.026152          0.983622             0.017455
+spalling shortest_side  test  425   164.882365   129.400922          0.033645          0.848803             0.019984
+spalling  aspect_ratio train 1267     2.047821     1.652589               NaN               NaN                  NaN
+spalling  aspect_ratio   val  386     2.137094     1.721683          0.065857          0.145694             0.074906
+spalling  aspect_ratio  test  425     2.027269     1.701396          0.042817          0.585117             0.017244
+spalling    brightness train  676   146.599191   143.204004               NaN               NaN                  NaN
+spalling    brightness   val  211   141.905330   142.261645          0.086549          0.167662             0.160352
+spalling    brightness  test  230   142.231417   139.349072          0.090288          0.113161             0.149212
+spalling      contrast train  676     0.583136     0.596078               NaN               NaN                  NaN
+spalling      contrast   val  211     0.619385     0.631373          0.107813          0.043533             0.209868
+spalling      contrast  test  230     0.599625     0.603922          0.092231          0.100025             0.095465
+   crack          area train 8139 68721.535669 12780.691723               NaN               NaN                  NaN
+   crack          area   val 2968 65603.263332 10888.031509          0.031933          0.023083             0.022785
+   crack          area  test 2615 67771.152473 13625.977899          0.035133          0.014676             0.006944
+   crack shortest_side train 8139   127.194647    64.221453               NaN               NaN                  NaN
+   crack shortest_side   val 2968   122.849839    59.570934          0.027977          0.064931             0.027461
+   crack shortest_side  test 2615   127.612637    67.986159          0.029677          0.059770             0.002642
+   crack  aspect_ratio train 8137     3.502433     2.618257               NaN               NaN                  NaN
+   crack  aspect_ratio   val 2967     3.469695     2.592731          0.017497          0.511680             0.011828
+   crack  aspect_ratio  test 2615     3.521809     2.637487          0.012086          0.930470             0.007000
+   crack    brightness train 3051   150.270393   150.879678               NaN               NaN                  NaN
+   crack    brightness   val 1051   149.856674   151.344336          0.028517          0.536825             0.016700
+   crack    brightness  test 1003   149.147600   150.831603          0.029366          0.521315             0.045322
+   crack      contrast train 3051     0.498754     0.505882               NaN               NaN                  NaN
+   crack      contrast   val 1051     0.502117     0.513725          0.024236          0.736380             0.018498
+   crack      contrast  test 1003     0.506803     0.521569          0.035537          0.287853             0.044265
+moisture          area train  606 56462.057479 20210.451549               NaN               NaN                  NaN
+moisture          area   val  199 45407.719205 11108.488766          0.162429          0.000629             0.111176
+moisture          area  test  204 73438.520633 30664.891809          0.138954          0.004870             0.170737
+moisture shortest_side train  606   137.654943   103.631336               NaN               NaN                  NaN
+moisture shortest_side   val  199   115.862667    73.743945          0.136251          0.006802             0.171487
+moisture shortest_side  test  204   161.286266   122.835648          0.149777          0.001849             0.185959
+moisture  aspect_ratio train  606     2.312991     1.746110               NaN               NaN                  NaN
+moisture  aspect_ratio   val  199     2.064416     1.656880          0.087857          0.184290             0.150725
+moisture  aspect_ratio  test  204     2.272472     1.819405          0.074937          0.337785             0.024569
+moisture    brightness train  303   140.887223   137.569809               NaN               NaN                  NaN
+moisture    brightness   val   85   135.318078   133.231204          0.137798          0.144244             0.183136
+moisture    brightness  test  104   137.025602   131.307637          0.122779          0.175329             0.126986
+moisture      contrast train  303     0.646994     0.643137               NaN               NaN                  NaN
+moisture      contrast   val   85     0.652318     0.650980          0.070511          0.867886             0.037206
+moisture      contrast  test  104     0.651433     0.635294          0.056804          0.948536             0.031018
+
+========================================================================================
+SECTION 8 -- MONTAGES
+========================================================================================
+Crop montages   : /data/cle/sunfuxiang-2/ultralytics-main/dataset_analysis/{moisture,crack,spalling}_montage/crop_<split>_<small|medium|large>.jpg
+Full-image+box  : /data/cle/sunfuxiang-2/ultralytics-main/dataset_analysis/{moisture,crack,spalling}_montage/fullimg_<split>.jpg
+Each crop tile is labeled with: split / filename / bbox size / normalized area.
+
+========================================================================================
+SECTION 9 -- DATA-QUALITY CHECKS (report only, nothing modified)
+========================================================================================
+  zero_width_or_height             count=3       bbox with width<=0 or height<=0 (degenerate)
+  out_of_bound_box                 count=0       normalized coord outside [0,1] (1% tol)
+  extremely_tiny_box               count=4       shortest side < 2px
+  abnormally_large_box             count=109     normalized area >= 0.9
+  duplicate_label_rows             count=0       exact-duplicate lines inside a label file
+  high_overlap_same_class_pairs    count=0       images with >=1 same-class box pair IoU>=0.9
+  label_missing                    count=0       image without a .txt label
+  label_empty                      count=0       image with empty .txt (background)
+
+========================================================================================
+ANSWERS A..G  (every claim backed by a number above)
+========================================================================================
+
+A. Is `moisture` rarer than the other classes?
+   instance counts  : spalling=2078 crack=13722 moisture=1009
+   images-with-class: spalling=1117 crack=5105 moisture=492
+   overall imbalance ratio (max/min instances) = 13.60
+   -> YES: moisture has the FEWEST instances (and images). Lower sample count -> weaker supervision, a direct contributor to its worse metrics.
+
+B. Is `moisture` smaller (in source pixels)?
+   area mean        : spalling=72283 crack=67866 moisture=57714
+   shortest mean    : spalling=162.4 crack=126.3 moisture=138.1
+   shortest p50     : spalling=127.1 crack=63.9 moisture=102.5
+   shortest p10     : spalling=37.6 crack=18.2 moisture=31.9
+   moisture small-object fraction (area<32^2) = 0.055
+   resized-shortest<16px @640: spalling=0.045 crack=0.181 moisture=0.070
+   -> moisture has the SMALLEST mean area, but its shortest side (mean/p50) sits BETWEEN spalling and crack, and after resize->640 moisture is NOT the smallest (crack is). Since crack is smaller yet detects better, object size ALONE does not explain moisture's gap.
+
+C. Is `moisture` closer to the image edge / border?
+   touch_any fraction: spalling=0.358 crack=0.346 moisture=0.361
+   mean min-dist to border (px): spalling=93.6 crack=92.1 moisture=87.4
+   -> MARGINAL: moisture touches a border only slightly more often (+0.003 vs spalling, +0.015 vs crack) and is only ~7% closer in mean min-distance. Border location is NOT a strong differentiator for moisture.
+
+D. Does `moisture` have a different aspect ratio?
+   aspect mean : spalling=2.06 crack=3.50 moisture=2.26
+   aspect>=5 frac: spalling=0.033 crack=0.201 moisture=0.050
+   (crack is expected to be the most elongated; compare moisture vs spalling.)
+
+E. Is there a Train/Val/Test distribution shift for `moisture`?
+   area          : train_mean=56462.057 test_mean=73438.521 ks_stat=0.139 ks_p=0.0049 norm_shift=0.17
+   shortest_side : train_mean=137.655 test_mean=161.286 ks_stat=0.150 ks_p=0.0018 norm_shift=0.19
+   aspect_ratio  : train_mean=2.313 test_mean=2.272 ks_stat=0.075 ks_p=0.3378 norm_shift=0.02
+   brightness    : train_mean=140.887 test_mean=137.026 ks_stat=0.123 ks_p=0.1753 norm_shift=0.13
+   contrast      : train_mean=0.647 test_mean=0.651 ks_stat=0.057 ks_p=0.9485 norm_shift=0.03
+   (large ks_stat / small ks_p / large norm_shift => distribution shift)
+   Comparative test-vs-train norm_shift (size): spalling_area=0.02 crack_area=0.01 moisture_area=0.17; moisture_shortest=0.19.
+   -> YES for SIZE: moisture shows the LARGEST train->test size shift of the three classes (test moisture boxes are bigger than train), while its appearance (brightness/contrast) is stable.
+
+F. Does `moisture` frequently co-occur with crack/spalling?
+   P(crack   | moisture) = 0.734
+   P(spalling| moisture) = 0.394
+   fraction of MOISTURE images that are moisture-only (no crack/spalling) = 0.142
+   -> moisture frequently co-occurs with other defects -> possible label confusion / overlap with spalling regions (visually similar stains).
+
+G. Most likely data-side causes of moisture's poor detection (ranked by the strength of evidence above):
+   1) SEVERE class imbalance (strongest): only 1009 moisture instances vs 13722 crack / 2078 spalling (13.6x imbalance, see A). Far fewer positive examples -> weakest supervision; this alone plausibly accounts for much of the gap.
+   2) Visual ambiguity + co-occurrence confusion (strong): moisture images are DARKER (brightness 139 vs crack 150/spalling 145) with HIGHER internal variance (brightness_std 53.9) and HIGHER global contrast (0.65 vs 0.50/0.59) -- i.e. diffuse, heterogeneous staining, not crisp edges. Combined with heavy co-occurrence (P(crack|moisture)=0.734, only 0.142 of moisture images are moisture-only, see F), moisture is prone to visual confusion with crack/spalling and with wet/spalled background. (NOTE: the data says higher, not lower, contrast -- do not assume low contrast.)
+   3) Train->Test size distribution shift (moderate, moisture-specific): see E -- moisture has the LARGEST size shift of the three classes (test boxes bigger than train), while crack/spalling are stable.
+   4) Object size (weak/secondary): see B -- moisture has the smallest mean AREA, but it is NOT the smallest by shortest side and crack (which detects better) is smaller still after resize->640. So size is a contributor but not the main driver vs crack.
+   5) Border location (negligible): see C -- moisture touches the border only marginally more often; not a meaningful differentiator.
+
+NOTE: these are data-statistics observations, not model-error analysis. They identify the most plausible contributors; confirming each requires per-image inspection (montages) and/or model confusion-matrix analysis.
+
+========================================================================================
+END OF SUMMARY
+========================================================================================

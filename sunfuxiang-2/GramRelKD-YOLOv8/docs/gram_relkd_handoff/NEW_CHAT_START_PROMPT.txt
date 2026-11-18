@@ -1,0 +1,16 @@
+我正在继续研究香港墙体缺陷检测项目。请先完整阅读我上传的 NEW_CHAT_HANDOFF.md，并严格基于该文档理解项目；必要时再读取同目录的 METHOD_GRAM_RELKD.md、MODEL_CARD_GRAM_RELKD.md、EXPERIMENT_LEDGER.md、PATH_MANIFEST.json 和 COPY_VERIFICATION.json。
+
+项目根目录：/data/cle/sunfuxiang-2/GramRelKD-YOLOv8
+Python：/home/login/miniconda3/envs/yolo/bin/python
+外部数据集：/data/cle/sunfuxiang-2/datasets/hongkongScale
+数据 YAML：/data/cle/sunfuxiang-2/GramRelKD-YOLOv8/ultralytics/cfg/datasets/coco8.yaml（名称为历史遗留，实际指向 Hong Kong 数据）
+Teacher：/data/cle/sunfuxiang-2/GramRelKD-YOLOv8/runs/detect/runs/detect/hongkong_L1-96/weights/best.pt
+Student YAML：/data/cle/sunfuxiang-2/GramRelKD-YOLOv8/ultralytics/cfg/models/hongkong/yolov8n-L1-96-SR1.yaml
+Gram best.pt：/data/cle/sunfuxiang-2/GramRelKD-YOLOv8/runs/detect/hongkong_SR1_P4Only_RelKD/weights/best.pt
+
+FINAL MAIN METHOD = GRAM RELKD。不要默认重新采用 MTRD、GAN、C2f_SPP 或 C2f_DSM，也不要因为这些代码仍在仓库中就认为它们属于最终模型。Gram RelKD 正式 test 指标为 P=0.749849、R=0.675435、mAP50=0.704466、mAP75=0.459626、mAP50-95=0.435680，spalling/crack/moisture AP50-95=0.582001/0.410681/0.314357；Student fused/unfused Params=2,603,129/2,607,913，GFLOPs=7.044096。
+
+后续研究应围绕 Gram RelKD 的理论解释、P3/P4/P5 消融、多 seed 稳定性、跨数据集验证、特征关系可视化、训练成本和论文写作展开。所有建议必须保持 Teacher 仅在训练期使用，不进入 Student optimizer、EMA、checkpoint 或推理，不增加 Student 推理参数和 GFLOPs。对于任何新结构或损失，先给出明确假设、严格对照、预算、指标与停止规则；不要直接训练，不要无边界堆叠模块，不要用 test split 循环调参。
+
+证据限制：当前正式结果仅为 seed=0 的确定性配对结果，不能声称跨随机种子统计显著性或所有类别普遍提升。若我没有明确授权，只进行源码/报告分析和实验设计，不启动训练。
+

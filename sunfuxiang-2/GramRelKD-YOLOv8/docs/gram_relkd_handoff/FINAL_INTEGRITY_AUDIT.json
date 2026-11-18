@@ -1,0 +1,114 @@
+{
+  "status": "SUCCESS",
+  "source_project_unchanged": true,
+  "source_file_count_current": 2839,
+  "source_total_file_bytes_current": 1077845555,
+  "source_critical_sha256_unchanged": true,
+  "core_source_unchanged_between_source_and_clone": true,
+  "core_rsync_checksum_output": "",
+  "all_original_files_content_identical_after_handoff": true,
+  "original_file_rsync_checksum_output": "",
+  "training_processes": [],
+  "training_launched": false,
+  "full_test_evaluation_launched": false,
+  "required_handoff_files_missing": [],
+  "teacher_weight_copied": true,
+  "gram_best_weight_copied": true,
+  "paired_nokd_copied": true,
+  "mtrd_copied": true,
+  "nightly_reports_copied": true,
+  "clone_smoke_test": {
+    "status": "SUCCESS",
+    "training_launched": false,
+    "full_test_evaluation_launched": false,
+    "project_root": "/data/cle/sunfuxiang-2/GramRelKD-YOLOv8",
+    "weights": "/data/cle/sunfuxiang-2/GramRelKD-YOLOv8/runs/detect/hongkong_SR1_P4Only_RelKD/weights/best.pt",
+    "weights_sha256": "221304b847e9b900ccbef36723b27e72227d661279d735e131d0c60a41607ef7",
+    "ultralytics_version": "8.4.84",
+    "model_structure_printed": true,
+    "model_is_sr1_p4only": true,
+    "hidden_channels": {
+      "12": 40,
+      "18": 40,
+      "21": 128
+    },
+    "expected_hidden_channels": {
+      "12": 40,
+      "18": 40,
+      "21": 128
+    },
+    "feature_shapes": {
+      "15": [
+        1,
+        64,
+        80,
+        80
+      ],
+      "18": [
+        1,
+        96,
+        40,
+        40
+      ],
+      "21": [
+        1,
+        256,
+        20,
+        20
+      ]
+    },
+    "expected_feature_shapes": {
+      "15": [
+        1,
+        64,
+        80,
+        80
+      ],
+      "18": [
+        1,
+        96,
+        40,
+        40
+      ],
+      "21": [
+        1,
+        256,
+        20,
+        20
+      ]
+    },
+    "random_eval_forward_success": true,
+    "unfused_params": 2607913,
+    "fused_params": 2603129,
+    "gflops": 7.044096,
+    "checkpoint_top_level_keys": [
+      "date",
+      "version",
+      "license",
+      "docs",
+      "epoch",
+      "best_fitness",
+      "model",
+      "ema",
+      "updates",
+      "optimizer",
+      "scaler",
+      "train_args",
+      "train_metrics",
+      "train_results",
+      "git"
+    ],
+    "forbidden_top_level_keys": [],
+    "forbidden_state_dict_keys": [],
+    "forbidden_module_classes": [],
+    "teacher_absent": true,
+    "kd_modules_absent": true,
+    "discriminator_absent": true,
+    "ultralytics_ext_loaded_before_model": false,
+    "ultralytics_ext_loaded_after_inference": false,
+    "inference_independent_of_ultralytics_ext": true,
+    "all_checks_passed": true
+  },
+  "final_main_method": "Gram RelKD",
+  "all_checks_passed": true
+}

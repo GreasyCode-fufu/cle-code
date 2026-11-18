@@ -1,0 +1,64 @@
+{
+  "status": "SUCCESS",
+  "ultralytics_version": "8.4.84",
+  "weight_path": "/data/cle/sunfuxiang-2/ultralytics-main/runs/detect/hongkong_SR1_P4Only_MTRD/weights/best.pt",
+  "weight_size_bytes": 5480483,
+  "weight_size_mib": 5.226595878601074,
+  "evaluation_call": "model.val(**{'cfg':'ultralytics/cfg/default.yaml'})",
+  "split": "test",
+  "save_dir": "/data/cle/sunfuxiang-2/ultralytics-main/runs/detect/val-28",
+  "overall": {
+    "precision": 0.7444735402950213,
+    "recall": 0.6989435715661952,
+    "map50": 0.7093152965241244,
+    "map75": 0.4577694955470875,
+    "map50_95": 0.4321859997778674
+  },
+  "classes": {
+    "spalling": {
+      "class_index": 0,
+      "precision": 0.8329641511460734,
+      "recall": 0.7823834196891192,
+      "ap50": 0.8226425932976071,
+      "ap75": 0.6558842501101834,
+      "ap50_95": 0.5648163363452133
+    },
+    "crack": {
+      "class_index": 1,
+      "precision": 0.7294243693847622,
+      "recall": 0.6712312146074567,
+      "ap50": 0.6946651878200465,
+      "ap75": 0.4145301475169347,
+      "ap50_95": 0.4067078572124596
+    },
+    "moisture": {
+      "class_index": 2,
+      "precision": 0.6710321003542286,
+      "recall": 0.6432160804020101,
+      "ap50": 0.6106381084547193,
+      "ap75": 0.30289408901414444,
+      "ap50_95": 0.3250338057759296
+    }
+  },
+  "speed_ms_per_image": {
+    "preprocess": 0.3210947499083717,
+    "inference": 0.4961282891385695,
+    "loss": 0.00016772066036500544,
+    "postprocess": 0.19469399982852634
+  },
+  "unfused_params": 2607913,
+  "fused_params": 2603129,
+  "gflops": 7.044096,
+  "model_yaml_file": "",
+  "model_name": "",
+  "teacher_related_checkpoint_keys": [],
+  "mtrd_related_checkpoint_keys": [],
+  "teacher_absent_from_checkpoint": true,
+  "mtrd_loss_absent_from_checkpoint": true,
+  "ultralytics_ext_loaded_before_model": false,
+  "ultralytics_ext_loaded_after_evaluation": false,
+  "inference_independent_of_ultralytics_ext": true,
+  "test_status": "SUCCESS",
+  "official_test_script": "/data/cle/sunfuxiang-2/ultralytics-main/scripts/test_mtrd.py",
+  "official_test_log": "/data/cle/sunfuxiang-2/ultralytics-main/runs/analysis/mtrd_formal_result/formal_test.log"
+}

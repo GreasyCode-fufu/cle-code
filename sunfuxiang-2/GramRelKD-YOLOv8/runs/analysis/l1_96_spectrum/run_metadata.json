@@ -1,0 +1,580 @@
+{
+  "weights": "/data/cle/sunfuxiang-2/ultralytics-main/runs/detect/runs/detect/hongkong_L1-96/weights/best.pt",
+  "data_yaml": "/data/cle/sunfuxiang-2/ultralytics-main/runs/analysis/l1_96_spectrum/_auto_data.yaml",
+  "data_yaml_source": "auto-generated (no yaml found in data-root)",
+  "check_det_dataset": "ok",
+  "resolved_names": {
+    "0": "class_0",
+    "1": "class_1",
+    "2": "class_2"
+  },
+  "split": "val",
+  "split_images_dir": "/data/cle/sunfuxiang-2/datasets/hongkongScale/val/images",
+  "imgsz": 640,
+  "batch": 8,
+  "workers": 4,
+  "device": "cuda:0",
+  "num_images_total_split": 1105,
+  "num_images_analysed": 500,
+  "max_images_arg": 500,
+  "seed": 42,
+  "max_spatial_samples": 0,
+  "ultralytics_version": "8.4.84",
+  "torch_version": "2.4.1+cu121",
+  "cuda_version": "12.1",
+  "gpu_name": "NVIDIA GeForce RTX 4090",
+  "python_version": "3.12.13",
+  "nc": 3,
+  "stride": 32,
+  "model_structure": {
+    "layers": {
+      "4": {
+        "type": "C2f",
+        "out_channels": 64,
+        "hidden_c": 32,
+        "num_bottlenecks": 2
+      },
+      "6": {
+        "type": "C2f",
+        "out_channels": 96,
+        "hidden_c": 48,
+        "num_bottlenecks": 2
+      },
+      "8": {
+        "type": "C2f",
+        "out_channels": 256,
+        "hidden_c": 128,
+        "num_bottlenecks": 1
+      },
+      "12": {
+        "type": "C2f",
+        "out_channels": 96,
+        "hidden_c": 48,
+        "num_bottlenecks": 1
+      },
+      "15": {
+        "type": "C2f",
+        "out_channels": 64,
+        "hidden_c": 32,
+        "num_bottlenecks": 1
+      },
+      "18": {
+        "type": "C2f",
+        "out_channels": 96,
+        "hidden_c": 48,
+        "num_bottlenecks": 1
+      },
+      "21": {
+        "type": "C2f",
+        "out_channels": 256,
+        "hidden_c": 128,
+        "num_bottlenecks": 1
+      }
+    },
+    "expected_check": {
+      "4": {
+        "expected_out": 64,
+        "actual_out": 64,
+        "match": true
+      },
+      "6": {
+        "expected_out": 96,
+        "actual_out": 96,
+        "match": true
+      },
+      "8": {
+        "expected_out": 256,
+        "actual_out": 256,
+        "match": true
+      },
+      "12": {
+        "expected_out": 96,
+        "actual_out": 96,
+        "match": true
+      },
+      "15": {
+        "expected_out": 64,
+        "actual_out": 64,
+        "match": true
+      },
+      "18": {
+        "expected_out": 96,
+        "actual_out": 96,
+        "match": true
+      },
+      "21": {
+        "expected_out": 256,
+        "actual_out": 256,
+        "match": true
+      }
+    },
+    "hidden_check": {
+      "12": {
+        "expected_c": 48,
+        "actual_c": 48,
+        "match": true
+      },
+      "18": {
+        "expected_c": 48,
+        "actual_c": 48,
+        "match": true
+      },
+      "21": {
+        "expected_c": 128,
+        "actual_c": 128,
+        "match": true
+      }
+    }
+  },
+  "features": {
+    "layer4_output": {
+      "parent_layer": 4,
+      "feature_type": "output",
+      "channels": 64,
+      "count": 3200000,
+      "metrics_raw": {
+        "r90": 35,
+        "r95": 45,
+        "r99": 59,
+        "r90_ratio": 0.546875,
+        "r95_ratio": 0.703125,
+        "r99_ratio": 0.921875,
+        "stable_rank": 6.284476733971877,
+        "effective_rank": 30.807610822533032,
+        "participation_ratio": 17.71883277106881
+      },
+      "metrics_centered": {
+        "r90": 36,
+        "r95": 47,
+        "r99": 60,
+        "r90_ratio": 0.5625,
+        "r95_ratio": 0.734375,
+        "r99_ratio": 0.9375,
+        "stable_rank": 7.268261951774686,
+        "effective_rank": 33.786117371430954,
+        "participation_ratio": 20.568923211108196
+      }
+    },
+    "layer6_output": {
+      "parent_layer": 6,
+      "feature_type": "output",
+      "channels": 96,
+      "count": 800000,
+      "metrics_raw": {
+        "r90": 50,
+        "r95": 67,
+        "r99": 88,
+        "r90_ratio": 0.5208333333333334,
+        "r95_ratio": 0.6979166666666666,
+        "r99_ratio": 0.9166666666666666,
+        "stable_rank": 8.278002999849416,
+        "effective_rank": 43.59077673473007,
+        "participation_ratio": 24.551203802179856
+      },
+      "metrics_centered": {
+        "r90": 52,
+        "r95": 69,
+        "r99": 89,
+        "r90_ratio": 0.5416666666666666,
+        "r95_ratio": 0.71875,
+        "r99_ratio": 0.9270833333333334,
+        "stable_rank": 10.571360174573876,
+        "effective_rank": 47.6089778584219,
+        "participation_ratio": 28.869345263612683
+      }
+    },
+    "layer8_output": {
+      "parent_layer": 8,
+      "feature_type": "output",
+      "channels": 256,
+      "count": 200000,
+      "metrics_raw": {
+        "r90": 112,
+        "r95": 163,
+        "r99": 231,
+        "r90_ratio": 0.4375,
+        "r95_ratio": 0.63671875,
+        "r99_ratio": 0.90234375,
+        "stable_rank": 8.646827128004682,
+        "effective_rank": 76.99241979209208,
+        "participation_ratio": 31.65662891734802
+      },
+      "metrics_centered": {
+        "r90": 120,
+        "r95": 170,
+        "r99": 233,
+        "r90_ratio": 0.46875,
+        "r95_ratio": 0.6640625,
+        "r99_ratio": 0.91015625,
+        "stable_rank": 11.790157188453732,
+        "effective_rank": 90.7514343021248,
+        "participation_ratio": 43.190963552234805
+      }
+    },
+    "layer12_output": {
+      "parent_layer": 12,
+      "feature_type": "output",
+      "channels": 96,
+      "count": 800000,
+      "metrics_raw": {
+        "r90": 52,
+        "r95": 68,
+        "r99": 88,
+        "r90_ratio": 0.5416666666666666,
+        "r95_ratio": 0.7083333333333334,
+        "r99_ratio": 0.9166666666666666,
+        "stable_rank": 6.855363469226782,
+        "effective_rank": 44.24920402911127,
+        "participation_ratio": 23.048563404922856
+      },
+      "metrics_centered": {
+        "r90": 55,
+        "r95": 70,
+        "r99": 89,
+        "r90_ratio": 0.5729166666666666,
+        "r95_ratio": 0.7291666666666666,
+        "r99_ratio": 0.9270833333333334,
+        "stable_rank": 11.505359013207634,
+        "effective_rank": 51.89570474849661,
+        "participation_ratio": 32.87833808586651
+      }
+    },
+    "layer15_output": {
+      "parent_layer": 15,
+      "feature_type": "output",
+      "channels": 64,
+      "count": 3200000,
+      "metrics_raw": {
+        "r90": 34,
+        "r95": 44,
+        "r99": 58,
+        "r90_ratio": 0.53125,
+        "r95_ratio": 0.6875,
+        "r99_ratio": 0.90625,
+        "stable_rank": 5.838337617022297,
+        "effective_rank": 31.443773977249037,
+        "participation_ratio": 17.835013338194514
+      },
+      "metrics_centered": {
+        "r90": 37,
+        "r95": 46,
+        "r99": 59,
+        "r90_ratio": 0.578125,
+        "r95_ratio": 0.71875,
+        "r99_ratio": 0.921875,
+        "stable_rank": 10.862498954177399,
+        "effective_rank": 37.32042218917085,
+        "participation_ratio": 25.821517405836616
+      }
+    },
+    "layer18_output": {
+      "parent_layer": 18,
+      "feature_type": "output",
+      "channels": 96,
+      "count": 800000,
+      "metrics_raw": {
+        "r90": 45,
+        "r95": 61,
+        "r99": 86,
+        "r90_ratio": 0.46875,
+        "r95_ratio": 0.6354166666666666,
+        "r99_ratio": 0.8958333333333334,
+        "stable_rank": 7.3425834016130285,
+        "effective_rank": 39.953840370175776,
+        "participation_ratio": 21.992256988340113
+      },
+      "metrics_centered": {
+        "r90": 47,
+        "r95": 64,
+        "r99": 87,
+        "r90_ratio": 0.4895833333333333,
+        "r95_ratio": 0.6666666666666666,
+        "r99_ratio": 0.90625,
+        "stable_rank": 9.671822000625685,
+        "effective_rank": 44.45115149080903,
+        "participation_ratio": 27.048687474808744
+      }
+    },
+    "layer21_output": {
+      "parent_layer": 21,
+      "feature_type": "output",
+      "channels": 256,
+      "count": 200000,
+      "metrics_raw": {
+        "r90": 106,
+        "r95": 157,
+        "r99": 228,
+        "r90_ratio": 0.4140625,
+        "r95_ratio": 0.61328125,
+        "r99_ratio": 0.890625,
+        "stable_rank": 6.227402021092493,
+        "effective_rank": 72.72608988943166,
+        "participation_ratio": 25.1503610624667
+      },
+      "metrics_centered": {
+        "r90": 116,
+        "r95": 166,
+        "r99": 231,
+        "r90_ratio": 0.453125,
+        "r95_ratio": 0.6484375,
+        "r99_ratio": 0.90234375,
+        "stable_rank": 12.48085729612968,
+        "effective_rank": 93.51868682652116,
+        "participation_ratio": 45.96222722456723
+      }
+    },
+    "layer12_cv1": {
+      "parent_layer": 12,
+      "feature_type": "cv1",
+      "channels": 96,
+      "count": 800000,
+      "metrics_raw": {
+        "r90": 58,
+        "r95": 73,
+        "r99": 90,
+        "r90_ratio": 0.6041666666666666,
+        "r95_ratio": 0.7604166666666666,
+        "r99_ratio": 0.9375,
+        "stable_rank": 6.545121688666302,
+        "effective_rank": 47.29688174651174,
+        "participation_ratio": 23.237372782844787
+      },
+      "metrics_centered": {
+        "r90": 61,
+        "r95": 75,
+        "r99": 91,
+        "r90_ratio": 0.6354166666666666,
+        "r95_ratio": 0.78125,
+        "r99_ratio": 0.9479166666666666,
+        "stable_rank": 12.230671696696517,
+        "effective_rank": 57.55241279637105,
+        "participation_ratio": 36.688504959738154
+      }
+    },
+    "layer12_bottleneck_last": {
+      "parent_layer": 12,
+      "feature_type": "bottleneck_last",
+      "channels": 48,
+      "count": 800000,
+      "metrics_raw": {
+        "r90": 30,
+        "r95": 37,
+        "r99": 46,
+        "r90_ratio": 0.625,
+        "r95_ratio": 0.7708333333333334,
+        "r99_ratio": 0.9583333333333334,
+        "stable_rank": 5.989307560594505,
+        "effective_rank": 27.341419393228414,
+        "participation_ratio": 16.82383955403048
+      },
+      "metrics_centered": {
+        "r90": 32,
+        "r95": 38,
+        "r99": 46,
+        "r90_ratio": 0.6666666666666666,
+        "r95_ratio": 0.7916666666666666,
+        "r99_ratio": 0.9583333333333334,
+        "stable_rank": 8.962108859056443,
+        "effective_rank": 31.406554953547506,
+        "participation_ratio": 22.24364984048804
+      }
+    },
+    "layer12_prefuse": {
+      "parent_layer": 12,
+      "feature_type": "prefuse",
+      "channels": 144,
+      "count": 800000,
+      "metrics_raw": {
+        "r90": 81,
+        "r95": 105,
+        "r99": 134,
+        "r90_ratio": 0.5625,
+        "r95_ratio": 0.7291666666666666,
+        "r99_ratio": 0.9305555555555556,
+        "stable_rank": 6.776818476678901,
+        "effective_rank": 61.923771723404776,
+        "participation_ratio": 26.279846331911326
+      },
+      "metrics_centered": {
+        "r90": 87,
+        "r95": 109,
+        "r99": 135,
+        "r90_ratio": 0.6041666666666666,
+        "r95_ratio": 0.7569444444444444,
+        "r99_ratio": 0.9375,
+        "stable_rank": 12.654633614543966,
+        "effective_rank": 77.75363325160424,
+        "participation_ratio": 44.97633871820834
+      }
+    },
+    "layer18_cv1": {
+      "parent_layer": 18,
+      "feature_type": "cv1",
+      "channels": 96,
+      "count": 800000,
+      "metrics_raw": {
+        "r90": 48,
+        "r95": 65,
+        "r99": 87,
+        "r90_ratio": 0.5,
+        "r95_ratio": 0.6770833333333334,
+        "r99_ratio": 0.90625,
+        "stable_rank": 7.035265083322489,
+        "effective_rank": 41.08676395737248,
+        "participation_ratio": 21.95959289392497
+      },
+      "metrics_centered": {
+        "r90": 50,
+        "r95": 67,
+        "r99": 88,
+        "r90_ratio": 0.5208333333333334,
+        "r95_ratio": 0.6979166666666666,
+        "r99_ratio": 0.9166666666666666,
+        "stable_rank": 10.119199767299444,
+        "effective_rank": 45.40474486194673,
+        "participation_ratio": 26.85845660013917
+      }
+    },
+    "layer18_bottleneck_last": {
+      "parent_layer": 18,
+      "feature_type": "bottleneck_last",
+      "channels": 48,
+      "count": 800000,
+      "metrics_raw": {
+        "r90": 30,
+        "r95": 37,
+        "r99": 45,
+        "r90_ratio": 0.625,
+        "r95_ratio": 0.7708333333333334,
+        "r99_ratio": 0.9375,
+        "stable_rank": 5.983880584729023,
+        "effective_rank": 28.37079436406944,
+        "participation_ratio": 17.369401309727174
+      },
+      "metrics_centered": {
+        "r90": 31,
+        "r95": 38,
+        "r99": 46,
+        "r90_ratio": 0.6458333333333334,
+        "r95_ratio": 0.7916666666666666,
+        "r99_ratio": 0.9583333333333334,
+        "stable_rank": 8.342736464403142,
+        "effective_rank": 32.74580456204917,
+        "participation_ratio": 23.727368945377112
+      }
+    },
+    "layer18_prefuse": {
+      "parent_layer": 18,
+      "feature_type": "prefuse",
+      "channels": 144,
+      "count": 800000,
+      "metrics_raw": {
+        "r90": 71,
+        "r95": 95,
+        "r99": 129,
+        "r90_ratio": 0.4930555555555556,
+        "r95_ratio": 0.6597222222222222,
+        "r99_ratio": 0.8958333333333334,
+        "stable_rank": 7.560186485534289,
+        "effective_rank": 57.84421303448977,
+        "participation_ratio": 27.022919297718307
+      },
+      "metrics_centered": {
+        "r90": 75,
+        "r95": 99,
+        "r99": 131,
+        "r90_ratio": 0.5208333333333334,
+        "r95_ratio": 0.6875,
+        "r99_ratio": 0.9097222222222222,
+        "stable_rank": 11.159960247672522,
+        "effective_rank": 67.70688112917567,
+        "participation_ratio": 38.036400113808895
+      }
+    },
+    "layer21_cv1": {
+      "parent_layer": 21,
+      "feature_type": "cv1",
+      "channels": 256,
+      "count": 200000,
+      "metrics_raw": {
+        "r90": 120,
+        "r95": 168,
+        "r99": 232,
+        "r90_ratio": 0.46875,
+        "r95_ratio": 0.65625,
+        "r99_ratio": 0.90625,
+        "stable_rank": 7.314148543029554,
+        "effective_rank": 84.29445948277792,
+        "participation_ratio": 30.49881222387106
+      },
+      "metrics_centered": {
+        "r90": 129,
+        "r95": 176,
+        "r99": 235,
+        "r90_ratio": 0.50390625,
+        "r95_ratio": 0.6875,
+        "r99_ratio": 0.91796875,
+        "stable_rank": 12.531799144951444,
+        "effective_rank": 105.13453809391031,
+        "participation_ratio": 51.18085733663347
+      }
+    },
+    "layer21_bottleneck_last": {
+      "parent_layer": 21,
+      "feature_type": "bottleneck_last",
+      "channels": 128,
+      "count": 200000,
+      "metrics_raw": {
+        "r90": 67,
+        "r95": 90,
+        "r99": 118,
+        "r90_ratio": 0.5234375,
+        "r95_ratio": 0.703125,
+        "r99_ratio": 0.921875,
+        "stable_rank": 6.598328934081276,
+        "effective_rank": 54.029957110674204,
+        "participation_ratio": 24.696427024012078
+      },
+      "metrics_centered": {
+        "r90": 71,
+        "r95": 93,
+        "r99": 119,
+        "r90_ratio": 0.5546875,
+        "r95_ratio": 0.7265625,
+        "r99_ratio": 0.9296875,
+        "stable_rank": 12.554394924322315,
+        "effective_rank": 65.00917824662027,
+        "participation_ratio": 38.75565749199437
+      }
+    },
+    "layer21_prefuse": {
+      "parent_layer": 21,
+      "feature_type": "prefuse",
+      "channels": 384,
+      "count": 200000,
+      "metrics_raw": {
+        "r90": 173,
+        "r95": 247,
+        "r99": 345,
+        "r90_ratio": 0.4505208333333333,
+        "r95_ratio": 0.6432291666666666,
+        "r99_ratio": 0.8984375,
+        "stable_rank": 7.829309555736638,
+        "effective_rank": 113.97182520318422,
+        "participation_ratio": 36.50789540041615
+      },
+      "metrics_centered": {
+        "r90": 187,
+        "r95": 258,
+        "r99": 349,
+        "r90_ratio": 0.4869791666666667,
+        "r95_ratio": 0.671875,
+        "r99_ratio": 0.9088541666666666,
+        "stable_rank": 15.127775342766567,
+        "effective_rank": 145.63833426637387,
+        "participation_ratio": 67.14398359862416
+      }
+    }
+  },
+  "runtime_seconds": 4.49
+}

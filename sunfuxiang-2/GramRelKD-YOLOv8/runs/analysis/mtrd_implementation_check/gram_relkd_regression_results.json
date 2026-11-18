@@ -1,0 +1,47 @@
+{
+  "status": "SUCCESS",
+  "pytest": {
+    "tests": [
+      "tests/test_relation_kd.py",
+      "tests/test_kd_pipeline.py"
+    ],
+    "passed": 11,
+    "failed": 0,
+    "warnings": 1,
+    "duration_seconds": 1.97
+  },
+  "fixed_synthetic_feature_comparison": {
+    "status": "PASS",
+    "seed": 12345,
+    "baseline_source": "/tmp/relation_kd_before_mtrd.py",
+    "current_source": "/data/cle/sunfuxiang-2/ultralytics-main/ultralytics_ext/relation_kd.py",
+    "baseline_sha256": "193f8663570c8b248cb4d905bca05ec3e44ff49771dd9d03544d4ca1127892a1",
+    "current_sha256": "193f8663570c8b248cb4d905bca05ec3e44ff49771dd9d03544d4ca1127892a1",
+    "source_identical": true,
+    "baseline_total": 0.6495811343193054,
+    "current_total": 0.6495811343193054,
+    "total_bitwise_equal": true,
+    "baseline_parts": {
+      "p3": 0.32149821519851685,
+      "p4": 0.5687810182571411,
+      "p5": 1.0584640502929688
+    },
+    "current_parts": {
+      "p3": 0.32149821519851685,
+      "p4": 0.5687810182571411,
+      "p5": 1.0584640502929688
+    },
+    "parts_bitwise_equal": {
+      "p3": true,
+      "p4": true,
+      "p5": true
+    }
+  },
+  "distill_train_default_is_gram_relkd": true,
+  "distill_train_sha256_before": "e7f183ebf93b30cba17b9d977c5de7890b36a9d495d258a8935096563e7c4ed2",
+  "distill_train_sha256_after": "e7f183ebf93b30cba17b9d977c5de7890b36a9d495d258a8935096563e7c4ed2",
+  "channel_relation_source_unchanged": true,
+  "existing_relkd_best_unchanged": true,
+  "existing_paired_nokd_best_unchanged": true,
+  "log": "runs/analysis/mtrd_implementation_check/gram_relkd_regression.log"
+}

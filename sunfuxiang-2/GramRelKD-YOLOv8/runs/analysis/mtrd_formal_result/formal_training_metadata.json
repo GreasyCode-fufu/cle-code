@@ -1,0 +1,71 @@
+{
+  "training_status": "SUCCESS",
+  "ultralytics_version": "8.4.84",
+  "command": "/home/login/miniconda3/envs/yolo/bin/python scripts/markov_distill_train.py --mode train --temperature 0.05 --transition-steps 1,2 --step-weights 1.0,1.0 --self-loop-prob 0.0 --kd-weight 0.10246292566479759 --name hongkong_SR1_P4Only_MTRD",
+  "save_dir": "/data/cle/sunfuxiang-2/ultralytics-main/runs/detect/hongkong_SR1_P4Only_MTRD",
+  "actual_epochs": 300,
+  "training_time_seconds": 3662.48,
+  "python_elapsed_seconds": 3679.3980063395575,
+  "best_epoch": 222,
+  "best_weight_path": "/data/cle/sunfuxiang-2/ultralytics-main/runs/detect/hongkong_SR1_P4Only_MTRD/weights/best.pt",
+  "last_weight_path": "/data/cle/sunfuxiang-2/ultralytics-main/runs/detect/hongkong_SR1_P4Only_MTRD/weights/last.pt",
+  "best_weight_sha256": "7f1a999b1377601c926f42fd17aa03176eefc902d45df758b44c48a03d57be00",
+  "last_weight_sha256": "1ed82f810e4273140917541cf149ada648911898769f9841fb4e7783bf83d489",
+  "student_yaml": "/data/cle/sunfuxiang-2/ultralytics-main/ultralytics/cfg/models/hongkong/yolov8n-L1-96-SR1.yaml",
+  "student_yaml_sha256": "25e4f80805be5853dc890d3828bad2bf1b8c6c7dcd4b1701a7fb0f8bee7b6dc2",
+  "student_initialization": "random initialization from SR1-P4Only YAML",
+  "student_initialization_sha256": "b5c987921cb2eae9d9536c8c632c619145e7d56a992f37d9badff8a368ae25b6",
+  "initialization_matches_gram_relkd_and_paired_nokd": true,
+  "prohibited_weights_loaded": [],
+  "configuration": {
+    "epochs": 300,
+    "batch": 32,
+    "imgsz": 640,
+    "workers": 8,
+    "device": "0",
+    "seed": 0,
+    "deterministic": true,
+    "amp": true,
+    "optimizer": "auto",
+    "patience": 0,
+    "mosaic": 1.0,
+    "mixup": 0.0,
+    "close_mosaic": 10,
+    "temperature": 0.05,
+    "transition_steps": [
+      1,
+      2
+    ],
+    "step_weights": [
+      1.0,
+      1.0
+    ],
+    "self_loop_prob": 0.0,
+    "kd_weight": 0.10246292566479759,
+    "mtrd_warmup_epochs": 10,
+    "pool_size": 20,
+    "layer_weights": [
+      1.0,
+      1.0,
+      1.0
+    ]
+  },
+  "validation_at_best_epoch": {
+    "precision": 0.74331,
+    "recall": 0.69829,
+    "map50": 0.70881,
+    "map75": 0.45301,
+    "map50_95": 0.43262
+  },
+  "post_warmup_ratio": {
+    "epochs": "11-300",
+    "count": 290,
+    "mean": 0.03362490980218426,
+    "median": 0.03384842219531334,
+    "minimum": 0.024781303877264002,
+    "maximum": 0.05004638783007852
+  },
+  "peak_cuda_memory_mb": 3840.62255859375,
+  "mtrd_metrics_all_finite": true,
+  "sustained_batch_memory_growth": false
+}

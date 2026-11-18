@@ -1,0 +1,164 @@
+{
+  "status": "SUCCESS",
+  "mode": "inspect",
+  "formal_defaults_source": "/data/cle/sunfuxiang-2/ultralytics-main/runs/detect/hongkong_SR1_P4Only_RelKD/args.yaml",
+  "student_initialization": "YAML random initialization",
+  "teacher_shapes": {
+    "15": [
+      32,
+      64,
+      80,
+      80
+    ],
+    "18": [
+      32,
+      96,
+      40,
+      40
+    ],
+    "21": [
+      32,
+      256,
+      20,
+      20
+    ]
+  },
+  "student_shapes": {
+    "15": [
+      32,
+      64,
+      80,
+      80
+    ],
+    "18": [
+      32,
+      96,
+      40,
+      40
+    ],
+    "21": [
+      32,
+      256,
+      20,
+      20
+    ]
+  },
+  "det_loss": 400.2835693359375,
+  "mtrd_raw": 6.071324348449707,
+  "mtrd_scaled": 0.6635580658912659,
+  "mtrd_parts": {
+    "p3_step1": 7.313265800476074,
+    "p3_step2": 4.404321670532227,
+    "p3_total": 5.85879373550415,
+    "transition_entropy_p3": 0.3479117751121521,
+    "transition_max_prob_p3": 0.5454106330871582,
+    "p4_step1": 7.995664119720459,
+    "p4_step2": 4.46743106842041,
+    "p4_total": 6.2315473556518555,
+    "transition_entropy_p4": 0.32875698804855347,
+    "transition_max_prob_p4": 0.5388349890708923,
+    "p5_step1": 7.819882392883301,
+    "p5_step2": 4.427379608154297,
+    "p5_total": 6.123631000518799,
+    "transition_entropy_p5": 0.3751745820045471,
+    "transition_max_prob_p5": 0.4403091371059418
+  },
+  "kd_ramp": 0.03333333333333333,
+  "teacher_hook_counts": {
+    "15": 1,
+    "18": 1,
+    "21": 1
+  },
+  "student_hook_counts": {
+    "15": 1,
+    "18": 1,
+    "21": 1
+  },
+  "isolation": {
+    "ultralytics_version": "8.4.84",
+    "version_lock_ok": true,
+    "teacher_path": "/data/cle/sunfuxiang-2/ultralytics-main/runs/detect/runs/detect/hongkong_L1-96/weights/best.pt",
+    "teacher_requires_grad_all_false": true,
+    "teacher_optimizer_parameter_intersection": 0,
+    "teacher_student_parameter_intersection": 0,
+    "teacher_absent_from_optimizer": true,
+    "teacher_absent_from_ema": true,
+    "teacher_absent_from_student_state_dict": true,
+    "feature_channels": {
+      "15": {
+        "teacher": 64,
+        "student": 64
+      },
+      "18": {
+        "teacher": 96,
+        "student": 96
+      },
+      "21": {
+        "teacher": 256,
+        "student": 256
+      }
+    },
+    "student_parameter_count": 2607913,
+    "teacher_parameter_count": 2646185,
+    "kd_trainable_parameter_count": 0,
+    "kd_config": {
+      "teacher_path": "/data/cle/sunfuxiang-2/ultralytics-main/runs/detect/runs/detect/hongkong_L1-96/weights/best.pt",
+      "layer_indices": [
+        15,
+        18,
+        21
+      ],
+      "layer_weights": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "pool_size": 20,
+      "kd_weight": 0.10246292566479759,
+      "warmup_epochs": 10.0,
+      "eps": 1e-06,
+      "center": true,
+      "log_dir": null
+    },
+    "kd_method": "MTRD",
+    "mtrd_config": {
+      "teacher_path": "/data/cle/sunfuxiang-2/ultralytics-main/runs/detect/runs/detect/hongkong_L1-96/weights/best.pt",
+      "layer_indices": [
+        15,
+        18,
+        21
+      ],
+      "layer_weights": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "pool_size": 20,
+      "temperature": 0.05,
+      "transition_steps": [
+        1,
+        2
+      ],
+      "step_weights": [
+        1.0,
+        1.0
+      ],
+      "self_loop_prob": 0.0,
+      "divergence": "kl",
+      "kd_weight": 0.10246292566479759,
+      "warmup_epochs": 10.0,
+      "eps": 1e-06,
+      "center": true,
+      "log_dir": null
+    },
+    "teacher_hash_before": "9ce1830bd14c9f294d7890192252b3db5380d0f32d4190b37cd31df7c86fdf4e",
+    "teacher_hash_after": "9ce1830bd14c9f294d7890192252b3db5380d0f32d4190b37cd31df7c86fdf4e",
+    "teacher_hash_unchanged": true,
+    "hooks_removed": true,
+    "student_hash_before_training": "b5c987921cb2eae9d9536c8c632c619145e7d56a992f37d9badff8a368ae25b6",
+    "student_hash_after_training": "b5c987921cb2eae9d9536c8c632c619145e7d56a992f37d9badff8a368ae25b6",
+    "student_parameters_changed": false,
+    "teacher_eval_always": true
+  },
+  "student_state_restored": true
+}

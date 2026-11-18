@@ -1,0 +1,36 @@
+{
+  "project_root": "/data/cle/sunfuxiang-2/ultralytics-main",
+  "environment_python": "/home/login/miniconda3/envs/yolo/bin/python",
+  "teacher": {
+    "yaml": "/data/cle/sunfuxiang-2/ultralytics-main/ultralytics/cfg/models/hongkong/L1-96.yaml",
+    "best_pt": "/data/cle/sunfuxiang-2/ultralytics-main/runs/detect/runs/detect/hongkong_L1-96/weights/best.pt",
+    "args_yaml": "/data/cle/sunfuxiang-2/ultralytics-main/runs/detect/runs/detect/hongkong_L1-96/args.yaml"
+  },
+  "student": {
+    "identity": "SR1-P4Only (unique exact 40/40/128 hidden-width match among existing best.pt files)",
+    "yaml": "/data/cle/sunfuxiang-2/ultralytics-main/ultralytics/cfg/models/hongkong/yolov8n-L1-96-SR1.yaml",
+    "best_pt": "/data/cle/sunfuxiang-2/ultralytics-main/runs/detect/train-9/weights/best.pt",
+    "args_yaml": "/data/cle/sunfuxiang-2/ultralytics-main/runs/detect/train-9/args.yaml",
+    "exact_parameter_count": 2607913,
+    "gflops_640": 7.1477248,
+    "best_map50_95": 0.42166,
+    "checkpoint_yaml_saved": true,
+    "checkpoint_core_yaml_matches_disk": true
+  },
+  "training": {
+    "python_entry": "/data/cle/sunfuxiang-2/ultralytics-main/main.py",
+    "launcher_shell": "/data/cle/sunfuxiang-2/ultralytics-main/train_hongkong.sh",
+    "data_yaml": "/data/cle/sunfuxiang-2/ultralytics-main/ultralytics/cfg/datasets/coco8.yaml",
+    "dataset_root": "/data/cle/sunfuxiang-2/datasets/hongkongScale"
+  },
+  "diagnostic_script": "/data/cle/sunfuxiang-2/ultralytics-main/scripts/inspect_kd_pipeline.py",
+  "outputs": {
+    "kd_inspection_report.md": "/data/cle/sunfuxiang-2/ultralytics-main/runs/analysis/kd_code_inspection/kd_inspection_report.md",
+    "kd_paths.json": "/data/cle/sunfuxiang-2/ultralytics-main/runs/analysis/kd_code_inspection/kd_paths.json",
+    "kd_training_args.json": "/data/cle/sunfuxiang-2/ultralytics-main/runs/analysis/kd_code_inspection/kd_training_args.json",
+    "kd_feature_shapes.json": "/data/cle/sunfuxiang-2/ultralytics-main/runs/analysis/kd_code_inspection/kd_feature_shapes.json",
+    "kd_source_call_chain.md": "/data/cle/sunfuxiang-2/ultralytics-main/runs/analysis/kd_code_inspection/kd_source_call_chain.md"
+  },
+  "static_analysis_package": "/data/cle/sunfuxiang-2/ultralytics-main/.research-code-analysis/kd_code_inspection/ProjectAnalysisPackage.json",
+  "git_status": "UNKNOWN: project root has no .git directory; git status/diff cannot run."
+}

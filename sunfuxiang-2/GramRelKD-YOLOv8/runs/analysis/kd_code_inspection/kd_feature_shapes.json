@@ -1,0 +1,1141 @@
+{
+  "status": "SUCCESS",
+  "environment": {
+    "python": "3.12.13 | packaged by Anaconda, Inc. | (main, Mar 19 2026, 20:20:58) [GCC 14.3.0]",
+    "torch": "2.4.1+cu121",
+    "cuda_runtime": "12.1",
+    "gpu": "NVIDIA GeForce RTX 4090",
+    "device": "cuda:0"
+  },
+  "paths": {
+    "teacher": "/data/cle/sunfuxiang-2/ultralytics-main/runs/detect/runs/detect/hongkong_L1-96/weights/best.pt",
+    "student_yaml": "/data/cle/sunfuxiang-2/ultralytics-main/ultralytics/cfg/models/hongkong/yolov8n-L1-96-SR1.yaml",
+    "student_best": "/data/cle/sunfuxiang-2/ultralytics-main/runs/detect/train-9/weights/best.pt",
+    "data_yaml": "/data/cle/sunfuxiang-2/ultralytics-main/ultralytics/cfg/datasets/coco8.yaml"
+  },
+  "checkpoint": {
+    "teacher": {
+      "path": "/data/cle/sunfuxiang-2/ultralytics-main/runs/detect/runs/detect/hongkong_L1-96/weights/best.pt",
+      "checkpoint_type": "dict",
+      "checkpoint_keys": [
+        "best_fitness",
+        "date",
+        "docs",
+        "ema",
+        "epoch",
+        "git",
+        "license",
+        "model",
+        "optimizer",
+        "scaler",
+        "train_args",
+        "train_metrics",
+        "train_results",
+        "updates",
+        "version"
+      ],
+      "model_source_key": "model",
+      "model_class": "DetectionModel",
+      "yaml_saved": true,
+      "yaml": {
+        "nc": 3,
+        "scales": {
+          "n": [
+            0.33,
+            0.25,
+            1024
+          ],
+          "s": [
+            0.33,
+            0.5,
+            1024
+          ],
+          "m": [
+            0.67,
+            0.75,
+            768
+          ],
+          "l": [
+            1.0,
+            1.0,
+            512
+          ],
+          "x": [
+            1.0,
+            1.25,
+            512
+          ]
+        },
+        "backbone": [
+          [
+            -1,
+            1,
+            "Conv",
+            [
+              64,
+              3,
+              2
+            ]
+          ],
+          [
+            -1,
+            1,
+            "Conv",
+            [
+              128,
+              3,
+              2
+            ]
+          ],
+          [
+            -1,
+            3,
+            "C2f",
+            [
+              128,
+              true
+            ]
+          ],
+          [
+            -1,
+            1,
+            "Conv",
+            [
+              256,
+              3,
+              2
+            ]
+          ],
+          [
+            -1,
+            6,
+            "C2f",
+            [
+              256,
+              true
+            ]
+          ],
+          [
+            -1,
+            1,
+            "Conv",
+            [
+              384,
+              3,
+              2
+            ]
+          ],
+          [
+            -1,
+            6,
+            "C2f",
+            [
+              384,
+              true
+            ]
+          ],
+          [
+            -1,
+            1,
+            "Conv",
+            [
+              1024,
+              3,
+              2
+            ]
+          ],
+          [
+            -1,
+            3,
+            "C2f",
+            [
+              1024,
+              true
+            ]
+          ],
+          [
+            -1,
+            1,
+            "SPPF",
+            [
+              1024,
+              5
+            ]
+          ]
+        ],
+        "head": [
+          [
+            -1,
+            1,
+            "nn.Upsample",
+            [
+              "None",
+              2,
+              "nearest"
+            ]
+          ],
+          [
+            [
+              -1,
+              6
+            ],
+            1,
+            "Concat",
+            [
+              1
+            ]
+          ],
+          [
+            -1,
+            3,
+            "C2f",
+            [
+              384
+            ]
+          ],
+          [
+            -1,
+            1,
+            "nn.Upsample",
+            [
+              "None",
+              2,
+              "nearest"
+            ]
+          ],
+          [
+            [
+              -1,
+              4
+            ],
+            1,
+            "Concat",
+            [
+              1
+            ]
+          ],
+          [
+            -1,
+            3,
+            "C2f",
+            [
+              256
+            ]
+          ],
+          [
+            -1,
+            1,
+            "Conv",
+            [
+              256,
+              3,
+              2
+            ]
+          ],
+          [
+            [
+              -1,
+              12
+            ],
+            1,
+            "Concat",
+            [
+              1
+            ]
+          ],
+          [
+            -1,
+            3,
+            "C2f",
+            [
+              384
+            ]
+          ],
+          [
+            -1,
+            1,
+            "Conv",
+            [
+              512,
+              3,
+              2
+            ]
+          ],
+          [
+            [
+              -1,
+              9
+            ],
+            1,
+            "Concat",
+            [
+              1
+            ]
+          ],
+          [
+            -1,
+            3,
+            "C2f",
+            [
+              1024
+            ]
+          ],
+          [
+            [
+              15,
+              18,
+              21
+            ],
+            1,
+            "Detect",
+            [
+              "nc"
+            ]
+          ]
+        ],
+        "scale": "",
+        "yaml_file": "ultralytics/cfg/models/hongkong/L1-96.yaml",
+        "channels": 3
+      },
+      "train_args": {
+        "task": "detect",
+        "mode": "train",
+        "model": "ultralytics/cfg/models/hongkong/L1-96.yaml",
+        "data": "ultralytics/cfg/datasets/coco8.yaml",
+        "epochs": 300,
+        "time": null,
+        "patience": 0,
+        "batch": 32,
+        "imgsz": 640,
+        "save": true,
+        "save_period": -1,
+        "cache": false,
+        "device": null,
+        "workers": 8,
+        "project": "runs/detect",
+        "name": "hongkong_L1-96",
+        "exist_ok": true,
+        "pretrained": true,
+        "optimizer": "auto",
+        "verbose": true,
+        "seed": 0,
+        "deterministic": true,
+        "single_cls": false,
+        "rect": false,
+        "cos_lr": false,
+        "close_mosaic": 10,
+        "resume": false,
+        "amp": true,
+        "fraction": 1.0,
+        "profile": false,
+        "freeze": null,
+        "multi_scale": 0.0,
+        "compile": false,
+        "overlap_mask": true,
+        "mask_ratio": 4,
+        "dropout": 0.0,
+        "val": true,
+        "split": "test",
+        "save_json": false,
+        "conf": null,
+        "iou": 0.7,
+        "max_det": 300,
+        "quantize": null,
+        "dnn": false,
+        "plots": true,
+        "end2end": null,
+        "source": null,
+        "vid_stride": 1,
+        "stream_buffer": false,
+        "visualize": false,
+        "augment": false,
+        "agnostic_nms": false,
+        "classes": null,
+        "retina_masks": false,
+        "embed": null,
+        "show": false,
+        "save_frames": false,
+        "save_txt": false,
+        "save_conf": false,
+        "save_crop": false,
+        "show_labels": true,
+        "show_conf": true,
+        "show_boxes": true,
+        "line_width": null,
+        "format": "torchscript",
+        "keras": false,
+        "optimize": false,
+        "dynamic": false,
+        "simplify": true,
+        "opset": null,
+        "workspace": null,
+        "nms": false,
+        "lr0": 0.01,
+        "lrf": 0.01,
+        "momentum": 0.937,
+        "weight_decay": 0.0005,
+        "warmup_epochs": 3.0,
+        "warmup_momentum": 0.8,
+        "warmup_bias_lr": 0.0,
+        "distill_model": null,
+        "dis": 6.0,
+        "box": 7.5,
+        "cls": 0.5,
+        "cls_pw": 0.0,
+        "dfl": 1.5,
+        "pose": 12.0,
+        "kobj": 1.0,
+        "rle": 1.0,
+        "angle": 1.0,
+        "nbs": 64,
+        "hsv_h": 0.015,
+        "hsv_s": 0.7,
+        "hsv_v": 0.4,
+        "degrees": 0.0,
+        "translate": 0.1,
+        "scale": 0.5,
+        "shear": 0.0,
+        "perspective": 0.0,
+        "flipud": 0.0,
+        "fliplr": 0.5,
+        "bgr": 0.0,
+        "mosaic": 1.0,
+        "mixup": 0.0,
+        "cutmix": 0.0,
+        "copy_paste": 0.0,
+        "copy_paste_mode": "flip",
+        "auto_augment": "randaugment",
+        "erasing": 0.4,
+        "cfg": "ultralytics/cfg/default.yaml",
+        "tracker": "tracktrack.yaml"
+      },
+      "epoch": -1,
+      "version": "8.4.84",
+      "git": {
+        "root": "None",
+        "branch": null,
+        "commit": null,
+        "message": null,
+        "origin": null
+      }
+    },
+    "student": {
+      "path": "/data/cle/sunfuxiang-2/ultralytics-main/runs/detect/train-9/weights/best.pt",
+      "checkpoint_type": "dict",
+      "checkpoint_keys": [
+        "best_fitness",
+        "date",
+        "docs",
+        "ema",
+        "epoch",
+        "git",
+        "license",
+        "model",
+        "optimizer",
+        "scaler",
+        "train_args",
+        "train_metrics",
+        "train_results",
+        "updates",
+        "version"
+      ],
+      "model_source_key": "model",
+      "model_class": "DetectionModel",
+      "yaml_saved": true,
+      "yaml": {
+        "nc": 3,
+        "scales": {
+          "n": [
+            0.33,
+            0.25,
+            1024
+          ],
+          "s": [
+            0.33,
+            0.5,
+            1024
+          ],
+          "m": [
+            0.67,
+            0.75,
+            768
+          ],
+          "l": [
+            1.0,
+            1.0,
+            512
+          ],
+          "x": [
+            1.0,
+            1.25,
+            512
+          ]
+        },
+        "backbone": [
+          [
+            -1,
+            1,
+            "Conv",
+            [
+              64,
+              3,
+              2
+            ]
+          ],
+          [
+            -1,
+            1,
+            "Conv",
+            [
+              128,
+              3,
+              2
+            ]
+          ],
+          [
+            -1,
+            3,
+            "C2f",
+            [
+              128,
+              true
+            ]
+          ],
+          [
+            -1,
+            1,
+            "Conv",
+            [
+              256,
+              3,
+              2
+            ]
+          ],
+          [
+            -1,
+            6,
+            "C2f",
+            [
+              256,
+              true
+            ]
+          ],
+          [
+            -1,
+            1,
+            "Conv",
+            [
+              384,
+              3,
+              2
+            ]
+          ],
+          [
+            -1,
+            6,
+            "C2f",
+            [
+              384,
+              true
+            ]
+          ],
+          [
+            -1,
+            1,
+            "Conv",
+            [
+              1024,
+              3,
+              2
+            ]
+          ],
+          [
+            -1,
+            3,
+            "C2f",
+            [
+              1024,
+              true
+            ]
+          ],
+          [
+            -1,
+            1,
+            "SPPF",
+            [
+              1024,
+              5
+            ]
+          ]
+        ],
+        "head": [
+          [
+            -1,
+            1,
+            "nn.Upsample",
+            [
+              "None",
+              2,
+              "nearest"
+            ]
+          ],
+          [
+            [
+              -1,
+              6
+            ],
+            1,
+            "Concat",
+            [
+              1
+            ]
+          ],
+          [
+            -1,
+            3,
+            "C2f",
+            [
+              384,
+              false,
+              1,
+              0.4166667
+            ]
+          ],
+          [
+            -1,
+            1,
+            "nn.Upsample",
+            [
+              "None",
+              2,
+              "nearest"
+            ]
+          ],
+          [
+            [
+              -1,
+              4
+            ],
+            1,
+            "Concat",
+            [
+              1
+            ]
+          ],
+          [
+            -1,
+            3,
+            "C2f",
+            [
+              256
+            ]
+          ],
+          [
+            -1,
+            1,
+            "Conv",
+            [
+              256,
+              3,
+              2
+            ]
+          ],
+          [
+            [
+              -1,
+              12
+            ],
+            1,
+            "Concat",
+            [
+              1
+            ]
+          ],
+          [
+            -1,
+            3,
+            "C2f",
+            [
+              384,
+              false,
+              1,
+              0.4166667
+            ]
+          ],
+          [
+            -1,
+            1,
+            "Conv",
+            [
+              512,
+              3,
+              2
+            ]
+          ],
+          [
+            [
+              -1,
+              9
+            ],
+            1,
+            "Concat",
+            [
+              1
+            ]
+          ],
+          [
+            -1,
+            3,
+            "C2f",
+            [
+              1024,
+              false,
+              1,
+              0.5
+            ]
+          ],
+          [
+            [
+              15,
+              18,
+              21
+            ],
+            1,
+            "Detect",
+            [
+              "nc"
+            ]
+          ]
+        ],
+        "scale": "n",
+        "yaml_file": "/data/cle/sunfuxiang-2/ultralytics-main/ultralytics/cfg/models/hongkong/yolov8n-L1-96-SR1.yaml",
+        "channels": 3
+      },
+      "train_args": {
+        "task": "detect",
+        "mode": "train",
+        "model": "/data/cle/sunfuxiang-2/ultralytics-main/ultralytics/cfg/models/hongkong/yolov8n-L1-96-SR1.yaml",
+        "data": "/data/cle/sunfuxiang-2/ultralytics-main/ultralytics/cfg/datasets/coco8.yaml",
+        "epochs": 300,
+        "time": null,
+        "patience": 0,
+        "batch": 32,
+        "imgsz": 640,
+        "save": true,
+        "save_period": -1,
+        "cache": false,
+        "device": null,
+        "workers": 8,
+        "project": null,
+        "name": "train-9",
+        "exist_ok": false,
+        "pretrained": true,
+        "optimizer": "auto",
+        "verbose": true,
+        "seed": 0,
+        "deterministic": true,
+        "single_cls": false,
+        "rect": false,
+        "cos_lr": false,
+        "close_mosaic": 10,
+        "resume": false,
+        "amp": true,
+        "fraction": 1.0,
+        "profile": false,
+        "freeze": null,
+        "multi_scale": 0.0,
+        "compile": false,
+        "overlap_mask": true,
+        "mask_ratio": 4,
+        "dropout": 0.0,
+        "val": true,
+        "split": "test",
+        "save_json": false,
+        "conf": null,
+        "iou": 0.7,
+        "max_det": 300,
+        "quantize": null,
+        "dnn": false,
+        "plots": true,
+        "end2end": null,
+        "source": null,
+        "vid_stride": 1,
+        "stream_buffer": false,
+        "visualize": false,
+        "augment": false,
+        "agnostic_nms": false,
+        "classes": null,
+        "retina_masks": false,
+        "embed": null,
+        "show": false,
+        "save_frames": false,
+        "save_txt": false,
+        "save_conf": false,
+        "save_crop": false,
+        "show_labels": true,
+        "show_conf": true,
+        "show_boxes": true,
+        "line_width": null,
+        "format": "torchscript",
+        "keras": false,
+        "optimize": false,
+        "dynamic": false,
+        "simplify": true,
+        "opset": null,
+        "workspace": null,
+        "nms": false,
+        "lr0": 0.01,
+        "lrf": 0.01,
+        "momentum": 0.937,
+        "weight_decay": 0.0005,
+        "warmup_epochs": 3.0,
+        "warmup_momentum": 0.8,
+        "warmup_bias_lr": 0.0,
+        "distill_model": null,
+        "dis": 6.0,
+        "box": 7.5,
+        "cls": 0.5,
+        "cls_pw": 0.0,
+        "dfl": 1.5,
+        "pose": 12.0,
+        "kobj": 1.0,
+        "rle": 1.0,
+        "angle": 1.0,
+        "nbs": 64,
+        "hsv_h": 0.015,
+        "hsv_s": 0.7,
+        "hsv_v": 0.4,
+        "degrees": 0.0,
+        "translate": 0.1,
+        "scale": 0.5,
+        "shear": 0.0,
+        "perspective": 0.0,
+        "flipud": 0.0,
+        "fliplr": 0.5,
+        "bgr": 0.0,
+        "mosaic": 1.0,
+        "mixup": 0.0,
+        "cutmix": 0.0,
+        "copy_paste": 0.0,
+        "copy_paste_mode": "flip",
+        "auto_augment": "randaugment",
+        "erasing": 0.4,
+        "cfg": "ultralytics/cfg/default.yaml",
+        "tracker": "tracktrack.yaml"
+      },
+      "epoch": -1,
+      "version": "8.4.84",
+      "git": {
+        "root": "None",
+        "branch": null,
+        "commit": null,
+        "message": null,
+        "origin": null
+      }
+    }
+  },
+  "model": {
+    "teacher": {
+      "class": "DetectionModel",
+      "container_path": "DetectionModel.model",
+      "parameter_count": 2646185,
+      "trainable_parameter_count": 0,
+      "gflops_640": 7.2706048,
+      "yaml_saved_on_loaded_model": true,
+      "layers_12_18_21": [
+        {
+          "index": 12,
+          "type": "C2f",
+          "hidden": 48,
+          "output_channels": 96,
+          "internal_repeats": 1,
+          "parameter_count": 89664
+        },
+        {
+          "index": 18,
+          "type": "C2f",
+          "hidden": 48,
+          "output_channels": 96,
+          "internal_repeats": 1,
+          "parameter_count": 71232
+        },
+        {
+          "index": 21,
+          "type": "C2f",
+          "hidden": 128,
+          "output_channels": 256,
+          "internal_repeats": 1,
+          "parameter_count": 493056
+        }
+      ]
+    },
+    "student": {
+      "class": "DetectionModel",
+      "container_path": "DetectionModel.model",
+      "parameter_count": 2607913,
+      "trainable_parameter_count": 2607913,
+      "gflops_640": 7.147724799999999,
+      "yaml_saved_on_loaded_model": true,
+      "layers_12_18_21": [
+        {
+          "index": 12,
+          "type": "C2f",
+          "hidden": 40,
+          "output_channels": 96,
+          "internal_repeats": 1,
+          "parameter_count": 68992
+        },
+        {
+          "index": 18,
+          "type": "C2f",
+          "hidden": 40,
+          "output_channels": 96,
+          "internal_repeats": 1,
+          "parameter_count": 53632
+        },
+        {
+          "index": 21,
+          "type": "C2f",
+          "hidden": 128,
+          "output_channels": 256,
+          "internal_repeats": 1,
+          "parameter_count": 493056
+        }
+      ]
+    }
+  },
+  "batch": {
+    "keys": [
+      "batch_idx",
+      "bboxes",
+      "cls",
+      "im_file",
+      "img",
+      "ori_shape",
+      "ratio_pad",
+      "resized_shape"
+    ],
+    "img_shape": [
+      32,
+      3,
+      640,
+      640
+    ],
+    "img_dtype": "torch.float32",
+    "img_device": "cuda:0",
+    "img_min": 0.0,
+    "img_max": 1.0,
+    "batch_idx_shape": [
+      248
+    ],
+    "cls_shape": [
+      248,
+      1
+    ],
+    "bboxes_shape": [
+      248,
+      4
+    ],
+    "bboxes_min": 0.0031570910941809416,
+    "bboxes_max": 0.9917793273925781,
+    "bboxes_first_five": [
+      [
+        0.45338383316993713,
+        0.23448757827281952,
+        0.3842472434043884,
+        0.44136887788772583
+      ],
+      [
+        0.025338267907500267,
+        0.23448757827281952,
+        0.050676535815000534,
+        0.44136887788772583
+      ],
+      [
+        0.45338383316993713,
+        0.6806105971336365,
+        0.3842472434043884,
+        0.4413687586784363
+      ],
+      [
+        0.025338267907500267,
+        0.6806105971336365,
+        0.050676535815000534,
+        0.4413687586784363
+      ],
+      [
+        0.19682510197162628,
+        0.4296467900276184,
+        0.10956182330846786,
+        0.017490291967988014
+      ]
+    ],
+    "bbox_format": "xywh",
+    "bbox_normalized": true,
+    "im_file_sample": [
+      "/data/cle/sunfuxiang-2/datasets/hongkongScale/train/images/hk5303.jpg",
+      "/data/cle/sunfuxiang-2/datasets/hongkongScale/train/images/hk1172.jpg"
+    ],
+    "ori_shape_sample": [
+      [
+        768,
+        1024
+      ],
+      [
+        768,
+        1024
+      ]
+    ],
+    "resized_shape_sample": [
+      [
+        640,
+        640
+      ],
+      [
+        640,
+        640
+      ]
+    ],
+    "ratio_pad_sample": [
+      [
+        0.625,
+        0.625
+      ],
+      [
+        0.625,
+        0.625
+      ]
+    ],
+    "preprocess_method": "DetectionTrainer.preprocess_batch"
+  },
+  "features": {
+    "teacher": {
+      "15": {
+        "shape": [
+          32,
+          64,
+          80,
+          80
+        ],
+        "dtype": "torch.float16",
+        "device": "cuda:0",
+        "requires_grad": false,
+        "hook_output_type": "Tensor",
+        "hook_trigger_count": 1
+      },
+      "18": {
+        "shape": [
+          32,
+          96,
+          40,
+          40
+        ],
+        "dtype": "torch.float16",
+        "device": "cuda:0",
+        "requires_grad": false,
+        "hook_output_type": "Tensor",
+        "hook_trigger_count": 1
+      },
+      "21": {
+        "shape": [
+          32,
+          256,
+          20,
+          20
+        ],
+        "dtype": "torch.float16",
+        "device": "cuda:0",
+        "requires_grad": false,
+        "hook_output_type": "Tensor",
+        "hook_trigger_count": 1
+      }
+    },
+    "student": {
+      "15": {
+        "shape": [
+          32,
+          64,
+          80,
+          80
+        ],
+        "dtype": "torch.float16",
+        "device": "cuda:0",
+        "requires_grad": true,
+        "hook_output_type": "Tensor",
+        "hook_trigger_count": 1
+      },
+      "18": {
+        "shape": [
+          32,
+          96,
+          40,
+          40
+        ],
+        "dtype": "torch.float16",
+        "device": "cuda:0",
+        "requires_grad": true,
+        "hook_output_type": "Tensor",
+        "hook_trigger_count": 1
+      },
+      "21": {
+        "shape": [
+          32,
+          256,
+          20,
+          20
+        ],
+        "dtype": "torch.float16",
+        "device": "cuda:0",
+        "requires_grad": true,
+        "hook_output_type": "Tensor",
+        "hook_trigger_count": 1
+      }
+    },
+    "shape_match": {
+      "15": true,
+      "18": true,
+      "21": true
+    },
+    "all_shapes_match": true,
+    "teacher_prediction_type": "tuple"
+  },
+  "standard_loss": {
+    "loss_shape": [
+      3
+    ],
+    "loss_dtype": "torch.float32",
+    "loss_requires_grad": true,
+    "loss_values": [
+      38.26755142211914,
+      30.256567001342773,
+      37.56116485595703
+    ],
+    "loss_sum": 106.08528900146484,
+    "loss_items_shape": [
+      3
+    ],
+    "loss_items_dtype": "torch.float32",
+    "loss_items_requires_grad": false,
+    "loss_items_values": [
+      1.1958609819412231,
+      0.9455177187919617,
+      1.1737864017486572
+    ],
+    "format": "loss: Tensor[3] (box, cls, dfl; each already multiplied by batch size); loss_items: detached Tensor[3] (unmultiplied components); trainer uses loss.sum()",
+    "optimizer_step_executed": false,
+    "backward_executed": false
+  },
+  "weight_integrity": {
+    "student_parameter_sha256_before": "a72bd86ccf3dd60f97000a98152a2112dc0efa10695a99e3fb6b7bf82fb46ed5",
+    "student_parameter_sha256_after": "a72bd86ccf3dd60f97000a98152a2112dc0efa10695a99e3fb6b7bf82fb46ed5",
+    "teacher_parameter_sha256_before": "2c7a29c12b2d50c8b15928a6363e714f8e4851ee33e92e00da10fc6351b8e6b8",
+    "teacher_parameter_sha256_after": "2c7a29c12b2d50c8b15928a6363e714f8e4851ee33e92e00da10fc6351b8e6b8",
+    "student_parameters_unchanged": true,
+    "teacher_parameters_unchanged": true
+  },
+  "hook_cleanup": {
+    "handles_removed": true,
+    "teacher_cache_cleared": true,
+    "student_cache_cleared": true
+  }
+}

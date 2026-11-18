@@ -1,0 +1,108 @@
+{
+  "status": "SUCCESS",
+  "mode": "train",
+  "experiment": "E05_GramDecoupledCB_60_25_15",
+  "elapsed_seconds": 7105.797654230148,
+  "save_dir": "/data/cle/sunfuxiang-2/ultralytics-main/runs/detect/E05_GramDecoupledCB_60_25_15",
+  "best": "/data/cle/sunfuxiang-2/ultralytics-main/runs/detect/E05_GramDecoupledCB_60_25_15/weights/best.pt",
+  "last": "/data/cle/sunfuxiang-2/ultralytics-main/runs/detect/E05_GramDecoupledCB_60_25_15/weights/last.pt",
+  "checkpoint": "/data/cle/sunfuxiang-2/ultralytics-main/runs/detect/E05_GramDecoupledCB_60_25_15/weights/best.pt",
+  "metrics_csv": "/data/cle/sunfuxiang-2/ultralytics-main/runs/detect/E05_GramDecoupledCB_60_25_15/composite_kd_metrics.csv",
+  "student_initialization_hash": "b5c987921cb2eae9d9536c8c632c619145e7d56a992f37d9badff8a368ae25b6",
+  "student_changed": true,
+  "teacher_file_hash_before": "39b033ec1a18ea58dbc21d4e4bbcb2bf7426b84c172d461087416d201b51ef04",
+  "teacher_file_hash_after": "39b033ec1a18ea58dbc21d4e4bbcb2bf7426b84c172d461087416d201b51ef04",
+  "teacher_hash_unchanged": true,
+  "teacher_eval_always": true,
+  "checkpoint_clean": true,
+  "peak_cuda_memory_mb": 3842.5361328125,
+  "component_weights": {
+    "gram": 0.02589950304,
+    "foreground_cb": 0.004955490676948417,
+    "background": 0.005383974497697841
+  },
+  "isolation": {
+    "ultralytics_version": "8.4.84",
+    "version_lock_ok": true,
+    "teacher_path": "/data/cle/sunfuxiang-2/ultralytics-main/runs/detect/runs/detect/hongkong_L1-96/weights/best.pt",
+    "teacher_requires_grad_all_false": true,
+    "teacher_optimizer_parameter_intersection": 0,
+    "teacher_student_parameter_intersection": 0,
+    "teacher_absent_from_optimizer": true,
+    "teacher_absent_from_ema": true,
+    "teacher_absent_from_student_state_dict": true,
+    "feature_channels": {
+      "15": {
+        "teacher": 64,
+        "student": 64
+      },
+      "18": {
+        "teacher": 96,
+        "student": 96
+      },
+      "21": {
+        "teacher": 256,
+        "student": 256
+      }
+    },
+    "student_parameter_count": 2607913,
+    "teacher_parameter_count": 2646185,
+    "kd_trainable_parameter_count": 0,
+    "kd_config": {
+      "teacher_path": "/data/cle/sunfuxiang-2/ultralytics-main/runs/detect/runs/detect/hongkong_L1-96/weights/best.pt",
+      "layer_indices": [
+        15,
+        18,
+        21
+      ],
+      "layer_weights": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "pool_size": 20,
+      "kd_weight": 1.0,
+      "warmup_epochs": 10.0,
+      "eps": 1e-06,
+      "center": true,
+      "log_dir": null
+    },
+    "kd_method": "composite_exploratory",
+    "composite_config": {
+      "experiment": "E05_GramDecoupledCB_60_25_15",
+      "component_weights": {
+        "gram": 0.02589950304,
+        "foreground_cb": 0.004955490676948417,
+        "background": 0.005383974497697841
+      },
+      "class_weights": [
+        1.0561534223258204,
+        0.5,
+        1.5271405391993889
+      ],
+      "layer_indices": [
+        15,
+        18,
+        21
+      ],
+      "layer_weights": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "pool_size": 20,
+      "gram_warmup_epochs": 10.0,
+      "adversarial_warmup_epochs": 20.0
+    },
+    "discriminator_absent_from_student_optimizer": true,
+    "discriminator_absent_from_student_state_dict": true,
+    "teacher_hash_before": "9ce1830bd14c9f294d7890192252b3db5380d0f32d4190b37cd31df7c86fdf4e",
+    "teacher_hash_after": "9ce1830bd14c9f294d7890192252b3db5380d0f32d4190b37cd31df7c86fdf4e",
+    "teacher_hash_unchanged": true,
+    "hooks_removed": true,
+    "student_hash_before_training": "b5c987921cb2eae9d9536c8c632c619145e7d56a992f37d9badff8a368ae25b6",
+    "student_hash_after_training": "d3705110f6a97959fdd3edb9a38c43ded32f56aaa3ec0ffdedd548058efa4c7f",
+    "student_parameters_changed": true,
+    "teacher_eval_always": true
+  }
+}

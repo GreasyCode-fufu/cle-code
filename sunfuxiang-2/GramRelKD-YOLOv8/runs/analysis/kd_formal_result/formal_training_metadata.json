@@ -1,0 +1,53 @@
+{
+  "training_status": "SUCCESS",
+  "ultralytics_version": "8.4.84",
+  "command": "/home/login/miniconda3/envs/yolo/bin/python scripts/distill_train.py --mode train --kd-weight 0.0431658384",
+  "save_dir": "/data/cle/sunfuxiang-2/ultralytics-main/runs/detect/hongkong_SR1_P4Only_RelKD",
+  "actual_epochs": 300,
+  "started_at": "2026-07-31T01:46:57+08:00",
+  "finished_at": "2026-07-31T02:45:35+08:00",
+  "python_elapsed_seconds": 3513.82512675412,
+  "results_csv_elapsed_seconds": 3504.71,
+  "best_epoch": 300,
+  "best_weight_path": "/data/cle/sunfuxiang-2/ultralytics-main/runs/detect/hongkong_SR1_P4Only_RelKD/weights/best.pt",
+  "last_weight_path": "/data/cle/sunfuxiang-2/ultralytics-main/runs/detect/hongkong_SR1_P4Only_RelKD/weights/last.pt",
+  "best_weight_sha256": "221304b847e9b900ccbef36723b27e72227d661279d735e131d0c60a41607ef7",
+  "last_weight_sha256": "a5df9b01346829241d41767319b4e97dd0bd5ce6f2640b6866174624fc18e55b",
+  "teacher_path": "/data/cle/sunfuxiang-2/ultralytics-main/runs/detect/runs/detect/hongkong_L1-96/weights/best.pt",
+  "teacher_file_sha256_before_and_after": "39b033ec1a18ea58dbc21d4e4bbcb2bf7426b84c172d461087416d201b51ef04",
+  "student_yaml": "/data/cle/sunfuxiang-2/ultralytics-main/ultralytics/cfg/models/hongkong/yolov8n-L1-96-SR1.yaml",
+  "student_initialization": "random initialization from SR1-P4Only YAML",
+  "prohibited_weights_loaded": [],
+  "configuration": {
+    "epochs": 300,
+    "batch": 32,
+    "imgsz": 640,
+    "workers": 8,
+    "device": "0",
+    "seed": 0,
+    "deterministic": true,
+    "amp": true,
+    "optimizer": "auto",
+    "patience": 0,
+    "mosaic": 1.0,
+    "mixup": 0.0,
+    "close_mosaic": 10,
+    "kd_weight": 0.0431658384,
+    "kd_warmup_epochs": 10,
+    "kd_pool_size": 20,
+    "kd_layer_weights": [
+      1.0,
+      1.0,
+      1.0
+    ]
+  },
+  "validation_at_best_epoch": {
+    "precision": 0.75079,
+    "recall": 0.67719,
+    "map50": 0.70509,
+    "map75": 0.45893,
+    "map50_95": 0.43553
+  },
+  "formal_train_log": "/data/cle/sunfuxiang-2/ultralytics-main/runs/analysis/kd_formal_result/formal_train.log",
+  "kd_metrics_csv": "/data/cle/sunfuxiang-2/ultralytics-main/runs/detect/hongkong_SR1_P4Only_RelKD/kd_metrics.csv"
+}

@@ -1,0 +1,74 @@
+{
+  "status": "PASS",
+  "conclusion": "The two runs are strictly paired. The only optimization variable is kd_weight; experiment name and derived save_dir differ only to keep outputs separate.",
+  "student_initialization": {
+    "method_nokd": "random initialization from SR1-P4Only YAML",
+    "method_relkd": "random initialization from SR1-P4Only YAML",
+    "nokd_initial_parameter_sha256": "b5c987921cb2eae9d9536c8c632c619145e7d56a992f37d9badff8a368ae25b6",
+    "relkd_initial_parameter_sha256": "b5c987921cb2eae9d9536c8c632c619145e7d56a992f37d9badff8a368ae25b6",
+    "initial_parameters_identical": true,
+    "prohibited_load_patterns_in_nokd_log": []
+  },
+  "shared_source": {
+    "distill_train_sha256": "e7f183ebf93b30cba17b9d977c5de7890b36a9d495d258a8935096563e7c4ed2",
+    "kd_trainer_sha256": "38b7fac21023b63e79f5d08326a4c64dea84ce0262d1693c67fa74f8d54f5086",
+    "student_yaml_sha256": "25e4f80805be5853dc890d3828bad2bf1b8c6c7dcd4b1701a7fb0f8bee7b6dc2",
+    "data_yaml_sha256": "da32801770be60a2a5f0e7f11b7d026bc12753e4213ab66d9b4d0e98f53abb05"
+  },
+  "shared_training_configuration": {
+    "epochs": 300,
+    "batch": 32,
+    "imgsz": 640,
+    "workers": 8,
+    "device": "0",
+    "seed": 0,
+    "deterministic": true,
+    "amp": true,
+    "optimizer": "auto",
+    "patience": 0,
+    "mosaic": 1.0,
+    "mixup": 0.0,
+    "close_mosaic": 10,
+    "student_yaml_identical": true,
+    "data_configuration_identical": true,
+    "args_yaml_equal_after_excluding_output_identity": true
+  },
+  "args_yaml_differences": {
+    "name": {
+      "nokd": "hongkong_SR1_P4Only_PairedNoKD",
+      "relkd": "hongkong_SR1_P4Only_RelKD",
+      "optimization_variable": false
+    },
+    "save_dir": {
+      "nokd": "/data/cle/sunfuxiang-2/ultralytics-main/runs/detect/hongkong_SR1_P4Only_PairedNoKD",
+      "relkd": "/data/cle/sunfuxiang-2/ultralytics-main/runs/detect/hongkong_SR1_P4Only_RelKD",
+      "optimization_variable": false
+    }
+  },
+  "only_optimization_variable": {
+    "field": "kd_weight",
+    "nokd": 0.0,
+    "relkd": 0.0431658384
+  },
+  "nokd_gradient_evidence": {
+    "kd_metric_rows": 300,
+    "kd_weight_base_all_zero": true,
+    "kd_scaled_mean_all_zero": true,
+    "kd_to_det_ratio_all_zero": true,
+    "interpretation": "Teacher forward and relation statistics ran, but the scaled KD term was zero in every epoch and contributed zero Student gradient."
+  },
+  "teacher_integrity": {
+    "teacher_weight_file_sha256": "39b033ec1a18ea58dbc21d4e4bbcb2bf7426b84c172d461087416d201b51ef04",
+    "nokd_teacher_parameter_sha256_before": "9ce1830bd14c9f294d7890192252b3db5380d0f32d4190b37cd31df7c86fdf4e",
+    "nokd_teacher_parameter_sha256_after": "9ce1830bd14c9f294d7890192252b3db5380d0f32d4190b37cd31df7c86fdf4e",
+    "relkd_teacher_parameter_sha256_before": "9ce1830bd14c9f294d7890192252b3db5380d0f32d4190b37cd31df7c86fdf4e",
+    "relkd_teacher_parameter_sha256_after": "9ce1830bd14c9f294d7890192252b3db5380d0f32d4190b37cd31df7c86fdf4e",
+    "teacher_unchanged": true
+  },
+  "test_pairing": {
+    "same_test_entry_pattern": true,
+    "same_default_cfg": true,
+    "same_split": "test",
+    "only_weight_path_changed": true
+  }
+}

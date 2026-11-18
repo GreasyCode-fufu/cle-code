@@ -1,0 +1,46 @@
+{
+  "status": "COMPLETE",
+  "project_root": "/data/cle/sunfuxiang-2/ultralytics-main",
+  "files": [
+    {
+      "path": "ultralytics_ext/__init__.py",
+      "sha256": "eb241fd9cc189fedb164feaf6d3521fdf08c98fa903e4a367cacdf49af223c74",
+      "purpose": "public API for the independent KD extension"
+    },
+    {
+      "path": "ultralytics_ext/feature_hooks.py",
+      "sha256": "a4a6ebf490199175cca80b8b24d192461588e72a1aa6139619d2c18f53953ee7",
+      "purpose": "batch-scoped P3/P4/P5 hook registration, validation and cleanup"
+    },
+    {
+      "path": "ultralytics_ext/relation_kd.py",
+      "sha256": "193f8663570c8b248cb4d905bca05ec3e44ff49771dd9d03544d4ca1127892a1",
+      "purpose": "parameter-free float32 channel-relation Gram loss"
+    },
+    {
+      "path": "ultralytics_ext/kd_trainer.py",
+      "sha256": "38b7fac21023b63e79f5d08326a4c64dea84ce0262d1693c67fa74f8d54f5086",
+      "purpose": "Ultralytics 8.4.84-locked single-GPU KD trainer"
+    },
+    {
+      "path": "scripts/distill_train.py",
+      "sha256": "e7f183ebf93b30cba17b9d977c5de7890b36a9d495d258a8935096563e7c4ed2",
+      "purpose": "inspect, smoke and explicit full-training entry point"
+    },
+    {
+      "path": "scripts/calibrate_kd_weight.py",
+      "sha256": "cd799bdf8cad856076a74217e75f8fd8d29aa3f8e72665e69b4f03bb95cea593",
+      "purpose": "20-real-batch forward-only KD-weight calibration"
+    },
+    {
+      "path": "tests/test_relation_kd.py",
+      "sha256": "8dc497430beacc35dfed94fe4c17e65d59153ce20a9eb7656ffcbb10927fccae",
+      "purpose": "10 relation-loss unit tests"
+    },
+    {
+      "path": "tests/test_kd_pipeline.py",
+      "sha256": "45205ac4e2f14518a81aaa2daab52de9697f35e5ca39204c12c0caf66c522ce7",
+      "purpose": "one-real-batch backward, update, isolation and cleanup test"
+    }
+  ]
+}

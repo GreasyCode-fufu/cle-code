@@ -1,0 +1,55 @@
+{
+  "ultralytics_version": "8.4.84",
+  "version_lock_ok": true,
+  "teacher_path": "/data/cle/sunfuxiang-2/ultralytics-main/runs/detect/runs/detect/hongkong_L1-96/weights/best.pt",
+  "teacher_requires_grad_all_false": true,
+  "teacher_optimizer_parameter_intersection": 0,
+  "teacher_student_parameter_intersection": 0,
+  "teacher_absent_from_optimizer": true,
+  "teacher_absent_from_ema": true,
+  "teacher_absent_from_student_state_dict": true,
+  "feature_channels": {
+    "15": {
+      "teacher": 64,
+      "student": 64
+    },
+    "18": {
+      "teacher": 96,
+      "student": 96
+    },
+    "21": {
+      "teacher": 256,
+      "student": 256
+    }
+  },
+  "student_parameter_count": 2607913,
+  "teacher_parameter_count": 2646185,
+  "kd_trainable_parameter_count": 0,
+  "kd_config": {
+    "teacher_path": "/data/cle/sunfuxiang-2/ultralytics-main/runs/detect/runs/detect/hongkong_L1-96/weights/best.pt",
+    "layer_indices": [
+      15,
+      18,
+      21
+    ],
+    "layer_weights": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "pool_size": 20,
+    "kd_weight": 1.0,
+    "warmup_epochs": 10.0,
+    "eps": 1e-06,
+    "center": true,
+    "log_dir": "/data/cle/sunfuxiang-2/ultralytics-main/runs/analysis/kd_implementation_check/pipeline"
+  },
+  "teacher_hash_before": "9ce1830bd14c9f294d7890192252b3db5380d0f32d4190b37cd31df7c86fdf4e",
+  "teacher_hash_after": "9ce1830bd14c9f294d7890192252b3db5380d0f32d4190b37cd31df7c86fdf4e",
+  "teacher_hash_unchanged": true,
+  "hooks_removed": true,
+  "student_hash_before_training": "b5c987921cb2eae9d9536c8c632c619145e7d56a992f37d9badff8a368ae25b6",
+  "student_hash_after_training": "176e4dcfb08fc4a48a9156505daef705e33d209adf3a46afad15a80db5be843f",
+  "student_parameters_changed": true,
+  "teacher_eval_always": true
+}

@@ -1,0 +1,157 @@
+{
+  "status": "SUCCESS",
+  "mode": "smoke",
+  "validation_executed": false,
+  "elapsed_seconds": 4.788633504882455,
+  "save_dir": "/data/cle/sunfuxiang-2/ultralytics-main/runs/analysis/mtrd_implementation_check/tmp/hongkong_SR1_P4Only_MTRD_smoke",
+  "mtrd_metrics_csv": "/data/cle/sunfuxiang-2/ultralytics-main/runs/analysis/mtrd_implementation_check/tmp/hongkong_SR1_P4Only_MTRD_smoke/mtrd_metrics.csv",
+  "mtrd_metrics_exists": true,
+  "mtrd_epoch_records": [
+    {
+      "epoch": 1,
+      "temperature": 0.05,
+      "self_loop_prob": 0.0,
+      "kd_weight_base": 0.10246292566479759,
+      "kd_ramp_end": 0.1,
+      "det_loss_mean": 48.41541503457462,
+      "mtrd_raw_mean": 6.017469882965088,
+      "mtrd_scaled_mean": 0.12357822312589954,
+      "mtrd_to_det_ratio": 0.0026221368649722385,
+      "teacher_forward_ms": 7.970512895023122,
+      "transition_loss_ms": 5.958155351526597,
+      "peak_cuda_memory_mb": 565.77734375,
+      "p3_step1": 7.267881589777329,
+      "p3_step2": 4.3055481069228225,
+      "p3_entropy": 0.35332823500913735,
+      "p3_max_prob": 0.5398205764153424,
+      "p4_step1": 7.892048358917236,
+      "p4_step2": 4.433754949008717,
+      "p4_entropy": 0.3315218599403606,
+      "p4_max_prob": 0.536042777930989,
+      "p5_step1": 7.767276763916016,
+      "p5_step2": 4.438308799968047,
+      "p5_entropy": 0.3719485928030575,
+      "p5_max_prob": 0.4428570130292107
+    }
+  ],
+  "mtrd_metrics_finite": true,
+  "batch_memory_allocated_mb": [
+    474.4111328125,
+    524.33984375,
+    507.0458984375,
+    544.44873046875,
+    526.9951171875,
+    554.28564453125,
+    527.0087890625,
+    554.42333984375,
+    526.951171875,
+    554.50927734375,
+    527.07080078125,
+    554.31591796875,
+    537.23583984375,
+    544.34619140625,
+    536.884765625,
+    554.32861328125,
+    325.30712890625
+  ],
+  "sustained_batch_memory_growth": false,
+  "teacher_hash_unchanged": true,
+  "teacher_eval_always": true,
+  "teacher_absent_from_optimizer": true,
+  "teacher_absent_from_ema": true,
+  "teacher_absent_from_student_checkpoint": true,
+  "student_parameters_changed": true,
+  "ema_updates": 9,
+  "hooks_removed": true,
+  "peak_cuda_memory_mb": 565.77734375,
+  "checkpoint_path": "/data/cle/sunfuxiang-2/ultralytics-main/runs/analysis/mtrd_implementation_check/tmp/hongkong_SR1_P4Only_MTRD_smoke/weights/best.pt",
+  "version_lock_ok": true,
+  "isolation": {
+    "ultralytics_version": "8.4.84",
+    "version_lock_ok": true,
+    "teacher_path": "/data/cle/sunfuxiang-2/ultralytics-main/runs/detect/runs/detect/hongkong_L1-96/weights/best.pt",
+    "teacher_requires_grad_all_false": true,
+    "teacher_optimizer_parameter_intersection": 0,
+    "teacher_student_parameter_intersection": 0,
+    "teacher_absent_from_optimizer": true,
+    "teacher_absent_from_ema": true,
+    "teacher_absent_from_student_state_dict": true,
+    "feature_channels": {
+      "15": {
+        "teacher": 64,
+        "student": 64
+      },
+      "18": {
+        "teacher": 96,
+        "student": 96
+      },
+      "21": {
+        "teacher": 256,
+        "student": 256
+      }
+    },
+    "student_parameter_count": 2607913,
+    "teacher_parameter_count": 2646185,
+    "kd_trainable_parameter_count": 0,
+    "kd_config": {
+      "teacher_path": "/data/cle/sunfuxiang-2/ultralytics-main/runs/detect/runs/detect/hongkong_L1-96/weights/best.pt",
+      "layer_indices": [
+        15,
+        18,
+        21
+      ],
+      "layer_weights": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "pool_size": 20,
+      "kd_weight": 0.10246292566479759,
+      "warmup_epochs": 10.0,
+      "eps": 1e-06,
+      "center": true,
+      "log_dir": null
+    },
+    "kd_method": "MTRD",
+    "mtrd_config": {
+      "teacher_path": "/data/cle/sunfuxiang-2/ultralytics-main/runs/detect/runs/detect/hongkong_L1-96/weights/best.pt",
+      "layer_indices": [
+        15,
+        18,
+        21
+      ],
+      "layer_weights": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "pool_size": 20,
+      "temperature": 0.05,
+      "transition_steps": [
+        1,
+        2
+      ],
+      "step_weights": [
+        1.0,
+        1.0
+      ],
+      "self_loop_prob": 0.0,
+      "divergence": "kl",
+      "kd_weight": 0.10246292566479759,
+      "warmup_epochs": 10.0,
+      "eps": 1e-06,
+      "center": true,
+      "log_dir": null
+    },
+    "teacher_hash_before": "9ce1830bd14c9f294d7890192252b3db5380d0f32d4190b37cd31df7c86fdf4e",
+    "teacher_hash_after": "9ce1830bd14c9f294d7890192252b3db5380d0f32d4190b37cd31df7c86fdf4e",
+    "teacher_hash_unchanged": true,
+    "hooks_removed": true,
+    "student_hash_before_training": "b5c987921cb2eae9d9536c8c632c619145e7d56a992f37d9badff8a368ae25b6",
+    "student_hash_after_training": "7a7b5dcfbae23c37de4527e2c95203702ae7879a7425ed52e578d2020607cca0",
+    "student_parameters_changed": true,
+    "teacher_eval_always": true
+  },
+  "cuda_memory_allocated_after_cleanup_mb": 64.0,
+  "cuda_memory_reserved_after_cleanup_mb": 64.0
+}

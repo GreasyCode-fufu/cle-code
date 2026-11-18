@@ -1,0 +1,84 @@
+{
+  "status": "SUCCESS",
+  "created_source_files": [
+    {
+      "path": "ultralytics_ext/markov_relation_kd.py",
+      "sha256": "1b80531080004fc84f792cba0264c2fd0725b0a08071240ef613ec2cf5212ff5"
+    },
+    {
+      "path": "ultralytics_ext/markov_kd_trainer.py",
+      "sha256": "e7ed6191353a877728e9e0ce605175232afef801aba5448e9ccffc3eaa577e90"
+    },
+    {
+      "path": "scripts/markov_distill_train.py",
+      "sha256": "f3e64413d39244b9c0416fe38b83c2bab03d84acea1b540dbb11bdfe7bda61af"
+    },
+    {
+      "path": "scripts/calibrate_markov_temperature.py",
+      "sha256": "2c1b6c2caff4cf4383da4a54fa3fdc0eb10c4aaf869a50aecbacd8b898b364d0"
+    },
+    {
+      "path": "scripts/calibrate_markov_kd_weight.py",
+      "sha256": "ebbe4eba9ab56878a79db3e67b2718fb9a2db04acc5e8ff0f120592ed0963378"
+    },
+    {
+      "path": "scripts/diagnose_markov_gradients.py",
+      "sha256": "175d1aa015e4c97349ee03efff69265645d43816b61228d960fb86d8e1f05397"
+    },
+    {
+      "path": "tests/test_markov_relation_kd.py",
+      "sha256": "d24791118ebfb0e6b4934cd115a067f8e4009e7cfd819c98a155c63cba1287f3"
+    },
+    {
+      "path": "tests/test_markov_kd_pipeline.py",
+      "sha256": "68436179ea932e084732d73a6e89f0adac56dccd6114adc0a8b10c4ad4d58cf6"
+    }
+  ],
+  "modified_existing_independent_kd_files": [],
+  "modified_ultralytics_core_files": [],
+  "unchanged_protected_kd_files": [
+    {
+      "path": "ultralytics_ext/feature_hooks.py",
+      "sha256_before": "a4a6ebf490199175cca80b8b24d192461588e72a1aa6139619d2c18f53953ee7",
+      "sha256_after": "a4a6ebf490199175cca80b8b24d192461588e72a1aa6139619d2c18f53953ee7",
+      "unchanged": true
+    },
+    {
+      "path": "ultralytics_ext/relation_kd.py",
+      "sha256_before": "193f8663570c8b248cb4d905bca05ec3e44ff49771dd9d03544d4ca1127892a1",
+      "sha256_after": "193f8663570c8b248cb4d905bca05ec3e44ff49771dd9d03544d4ca1127892a1",
+      "unchanged": true
+    },
+    {
+      "path": "ultralytics_ext/kd_trainer.py",
+      "sha256_before": "38b7fac21023b63e79f5d08326a4c64dea84ce0262d1693c67fa74f8d54f5086",
+      "sha256_after": "38b7fac21023b63e79f5d08326a4c64dea84ce0262d1693c67fa74f8d54f5086",
+      "unchanged": true
+    },
+    {
+      "path": "scripts/distill_train.py",
+      "sha256_before": "e7f183ebf93b30cba17b9d977c5de7890b36a9d495d258a8935096563e7c4ed2",
+      "sha256_after": "e7f183ebf93b30cba17b9d977c5de7890b36a9d495d258a8935096563e7c4ed2",
+      "unchanged": true
+    },
+    {
+      "path": "scripts/calibrate_kd_weight.py",
+      "sha256_before": "cd799bdf8cad856076a74217e75f8fd8d29aa3f8e72665e69b4f03bb95cea593",
+      "sha256_after": "cd799bdf8cad856076a74217e75f8fd8d29aa3f8e72665e69b4f03bb95cea593",
+      "unchanged": true
+    },
+    {
+      "path": "tests/test_relation_kd.py",
+      "sha256_before": "8dc497430beacc35dfed94fe4c17e65d59153ce20a9eb7656ffcbb10927fccae",
+      "sha256_after": "8dc497430beacc35dfed94fe4c17e65d59153ce20a9eb7656ffcbb10927fccae",
+      "unchanged": true
+    },
+    {
+      "path": "tests/test_kd_pipeline.py",
+      "sha256_before": "45205ac4e2f14518a81aaa2daab52de9697f35e5ca39204c12c0caf66c522ce7",
+      "sha256_after": "45205ac4e2f14518a81aaa2daab52de9697f35e5ca39204c12c0caf66c522ce7",
+      "unchanged": true
+    }
+  ],
+  "design_choice": "new MarkovKDDetectionTrainer subclass; existing Gram loss/trainer/entrypoint unchanged"
+}

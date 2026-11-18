@@ -1,0 +1,53 @@
+{
+  "status": "SUCCESS",
+  "ultralytics_version": "8.4.84",
+  "weight_path": "/data/cle/sunfuxiang-2/ultralytics-main/runs/detect/hongkong_SR1_P4Only_PairedNoKD/weights/best.pt",
+  "weight_size_bytes": 5480483,
+  "weight_size_mib": 5.226595878601074,
+  "evaluation_call": "model.val(**{'cfg':'ultralytics/cfg/default.yaml'})",
+  "split": "test",
+  "overall": {
+    "precision": 0.7692322766161578,
+    "recall": 0.6682144059909935,
+    "map50": 0.6974684943836573,
+    "map75": 0.4352277764494763,
+    "map50_95": 0.4211963234666031
+  },
+  "classes": {
+    "spalling": {
+      "precision": 0.8513963786506539,
+      "recall": 0.771824813281057,
+      "ap50": 0.8206608603399455,
+      "ap75": 0.64320800437678,
+      "ap50_95": 0.5600998478519378
+    },
+    "crack": {
+      "precision": 0.760067408828946,
+      "recall": 0.644878706199461,
+      "ap50": 0.7002621811239278,
+      "ap75": 0.4132266235162451,
+      "ap50_95": 0.41212529960786376
+    },
+    "moisture": {
+      "precision": 0.6962330423688737,
+      "recall": 0.5879396984924623,
+      "ap50": 0.5714824416870987,
+      "ap75": 0.24924870145540362,
+      "ap50_95": 0.2913638229400079
+    }
+  },
+  "speed_ms_per_image": {
+    "preprocess": 0.28169745941777036,
+    "inference": 0.44947614918601997,
+    "loss": 0.00017427615989926712,
+    "postprocess": 0.19300419466393026
+  },
+  "unfused_params": 2607913,
+  "fused_params": 2603129,
+  "gflops": 7.044096,
+  "teacher_related_checkpoint_keys": [],
+  "teacher_absent_from_checkpoint": true,
+  "inference_independent_of_ultralytics_ext": true,
+  "official_test_log": "/data/cle/sunfuxiang-2/ultralytics-main/runs/analysis/kd_paired_nokd_result/paired_nokd_test.log",
+  "exact_metric_json": "/data/cle/sunfuxiang-2/ultralytics-main/runs/analysis/kd_paired_nokd_result/paired_nokd_test_metrics_raw.json"
+}
