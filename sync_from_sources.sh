@@ -45,9 +45,19 @@ rsync -a --delete --delete-excluded --prune-empty-dirs "${FILTERS[@]}" \
   /data/cle/auto/prueNetwork/       auto/prueNetwork/
 rsync -a --delete --delete-excluded --prune-empty-dirs "${FILTERS[@]}" \
   /data/cle/sunfuxiang/classifyML/  sunfuxiang/classifyML/
-git add -A auto/prueNetwork sunfuxiang/classifyML
+mkdir -p sunfuxiang-1 sunfuxiang-2
+for d in ours backup demo; do
+  rsync -a --delete --delete-excluded --prune-empty-dirs "${FILTERS[@]}" \
+    "/data/cle/sunfuxiang-1/$d/" "sunfuxiang-1/$d/"
+done
+rsync -a "${FILTERS[@]}" /data/cle/sunfuxiang-1/generate_rotation_testset.py sunfuxiang-1/
+rsync -a --delete --delete-excluded --prune-empty-dirs "${FILTERS[@]}" \
+  /data/cle/sunfuxiang-2/hongkong/          sunfuxiang-2/hongkong/
+rsync -a --delete --delete-excluded --prune-empty-dirs "${FILTERS[@]}" \
+  /data/cle/sunfuxiang-2/GramRelKD-YOLOv8/  sunfuxiang-2/GramRelKD-YOLOv8/
+git add -A auto/prueNetwork sunfuxiang/classifyML sunfuxiang-1 sunfuxiang-2
 if ! git diff --cached --quiet HEAD -- 2>/dev/null; then
-  git commit -q -m "同步: prueNetwork/classifyML 代码快照($(date +%F))"
+  git commit -q -m "同步: 非 git 项目代码快照($(date +%F))"
   echo "[snap] 非 git 项目: 已更新"
 else
   echo "[snap] 非 git 项目: 无变化"
