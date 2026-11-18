@@ -1,0 +1,178 @@
+/home/login/miniconda3/envs/sunfuxiang/lib/python3.12/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+/data/cle/sunfuxiang/Classification/train_cle_fair.py:500: FutureWarning: `torch.cuda.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler('cuda', args...)` instead.
+  scaler = torch.cuda.amp.GradScaler()
+[seed] seed = 44 (set)
+2386 images for training.
+538 images were found in the val dataset.
+538 images for test.
+[norm] ImageNet 归一化(加载了预训练权重) MEAN=[0.485, 0.456, 0.406] STD=[0.229, 0.224, 0.225]
+[weights] strict load passed /data/cle/sunfuxiang/classifyML/pth/resnet34-333f7ec4.pth | classifier_missing=2 ignored_buffers=0 unexpected=0
+[train] model=resnet34_atrous4 num_classes=3 img=224 bs=32 epochs=300 | CE (label_smoothing=0.0) | select=val_macro_f1
+[out]   run_dir=./weights/resnet34_atrous4_seed44/resnet34_atrous4
+train epoch 0 loss: 0.424, acc: 0.811:  10… [  , 
+Epoch 0: train_loss=0.424, train_acc=0.811, val_loss=0.400, val_acc=0.831, val_macroF1=0.8159, lr=0.000100, best_macroF1=0.8159 (epoch 0) *
+train epoch 1 loss: 0.277, acc: 0.883:  10… [  , 
+Epoch 1: train_loss=0.277, train_acc=0.883, val_loss=0.327, val_acc=0.862, val_macroF1=0.8673, lr=0.000100, best_macroF1=0.8673 (epoch 1) *
+train epoch 2 loss: 0.230, acc: 0.908:  10… [  , 
+Epoch 2: train_loss=0.230, train_acc=0.908, val_loss=0.386, val_acc=0.844, val_macroF1=0.8324, lr=0.000100, best_macroF1=0.8673 (epoch 1)
+train epoch 3 loss: 0.202, acc: 0.916:  10… [  , 
+Epoch 3: train_loss=0.202, train_acc=0.916, val_loss=0.369, val_acc=0.857, val_macroF1=0.8550, lr=0.000100, best_macroF1=0.8673 (epoch 1)
+train epoch 4 loss: 0.179, acc: 0.928:  10… [  , 
+Epoch 4: train_loss=0.179, train_acc=0.928, val_loss=0.519, val_acc=0.822, val_macroF1=0.8008, lr=0.000100, best_macroF1=0.8673 (epoch 1)
+train epoch 5 loss: 0.159, acc: 0.937:  10… [  , 
+Epoch 5: train_loss=0.159, train_acc=0.937, val_loss=0.380, val_acc=0.855, val_macroF1=0.8574, lr=0.000100, best_macroF1=0.8673 (epoch 1)
+train epoch 6 loss: 0.155, acc: 0.944:  10… [  , 
+Epoch 6: train_loss=0.155, train_acc=0.944, val_loss=0.403, val_acc=0.846, val_macroF1=0.8349, lr=0.000100, best_macroF1=0.8673 (epoch 1)
+train epoch 7 loss: 0.126, acc: 0.948:  10… [  , 
+Epoch 7: train_loss=0.126, train_acc=0.948, val_loss=0.513, val_acc=0.809, val_macroF1=0.7894, lr=0.000100, best_macroF1=0.8673 (epoch 1)
+train epoch 8 loss: 0.115, acc: 0.956:  10… [  , 
+Epoch 8: train_loss=0.115, train_acc=0.956, val_loss=0.530, val_acc=0.842, val_macroF1=0.8356, lr=0.000100, best_macroF1=0.8673 (epoch 1)
+train epoch 9 loss: 0.129, acc: 0.948:  10… [  , 
+Epoch 9: train_loss=0.129, train_acc=0.948, val_loss=0.475, val_acc=0.855, val_macroF1=0.8419, lr=0.000100, best_macroF1=0.8673 (epoch 1)
+train epoch 10 loss: 0.111, acc: 0.959:  10…   , 
+Epoch 10: train_loss=0.111, train_acc=0.959, val_loss=0.838, val_acc=0.797, val_macroF1=0.7586, lr=0.000100, best_macroF1=0.8673 (epoch 1)
+train epoch 11 loss: 0.112, acc: 0.956:  10…   , 
+Epoch 11: train_loss=0.112, train_acc=0.956, val_loss=0.464, val_acc=0.857, val_macroF1=0.8594, lr=0.000100, best_macroF1=0.8673 (epoch 1)
+train epoch 12 loss: 0.104, acc: 0.961:  10…   , 
+Epoch 12: train_loss=0.104, train_acc=0.961, val_loss=0.461, val_acc=0.851, val_macroF1=0.8541, lr=0.000100, best_macroF1=0.8673 (epoch 1)
+train epoch 13 loss: 0.097, acc: 0.964:  10…   , 
+Epoch 13: train_loss=0.097, train_acc=0.964, val_loss=0.506, val_acc=0.849, val_macroF1=0.8430, lr=0.000099, best_macroF1=0.8673 (epoch 1)
+train epoch 14 loss: 0.080, acc: 0.968:  10…   , 
+Epoch 14: train_loss=0.080, train_acc=0.968, val_loss=0.460, val_acc=0.849, val_macroF1=0.8425, lr=0.000099, best_macroF1=0.8673 (epoch 1)
+train epoch 15 loss: 0.072, acc: 0.970:  10…   , 
+Epoch 15: train_loss=0.072, train_acc=0.970, val_loss=0.499, val_acc=0.862, val_macroF1=0.8589, lr=0.000099, best_macroF1=0.8673 (epoch 1)
+train epoch 16 loss: 0.060, acc: 0.975:  10…   , 
+Epoch 16: train_loss=0.060, train_acc=0.975, val_loss=0.533, val_acc=0.840, val_macroF1=0.8397, lr=0.000099, best_macroF1=0.8673 (epoch 1)
+train epoch 17 loss: 0.061, acc: 0.979:  10…   , 
+Epoch 17: train_loss=0.061, train_acc=0.979, val_loss=0.425, val_acc=0.855, val_macroF1=0.8499, lr=0.000099, best_macroF1=0.8673 (epoch 1)
+train epoch 18 loss: 0.070, acc: 0.975:  10…   , 
+Epoch 18: train_loss=0.070, train_acc=0.975, val_loss=0.725, val_acc=0.799, val_macroF1=0.7893, lr=0.000099, best_macroF1=0.8673 (epoch 1)
+train epoch 19 loss: 0.075, acc: 0.970:  10…   , 
+Epoch 19: train_loss=0.075, train_acc=0.970, val_loss=0.574, val_acc=0.849, val_macroF1=0.8474, lr=0.000099, best_macroF1=0.8673 (epoch 1)
+train epoch 20 loss: 0.072, acc: 0.975:  10…   , 
+Epoch 20: train_loss=0.072, train_acc=0.975, val_loss=0.804, val_acc=0.831, val_macroF1=0.8133, lr=0.000099, best_macroF1=0.8673 (epoch 1)
+train epoch 21 loss: 0.069, acc: 0.974:  10…   , 
+Epoch 21: train_loss=0.069, train_acc=0.974, val_loss=0.521, val_acc=0.853, val_macroF1=0.8469, lr=0.000099, best_macroF1=0.8673 (epoch 1)
+train epoch 22 loss: 0.056, acc: 0.980:  10…   , 
+Epoch 22: train_loss=0.056, train_acc=0.980, val_loss=0.476, val_acc=0.861, val_macroF1=0.8565, lr=0.000099, best_macroF1=0.8673 (epoch 1)
+train epoch 23 loss: 0.077, acc: 0.971:  10…   , 
+Epoch 23: train_loss=0.077, train_acc=0.971, val_loss=0.523, val_acc=0.835, val_macroF1=0.8211, lr=0.000098, best_macroF1=0.8673 (epoch 1)
+train epoch 24 loss: 0.059, acc: 0.979:  10…   , 
+Epoch 24: train_loss=0.059, train_acc=0.979, val_loss=0.540, val_acc=0.842, val_macroF1=0.8339, lr=0.000098, best_macroF1=0.8673 (epoch 1)
+train epoch 25 loss: 0.038, acc: 0.986:  10…   , 
+Epoch 25: train_loss=0.038, train_acc=0.986, val_loss=0.664, val_acc=0.844, val_macroF1=0.8381, lr=0.000098, best_macroF1=0.8673 (epoch 1)
+train epoch 26 loss: 0.042, acc: 0.986:  10…   , 
+Epoch 26: train_loss=0.042, train_acc=0.986, val_loss=0.693, val_acc=0.833, val_macroF1=0.8296, lr=0.000098, best_macroF1=0.8673 (epoch 1)
+train epoch 27 loss: 0.037, acc: 0.987:  10…   , 
+Epoch 27: train_loss=0.037, train_acc=0.987, val_loss=0.536, val_acc=0.859, val_macroF1=0.8478, lr=0.000098, best_macroF1=0.8673 (epoch 1)
+train epoch 28 loss: 0.052, acc: 0.982:  10…   , 
+Epoch 28: train_loss=0.052, train_acc=0.982, val_loss=0.499, val_acc=0.853, val_macroF1=0.8461, lr=0.000098, best_macroF1=0.8673 (epoch 1)
+train epoch 29 loss: 0.040, acc: 0.988:  10…   , 
+Epoch 29: train_loss=0.040, train_acc=0.988, val_loss=0.520, val_acc=0.838, val_macroF1=0.8315, lr=0.000098, best_macroF1=0.8673 (epoch 1)
+train epoch 30 loss: 0.040, acc: 0.987:  10…   , 
+Epoch 30: train_loss=0.040, train_acc=0.987, val_loss=0.534, val_acc=0.842, val_macroF1=0.8345, lr=0.000097, best_macroF1=0.8673 (epoch 1)
+train epoch 31 loss: 0.051, acc: 0.982:  10…   , 
+Epoch 31: train_loss=0.051, train_acc=0.982, val_loss=0.701, val_acc=0.844, val_macroF1=0.8367, lr=0.000097, best_macroF1=0.8673 (epoch 1)
+
+[early stop] epoch 31: val_macro_f1 not improved for 30 epochs
+
+===========================================================
+             Training Summary (fair baseline)              
+===========================================================
+  Model:              resnet34_atrous4
+  Best val macro-F1:  0.8673  (epoch 1)
+  Selection:          val macro-F1
+  Loss:               unweighted CrossEntropy
+  Training Time:      0:06:30
+  Weights:            ./weights/resnet34_atrous4_seed44/resnet34_atrous4/model_best.pth
+  Run meta:           ./weights/resnet34_atrous4_seed44/resnet34_atrous4/run_meta.json
+===========================================================
+
+===== [2026-10-24 00:47:03.130013] /home/login/miniconda3/envs/sunfuxiang/bin/python train_cle_fair.py --model resnet34_atrous4 --num_classes 3 --img_size 224 --seed 44 --data-path-train ./datasets/cle/train --data-path-val ./datasets/cle/val --weights /home/login/data/cle/sunfuxiang/classifyML/pth/resnet34-333f7ec4.pth --save-dir ./weights/resnet34_atrous4_seed44 --epochs 300
+[norm] source=run_meta.json(imagenet)  mean=[0.485, 0.456, 0.406] std=[0.229, 0.224, 0.225]  img_size=224
+[model] resnet34_atrous4  weights=/data/cle/sunfuxiang/Classification/weights/resnet34_atrous4_seed44/resnet34_atrous4/model_best.pth
+[complexity] MACs=5.61G FLOPs=11.21G Params=21.29M
+[data] test=538 张  Benign_lesions=225  Malignant_lesions=156  body_of_stomach_normal=157
+
+================================================================
+  评估结果 — resnet34_atrous4  (test=538 张)
+================================================================
+  【主指标】
+  Macro-F1         : 0.8711   ← 主指标(类别不平衡首选)
+  Accuracy         : 0.8662
+  Macro-AUROC(OvR) : 0.9618
+----------------------------------------------------------------
+  【补充总体指标】
+  Weighted-F1      : 0.8679
+  Balanced Acc     : 0.8777
+  Macro-Sensitivity: 0.8777   (= 各类 Recall 均值)
+  Macro-Specificity: 0.9339
+  Macro-Precision  : 0.8722
+  AUC-PR (Macro)   : 0.9273
+  Cohen's Kappa    : 0.7982
+  MCC              : 0.8024
+----------------------------------------------------------------
+  【每类指标】 Sensitivity / Specificity / Precision / F1 / AUROC
+  Benign_lesions        : 0.787 / 0.946 / 0.912 / 0.845 / 0.954  (n=225)
+  Malignant_lesions     : 0.872 / 0.864 / 0.723 / 0.791 / 0.932  (n=156)
+  body_of_stomach_normal: 0.975 / 0.992 / 0.981 / 0.978 / 0.999  (n=157)
+----------------------------------------------------------------
+  【模型复杂度】(仅与架构+输入尺寸有关，与数据集无关)
+  MACs : 5.61G    FLOPs : 11.21G    Params : 21.29M
+  【推理效率】(受 GPU 负载影响，为参考量级)
+  Pure FPS : 666.4  (1.50 ms/张)    End-to-End FPS : 2.5
+----------------------------------------------------------------
+  【混淆矩阵】(行=真实, 列=预测)
+                  Benign_l  Malignan  body_of_
+  Benign_lesio         177        48         0
+  Malignant_le          17       136         3
+  body_of_stom           0         4       153
+================================================================
+
+[saved] /data/cle/sunfuxiang/Classification/weights/resnet34_atrous4_seed44/resnet34_atrous4/eval_20261024_005725/  (results.json / predictions.csv / evaluation_report.md)
+
+===== [2026-10-24 00:53:44.256269] /home/login/miniconda3/envs/sunfuxiang/bin/python evaluate.py --model resnet34_atrous4 --weights /data/cle/sunfuxiang/Classification/weights/resnet34_atrous4_seed44/resnet34_atrous4/model_best.pth --data-path ./datasets/cle/val
+[norm] source=run_meta.json(imagenet)  mean=[0.485, 0.456, 0.406] std=[0.229, 0.224, 0.225]  img_size=224
+[model] resnet34_atrous4  weights=/data/cle/sunfuxiang/Classification/weights/resnet34_atrous4_seed44/resnet34_atrous4/model_best.pth
+[complexity] MACs=5.61G FLOPs=11.21G Params=21.29M
+[data] test=671 张  Benign_lesions=256  Malignant_lesions=210  body_of_stomach_normal=205
+
+================================================================
+  评估结果 — resnet34_atrous4  (test=671 张)
+================================================================
+  【主指标】
+  Macro-F1         : 0.8545   ← 主指标(类别不平衡首选)
+  Accuracy         : 0.8495
+  Macro-AUROC(OvR) : 0.9659
+----------------------------------------------------------------
+  【补充总体指标】
+  Weighted-F1      : 0.8514
+  Balanced Acc     : 0.8556
+  Macro-Sensitivity: 0.8556   (= 各类 Recall 均值)
+  Macro-Specificity: 0.9247
+  Macro-Precision  : 0.8634
+  AUC-PR (Macro)   : 0.9402
+  Cohen's Kappa    : 0.7740
+  MCC              : 0.7789
+----------------------------------------------------------------
+  【每类指标】 Sensitivity / Specificity / Precision / F1 / AUROC
+  Benign_lesions        : 0.770 / 0.930 / 0.872 / 0.817 / 0.947  (n=256)
+  Malignant_lesions     : 0.910 / 0.850 / 0.735 / 0.813 / 0.955  (n=210)
+  body_of_stomach_normal: 0.888 / 0.994 / 0.984 / 0.933 / 0.996  (n=205)
+----------------------------------------------------------------
+  【模型复杂度】(仅与架构+输入尺寸有关，与数据集无关)
+  MACs : 5.61G    FLOPs : 11.21G    Params : 21.29M
+  【推理效率】(受 GPU 负载影响，为参考量级)
+  Pure FPS : 647.9  (1.54 ms/张)    End-to-End FPS : 2.8
+----------------------------------------------------------------
+  【混淆矩阵】(行=真实, 列=预测)
+                  Benign_l  Malignan  body_of_
+  Benign_lesio         197        58         1
+  Malignant_le          17       191         2
+  body_of_stom          12        11       182
+================================================================
+
+[saved] /data/cle/sunfuxiang/Classification/weights/resnet34_atrous4_seed44/resnet34_atrous4/eval_20261024_010138/  (results.json / predictions.csv / evaluation_report.md)
+
+===== [2026-10-24 00:57:28.201351] /home/login/miniconda3/envs/sunfuxiang/bin/python evaluate.py --model resnet34_atrous4 --weights /data/cle/sunfuxiang/Classification/weights/resnet34_atrous4_seed44/resnet34_atrous4/model_best.pth --data-path ./datasets/cle/test
